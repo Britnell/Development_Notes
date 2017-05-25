@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+    <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- mobile mode if small screen device -->
+    
+    <title>Designing PCBs: SMD Footprints - learn.sparkfun.com</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    
+        <link rel="alternate" type="application/atom+xml" title="Education Blog" href="https://learn.sparkfun.com/feeds/blog">
+    <link rel="alternate" type="application/atom+xml" title="Tutorials" href="https://learn.sparkfun.com/feeds/tutorials">
+    <link rel="alternate" type="application/atom+xml" title="Education Blog Comments" href="https://learn.sparkfun.com/feeds/blog_comments">
+    <link rel="alternate" type="application/atom+xml" title="Tutorial Comments" href="https://learn.sparkfun.com/feeds/tutorial_comments">
+
+    
+    
+      
+<link media="all" href="index.css" type="text/css" rel="stylesheet">
+</head>
+<body id="learn" class="layout-default no-type tutorials-view no-touch" ontouchstart="">
+    
+    <div class="wrapper" itemscope="" itemtype="http://schema.org/WebSite">
+      <meta itemprop="url" content="https://www.sparkfun.com/">
+      <div class="wrapper-inner">
+
+    
+<div class="header">
+  <div class="container">
+
+<!-- Mobile Nav Button -->
+<div class="mobile-menu-container left">
+  <a id="nav_toggle" class="mobile-menu-button nav_toggle" href="#"><span>≡</span></a>
+      <a id="search_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-search"></span></a>
+  </div>
+
+<nav class="top-links">
+  &nbsp;
+</nav>
+
+<!-- Logo -->
+<div class="logo-container">
+  <a class="logo" href="https://www.sparkfun.com/">
+    <span class="sfe-icon-flame"></span>
+    <span class="sfe-icon-sparkfun" data-icon="🔥">
+      <span class="visuallyhidden">sparkfun.com</span>
+    </span>
+  </a>
+</div>
+
+<!-- Tabs -->
+<!-- also edit mobile tabs in .main-nav -->
+<nav class="tabs-container">
+  <ul>
+    <li class="shop "><a href="https://www.sparkfun.com/">Shop</a></li>
+    <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+    <li class="avc "><a href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"><span class="visuallyhidden">AVC</span></span></a></li>
+    <li class="forum "><a href="https://forum.sparkfun.com/">Forum</a></li>
+    <li class="data "><a href="https://data.sparkfun.com/">Data</a></li>
+  </ul>
+</nav>
+
+<!-- Cart & User -->
+<div class="user-container mobile-menu-container right">
+
+  <a id="account_toggle" class="mobile-menu-button" href="#"><span class="glyphicon glyphicon-user"></span></a>
+
+      <div class="cart mobile-menu-button">
+      <a href="https://www.sparkfun.com/cart">
+        <span id="cart_status" class="sfe-icon-carticon cart-empty">
+          <span class="visuallyhidden">Shopping Cart</span>
+        </span>
+        <span class="cart_count">
+          <span id="items_in_cart">0</span>
+          <span id="cart_noun">items</span>
+        </span>
+      </a>
+    </div>
+  
+      <div class="user">
+      <!-- login modal trigger -->
+      <a class="btn btn-default" href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fdesigning-pcbs-smd-footprints" data-toggle="modal" data-target="#login_modal" data-remote="false">log in</a>
+      <a class="btn btn-default" href="https://www.sparkfun.com/account/make">register</a>    </div>
+  
+</div>
+
+<!-- Navigation / Search -->
+<div class="main-nav-container">
+
+  <nav class="main-nav">
+    <ul>
+      <li class="tab shop ">
+        <a href="https://www.sparkfun.com/">Shop</a>      </li>
+      <li class="tab learn active">
+        <a href="https://learn.sparkfun.com/">Learn</a>      </li>
+      
+<li class="start-a-project ">
+  <a href="https://learn.sparkfun.com/start_a_project">Start a Project</a></li>
+<li><a href="https://learn.sparkfun.com/blog">EDU Blog</a></li>
+<li><a href="https://learn.sparkfun.com/resources">Resources</a></li>
+<li class="active"><a href="https://learn.sparkfun.com/tutorials">Tutorials</a></li>
+<li><a href="https://learn.sparkfun.com/events">Classes</a></li>
+<li><a href="https://learn.sparkfun.com/calendar">Calendar</a></li>
+<li><a href="https://learn.sparkfun.com/workshops">Workshops</a></li>
+<li><a href="https://learn.sparkfun.com/contact">Contact</a></li>
+
+      <li class="desktop-toggle">
+        <a href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fdesigning-pcbs-smd-footprints">Desktop Site</a>      </li>
+    </ul>
+  </nav>
+
+      <form id="search_form" class="search" action="https://www.sparkfun.com/search/results" method="get" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+      <meta itemprop="target" content="https://www.sparkfun.com/search/results?term={term}">
+      <div class="ui-widget">
+        <input name="term" id="global-search" class="form-control" value="" placeholder="search..." itemprop="query-input" autocomplete="off" type="text">
+      </div>
+    </form>
+  
+</div>
+
+  </div>
+</div>
+
+
+    
+    <div class="content">
+      <div class="container">
+
+        
+        <div class="main-title">
+  <ul class="breadcrumb">
+    <li><a href="https://learn.sparkfun.com/">Home</a></li>
+    <li><a href="https://learn.sparkfun.com/tutorials">Tutorials</a></li>
+    <li>Designing PCBs: SMD Footprints</li>
+      </ul>
+
+  <h1>
+    Designing PCBs: SMD Footprints  </h1>
+
+</div>
+
+
+<a id="nav_toggle_pages" class="nav_toggle" href="#"><span>≡</span> Pages</a>
+
+<div id="tutorial" class="row">
+
+  <div class="col-sm-8" id="sections">
+
+    <div class="contributors">
+                      Contributors:
+                <a href="https://www.sparkfun.com/users/7185"><img src="1ff6ad39b8c242a14296a76845e116cd"> Nate</a>          </div>
+
+    <span class="fave_widget verbose">
+  <a href="#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="10">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">7</span>
+</span>    <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" value="http://sfe.io/t10" onclick="$(this).select();" type="text">
+
+    <div class="share-social">
+
+      <a rel="nofollow" onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft10" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel="nofollow" onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft10&amp;name=Designing+PCBs%3A+SMD+Footprints" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel="nofollow" onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft10" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel="nofollow" onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=Designing+PCBs%3A+SMD+Footprints&amp;url=http%3A%2F%2Fsfe.io%2Ft10&amp;via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel="nofollow" onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft10&amp;t=Designing+PCBs%3A+SMD+Footprints" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel="nofollow" onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft10&amp;media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2F3%2F4%2F7%2F2%2F8%2F50d4fe6cce395fff0a000000.jpg&amp;description=Designing+PCBs%3A+SMD+Footprints" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+          <div class="section tutorial-page">
+        <h2 id="getting-started">Getting Started</h2>
+        <p>If you’re eagerly reading this tutorial you’re getting pretty deep into the plumbing of Eagle. Congratulations! Keep going!</p>
+
+<p>We’re going to assume you’ve already read our other tutorials on through-hole and SMD PCB layout so you should already have Eagle and the various support files installed. We use keyboard shortcuts liberally so you better have them installed as well.</p>
+
+<p>This tutorial will show you how to create a custom SMD footprint and schematic symbol library. This is a crucial skill for any hacker who wants access to the latest technology via SMD modules or new SMD ICs.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/8/5/f/f/8/50d77cd6ce395f6a76000000.jpg"><img src="50d77cd6ce395f6a76000000.jpg" alt="alt text"></a></p>
+
+<p style="text-align: center;"><em>SMD ICs are incredibly small. Learning how to make footprints that work with these tiny part is a crucial skill.</em></p>
+
+<h3>Suggested Reading</h3>
+
+<p>Here are some concepts that this tutorial builds upon and that you may need to know:</p>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/pcb-basics">PCB Basics</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/how-to-read-a-schematic">How to Read a Schematic</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/how-to-install-and-setup-eagle">How to install and setup Eagle PCB software</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/using-eagle-schematic">How to layout PTH PCBs: Schematic</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/using-eagle-board-layout">How to layout PTH PCBs: Board Layout</a></li>
+<li><a href="http://learn.sparkfun.com/tutorials/designing-pcbs-advanced-smd">How to layout SMD PCBs</a></li>
+</ul>
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="choosing-a-part">Choosing a Part</h2>
+        <p>As new ICs come out, the PCB layout softwares of the world will not have that specific part within their component libraries. For example, Eagle may have a given footprint (SOIC-8 or QFN-24) but I wouldn’t trust it. I have lost so much money on PCBs that had the wrong footprint that I don’t use the built-in libraries, Eagle or other. Sometimes I’ll use a friend’s library, but we all make mistakes (I actually owe David Mellis a beer for messing up one of his boards because he relied on a footprint of ours). Don’t trust anyone or anyone’s library without a one-to-one print and a thorough review of the datasheet and pin mapping.</p>
+
+<p>The FT230X from FTDI looks like an interesting new IC. Let’s do a breakout board for it. Before we can start laying out a board, we’ll need to create a brand new footprint (aka ‘package’ in Eagle), schematic symbol, and device for it before we can begin to layout a PCB.</p>
+
+<p>In other words:</p>
+
+<p style="text-align: center;"> footprint + schematic symbol = thing I can use</p>
+
+<p>or using Eagle’s language</p>
+
+<p style="text-align: center;"> package + symbol = device</p>
+
+<hr>
+
+<p>Now that we’ve chosen a part, let’s make a footprint for it!</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="footprint-creation">Footprint Creation</h2>
+        <p>Eagle requires three things to get an IC into the library:</p>
+
+<ul>
+<li>Package (also known as a footprint)</li>
+<li>Symbol (the schematic symbol)</li>
+<li>Device (mapping them together)</li>
+</ul>
+
+
+<p>The tutorial images show us working from the SparkFun-DigitalIC.lbr file but you can create your own custom library file if you’d like.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/4/b/5/5/a/50d4fe37ce395f880a000000.jpg"><img src="50d4fe37ce395f880a000000.jpg" alt="alt text"></a></p>
+
+<p>We are going to start by creating a footprint from scratch. Because the FT230X is a digital IC, let’s open the SparkFun-DigitalIC library.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/b/0/a/0/a/50d4fe38ce395f210c000000.jpg"><img src="50d4fe38ce395f210c000000.jpg" alt="alt text"></a></p>
+
+<p>We’ve got a clean slate! Click on ‘package’</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/d/0/0/0/d/50d4fe38ce395ff009000001.jpg"><img src="50d4fe38ce395ff009000001.jpg" alt="alt text"></a></p>
+
+<p>Now bring up the <a href="http://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT230X.pdf">datasheet</a> for the FT230X and skim down to where the package is described. This IC uses a package type called SSOP16 and has 16 pins. Wikipedia has some good information about <a href="http://en.wikipedia.org/wiki/Small-outline_integrated_circuit">SSOP</a> (Shrink small-outline package) chips. For our purposes, we need only to get a short package identifier into Eagle.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/d/2/b/3/b/50d50158ce395f190c000001.jpg"><img src="50d50158ce395f190c000001.jpg" alt="alt text"></a></p>
+
+<p>From within the Eagle footprint list, click on any footprint in this window and press ‘s’. This will bring you to the packages starting with the letter S. Now is your chance to see if the package you are about to create is already available. In our case, ‘SSOP20’ is available but SSOP16 (the 16 derivative) is not.</p>
+
+<p>To create a new package, type the name <strong>SSOP16</strong> into the ‘New:’ box. This fits with the same naming structure as the SSOP20 package.</p>
+
+<p>Do you already have a SSOP16 in your library? (Look at you, you have the most up to date library!) Go ahead and call this one ‘SSOP16-PRACTICE’ or some such name that you can find later.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/9/3/7/f/a/50d4fe5cce395fb70c000000.jpg"><img src="50d4fe5cce395fb70c000000.jpg" alt="alt text"></a></p>
+
+<p>Now we’ve got a black window of nothing. From the datasheet, this IC is <em>E1</em> (0.154”) wide and <em>D</em> (0.193”) long. For now, let’s create a square on the tDocu (top document) layer. Click on ‘Wire’.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/6/6/6/f/2/50d4fe5cce395f6008000000.jpg"><img src="50d4fe5cce395f6008000000.jpg" alt="alt text"></a></p>
+
+<p>We can now draw, but we need to get to the tDocu layer. To do this you can either drop down the layers menu and select layer <em>51 tDocu</em> or…</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/0/b/0/0/2/50d4fe5bce395f870c000001.jpg"><img src="50d4fe5bce395f870c000001.jpg" alt="alt text"></a></p>
+
+<p>click the center button/scroll wheel on your mouse. I much prefer using the scroll wheel to select the layer because I jump to different layers a lot. You’ll see a ton of different layers. Find layer 51 and click it.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/9/1/d/0/0/50d4fe5bce395f890c000000.jpg"><img src="50d4fe5bce395f890c000000.jpg" alt="alt text"></a></p>
+
+<p>Draw a box. Hit escape to stop drawing. This is not really the shape of the IC. To get the exact shape, let’s look at the dimensions of the IC again. 0.154” wide and 0.193” long. Every manufacturer will have different tolerances. Use the nominal (NOM) dimension when it is provided. If you only have MIN and MAX dimensions, I will use the usually take the midpoint between them.</p>
+
+<p>In Eagle, we want the component to have 0,0 centrally located within the component. So if the X dimension is 0.193 the left side of the box will be -0.0965, right side will be 0.0965. Let’s modify the left and right sides to be at these X locations.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/c/d/6/d/1/50d4fe5bce395f6c0c000000.jpg"><img src="50d4fe5bce395f6c0c000000.jpg" alt="alt text"></a></p>
+
+<p>Click the ‘i’ button and then select the left gray bar by left clicking on it. We are now modifying the X and Y coordinates of the starting and ending points of this line. Note that in this picture by line is -3,2 to -3,-3. I’m on the wrong grid! I’m on the metric grid but our dimensions are in imperial. This is a common problem and you will be jumping between grid types often.</p>
+
+<p>To switch between grid types, exit out of any window, then hit <strong>F10</strong> for the standard imperial grid and <strong>Alt+F10</strong> for the metric grid.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/7/5/c/e/0/50d4fe5bce395f790c000000.jpg"><img src="50d4fe5bce395f790c000000.jpg" alt="alt text"></a></p>
+
+<p>To change the grid to something really wild, click on the Grid button in the upper left corner of the menu bar. Here you can modify many different settings. In general, we stick to:</p>
+
+<ul>
+<li>0.05inch size with 0.005inch alternative size for the imperial grid</li>
+<li>1mm size with 0.1mm alternative size for the metric grid</li>
+</ul>
+
+
+<p>Again, learn the <strong>F10</strong> and <strong>Alt+F10</strong> shortcuts. They will save you lots of time.</p>
+
+<p>Close this window and hit <strong>F10</strong> to change to the imperial grid. Now click on the ‘i’, then left click on the left bar of the box we drew.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/9/3/3/a/0/50d4fe5bce395f8e0c000000.jpg"><img src="50d4fe5bce395f8e0c000000.jpg" alt="alt text"></a></p>
+
+<p>Our lengths look really weird because this line was drawn in metric and is being converted to inch. Let’s modify this to -0.0965".</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/b/e/7/a/a/50d4fe5bce395f8b0c000001.jpg"><img src="50d4fe5bce395f8b0c000001.jpg" alt="alt text"></a></p>
+
+<p>Repeat for the right bar with 0.0965”.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/7/6/2/f/7/50d4fe5bce395f950c000000.jpg"><img src="50d4fe5bce395f950c000000.jpg" alt="alt text"></a></p>
+
+<p>Whoa. This IC is getting smaller!</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/3/5/8/5/1/50d4fe5bce395f8c0c000000.jpg"><img src="50d4fe5bce395f8c0c000000.jpg" alt="alt text"></a></p>
+
+<p>Now let’s modify the top bar and bottom bar to be 0.154" / 2 = 0.077"</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/7/8/4/0/1/50d4fe5bce395f880c000000.jpg"><img src="50d4fe5bce395f880c000000.jpg" alt="alt text"></a></p>
+
+<p>Ahh! We now have the physical outline of this SSOP package. It’s small!</p>
+
+<p>Time to save your work. Click on the disk icon or hit <strong>Ctrl+s</strong>.</p>
+
+<p>When dealing with IC dimensions have a calculator handy and be ready to convert between metric and imperial (I’m lazy and use <a href="https://www.google.com/search?hl=en&amp;q=0.041in+in+mm">google</a>). If you don’t have a datasheet for your part, don’t fret! Get the part in your hand, pull out your <a href="http://www.sparkfun.com/products/10997">digital calipers</a> and start measuring. We’ve created many parts without a datasheet.</p>
+
+<p>Now we need to add SMD pads around this outline. From the datasheet, each pad is:</p>
+
+<ul>
+<li>0.041” long : (<em>dimension E</em> - <em>dimension E1</em>) / 2</li>
+<li>0.01” wide : <em>dimension b</em></li>
+</ul>
+
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/f/8/a/1/3/50d4fe38ce395f350c000000.jpg"><img src="50d4fe38ce395f350c000000.jpg" alt="alt text"></a></p>
+
+<p>Click on Smd (come on Eagle! It’s <strong>SMD</strong> not <strong>Smd</strong>!). You’ll have a red rectangle floating around. Now go up to the <em>Smd:</em> box and enter 0.041x0.01.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/0/0/a/7/5/50d4fe38ce395f280c000002.jpg"><img src="50d4fe38ce395f280c000002.jpg" alt="alt text"></a></p>
+
+<p>Now wait! We have created a pad that is exactly the size of the pin. We actually want a pad that is slightly longer and slightly wider than the pin so that we can have solder fill around the pin and the pad. I will sometimes increase by ~10-20% in each direction. There is no hard and fast rule here. We often find recommended footprint datasheets for similar footprints. For this example, I’m going to look at the SSOP20 footprint contained within the Digital ICs library and use the pad dimensions for that component. I know SSOP20 works well (we’ve used the old FT232 IC many times) so I trust that pad size.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/d/e/4/6/e/50d4fe38ce395f1c0c000000.jpg"><img src="50d4fe38ce395f1c0c000000.jpg" alt="alt text"></a></p>
+
+<p>Click on the <em>Package</em> button in the top menu within the Eagle window then scroll to SSOP20.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/f/5/1/2/1/50d4fe38ce395fe00c000000.jpg"><img src="50d4fe38ce395fe00c000000.jpg" alt="alt text"></a></p>
+
+<p>Click on the ‘i’ (not the eye ball) and click on a pad. Make sure the red pad is highlighted and not the white pad. If the wrong pad is highlighted, right click and Eagle will cycle through the items that are stacked upon each other.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/3/6/b/0/e/50d4fe38ce395f170c000000.jpg"><img src="50d4fe38ce395f170c000000.jpg" alt="alt text"></a></p>
+
+<p>0.01574803 x 0.05905512 ?!? What the heck is that? Remember, we are on the imperial grid. Let’s close this window and hit <strong>Alt+F10</strong> to switch to the metric grid. You should see the grid change in size. Now click on the same pad. If the white block gets highlighted hit escape (to close the pad information window) and trying clicking on the more central location of the red pad.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/6/6/2/4/f/50d4fe37ce395f250c000000.jpg"><img src="50d4fe37ce395f250c000000.jpg" alt="alt text"></a></p>
+
+<p>0.4 x 1.5 - Ahah! This makes a lot more sense. The pad was created on the metric grid. Let’s do the same for our component. Remember this value.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/4/8/9/5/3/50d4fe5bce395f920c000002.jpg"><img src="50d4fe5bce395f920c000002.jpg" alt="alt text"></a></p>
+
+<p>Before we leave this package, let’s talk about the tDocu layer and why there is a white square on top of the red square. Remember how we said we needed to create a pad that is bigger than the pin? The person who created this package created a white square to indicate the <em>actual</em> pin on the top document layer (tDocu) and an actual electrical pad using the Smd button. This allows the engineer to see where exactly the pin is located and where the SMD pad is located underneath. This white pad is really just there to help us visualize everything going on. Also note that the red pad is not concentric (does not share the same center point) as the white square.</p>
+
+<p>(picture of pin on pad at angle)</p>
+
+<p>This is because only part of the pin hits the pad. This is <em>dimension L</em> on the datasheet:</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/9/e/5/9/9/50d4fe5bce395f5e08000000.jpg"><img src="50d4fe5bce395f5e08000000.jpg" alt="alt text"></a></p>
+
+<p>This is all pretty minute details to creating the pad for this device. For your own SMD package remember:</p>
+
+<ol>
+<li>Create a SMD pad that is slightly larger than the pin dimensions</li>
+<li>Locate the pad so that it is near the center of where the metal pin will be</li>
+</ol>
+
+
+<p>Ok - now let’s return to the new SSOP16 footprint we were creating. Click on the ‘Package’ button located in the top Eagle menu, scroll down to the SSOP16 package and double click it. You should now see the white box we created.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/c/b/6/5/6/50d4fe5dce395fa20c000000.jpg"><img src="50d4fe5dce395fa20c000000.jpg" alt="alt text"></a></p>
+
+<p>Click on SMD and create a pad that is 0.4x1.5.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/f/8/4/6/e/50d4fe5cce395f900c000000.jpg"><img src="50d4fe5cce395f900c000000.jpg" alt="alt text"></a></p>
+
+<p>Drop 16 pads (this is a 16-pin device) around the outline of the package.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/c/5/f/2/8/50d4fe5bce395fb20c000001.jpg"><img src="50d4fe5bce395fb20c000001.jpg" alt="alt text"></a></p>
+
+<p>Let’s rename the pads to ‘1’, ‘2’, etc as they are labeled in the datasheet (the pin numbers wrap around the device in a counter clockwise fashion).</p>
+
+<p>Press <strong>F4</strong> to go into <em>Name</em> mode (or click on the Name button). Then click on the lower left pad. Rename this pad to ‘1’. Goto the next pad and name it 2, and so on.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/f/3/4/6/4/50d4fe5cce395f7f0c000000.jpg"><img src="50d4fe5cce395f7f0c000000.jpg" alt="alt text"></a></p>
+
+<p>All done. You might be thinking that you should be naming the pads for what they actually do (1 is <em>TX</em>, 2 is <em>RTS#</em>, etc). This is incorrect. We are making a generic SSOP16 package. Later we will associate the pin function with pad #s. For now, just be sure you are number the pins correctly. Connectors are often numbered differently from ICs so read your datasheet closely.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/6/6/4/1/0/50d4fe6cce395f5709000000.jpg"><img src="50d4fe6cce395f5709000000.jpg" alt="alt text"></a></p>
+
+<p>Back on the datasheet, look at the <em>e</em> dimension (little e, not big E). This is the distance between pins, also known as pin <strong>pitch</strong>. For this IC, the pitch is 0.025”.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/7/e/8/9/e/50d4fe6ece395f120b000000.jpg"><img src="50d4fe6ece395f120b000000.jpg" alt="alt text"></a></p>
+
+<p>There are 8 pins on each side so I am going to start on the lower row of pads, setting pad 5 at +0.0125” (½ of 0.025”). Click on the ‘i’ button, then on Pad 5. Adjust the X location to 0.0125 then click ok.</p>
+
+<p>Pad 6 will be at 0.0125 + 0.025 = 0.0375”. Pad 7 will be at 0.0625, etc.  Repeat for pads 5 through 8.</p>
+
+<p>Neat! Those pads are pretty close together but it looks like the spacing is making sense.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/1/c/c/3/e/50d4fe6cce395fdd09000001.jpg"><img src="50d4fe6cce395fdd09000001.jpg" alt="alt text"></a></p>
+
+<p>Now do the same for pads 1 to 4. Pad 4 will be ½ of 0.025 = -0.0125”. Pad 3 will be -0.0125 - 0.025 = -0.0375 and so on.</p>
+
+<p>You should now have the bottom pads with the correct X coordinates. Now, leveraging symmetry, we can use those same X coordinates and do pads 9 to 16. Click on each pad (I started with 16 and worked my way right) and adjust the X coordinate.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/1/5/3/2/9/50d4fe6cce395fe50b000000.jpg"><img src="50d4fe6cce395fe50b000000.jpg" alt="alt text"></a></p>
+
+<p style="text-align: center;"> All right! This is starting to look like a footprint!</p>
+
+<p>Now we need to calculate and adjust the Y coordinate for all pads. This is a bit tricky, but get the datasheet in front of you and follow along:</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/6/6/4/1/0/50d4fe6cce395f5709000000.jpg"><img src="50d4fe6cce395f5709000000.jpg" alt="alt text"></a></p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/9/e/5/9/9/50d4fe5bce395f5e08000000.jpg"><img src="50d4fe5bce395f5e08000000.jpg" alt="alt text"></a></p>
+
+<p>We want the SMD pad to be located under the center of pin (metal leg) of the device. We want to find the dimension from the center of the IC to the center of the metal leg. We can infer this from <strong>dimension E</strong> (0.236”) and <strong>dimension L</strong> ( MAX 0.05 - MIN 0.016 / 2 = 0.033”).</p>
+
+<p>From the center of the IC to the outside edge of a metal leg is E/2 (0.236 / 2 = 0.118”).</p>
+
+<p>Then we need to come back ½ the width of the metal leg which is L / 2 (0.033 / 2 = 0.0165”).</p>
+
+<p>So 0.118 - 0.0165 = 0.1015”. It is 0.1015" from the center of the part to the middle of each metal leg.</p>
+
+<p>This is the Y coordinate for all the pads on the top row (16 to 9). Let’s adjust them by clicking on ‘i’ then on each pad, correcting the Y coordinate to 0.1015” as we go.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/2/6/2/9/e/50d4fe6cce395f180c000000.jpg"><img src="50d4fe6cce395f180c000000.jpg" alt="alt text"></a></p>
+
+<p>The top row has been adjusted. This looks pretty good. Let’s bring the bottom row up as well.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/3/3/9/4/7/50d4fe6cce395fc20a000000.jpg"><img src="50d4fe6cce395fc20a000000.jpg" alt="alt text"></a></p>
+
+<p>Time to save your work! Hit the disk icon or hit <strong>Ctrl+s</strong>.</p>
+
+<p>Now let’s check our work. We know the outer dimension of the legs is E (0.236”), so let’s draw a line on tDocu. Click on the ‘wire’ button and draw a line that is a few grids long:</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/0/f/3/9/5/50d4fe6dce395f190c000000.jpg"><img src="50d4fe6dce395f190c000000.jpg" alt="alt text"></a></p>
+
+<p>Hit escape to stop drawing. Now modify the Y coordinate of this line (by hitting ‘i’ and clicking on the line) to be 0.118 to -0.118. This line now represents the exterior edge of the pins on the actual IC. Press F7 to go into ‘move’ mode. Then click on the line you just created. Now you should be able to move this line around.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/7/2/7/5/6/50d4fe6cce395f220c000000.jpg"><img src="50d4fe6cce395f220c000000.jpg" alt="alt text"></a></p>
+
+<p>The line will jump around on the major grid. To go to the alternate grid, press and hold the ‘alt’ key as you move the mouse. The line should move with much more fine adjustment now.</p>
+
+<p>We’re using the line as a measuring stick to see where the edges of the pins will fall on the pads. Does it look like the edge of the pins will fall towards the middle of the pads? Yep. Looks pretty good to me. Move the line somewhere off to the side and click once to drop it there. Now hit <strong>F3</strong> to go in to ‘delete’ mode and click the line to delete it.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/e/4/3/8/d/50d4fe6dce395fec0a000000.jpg"><img src="50d4fe6dce395fec0a000000.jpg" alt="alt text"></a></p>
+
+<p>Let’s add a pin 1 indicator by clicking the ‘circle’ button. The last time we drew anything it was on the <em>tDocu</em> layer. We want this indicator to appear in the silkscreen on the PCB so that we know how to orient the IC on our board. So before we start drawing, click the scroll wheel of your mouse to bring up the layers window and select <em>tPlace</em> (top placement is the silkscreen layer on the PCB).</p>
+
+<p>Now move your cursor in the bottom left corner near pin 1 and click once.  What the?! Eagle is trying to snap to the major grid. That’s bad. Hit escape to cancel this drawing. You should still be in circle mode. Hold the alt button, move your cursor where you want the center of the circle and click once then move your mouse cursor.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/e/4/a/a/a/50d4fe6dce395f0c0c000000.jpg"><img src="50d4fe6dce395f0c0c000000.jpg" alt="alt text"></a></p>
+
+<p>Ahah! The circle is now where we roughly want it. Notice that the <em>tPlace</em> layer (which will get printed) looks identical in color to the <em>tDocu</em> layer (which is only used for reference and will not get printed on the PCB). Confusing! So let’s fix this by modifying the layer colors. Click on the ‘display’ button located on the left menu bar under the ‘i’ button.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/5/1/7/2/0/50d4fe6dce395f880a000001.jpg"><img src="50d4fe6dce395f880a000001.jpg" alt="alt text"></a></p>
+
+<p>Here we see a multitude of layers. I am going to delete layers <em>Route2</em> through <em>Route15</em> because I have never created a footprint that had interior layers. You may want to leave them if you’re a super user.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/f/4/d/d/8/50d4fe6dce395f240c000000.jpg"><img src="50d4fe6dce395f240c000000.jpg" alt="alt text"></a></p>
+
+<p>Double click on <em>tPlace</em>. Then click on the gray square next to <strong>Color</strong>. Change the color to white. Click on ok to back out to the layers window.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/f/7/3/e/a/50d4fe6dce395fab0b000000.jpg"><img src="50d4fe6dce395fab0b000000.jpg" alt="alt text"></a></p>
+
+<p>Now let’s change the color for <em>tDocu</em>. Change it to mellow yellow.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/9/2/3/7/4/50d4fe6dce395f280c000003.jpg"><img src="50d4fe6dce395f280c000003.jpg" alt="alt text"></a></p>
+
+<p>Ahh! That’s a bit easier to visualize what’s going on. White will be silkscreened. Yellow is just there so we know where the IC edges are. I prefer to have a white box one my PCB indicating where an IC goes so let’s draw some lines on the tPlace layer.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/5/3/9/2/3/50d4fe6dce395f230c000000.jpg"><img src="50d4fe6dce395f230c000000.jpg" alt="alt text"></a></p>
+
+<p>Here I’ve made a white box, slightly longer than the <em>tDocu</em> lines and slightly skinnier. This will prevent me from putting anything too close to the end of my IC, possibly hitting a nearby component. However, there is a problem with this. Silkscreen should have a thickness of 0.008” or larger so that the PCB fab house can print it legibly. Trying to print too small of silkscreen will cause line to flake off and turn text into white blobs.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/0/3/2/d/8/50d4fe6cce395ff80b000000.jpg"><img src="50d4fe6cce395ff80b000000.jpg" alt="alt text"></a></p>
+
+<p>So let’s modify this silkscreen width to be 0.008” by clicking on the ‘Change’ wrench, then ‘Width’ then the ‘…’ at the very end of the list. You’ll get a window where you can enter your own width. Enter ‘0.008’ and press enter. Any line you click on will now change to 0.008”</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/9/2/b/4/5/50d4fe6cce395f5f0b000001.jpg"><img src="50d4fe6cce395f5f0b000001.jpg" alt="alt text"></a></p>
+
+<p>Click on each white line increasing its thickness. Also click on the pin 1 indicator circle. The circle is now kind of close to the edge so let’s move that up and over a bit. Do so by hitting F7 to go into move mode. Click on the middle of the circle. It will want to snap to the major grid so hold alt down while you move the circle and it will give you more fine placement.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/7/4/6/c/3/50d4fe6cce395f0a09000000.jpg"><img src="50d4fe6cce395f0a09000000.jpg" alt="alt text"></a></p>
+
+<p style="text-align: center;"> This is looking pretty good!</p>
+
+<p>The final thing to do is add a ‘&gt;Value’ and ‘&gt;Name’ text tags on the <em>tValues</em> and <em>tNames</em> layers respectively. Eagle looks for these special tags and populates them with the value and name of the IC when you’re in PCB layout mode. Eventually, we will see ‘FT230X’ and ‘U3’ automatically populated here.</p>
+
+<p>Click the ‘text’ button. Eagle will prompt you for the text. Type <strong>&gt;Value</strong> and press enter. Before placing the text, click your scroll wheel and select the <em>tValues</em> layer.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/0/c/f/6/a/50d4fe6cce395f150c000000.jpg"><img src="50d4fe6cce395f150c000000.jpg" alt="alt text"></a></p>
+
+<p>As you move around, you’ll see that this text is a bit large so I am going to change the size to 0.025. Find the <strong>Size</strong> box in the top menu bar. Type 0.025 and press enter.</p>
+
+<p>Now place the text in the middle of the IC by holding the alt button (to get finer grid). Once you’re happy, left click once to place the text. Hit escape. You’ll be returned to the ‘Enter text’ window. Hit escape a second time to return to the main window. Now repeat the process but this time with &gt;Name and place it on the <em>tNames</em> layer.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/3/4/7/2/8/50d4fe6cce395fff0a000000.jpg"><img src="50d4fe6cce395fff0a000000.jpg" alt="alt text"></a></p>
+
+<p>Looking really good! Be sure to give some sort of description to your package. Do this by clicking on the blue ‘Description’ line at the bottom of your screen. Eagle will bring up a window that allows you to edit this package’s description.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/b/9/9/3/4/50d4fe6dce395f850b000000.jpg"><img src="50d4fe6dce395f850b000000.jpg" alt="alt text"></a></p>
+
+<p style="text-align: center;"> HTML tags are allowed but not required.</p>
+
+<p>I like to put information about what component this package goes with. In our case, we’re creating this package for the FT230X but it could be used for other SSOP16 sized ICs. I also like to mention when this is a new/untested footprint or when it has been fully tested. The problem with this is that I often forget to come back and update the package description so do what you wish. Save your work!</p>
+
+<p>Congratulations! You’re done with creating the SSOP16 package! Now let’s create the schematic symbol.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="symbol-creation">Symbol Creation</h2>
+        <p>Eagle requires three things to get an IC into the library:</p>
+
+<ul>
+<li>Package (also known as a footprint)</li>
+<li>Symbol (the schematic symbol)</li>
+<li>Device (mapping them together)</li>
+</ul>
+
+
+<p>The tutorial images show us working from the SparkFun-DigitalIC.lbr file but you can create your own custom library file if you’d like.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/2/7/4/1/9/50d51584ce395f890c000001.jpg"><img src="50d51584ce395f890c000001.jpg" alt="alt text"></a></p>
+
+<p>It’s time to create the schematic symbol. Click on the ‘symbol’ button.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/4/6/5/f/b/50d51584ce395f3c0c000000.jpg"><img src="50d51584ce395f3c0c000000.jpg" alt="alt text"></a></p>
+
+<p>Now give this symbol a name. We are creating the schematic component for the FT230X, and we see that we don’t have another symbol with that name, so let’suse it!</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/1/a/9/6/8/50d51584ce395f8c0c000001.jpg"><img src="50d51584ce395f8c0c000001.jpg" alt="alt text"></a></p>
+
+<p>Start by clicking on ‘Wire’ and drawing a square box. Press escape to stop drawing.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/f/a/2/f/2/50d51584ce395f850c000000.jpg"><img src="50d51584ce395f850c000000.jpg" alt="alt text"></a></p>
+
+<p>Now how many functional pins does the FT230X have? I ask about ‘functional’ pins because some ICs have pins that are not labeled or labeled as NC (Not Connected). I generally don’t show NC pins on my schematic symbols as they can clutter things up. In the case of the FT230X, all 16 pins have a function.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/6/d/3/f/4/50d51584ce395f310c000000.jpg"><img src="50d51584ce395f310c000000.jpg" alt="alt text"></a></p>
+
+<p>You’ll find the ‘pin’ button on the left menu. Click it.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/9/8/7/d/f/50d51584ce395f7c0c000000.jpg"><img src="50d51584ce395f7c0c000000.jpg" alt="alt text"></a></p>
+
+<p>Once you’ve are in ‘pin’ mode you’ll get a different menu at the top of the screen. Click on ‘short’ to shorten the length of this pin indicator. I do this to save space. Now place 16 pins around the box.</p>
+
+<p>Time to save your work! Hit the disk or <strong>Ctrl+s</strong>.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/a/d/b/8/3/50d51584ce395f980c000001.jpg"><img src="50d51584ce395f980c000001.jpg" alt="alt text"></a></p>
+
+<p>That is one ugly schematic symbol. Now let’s name each pin. Press <strong>F4</strong> to go into naming mode and then click on the first pin P$1.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/c/9/a/6/f/50d51584ce395f6c0c000001.jpg"><img src="50d51584ce395f6c0c000001.jpg" alt="alt text"></a></p>
+
+<p>I am going to start at the top of the list with VCC and work my way down the datasheet list so that I don’t miss any. Note that there are two GND pins (3 and 13) so make two pins with that name.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/9/4/6/e/e/50d51584ce395f8b0c000002.jpg"><img src="50d51584ce395f8b0c000002.jpg" alt="alt text"></a></p>
+
+<p>Oh no! You cannot name two pins with the same name. To get around this Eagle allows you to name pins with the @ sign. So name the first GND pin GND@3 (meaning GND pin at pin 3). And the other GND@13. You’ll see this come into play when we are mapping the schematic symbol to the pads on the package.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/e/4/a/d/b/50d51584ce395f7a0c000000.jpg"><img src="50d51584ce395f7a0c000000.jpg" alt="alt text"></a></p>
+
+<p>The reset pin is named RESET# which is short hand for ‘active low’. Another way to say this is the IC is reset when the pin is pulled low.</p>
+
+<p>A trick in Eagle: if we put a ‘!’ before the pin name it will put a line over the pin (a line over a pin name is another short hand way to indicate it is active low). This doesn’t have any effect on the overall part or layout, it just looks nice and helps us remember this pin is an active low pin. Do the same for RTS and CTS.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/9/c/b/d/9/50d51584ce395f9d0c000000.jpg"><img src="50d51584ce395f9d0c000000.jpg" alt="alt text"></a></p>
+
+<p>We’ve now got our pins labeled.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/2/8/7/3/8/50d51584ce395f790c000001.jpg"><img src="50d51584ce395f790c000001.jpg" alt="alt text"></a></p>
+
+<p>Now we can define each pin type. pwr is good for VCC and GND pins. You can also define inputs and outputs. When in doubt, I leave the pin as the default ‘io’.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/6/d/6/0/e/50d51585ce395f900c000001.jpg"><img src="50d51585ce395f900c000001.jpg" alt="alt text"></a></p>
+
+<p>Now the pins have direction. These signifiers can help the DRC (design rule check) and ERC (electrical rule check) to detect potential problems with your board. For example, an output is usually not hooked up to another output so the ERC will throw an warning if it detects to output pins connected together.</p>
+
+<p>Now hit the F7 button to go into ‘move’ mode. I like to arrange the power and configuration pins on the left side of the symbol and the user accessible pins on the right side.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/d/a/0/5/c/50d51584ce395f7f0c000001.jpg"><img src="50d51584ce395f7f0c000001.jpg" alt="alt text"></a></p>
+
+<p>I chose this configuration for a couple reasons:</p>
+
+<ul>
+<li>Reset is generally tied high to 3V3OUT so I put them near each other.</li>
+<li>VCCIO can be tied to 3V3OUT or VCC (most commonly 3V3OUT) so it is near VCC and 3V3OUT.</li>
+<li>USBDM is a net that is usually above the USBDP net when connecting it directly to a USB connector. You wouldn’t know this until you lay out a handle of schematics with USB and have to cross the USB+ and USB- nets to get them going into the other component. It’s easier just to put the USBDM pin above the USBDP pin.</li>
+<li>All pins are sort of spread out in groups of what they do. TX and RX and the major pins - top right. Next CTS/RTS get used much less but are often used together. The very neat, but option CBUS pins are off by themselves.</li>
+</ul>
+
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/c/b/4/6/7/50d51584ce395fb20c000004.jpg"><img src="50d51584ce395fb20c000004.jpg" alt="alt text"></a></p>
+
+<p>Now let’s center this beast. Hit <strong>Alt+F7</strong> to go into ‘group’ mode. Place the cursor in top left corner. Click the mouse and hold, then drag the square to the lower right corner. Release the mouse.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/3/e/1/6/4/50d51585ce395f880c000001.jpg"><img src="50d51585ce395f880c000001.jpg" alt="alt text"></a></p>
+
+<p>Note how everything is highlighted. You’ve selected all the parts of this schematic symbol.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/c/3/f/e/1/50d51584ce395f870c000002.jpg"><img src="50d51584ce395f870c000002.jpg" alt="alt text"></a></p>
+
+<p>Now, hold ctrl and right click. You will see the entire group begin to move.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/3/d/6/5/2/50d51584ce395f6008000001.jpg"><img src="50d51584ce395f6008000001.jpg" alt="alt text"></a></p>
+
+<p>Alternatively (and for you Apple folks without a ctrl key) you can right click then click on the Move:Group menu option. I vastly prefer the ctrl+right click method as it saves you a step.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/d/c/e/5/9/50d51583ce395f690c000000.jpg"><img src="50d51583ce395f690c000000.jpg" alt="alt text"></a></p>
+
+<p>Now move the entire group so that the origin sign (the smaller +) is in the middle of your part. If your part happens to be oblong in one direction, that’s ok, just get it close to the center.</p>
+
+<p>Remember the weird &gt;Name and &gt;Value thing when you created your package? We need to do that again! Click on the ‘text’ button. Type ‘&gt;Name’ and press enter. Before placing the text, click your scroll wheel and goto the &gt;Names layer.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/e/2/3/9/b/50d51583ce395f4d0c000000.jpg"><img src="50d51583ce395f4d0c000000.jpg" alt="alt text"></a></p>
+
+<p>I did a couple things before left clicking the mouse and dropping the text into place:</p>
+
+<ul>
+<li>Increased the text size to 0.07</li>
+<li>Held alt while moving my text so that it is not <em>right</em> up against the border of our part. Makes it easier to read when we create PDFs and print schematics.</li>
+</ul>
+
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/e/1/d/6/9/50d51584ce395f800c000001.jpg"><img src="50d51584ce395f800c000001.jpg" alt="alt text"></a></p>
+
+<p>Repeat for &gt;Value. Save your work!</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/9/8/0/0/2/50d51585ce395f970c000000.jpg"><img src="50d51585ce395f970c000000.jpg" alt="alt text"></a></p>
+
+<p>Be sure to add a description to your part. Check it out! We can add some basic HTML markup if we want!</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/f/9/1/8/5/50d51584ce395f8f0c000000.jpg"><img src="50d51584ce395f8f0c000000.jpg" alt="alt text"></a></p>
+
+<p>Click on the ‘i’ then on a given pin. By default, every pin has the ‘Visible’ option set to ‘both’. This means both the number assigned to this pin and the pad fuction will be displayed. This will show on your schematic like this:</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/d/3/8/4/f/50d77392ce395f5776000001.jpg"><img src="50d77392ce395f5776000001.jpg" alt="alt text"></a></p>
+
+<p>It depends on the part, but I often think showing the pin numbers is more information than is needed and begins to make the part look cluttered. For example, we don’t need to know that the <strong>BYP</strong> pin on this device is also pad 2 on the IC footprint, we just need to know that this connection point is for the bypass cap.</p>
+
+<p>To turn this off, we set the ‘Visible’ option to ‘pin’ on each pin.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/2/9/5/f/e/50d51584ce395f6b0c000000.jpg"><img src="50d51584ce395f6b0c000000.jpg" alt="alt text"></a></p>
+
+<p>Click on the ‘change’ wrench, <em>Visible</em>, then <em>pin</em>. Then click on each pin. You won’t see anything change on the schematic component but it will be reflected on your overall schematic.</p>
+
+<p>Hit save and you’re done! Next we move on to Device creation.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="device-creation">Device Creation</h2>
+        <p>Eagle requires three things to get an IC into the library:</p>
+
+<ul>
+<li>Package (also known as a footprint)</li>
+<li>Symbol (the schematic symbol)</li>
+<li>Device (mapping them together)</li>
+</ul>
+
+
+<p>The tutorial images show us working from the SparkFun-DigitalIC.lbr file but you can create your own custom library file if you’d like.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/0/4/b/a/3/50d77620ce395f9175000000.jpg"><img src="50d77620ce395f9175000000.jpg" alt="alt text"></a></p>
+
+<p>It’s time to create a device. The device maps the make-believe schematic symbol to the real-world footprint. Start by clicking on the device button.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/e/9/3/9/2/50d77623ce395f7d73000002.jpg"><img src="50d77623ce395f7d73000002.jpg" alt="alt text"></a></p>
+
+<p>It’s always good practice to check to see if we already have a device created. From the device list you can see that we do not currently have anything like the FT230X device, so let’s create a new one.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/a/7/a/d/6/50d77628ce395f5576000000.jpg"><img src="50d77628ce395f5576000000.jpg" alt="alt text"></a></p>
+
+<p>First step, click on ‘add’ to add the schematic symbol to your device. Navigate the list of symbols until you find the ‘FT230X’ you created earlier. Double click it.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/1/f/a/e/c/50d77625ce395f8775000000.jpg"><img src="50d77625ce395f8775000000.jpg" alt="alt text"></a></p>
+
+<p>Drop your symbol so that the center of the symbol aligns with the center of the device space and left click your mouse. Hit escape twice to exit back to the main window.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/7/0/1/1/3/50d77616ce395fa575000000.jpg"><img src="50d77616ce395fa575000000.jpg" alt="alt text"></a></p>
+
+<p>Now click on ‘New’ package. Navigate to the SSOP16 package you created earlier and double click.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/a/a/6/c/e/50d77620ce395fb075000002.jpg"><img src="50d77620ce395fb075000002.jpg" alt="alt text"></a></p>
+
+<p>In the main window you’ll see a new package with variant labeled “ (this is the default) and an exclamation point.</p>
+
+<p>A given integrated circuit may be pacakged in a varienty of different shapes and sizes (for example DIP, SSOP, or smaller QFN type packages). The variant name allows you to have multiple footprints for the same schematic symbol.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/a/2/8/3/7/50d77618ce395f8373000000.jpg"><img src="50d77618ce395f8373000000.jpg" alt="alt text"></a></p>
+
+<p>The ATtiny shown above is a good example. The IC is the same but it comes in two different footprints: 8 pin DIP and 8 pin SOIC. You cannot have a duplicate variant name so in this example we used ‘DIP’ and ‘SOIC’.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/7/f/3/7/a/50d77618ce395f7573000003.jpg"><img src="50d77618ce395f7573000003.jpg" alt="alt text"></a></p>
+
+<p>Eagle will not allow you to have two packages with the same variant name. To change the variant name, right click on the package type and click ‘Rename’. Give this package a name such as SMD or DIP or SSOP. Whatever you need to make it clear what package variant this is.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/3/9/2/a/b/50d77618ce395fac75000000.jpg"><img src="50d77618ce395fac75000000.jpg" alt="alt text"></a></p>
+
+<p>Next we need to tell Eagle what pad on the package goes with which pin on the symbol. Double click the bar under the package window, or click on the button ‘Connect’ at the bottom of the window.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/2/3/5/0/9/50d77624ce395f5076000005.jpg"><img src="50d77624ce395f5076000005.jpg" alt="alt text"></a></p>
+
+<p>This is a very important step. We must refer to the datasheet for the FT230X and be very careful to correctly connect the pins and pads correctly. CTS is pad 4 so with CTS highlighted, double click on 4 in the pad list.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/5/3/9/8/0/50d7761bce395f7973000001.jpg"><img src="50d7761bce395f7973000001.jpg" alt="alt text"></a></p>
+
+<p>Continue until you’ve connected all the pins to the pads. If you have pins left over, that’s bad and Eagle will complain. However, if you have pads left over, that’s ok - you probably have some pads on the footprint that are left unconnected.</p>
+
+<p>If you do have anything left over, this is a good time to double check that you’ve correctly identified all the pads and pins on your footprint and schematic symbol correctly.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/b/f/4/f/8/50d77623ce395f5276000000.jpg"><img src="50d77623ce395f5276000000.jpg" alt="alt text"></a></p>
+
+<p>Remember when we named the pins GND@3 and GND@13? Guess which pad GND@3 connects to? Pad 3! And GND@13? Pad 13! This is why we used that @ sign - to make it easier when we have multiple pins of the same name to connect to different pads.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/8/5/e/d/b/50d7761dce395f9e75000000.jpg"><img src="50d7761dce395f9e75000000.jpg" alt="alt text"></a></p>
+
+<p>Once you’re done you should have a nice green check mark next to your variant.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/3/0/3/0/6/50d77624ce395f9575000001.jpg"><img src="50d77624ce395f9575000001.jpg" alt="alt text"></a></p>
+
+<p>Note the G$1 over the symbol. The ‘G’ is wrong for integrated circuits (we normally use ‘U’) and the ‘$’ is super annoying and looks bad on the schematic. To get rid of this, click on the ‘Prefix’ button in the lower right corner and type ‘U’ with nothing else. This will make the default prefix ‘U’ instead of G$. Upon returning to the main window the G$1 will still be there. To change that, press F4 and click on the symbol. You can then change the name to U1.</p>
+
+<p style="text-align: center;"> <a href="https://cdn.sparkfun.com/assets/a/a/2/e/7/50d77625ce395fa875000001.jpg"><img src="50d77625ce395fa875000001.jpg" alt="alt text"></a></p>
+
+<p>Be sure to give a good, lengthy description of your device! It will help tremendously when you have a library of 100 different parts. Now save your work!</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="resources-and-going-further">Resources and Going Further</h2>
+        <p>That’s it! I hope you’ve enjoyed reading this tutorial about how to make a new footprint, schematic symbol and device under Eagle. From here, you should use the device on a PCB!</p>
+
+<p>To learn more, we recommend you checkout the following:</p>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/connector-basics">Connector Basics</a></li>
+<li><a href="http://learn.sparkfun.com/tutorials/designing-pcbs-advanced-smd">How to layout an SMD PCB</a></li>
+<li>SMD Soldering</li>
+<li>Steciling and Reflow</li>
+<li><a href="https://learn.sparkfun.com/tutorials/making-custom-footprints-in-eagle">Creating Custom Footprints in Eagle</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/electronics-assembly">Electronics Assembly</a></li>
+</ul>
+
+
+<p>If you’d like to share your PCB creations with the world, check out these tutorials:</p>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/using-github">Using GitHub</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/using-github-to-share-with-sparkfun">Using GitHub to share with SparkFun</a></li>
+</ul>
+      </div>
+    
+        <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" value="http://sfe.io/t10" onclick="$(this).select();" type="text">
+
+    <div class="share-social">
+
+      <a rel="nofollow" onclick="return $(this).sfeutil('track_link',this,'Share','clicked','googleplus');" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft10" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel="nofollow" onclick="return $(this).sfeutil('track_link',this,'Share','clicked','tumblr');" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft10&amp;name=Designing+PCBs%3A+SMD+Footprints" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel="nofollow" onclick="return $(this).sfeutil('track_link',this,'Share','clicked','reddit');" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft10" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel="nofollow" onclick="return $(this).sfeutil('track_link',this,'Share','clicked','twitter');" href="https://twitter.com/intent/tweet?text=Designing+PCBs%3A+SMD+Footprints&amp;url=http%3A%2F%2Fsfe.io%2Ft10&amp;via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel="nofollow" onclick="return $(this).sfeutil('track_link',this,'Share','clicked','facebook');" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft10&amp;t=Designing+PCBs%3A+SMD+Footprints" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel="nofollow" onclick="return $(this).sfeutil('track_link',this,'Share','clicked','pinterest');" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft10&amp;media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2F3%2F4%2F7%2F2%2F8%2F50d4fe6cce395fff0a000000.jpg&amp;description=Designing+PCBs%3A+SMD+Footprints" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+  </div>
+
+  <div class="col-sm-4" id="nav-pages">
+    <div id="sidebar_affix" class="affix-top">
+
+      <div id="tutorial-pages" class="list-group">
+        <a class="list-group-item"><b>Sections</b></a>
+                          <a data-pagename="getting-started" class="list-group-item" href="#getting-started">
+            Getting Started          </a>
+                  <a data-pagename="choosing-a-part" class="list-group-item" href="#choosing-a-part">
+            Choosing a Part          </a>
+                  <a data-pagename="footprint-creation" class="list-group-item" href="#footprint-creation">
+            Footprint Creation          </a>
+                  <a data-pagename="symbol-creation" class="list-group-item" href="#symbol-creation">
+            Symbol Creation          </a>
+                  <a data-pagename="device-creation" class="list-group-item" href="#device-creation">
+            Device Creation          </a>
+                  <a data-pagename="resources-and-going-further" class="list-group-item" href="#resources-and-going-further">
+            Resources and Going Further          </a>
+              </div>
+
+      <div class="list-group">
+        <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/designing-pcbs-smd-footprints/discuss">
+          Comments
+          <span class="badge">6</span>
+        </a>
+        <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/designing-pcbs-smd-footprints/getting-started">
+          View Paginated
+        </a>
+        <a class="list-group-item" href="#" onclick="window.print(); return false;">
+          Print
+        </a>
+      </div>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>Tags</b></li>
+        <li class="list-group-item"><ul class="tags-list">
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/eagle">Eagle</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/skill">Skill</a>  </li>
+</ul>
+</li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>License</b></li>
+        <li class="list-group-item">
+          <span class="sfe-icon-cc">
+            <span class="visuallyhidden">Creative Commons</span>
+          </span>
+          <small>tutorials are <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="new">CC BY-NC-SA 3.0</a></small>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+      </div> <!-- /container -->
+    </div> <!-- /content -->
+
+    
+<footer>
+
+<div class="social">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="sharing-ingenuity">
+          <span class="sfe-icon-flame"></span>
+          <span class="text"><span class="text-top">Sharing<br></span>Ingenuity</span>
+        </div>
+        <ul class="spew">
+          <li><a href="http://www.github.com/sparkfun" target="_top" class="sfe-icon-github"><span class="visuallyhidden">GitHub</span></a></li>
+          <li><a href="http://www.youtube.com/sparkfun" target="_top" class="sfe-icon-youtube"><span class="visuallyhidden">YouTube</span></a></li>
+          <li><a href="http://www.vimeo.com/sparkfun" target="_top" class="sfe-icon-vimeo"><span class="visuallyhidden">Vimeo</span></a></li>
+          <li><a href="http://www.facebook.com/SparkFun" target="_top" class="sfe-icon-facebook"><span class="visuallyhidden">Facebook</span></a></li>
+          <li><a href="https://plus.google.com/106084846822083498483/" target="_top" class="sfe-icon-google-plus"><span class="visuallyhidden">Google Plus</span></a></li>
+          <li><a href="http://www.flickr.com/photos/sparkfun/" target="_top" class="sfe-icon-flickr"><span class="visuallyhidden">Flickr</span></a></li>
+          <li><a href="https://twitter.com/#!/sparkfun" target="_top" class="sfe-icon-twitter"><span class="visuallyhidden">Twitter</span></a></li>
+          <li><a href="https://www.sparkfun.com/feeds" class="sfe-icon-feed"><span class="visuallyhidden">RSS</span></a></li>
+        </ul>
+        <div class="newsletter">
+          <form action="https://learn.sparkfun.com/newsletter/subscribe_email" method="post" class="form-inline" id="js-newsletter_subscribe">
+            <div class="form-group">
+              <input class="form-control" name="newsletter_email" placeholder="Email Address" type="email">
+            </div>
+            <div class="form-group">
+              <input class="btn btn-default" value="Subscribe to Education Newsletter" type="submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+</div><!-- end .social -->
+
+<div class="container">
+
+    <div class="row">
+
+    <div class="subfooter subfooter-about">
+      <p>
+        <b>SparkFun</b> is an online retail store that sells the bits and pieces to
+        make your electronics projects possible. Whether it's a robot that can
+        cook your breakfast or a GPS cat tracking device, our products and
+        resources are designed to make the world of electronics more accessible.
+      </p>
+      <p>
+        In addition to products, SparkFun also offers
+        classes and online tutorials to help educate
+        individuals in the wonderful world of embedded electronics.
+      </p>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>About Us</b>
+            </li><li><a href="https://www.sparkfun.com/static/about">About SparkFun</a></li>
+            <li><a href="https://learn.sparkfun.com/about">SparkFun Education</a></li>
+            <li><a title="RSS Feeds" href="https://www.sparkfun.com/feeds">Feeds <span class="sfe-icon-feed"></span></a></li>
+            <li><a href="https://www.sparkfun.com/jobs">Jobs</a></li>
+            <li><a href="https://www.sparkfun.com/static/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Help</b></li>
+            <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+            <li><a href="https://www.sparkfun.com/support#ShippingPolicy">Shipping</a></li>
+            <li><a href="https://www.sparkfun.com/returns">Return Policy</a></li>
+            <li><a href="https://www.sparkfun.com/static/faq">FAQ</a></li>
+                      </ul>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Programs</b></li>
+            <li><a href="https://learn.sparkfun.com/educator_discount">Educator Discount</a></li>
+            <li><a href="https://www.sparkfun.com/sponsor">Partner with SparkFun</a></li>
+            <li><a href="https://www.sparkfun.com/project_calls">Tell Us About Your Project</a></li>
+            <li><a href="https://learn.sparkfun.com/tutorials/how-to-sell-your-widget-on-sparkfun">Sell Your Widget on SparkFun</a></li>
+            <li><a href="https://www.sparkfun.com/distributors/apply">Become a SparkFun Distributor</a></li>
+            <li><a href="https://www.sparkfun.com/volume">Large Volume Sales</a> </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Community</b></li>
+            <li><a href="https://forum.sparkfun.com/">Forum</a></li>
+            <li><a href="https://www.sparkfun.com/news/263">SparkFun IRC Channel</a></li>
+            <li><a href="https://www.sparkfun.com/quiz">Take the SparkFun Quiz</a></li>
+            <li><a href="https://www.kickstarter.com/pages/sparkfun">SparkFun Kickstarter Projects</a></li>
+            <li><a href="https://www.sparkfun.com/distributors">Distributors</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end .row -->
+
+    </div>
+
+    <div id="feedback" class="subfooter subfooter-woym">
+      <form id="woym_form" class="feedback" action="https://learn.sparkfun.com/feedback/mind.json" onsubmit="$(this).sfeutil('mind_feedback'); return false;" method="POST">
+        <div class="error" id="error_feedback" style="display: none;"></div>
+        <input name="sparkaptcha" id="sparkaptcha" value="0" type="hidden">
+
+        <div class="form-group">
+          <label for="feedback_textarea" class="control-label">What's on your mind?</label>
+          <div class="controls">
+            <textarea id="feedback_textarea" class="form-control" name="feedback_text" required=""></textarea>
+            <div class="error" id="error_feedback_text" style="display: none;"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_dest" class="control-label">For which department?</label>
+          <select name="dest" class="form-control" id="feedback_dest">
+            <option value="general">General</option>
+            <option value="cust">Customer Service</option>
+            <option value="tech">Tech Support</option>
+                          <option value="edu">Education Department</option>
+                      </select>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_email" class="control-label">
+            Please include your email address if you'd like us to respond to a specific question.
+          </label>
+
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input class="form-control" id="feedback_email" name="email" placeholder="email address" value="" type="text">
+          </div>
+          <div class="error" id="error_feedback_email" style="display: none;"></div>
+
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+  </div><!-- end .row -->
+  
+  <ul class="copyleft">
+    <li>SparkFun Electronics <a href="https://www.sparkfun.com/news/300">®</a></li>
+    <li><a href="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=6333+Dry+Creek+Parkway,+Niwot,+CO+80503">Niwot, Colorado</a></li>
+    <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+    <li><a href="https://www.sparkfun.com/sitemap">Site Map</a></li>
+    <li><a href="https://www.sparkfun.com/terms">Terms of Service</a></li>
+    <li><a href="https://www.sparkfun.com/privacy">Privacy Policy</a></li>
+    <li class="desktop-toggle">
+              <a href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fdesigning-pcbs-smd-footprints">Desktop Site</a>          </li>
+  </ul>
+
+</div><!-- end .container -->
+
+</footer>
+
+    <div class="nav-account">
+  <ul class="nav nav-tabs">
+    <li class="visible-xs">
+      <a class="nav-toggle-account back" href="#">Your Account</a>
+    </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fdesigning-pcbs-smd-footprints" data-toggle="modal" data-target="#login_modal" data-remote="false">Log In</a>
+      </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/make">Register</a>
+      </li>
+      </ul>
+</div>
+
+      </div><!-- end .wrapper-inner -->
+    </div><!-- end .wrapper -->
+
+    <!-- Login Modal -->
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Log In</h4>
+        <p class="modal-header-msg"></p>
+      </div>
+      <div class="modal-body">
+        <form role="form" action="https://www.sparkfun.com/account/login" method="post">
+          <input name="redirect" value="/learn/tutorials/designing-pcbs-smd-footprints" type="hidden">
+          <div class="form-group">
+            <label for="login-username">Email</label>
+            <input tabindex="1" name="user" id="login-username" class="form-control" type="email">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input tabindex="2" name="passwd" id="login-password" class="form-control" type="password">
+          </div>
+          <div class="form-group">
+            <input value="Log In" tabindex="3" class="btn btn-action" type="submit">
+          </div>
+        </form>
+        <p>
+          <a href="https://www.sparkfun.com/account/forgot_password">Forgot your password?</a>          <br>
+          No account? <a id="btn_register_account" href="https://www.sparkfun.com/account/make">Register one!</a>        </p>
+      </div>
+    </div>
+  </div>
+</div>
+  
+      
+
+
+</body>
+</html>

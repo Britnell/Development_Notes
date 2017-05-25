@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="shortcut icon" href="favicon.ico">
+
+
+<meta name="robots" content="index,nofollow">
+
+<title>Modem/3G - Debian Wiki</title>
+
+
+
+
+
+
+
+
+
+
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/htdocs/debwiki/css/msie.css">
+<![endif]-->
+
+
+<link rel="alternate" title="Debian Wiki: Modem/3G" href="https://wiki.debian.org/Modem/3G?diffs=1&amp;show_att=1&amp;action=rss_rc&amp;unique=0&amp;page=Modem%2F3G&amp;ddiffs=1" type="application/rss+xml">
+
+
+<link rel="Start" href="https://wiki.debian.org/FrontPage">
+<link rel="Alternate" title="Wiki Markup" href="https://wiki.debian.org/Modem/3G?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="https://wiki.debian.org/Modem/3G?action=print">
+<link rel="Up" href="https://wiki.debian.org/Modem">
+<link rel="Appendix" title="wvdial.conf" href="https://wiki.debian.org/Modem/3G?action=AttachFile&amp;do=view&amp;target=wvdial.conf">
+<link rel="Appendix" title="wvdial.conf-e169" href="https://wiki.debian.org/Modem/3G?action=AttachFile&amp;do=view&amp;target=wvdial.conf-e169">
+<link rel="Search" href="https://wiki.debian.org/FindPage">
+<link rel="Index" href="https://wiki.debian.org/TitleIndex">
+<link rel="Glossary" href="https://wiki.debian.org/WordIndex">
+<link rel="Help" href="https://wiki.debian.org/HelpOnFormatting">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body dir="ltr" lang="en">
+<div id="logo"><a href="https://www.debian.org/" title="Debian Homepage"><img src="openlogo-50.png" alt="Debian" height="61" width="50"></a></div>
+<div id="header">
+<div id="wikisection">
+<p class="section"><a href="https://wiki.debian.org/FrontPage" title="Debian Wiki Homepage">Wiki</a></p>
+<div id="username"><a href="https://wiki.debian.org/Modem/3G?action=login" id="login" rel="nofollow">Login</a></div>
+</div>
+<div id="navbar">
+
+<ul id="navibar">
+<li class="wikilink"><a href="https://wiki.debian.org/FrontPage">FrontPage</a></li><li class="wikilink"><a href="https://wiki.debian.org/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="https://wiki.debian.org/FindPage">FindPage</a></li><li class="wikilink"><a href="https://wiki.debian.org/HelpContents">HelpContents</a></li><li class="current"><a href="https://wiki.debian.org/Modem/3G">Modem/3G</a></li>
+</ul>
+
+</div>
+
+<form id="searchform" method="get" action="https://wiki.debian.org/Modem/3G">
+<div>
+<input name="action" value="fullsearch" type="hidden">
+<input name="context" value="180" type="hidden">
+<label style="display: none;" for="searchinput">Search:</label>
+<input class="disabled" id="searchinput" name="value" value="Search" size="20" onfocus="searchFocus(this)" onblur="searchBlur(this)" onkeyup="searchChange(this)" onchange="searchChange(this)" alt="Search" type="text">
+<input disabled="" id="titlesearch" name="titlesearch" value="Titles" alt="Search Titles" type="submit">
+<input disabled="" id="fullsearch" name="fullsearch" value="Text" alt="Search Full Text" type="submit">
+</div>
+</form>
+
+
+<div id="logo"><a href="https://www.debian.org/" title="Debian Homepage"><img src="openlogo-50.png" alt="Debian" height="61" width="50"></a></div>
+
+<div id="breadcrumbs"><a href="https://wiki.debian.org/FrontPage" title="Debian Wiki Homepage">Wiki</a><span class="sep">/</span>
+
+</div>
+
+<ul class="editbar"><li><a href="https://wiki.debian.org/Modem/3G?action=login" id="login-1" rel="nofollow">Login</a></li><li class="toggleCommentsButton" style="display: none;"><a href="#" class="nbcomment" onclick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="https://wiki.debian.org/Modem/3G?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="https://wiki.debian.org/Modem/3G?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="https://wiki.debian.org/Modem/3G">
+<div>
+    
+    <select name="action" onchange="if ((this.selectedIndex != 0) &amp;&amp;
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="show">More Actions:</option><option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="RenamePage" disabled="" class="disabled">Rename Page</option>
+<option value="DeletePage" disabled="" class="disabled">Delete Page</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Subscribe User</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Remove Spam</option>
+<option value="show" disabled="" class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    
+    
+</div>
+
+</form>
+</li></ul>
+
+<h1 id="locationline">
+
+
+<ul id="pagelocation">
+<li><a href="https://wiki.debian.org/Modem">Modem</a></li><li><a href="https://wiki.debian.org/Modem/3G">3G</a></li>
+</ul>
+
+</h1>
+</div>
+
+<div id="page" dir="ltr" lang="en">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span><span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span><span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span><span class="anchor" id="line-10"></span><p class="line867"><small><a href="https://wiki.debian.org/DebianWiki/EditorGuide#translation">Translation(s)</a>: English - <a href="https://wiki.debian.org/it/Modem/3G">Italiano</a></small> <span class="anchor" id="line-11"></span></p><hr><p class="line874"> <span class="anchor" id="line-12"></span><span class="anchor" id="line-13"></span></p><p class="line867"><span class="anchor" id="line-14"></span></p><p class="line867"></p><div class="table-of-contents"><p class="table-of-contents-heading">Contents</p><ol><li>
+<a href="#Hardware_Support">Hardware Support</a></li><li>
+<a href="#Installation_with_PPP_and_.2Fetc.2Fnetwork.2Finterfaces">Installation with PPP and /etc/network/interfaces</a></li><li>
+<a href="#Advanced_Installation_with_WVDial">Advanced Installation with WVDial</a><ol><li>
+<a href="#For_Novatel">For Novatel</a></li><li>
+<a href="#For_Option">For Option</a></li><li>
+<a href="#Extra_Steps_for_the_HSDPA_card">Extra Steps for the HSDPA card</a></li><li>
+<a href="#Extra_steps_for_the_Novatel_U740_Card">Extra steps for the Novatel U740 Card</a></li><li>
+<a href="#Extra_Steps_for_the_Huawei_Cards">Extra Steps for the Huawei Cards</a></li><li>
+<a href="#Huawei_E169">Huawei E169</a></li><li>
+<a href="#Huawei_E220">Huawei E220</a></li><li>
+<a href="#Notes">Notes</a></li></ol></li><li>
+<a href="#How_to_connect_using_a_Franklin_U210_USB_wireless.2FWAN.2Fmobile_broadband_modem">How to connect using a Franklin U210 USB wireless/WAN/mobile broadband modem</a></li><li>
+<a href="#FAQ">FAQ</a></li><li>
+<a href="#TODO">TODO</a></li><li>
+<a href="#Resources">Resources</a></li><li>
+<a href="#External_Links">External Links</a></li></ol></div> <span class="anchor" id="line-15"></span>
+<h1 id="Hardware_Support">Hardware Support</h1>
+<span class="anchor" id="line-16"></span><p class="line874">The following cards/phones works 100% with next scripts/configs: <span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span></p><ul><li><p class="line891">BandLuxe C100 <span class="anchor" id="line-19"></span></p></li><li>Huawei/E176 (works out of the box) <span class="anchor" id="line-20"></span></li><li><p class="line891"><a href="https://wiki.debian.org/Modem/3G#Huawei_E169">Huawei/E169</a> works without any problems <span class="anchor" id="line-21"></span></p></li><li><p class="line891"><a href="https://wiki.debian.org/Huawei/E220">Huawei/E220</a> <span class="anchor" id="line-22"></span></p></li><li>Huawei/E620 <span class="anchor" id="line-23"></span></li><li><p class="line891"><a href="https://wiki.debian.org/Huawei/K3565-Z">Huawei/K3565-Z</a> <span class="anchor" id="line-24"></span></p></li><li>Motorola E1000 <span class="anchor" id="line-25"></span></li><li>Nokia 6680 (just don't set the speed/service - no 3gonly and 384k configs) <span class="anchor" id="line-26"></span></li><li><p class="line891"><a href="https://wiki.debian.org/NokiaN80">Nokia N80</a> (with a nice How-To <a href="https://wiki.debian.org/UseYourCellPhoneAsModem">UseYourCellPhoneAsModem</a>) <span class="anchor" id="line-27"></span></p></li><li>Novatel HSDPA Card <span class="anchor" id="line-28"></span></li><li>Novatel Merlin U630 <span class="anchor" id="line-29"></span></li><li>Option Fusion <span class="anchor" id="line-30"></span></li><li>Option HSDPA Card <span class="anchor" id="line-31"></span></li><li>Option Quad <span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span></li></ul><p class="line867">
+</p><h1 id="Installation_with_PPP_and_.2Fetc.2Fnetwork.2Finterfaces">Installation with PPP and /etc/network/interfaces</h1>
+<span class="anchor" id="line-34"></span><p class="line874">This works with Debian Wheezy 7. <span class="anchor" id="line-35"></span><span class="anchor" id="line-36"></span></p><p class="line862">Install the packages <a class="interwiki" href="https://packages.debian.org/netbase" title="DebianPkg">netbase</a>, <a class="interwiki" href="https://packages.debian.org/ifupdown" title="DebianPkg">ifupdown</a>, and <a class="interwiki" href="https://packages.debian.org/ppp" title="DebianPkg">ppp</a> if you don't have them already: <span class="anchor" id="line-37"></span><span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span></p><pre><span class="anchor" id="line-1"></span>apt-get install netbase ifupdown ppp</pre><span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span><p class="line862">Create a file <tt>/etc/ppp/peers/gprs</tt> with this content: <span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span><span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span><span class="anchor" id="line-46"></span><span class="anchor" id="line-47"></span><span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span><span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span><span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span><span class="anchor" id="line-60"></span></p><pre><span class="anchor" id="line-1-1"></span>user "YOUR_USERNAME"
+<span class="anchor" id="line-2"></span>connect "/usr/sbin/chat -v -f /etc/chatscripts/gprs -T YOUR_APN"
+<span class="anchor" id="line-3"></span>/dev/ttyUSB0
+<span class="anchor" id="line-4"></span>noipdefault
+<span class="anchor" id="line-5"></span>defaultroute
+<span class="anchor" id="line-6"></span>replacedefaultroute
+<span class="anchor" id="line-7"></span>hide-password
+<span class="anchor" id="line-8"></span>#lcp-echo-interval 30
+<span class="anchor" id="line-9"></span>#lcp-echo-failure 4
+<span class="anchor" id="line-10"></span>noauth
+<span class="anchor" id="line-11"></span>persist
+<span class="anchor" id="line-12"></span>#mtu 1492
+<span class="anchor" id="line-13"></span>#maxfail 0
+<span class="anchor" id="line-14"></span>#holdoff 20
+<span class="anchor" id="line-15"></span>usepeerdns
+<span class="anchor" id="line-16"></span>#Optional, make it always appear as ppp2:
+<span class="anchor" id="line-17"></span>#unit 2</pre><span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span><p class="line862">Then edit <tt>/etc/ppp/chap-secrets</tt> and add at the end: <span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span><span class="anchor" id="line-65"></span></p><pre><span class="anchor" id="line-1-2"></span>"YOUR_USERNAME" * "YOUR_PASSWORD"</pre><span class="anchor" id="line-66"></span><span class="anchor" id="line-67"></span><p class="line862">Similarly, edit <tt>/etc/ppp/pap-secrets</tt> and add at the end: <span class="anchor" id="line-68"></span><span class="anchor" id="line-69"></span><span class="anchor" id="line-70"></span></p><pre><span class="anchor" id="line-1-3"></span>"YOUR_USERNAME" * "YOUR_PASSWORD"</pre><span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span><p class="line862">Then edit <tt>/etc/network/interfaces</tt> and add the following: <span class="anchor" id="line-73"></span><span class="anchor" id="line-74"></span><span class="anchor" id="line-75"></span><span class="anchor" id="line-76"></span><span class="anchor" id="line-77"></span></p><pre><span class="anchor" id="line-1-4"></span>auto gprs
+<span class="anchor" id="line-2-1"></span>iface gprs inet ppp
+<span class="anchor" id="line-3-1"></span>provider gprs</pre><span class="anchor" id="line-78"></span><span class="anchor" id="line-79"></span><p class="line874">Thats all you need most of the time. <span class="anchor" id="line-80"></span>The connection will be brought up at boot, you can start it with <tt>ifup&nbsp;gprs</tt> or stop it with <tt>ifdown&nbsp;gprs</tt>. <span class="anchor" id="line-81"></span><span class="anchor" id="line-82"></span></p><p class="line867">
+</p><h1 id="Advanced_Installation_with_WVDial">Advanced Installation with WVDial</h1>
+<span class="anchor" id="line-83"></span><p class="line874">You need to download the new wvdial.conf for the HSDPA stuff to work !!! <span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span></p><p class="line874">This was originally written for Gentoo Linux which compiles everything from source. As a result of things might be a bit different, but we can work around it. Firstly, we need to get Linux to detect your card, start your PCMCIA services - normally this can be done using (most distros do this for you): <span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span></p><p class="line874">Before you insert your card, open a console/switch to an open console and as root run the following : <span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span><span class="anchor" id="line-90"></span></p><pre><span class="anchor" id="line-1-5"></span>invoke-rc.d pcmciautils start</pre><span class="anchor" id="line-91"></span><span class="anchor" id="line-92"></span><span class="anchor" id="line-93"></span><p class="line874">This will allow you to "see" what Linux is doing : <span class="anchor" id="line-94"></span><span class="anchor" id="line-95"></span><span class="anchor" id="line-96"></span></p><pre><span class="anchor" id="line-1-6"></span>tail -f /var/log/messages</pre><span class="anchor" id="line-97"></span><span class="anchor" id="line-98"></span><p class="line862">Right, now insert your card and you should see some stuff happening. I have included log traces of what the two cards "look" like under <tt>/var/log/messages</tt> in the attachment section. <span class="anchor" id="line-99"></span><span class="anchor" id="line-100"></span></p><p class="line862">If you see only the <a class="attachment nonexistent" href="https://wiki.debian.org/Modem/3G?action=AttachFile&amp;do=upload_form&amp;ticket=00576807c0.767b91fc4f8e505d387e2ffd97640e012cc7a954&amp;target=option_insert_nousb.txt" title="Upload new attachment &quot;option_insert_nousb.txt&quot;">option_insert_nousb.txt</a> messages using an option card run the following command: <span class="anchor" id="line-101"></span><span class="anchor" id="line-102"></span><span class="anchor" id="line-103"></span></p><pre><span class="anchor" id="line-1-7"></span>modprobe usbserial vendor=0x0af0 product=0x5000</pre><span class="anchor" id="line-104"></span><span class="anchor" id="line-105"></span><p class="line862">If you had to run the above command, you will need to save the <a class="attachment nonexistent" href="https://wiki.debian.org/Modem/3G?action=AttachFile&amp;do=upload_form&amp;ticket=00576807c0.767b91fc4f8e505d387e2ffd97640e012cc7a954&amp;target=vmc_g" title="Upload new attachment &quot;vmc_g&quot;">vmc_g</a> file attached into <tt>/etc/modules.d</tt>. <span class="anchor" id="line-106"></span><span class="anchor" id="line-107"></span></p><p class="line862">Now we need to find out where your card is - you will see in the messages where the card is - <tt>/dev/ttyS*</tt> for Novatel or <tt>/dev/ttyUSB*</tt> for Option: <span class="anchor" id="line-108"></span><span class="anchor" id="line-109"></span><span class="anchor" id="line-110"></span></p><pre><span class="anchor" id="line-1-8"></span>find /dev/ | grep ttyS</pre><span class="anchor" id="line-111"></span><p class="line862">Should show <tt>/dev/ttyS0</tt> or <tt>/dev/ttyS1</tt> for a Novatel Card. <span class="anchor" id="line-112"></span><span class="anchor" id="line-113"></span></p><p class="line867"><span class="anchor" id="line-114"></span><span class="anchor" id="line-115"></span></p><pre><span class="anchor" id="line-1-9"></span>find /dev/ | grep ttyUSB</pre><span class="anchor" id="line-116"></span><p class="line862">Should show <tt>/dev/ttyUSB0</tt> and USB1 and USB2 for an Option Card. (or <tt>/dev/tts/ttyUSB0-2</tt> for udev) <span class="anchor" id="line-117"></span><span class="anchor" id="line-118"></span></p><p class="line862">Once we found that, we need to change <tt>/etc/wvdial.conf</tt> to match your settings, attached is my working <a class="attachment" href="https://wiki.debian.org/Modem/3G?action=AttachFile&amp;do=view&amp;target=wvdial.conf" title="">wvdial.conf</a> (this one is tested on GSM network Play in Poland, with e169 modem, but uses no specific options so should be very portable). <span class="anchor" id="line-119"></span>The file is:  <span class="anchor" id="line-120"></span><span class="anchor" id="line-121"></span><span class="anchor" id="line-122"></span><span class="anchor" id="line-123"></span><span class="anchor" id="line-124"></span><span class="anchor" id="line-125"></span><span class="anchor" id="line-126"></span><span class="anchor" id="line-127"></span><span class="anchor" id="line-128"></span><span class="anchor" id="line-129"></span><span class="anchor" id="line-130"></span><span class="anchor" id="line-131"></span><span class="anchor" id="line-132"></span><span class="anchor" id="line-133"></span><span class="anchor" id="line-134"></span><span class="anchor" id="line-135"></span><span class="anchor" id="line-136"></span></p><pre><span class="anchor" id="line-1-10"></span>[Dialer Defaults]
+<span class="anchor" id="line-2-2"></span>Modem = /dev/ttyUSB0
+<span class="anchor" id="line-3-2"></span>Baud = 3600000
+<span class="anchor" id="line-4-1"></span>Init1 = ATZ
+<span class="anchor" id="line-5-1"></span>Init2 = ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0
+<span class="anchor" id="line-6-1"></span>Phone = *99#
+<span class="anchor" id="line-7-1"></span>Username = ppp
+<span class="anchor" id="line-8-1"></span>Password = ppp
+<span class="anchor" id="line-9-1"></span>Ask Password = 0
+<span class="anchor" id="line-10-1"></span>Dial Command = ATDT
+<span class="anchor" id="line-11-1"></span>Stupid Mode = 1
+<span class="anchor" id="line-12-1"></span>Compuserve = 0
+<span class="anchor" id="line-13-1"></span>Idle Seconds = 0
+<span class="anchor" id="line-14-1"></span>ISDN = 0
+<span class="anchor" id="line-15-1"></span>Auto DNS = 1 </pre><span class="anchor" id="line-137"></span><span class="anchor" id="line-138"></span><p class="line874">It is possible to set the PIN that is sent to modem to unlock SIM card, how ever this example does not use this option (you should search for it).  <span class="anchor" id="line-139"></span>Some SIM cards do not need the PIN to work as modems. <span class="anchor" id="line-140"></span><span class="anchor" id="line-141"></span></p><p class="line874">Now we can start dialing up. <span class="anchor" id="line-142"></span><span class="anchor" id="line-143"></span></p><p class="line867">
+</p><h2 id="For_Novatel">For Novatel</h2>
+<span class="anchor" id="line-144"></span><p class="line867"><span class="anchor" id="line-145"></span><span class="anchor" id="line-146"></span></p><pre><span class="anchor" id="line-1-11"></span>wvdial novatel internet 3gonly 384k</pre><span class="anchor" id="line-147"></span><span class="anchor" id="line-148"></span><p class="line867">
+</p><h2 id="For_Option">For Option</h2>
+<span class="anchor" id="line-149"></span><p class="line867"><span class="anchor" id="line-150"></span><span class="anchor" id="line-151"></span></p><pre><span class="anchor" id="line-1-12"></span>wvdial option internet 3gonly 384k</pre><span class="anchor" id="line-152"></span><span class="anchor" id="line-153"></span><p class="line874">If you need to send your PIN, add "pin" infront of all the commands, e.g. <span class="anchor" id="line-154"></span><span class="anchor" id="line-155"></span><span class="anchor" id="line-156"></span></p><pre><span class="anchor" id="line-1-13"></span>wvdial pin novatel internet 3gonly 384k</pre><span class="anchor" id="line-157"></span><span class="anchor" id="line-158"></span><p class="line874">Once your connection is up - surf away  Now you can setup things like KPPP and Gnome's Modem Lights to do your dialing for you. <span class="anchor" id="line-159"></span><span class="anchor" id="line-160"></span></p><p class="line867">
+</p><h2 id="Extra_Steps_for_the_HSDPA_card">Extra Steps for the HSDPA card</h2>
+<span class="anchor" id="line-161"></span><p class="line874">Download the kernel module from the link below. Extract it to a directory somewhere safe. <span class="anchor" id="line-162"></span><span class="anchor" id="line-163"></span></p><p class="line874">Compile the driver using the following commands: <span class="anchor" id="line-164"></span><span class="anchor" id="line-165"></span><span class="anchor" id="line-166"></span></p><pre><span class="anchor" id="line-1-14"></span>make clean &amp;&amp; make</pre><span class="anchor" id="line-167"></span><span class="anchor" id="line-168"></span><p class="line874">Once this is done, run the following command to insert the module into the kernel <span class="anchor" id="line-169"></span><span class="anchor" id="line-170"></span><span class="anchor" id="line-171"></span></p><pre><span class="anchor" id="line-1-15"></span>insmod nozomi.ko</pre><span class="anchor" id="line-172"></span><span class="anchor" id="line-173"></span><p class="line874">Once you have done that, use the following command to setup the connection: <span class="anchor" id="line-174"></span><span class="anchor" id="line-175"></span><span class="anchor" id="line-176"></span></p><pre><span class="anchor" id="line-1-16"></span>wvdial hsdpa</pre><span class="anchor" id="line-177"></span><span class="anchor" id="line-178"></span><p class="line867">
+</p><h2 id="Extra_steps_for_the_Novatel_U740_Card">Extra steps for the Novatel U740 Card</h2>
+<span class="anchor" id="line-179"></span><p class="line874">Until I get time to update the files etc. our Novatel Linux Users out there can just type this command before using the normal dialing command: <span class="anchor" id="line-180"></span><span class="anchor" id="line-181"></span><span class="anchor" id="line-182"></span></p><pre><span class="anchor" id="line-1-17"></span>modprobe usbserial vendor=0x1410 product=0x1400</pre><span class="anchor" id="line-183"></span><p class="line874">OR <span class="anchor" id="line-184"></span><span class="anchor" id="line-185"></span><span class="anchor" id="line-186"></span></p><pre><span class="anchor" id="line-1-18"></span>modprobe usbserial vendor=0x1410 product=0x1410</pre><span class="anchor" id="line-187"></span><span class="anchor" id="line-188"></span><p class="line862">Using <a href="https://wiki.debian.org/lsusb">lsusb</a> will show you the Vendor and Product ID's or cat <tt>/proc/bus/usb/devices</tt> will do the same.I will still add them into the FAQ but at least this should help for now <span class="anchor" id="line-189"></span><span class="anchor" id="line-190"></span></p><p class="line862">This will add the USB's like the 3G Option did - am I seeing a swap here ? - so just dial <tt>/dev/ttyUSB0</tt> or so - check the logs <span class="anchor" id="line-191"></span><span class="anchor" id="line-192"></span></p><p class="line867">
+</p><h2 id="Extra_Steps_for_the_Huawei_Cards">Extra Steps for the Huawei Cards</h2>
+<span class="anchor" id="line-193"></span><p class="line862">None really - just make sure usbserial is loaded and the card will come up on <tt>/dev/ttyUSB0</tt> - check the logs again to confirm <span class="anchor" id="line-194"></span><span class="anchor" id="line-195"></span></p><p class="line874">If the card doesn't come up, unload usbserial and reload with the following command: <span class="anchor" id="line-196"></span><span class="anchor" id="line-197"></span><span class="anchor" id="line-198"></span><span class="anchor" id="line-199"></span></p><pre><span class="anchor" id="line-1-19"></span>rmmod usbserial
+<span class="anchor" id="line-2-3"></span>modprobe usbserial vendor=0x12d1 product=0x1001</pre><span class="anchor" id="line-200"></span><p class="line874">I am still trying to work on the USB only card, so at the moment, I don't know if it will work under Linux. <span class="anchor" id="line-201"></span><span class="anchor" id="line-202"></span></p><p class="line867"><span class="anchor" id="Huawei_E169"></span> <span class="anchor" id="line-203"></span>
+</p><h2 id="Huawei_E169-1">Huawei E169</h2>
+<span class="anchor" id="line-204"></span><span class="anchor" id="line-205"></span><p class="line862">Tested by <a href="https://wiki.debian.org/UserRfree">rfree</a> on Debian Wheezy with Polish operator Play. All works well: <span class="anchor" id="line-206"></span><span class="anchor" id="line-207"></span></p><ul><li><p class="line862">make sure with <tt class="backtick"></tt><tt class="backtick">stat&nbsp;/dev/ttyUSB0</tt><tt class="backtick"></tt> that such device-file is (re)created when you connect the modem (and wait 10 seconds), the date of file should change. <span class="anchor" id="line-208"></span></p></li><li>if device-file is not created (or if something does not work) then force the modem to work as modem only instead as card-reader/memory, using: <span class="anchor" id="line-209"></span></li></ul><p class="line867"><span class="anchor" id="line-210"></span><span class="anchor" id="line-211"></span><span class="anchor" id="line-212"></span><span class="anchor" id="line-213"></span></p><pre><span class="anchor" id="line-1-20"></span>rmmod usb_storage
+<span class="anchor" id="line-2-4"></span>modprobe usbserial vendor=0x0af0 product=0x5000 # (or adjust vendor and product 
+<span class="anchor" id="line-3-3"></span>number to the ones you see in dmesg or lsusb when you look for your modem)</pre><span class="anchor" id="line-214"></span><ul><li><p class="line862">copy the attached example file <a class="attachment" href="https://wiki.debian.org/Modem/3G?action=AttachFile&amp;do=view&amp;target=wvdial.conf-e169" title="">wvdial.conf-e169</a> to /etc/wvdial.conf  <span class="anchor" id="line-215"></span></p></li><li><p class="line862">run <tt class="backtick"></tt><tt class="backtick">wvdial</tt><tt class="backtick"></tt> (install wvdial if you don't have it) - and should be done  <span class="anchor" id="line-216"></span><span class="anchor" id="line-217"></span></p></li></ul><p class="line867">
+</p><h2 id="Huawei_E220">Huawei E220</h2>
+<span class="anchor" id="line-218"></span><p class="line874">I have found that this modem will only work with the short cable supplied...not the long one with two plugs...*shrug* <span class="anchor" id="line-219"></span><span class="anchor" id="line-220"></span></p><p class="line874">Same as the E620, except use the following modprobe command: <span class="anchor" id="line-221"></span><span class="anchor" id="line-222"></span><span class="anchor" id="line-223"></span><span class="anchor" id="line-224"></span></p><pre><span class="anchor" id="line-1-21"></span>rmmod usb-storage
+<span class="anchor" id="line-2-5"></span>modprobe usbserial vendor=0x12d1 product=0x1003</pre><span class="anchor" id="line-225"></span><span class="anchor" id="line-226"></span><p class="line874">(Some have reported an ID of 0x1001 - use lsusb to confirm) After that, you will notice only one USB serial coming up, then, remove the device and re-attach it, you shouldn't need to re-insert usbserial. <span class="anchor" id="line-227"></span><span class="anchor" id="line-228"></span></p><p class="line867">
+</p><h2 id="Notes">Notes</h2>
+<span class="anchor" id="line-229"></span><p class="line874">I have only seen 3G speeds on this device, but I think it is because of my RF conditions and location. More on this to follow... <span class="anchor" id="line-230"></span><span class="anchor" id="line-231"></span></p><p class="line867">
+</p><h1 id="How_to_connect_using_a_Franklin_U210_USB_wireless.2FWAN.2Fmobile_broadband_modem">How to connect using a Franklin U210 USB wireless/WAN/mobile broadband modem</h1>
+<span class="anchor" id="line-232"></span><p class="line874">Though this section needs work, it documents how one Debian user connects to the Internet over NTelos' cellular network in the United States using a Franklin CDMA EV-DO U210 USB modem.  NTelos uses Sprint's network, and moreover it would appear that Franklin's U210 is the base model of Franklin's U-series (U210, U600, U601, U602, U770, U772), so there is a reasonably good chance that you can use this information even if your situation differs somewhat from the writer's -- but, as they say, your mileage may vary. <span class="anchor" id="line-233"></span><span class="anchor" id="line-234"></span></p><p class="line874">This advice is targeted to the beginning-to-intermediate user.  Advanced users are challenged to edit the wiki to improve the advice. <span class="anchor" id="line-235"></span><span class="anchor" id="line-236"></span></p><p class="line874">Your Franklin USB modem presents itself to the wireless network as though it were a cell phone.  It has a phone number.  To connect, it calls another phone number.  On NTelos' (and presumably also on Sprint's) network in the United States, the phone number your USB modem must call is "#777".  You need not, but probably can, discover your USB modem's own phone number by logging into your account on your cellular provider's website.  The only number you need today however is the "#777". <span class="anchor" id="line-237"></span><span class="anchor" id="line-238"></span></p><p class="line874">As root or via sudo(1), install the Debian package "wvdial", for instance by <span class="anchor" id="line-239"></span><span class="anchor" id="line-240"></span></p><p class="line867"><span class="anchor" id="line-241"></span><span class="anchor" id="line-242"></span></p><pre><span class="anchor" id="line-1-22"></span>$ sudo apt-get install wvdial</pre><span class="anchor" id="line-243"></span><span class="anchor" id="line-244"></span><p class="line874">If desired, save the original state of /etc/wvdial.conf using RCS's ci(1) or the like (you can ignore this advice re RCS if you neither know nor care what it is about).  Edit /etc/wvdial.conf to look something like this: <span class="anchor" id="line-245"></span><span class="anchor" id="line-246"></span></p><p class="line867"><span class="anchor" id="line-247"></span><span class="anchor" id="line-248"></span><span class="anchor" id="line-249"></span><span class="anchor" id="line-250"></span><span class="anchor" id="line-251"></span><span class="anchor" id="line-252"></span><span class="anchor" id="line-253"></span><span class="anchor" id="line-254"></span><span class="anchor" id="line-255"></span><span class="anchor" id="line-256"></span><span class="anchor" id="line-257"></span><span class="anchor" id="line-258"></span><span class="anchor" id="line-259"></span></p><pre><span class="anchor" id="line-1-23"></span>[Dialer Defaults]
+<span class="anchor" id="line-2-6"></span>Stupid Mode = true
+<span class="anchor" id="line-3-4"></span>Init1 = ATZ
+<span class="anchor" id="line-4-2"></span>Init2 = ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0
+<span class="anchor" id="line-5-2"></span>Modem Type = USB Modem
+<span class="anchor" id="line-6-2"></span>Baud = 460800
+<span class="anchor" id="line-7-2"></span>New PPPD = yes
+<span class="anchor" id="line-8-2"></span>Modem = /dev/ttyACM0
+<span class="anchor" id="line-9-2"></span>ISDN = 0
+<span class="anchor" id="line-10-2"></span>Phone = #777
+<span class="anchor" id="line-11-2"></span>Password = &lt;Your Password&gt;
+<span class="anchor" id="line-12-2"></span>Username = &lt;Your Login Name&gt;</pre><span class="anchor" id="line-260"></span><span class="anchor" id="line-261"></span><p class="line874">The important lines are the "Stupid Mode = true" and the "Phone = #777".  You need not fill in a password or username. <span class="anchor" id="line-262"></span><span class="anchor" id="line-263"></span></p><p class="line874">Edit "/etc/group" [again after using ci(1) first if you wish] to change <span class="anchor" id="line-264"></span><span class="anchor" id="line-265"></span></p><p class="line867"><span class="anchor" id="line-266"></span><span class="anchor" id="line-267"></span></p><pre><span class="anchor" id="line-1-24"></span>dialout:x:20:</pre><span class="anchor" id="line-268"></span><span class="anchor" id="line-269"></span><p class="line874">to <span class="anchor" id="line-270"></span><span class="anchor" id="line-271"></span></p><p class="line867"><span class="anchor" id="line-272"></span><span class="anchor" id="line-273"></span></p><pre><span class="anchor" id="line-1-25"></span>dialout:x:20:foo</pre><span class="anchor" id="line-274"></span><span class="anchor" id="line-275"></span><p class="line874">typing your username in place of "foo". <span class="anchor" id="line-276"></span><span class="anchor" id="line-277"></span></p><p class="line874">At this point, you may need to log out and log back in to get the system (which part of the system?  not sure) to recognize that you now belong to the "dialout" group.  If unsure, check with the groups(1) command. <span class="anchor" id="line-278"></span><span class="anchor" id="line-279"></span></p><p class="line862">Plug in your USB modem if you have not already done so.  Not as root but as yourself, give the command "wvdial" at the terminal's command line.  If all goes well, this should connect you to the Internet over your cellular network.  Later, press &lt;Ctrl-C&gt; to disconnect. <span class="anchor" id="line-280"></span><span class="anchor" id="line-281"></span></p><p class="line874">One is given to understand that the "usb-modeswitch" package may be necessary if your USB modem has not been used before.  The writer has neither met nor tested the circumstance in question. <span class="anchor" id="line-282"></span><span class="anchor" id="line-283"></span></p><p class="line874">To state the obvious:  the procedure should be expected to work only if you have paid a subscription to the cellular network. <span class="anchor" id="line-284"></span><span class="anchor" id="line-285"></span></p><p class="line874">It is not asserted that the procedure were the smoothest possible, but the procedure does have the virtue of being relatively obvious in its operation.  Refinements may occur to the interested user. <span class="anchor" id="line-286"></span><span class="anchor" id="line-287"></span></p><p class="line867"><span class="anchor" id="line-288"></span></p><p class="line867"><span class="anchor" id="line-289"></span><span class="anchor" id="line-290"></span></p><p class="line867">
+</p><h1 id="FAQ">FAQ</h1>
+<span class="anchor" id="line-291"></span><span class="anchor" id="line-292"></span><dl><dt>How do I enable "Internet Connection Sharing" ? </dt><dd><p class="line862">A) Since the 2.6 kernel is main stream etc. I will only cover IPTables and Kernel 2.6. I am also assuming that ppp0 is your dialup and eth0 is your lan. <br>
+ Firstly - we need to add some rules to iptables - run the following commands: <span class="anchor" id="line-293"></span></p></dd></dl><p class="line867"><span class="anchor" id="line-294"></span><span class="anchor" id="line-295"></span><span class="anchor" id="line-296"></span><span class="anchor" id="line-297"></span><span class="anchor" id="line-298"></span><span class="anchor" id="line-299"></span><span class="anchor" id="line-300"></span><span class="anchor" id="line-301"></span></p><pre><span class="anchor" id="line-1-26"></span>#This will CLEAR ALL RULES !!!
+<span class="anchor" id="line-2-7"></span>iptables -F
+<span class="anchor" id="line-3-5"></span>#Enable NAT (through the ppp0 interface)
+<span class="anchor" id="line-4-3"></span>iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
+<span class="anchor" id="line-5-3"></span>
+<span class="anchor" id="line-6-3"></span>#then we need to enable routing:
+<span class="anchor" id="line-7-3"></span>echo "1" &gt; /proc/sys/net/ipv4/ip_forward</pre><span class="anchor" id="line-302"></span><dl><dt></dt><dd>That should do it - from here you can add rules to block incomming connections etc. <span class="anchor" id="line-303"></span><span class="anchor" id="line-304"></span></dd><dt>My card is broken/replies "ERROR" to all the commands </dt><dd>A) You didn't send your PIN to the card - either add the "pin" command or disable the PIN on the SIM <span class="anchor" id="line-305"></span><span class="anchor" id="line-306"></span></dd><dt>My Novatel card is very slow - +-800 bytes per second </dt><dd><p class="line862">A) Try running "setserial -a /dev/ttyS1 low_latency spd_warp" - replace <tt>/dev/ttyS1</tt> with your port <br>
+ Once you have your setserial command, insert it into <tt>/etc/ppp/ip-up.local</tt> - this will cause the command to be ran everytime a connection is made. <span class="anchor" id="line-307"></span><span class="anchor" id="line-308"></span></p></dd><dt>What does all the wvdial sections do/mean ? </dt><dd><span class="anchor" id="line-309"></span></dd><li>Defaults - What to do if nothing is selected (Always included) <span class="anchor" id="line-310"></span></li><li>pin - send your pin to the card <span class="anchor" id="line-311"></span></li><li>novatel - select the novatel card <span class="anchor" id="line-312"></span></li><li>option - select the option card <span class="anchor" id="line-313"></span></li><li>hsdpa - Option HSDPA card <span class="anchor" id="line-314"></span></li><li>e1000 - select the E1000 via USB <span class="anchor" id="line-315"></span></li><li>onboard - select the onboard modem of my notebook <span class="anchor" id="line-316"></span></li><li>internet - select the internet APN <span class="anchor" id="line-317"></span></li><li>internetvpn - select the internetvpn APN <span class="anchor" id="line-318"></span></li><li>myapn - select your apn <span class="anchor" id="line-319"></span></li><li>384k,144k,64k - select the speed of your 3G connection <span class="anchor" id="line-320"></span></li><li>2gonly - select GPRS only <span class="anchor" id="line-321"></span></li><li>3gonly - select 3G only <span class="anchor" id="line-322"></span><span class="anchor" id="line-323"></span></li><dt>How do I see the usage under Linux ? </dt><dd><p class="line891"><a href="https://wiki.debian.org/ToDo">ToDo</a> Linux Usage <span class="anchor" id="line-324"></span><span class="anchor" id="line-325"></span></p></dd></dl><p class="line867">
+</p><h1 id="TODO">TODO</h1>
+<span class="anchor" id="line-326"></span><ul><li>Make the Option card call "modprobe usbserial" by itself <span class="anchor" id="line-327"></span></li><li>Make the Novatel card register the second port under Linux <span class="anchor" id="line-328"></span></li><li>Do some research into the signal levels reported via +CSQ <span class="anchor" id="line-329"></span></li><li>Get the PIN to work with wvdial and Novatel <span class="anchor" id="line-330"></span><span class="anchor" id="line-331"></span></li></ul><p class="line867">
+</p><h1 id="Resources">Resources</h1>
+<span class="anchor" id="line-332"></span><ul><li><p class="line891"><a href="https://wiki.debian.org/Modem/3G/Cards">Modem/3G/Cards</a> <span class="anchor" id="line-333"></span></p></li><li><p class="line891"><a href="https://wiki.debian.org/Modem/3G/FAQ">Modem/3G/FAQ</a> <span class="anchor" id="line-334"></span></p></li><li><p class="line891"><a href="https://wiki.debian.org/Modem/3G/Vodafone">Modem/3G/Vodafone</a> <span class="anchor" id="line-335"></span><span class="anchor" id="line-336"></span></p></li></ul><p class="line867">
+</p><h1 id="External_Links">External Links</h1>
+<span class="anchor" id="line-337"></span><p class="line867"><span class="anchor" id="line-338"></span></p><ul><li><p class="line891"><a class="http" href="http://www.peck.org.uk/GlobeTrotterGPRShowto.html">http://www.peck.org.uk/GlobeTrotterGPRShowto.html</a> - GPRS HowTo <span class="anchor" id="line-339"></span></p></li><li><p class="line891"><a class="interwiki" href="https://en.wikipedia.org/wiki/Vodafone_Mobile_Connect_USB_Modem" title="WikiPedia">Vodafone_Mobile_Connect_USB_Modem</a> <span class="anchor" id="line-340"></span></p></li><li><p class="line891"><a class="http" href="http://markus.wernig.net/en/it/usb-serial-handy-ppp.phtml">http://markus.wernig.net/en/it/usb-serial-handy-ppp.phtml</a> - How to connect a cell phone via USB to a Linux laptop and dial-up an internet connection. <span class="anchor" id="line-341"></span></p></li></ul><p class="line867"><span class="anchor" id="line-342"></span></p><p class="line867"></p><hr><p class="line874"> <span class="anchor" id="line-343"></span><a href="https://wiki.debian.org/Hardware">Hardware</a> | <a href="https://wiki.debian.org/Modem">Modem</a> <span class="anchor" id="line-344"></span><span class="anchor" id="bottom"></span></p></div><div id="pagebottom"></div>
+</div>
+
+
+<div id="footer">
+<p id="pageinfo" class="info" dir="ltr" lang="en">Modem/3G  (last edited 2015-01-25 10:32:25 by <span title="BeatriceTorracca"><a href="https://wiki.debian.org/BeatriceTorracca" title="BeatriceTorracca">BeatriceTorracca</a></span>)</p>
+
+<ul id="credits">
+<li><a href="https://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin Powered</a></li><li><a href="https://moinmo.in/Python" title="MoinMoin is written in Python.">Python Powered</a></li><li>Debian Wiki <a href="https://wiki.debian.org/Teams/DebianWiki">team</a>, <a href="https://bugs.debian.org/wiki.debian.org">bugs</a> and <a href="https://git.debian.org/?p=collab-maint/wiki.debian.org.git;a=summary">config</a> available.</li><li>Hosting provided by <a href="https://www.dg-i.net/">Dembach Goo Informatik GmbH &amp; Co KG</a></li>
+</ul>
+
+
+</div>
+
+
+
+</body>
+</html>

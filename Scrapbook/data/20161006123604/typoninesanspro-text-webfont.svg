@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<title>Arduino - Not Found </title>
+	<link rel="shortcut icon" type="image/x-icon" href="/en/favicon.png" />
+
+	<script src="//id.arduino.cc/js/vendor/jquery.js"></script>
+
+	<!--<link rel="stylesheet" href="//id.arduino.cc/css/normalize.css"  type="text/css"/>-->
+	<link rel="stylesheet" href="//fonts.typonine.com/WF-003562-000476.css" type="text/css">
+	<link rel="stylesheet" href="//id.arduino.cc/css/arduino-icons.css">
+	<link rel="stylesheet" href="//id.arduino.cc/css/animation.css"><!--[if IE 7]>
+	<link rel="stylesheet" href="//id.arduino.cc/css/arduino-icons-ie7.css"><![endif]-->
+	<!--[if gte IE 9]><!-->
+	<link rel='stylesheet' href='//id.arduino.cc/css/foundation2.css' type='text/css' />
+	<!--<![endif]-->
+	<!--[if IE 8]>
+		<link rel='stylesheet' href='//id.arduino.cc/css/foundation_ie8.css' type='text/css' />	
+	<![endif]-->
+	<link rel='stylesheet' href='//id.arduino.cc/css/arduino_code_highlight.css' type='text/css' />
+	<link rel="stylesheet" type="text/css" media="screen" href="//id.arduino.cc/css/typeplate.css">
+	<link rel='stylesheet' href='/en/pub/skins/arduinoWide_SSO/css/arduinoWide_SSO.css' type='text/css' />
+	
+	<link rel='stylesheet' href='/css/common.css' type='text/css' />
+	<link type="text/css" rel="stylesheet" href="/new_home/css/new_style.css">
+	<link href="https://plus.google.com/114839908922424087554" rel="publisher" />
+	
+	
+	<script src="//id.arduino.cc/js/vendor/custom.modernizr.js"></script>
+
+	<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+	<link rel='stylesheet' href='//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css' type='text/css' />
+	<script src="//id.arduino.cc/css/sso_bar_js_2.php?s=reference"></script>
+
+	<!--[if IE]>
+	<link rel='stylesheet' href='//id.arduino.cc//css/ie-monospace.css' type='text/css' />
+	<![endif]-->
+</head>
+<body>
+	<div id="menuWings" class="fixed"></div>
+	<div id="page">
+		<div id="menuWings" class="fixed"></div>
+
+		<!--[if IE 8]>
+		<div class="alert-box panel ie8alert">
+		  <p><strong>Arduino.cc offers limited compatibility for Internet Explorer 8. Get a modern browser as Chrome, Firefox or Safari.</strong></p>
+		  <a href="" class="close">&times;</a>
+		</div>
+		<![endif]-->
+
+		<div id="pageheader">
+			<div class="row" class="contain-to-grid">
+				<div class="small-6 large-8 eight columns">
+					<div class="title"><a href="//arduino.cc">Arduino</a></div>
+				</div>
+				<div class="small-6 large-4 four columns search">
+
+				</div>
+			</div>
+
+			<!--[if gte IE 9]><!-->
+			<div id="navWrapper"  class="sticky">
+			<!--<![endif]-->
+			<!--[if IE 8]>
+				<div id="navWrapper">
+			<![endif]-->
+				<nav class="top-bar"  data-options="is_hover:true" >
+					<ul class="title-area">
+						<li class="name"></li>
+					</ul>
+
+					<section class="top-bar-section">
+						<ul class="left">
+							<li class="active" id="navLogo">
+								<a href="//arduino.cc">
+									<img src="//id.arduino.cc//img/logo_46.png" alt="userpicture" />
+								</a>
+							</li>
+							<li class="active" id="navHome"><a href="//arduino.cc">Home</a></li>
+							<li><a href="//store.arduino.cc">Buy</a></li>
+							<li><a href="/en/Main/Software">Download</a></li>
+							<li class="has-dropdown"><a href="#">Products</a>
+								<ul class="dropdown">
+									<li><a href="/en/Main/Products">Arduino <span class="menudescription">(USA only)</span></a></li>
+									<li><a href="/en/Main/GenuinoProducts">Genuino <span class="menudescription">(outside USA)</span></a></li>
+									<li><a href="/en/ArduinoAtHeart/Products">AtHeart</a></li>
+									<li><a href="/en/ArduinoCertified/Products">Certified</a></li>
+								</ul>
+							</li>
+							<li class="has-dropdown"><a href="#">Learning</a>
+								<ul class="dropdown">
+									<li><a href="/en/Guide/HomePage">Getting started</a></li>
+									<li><a href="/en/Tutorial/HomePage">Tutorials</a></li>
+									<li><a href="/en/Reference/HomePage">Reference</a></li>
+									<li><a href="/en/Main/CTCprogram">CTC Program</a></li>
+									<li><a href="//playground.arduino.cc">Playground</a></li>
+								</ul>
+							</li>
+							<li><a href="http://forum.arduino.cc">Forum</a></li>
+							<li class="has-dropdown"><a href="#">Support</a>
+								<ul class="dropdown">
+									<li><a href="/en/Main/FAQ">FAQ</a></li>
+									<li><a href="/en/ContactUs">Contact Us</a></li>
+								</ul>
+							</li>
+							<li><a href="//blog.arduino.cc">Blog</a></li>
+						</ul>
+					</section>
+				</nav>
+			</div>
+		</div>
+
+
+		<script>
+			$(document).ready(function() {
+				function setNumber(url, selector){
+					$.ajax({
+						dataType: "jsonp",
+						url: url,
+						success: function(json, status){
+							if(json > 0){
+								$(selector).html(json);
+								$(selector).css('display', 'block');
+							}else {
+								$(selector).css('display', 'none');
+							}
+						},
+						error: function(xOptions, status){
+							console.log('error', xOptions, status);
+						},
+						complete: function(xOptions, status){
+						}
+					});
+				}
+
+				setNumber ('http://forum.arduino.cc/index.php?api&pm&callback=unreadpm', '.js-pmNumberItem');
+				setNumber ('http://store.arduino.cc/eu/index.php?api=cart&callback=store', '#js-cartNumberItem');
+			});
+		</script>
+
+		<br class="clear"/>
+
+
+		<div id="wikitext">
+
+			<div class="row">
+				<div style="text-align:center;">
+					<img alt="apologies"  style="margin-top:20px;" src="data:image/png;base64,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" />
+					<h3>404, page not found</h3>
+					<h5 style="color:#00979c; font-style:italic">Vive la résistance!</h5>
+
+					<p style="margin-top: 50px;">To report a broken link into the Arduino website, please <a href="mailto:webmaster@arduino.cc">drop a line to webmaster@arduino.cc</a>
+						<br>
+						Go back to your <a href="https://id.arduino.cc/" target="_self" name="Profile">profile</a> or <a href="http://www.arduino.cc/" target="_self" name="Home">homepage</a>
+					</p>
+				</div>
+			</div>
+
+		</div> <!-- eof pagetext -->
+
+	</div> <!-- eof page -->
+
+	<!--PageFooterFmt-->
+	<div id="pagefooter" class="pagefooter">
+	  <div class="row">
+	    <div class="large-8 eight columns">
+	      <div class="large-4 four columns newsletter-box">
+	        <!-- Begin Sendy Signup Form -->
+	        <h6>Newsletter</h6>
+	        <div>
+	          <input type="email" name="email" class="email" id="sendy-EMAIL" placeholder="Enter your email to sign up">
+	          <i class="icon-right-small"></i>
+	          <input value="Subscribe" name="subscribe" id="sendy-subscribe" class="newsletter-button" style="cursor:pointer">
+	        </div>
+	        <!--End sendy_embed_signup-->
+	      </div>
+	      <div class="clearfix"></div>
+	      <ul class="inline-list">
+	        <li class="monospace">&copy;2016 Arduino</li>
+	        <li><a href="//www.arduino.cc/en/Main/CopyrightNotice">Copyright Notice</a></li>
+	        <li><a href='//www.arduino.cc/en/Main/ContactUs'>Contact us</a></li>
+	        <li><a href='//www.arduino.cc/en/Main/AboutUs'>About us</a></li>
+	        <li><a href='//www.arduino.cc/Careers'>Careers</a></li>
+	      </ul>
+	    </div>
+	    <div class="large-4 four columns">
+	      <ul id="arduinoSocialLinks" class="arduino-social-links">
+	        <li>
+	          <a href="https://twitter.com/arduino">
+	            <img src="https://id.arduino.cc//img/twitter.png" />
+	          </a>
+	        </li>
+	        <li>
+	          <a href="https://www.facebook.com/official.arduino">
+	            <img src="https://id.arduino.cc//img/facebook.png" />
+	          </a>
+	        </li>
+	        <li>
+	          <a href="https://plus.google.com/+Arduino">
+	            <img src="https://id.arduino.cc//img/gplus.png" />
+	          </a>
+	        </li>
+	        <li>
+	          <a href="https://www.flickr.com/photos/arduino_cc">
+	            <img src="https://id.arduino.cc//img/flickr.png" />
+	          </a>
+	        </li>
+	        <li>
+	          <a href="https://youtube.com/arduinoteam">
+	            <img src="https://id.arduino.cc//img/youtube.png" />
+	          </a>
+	        </li>
+	      </ul>
+	    </div>    
+	  </div>
+	</div>
+
+	<div id="newsletterModal" class="reveal-modal small">
+  <form action="//www.arduino.cc/subscribe.php" method="post" name="sendy-subscribe-form" id="sendy-subscribe-form" class="form-popup">
+    <div class="modalHeader">
+      <h3 style="line-height: 1.8rem;" class="modal-header-alt">This link has expired. <br>Please re-subscribe to our Newsletters.</h3>
+      <h3 class="modal-header-main">Subscribe to our Newsletters</h3>
+    </div>
+    <div class="modalBody" id="newsletterModalBody">
+        <div id="newsletterEmailField" class="row" style="padding-left: 0">
+          <div class="large-2 columns">
+            <label for="email" class="newsletter-form-label inline">Email</label>
+          </div>
+          <div class="large-10 columns" style="padding-left: 0">
+            <input placeholder="Enter your email address" type="email" name="email" class="subscribe-form-input" />
+            <p id="emailMissing" class="newsletterPopupError">Please enter a valid email to subscribe</p>
+          </div>
+        </div>
+        <div style="margin-left:20px">
+          <div style="margin-bottom:0.3em">
+            <input style="display:none" type="checkbox" checked name="list[]" value="arduino_newsletter_id" id="worldwide" class="newsletter-form-checkbox" />
+            <label for="worldwide"></label>
+            <div style="display:inline-block" class="newsletter-form-label">Arduino Newsletter</div>
+          </div>
+          <div style="margin-bottom:0.3em">
+            <input style="display:none" type="checkbox" checked name="list[]" value="arduino_store_newsletter_id" id="store" class="newsletter-form-checkbox" />
+            <label for="store"></label>
+            <div style="display:inline-block" class="newsletter-form-label">Arduino Store Newsletter</div>
+          </div>
+          <div>
+            <input style="display:none" type="checkbox" name="list[]" value="arduino_italians_newsletter_id" id="italians" class="newsletter-form-checkbox" />
+            <label for="italians"></label>
+            <div style="display:inline-block" class="newsletter-form-label">Newsletter Italiana</div>
+          </div>
+        </div>
+        <div>
+          <p class="newsletterPopupError2" id="newsletterSubscribeStatus"></p>
+        </div>
+    </div>
+    <div class="row modalFooter">
+      <div class="form-buttons-row">
+        
+          <button type="button" value="Cancel" class="popup-form-button white cancel-modal close-reveal-modal">Cancel</button>
+          <button type="submit" name="Subscribe" id="subscribe-submit-btn" class="popup-form-button">Next</button>
+        
+      </div>
+    </div>
+  </form>
+
+  <!-- step 2, confirm popup -->
+  <div class="confirm-popup" style="margin-bottom:1em">
+    <div class="modalHeader">
+      <h3>Confirm your email address</h3>
+    </div>
+    <div class="modalBody" id="newsletterModalBody" style="padding-right:1em;margin-bottom:0">
+        <p style="margin-bottom:1em;font-size:15px">
+          We need to confirm your email address.<br>
+          To complete the subscription, please click the link in the
+          email we just sent you.
+        </p>
+        <p style="margin-bottom:1em;font-size:15px">
+          Thank you for subscribing!
+        </p>
+        <p style="margin-bottom:1em;font-size:15px">
+          Arduino<br>
+          via Egeo 16<br>
+          Torino, 10131<br>
+          Italy<br>
+        </p>
+    </div>
+    <div class="row modalFooter">
+      <div class="form-buttons-row">
+        
+          <button name="Ok" class="popup-form-button" id="close-confirm-popup">Ok</button>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+	<!--/PageFooterFmt-->
+	
+  <!--[if gte IE 9]><!-->
+  <script src="//id.arduino.cc/js/foundation.min.js"></script>
+  <script src="//id.arduino.cc/js/foundation.topbar.custom.js"></script>
+  <script src="//www.arduino.cc/en/pub/js/newsletter_subscribe_popup.js" type="text/javascript"></script>
+  <script>
+    $(document).foundation();
+  </script>
+  <!--<![endif]-->
+
+</body>
+</html>

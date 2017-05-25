@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" class="client-js" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<title>pppd - ArchWiki</title>
+
+
+
+<!--[if IE 6]><link rel="stylesheet" href="/skins/ArchLinux/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/skins/ArchLinux/IE70Fixes.css?303" media="screen" /><![endif]-->
+<meta name="ResourceLoaderDynamicStyles" content="">
+
+
+
+<meta name="generator" content="MediaWiki 1.26.3">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://wiki.archlinux.org/opensearch_desc.php" title="ArchWiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="https://wiki.archlinux.org/api.php?action=rsd">
+<link rel="copyright" href="http://www.gnu.org/copyleft/fdl.html">
+<link rel="alternate" type="application/atom+xml" title="ArchWiki Atom feed" href="https://wiki.archlinux.org/index.php?title=Special:RecentChanges&amp;feed=atom">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Pppd skin-archlinux action-view">
+
+		<div id="archnavbar"><!-- Arch Linux global navigation bar -->
+			<div id="archnavbarlogo">
+				<p><a id="logo" href="https://www.archlinux.org/"></a></p>
+			</div>
+			<div id="archnavbarmenu">
+				<ul id="archnavbarlist">
+					<li id="anb-home"><a href="https://www.archlinux.org/">Home</a></li><li id="anb-packages"><a href="https://www.archlinux.org/packages/">Packages</a></li><li id="anb-forums"><a href="https://bbs.archlinux.org/">Forums</a></li><li id="anb-wiki" class="anb-selected"><a href="https://wiki.archlinux.org/">Wiki</a></li><li id="anb-bugs"><a href="https://bugs.archlinux.org/">Bugs</a></li><li id="anb-aur"><a href="https://aur.archlinux.org/">AUR</a></li><li id="anb-download"><a href="https://www.archlinux.org/download/">Download</a></li>				</ul>
+			</div>
+		</div><!-- #archnavbar -->
+
+		<div id="globalWrapper">
+		<div id="column-content">
+			<div id="content" class="mw-body" role="main">
+				<a id="top"></a>
+				
+				<div class="mw-indicators">
+</div>
+				<h1 id="firstHeading" class="firstHeading" lang="en">pppd</h1>
+				
+				<div id="bodyContent" class="mw-body-content">
+					<div id="siteSub">From ArchWiki</div>
+					<div id="contentSub"></div>
+										<div id="jump-to-nav" class="mw-jump">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>
+
+					<!-- start content -->
+					<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><p><span></span>
+</p><p><b>ppp</b> (Paul's PPP Package) is an open source package which implements the <a href="https://en.wikipedia.org/wiki/point-to-point_protocol" class="extiw" title="wikipedia:point-to-point protocol">point-to-point protocol</a> (PPP) on Linux and Solaris systems. It is implemented as single <i>pppd</i> daemon and acts as backend for <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=xl2tpd">xl2tpd</a></span>, <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=pptpd">pptpd</a></span> and <a href="https://wiki.archlinux.org/index.php/Netctl" title="Netctl">netctl</a>. <a href="https://en.wikipedia.org/wiki/3G" class="extiw" title="wikipedia:3G">3G</a>, <a href="https://en.wikipedia.org/wiki/L2TP" class="extiw" title="wikipedia:L2TP">L2TP</a> and <a href="https://en.wikipedia.org/wiki/PPPoE" class="extiw" title="wikipedia:PPPoE">PPPoE</a> connections are internally based on PPP protocol and therefore can be managed by ppp.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="#" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Installation"><span class="tocnumber">1</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Configuration"><span class="tocnumber">2</span> <span class="toctext">Configuration</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#PPPoE"><span class="tocnumber">2.1</span> <span class="toctext">PPPoE</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Starting_pppd_on_boot"><span class="tocnumber">2.2</span> <span class="toctext">Starting pppd on boot</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Tips_and_tricks"><span class="tocnumber">3</span> <span class="toctext">Tips and tricks</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#Do_an_auto_redial"><span class="tocnumber">3.1</span> <span class="toctext">Do an auto redial</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#ISP_auto-disconnect_after_24h"><span class="tocnumber">3.2</span> <span class="toctext">ISP auto-disconnect after 24h</span></a>
+<ul>
+<li class="toclevel-3 tocsection-8"><a href="#Using_cron"><span class="tocnumber">3.2.1</span> <span class="toctext">Using cron</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="#Using_a_systemd_timer"><span class="tocnumber">3.2.2</span> <span class="toctext">Using a systemd timer</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#Troubleshooting"><span class="tocnumber">4</span> <span class="toctext">Troubleshooting</span></a>
+<ul>
+<li class="toclevel-2 tocsection-11"><a href="#Default_route"><span class="tocnumber">4.1</span> <span class="toctext">Default route</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#Masquerading_seems_to_be_working_fine_but_some_sites_do_not_work"><span class="tocnumber">4.2</span> <span class="toctext">Masquerading seems to be working fine but some sites do not work</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="#pppd_cannot_load_kernel_module_ppp_generic"><span class="tocnumber">4.3</span> <span class="toctext">pppd cannot load kernel module ppp_generic</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p><a href="https://wiki.archlinux.org/index.php/Install" title="Install" class="mw-redirect">Install</a> the <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=ppp">ppp</a></span> package.
+</p><p>Make sure that your kernel is compiled with PPPoE support (present in default kernel):
+</p>
+<pre style="margin-bottom: 0px; border-bottom: medium none; padding-bottom: 0.8em;">$ zgrep CONFIG_PPPOE /proc/config.gz</pre>
+<pre style="margin-top: 0px; border-top-style: dashed; padding-top: 0.8em;">CONFIG_PPPOE=m</pre>
+<h2><span class="mw-headline" id="Configuration">Configuration</span></h2>
+<h3><span class="mw-headline" id="PPPoE">PPPoE</span></h3>
+<p>Create the connection configuration file:
+</p>
+<pre style="margin-bottom: 0px; border-bottom: medium none; padding-bottom: 0.8em;">/etc/ppp/peers/<i>your_provider</i></pre>
+<pre style="margin-top: 0px; border-top-style: dashed; padding-top: 0.8em;">plugin rp-pppoe.so
+# rp_pppoe_ac 'your ac name'
+# rp_pppoe_service 'your service name'
+
+# network interface
+eth0
+# login name
+name "<i>someloginname</i>"
+usepeerdns
+persist
+# Uncomment this if you want to enable dial on demand
+#demand
+#idle 180
+defaultroute
+hide-password
+noauth</pre>
+<p>If <code>usepeerdns</code> option is used, <i>pppd</i> will create the <code>/etc/ppp/resolv.conf</code> file with obtained DNS addresses while establishing a connection. By default, the <code>/etc/ppp/ip-up.d/00_dns</code> hook script moves this file to <code>/etc/resolv.conf</code>, allowing the system to use these name servers. If this is undesirable (e.g. you are using a local caching DNS), edit the <code>/etc/ppp/ip-up.d/00_dns.sh</code> as you need.
+</p><p>Put a line like this in <code>/etc/ppp/pap-secrets</code> or <code>/etc/ppp/chap-secrets</code> as required by the authentication method used by your ISP. It is OK to write these two files at the same time, <i>pppd</i> will automatically use the appropriate one:
+</p>
+<pre><i>someloginname</i> * <i>yourpassword</i>
+</pre>
+<p>You can now start the link using the command:
+</p>
+<pre># pppd call <i>your_provider</i>
+</pre>
+<p>Alternatively, you can use this
+</p>
+<pre># pon <i>your_provider</i>
+</pre>
+<p>where <i>your_provider</i> is the exact name of your options file in <code>/etc/ppp/peers</code>.
+</p><p>To see whether your PPPoE connection is started correctly, check the <i>pppd</i> output in system logs:
+</p>
+<pre># journalctl -b --no-pager | grep pppd
+</pre>
+<p>On a successful connection, you will see something like the following:
+</p>
+<pre>Jul 09 22:42:33 localhost pppd[239]: Plugin rp-pppoe.so loaded.
+Jul 09 22:42:33 localhost pppd[239]: RP-PPPoE plugin version 3.8p compiled against pppd 2.4.6
+Jul 09 22:42:33 localhost network[184]: RP-PPPoE plugin version 3.8p compiled against pppd 2.4.6
+Jul 09 22:42:33 localhost pppd[239]: pppd 2.4.6 started by root, uid 0
+Jul 09 22:42:39 localhost pppd[239]: PPP session is 292
+Jul 09 22:42:39 localhost pppd[239]: Connected to a0:f3:e4:4f:e3:b0 via interface enp4s0
+Jul 09 22:42:39 localhost pppd[239]: Using interface ppp0
+Jul 09 22:42:39 localhost pppd[239]: Connect: ppp0 &lt;--&gt; enp4s0
+Jul 09 22:42:39 localhost pppd[239]: CHAP authentication succeeded: CHAP authentication success
+Jul 09 22:42:39 localhost pppd[239]: CHAP authentication succeeded
+Jul 09 22:42:39 localhost pppd[239]: peer from calling number A0:F3:E4:4F:E3:B0 authorized
+Jul 09 22:42:39 localhost pppd[239]: Cannot determine ethernet address for proxy ARP
+Jul 09 22:42:39 localhost pppd[239]: local  IP address 10.6.2.137
+Jul 09 22:42:39 localhost pppd[239]: remote IP address 10.6.1.1
+Jul 09 22:42:39 localhost pppd[239]: primary   DNS address 10.6.1.1
+Jul 09 22:42:39 localhost pppd[239]: secondary DNS address 210.21.196.6
+</pre>
+<p>By default the configuration in <code>/etc/ppp/peers/provider</code> is treated as the default, so if you want to make "your_provider" the default, you can create a link like this
+</p>
+<pre># ln -s /etc/ppp/peers/<i>your_provider</i> /etc/ppp/peers/provider
+</pre>
+<p>Now you can start the link by simply running:
+</p>
+<pre># pon
+</pre>
+<p>To close a connection, use this
+</p>
+<pre># poff <i>your_provider</i>
+</pre>
+<h3><span class="mw-headline" id="Starting_pppd_on_boot">Starting pppd on boot</span></h3>
+<ul><li> Configure the <code>ppp_generic</code> module to load on boot. See <a href="https://wiki.archlinux.org/index.php/Kernel_modules#Automatic_module_handling" title="Kernel modules">Kernel modules#Automatic module handling</a> for more information.</li>
+<li> <a href="https://wiki.archlinux.org/index.php/Enable" title="Enable" class="mw-redirect">Enable</a> the systemd service <code>ppp@<i>your_provider</i>.service</code>.</li></ul>
+<h2><span class="mw-headline" id="Tips_and_tricks">Tips and tricks</span></h2>
+<h3><span class="mw-headline" id="Do_an_auto_redial">Do an auto redial</span></h3>
+<p>If <i>pppd</i> is running, you can force a connection reset by sending the <code>SIGHUP</code> signal to the process:
+</p>
+<pre># export PPPD_PID=$(pidof pppd)
+# kill -s HUP $PPPD_PID
+</pre>
+<p>And you have redialed the connection.
+</p>
+<div style="padding: 5px; margin: 0.5em 0px; background-color: rgb(221, 221, 255); border: thin solid rgb(187, 187, 221); overflow: hidden;"><strong> Note: </strong>Make sure you have <code>persist</code> option enabled in your <code>/etc/ppp/peers/provider</code> tab. Additionally you might want to set <code>holdoff 0</code> to reconnect without waiting.</div>
+<h3><span class="mw-headline" id="ISP_auto-disconnect_after_24h">ISP auto-disconnect after 24h</span></h3>
+<div style="padding: 5px; margin: 0.5em 0px; background-color: rgb(221, 221, 255); border: thin solid rgb(187, 187, 221); overflow: hidden;"><strong> Note: </strong>If you are not running your computer always on (running 24/7) then you can skip this step.</div>
+<p>If you use a flat-rate always-on connection on a computer, some providers restart your connection after 24h. That makes sure that the IP is rotated every 24h. To compensate, you can use an dynamic DNS service in combination with <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://aur.archlinux.org/packages/inadyn/">inadyn</a></span><sup><small>AUR</small></sup><sup>[<a href="https://wiki.archlinux.org/index.php/ArchWiki:Requests#Broken_package_links" title="ArchWiki:Requests">broken link</a>: archived in <a rel="nofollow" class="external text" href="http://pkgbuild.com/git/aur-mirror.git/tree/inadyn">aur-mirror</a>]</sup> to compensate for the rotating IP address. But to avoid disconnects when you do not need it, you might try to restart the connection using a cron job or <a href="https://wiki.archlinux.org/index.php/Systemd#Timers" title="Systemd">systemd</a> timer at a time of day you know no one will be using the connection (e.g. at 4 AM).
+</p>
+<h4><span class="mw-headline" id="Using_cron">Using cron</span></h4>
+<p>As root, do the following:
+</p><p>Create a bash script similar to this and give it a name (e.g. <code>pppd_redial.sh</code>):
+</p>
+<pre>#!/bin/bash
+
+message="Restarting the PPP connection @:" $(date)
+pppd_id=$(pidof pppd)
+
+kill -s HUP $pppd_id
+echo $message
+</pre>
+<p>Give it execute permissions and put it on a path visible to root.
+</p><p>Then create a cron job using <code>crontab -e</code>. Check that your <code>EDITOR</code> env variable is set if the command fails. So add anywhere in the file,
+</p>
+<pre>0 4 * * * /bin/bash /root/pppd_redial.sh
+</pre>
+<p>Confirm that <code>cronie</code> service is up and running. If this is not the case, just <a href="https://wiki.archlinux.org/index.php/Enable" title="Enable" class="mw-redirect">enable</a> and <a href="https://wiki.archlinux.org/index.php/Start" title="Start" class="mw-redirect">start</a> it.
+</p><p>Save and exit. Your PPPoE connection will now restart every day at 4AM.
+</p>
+<h4><span class="mw-headline" id="Using_a_systemd_timer">Using a systemd timer</span></h4>
+<p>An alternative way to force a reconnect is using a <a href="https://wiki.archlinux.org/index.php/Systemd" title="Systemd">systemd</a> timer and the <i>poff</i> script (in particular its <code>-r</code> option). Simply create a <i>.service</i> and <i>.timer</i> files with the same name:
+</p>
+<pre style="margin-bottom: 0px; border-bottom: medium none; padding-bottom: 0.8em;">ppp-redial.timer</pre>
+<pre style="margin-top: 0px; border-top-style: dashed; padding-top: 0.8em;">[Unit]
+Description=Reconnect PPP connections daily
+
+[Timer]
+OnCalendar=*-*-* 05:00:00
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+<pre style="margin-bottom: 0px; border-bottom: medium none; padding-bottom: 0.8em;">ppp-redial.service</pre>
+<pre style="margin-top: 0px; border-top-style: dashed; padding-top: 0.8em;">[Unit]
+Description=Reconnect PPP connections
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/poff -r
+</pre>
+<p>Now just <a href="https://wiki.archlinux.org/index.php/Enable" title="Enable" class="mw-redirect">enable</a> and <a href="https://wiki.archlinux.org/index.php/Start" title="Start" class="mw-redirect">start</a> the timer and systemd will cause a restart at the specified time.
+</p>
+<h2><span class="mw-headline" id="Troubleshooting">Troubleshooting</span></h2>
+<h3><span class="mw-headline" id="Default_route">Default route</span></h3>
+<p>If you have a preconfigured default route before the <i>pppd</i> is started, the default route is kept, so take a look in <code>/var/log/errors.log</code> and if you have something like:
+</p>
+<pre>pppd[nnnn]: not replacing existing default route via <i>xxx.xxx.xxx.xxx</i>
+</pre>
+<p>and <code>xxx.xxx.xxx.xxx</code> is not the correct route for you
+</p>
+<ul><li> Create a new script in <code>/etc/ppp/ip-pre-up.d</code> with this content:</li></ul>
+<pre style="margin-bottom: 0px; border-bottom: medium none; padding-bottom: 0.8em;">/etc/ppp/ip-pre-up.d/10-route-del-default.sh</pre>
+<pre style="margin-top: 0px; border-top-style: dashed; padding-top: 0.8em;">#!/bin/sh
+/usr/bin/route del default
+</pre>
+<p>Note: Make sure you have a script named 'ip-pre-up' which launches *.sh in 'ip-pre-up.d' like other launch scripts do.
+</p>
+<ul><li> <a href="https://wiki.archlinux.org/index.php/Restart" title="Restart" class="mw-redirect">Restart</a> the <code>pppd</code> service.</li></ul>
+<h3><span class="mw-headline" id="Masquerading_seems_to_be_working_fine_but_some_sites_do_not_work">Masquerading seems to be working fine but some sites do not work</span></h3>
+<p>The MTU under pppoe is 1492 bytes. Most sites use an MTU of 1500. So your connection sends an ICMP 3:4 (fragmentation needed) packet, asking for a smaller MTU, but some sites have their firewall blocking that.
+</p><p>Enabling the PMTU clamping in <a href="https://wiki.archlinux.org/index.php/Iptables" title="Iptables">iptables</a> can solve that:
+</p>
+<pre>iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+</pre>
+<p>Now, for some reason, just trying to save the resulting iptables configuration with <i>iptables-save</i> and restoring it later, does not work. It has to be executed after the other iptables configuration had been loaded. So, here is a systemd unit to solve it:
+</p>
+<pre style="margin-bottom: 0px; border-bottom: medium none; padding-bottom: 0.8em;">pmtu-clamping.service</pre>
+<pre style="margin-top: 0px; border-top-style: dashed; padding-top: 0.8em;">[Unit]
+Description=PMTU clamping for pppoe
+Requires=iptables.service
+After=iptables.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+<p>And <a href="https://wiki.archlinux.org/index.php/Enable" title="Enable" class="mw-redirect">enable</a> it.
+</p>
+<h3><span class="mw-headline" id="pppd_cannot_load_kernel_module_ppp_generic">pppd cannot load kernel module ppp_generic</span></h3>
+<p>When starting PPTP client, the <i>pppd</i> process cannot locate the appropriate module:
+</p>
+<pre>Couldn't open the /dev/ppp device: No such device or address
+Please load the ppp_generic kernel module.
+</pre>
+<p>The solution is to edit the <code>/etc/modprobe.d/modules.conf</code> file and change
+</p>
+<pre>alias char-major-108 ppp
+</pre>
+<p>to
+</p>
+<pre>alias char-major-108 ppp_generic
+</pre>
+<p>or just add such alias if it does not exist.
+</p><p>The correct module will be loaded after reboot.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20160622051954
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.027 seconds
+Real time usage: 0.032 seconds
+Preprocessor visited node count: 416/1000000
+Preprocessor generated node count: 1226/1000000
+Post‐expand include size: 4818/2097152 bytes
+Template argument size: 1994/2097152 bytes
+Highest expansion depth: 7/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   21.470      1 - -total
+ 22.56%    4.843      2 - Template:Note
+ 18.35%    3.939     25 - Template:Ic
+ 15.75%    3.382      2 - Template:META_Box_Blue
+ 12.81%    2.750      6 - Template:Hc
+ 12.64%    2.715      1 - Template:Broken_package_link
+  9.77%    2.098      2 - Template:META_Box
+  7.90%    1.696      1 - Template:Lowercase_title
+  7.16%    1.538      3 - Template:Pkg
+  5.82%    1.249      1 - Template:AUR
+-->
+
+<!-- Saved in parser cache with key archwiki:pcache:idhash:2125-0!*!0!!en!*!* and timestamp 20160622051954 and revision id 394332
+ -->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="https://wiki.archlinux.org/index.php?title=Pppd&amp;oldid=394332">https://wiki.archlinux.org/index.php?title=Pppd&amp;oldid=394332</a>"</div>
+					<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="https://wiki.archlinux.org/index.php/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="https://wiki.archlinux.org/index.php/Category:Networking" title="Category:Networking">Networking</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="https://wiki.archlinux.org/index.php/Category:Pages_with_broken_package_links" title="Category:Pages with broken package links">Pages with broken package links</a></li></ul></div></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+			</div>
+		</div>
+		<div id="column-one">
+			<h2>Navigation menu</h2>
+					<div id="p-cactions" class="portlet" role="navigation">
+			<h3>Views</h3>
+
+			<div class="pBody">
+				<ul>
+				<li id="ca-nstab-main" class="selected"><a href="https://wiki.archlinux.org/index.php/Pppd" title="View the content page [Alt+Shift+c]" accesskey="c">Page</a></li>
+				<li id="ca-talk" class="new"><a href="https://wiki.archlinux.org/index.php?title=Talk:Pppd&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [Alt+Shift+t]" accesskey="t">Discussion</a></li>
+				<li id="ca-viewsource"><a href="https://wiki.archlinux.org/index.php?title=Pppd&amp;action=edit" title="This page is protected.
+You can view its source [Alt+Shift+e]" accesskey="e">View source</a></li>
+				<li id="ca-history"><a href="https://wiki.archlinux.org/index.php?title=Pppd&amp;action=history" title="Past revisions of this page [Alt+Shift+h]" accesskey="h">History</a></li>
+				</ul>
+							</div>
+		</div>
+				<div class="portlet" id="p-personal" role="navigation">
+				<h3>Personal tools</h3>
+
+				<div class="pBody">
+					<ul>
+													<li id="pt-login"><a href="https://wiki.archlinux.org/index.php?title=Special:UserLogin&amp;returnto=Pppd" title="You are encouraged to log in; however, it is not mandatory [Alt+Shift+o]" accesskey="o">Log in</a></li>
+											</ul>
+				</div>
+			</div>
+			<div class="portlet" id="p-logo" role="banner">
+				<a href="https://wiki.archlinux.org/index.php/Main_page" class="mw-wiki-logo" title="Visit the main page"></a>
+			</div>
+				<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class="pBody">
+							<ul>
+											<li id="n-mainpage-description"><a href="https://wiki.archlinux.org/index.php/Main_page" title="Visit the main page [Alt+Shift+z]" accesskey="z">Main page</a></li>
+											<li id="n-categories"><a href="https://wiki.archlinux.org/index.php/Table_of_contents">Categories</a></li>
+											<li id="n-portal"><a href="https://wiki.archlinux.org/index.php/Getting_involved" title="Various ways Archers can contribute to the community">Getting involved</a></li>
+											<li id="n-currentevents"><a href="https://wiki.archlinux.org/index.php/ArchWiki:News" title="The latest lowdown on the wiki">Wiki news</a></li>
+											<li id="n-randompage"><a href="https://wiki.archlinux.org/index.php/Special:Random" title="Load a random page [Alt+Shift+x]" accesskey="x">Random page</a></li>
+									</ul>
+					</div>
+		</div>
+			<div id="p-search" class="portlet" role="search">
+			<h3><label for="searchInput">Search</label></h3>
+
+			<div id="searchBody" class="pBody">
+				<form action="https://wiki.archlinux.org/index.php" id="searchform">
+					<input name="title" value="Special:Search" type="hidden">
+					<input autocomplete="off" name="search" placeholder="Search" title="Search ArchWiki [Alt+Shift+f]" accesskey="f" id="searchInput" type="search">
+					<input name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchGoButton" class="searchButton" type="submit">&nbsp;
+						<input name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton" type="submit">
+				</form>
+
+							</div>
+		</div>
+		<div class="generated-sidebar portlet" id="p-interaction" role="navigation">
+		<h3>interaction</h3>
+		<div class="pBody">
+							<ul>
+											<li id="n-help"><a href="https://wiki.archlinux.org/index.php/Category:Help" title="Wiki navigation, reading, and editing help">Help</a></li>
+											<li id="n-Contributing"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Contributing">Contributing</a></li>
+											<li id="n-recentchanges"><a href="https://wiki.archlinux.org/index.php/Special:RecentChanges" title="A list of recent changes in the wiki [Alt+Shift+r]" accesskey="r">Recent changes</a></li>
+											<li id="n-Recent-talks"><a href="https://wiki.archlinux.org/index.php/Special:RecentChanges?namespace=0&amp;invert=1" rel="nofollow">Recent talks</a></li>
+											<li id="n-newpages"><a href="https://wiki.archlinux.org/index.php/Special:NewPages">New pages</a></li>
+											<li id="n-Statistics"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Statistics">Statistics</a></li>
+											<li id="n-Reports"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Reports">Reports</a></li>
+											<li id="n-Requests"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Requests">Requests</a></li>
+									</ul>
+					</div>
+		</div>
+			<div class="portlet" id="p-tb" role="navigation">
+			<h3>Tools</h3>
+
+			<div class="pBody">
+				<ul>
+											<li id="t-whatlinkshere"><a href="https://wiki.archlinux.org/index.php/Special:WhatLinksHere/Pppd" title="A list of all wiki pages that link here [Alt+Shift+j]" accesskey="j">What links here</a></li>
+											<li id="t-recentchangeslinked"><a href="https://wiki.archlinux.org/index.php/Special:RecentChangesLinked/Pppd" title="Recent changes in pages linked from this page [Alt+Shift+k]" accesskey="k">Related changes</a></li>
+											<li id="t-specialpages"><a href="https://wiki.archlinux.org/index.php/Special:SpecialPages" title="A list of all special pages [Alt+Shift+q]" accesskey="q">Special pages</a></li>
+											<li id="t-print"><a href="https://wiki.archlinux.org/index.php?title=Pppd&amp;printable=yes" rel="alternate" title="Printable version of this page [Alt+Shift+p]" accesskey="p">Printable version</a></li>
+											<li id="t-permalink"><a href="https://wiki.archlinux.org/index.php?title=Pppd&amp;oldid=394332" title="Permanent link to this revision of the page">Permanent link</a></li>
+											<li id="t-info"><a href="https://wiki.archlinux.org/index.php?title=Pppd&amp;action=info" title="More information about this page">Page information</a></li>
+									</ul>
+							</div>
+		</div>
+				<div id="p-lang" class="portlet" role="navigation">
+				<h3>In other languages</h3>
+
+				<div class="pBody">
+					<ul>
+													<li class="interlanguage-link interwiki-ja"><a href="https://wiki.archlinuxjp.org/index.php/Pppd" title="Pppd – 日本語" hreflang="ja" lang="ja">日本語</a></li>
+													<li class="interlanguage-link interwiki-ru"><a href="https://wiki.archlinux.org/index.php/Pppd_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)" title="Pppd – русский" hreflang="ru" lang="ru">Русский</a></li>
+											</ul>
+
+									</div>
+			</div>
+				</div><!-- end of the left (by default at least) column -->
+		<div class="visualClear"></div>
+					<div id="footer" role="contentinfo">
+						<ul id="f-list">
+									<li id="lastmod"> This page was last modified on 28 August 2015, at 17:47.</li>
+									<li id="copyright">Content is available under <a class="external" rel="nofollow" href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License 1.3 or later</a> unless otherwise noted.</li>
+									<li id="privacy"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Privacy_policy" title="ArchWiki:Privacy policy">Privacy policy</a></li>
+									<li id="about"><a href="https://wiki.archlinux.org/index.php/ArchWiki:About" title="ArchWiki:About">About ArchWiki</a></li>
+									<li id="disclaimer"><a href="https://wiki.archlinux.org/index.php/ArchWiki:General_disclaimer" title="ArchWiki:General disclaimer">Disclaimers</a></li>
+							</ul>
+		</div>
+		</div>
+		
+
+<div class="suggestions" style="display: none; font-size: 11.4667px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body>
+</html>

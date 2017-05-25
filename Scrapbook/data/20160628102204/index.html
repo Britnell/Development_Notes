@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>[Beaglebone Black] File Transfer with PC using SCP | Billwaa's Blog</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+<link rel="pingback" href="https://billwaa.wordpress.com/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="https://s0.wp.com/wp-content/themes/pub/twentyeleven/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="Billwaa's Blog » Feed" href="https://billwaa.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Billwaa's Blog » Comments Feed" href="https://billwaa.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Billwaa's Blog » [Beaglebone Black] File Transfer with PC using&nbsp;SCP Comments Feed" href="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/feed/">
+	
+	
+
+
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s1.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://billwaa.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="[BeagleBone Black] Launch Python Script at Boot like Arduino&nbsp;Sketch" href="https://billwaa.wordpress.com/2014/10/03/beaglebone-black-launch-python-script-at-boot-like-arduino-sketch/">
+<link rel="next" title="[BeagleBone Black] Enable All UART Ports at&nbsp;Boot" href="https://billwaa.wordpress.com/2014/10/13/beaglebone-black-enable-all-uart-ports-at-boot/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/">
+<link rel="shortlink" href="http://wp.me/p1VgGZ-ao">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=https%3A%2F%2Fbillwaa.wordpress.com%2F2014%2F10%2F08%2Fbeaglebone-black-file-transfer-with-pc-using-scp%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=https%3A%2F%2Fbillwaa.wordpress.com%2F2014%2F10%2F08%2Fbeaglebone-black-file-transfer-with-pc-using-scp%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Beaglebone Black] File Transfer with PC using SCP">
+<meta property="og:url" content="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/">
+<meta property="og:description" content="On Windows, we can easily transfer files between the PC and the BBB through SecureShell File Transfer Client. However, in Linux, we will have to use the terminal program Secure Copy or SCP that&amp;#82…">
+<meta property="article:published_time" content="2014-10-08T22:01:32+00:00">
+<meta property="article:modified_time" content="2014-10-08T22:03:00+00:00">
+<meta property="og:site_name" content="Billwaa's Blog">
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="https://s0.wp.com/i/webclip.png">
+<link rel="openid.server" href="https://billwaa.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://billwaa.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://billwaa.wordpress.com/osd.xml" title="Billwaa's Blog">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+<meta name="application-name" content="Billwaa's Blog"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="There's just so Much to Life that the Sky is not the Limit!"><meta name="msapplication-task" content="name=Subscribe;action-uri=https://billwaa.wordpress.com/feed/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Read Freshly Pressed;action-uri=http://wordpress.com/#fresh;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="title" content="[Beaglebone Black] File Transfer with PC using&nbsp;SCP | Billwaa's Blog on WordPress.com">
+<meta name="description" content="On Windows, we can easily transfer files between the PC and the BBB through SecureShell File Transfer Client. However, in Linux, we will have to use the terminal program Secure Copy or SCP that's built-in. Overall, the scp command for copying to a computer (aka use the to computer's username and ip) is: First we…">
+<link rel="amphtml" href="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/amp/">
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-644 single-format-standard logged-in admin-bar no-customize-support custom-background mp6 customizer-styles-applied single-author singular two-column right-sidebar highlander-enabled highlander-light">
+<div id="page" class="hfeed">
+	<header id="branding" role="banner">
+			<hgroup>
+				<h1 id="site-title"><span><a href="https://billwaa.wordpress.com/" rel="home">Billwaa's Blog</a></span></h1>
+				<h2 id="site-description">There's just so Much to Life that the Sky is not the Limit!</h2>
+			</hgroup>
+
+						<a href="https://billwaa.wordpress.com/">
+									<img src="shore.jpg" alt="" height="288" width="1000">
+							</a>
+			
+								<form method="get" id="searchform" action="https://billwaa.wordpress.com/">
+		<label for="s" class="assistive-text">Search</label>
+		<input value="" class="field" name="s" id="s" placeholder="Search" type="text">
+		<input class="submit" name="submit" id="searchsubmit" value="Search" type="submit">
+	</form>
+			
+			<nav id="access" role="navigation">
+				<h3 class="assistive-text">Main menu</h3>
+								<div class="skip-link"><a class="assistive-text" href="#content">Skip to primary content</a></div>
+												<div class="menu"><ul><li><a href="https://billwaa.wordpress.com/">Home</a></li><li class="page_item page-item-17"><a href="https://billwaa.wordpress.com/resume/">Resume</a></li><li class="page_item page-item-13 page_item_has_children"><a href="https://billwaa.wordpress.com/notebook/">Notebooks</a><ul class="children"><li class="page_item page-item-303"><a href="https://billwaa.wordpress.com/notebook/aerospace/">Aerospace</a></li><li class="page_item page-item-237"><a href="https://billwaa.wordpress.com/notebook/arduino/">Arduino</a></li><li class="page_item page-item-615"><a href="https://billwaa.wordpress.com/notebook/beaglebone-black/">BeagleBone Black</a></li><li class="page_item page-item-460"><a href="https://billwaa.wordpress.com/notebook/cookbook/">Cookbook</a></li><li class="page_item page-item-510"><a href="https://billwaa.wordpress.com/notebook/engineering/">Engineering</a></li><li class="page_item page-item-232"><a href="https://billwaa.wordpress.com/notebook/java-programming/">Java Programming</a></li><li class="page_item page-item-239"><a href="https://billwaa.wordpress.com/notebook/photography/">Photography</a></li><li class="page_item page-item-429"><a href="https://billwaa.wordpress.com/notebook/recreational/">Recreational</a></li></ul></li><li class="page_item page-item-19"><a href="https://billwaa.wordpress.com/showcase/">Showcase</a></li><li class="page_item page-item-2"><a href="https://billwaa.wordpress.com/about/">About</a></li></ul></div>
+			</nav><!-- #access -->
+	</header><!-- #branding -->
+
+
+	<div id="main">
+
+		<div id="primary">
+			<div id="content" role="main">
+
+				
+					<nav id="nav-single">
+						<h3 class="assistive-text">Post navigation</h3>
+						<span class="nav-previous"><a href="https://billwaa.wordpress.com/2014/10/03/beaglebone-black-launch-python-script-at-boot-like-arduino-sketch/" rel="prev"><span class="meta-nav">←</span> Previous</a></span>
+						<span class="nav-next"><a href="https://billwaa.wordpress.com/2014/10/13/beaglebone-black-enable-all-uart-ports-at-boot/" rel="next">Next <span class="meta-nav">→</span></a></span>
+					</nav><!-- #nav-single -->
+
+					
+<article id="post-644" class="post-644 post type-post status-publish format-standard hentry category-beaglebone-black tag-address tag-bbb tag-beaglebone tag-black tag-copy tag-file tag-ip tag-scp tag-secure tag-transfer tag-username">
+	<header class="entry-header">
+		<h1 class="entry-title">[Beaglebone Black] File Transfer with PC using&nbsp;SCP</h1>
+
+				<div class="entry-meta">
+						<span class="sep">Posted on </span><a href="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/" title="6:01 PM" rel="bookmark"><time class="entry-date" datetime="2014-10-08T18:01:32+00:00">October 8, 2014</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="https://billwaa.wordpress.com/author/billwaa/" title="View all posts by Billwaa" rel="author">Billwaa</a></span></span>		</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>On Windows, we can easily transfer files between the PC and the BBB through SecureShell File Transfer Client. However, in Linux, we will have to use the terminal program Secure Copy or SCP that’s built-in.</p>
+<p>Overall, the scp command for copying to a computer (aka use the to computer’s username and ip) is:</p>
+<div><div id="highlighter_366542" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">scp filename usename@ipaddress:/directory/</code></div></div></td></tr></tbody></table></div></div>
+<p><span id="more-644"></span></p>
+<p>First we need to find the IP Address of the BBB and the PC, use the following command:</p>
+<div><div id="highlighter_403334" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">ifconfig</code></div></div></td></tr></tbody></table></div></div>
+<p>This is the output from the BBB:</p>
+<div><div id="highlighter_314480" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">eth0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Link encap:Ethernet&nbsp; HWaddr 1c:ba:8c:98:ef:4f&nbsp; </code></div><div class="line number2 index1 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">UP BROADCAST MULTICAST&nbsp; MTU:1500&nbsp; Metric:1</code></div><div class="line number3 index2 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">RX packets:0 errors:0 dropped:0 overruns:0 frame:0</code></div><div class="line number4 index3 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</code></div><div class="line number5 index4 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">collisions:0 txqueuelen:1000 </code></div><div class="line number6 index5 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">RX bytes:0 (0.0 B)&nbsp; TX bytes:0 (0.0 B)</code></div><div class="line number7 index6 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">Interrupt:40 </code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="plain plain">lo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Link encap:Local Loopback&nbsp; </code></div><div class="line number10 index9 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">inet addr:127.0.0.1&nbsp; Mask:255.0.0.0</code></div><div class="line number11 index10 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">inet6 addr: ::1/128 Scope:Host</code></div><div class="line number12 index11 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">UP LOOPBACK RUNNING&nbsp; MTU:65536&nbsp; Metric:1</code></div><div class="line number13 index12 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">RX packets:0 errors:0 dropped:0 overruns:0 frame:0</code></div><div class="line number14 index13 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">TX packets:0 errors:0 dropped:0 overruns:0 carrier:0</code></div><div class="line number15 index14 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">collisions:0 txqueuelen:0 </code></div><div class="line number16 index15 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">RX bytes:0 (0.0 B)&nbsp; TX bytes:0 (0.0 B)</code></div><div class="line number17 index16 alt2">&nbsp;</div><div class="line number18 index17 alt1"><code class="plain plain">usb0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Link encap:Ethernet&nbsp; HWaddr c6:ca:a6:85:cf:9e&nbsp; </code></div><div class="line number19 index18 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">inet addr:192.168.7.2&nbsp; Bcast:192.168.7.3&nbsp; Mask:255.255.255.252</code></div><div class="line number20 index19 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">inet6 addr: fe80::c4ca:a6ff:fe85:cf9e/64 Scope:Link</code></div><div class="line number21 index20 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">UP BROADCAST RUNNING MULTICAST&nbsp; MTU:1500&nbsp; Metric:1</code></div><div class="line number22 index21 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">RX packets:197352 errors:0 dropped:0 overruns:0 frame:0</code></div><div class="line number23 index22 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">TX packets:359213 errors:0 dropped:0 overruns:0 carrier:0</code></div><div class="line number24 index23 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">collisions:0 txqueuelen:1000 </code></div><div class="line number25 index24 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">RX bytes:10460267 (9.9 MiB)&nbsp; TX bytes:56807339 (54.1 MiB)</code></div></div></td></tr></tbody></table></div></div>
+<p>And this is the output from the PC:</p>
+<div><div id="highlighter_526289" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">eth0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Link encap:Ethernet&nbsp; HWaddr ec:a8:6b:f1:ef:ea&nbsp; </code></div><div class="line number2 index1 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">inet addr:128.180.112.46&nbsp; Bcast:128.180.115.255&nbsp; Mask:255.255.252.0</code></div><div class="line number3 index2 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">inet6 addr: fe80::eea8:6bff:fef1:efea/64 Scope:Link</code></div><div class="line number4 index3 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">UP BROADCAST RUNNING MULTICAST&nbsp; MTU:1500&nbsp; Metric:1</code></div><div class="line number5 index4 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">RX packets:231823 errors:0 dropped:0 overruns:0 frame:0</code></div><div class="line number6 index5 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">TX packets:40236 errors:0 dropped:0 overruns:0 carrier:0</code></div><div class="line number7 index6 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">collisions:0 txqueuelen:1000 </code></div><div class="line number8 index7 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">RX bytes:112426350 (112.4 MB)&nbsp; TX bytes:8012706 (8.0 MB)</code></div><div class="line number9 index8 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">Interrupt:20 Memory:f7c00000-f7c20000 </code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="plain plain">eth3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Link encap:Ethernet&nbsp; HWaddr 1c:ba:8c:98:ef:51&nbsp; </code></div><div class="line number12 index11 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">inet addr:192.168.7.1&nbsp; Bcast:192.168.7.3&nbsp; Mask:255.255.255.252</code></div><div class="line number13 index12 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">inet6 addr: fe80::1eba:8cff:fe98:ef51/64 Scope:Link</code></div><div class="line number14 index13 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">UP BROADCAST RUNNING MULTICAST&nbsp; MTU:1500&nbsp; Metric:1</code></div><div class="line number15 index14 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">RX packets:359261 errors:0 dropped:0 overruns:0 frame:0</code></div><div class="line number16 index15 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">TX packets:197409 errors:0 dropped:0 overruns:0 carrier:0</code></div><div class="line number17 index16 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">collisions:0 txqueuelen:1000 </code></div><div class="line number18 index17 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">RX bytes:35978849 (35.9 MB)&nbsp; TX bytes:21914639 (21.9 MB)</code></div><div class="line number19 index18 alt2">&nbsp;</div><div class="line number20 index19 alt1"><code class="plain plain">lo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Link encap:Local Loopback&nbsp; </code></div><div class="line number21 index20 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">inet addr:127.0.0.1&nbsp; Mask:255.0.0.0</code></div><div class="line number22 index21 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">inet6 addr: ::1/128 Scope:Host</code></div><div class="line number23 index22 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">UP LOOPBACK RUNNING&nbsp; MTU:65536&nbsp; Metric:1</code></div><div class="line number24 index23 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">RX packets:3269 errors:0 dropped:0 overruns:0 frame:0</code></div><div class="line number25 index24 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">TX packets:3269 errors:0 dropped:0 overruns:0 carrier:0</code></div><div class="line number26 index25 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">collisions:0 txqueuelen:0 </code></div><div class="line number27 index26 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">RX bytes:429869 (429.8 KB)&nbsp; TX bytes:429869 (429.8 KB)</code></div></div></td></tr></tbody></table></div></div>
+<p>We know that the BBB is connected to the computer by a USB, so look under <strong>ubs0</strong>, the IP Address is <strong>192.168.7.2 </strong>. In addition, the BBB’s user is debian (you can see that in the terminal, the header before you type in the command, the username is before the @ symbol. The string after is the computer name), so we got <strong>debian@192.168.7.2</strong> .</p>
+<p>On the PC’s side, look for the address that start the same as the BBB, we got <strong>192.168.7.1</strong>, that’s the PC’s IP Address. The PC’s username is space, so we got <strong>space@192.168.7.1</strong> .</p>
+<p><strong>Example</strong></p>
+<p>I got a file LEDServer.py on the BBB’s home folder that I want to send to my PC’s home folder. I change directory to that file in the BBB and type in the following (using the BBB’s terminal):</p>
+<div><div id="highlighter_924713" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">scp LEDServer.py space@192.168.7.1:/home/space/</code></div></div></td></tr></tbody></table></div></div>
+<p>So now, let say I want to copy from PC to BBB, I just replace the username and IP with the BBB’s info and run the same command on the PC’s side.</p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-press-this"><a rel="nofollow" data-shared="" class="share-press-this sd-button share-icon" href="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/?share=press-this&amp;nb=1" target="_top" title="Click to Press This!"><span>Press This</span></a></li><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-644" class="share-twitter sd-button share-icon" href="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/?share=twitter&amp;nb=1" target="_top" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-644" class="share-facebook sd-button share-icon" href="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/?share=facebook&amp;nb=1" target="_top" title="Share on Facebook"><span>Facebook</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-28425201-644-57722ca13fb95" data-src="//widgets.wp.com/likes/#blog_id=28425201&amp;post_id=644&amp;origin=billwaa.wordpress.com&amp;obj_id=28425201-644-57722ca13fb95" data-name="like-post-frame-28425201-644-57722ca13fb95"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-28425201-644-57722ca13fb95" src="index_1.html" frameborder="0" height="55px" width="100%"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div style="display: block;" id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal"><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="652" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="0" data-origin="644" rel="nofollow" title="[BeagleBone Black] Enable All UART Ports at Boot
+
+Previously we used enable the UART ports by hand, but that's annoying because it required doing it manually every time the BBB boot. In addition, writing a script wouldn't work for some reason. For my quadcopter project, the BBB must enable all UART ports by itself at boot, since I…" href="https://billwaa.wordpress.com/2014/10/13/beaglebone-black-enable-all-uart-ports-at-boot/" class="jp-relatedposts-post-a">[BeagleBone Black] Enable All UART Ports at Boot</a></span><span class="jp-relatedposts-post-context">In "BeagleBone Black"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="624" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="1" data-origin="644" rel="nofollow" title="[Beaglebone Black] Enable On-Board Serial UART
+
+In order to use the built-in UART pins on the Beaglebone Black, we must first activate it. The device name and pins is as follow: Credit -&nbsp;http://beaglebone.cameon.net/home/serial-ports-uart &nbsp;RX &nbsp;TX &nbsp;CTS &nbsp;RTS &nbsp;Device &nbsp;Remark &nbsp;UART0 &nbsp;J1_4 &nbsp;J1_5 &nbsp;/dev/ttyO0 BeagleBone Black only &nbsp;UART1 &nbsp;P9_26 &nbsp;P9_24 &nbsp;P9_20 &nbsp;P9_19 &nbsp;/dev/ttyO1 &nbsp;UART2 &nbsp;P9_22 &nbsp;P9_21 &nbsp;P8_37…" href="https://billwaa.wordpress.com/2014/10/02/beaglebone-black-enable-on-board-serial-uart/" class="jp-relatedposts-post-a">[Beaglebone Black] Enable On-Board Serial UART</a></span><span class="jp-relatedposts-post-context">In "BeagleBone Black"</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="581" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="2" data-origin="644" rel="nofollow" title="[BeagleBone Black] Boot Debian OS from Image
+
+The BeagleBone Black (BBB) is an awesome little micro-computer. When compared to the Arduino, it is more capable in that it run Linux and support many of the awesome software out there... that also means it's more difficult to set up. I found myself always going back to the sources…" href="https://billwaa.wordpress.com/2014/08/03/beaglebone-black-debian-setup/" class="jp-relatedposts-post-a">[BeagleBone Black] Boot Debian OS from Image</a></span><span class="jp-relatedposts-post-context">In "BeagleBone Black"</span></p></div></div></div>			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		This entry was posted in <a href="https://billwaa.wordpress.com/category/engineering/beaglebone-black/" rel="category tag">BeagleBone Black</a> and tagged <a href="https://billwaa.wordpress.com/tag/address/" rel="tag">Address</a>, <a href="https://billwaa.wordpress.com/tag/bbb/" rel="tag">BBB</a>, <a href="https://billwaa.wordpress.com/tag/beaglebone/" rel="tag">BeagleBone</a>, <a href="https://billwaa.wordpress.com/tag/black/" rel="tag">Black</a>, <a href="https://billwaa.wordpress.com/tag/copy/" rel="tag">Copy</a>, <a href="https://billwaa.wordpress.com/tag/file/" rel="tag">file</a>, <a href="https://billwaa.wordpress.com/tag/ip/" rel="tag">IP</a>, <a href="https://billwaa.wordpress.com/tag/scp/" rel="tag">SCP</a>, <a href="https://billwaa.wordpress.com/tag/secure/" rel="tag">Secure</a>, <a href="https://billwaa.wordpress.com/tag/transfer/" rel="tag">Transfer</a>, <a href="https://billwaa.wordpress.com/tag/username/" rel="tag">username</a> by <a href="https://billwaa.wordpress.com/author/billwaa/">Billwaa</a>. Bookmark the <a href="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/" title="Permalink to [Beaglebone Black] File Transfer with PC using&nbsp;SCP" rel="bookmark">permalink</a>.		
+			</footer><!-- .entry-meta -->
+</article><!-- #post-644 -->
+
+						<div id="comments">
+	
+	
+	
+					<div id="respond" class="comment-respond js">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/#respond" style="display: none;">Cancel reply</a></small></h3>				<form action="https://billwaa.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<input id="highlander_comment_nonce" name="highlander_comment_nonce" value="b708f1dcc4" type="hidden"><input name="_wp_http_referer" value="/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/" type="hidden">
+<input name="hc_post_as" id="hc_post_as" value="wordpress" type="hidden">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea class="autosizejs " tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px none; padding: 0px; box-sizing: content-box; word-wrap: break-word; height: 0px ! important; min-height: 0px ! important; overflow: hidden; transition: none 0s ease 0s ; font-family: Arial,Helvetica,Tahoma,Verdana,sans-serif; font-size: 14px; font-weight: 300; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: none; word-spacing: 0px; text-indent: 0px; line-height: 22.75px; width: 614px;"></textarea><textarea style="height: 43px; overflow: hidden; word-wrap: break-word; resize: none;" placeholder="Enter your comment here..." id="comment" name="comment" title="Enter your comment here..."></textarea></div>
+</div>
+
+<div style="display: none;" id="comment-form-identity">
+
+	<div style="display: none;" id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li style="display: none;">
+				<a href="#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li class="selected">
+				<a href="#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+			<li>
+			<iframe id="googleplus-sign-in" name="googleplus-sign-in" src="index_2.html" scrolling="no" allowtransparency="true" seamless="seamless" frameborder="0" height="24" width="24"></iframe>
+			</li>
+		</ul>
+	</div>
+
+	<div style="" id="comment-form-guest" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_top">				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Gravatar" class="no-grav" width="25">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" value="" type="email"></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" value="" type="text"></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" value="" type="text"></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="846d5de9c5b8b5d9e8696f7da36bd526" alt="Gravatar" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="https://2.gravatar.com/avatar/846d5de9c5b8b5d9e8696f7da36bd526?s=25&amp;d=https%3A%2F%2Fs2.wp.com%2Fwp-content%2Fmu-plugins%2Fhighlander-comments%2Fimages%2Fwplogo.png&amp;r=G" type="hidden">
+				<input name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="106105690" type="hidden">
+				<input name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="47bf36733144cc93184b9023b978761b9ec06731" type="hidden">
+				<p class="comment-form-posting-as pa-wordpress"><strong>kinyarwandablog:</strong> You are commenting using your WordPress.com account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Twitter picture" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" type="hidden">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Facebook photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" type="hidden">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Google+ photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" type="hidden">
+				<p class="comment-form-posting-as pa-googleplus"><strong></strong> You are commenting using your Google+ account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+
+
+<div style="display: none;" id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p><p class="post-subscription-form"><input name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;" type="checkbox"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog" style="display: inline;">Notify me of new posts via email.</label></p></div>
+
+<p style="display: none;" class="form-submit"><input name="submit" id="comment-submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="644" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="aa5fc65c45" type="hidden"></p>
+<input name="genseq" value="1467100321" type="hidden">
+<p style="display: none;"></p>				<input id="ak_js" name="ak_js" value="1467102062181" type="hidden"></form>
+					</div><!-- #respond -->
+		<div style="clear: both;"></div>
+</div><!-- #comments -->
+
+				
+			</div><!-- #content -->
+		</div><!-- #primary -->
+
+
+	</div><!-- #main -->
+
+	<footer id="colophon" role="contentinfo">
+
+			
+
+			<div id="site-generator">
+				<a href="https://wordpress.com/themes/twentyeleven/" title="Learn more about this theme">The Twenty Eleven Theme</a>. <span class="sep"> | </span>				<a href="https://wordpress.com/?ref=footer_website">Create a free website or blog at WordPress.com.</a>
+			</div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<!-- wpcom_wp_footer -->
+	
+
+
+
+
+	
+
+		<div style="display: none;">
+	</div>
+
+	<div id="ab-reblog-box">
+		<form action="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/" name="reblog">
+			<textarea id="reblog-content" name="reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="blogid" id="lblogid">Post to</label>
+
+			<select name="to_blog_id" id="reblog-to-blog-id">
+														<option value="112385674">kinyarwandablog</option>
+							</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/" class="cancel">Cancel</a></span>
+				<input name="reblog-submit" class="button-primary" id="reblog-submit" value="Reblog Post" type="submit">
+				<input id="original-blog-id" value="28425201" type="hidden">
+				<input id="original-post-id" value="644" type="hidden">
+			</div>
+
+			<input id="_wpnonce" name="_wpnonce" value="faf4a1f9e2" type="hidden"><input name="_wp_http_referer" value="/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/" type="hidden">		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+	
+<div id="report-form-window" style="display: none;"></div>
+
+
+	
+		
+				
+		
+
+
+
+
+
+
+
+
+<div class="actnbr-pub-twentyeleven actnbr-has-follow actnbr-hidden" id="actionbar"><ul><li class="actnbr-btn actnbr-hidden"> 			    	<a class="actnbr-action actnbr-actn-follow" href="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a> 			    	<div class="actnbr-popover tip tip-top-left actnbr-notice"> 			    		<div class="tip-arrow"></div> 			    		<div class="tip-inner"> 			    			New posts from this site will now appear in your <a href="https://wordpress.com/">Reader</a> 			    		</div> 			    	</div> 			    </li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename actnbr-hidden"><a href="http://billwaa.wordpress.com/"><img alt="" src="void.gif" class="avatar avatar-36" height="36" width="36"> Billwaa's Blog</a></li> 				   	<li class="actnbr-folded-customize actnbr-hidden"><a href="https://billwaa.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fbillwaa.wordpress.com%2F2014%2F10%2F08%2Fbeaglebone-black-file-transfer-with-pc-using-scp%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li> 				    <li class="actnbr-folded-follow actnbr-hidden"><a class="actnbr-action actnbr-actn-follow" href="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a></li> 				    <li class="actnbr-theme actnbr-hidden"><a href="https://wordpress.com/themes/twentyeleven/">Get theme: Twenty Eleven</a></li> 				    <li class="actnbr-shortlink actnbr-hidden"><a href="http://wp.me/p1VgGZ-ao">Copy shortlink</a></li> 				    <li class="flb-report actnbr-hidden"><a href="http://en.wordpress.com/abuse/">Report this content</a></li> 				    <li class="actnbr-reader actnbr-hidden"><a href="https://wordpress.com/read/blogs/28425201">View Site in the Reader</a></li> 				    <li class="actnbr-subs actnbr-hidden"><a href="https://wordpress.com/following/edit">Manage Sites I Follow</a></li> 				    <li class="actnbr-fold actnbr-hidden"><a href="https://billwaa.wordpress.com/2014/10/08/beaglebone-black-file-transfer-with-pc-using-scp/">Collapse this bar</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+		<iframe src="index_4.html" scrolling="no" id="likes-master" name="likes-master" style="display: none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		
+		
+
+
+		<div id="wpadminbar" class="ltr">
+							<a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1">Skip to toolbar</a>
+						<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Toolbar" tabindex="0">
+						<ul id="wp-admin-bar-root-default" class="ab-top-menu">
+			
+		<li id="wp-admin-bar-blog" class="menupop my-sites"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/stats/kinyarwandablog.wordpress.com">My Site</a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-blog-default" class="ab-submenu">
+			
+		<li id="wp-admin-bar-blog-info" class="current-site">		<div class="ab-item ab-empty-item"><div class="ab-site-icon"></div><span class="ab-site-title">kinyarwandablog</span><span class="ab-site-description">kinyarwandablog.wordpress.com</span></div>		</li>
+		<li id="wp-admin-bar-new-site"><a class="ab-item" href="https://wordpress.com/start?ref=admin-bar-logged-in">+ Add New WordPress</a>		</li>
+		<li id="wp-admin-bar-blog-stats" class="mb-icon"><a class="ab-item" href="https://wordpress.com/stats/kinyarwandablog.wordpress.com">Stats <img style="width: 95px; margin: 0px; float: right;" src="admin-bar-hours-scale-2x.php" alt="Stats" title="Showing site views per hour for the last 48 hours. Click for full Site Stats."></a>		</li>
+		<li id="wp-admin-bar-plan" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/plans/kinyarwandablog.wordpress.com" class="ab-item primary mb-icon" id="wp-admin-bar-plan">Plan</a><a href="https://wordpress.com/plans/kinyarwandablog.wordpress.com" class="secondary" id="wp-admin-bar-plan-badge">Free</a></div>		</li>		</ul>
+			<ul id="wp-admin-bar-publish" class="ab-submenu">
+			
+		<li id="wp-admin-bar-publish-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Publish</div>		</li>
+		<li id="wp-admin-bar-new-post" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/posts/kinyarwandablog.wordpress.com" class="ab-item primary mb-icon" id="wp-admin-bar-edit-post">Blog Posts</a><a href="https://wordpress.com/post/kinyarwandablog.wordpress.com" class="secondary" id="wp-admin-bar-new-post">Add</a></div>		</li>
+		<li id="wp-admin-bar-new-page" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/pages/kinyarwandablog.wordpress.com" class="ab-item primary mb-icon" id="wp-admin-bar-edit-page">Pages</a><a href="https://wordpress.com/page/kinyarwandablog.wordpress.com" class="secondary" id="wp-admin-bar-new-page">Add</a></div>		</li>		</ul>
+			<ul id="wp-admin-bar-look-and-feel" class="ab-submenu">
+			
+		<li id="wp-admin-bar-look-and-feel-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Personalize</div>		</li>
+		<li id="wp-admin-bar-themes" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/design/kinyarwandablog.wordpress.com" class="ab-item primary mb-icon" id="wp-admin-bar-themes">Themes</a><a href="https://kinyarwandablog.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fbillwaa.wordpress.com%2F2014%2F10%2F08%2Fbeaglebone-black-file-transfer-with-pc-using-scp%2F" class="secondary" id="wp-admin-bar-cmz">Customize</a></div>		</li>
+		<li id="wp-admin-bar-menus" class="mb-icon"><a class="ab-item" href="https://wordpress.com/menus/kinyarwandablog.wordpress.com">Menus</a>		</li>		</ul>
+			<ul id="wp-admin-bar-configuration" class="ab-submenu">
+			
+		<li id="wp-admin-bar-configuration-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Configure</div>		</li>
+		<li id="wp-admin-bar-sharing" class="mb-icon"><a class="ab-item" href="https://wordpress.com/sharing/kinyarwandablog.wordpress.com">Sharing</a>		</li>
+		<li id="wp-admin-bar-users-toolbar" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/people/team/kinyarwandablog.wordpress.com" class="ab-item primary mb-icon" id="wp-admin-bar-people">People</a><a href="https://kinyarwandablog.wordpress.com/wp-admin/users.php?page=wpcom-invite-users" class="secondary" id="wp-admin-bar-people-add">Add</a></div>		</li>
+		<li id="wp-admin-bar-domains" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/domains/kinyarwandablog.wordpress.com" class="ab-item primary mb-icon" id="wp-admin-bar-domains">Domains</a><a href="https://wordpress.com/domains/add/kinyarwandablog.wordpress.com" class="secondary" id="wp-admin-bar-domains-add">Add</a></div>		</li>
+		<li id="wp-admin-bar-blog-settings" class="mb-icon"><a class="ab-item" href="https://wordpress.com/settings/general/kinyarwandablog.wordpress.com">Settings</a>		</li>		</ul>
+	</div>		</li>
+		<li id="wp-admin-bar-jumptotop-button-menu"><a class="ab-item" href="#"><div style="top: 0px;" id="jumptotop"><span class="noticon noticon-top"></span></div></a>		</li>
+		<li id="wp-admin-bar-newdash" class="menupop ab-hover"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/">Reader</a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-newdash-default" class="ab-submenu">
+			
+		<li id="wp-admin-bar-streams-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Streams</div>		</li>
+		<li id="wp-admin-bar-following" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/" class="ab-item primary mb-icon" id="wp-admin-bar-followed-sites">Followed Sites</a><a href="https://wordpress.com/following/edit" class="secondary">Manage</a></div>		</li>
+		<li id="wp-admin-bar-discover-discover" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/discover">Discover</a>		</li>
+		<li id="wp-admin-bar-discover-recommended-blogs" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/recommendations">Recommendations</a>		</li>
+		<li id="wp-admin-bar-my-activity-my-likes" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/activities/likes">My Likes</a>		</li>		</ul>
+	</div>		</li>
+		<li style="" id="wp-admin-bar-admin-bar-likes-widget">		<div class="ab-item ab-empty-item"></div><iframe class="admin-bar-likes-widget jetpack-likes-widget" scrolling="no" name="admin-bar-likes-widget" src="index_5.html" frameborder="0"></iframe>		</li>		</ul>
+			<ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+			
+		<li id="wp-admin-bar-notes" class="menupop">		<div class="ab-item ab-empty-item"><span id="wpnt-notes-unread-count" class="wpnt-loading wpn-unread"></span><span class="noticon noticon-bell"></span><span class="ab-text">Notifications</span></div><div class="wide" id="wpnt-notes-panel2" style="display: none;" dir="ltr" lang="en"><iframe class="wide" src="index_6.html" style="" id="wpnt-notes-iframe2" allowtransparency="true" scrolling="no" frameborder="0"></iframe></div>		</li>
+		<li id="wp-admin-bar-my-account" class="menupop with-avatar no-grav"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/me/"><img alt="" src="846d5de9c5b8b5d9e8696f7da36bd526_001.dat" class="avatar avatar-32" height="32" width="32"><span class="ab-text">Me</span></a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-user-actions" class="ab-submenu">
+			
+		<li id="wp-admin-bar-user-info" class="user-info user-info-item">		<div class="ab-item ab-empty-item" tabindex="-1"><img alt="" src="846d5de9c5b8b5d9e8696f7da36bd526_002.dat" class="avatar avatar-128" height="128" width="128"><span class="display-name">kinyarwandablog</span><a class="username" href="http://gravatar.com/kinyarwandablog">@kinyarwandablog</a><form action="https://billwaa.wordpress.com/wp-login.php?action=logout&amp;redirect_to=https%3A%2F%2Fwordpress.com%2F%3Fapppromo&amp;_wpnonce=3e695dbb73" method="post"><button class="ab-sign-out" type="submit">Sign Out</button></form></div>		</li>
+		<li id="wp-admin-bar-profile-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Profile</div>		</li>
+		<li id="wp-admin-bar-my-profile" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me">My Profile</a>		</li>
+		<li id="wp-admin-bar-account-settings" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/account">Account Settings</a>		</li>
+		<li id="wp-admin-bar-billing" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/billing">Billing History</a>		</li>
+		<li id="wp-admin-bar-security" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/security">Security</a>		</li>
+		<li id="wp-admin-bar-notifications" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/notifications">Notifications</a>		</li>
+		<li id="wp-admin-bar-special-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Special</div>		</li>
+		<li id="wp-admin-bar-get-apps" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/get-apps">Get Apps</a>		</li>
+		<li id="wp-admin-bar-next-steps" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/next">Next Steps</a>		</li>
+		<li id="wp-admin-bar-help" class="mb-icon"><a class="ab-item" href="https://wordpress.com/help">Help</a>		</li>		</ul>
+	</div>		</li>
+		<li id="wp-admin-bar-ab-new-post"><a class="ab-item" href="https://wordpress.com/post/kinyarwandablog.wordpress.com"></a>		</li>		</ul>
+				</div>
+							<a class="screen-reader-shortcut" href="https://billwaa.wordpress.com/wp-login.php?action=logout&amp;_wpnonce=3e695dbb73">Log Out</a>
+					</div>
+
+	
+
+	<div class="wpcom-bubble action-bubble">
+		<div class="bubble-txt"></div>
+	</div>
+	
+		
+	
+
+<img id="wpstats" alt=":)" src="g.gif"></body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>How-To: Make custom BeagleBone Black OS images with the OMAP Image Builder</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    
+    
+    
+
+    <link rel="canonical" href="http://blog.barsandspaces.com/2015/06/30/how-to-make-custom-beaglebone-black-os-images-with-the-omap-image-builder/">
+    <meta name="referrer" content="origin">
+    
+    <meta property="og:site_name" content="bars_and_spaces">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How-To: Make custom BeagleBone Black OS images with the OMAP Image Builder">
+    <meta property="og:description" content="For most use cases, the official OS images for the BeagleBone Black (BBB) will work just fine.  However, sometimes you want to create your own custom image.  And, if you find yourself doing that more than sometimes - like myself - you will want a repeatable process for generating the">
+    <meta property="og:url" content="http://blog.barsandspaces.com/2015/06/30/how-to-make-custom-beaglebone-black-os-images-with-the-omap-image-builder/">
+    <meta property="article:published_time" content="2015-06-30T16:59:25.000Z">
+    <meta property="article:modified_time" content="2015-06-30T17:00:30.000Z">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="How-To">
+    <meta property="article:tag" content="BeagleBone Black">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="How-To: Make custom BeagleBone Black OS images with the OMAP Image Builder">
+    <meta name="twitter:description" content="For most use cases, the official OS images for the BeagleBone Black (BBB) will work just fine.  However, sometimes you want to create your own custom image.  And, if you find yourself doing that more than sometimes - like myself - you will want a repeatable process for generating the">
+    <meta name="twitter:url" content="http://blog.barsandspaces.com/2015/06/30/how-to-make-custom-beaglebone-black-os-images-with-the-omap-image-builder/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Scott McGhee">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Linux, How-To, BeagleBone Black">
+    
+    
+
+    <meta name="generator" content="Ghost 0.8">
+    <link rel="alternate" type="application/rss+xml" title="bars_and_spaces" href="http://blog.barsandspaces.com/rss/">
+    
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="post-template tag-linux tag-how-to tag-beaglebone-black nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+            <li class="nav-home" role="presentation"><a href="http://blog.barsandspaces.com/">Home</a></li>
+            <li class="nav-howto" role="presentation"><a href="http://blog.barsandspaces.com/tag/how-to/">How-To</a></li>
+            <li class="nav-about-us" role="presentation"><a href="http://blog.barsandspaces.com/tag/about-us/">About Us</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="http://blog.barsandspaces.com/rss/">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="blog-logo" href="http://blog.barsandspaces.com/"><img src="logostacked.png" alt="Blog Logo"></a>
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-linux tag-how-to tag-beaglebone-black">
+
+        <header class="post-header">
+            <h1 class="post-title">How-To: Make custom BeagleBone Black OS images with the OMAP Image Builder</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-06-30">30 June 2015</time>  on <a href="http://blog.barsandspaces.com/tag/linux/">Linux</a>, <a href="http://blog.barsandspaces.com/tag/how-to/">How-To</a>, <a href="http://blog.barsandspaces.com/tag/beaglebone-black/">BeagleBone Black</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>For most use cases, the <a href="http://beagleboard.org/latest-images">official OS images</a> for the BeagleBone Black (BBB) will work just fine.  However, sometimes you want to create your own custom image.  And, if you find yourself doing that more than sometimes - like myself - you will want a repeatable process for generating the custom images.  For that I recommend using Robert C. Nelson's OMAP Image Builder, available on <a href="https://github.com/RobertCNelson/omap-image-builder">GitHub</a>. Using the config files already in the project as a reference, you can easily generate your own custom BBB OS image. In this post I'll provide you with an overview of the OMAP Image Builder project so you know what's what, and walk you through making your own custom OS image for the BBB.</p>
+
+<h2 id="requirementsandrecommendations">Requirements and recommendations</h2>
+
+<p><strong>Hardware</strong></p>
+
+<p>It is highly recommended you use actual ARM7 hardware for building images. If you don't have access to something beefier than a BBB, and you don't want to buy a another (more expensive) board, check out <a href="https://www.scaleway.com/">Scaleway</a>. They provide bare-metal ARM computers via a service similar to <a href="https://www.linode.com/">Linode</a> or <a href="https://www.digitalocean.com/">DigitalOcean</a>. If you want a non-cloud option, the <a href="http://wandboard.org/">Wandboard</a> Quad with an attached SATA drive is probably your best value.</p>
+
+<p><strong>Software</strong></p>
+
+<p>I've used Ubuntu or Debian as the host OS when creating all of my images. You can probably get a Redhat-based distro to work, but I can't vouch for it. I doubt you can use OSX, but I'd love to be proven wrong.</p>
+
+<p><strong>Skills</strong></p>
+
+<p>This post is targeted towards those who are generally familiar with Linux, and are comfortable with Bash scripting. You'll probably be asked to install a number of missing packages and dependencies, so you should be familiar with how to install software through a CLI package manager. Also if you aren't familiar with chroot, <a href="http://lmgtfy.com/?q=chroot">Google it</a>, as it is an essential concept in the image-creation process.  </p>
+
+<h2 id="omapimagebuilderoverview">OMAP Image Builder overview</h2>
+
+<p>Building an image with the OMAP Image Builder is essentially a two-step process.</p>
+
+<ol>
+<li><p>Generate an OS filesystem in a chroot jail with custom attributes defined in a config file:</p>
+
+<p><code>./RootStock-NG.sh -c your_config_file</code></p></li>
+<li><p>Turn that filesystem into an image that can be copied to a microSD card:</p>
+
+<p><code>./setup_sdcard.sh [a] [bunch] [of] [options]</code></p></li>
+</ol>
+
+<p>You can see some examples in the project <a href="https://github.com/RobertCNelson/omap-image-builder/blob/master/readme.md">README</a>.</p>
+
+<h3 id="structure">Structure</h3>
+
+<p>If you haven't done so yet, open the <a href="https://github.com/RobertCNelson/omap-image-builder">OMAP Image Builder GitHub project</a> in a new tab. We'll be referring back to it. Here is the project structure:</p>
+
+<pre><code>omap-image-builder/  
+├── configs
+├── docs
+├── LICENSE
+├── machinekit
+├── publish
+├── readme.md
+├── RootStock-NG.sh
+├── scripts
+│&nbsp;&nbsp; ├── chroot.sh
+│&nbsp;&nbsp; ├── debootstrap.sh
+│&nbsp;&nbsp; └── install_dependencies.sh
+├── target
+│&nbsp;&nbsp; ├── boot
+│&nbsp;&nbsp; ├── chroot
+│&nbsp;&nbsp; ├── init_scripts
+│&nbsp;&nbsp; ├── keyring
+│&nbsp;&nbsp; └── other
+└── tools
+    ├── hwpack
+    └── setup_sdcard.sh
+</code></pre>
+
+<p>I've omitted all the files except the few we're interested in.</p>
+
+<p>So what's important?</p>
+
+<ol>
+<li><code>RootStock-NG.sh</code> - This is main script for building root filesystem. Input is a config.  </li>
+<li><code>configs/</code> - This folder contains the config files that can be used with RootStock-NG.sh  </li>
+<li><code>target/</code> - This folder contains scripts, referenced in the config files, that can be optionally accessed while building the filesystem or by <code>setup_sdcard.sh</code>.  </li>
+<li><code>target/chroot/</code> - This folder contains scripts that can be executed from within the generated filesystem without knowledge of the host.  </li>
+<li><code>target/boot</code> - Various boot configs.  </li>
+<li><code>setup_sdcard.sh</code> - Script that generates the image file from what <code>RootStock-NG.sh</code> makes.</li>
+</ol>
+
+<h3 id="configsandchrootscripts">Configs and chroot scripts</h3>
+
+<p><a href="https://github.com/RobertCNelson/omap-image-builder/tree/master/configs">These configs</a> are the input for <code>RootStock-NG.sh</code>.  They may also refer to other scripts which will be executed at some point during the build process. In the <code>configs</code> folder you will find a template config file, but without guiding documentation, making it difficult to tell what each variable's purpose is, or what format its value should take.  Rather than using that template to make a new config, it is often easier to take a preexisting config file, copy it, and edit it.</p>
+
+<p>Let's take a closer look at <a href="https://github.com/RobertCNelson/omap-image-builder/blob/master/configs/bb.org-debian-wheezy-console.conf">bb.org-debian-wheezy-console.conf</a>.  There are a lot of variables, though there are only a few that you will probably want to change.</p>
+
+<ol>
+<li><code>deb_include</code> - These are the packages that are installed by debootstrap, an application that installs a complete Debian base system in a subdirectory.  </li>
+<li><code>deb_exclude</code> - These are the packages that would be installed...but you don't want.  </li>
+<li><code>deb_additional_pkg</code> -  Packages listed here are not installed natively by debootstrap, and will likely fail if done in QEMU on non-ARM7 hardware. Remember that warning about building on ARM7? This partly why. It's best to try to install packages via <code>deb_include</code>.  </li>
+<li><code>rfs_username</code>, <code>rfs_fullname</code>, and <code>rfs_password</code> - I think 'rfs' stands for "root filesystem".  This is where you define the default username and password.  </li>
+<li><code>chroot_script</code> - The script in <code>target/chroot/</code> that you want to execute from inside the chroot while building an image.  This where you can install python packages, clone git repos, setup configs, etc. all from inside the chroot.  Open up the chroot script, <a href="https://github.com/RobertCNelson/omap-image-builder/blob/master/target/chroot/beagleboard.org.sh">beagleboard.org-console.sh</a> that is <code>bb.org-debian-wheezy-console.conf</code>. This a bit confusing, but this is what you use to install system packages. I recommend looking at the other scripts in this folder to see what they do.  </li>
+<li><code>chroot_after_hook</code> - This isn't currently used by any of the configs in the <code>configs/</code> folder, but it's essentially like <code>chroot_script</code>; however, the script resides in the project root, and is executed outside of the chroot. This is useful if you have something on the host computer that you need to add to the chroot. Look at the chroot.sh and <a href="https://github.com/RobertCNelson/omap-image-builder/blob/master/scripts/chroot.sh#L1056">see where chroot<em>after</em>hook</a> is called.</li>
+</ol>
+
+<h3 id="setup_sdcardsh">setup_sdcard.sh</h3>
+
+<p><a href="https://github.com/RobertCNelson/omap-image-builder/blob/master/tools/setup_sdcard.sh">setup<em>sdcard.sh</em></a><em> is not particularly well documented, but luckily there are a couple good examples of how to use it in <a href="https://github.com/RobertCNelson/omap-image-builder/blob/master/beagleboard.org_image.sh">beaglboard.org</a></em><a href="https://github.com/RobertCNelson/omap-image-builder/blob/master/beagleboard.org_image.sh">image.sh</a>. I personally haven't strayed from these, but if you read the script, you will see that there are a lot more options available. I haven't verified this with the author, but I assume this is the script that is used to generate the official BeagleBone Black images.</p>
+
+<p>In the script you can see <a href="https://github.com/RobertCNelson/omap-image-builder/blob/master/beagleboard.org_image.sh#L30">this function</a>:</p>
+
+<pre><code>generic_img () {  
+        cd \${base_rootfs}/
+        sudo ./setup_sdcard.sh \${options}
+        mv *.img ../
+        cd ..
+}
+</code></pre>
+
+<p>and a little further down you can see it being used to make the <code>bb.org-debian-wheezy-console</code> image:</p>
+
+<pre><code>options="--img-2gb BBB-eMMC-flasher-\${base_rootfs} --dtb beaglebone --boot_label BEAGLEBONE --enable-systemd --bbb-flasher --bbb-old-bootloader-in-emmc --hostname beaglebone"  
+generic_img
+</code></pre>
+
+<p>Let's look at some of the options used.</p>
+
+<ol>
+<li><code>img-2gb</code> - <a href="https://github.com/RobertCNelson/omap-image-builder/blob/master/tools/setup_sdcard.sh#L1455">This</a> is basically defining how big the image will be. Important for BeagleBone Black owners as the latest generation (rev C) has a 4GB eMMC, while past generations had a 2GB eMMC.  </li>
+<li><code>dtb</code> - I think this is where you say which hardware profile to use from tools/hwpack.  </li>
+<li><code>bbb-flasher</code> - make it an eMMC flasher (flash the eMMC with the image), as opposed to booting off the SD card.</li>
+</ol>
+
+<h2 id="alltogethernow">All together now</h2>
+
+<p>Ok let's make a custom image!  This is what we're going to do:</p>
+
+<ol>
+<li>Clone the repo  </li>
+<li>Make a custom config file  </li>
+<li>Make a custom chroot script  </li>
+<li>Generate our root filesystem  </li>
+<li>Make an eMMC flasher image out of the root filesystem  </li>
+<li>Compress the image so you can easily send it to all your friends</li>
+</ol>
+
+<h3 id="step1clonethatrepo">Step 1: Clone that repo</h3>
+
+<p>Git clone the OMAP Image Builder project. If you're unfamiliar with git, Atlassian has this <a href="https://www.atlassian.com/git/">great guide</a>.</p>
+
+<pre><code>git clone https://github.com/RobertCNelson/omap-image-builder.git &amp;&amp; cd omap-image-builder
+</code></pre>
+
+<h3 id="step2createacustomconfig">Step 2: Create a custom config</h3>
+
+<p>Copy a config you like to a different name:</p>
+
+<pre><code>cp configs/bb.org-debian-wheezy-console.conf configs/custom-image.conf  
+</code></pre>
+
+<p>In <code>configs/custom-image.conf</code> add or remove some packages from <code>deb_include</code>.  I love <code>htop</code>, <code>nmap</code>, and <code>moon-buggy</code>, so I'm adding those. Change any of the other variables that you feel comfortable changing. Feel free to look at other configs for inspiration.</p>
+
+<pre><code>...
+deb_include="ca-certificates dosfstools dbus initramfs-tools linux-base \  
+openssh-server patch rsync sudo systemd wget htop nmap moon-buggy"  
+...
+</code></pre>
+
+<h3 id="step3createacustomchrootscript">Step 3: Create a custom chroot script</h3>
+
+<p>Copy a chroot script you like to a different name:</p>
+
+<pre><code>cp target/chroot/beagleboard.org-console.sh target/chroot/custom-image.sh  
+</code></pre>
+
+<p>Open the config file you just made, and make sure to change <code>chroot_script</code> to point at your new script:</p>
+
+<pre><code>chroot_script="custom-image.sh"  
+</code></pre>
+
+<p>Ok, back to <code>custom-image.sh</code>.  Let's install some more python packages. In your new config, find the function <code>install_pip_pkg</code>. <a href="https://github.com/RobertCNelson/omap-image-builder/blob/master/target/chroot/beagleboard.org-console.sh#L345">Here</a> it is in the original script. I like <code>ipython</code> and <code>ipdb</code>, so i'm going add those here:</p>
+
+<pre><code>pip install Adafruit_BBIO ipython ipdb  
+</code></pre>
+
+<p>At the bottom of the script, uncomment <code>#install_pip_pkgs</code>.</p>
+
+<h3 id="step4generatetherootfilesystem">Step 4: Generate the root filesystem</h3>
+
+<pre><code>./RootStock-NG.sh -c custom-image
+</code></pre>
+
+<p>Get a coffee... this will take a while.</p>
+
+<h3 id="step5generateanimgfile">Step 5: Generate an .img file</h3>
+
+<p>Finished?  No errors?  Cool, let's make an image.  The last step made a <code>deploy/</code> directory. The root filesystem is in there.</p>
+
+<pre><code>cd deploy  
+</code></pre>
+
+<p>In there you will see a folder with the name of the filesystem you created. If you used the <code>bb.org-debian-wheezy-console.conf</code> as your reference, it's probably something like <code>debian-7.8-console-armhf</code>. <code>cd</code> into that directory.</p>
+
+<p>In this directory you should see setup_sdcard.sh. Use that to make a eMMC flasher image.</p>
+
+<pre><code>sudo ./setup_sdcard --img-2gb BBB-eMMC-flasher-debian-7.8-console-armhf --dtb beaglebone --boot_label BEAGLEBONE --enable-systemd --bbb-flasher --bbb-old-bootloader-in-emmc --hostname beaglebone"  
+</code></pre>
+
+<p>This should generate an image file named <code>BBB-eMMC-flasher-debian-7.8-console-armhf-2gb.img</code>.</p>
+
+<h3 id="step6compressthatimagefile">Step 6: Compress that image file</h3>
+
+<p>If you used the <code>--img-2gb</code> option, your .img file should be just shy of 2 GB. We should be able to compress that down to under 500 MB. To do so, do this:</p>
+
+<pre><code>xz -z -8 -v BBB-eMMC-flasher-debian-7.8-console-armhf-2gb.img  
+</code></pre>
+
+<p>This takes a few minutes, but afterwards you'll have a much smaller file to distribute.</p>
+
+<h2 id="end">End</h2>
+
+<p>It is way easier to just install an OS using the provided images, and configure them after deploying.  There is no shame in that.  If you don't need a custom image, don't use one!</p>
+
+<p>But, for those scenarios that don't allow for using the stock images, I'm thankful that Robert Nelson has provided the OMAP Image Builder and made it simple to add new configs.  Also see this <a href="http://blog.barsandspaces.com/2015/06/14/how-to-modify-the-standard-ts7800-disk-image/">post</a> about modifying an image with the loop device.  Good luck hacking!</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="http://blog.barsandspaces.com/author/scottmcghee/" style="background-image: url('portrait_small.png');"><span class="hidden">Scott McGhee's Picture</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="http://blog.barsandspaces.com/author/scottmcghee/">Scott McGhee</a></h4>
+
+                    <p>Father, husband, technologist, entrepreneur.  Working to get to the point where work is no longer required, and family and gardens take up the best hours of the day.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Mill Creek, WA</span>
+                    <span class="author-link icon-link"><a href="http://barsandspaces.com/">http://barsandspaces.com</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=How-To%3A%20Make%20custom%20BeagleBone%20Black%20OS%20images%20with%20the%20OMAP%20Image%20Builder&amp;url=http://blog.barsandspaces.com/2015/06/30/how-to-make-custom-beaglebone-black-os-images-with-the-omap-image-builder/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.barsandspaces.com/2015/06/30/how-to-make-custom-beaglebone-black-os-images-with-the-omap-image-builder/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.barsandspaces.com/2015/06/30/how-to-make-custom-beaglebone-black-os-images-with-the-omap-image-builder/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story prev no-cover" href="http://blog.barsandspaces.com/2015/06/18/chain-your-certs/">
+        <section class="post">
+            <h2>How-to: Chain your certs</h2>
+            <p>The problem: You're getting all kinds of SSL errors on network services you're trying to run.  Maybe 500-level HTTP…</p>
+        </section>
+    </a>
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://blog.barsandspaces.com/">bars_and_spaces</a> © 2016</section>
+            <section class="poweredby">Proudly published with <a href="https://ghost.org/">Ghost</a></section>
+        </footer>
+
+    </div>
+
+    <!-- You can safely delete this line if your theme does not require jQuery -->
+
+
+    
+    
+    
+    
+
+<img src="view.gif" alt="" style="display: none;" hidden="">
+
+
+</body>
+</html>

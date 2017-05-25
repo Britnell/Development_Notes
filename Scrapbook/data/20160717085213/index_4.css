@@ -1,0 +1,14 @@
+.follow-teaser { position: absolute; top: 0px; left: 0px; margin: 5px; padding: 0px; border-radius: 3px; white-space: nowrap; min-width: 300px; min-height: 100px; overflow: hidden; opacity: 1; font-weight: 600; font-size: 15px; line-height: 20px; font-family: Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif; background-color: rgb(255, 255, 255); color: rgba(0, 0, 0, 0.73); box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3); transition: left 0.3s ease 0s, opacity 0.3s ease-in-out 0.2s; }
+.follow-teaser .follow-link { text-decoration: none; color: rgb(68, 68, 68); }
+.follow-teaser .title { margin: 5px 0px 0px; }
+.follow-teaser .title-bar { position: relative; font-size: 15px; line-height: 28px; height: 28px; padding: 5px 10px; border-bottom: 1px solid rgba(0, 0, 0, 0.1); background-color: rgb(255, 255, 255); }
+.follow-teaser .title-bar .close-button { display: block; position: absolute; top: 50%; right: 0px; width: 14px; height: 14px; margin-top: -7px; margin-right: 10px; font-family: arial,sans-serif; font-size: 24px; font-weight: bolder; text-align: center; line-height: 14px; cursor: pointer; color: rgba(0, 0, 0, 0.26); }
+.follow-teaser .content { position: relative; height: 57px; font-size: 12px; }
+.follow-teaser .content .avatar { display: block; position: absolute; top: 50%; left: 0px; margin: -19px 10px 10px; width: 38px; height: 38px; background-size: cover; }
+.follow-teaser .content .avatar .avatar-image { border-radius: 3px; }
+.follow-teaser .content .avatar::after { content: ""; display: block; position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 3px; box-sizing: border-box; }
+.follow-teaser .content .blog-name-title { display: block; padding: 10px 100px 10px 60px; line-height: 18px; color: rgba(0, 0, 0, 0.73); }
+.follow-teaser .content .blog-name-title .blog-title { display: block; font-size: 14px; white-space: nowrap; font-weight: 400; overflow: hidden; text-overflow: ellipsis; color: rgba(0, 0, 0, 0.47); }
+.follow-teaser .content .blog-name-title .blog-name { display: block; font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: rgba(0, 0, 0, 0.73); }
+.follow-teaser .content .follow-button { display: block; position: absolute; top: 50%; right: 0px; margin: -15px 10px 0px 0px; height: 29px; padding: 0px 10px; color: rgb(255, 255, 255); font-size: 13px; line-height: 29px; font-weight: 700; text-decoration: none; border-radius: 3px; background-color: rgb(82, 158, 204); -moz-user-select: none; cursor: pointer; background-clip: padding-box; }
+.follow-teaser .content .follow-button:active { color: rgba(255, 255, 255, 0.8); box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3) inset; }

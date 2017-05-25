@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    
+    <title>eyeD3 — eyeD3 v0.7.9 (final)</title>
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="top" title="eyeD3 v0.7.9 (final)" href="http://eyed3.nicfit.net/#">
+    <link rel="next" title="Installation" href="http://eyed3.nicfit.net/installation.html"> 
+  
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px;">
+          <a href="http://eyed3.nicfit.net/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="http://eyed3.nicfit.net/py-modindex.html" title="Python Module Index">modules</a> |</li>
+        <li class="right">
+          <a href="http://eyed3.nicfit.net/installation.html" title="Installation" accesskey="N">next</a> |</li>
+        <li><a href="#">eyeD3 v0.7.9 (final)</a> »</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="eyed3">
+<h1>eyeD3<a class="headerlink" href="#eyed3" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="status">
+<h2>Status<a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h2>
+<a class="reference external image-reference" href="https://drone.io/bitbucket.org/nicfit/eyed3"><img alt="https://drone.io/bitbucket.org/nicfit/eyed3/status.png" src="status.png"></a>
+</div>
+<div class="section" id="about">
+<h2>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://eyed3.nicfit.net/">eyeD3</a> is a Python tool for working with audio files, specifically mp3 files
+containing <a class="reference external" href="http://id3.org/">ID3</a> metadata (i.e. song info).</p>
+<p>It provides a command-line tool (<tt class="docutils literal"><span class="pre">eyeD3</span></tt>) and a Python library
+(<tt class="docutils literal"><span class="pre">import</span> <span class="pre">eyed3</span></tt>) that can be used to write your own applications or
+plugins that are callable from the command-line tool.</p>
+<p>For example, to set some song information in an mp3 file called
+<tt class="docutils literal"><span class="pre">song.mp3</span></tt>:</p>
+<div class="highlight-python"><pre>$ eyeD3 -a Nobunny -A "Love Visions" -t "I Am a Girlfriend" -n 4 song.mp3</pre>
+</div>
+<p>With this command we’ve set the artist (<tt class="docutils literal"><span class="pre">-a/--artist</span></tt>), album
+(<tt class="docutils literal"><span class="pre">-A/--album</span></tt>), title (<tt class="docutils literal"><span class="pre">-t/--title</span></tt>), and track number
+(<tt class="docutils literal"><span class="pre">-n/--track-num</span></tt>) properties in the ID3 tag of the file. This is the
+standard interface that eyeD3 has always had in the past, therefore it
+is also the default plugin when no other is specified.</p>
+<p>The results of this command can be seen by running the <tt class="docutils literal"><span class="pre">eyeD3</span></tt> with no
+options.</p>
+<div class="highlight-python"><pre>$ eyeD3 song.mp3
+song.mp3      [ 3.06 MB ]
+-------------------------------------------------------------------------
+ID3 v2.4:
+title: I Am a Girlfriend
+artist: Nobunny
+album: Love Visions
+album artist: Various Artists
+track: 4
+-------------------------------------------------------------------------</pre>
+</div>
+<p>The same can be accomplished using Python.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">eyed3</span>
+
+<span class="n">audiofile</span> <span class="o">=</span> <span class="n">eyed3</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">"song.mp3"</span><span class="p">)</span>
+<span class="n">audiofile</span><span class="o">.</span><span class="n">tag</span><span class="o">.</span><span class="n">artist</span> <span class="o">=</span> <span class="s">u"Nobunny"</span>
+<span class="n">audiofile</span><span class="o">.</span><span class="n">tag</span><span class="o">.</span><span class="n">album</span> <span class="o">=</span> <span class="s">u"Love Visions"</span>
+<span class="n">audiofile</span><span class="o">.</span><span class="n">tag</span><span class="o">.</span><span class="n">album_artist</span> <span class="o">=</span> <span class="s">u"Various Artists"</span>
+<span class="n">audiofile</span><span class="o">.</span><span class="n">tag</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">u"I Am a Girlfriend"</span>
+<span class="n">audiofile</span><span class="o">.</span><span class="n">tag</span><span class="o">.</span><span class="n">track_num</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">audiofile</span><span class="o">.</span><span class="n">tag</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://eyed3.nicfit.net/">eyeD3</a> is written and maintained by <a class="reference external" href="mailto:travis%40pobox.com">Travis Shirk</a> and is licensed under
+version 2 of the <a class="reference external" href="http://www.gnu.org/licenses/gpl-2.0.html">GPL</a>.</p>
+</div>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Python package for writing application and/or plugins.</li>
+<li>Command-line tool driver script that supports plugins.
+viewer/editor interface.</li>
+<li>Easy editing/viewing of audio metadata from the command-line, using the
+‘classic’ plugin.</li>
+<li>Support for ID3 versions 1.x, 2.2 (read-only), 2.3, and 2.4.</li>
+<li>Support for the MP3 audio format exposing details such as play time, bit
+rate, sampling frequency, etc.</li>
+<li>Abstract design allowing future support for different audio formats and
+metadata containers.</li>
+</ul>
+</div>
+<div class="section" id="get-started">
+<h2>Get Started<a class="headerlink" href="#get-started" title="Permalink to this headline">¶</a></h2>
+<p>Python 2.6 or 2.7 (recommended) is required.</p>
+<p>For <a class="reference external" href="http://eyed3.nicfit.net/index.html#installation">installation instructions</a> or more complete <a class="reference external" href="http://eyed3.nicfit.net/index.html#documentation">documentation</a> see
+<a class="reference external" href="http://eyed3.nicfit.net/">http://eyeD3.nicfit.net/</a></p>
+<p>Please post feedback and/or defects on the <a class="reference external" href="https://bitbucket.org/nicfit/eyed3/issues?status=new&amp;status=open">issue tracker</a>, or <a class="reference external" href="https://groups.google.com/forum/?fromgroups#!forum/eyed3-users">mailing list</a>.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Stable releases of eyeD3 are best installed via <tt class="docutils literal"><span class="pre">pip</span></tt> or <tt class="docutils literal"><span class="pre">easy_install</span></tt>;
+or you may download TGZ or ZIP source archives from a couple of official
+locations. Detailed instructions and links may be found on the
+<a class="reference internal" href="http://eyed3.nicfit.net/installation.html"><em>Installation</em></a> page.</p>
+<p>Otherwise, if you want to live on the edge, you can pull down the source code
+from the Mercurial repository at <a class="reference external" href="https://bitbucket.org/nicfit/eyed3">Bit Bucket</a>. The <a class="reference internal" href="http://eyed3.nicfit.net/installation.html"><em>Installation</em></a> page has
+details for how to access the source code.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="documentation-index">
+<span id="id2"></span><h2>Documentation<a class="headerlink" href="#documentation-index" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://eyed3.nicfit.net/cli.html">Command Line Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://eyed3.nicfit.net/cli.html#plugins">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://eyed3.nicfit.net/cli.html#configuration-files">Configuration Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://eyed3.nicfit.net/cli.html#custom-plugins">Custom Plugins</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://eyed3.nicfit.net/api/modules.html">eyed3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://eyed3.nicfit.net/api/eyed3.html">eyed3 Package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://eyed3.nicfit.net/compliance.html">Compliance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://eyed3.nicfit.net/compliance.html#id3">ID3</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="changelog">
+<h2>ChangeLog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+<p>Changes made to eyeD3 and the project’s release history can be found in the
+<a class="reference internal" href="http://eyed3.nicfit.net/changelog.html"><em>ChangeLog</em></a>.</p>
+</div>
+<div class="section" id="references">
+<span id="references-index"></span><h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>ID3 <a class="reference external" href="http://id3lib.sourceforge.net/id3/id3v1.html">v1.x Specification</a></li>
+<li>ID3 v2.4 <a class="reference external" href="http://www.id3.org/id3v2.4.0-structure">Structure</a> and
+<a class="reference external" href="http://www.id3.org/id3v2.4.0-frames">Frames</a></li>
+<li>ID3 <a class="reference external" href="http://www.id3.org/id3v2.3.0">v2.3 Specification</a></li>
+<li>ID3 <a class="reference external" href="http://www.id3.org/id3v2-00">v2.2 Specification</a></li>
+<li>ISO <a class="reference external" href="http://www.cl.cam.ac.uk/~mgk25/iso-time.html">8601 Date and Time</a></li>
+<li>ISO <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_639-2">639-2 Language Codes</a></li>
+<li>MusicBrainz Tag <a class="reference external" href="http://wiki.musicbrainz.org/MusicBrainz_Tag">Mappings</a></li>
+<li>MP3 <a class="reference external" href="http://www.mp3-tech.org/programmer/frame_header.html">Headers</a></li>
+</ul>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="http://eyed3.nicfit.net/genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="http://eyed3.nicfit.net/py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="http://eyed3.nicfit.net/search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">eyeD3</a><ul>
+<li><a class="reference internal" href="#status">Status</a></li>
+<li><a class="reference internal" href="#about">About</a></li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#get-started">Get Started</a></li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#documentation-index">Documentation</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#changelog">ChangeLog</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="http://eyed3.nicfit.net/installation.html" title="next chapter">Installation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="http://eyed3.nicfit.net/_sources/index.txt" rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="">
+  <h3>Quick search</h3>
+    <form class="search" action="http://eyed3.nicfit.net/search.html" method="get">
+      <input value="" name="q" type="text">
+      <input value="Go" type="submit">
+      <input name="check_keywords" value="yes" type="hidden">
+      <input name="area" value="default" type="hidden">
+    </form>
+    <p class="searchtip" style="font-size: 90%;">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px;">
+          <a href="http://eyed3.nicfit.net/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="http://eyed3.nicfit.net/py-modindex.html" title="Python Module Index">modules</a> |</li>
+        <li class="right">
+          <a href="http://eyed3.nicfit.net/installation.html" title="Installation">next</a> |</li>
+        <li><a href="#">eyeD3 v0.7.9 (final)</a> »</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        © Copyright 2015, Travis Shirk.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  
+</body>
+</html>

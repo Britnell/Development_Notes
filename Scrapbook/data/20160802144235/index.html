@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="" class="no-js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>An Ansible Tutorial - Servers for Hackers</title>
+    <!--Facebook Metadata /-->
+    <meta property="og:image" content="https://serversforhackers.com/img/sfh_social.png">
+    <meta property="og:description" content="What programmers need to know about servers.">
+    <meta property="og:title" content="An Ansible Tutorial">
+
+    <!--Google+ Metadata /-->
+    <meta itemprop="name" content="An Ansible Tutorial">
+    <meta itemprop="description" content="What programmers need to know about servers.">
+    <meta itemprop="image" content="https://serversforhackers.com/img/sfh_social.png">
+
+    <!-- Twitter Metadata /-->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@srvrsforhackers">
+    <meta name="twitter:title" content="An Ansible Tutorial">
+    <meta name="twitter:description" content="What programmers need to know about servers.">
+    <meta name="twitter:image" content="https://serversforhackers.com/img/sfh_social.png">
+    <meta name="twitter:domain" content="serversforhackers.com">
+    <link rel="icon" href="favicon.png">
+    
+    
+    
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+    <div class="navbar navbar-default navbar-static-top" id="nav" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://serversforhackers.com/"><img src="icon_square.png" height="60" width="65"></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://serversforhackers.com/series">Videos</a></li>
+                    <li><a href="https://deploy.serversforhackers.com/?utm_source=sfh&amp;utm_medium=navigation&amp;utm_campaign=sfh-deploy">Deploy!</a></li>
+                    <li><a href="https://book.serversforhackers.com/?utm_source=sfh&amp;utm_medium=navigation&amp;utm_campaign=sfh-ebook">eBook</a></li>
+                    <li><a href="https://serversforhackers.com/editions">Editions</a></li>
+                    <li><a href="https://serversforhackers.com/articles">Articles</a></li>
+                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="https://serversforhackers.com/login?returnto=%2Fan-ansible-tutorial">Login</a></li>
+                    <li id="sign_up_btn"><a href="https://serversforhackers.com/plans">Sign Up</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div><!-- end nav bar -->
+    <div class="container">
+    <div class="row large-title">
+        <div class="col-md-12">
+            <h1>An Ansible Tutorial</h1>
+            <p class="publish-date">Aug 26, 2014</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 content" id="content" data-urlslug="an-ansible-tutorial">
+            <div class="meta lined">
+                <span class="tags">
+                                            <a href="https://serversforhackers.com/tag/ansible">ansible</a>
+                                            <a href="https://serversforhackers.com/tag/provisioning">provisioning</a>
+                                    </span>
+            </div>
+                                    <article class="book">
+                <blockquote>
+                    <p>If you're interested in more of this type of content, check out the <a href="https://book.serversforhackers.com/">Servers for Hackers eBook</a>!</p>
+                </blockquote>
+            </article>
+                        <article class="body">
+                <p>Ansible is a configuration management and provisioning tool, similar to Chef, Puppet or Salt.</p>
+
+<p>I've found it to be one of the simplest and the easiest to get started with. A lot of this is because it's "just SSH"; It uses SSH to connect to servers and run the configured Tasks.</p>
+
+<p>One nice thing about Ansible is that it's very easy to convert bash scripts (still a popular way to accomplish configuration management) into Ansible Tasks. Since it's primarily SSH based, it's not hard to see why this might be the case - Ansible ends up running the same commands.</p>
+
+<p>We could just script our own provisioners, but Ansible is much cleaner because it automates the process of getting <em>context</em> before running Tasks. With this context, Ansible is able to handle most edge cases - the kind we usually take care of with longer and increasingly complex scripts.</p>
+
+<p>Ansible Tasks are idempotent. Without a lot of extra coding, bash scripts are usually <strong>not</strong> safety run again and again. Ansible uses "Facts", which is system and environment information it gathers ("context") before running Tasks.</p>
+
+<p>Ansible uses these facts to check state and see if it needs to change anything in order to get the desired outcome. This makes it safe to run Ansible Tasks against a server over and over again.</p>
+
+<p>Here I'll show how easy it is to get started with Anible. We'll start basic and then add in more features as we improve upon our configurations.</p>
+
+<h2>Install</h2>
+
+<p>Of course we need to start by installing Ansible. Tasks can be run off of any machine Ansible is installed on.</p>
+
+<p>This means there's usually a "central" server running Ansible commands, although there's nothing particularly special about what server Ansible is installed on. Ansible is "agentless" - there's no central agent(s) running. We can even run Ansible from any server; I often run Tasks from my laptop.</p>
+
+<p>Here's how to install Ansible on Ubuntu 14.04. We'll use the easy-to-remember <code>ppa:ansible/ansible</code> repository as <a href="http://docs.ansible.com/intro_installation.html#latest-releases-via-apt-ubuntu">per the official docs</a>.</p>
+
+<pre><code class="bash hljs">sudo apt-add-repository -y ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install -y ansible
+</code></pre>
+
+<h2>Managing Servers</h2>
+
+<p>Ansible has a default inventory file used to define which servers it will be managing. After installation, there's an example one you can reference at <code>/etc/ansible/hosts</code>.</p>
+
+<p>I usually copy and <em>move</em> the default one so I can reference it later:</p>
+
+<pre><code class="bash hljs">sudo mv /etc/ansible/hosts /etc/ansible/hosts.orig
+</code></pre>
+
+<p>Then I create my own inventory file from scratch. After moving the example inventory file, create a new <code>/etc/ansible/hosts</code> file, and define some servers to manage. Here's we'll define two servers under the "web" label:</p>
+
+<pre><code class="ini hljs"><span class="hljs-title">[web]</span>
+192.168.22.10
+192.168.22.11
+</code></pre>
+
+<p>That's good enough for now. If needed, we can define ranges of hosts, multiple groups, reusable variables, and use <a href="http://docs.ansible.com/intro_inventory.html">other fancy setups</a>, including <a href="http://docs.ansible.com/intro_dynamic_inventory.html">creating a dynamic inventory</a>.</p>
+
+<p>For testing this article, I created a virtual machine, installed Ansible, and then ran Ansible Tasks directly on that server. To do this, my <code>hosts</code> inventory file simply looked like this:</p>
+
+<pre><code class="ini hljs"><span class="hljs-title">[local]</span>
+127.0.0.1
+</code></pre>
+
+<p>This makes testing pretty easy - I don't need to setup multiple servers or virtual machines. A consequence of this is that I need to tell Ansible to run Tasks as user "vagrant" and use password-based (rather than key-based) authentication.</p>
+
+<h2>Basic: Running Commands</h2>
+
+<p>Once we have an inventory configured, we can start running Tasks against the defined servers.</p>
+
+<p>Ansible will assume you have SSH access available to your servers, usually based on SSH-Key. Because Ansible uses SSH, the server it's on needs to be able to SSH into the inventory servers. It will attempt to connect as the current user it is being run as. If I'm running Ansible as user <code>vagrant</code>, it will attempt to connect as user <code>vagrant</code> on the other servers.</p>
+
+<p>If Ansible can directly SSH into the managed servers, we can run commands without too much fuss:</p>
+
+<pre><code class="bash hljs">$ ansible all -m ping
+<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span> | success &gt;&gt; {
+    <span class="hljs-string">"changed"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">"ping"</span>: <span class="hljs-string">"pong"</span>
+}
+</code></pre>
+
+<p>We can see the output we get from Ansible is some JSON which tells us if the Task made any changes and the result.</p>
+
+<p>If we need to define the user and perhaps some other settings in order to connect to our server, we can. When testing locally on Vagrant, I use the following:</p>
+
+<pre><code class="bash hljs">ansible all -m ping <span class="hljs-operator">-s</span> -k -u vagrant
+</code></pre>
+
+<p>Let's cover these commands:</p>
+
+<ul>
+<li><code>all</code> - Use all defined servers from the inventory file</li>
+<li><code>-m ping</code> - Use the "ping" module, which simply runs the <code>ping</code> command and returns the results</li>
+<li><code>-s</code> - Use "sudo" to run the commands</li>
+<li><code>-k</code> - Ask for a password rather than use key-based authentication</li>
+<li><code>-u vagrant</code> - Log into servers using user <code>vagrant</code></li>
+</ul>
+
+<h3>Modules</h3>
+
+<p>Ansible uses "modules" to accomplish most of its Tasks. Modules can do things like install software, copy files, use templates and <a href="http://docs.ansible.com/modules_by_category.html">much more</a>.</p>
+
+<p>Modules are <em>the</em> way to use Ansible, as they can use available context ("Facts") in order to determine what actions, if any need to be done to accomplish a Task.</p>
+
+<p>If we didn't have modules, we'd be left running arbitrary shell commands like this:</p>
+
+<pre><code class="bash hljs">ansible all <span class="hljs-operator">-s</span> -m shell <span class="hljs-operator">-a</span> <span class="hljs-string">'apt-get install nginx'</span>
+</code></pre>
+
+<p>Here, the <code>sudo apt-get install nginx</code> command will be run using the "shell" module. The <code>-a</code> flag is used to pass any arguments to the module. I use <code>-s</code> to run this command using <code>sudo</code>.</p>
+
+<p>However this isn't particularly powerful. While it's handy to be able to run these commands on all of our servers at once, we still only accomplish what any bash script might do.</p>
+
+<p>If we used a more appropriate module instead, we can run commands with an assurance of the result. Ansible modules ensure indempotence - we can run the same Tasks over and over without affecting the final result.</p>
+
+<p>For installing software on Debian/Ubuntu servers, the "apt" module will run the same command, but ensure idempotence.</p>
+
+<pre><code class="bash hljs">ansible all <span class="hljs-operator">-s</span> -m apt <span class="hljs-operator">-a</span> <span class="hljs-string">'pkg=nginx state=installed update_cache=true'</span>
+<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span> | success &gt;&gt; {
+    <span class="hljs-string">"changed"</span>: <span class="hljs-literal">false</span>
+}
+</code></pre>
+
+<p>This will use the <a href="http://docs.ansible.com/apt_module.html">apt module</a> to update the repository cache and install Nginx (if not installed).</p>
+
+<p>The result of running the Task was <code>"changed": false</code>. This shows that there were no changes; I had already installed Nginx. I can run this command over and over without worrying about it affecting the desired result.</p>
+
+<p>Going over the command:</p>
+
+<ul>
+<li><code>all</code> - Run on all defined hosts from the inventory file</li>
+<li><code>-s</code> - Run using sudo</li>
+<li><code>-m apt</code> - Use the <a href="http://docs.ansible.com/apt_module.html">apt module</a></li>
+<li><code>-a 'pkg=nginx state=installed update_cache=true'</code> - Provide the arguments for the apt module, including the package name, our desired end state and whether to update the package repository cache or not</li>
+</ul>
+
+<p>We can run all of our needed Tasks (via modules) in this ad-hoc way, but let's make this more managable. We'll move this Task into a Playbook, which can run and coordinate multiple Tasks.</p>
+
+<h2>Basic Playbook</h2>
+
+<p><a href="http://docs.ansible.com/playbooks_intro.html">Playbooks</a> can run multiple Tasks and provide some more advanced functionality that we would miss out on using ad-hoc commands. Let's move the above Task into a playbook.</p>
+
+<blockquote>
+  <p>Playbooks and Roles in Ansible all use Yaml.</p>
+</blockquote>
+
+<p>Create file <code>nginx.yml</code>:</p>
+
+<pre><code class="yaml hljs sql"><span class="hljs-comment">---</span>
+- hosts: local
+  tasks:
+   - name: <span class="hljs-operator"><span class="hljs-keyword">Install</span> Nginx
+     apt: pkg=nginx state=installed update_cache=<span class="hljs-literal">true</span>
+</span></code></pre>
+
+<p>This Task does exactly the same as our ad-hoc command, however I chose to specify my "local" group of servers rather than "all". We can run it with the <code>ansible-playbook</code> command:</p>
+
+<pre><code class="bash hljs">$ ansible-playbook <span class="hljs-operator">-s</span> nginx.yml
+
+PLAY [<span class="hljs-built_in">local</span>] ******************************************************************
+
+GATHERING FACTS ***************************************************************
+ok: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+TASK: [Install Nginx] *********************************************************
+ok: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+PLAY RECAP ********************************************************************
+<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>                  : ok=<span class="hljs-number">2</span>    changed=<span class="hljs-number">0</span>    unreachable=<span class="hljs-number">0</span>    failed=<span class="hljs-number">0</span>
+</code></pre>
+
+<p>Use use <code>-s</code> to tell Ansible to use <code>sudo</code> again, and then pass the Playbook file.</p>
+
+<p>We get some useful feedback while this runs, including the Tasks Ansible runs and their result. Here we see all ran OK, but nothing was changed. I have Nginx installed already.</p>
+
+<blockquote>
+  <p>I used the command <code>$ ansible-playbook -s -k -u vagrant nginx.yml</code> to run this playbook locally on my Vagrant installation.</p>
+</blockquote>
+
+<h3>Handlers</h3>
+
+<p>A Handler is exactly the same as a Task (it can do anything a Task can), but it will run when called by another Task. You can think of it as part of an Event system; A Handler will take an action when called by an event it listens for.</p>
+
+<p>This is useful for "secondary" actions that might be required after running a Task, such as starting a new service after installation or reloading a service after a configuration change.</p>
+
+<pre><code class="yaml hljs sql"><span class="hljs-comment">---</span>
+- hosts: local
+  tasks:
+   - name: <span class="hljs-operator"><span class="hljs-keyword">Install</span> Nginx
+     apt: pkg=nginx state=installed update_cache=<span class="hljs-literal">true</span>
+     notify:
+      - <span class="hljs-keyword">Start</span> Nginx
+
+  handlers:
+   - name: <span class="hljs-keyword">Start</span> Nginx
+     service: name=nginx state=started
+</span></code></pre>
+
+<p>We can add a <code>notify</code> directive to the installation Task. This notifies any Handler named "Start Nginx" after the Task is run.</p>
+
+<p>Then we can create the Handler called "Start Nginx". This Handler is the Task called when "Start Nginx" is notified.</p>
+
+<p>This particular Handler uses the <a href="http://docs.ansible.com/service_module.html">Service module</a>, which can start, stop, restart, reload (and so on) system services. Here we simply tell Ansible that we want Nginx to be started.</p>
+
+<blockquote>
+  <p>Note that Ansible has us define the <strong><em>state</em></strong> you wish the service to be in, rather than defining the <strong><em>change</em></strong> you want. Ansible will decide if a change is needed, we just tell it the desired result.</p>
+</blockquote>
+
+<p>Let's run this Playbook again:</p>
+
+<pre><code class="bash hljs">$ ansible-playbook <span class="hljs-operator">-s</span> nginx.yml
+
+PLAY [<span class="hljs-built_in">local</span>] ******************************************************************
+
+GATHERING FACTS ***************************************************************
+ok: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+TASK: [Install Nginx] *********************************************************
+ok: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+NOTIFIED: [nginx | Start Nginx] ***********************************************
+ok: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+PLAY RECAP ********************************************************************
+<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>                  : ok=<span class="hljs-number">2</span>    changed=<span class="hljs-number">0</span>    unreachable=<span class="hljs-number">0</span>    failed=<span class="hljs-number">0</span>
+</code></pre>
+
+<p>We get the similar output, but this time the Handler was run.</p>
+
+<blockquote>
+  <p>Notifiers are only run if the Task is run. If I already had Nginx installed, the Install Nginx Task would not be run and the notifier would not be called.</p>
+</blockquote>
+
+<p>We can use Playbooks to run multiple Tasks, add in variables, define other settings and even include other playbooks.</p>
+
+<h3>More Tasks</h3>
+
+<p>Next we can add a few more Tasks to this Playbook and explore some other functionality.</p>
+
+<pre><code class="yaml hljs sql"><span class="hljs-comment">---</span>
+- hosts: local
+  vars:
+   - docroot: /var/www/serversforhackers.com/public
+  tasks:
+   - name: Add Nginx Repository
+     apt_repository: repo='ppa:nginx/stable' state=present
+     register: ppastable
+
+   - name: <span class="hljs-operator"><span class="hljs-keyword">Install</span> Nginx
+     apt: pkg=nginx state=installed update_cache=<span class="hljs-literal">true</span>
+     <span class="hljs-keyword">when</span>: ppastable|success
+     register: nginxinstalled
+     notify:
+      - <span class="hljs-keyword">Start</span> Nginx
+
+   - name: <span class="hljs-keyword">Create</span> Web Root
+     <span class="hljs-keyword">when</span>: nginxinstalled|success
+     file: dest={{ <span class="hljs-string">'{{'</span> }} docroot {{ <span class="hljs-string">'}}'</span> }} <span class="hljs-keyword">mode</span>=<span class="hljs-number">775</span> state=directory owner=www-<span class="hljs-keyword">data</span> <span class="hljs-keyword">group</span>=www-<span class="hljs-keyword">data</span>
+     notify:
+      - Reload Nginx
+
+  handlers:
+   - name: <span class="hljs-keyword">Start</span> Nginx
+     service: name=nginx state=started
+
+    - name: Reload Nginx
+      service: name=nginx state=reloaded
+</span></code></pre>
+
+<p>There are now three Tasks:</p>
+
+<ul>
+<li><code>Add Nginx Repository</code> - Add the Nginx stable PPA to get the latest stable version of Nginx, using the <a href="http://docs.ansible.com/apt_repository_module.html">apt_repository module</a>.</li>
+<li><code>Install Nginx</code> - Installs Nginx using the Apt module.</li>
+<li><code>Create Web Root</code> - Finally, create a web root directory.</li>
+</ul>
+
+<p>Also new here are the <code>register</code> and <code>when</code> directives. These tell Ansible to run a Task <strong>when</strong> something else happens.</p>
+
+<p>The "Add Nginx Repository" Task registers "ppastable". Then we use that to inform the Install Nginx Task to only run when the registered "ppastable" Task is successful. This allows us to conditionally stop Ansible from running a Task.</p>
+
+<p>We also use a variable. The <code>docroot</code> variable is defined in the <code>var</code> section. It's then used as the destination argument of the <a href="http://docs.ansible.com/file_module.html">file module</a> which creates the defined directory.</p>
+
+<p>This playbook can be run with the usual command:</p>
+
+<pre><code class="bash hljs">ansible-playbook <span class="hljs-operator">-s</span> nginx.yml
+
+<span class="hljs-comment"># Or, as I ran on my Vagrant machine:</span>
+ansible-playbook <span class="hljs-operator">-s</span> -k -u vagrant nginx.yml
+</code></pre>
+
+<p>Next we'll take Ansible further and by organizing the Playbook into a Role while also showing some more functionality.</p>
+
+<h2>Roles</h2>
+
+<p>Roles are good for organizing multiple, related Tasks and encapsulating data needed to accomplish those Tasks. For example, installing Nginx may involve adding a package repository, installing the package and setting up configuration. We've seen installation in action in a Playbook, but once we start configuring our installations, the Playbooks tend to get a little more busy.</p>
+
+<p>The configuration portion often requires extra data such as variables, files, dynamic templates and more. These tools can be used with Playbooks, but we can do better immediately by <strong>organizing related Tasks and data into one coherent structure: a Role</strong>.</p>
+
+<p>Roles have a directory structure like this:</p>
+
+<pre><code class="hljs nginx"><span class="hljs-title">rolename</span>
+ - files
+ - handlers
+ - meta
+ - templates
+ - tasks
+ - vars
+</code></pre>
+
+<p>Within each directory, Ansible will search for and read any Yaml file called <code>main.yml</code> automatically.</p>
+
+<p>We'll break apart our <code>nginx.yml</code> file and put each component within the corresponding directory to create a cleaner and more complete provisioning toolset.</p>
+
+<h3>Files</h3>
+
+<p>First, within the <code>files</code> directory, we can add files that we'll want copied into our servers. For Nginx, I often copy <a href="https://github.com/h5bp/server-configs-nginx/tree/master/h5bp">H5BP's Nginx component configurations</a>. I simply download the latest from Github, make any tweaks I want, and put them into the <code>files</code> directory.</p>
+
+<pre><code class="hljs nginx"><span class="hljs-title">nginx</span>
+ - files
+ - - h5bp
+</code></pre>
+
+<p>As we'll see, these configurations will be added via the <a href="http://docs.ansible.com/copy_module.html">copy module</a>.</p>
+
+<h3>Handlers</h3>
+
+<p>Inside of the <code>handlers</code> directory, we can put all of our Handlers that were once within the <code>nginx.yml</code> Playbook.</p>
+
+<p>Inside of <code>handlers/main.yml</code>:</p>
+
+<pre><code class="yaml hljs diff"><span class="hljs-header">---</span>
+<span class="hljs-deletion">- name: Start Nginx</span>
+  service: name=nginx state=started
+
+<span class="hljs-deletion">- name: Reload Nginx</span>
+  service: name=nginx state=reloaded
+</code></pre>
+
+<p>Once these are in place, we can reference them from other files freely.</p>
+
+<h3>Meta</h3>
+
+<p>The <code>main.yml</code> file within the <code>meta</code> directory contains Role meta data, including dependencies.</p>
+
+<p>If this Role depended on another Role, we could define that here. For example, I have the Nginx Role depend on the SSL Role, which installs SSL certificates.</p>
+
+<pre><code class="yaml hljs css"><span class="hljs-tag">---</span>
+<span class="hljs-tag">dependencies</span>:
+  <span class="hljs-tag">-</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">role</span>:<span class="hljs-value"> ssl </span></span></span>}
+</code></pre>
+
+<p>If I called the "nginx" Role, it would attempt to first run the "ssl" Role.</p>
+
+<p>Otherwise we can omit this file, or define the Role as having no dependencies:</p>
+
+<pre><code class="yaml hljs css"><span class="hljs-tag">---</span>
+<span class="hljs-tag">dependencies</span>: <span class="hljs-attr_selector">[]</span>
+</code></pre>
+
+<h3>Template</h3>
+
+<p>Template files can contain template variables, based on Python's <a href="http://jinja.pocoo.org/docs/dev/">Jinja2 template engine</a>. Files in here should end in <code>.j2</code>, but can otherwise have any name. Similar to <code>files</code>, we won't find a <code>main.yml</code> file within the <code>templates</code> directory.</p>
+
+<p>Here's an example Nginx virtual host configuration. Note that it uses some variables which we'll define later in the <code>vars/main.yml</code> file.</p>
+
+<p>Nginx virtual host file found at <code>templates/serversforhackers.com.conf</code>:</p>
+
+<pre><code class="nginx hljs"><span class="hljs-title">server</span> {
+    <span class="hljs-comment"># Enforce the use of HTTPS</span>
+    <span class="hljs-title">listen</span> <span class="hljs-number">80</span> default_server;
+    <span class="hljs-title">server_name</span> *.{{ '{{' }} <span class="hljs-title">domain</span> {{ '}}'  }};
+    <span class="hljs-title">return</span> <span class="hljs-number">301</span> <span class="hljs-url">https://</span>{{ '{{' }} <span class="hljs-title">domain</span> {{ '}}'  }}$request_uri;
+}
+
+<span class="hljs-title">server</span> {
+    <span class="hljs-title">listen</span> <span class="hljs-number">443</span> default_server ssl;
+
+    <span class="hljs-title">root</span> /var/www/{{ '{{' }} <span class="hljs-title">domain</span> {{ '}}'  }}/public;
+    <span class="hljs-title">index</span> index.html index.htm index.php;
+
+    <span class="hljs-title">access_log</span> /var/log/nginx/{{ '{{' }} <span class="hljs-title">domain</span> {{ '}}'  }}.log;
+    <span class="hljs-title">error_log</span>  /var/log/nginx/{{ '{{' }} <span class="hljs-title">domain</span> {{ '}}'  }}-error.<span class="hljs-title">log</span> <span class="hljs-built_in">error</span>;
+
+    <span class="hljs-title">server_name</span> {{ '{{' }} <span class="hljs-title">domain</span> {{ '}}'  }};
+
+    <span class="hljs-title">charset</span> utf-<span class="hljs-number">8</span>;
+
+    <span class="hljs-title">include</span> h5bp/basic.conf;
+
+    <span class="hljs-title">ssl_certificate</span>           {{ '{{' }} <span class="hljs-title">ssl_crt</span> {{ '}}' }};
+    <span class="hljs-title">ssl_certificate_key</span>       {{ '{{' }} <span class="hljs-title">ssl_key</span> {{ '}}' }};
+    <span class="hljs-title">include</span> h5bp/directive-only/ssl.conf;
+
+    <span class="hljs-title">location</span> /book {
+        <span class="hljs-title">return</span> <span class="hljs-number">301</span> <span class="hljs-url">http://book.</span>{{ '{{' }} <span class="hljs-title">domain</span> {{ '}}'  }};
+    }
+
+    <span class="hljs-title">location</span> / {
+        <span class="hljs-title">try_files</span> <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ /index.php<span class="hljs-variable">$is_args</span><span class="hljs-variable">$args</span>;
+    }
+
+    <span class="hljs-title">location</span> = /favicon.ico { <span class="hljs-title">log_not_found</span> <span class="hljs-built_in">off</span>; <span class="hljs-title">access_log</span> <span class="hljs-built_in">off</span>; }
+    <span class="hljs-title">location</span> = /robots.txt  { <span class="hljs-title">log_not_found</span> <span class="hljs-built_in">off</span>; <span class="hljs-title">access_log</span> <span class="hljs-built_in">off</span>; }
+
+    <span class="hljs-title">location</span> <span class="hljs-regexp">~ \.php$</span> {
+        <span class="hljs-title">fastcgi_split_path_info</span><span class="hljs-regexp"> ^(.+\.php)(/.+)$</span>;
+
+        <span class="hljs-title">fastcgi_pass</span> <span class="hljs-url">unix:/var/run/php5-fpm.sock</span>;
+        <span class="hljs-title">fastcgi_index</span> index.php;
+
+        <span class="hljs-title">include</span> fastcgi_params; <span class="hljs-comment"># fastcgi.conf for version 1.6.1+</span>
+        <span class="hljs-title">fastcgi_param</span> SCRIPT_FILENAME <span class="hljs-variable">$document_root</span><span class="hljs-variable">$fastcgi_script_name</span>;
+        <span class="hljs-title">fastcgi_param</span> PATH_INFO       <span class="hljs-variable">$fastcgi_path_info</span>;
+        <span class="hljs-title">fastcgi_param</span> ENV production;
+    }
+
+    <span class="hljs-comment"># Nginx status</span>
+    <span class="hljs-comment"># Nginx Plus only</span>
+    <span class="hljs-comment">#location /status {</span>
+    <span class="hljs-comment">#    status;</span>
+    <span class="hljs-comment">#    status_format json;</span>
+    <span class="hljs-comment">#    allow 127.0.0.1;</span>
+    <span class="hljs-comment">#    deny all;</span>
+    <span class="hljs-comment">#}</span>
+
+    <span class="hljs-title">location</span> <span class="hljs-regexp">~ ^/(fpmstatus|fpmping)$</span> {
+        <span class="hljs-title">access_log</span> <span class="hljs-built_in">off</span>;
+        <span class="hljs-title">allow</span> <span class="hljs-number">127.0.0.1</span>;
+        <span class="hljs-title">deny</span> all;
+        <span class="hljs-title">include</span> fastcgi_params; <span class="hljs-comment"># fastcgi.conf for version 1.6.1+</span>
+        <span class="hljs-title">fastcgi_pass</span> <span class="hljs-url">unix:/var/run/php5-fpm.sock</span>;
+    }
+}
+</code></pre>
+
+<p>This is a fairly standard Nginx configuration for a PHP application. There are three variables used here:</p>
+
+<ul>
+<li>domain</li>
+<li>ssl_crt</li>
+<li>ssl_key</li>
+</ul>
+
+<p>These three will be defined in the variables section.</p>
+
+<h3>Variables</h3>
+
+<p>Before we look at the Tasks, let's look at variables. The <code>vars</code> directory contains a <code>main.yml</code> file which simply lists variables we'll use. This provides a convenient place for us to change configuration-wide settings.</p>
+
+<p>Here's what the <code>vars/main.yml</code> file might look like:</p>
+
+<pre><code class="yaml hljs javascript">---
+domain: serversforhackers.com
+ssl_key: <span class="hljs-regexp">/etc/</span>ssl/sfh/sfh.key
+ssl_crt: <span class="hljs-regexp">/etc/</span>ssl/sfh/sfh.crt
+</code></pre>
+
+<p>These are three variables which we can use elsewhere in this Role. We saw them used in the template above, but we'll see them in our defined Tasks as well.</p>
+
+<h3>Tasks</h3>
+
+<p>Let's finally see this all put together into a series of Tasks.</p>
+
+<p>Inside of <code>tasks/main.yml</code>:</p>
+
+<pre><code class="yaml hljs sql"><span class="hljs-comment">---</span>
+- name: Add Nginx Repository
+  apt_repository: repo='ppa:nginx/stable' state=present
+  register: ppastable
+
+- name: <span class="hljs-operator"><span class="hljs-keyword">Install</span> Nginx
+  apt: pkg=nginx state=installed update_cache=<span class="hljs-literal">true</span>
+  <span class="hljs-keyword">when</span>: ppastable|success
+  register: nginxinstalled
+  notify:
+    - <span class="hljs-keyword">Start</span> Nginx
+
+- name: <span class="hljs-keyword">Add</span> H5BP Config
+  <span class="hljs-keyword">when</span>: nginxinstalled|success
+  copy: src=h5bp dest=/etc/nginx owner=root <span class="hljs-keyword">group</span>=root
+
+- name: Disable <span class="hljs-keyword">Default</span> Site
+  <span class="hljs-keyword">when</span>: nginxinstalled|success
+  file: dest=/etc/nginx/sites-enabled/<span class="hljs-keyword">default</span> state=absent
+
+- name: <span class="hljs-keyword">Add</span> SFH Site Config
+  <span class="hljs-keyword">when</span>: nginxinstalled|success
+  register: sfhconfig
+  template: src=serversforhackers.com.j2 dest=/etc/nginx/sites-available/{{ <span class="hljs-string">'{{'</span> }} <span class="hljs-keyword">domain</span> {{ <span class="hljs-string">'}}'</span>  }}.conf owner=root <span class="hljs-keyword">group</span>=root
+
+- name: Enable SFH Site Config
+  <span class="hljs-keyword">when</span>: sfhconfig|success
+  file: src=/etc/nginx/sites-available/{{ <span class="hljs-string">'{{'</span> }} <span class="hljs-keyword">domain</span> {{ <span class="hljs-string">'}}'</span>  }}.conf dest=/etc/nginx/sites-enabled/{{ <span class="hljs-string">'{{'</span> }} <span class="hljs-keyword">domain</span> {{ <span class="hljs-string">'}}'</span>  }}.conf state=link
+
+
+- name: <span class="hljs-keyword">Create</span> Web root
+  <span class="hljs-keyword">when</span>: nginxinstalled|success
+  file: dest=/<span class="hljs-keyword">var</span>/www/{{ <span class="hljs-string">'{{'</span> }} <span class="hljs-keyword">domain</span> {{ <span class="hljs-string">'}}'</span>  }}/<span class="hljs-keyword">public</span> <span class="hljs-keyword">mode</span>=<span class="hljs-number">775</span> state=directory owner=www-<span class="hljs-keyword">data</span> <span class="hljs-keyword">group</span>=www-<span class="hljs-keyword">data</span>
+  notify:
+    - Reload Nginx
+
+- name: Web Root Permissions
+  <span class="hljs-keyword">when</span>: nginxinstalled|success
+  file: dest=/<span class="hljs-keyword">var</span>/www/{{ <span class="hljs-string">'{{'</span> }} <span class="hljs-keyword">domain</span> {{ <span class="hljs-string">'}}'</span>  }} <span class="hljs-keyword">mode</span>=<span class="hljs-number">775</span> state=directory owner=www-<span class="hljs-keyword">data</span> <span class="hljs-keyword">group</span>=www-<span class="hljs-keyword">data</span> recurse=yes
+  notify:
+    - Reload Nginx
+</span></code></pre>
+
+<p>This is a longer series of Tasks, which makes for a more complete installation of Nginx. The Tasks, in order of appearance, accomplish the following:</p>
+
+<ul>
+<li>Add the nginx/stable repository</li>
+<li>Install &amp; start Nginx, register successful installation to trigger remaining Tasks</li>
+<li>Add H5BP configuration</li>
+<li>Disable the default virtual host by removing the symlink to the <code>default</code> file from the <code>sites-enabled</code> directory</li>
+<li>Copy the <code>serversforhackers.com.conf.j2</code> virtual host template into the Nginx configuration</li>
+<li>Enable the virtual host configuration by symlinking it to the <code>sites-enabled</code> directory</li>
+<li>Create the web root</li>
+<li>Change permission for the project root directory, which is one level above the web root created previously</li>
+</ul>
+
+<p>There's some new modules (and new uses of some we've covered), including <strong>copy</strong>, <strong>template</strong>, &amp; <strong>file</strong>. By setting the arguments for each module, we can do some interesting things such as ensuring files are "absent" (delete them if they exist) via <code>state=absent</code>, or create a file as a symlink via <code>state=link</code>. You should check the docs for each module to see what interesting and useful things you can accomplish with them.</p>
+
+<h3>Running the Role</h3>
+
+<p>Before running the Role, we need to tell Ansible where our Roles are located. In my Vagrant server, they are located within <code>/vagrant/ansible/roles</code>. We can add this file path to the <code>/etc/ansible/ansible.cfg</code> file:</p>
+
+<pre><code class="config hljs ini"><span class="hljs-setting">roles_path    = <span class="hljs-value">/vagrant/ansible/roles</span></span>
+</code></pre>
+
+<p>Assuming our <code>nginx</code> Role is located at <code>/vagrant/ansible/roles/nginx</code>, we'll be all set to run this Role!</p>
+
+<blockquote>
+  <p>Remove the <code>ssl</code> dependency from <code>meta/main.yml</code> before running this Role if you are following along.</p>
+</blockquote>
+
+<p>Let's create a "master" yaml file which defines the Roles to use and what hosts to run them on:</p>
+
+<p>File <code>server.yml</code>:</p>
+
+<pre><code class="yaml hljs diff"><span class="hljs-header">---</span>
+<span class="hljs-deletion">- hosts: all</span>
+  roles:
+    - nginx
+</code></pre>
+
+<blockquote>
+  <p>In my Vagrant example, I use the host "local" rather than "all".</p>
+</blockquote>
+
+<p>Then we can run the Role(s):</p>
+
+<pre><code class="bash hljs">ansible-playbook <span class="hljs-operator">-s</span> server.yml
+
+<span class="hljs-comment"># Or as I do with my Vagrant VM:</span>
+ansible-playbook <span class="hljs-operator">-s</span> -k -u vagrant server.yml
+</code></pre>
+
+<p>Here's the output from the run of the Nginx Role:</p>
+
+<pre><code class="bash hljs">PLAY [all] ********************************************************************
+
+GATHERING FACTS ***************************************************************
+ok: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+TASK: [nginx | Add Nginx Repository] ******************************************
+changed: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+TASK: [nginx | Install Nginx] *************************************************
+changed: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+TASK: [nginx | Add H5BP Config] ***********************************************
+changed: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+TASK: [nginx | Disable Default Site] ******************************************
+changed: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+TASK: [nginx | Add SFH Site Config] *******************************************
+changed: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+TASK: [nginx | Enable SFH Site Config] ****************************************
+changed: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+TASK: [nginx | Create Web root] ***********************************************
+changed: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+TASK: [nginx | Web Root Permissions] ******************************************
+ok: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+NOTIFIED: [nginx | Start Nginx] ***********************************************
+ok: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+NOTIFIED: [nginx | Reload Nginx] **********************************************
+changed: [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>]
+
+PLAY RECAP ********************************************************************
+<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>                  : ok=<span class="hljs-number">8</span>   changed=<span class="hljs-number">7</span>   unreachable=<span class="hljs-number">0</span>    failed=<span class="hljs-number">0</span>
+</code></pre>
+
+<p>Awesome, we put all the various components together into a coherent Role and now have Nginx installed and configured!</p>
+
+<p><a name="ansible_facts" id="ansible_facts"></a></p>
+
+<h2>Facts</h2>
+
+<p>Before running any Tasks, Ansible will gather information about the system it's provisioning. These are called Facts, and include a wide array of system information such as the number of CPU cores, available ipv4 and ipv6 networks, mounted disks, Linux distribution and more.</p>
+
+<p>Facts are often useful in Tasks or Tempalte configurations. For example Nginx is commonly set to use as any worker processors as there are CPU cores. Knowing this, you may choose to set your template of the <code>nginx.conf</code> file like so:</p>
+
+<pre><code class="nginx hljs"><span class="hljs-title">user</span> www-data www-data;
+<span class="hljs-title">worker_processes</span> {% <span class="hljs-title">verbatim</span> %}{{ <span class="hljs-title">ansible_processor_cores</span> }}{% <span class="hljs-title">endverbatim</span> %};
+<span class="hljs-title">pid</span> /var/run/nginx.pid;
+
+<span class="hljs-comment"># And other configurations...</span>
+</code></pre>
+
+<p>Or if you have a server with multiple CPU's, you can use:</p>
+
+<pre><code class="nginx hljs"><span class="hljs-title">user</span> www-data www-data;
+<span class="hljs-title">worker_processes</span> {% <span class="hljs-title">verbatim</span> %}{{ <span class="hljs-title">ansible_processor_cores</span> * ansible_processor_count }}{% <span class="hljs-title">endverbatim</span> %};
+<span class="hljs-title">pid</span> /var/run/nginx.pid;
+
+<span class="hljs-comment"># And other configurations...</span>
+</code></pre>
+
+<p>Ansible facts all start with <code>anisble_</code> and are globally available for use any place variables can be used: Variable files, Tasks, and Templates.</p>
+
+<h3>Example: NodeJS</h3>
+
+<p>For Ubuntu, we can get the latest stable NodeJS and NPM from NodeSource, which has teamed up with Chris Lea. Chris ran the Ubuntu repository <code>ppa:chris-lea/node.js</code>, but now provides NodeJS via NodeSource packages. To that end, they have provided a shells script which installs the latest stable NodeJS and NPM on Debian/Ubuntu systems.</p>
+
+<p>This shellscript is found at <a href="https://deb.nodesource.com/setup">https://deb.nodesource.com/setup</a>. We can take a look at this and convert it to the following tasks from a NodeJS Role:</p>
+
+<pre><code class="yaml hljs perl">---
+- name: Ensure Ubuntu Distro is Supported
+  get_url:
+    url=<span class="hljs-string">'https://deb.nodesource.com/node/dists/{% verbatim %}{{ ansible_distribution_release }}{% endverbatim %}/Release'</span>
+    dest=<span class="hljs-regexp">/dev/null</span>
+  register: distrosupported
+
+- name: Remove Old Chris Lea PPA
+  apt_repository:
+    repo=<span class="hljs-string">'ppa:chris-lea/node.js'</span>
+    <span class="hljs-keyword">state</span>=absent
+  <span class="hljs-keyword">when</span>: distrosupported|success
+
+- name: Remove Old Chris Lea Sources
+  file:
+    path=<span class="hljs-string">'/etc/apt/sources.list.d/chris-lea-node_js-{% verbatim %}{{ ansible_distribution_release }}{% endverbatim %}.list'</span>
+    <span class="hljs-keyword">state</span>=absent
+  <span class="hljs-keyword">when</span>: distrosupported|success
+
+- name: Add Nodesource Keys
+  apt_key:
+    url=https:<span class="hljs-regexp">//deb</span>.nodesource.com/gpgkey/nodesource.gpg.key
+    <span class="hljs-keyword">state</span>=present
+
+- name: Add Nodesource Apt Sources List Deb
+  apt_repository:
+    repo=<span class="hljs-string">'deb https://deb.nodesource.com/node {% verbatim %}{{ ansible_distribution_release }}{% endverbatim %} main'</span>
+    <span class="hljs-keyword">state</span>=present
+  <span class="hljs-keyword">when</span>: distrosupported|success
+
+- name: Add Nodesource Apt Sources List Deb Src
+  apt_repository:
+    repo=<span class="hljs-string">'deb-src https://deb.nodesource.com/node {% verbatim %}{{ ansible_distribution_release }}{% endverbatim %} main'</span>
+    <span class="hljs-keyword">state</span>=present
+  <span class="hljs-keyword">when</span>: distrosupported|success
+
+- name: Install NodeJS
+  apt: pkg=nodejs <span class="hljs-keyword">state</span>=latest update_cache=true
+  <span class="hljs-keyword">when</span>: distrosupported|success
+</code></pre>
+
+<p>There's a few tricks happening there. These mirror the bash script provided by Node Source.</p>
+
+<p>First we create the <code>Ensure Ubuntu Distro is Supported</code> task, which uses the <code>ansible_distribution_release</code> Fact. This gives us the Ubuntu release, such as Precise or Trusty. If the resulting URL exists, then we know our Ubuntu distribution is supported and can continue. We register <code>distrosupported</code> so we can test if this step was successfully on subsequent tasks.</p>
+
+<p>Then we run a series of tasks to remove NodeJS repositories in case the system already has <code>ppa:chris-lea/node.js</code> added. These only run when if the distribution is supported via <code>when: distrosupported|success</code>. Note that most of these continue to use the <code>ansible_distribution_release</code> Fact.</p>
+
+<p>Finally we get the debian source packages and install NodeJS after updating the repository cache. This will install the latest stable of NodeJS and NPM. We know it will get the latest version available by using <code>state=latest</code> when installing the <code>nodejs</code> package.</p>
+
+<hr>
+
+<p><a name="ansible_vault" id="ansible_vault"></a></p>
+
+<h2>Vault</h2>
+
+<p>We often need to store sensitive data in our Ansible templates, Files or Variable files; It unfortunately cannot always be avoided. Ansible has a solution for this called Ansible Vault.</p>
+
+<p>Vault allows you to encrypt any Yaml file, which typically boil down to our Variable files. Vault will not encrypt Files and Templates.</p>
+
+<p>When creating an encrypted file, you'll be asked a password which you must use to edit the file later and when calling the Roles or Playbooks.</p>
+
+<p>For example we can create a new Variable file:</p>
+
+<pre><code class="bash hljs">ansible-vault create vars/main.yml
+Vault Password:
+</code></pre>
+
+<p>After entering in the encryption password, the file will be opened in your default editor, usually Vim.</p>
+
+<p>The editor used is defined by the <code>EDITOR</code> environmental variable. The default is usually Vim. If you are not a Vim user, you can change it quickly by setting the environmental variabls:</p>
+
+<pre><code class="bash hljs"><span class="hljs-built_in">export</span> EDITOR=nano
+ansible-vault edit vars/main.yml
+</code></pre>
+
+<p>T&gt; The editor can be set in the users profile/bash configuration, usually found at <code>~/.profile</code>, <code>~/.bashrc</code>, <code>~/.zshrc</code> or similar, depending on the shell and Linux distribution used.</p>
+
+<p>Ansible Vault itself is fairly self-explanatory. Here are the commands you can use:</p>
+
+<pre><code class="bash hljs">$ ansible-vault -h
+Usage: ansible-vault [create|decrypt|edit|encrypt|rekey] \
+      [--help] [options] file_name
+
+Options:
+  -h, --help  show this <span class="hljs-built_in">help</span> message and <span class="hljs-built_in">exit</span>
+</code></pre>
+
+<p>For the most part, we'll use <code>ansible-vault create|edit /path/to/file.yml</code>. Here, however, are all of the available commands:</p>
+
+<ul>
+<li><strong>create</strong> - Create a new file and encrypt it</li>
+<li><strong>decrypt</strong> - Create a plaintext file from an encrypted file</li>
+<li><strong>edit</strong> - Edit an already-existing encrypted file</li>
+<li><strong>encrypt</strong> - Encrypt an existing plain-text file</li>
+<li><strong>rekey</strong> - Set a new password on a encrypted file</li>
+</ul>
+
+<h3>Example: Users</h3>
+
+<p>I use Vault when creating new users. In a User Role, you can set a Variable file with users' passwords and a public key to add to the users' authorized_keys file (thus giving you SSH access).</p>
+
+<p>T&gt; Public SSH keys are technically safe for the general public to see - all someone can do with them is allow you access to their own servers. Public keys are intentionally useless for gaining access to a sytem without the paired private key, which we are not putting into this Role.</p>
+
+<p>Here's an example variable file which can be created and encrypt with Vault. While editing it, it's of course in plain-text:</p>
+
+<pre><code class="yaml hljs bash">admin_password: <span class="hljs-variable">$6</span><span class="hljs-variable">$lpQ1DqjZQ25gq9YW</span><span class="hljs-variable">$mHZAmGhFpPVVv0JCYUFaDovu8u5EqvQi</span>.Ih
+deploy_password: <span class="hljs-variable">$6</span><span class="hljs-variable">$edOqVumZrYW9</span><span class="hljs-variable">$d5zj1Ok</span>/G80DrnckixhkQDpXl0fACDfNx2EHnC
+common_public_key: ssh-rsa ALongSSHPublicKeyHere
+</code></pre>
+
+<p>Note that the passwords for the users are also hashed. You can read Ansible's documentation on <a href="http://docs.ansible.com/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module">generating encrypted passwords</a>, which the User module requires to set a user password. As a quick primer, it looks like this:</p>
+
+<pre><code class="bash hljs"><span class="hljs-comment"># The whois package makes the mkpasswd</span>
+<span class="hljs-comment"># command available on Ubuntu</span>
+$ sudo apt-get install -y whois
+
+<span class="hljs-comment"># Create a password hash</span>
+$ mkpasswd --method=SHA-<span class="hljs-number">512</span>
+Password:
+</code></pre>
+
+<p>This will generate a hashed password for you to use with the <code>user</code> module.</p>
+
+<p>Once you have set the user passwords and added the public key into the Variables file, we can make a Task to use these encrypted variables:</p>
+
+<pre><code class="yaml hljs sql"><span class="hljs-comment">---</span>
+- name: <span class="hljs-operator"><span class="hljs-keyword">Create</span> Admin <span class="hljs-keyword">User</span>
+  <span class="hljs-keyword">user</span>:
+    name=admin
+    <span class="hljs-keyword">password</span>={% verbatim %}{{ admin_password }}{% endverbatim %}
+    groups=sudo
+    append=yes
+    shell=/<span class="hljs-keyword">bin</span>/bash
+
+- name: <span class="hljs-keyword">Add</span> Admin Authorized <span class="hljs-keyword">Key</span>
+  authorized_key:
+    <span class="hljs-keyword">user</span>=admin
+    <span class="hljs-keyword">key</span>=<span class="hljs-string">"{% verbatim %}{{ common_public_key }}{% endverbatim %}"</span>
+    state=present
+
+- name: <span class="hljs-keyword">Create</span> Deploy <span class="hljs-keyword">User</span>
+  <span class="hljs-keyword">user</span>:
+    name=deploy
+    <span class="hljs-keyword">password</span>={% verbatim %}{{ deploy_password }}{% endverbatim %}
+    groups=www-<span class="hljs-keyword">data</span>
+    append=yes
+    shell=/<span class="hljs-keyword">bin</span>/bash
+
+- name: <span class="hljs-keyword">Add</span> Deployer Authorized <span class="hljs-keyword">Key</span>
+  authorized_key:
+    <span class="hljs-keyword">user</span>=deploy
+    <span class="hljs-keyword">key</span>=<span class="hljs-string">"{% verbatim %}{{ common_public_key }}{% endverbatim %}"</span>
+    state=present
+</span></code></pre>
+
+<p>These Tasks use the <code>user</code> module to create new users, passing in the passwords set in the Variable file.</p>
+
+<p>It also uses the <code>authorized_key</code> module to add the SSH pulic key as an authorized SSH key in the server for each user.</p>
+
+<p>Variables are used like usual within the Tasks file. However, in order to run this Role, we'll need to tell Ansible to ask for the Vault password so it can unencrypt the variables.</p>
+
+<p>Let's setup a <code>provision.yml</code> Playbook file to call our <code>user</code> Role:</p>
+
+<pre><code class="yaml hljs diff"><span class="hljs-header">---</span>
+<span class="hljs-deletion">- hosts: all</span>
+  sudo: yes
+  roles:
+    - user
+</code></pre>
+
+<p>To run this Playbook, we need to tell Ansible to ask for the Vault password, as we're running a Role which contains an encrypted file:</p>
+
+<pre><code class="bash hljs">ansible-playbook --ask-vault-pass provision.yml
+</code></pre>
+
+<h2>Recap</h2>
+
+<p>Here's what we did:</p>
+
+<ul>
+<li>Installed Ansible</li>
+<li>Configured Ansible inventory</li>
+<li>Ran idempotent ad-hoc commands on multiple servers simultaneously</li>
+<li>Created a basic Playbook to run multiple Tasks, using Handlers</li>
+<li>Abstracted the Tasks <a href="https://github.com/Servers-for-Hackers/ansible-nginx">into a Role</a> to keep everything Nginx-related organized
+
+<ul>
+<li>Saw how to set dependencies</li>
+<li>Saw how to register Task "dependencies" and run other Tasks only if they are successful</li>
+<li>Saw how to use more templates, files and variables in our Tasks</li>
+</ul></li>
+<li>Saw how to incorporate Ansible Facts</li>
+<li>Saw how to use Ansible Vault to add security to our variables</li>
+</ul>
+
+<p>We covered a lot of ground, and it will get you pretty far. However, there are many more tools provided by Ansible to explore!</p>
+
+<blockquote>
+  <p>If this edition piqued your interest, the <a href="http://book.serversforhackers.com/">Servers for Hackers eBook</a> will go into more depth with Ansible and many other topics!</p>
+</blockquote>
+
+<h2>Additional Resources</h2>
+
+<ul>
+<li><strong>Many</strong> more example Roles in the <a href="https://github.com/Servers-for-Hackers">Servers for Hackers Github repo</a>.</li>
+<li>Use <a href="http://docs.ansible.com/playbooks_vault.html">Ansible Vault</a> to encrypt secure data, making it more safe if your playbooks or Roles end up in version control or are otherwise shared</li>
+<li>See the <a href="http://docs.ansible.com/modules_by_category.html">Module Index</a> for more information on available modules</li>
+</ul>
+
+<p>There are a <strong>lot</strong> of useful things you can do with Ansible. Explore the <a href="http://docs.ansible.com/">documentation</a>!</p>
+
+            </article>
+                    </div>
+    </div>
+</div>
+<div id="newsletter-long" class="container has-newsletter">
+    <div class="row">
+            <div class="col-md-push-1 col-md-10">
+            <hr>
+            <h1>Want more?</h1>
+            <p>If articles like this interest you, sign up for the <strong>newsletter</strong>!<br>Join nearly 10000 others on the mailing list!</p>
+            <form action="https://serversforhackers.curated.co/email_subscribers" method="post" id="curated_subscribe_form">
+                <ul>
+                    <li><input name="email" placeholder="Email Address" class="txt" value="" type="email"></li>
+                    <li><button type="submit" class="button subcr">Subscribe</button></li>
+                </ul>
+                <input name="form_dom_id" value="curated_subscribe_form" type="hidden">
+            </form>
+            <hr>
+        </div>
+        </div>
+</div>
+<div class="container" id="the-comments">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="comments">
+                <div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="index_1.html" style="width: 1px ! important; min-width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 5607px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" name="dsq-app2" id="dsq-app2" frameborder="0" width="100%"></iframe><iframe src="index_2.html" style="width: 1140px ! important; border: medium none ! important; overflow: hidden ! important; top: 0px ! important; min-width: 1140px ! important; max-width: 1140px ! important; position: fixed ! important; z-index: 2147483646 ! important; height: 29px ! important; min-height: 29px ! important; max-height: 29px ! important; display: none ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" name="indicator-north" id="indicator-north" frameborder="0"></iframe><iframe src="index_3.html" style="width: 1140px ! important; border: medium none ! important; overflow: hidden ! important; bottom: 0px ! important; min-width: 1140px ! important; max-width: 1140px ! important; position: fixed ! important; z-index: 2147483646 ! important; height: 29px ! important; min-height: 29px ! important; max-height: 29px ! important; display: none ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" name="indicator-south" id="indicator-south" frameborder="0"></iframe></div>
+                
+            </section>
+        </div>
+    </div>
+</div>
+<section class="dark" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Servers for Hackers</h3>
+                <ul>
+                    <li><a href="https://serversforhackers.com/series">Videos</a></li>
+                    <li><a href="https://serversforhackers.com/editions">Editions</a></li>
+                    <li><a href="https://serversforhackers.com/articles">Articles</a></li>
+                    <li><a href="https://serversforhackers.com/feed">RSS</a></li>
+                    <li><a href="https://book.serversforhackers.com/?utm_source=sfh&amp;utm_medium=navigation&amp;utm_campaign=sfh-ebook">💥 SFH eBook</a></li>
+                    <li><a href="https://deploy.serversforhackers.com/?utm_source=sfh&amp;utm_medium=navigation&amp;utm_campaign=sfh-deploy">💥 Deploy!</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6" id="newsletter">
+                <h3>The Newsletter</h3>
+                <p>Get Actually Useful™ server info bimonthly!</p>
+                <form action="https://serversforhackers.curated.co/email_subscribers" method="post" id="curated_subscribe_form">
+                    <ul>
+                        <li><input name="email" placeholder="Email Address" class="txt" value="" type="email"></li>
+                        <li><button type="submit" class="btn subcr">Subscribe</button></li>
+                    </ul>
+                    <input name="form_dom_id" value="curated_subscribe_form" type="hidden">
+                </form>
+                            </div>
+        </div>
+        <div id="footer-meta" class="row">
+            <div class="col-md-12">
+                <p>© 2016 - Fideloper LLC &nbsp;-&nbsp; <a href="https://twitter.com/srvrsforhackers">@srvrsforhackers</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    
+        
+
+
+
+</body>
+</html>

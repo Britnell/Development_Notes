@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="client-js" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<title>SD/MMC format for OMAP3 boot - Texas Instruments Wiki</title>
+<meta name="generator" content="MediaWiki 1.25.1">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://processors.wiki.ti.com/opensearch_desc.php" title="Texas Instruments Wiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://processors.wiki.ti.com/api.php?action=rsd">
+<link rel="alternate" hreflang="x-default" href="http://processors.wiki.ti.com/index.php/SD/MMC_format_for_OMAP3_boot">
+<link rel="copyright" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<link rel="alternate" type="application/atom+xml" title="Texas Instruments Wiki Atom feed" href="http://processors.wiki.ti.com/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="canonical" href="http://processors.wiki.ti.com/index.php/SD/MMC_format_for_OMAP3_boot">
+
+<meta name="ResourceLoaderDynamicStyles" content="">
+
+
+
+
+
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/skins/Vector/csshover.min.htc")}</style><![endif]-->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-SD_MMC_format_for_OMAP3_boot skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+							<div id="siteNotice"><div id="localNotice" dir="ltr" lang="en"><p><br>
+</p></div></div>
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">SD/MMC format for OMAP3 boot</span></h1>
+						<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From Texas Instruments Wiki</div>
+								<div id="contentSub"><span class="subpages">&lt; <a href="http://processors.wiki.ti.com/index.php/SD" title="SD">SD</a></span><span class="mw-redirectedfrom">(Redirected from <a href="http://processors.wiki.ti.com/index.php?title=MMC_Boot_Format&amp;redirect=no" title="MMC Boot Format">MMC Boot Format</a>)</span></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-head">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><div class="hf-nsheader"></div><div class="hf-header"></div><p><br>
+In order to create a bootable <a href="http://processors.wiki.ti.com/index.php/SD-Card" title="SD-Card">SD/MMC card</a> under <b>Linux</b> compatible with <a href="http://processors.wiki.ti.com/index.php/OMAP3_Overview" title="OMAP3 Overview">OMAP3</a> boot ROM, you'd have to set a special geometry in the partition table, which is done through the <a rel="nofollow" class="external text" href="http://linux.die.net/man/8/fdisk">fdisk</a> "Expert mode". For <b>Windows</b> tooling see <a rel="nofollow" class="external text" href="http://code.google.com/p/beagleboard/wiki/BootingBeagleBoard">Procedure to boot with MMC/SD</a> page. 
+</p><p>First, lets clear the partition table:
+</p>
+<pre># fdisk /dev/sdb
+
+Command (m for help): <i>o</i>
+Building a new DOS disklabel. Changes will remain in memory only,
+until you decide to write them. After that, of course, the previous
+content won't be recoverable.
+
+Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)
+</pre>
+<p>Print card info:
+</p>
+<pre>Command (m for help): <i>p</i>
+
+Disk /dev/sdb: 128 MB, <b>128450560 bytes</b>
+....
+</pre>
+<p>Note card size in bytes. Needed later below.
+</p><p>Then go into "Expert mode":
+</p>
+<pre>Command (m for help): <i>x</i>
+</pre>
+<p>Now we want to set the geometry to 255 heads, 63 sectors and calculate the number of cylinders required for the particular SD/MMC card:
+</p>
+<pre>Expert command (m for help): <i>h</i>
+Number of heads (1-256, default 4): <i>255</i>
+
+Expert command (m for help): <i>s</i>
+Number of sectors (1-63, default 62): <i>63</i>
+Warning: setting sector offset for DOS compatiblity
+
+Expert command (m for help): <i>c</i>
+Number of cylinders (1-1048576, default 1011): <i>15</i>
+</pre>
+<p>In this case 128MB card is used (reported as 128450560 bytes by fdisk above), thus 128450560 / 255 / 63 / 512 = 15.6 rounded down to 15 cylinders. Numbers there are 255 heads, 63 sectors, 512 bytes per sector.
+</p><p>Now, return to main mode and create a new partition:
+</p>
+<pre>Expert command (m for help): <i>r</i>
+
+Command (m for help): <i>n</i>
+Command action
+   e   extended
+   p   primary partition (1-4)
+<i>p</i>
+Partition number (1-4): <i>1</i>
+First cylinder (1-15, default 1): <i>1</i>
+Last cylinder or +size or +sizeM or +sizeK (1-15, default 15): <i>15</i>
+</pre>
+<p>Mark it bootable:
+</p>
+<pre>Command (m for help): <i>a</i>
+Partition number (1-4): <i>1</i>
+</pre>
+<p>And change its type to FAT32:
+</p>
+<pre>Command (m for help): <i>t</i>
+Selected partition 1
+Hex code (type L to list codes): <i>c</i>
+Changed system type of partition 1 to c (W95 FAT32 (LBA))
+</pre>
+<p>The result is:
+</p>
+<pre>Command (m for help): <i>p</i>
+
+Disk /dev/sdb: 128 MB, 128450560 bytes
+<i>255 heads, 63 sectors/track, 15 cylinders</i>
+Units = cylinders of 16065 * 512 = 8225280 bytes
+
+   Device Boot      Start         End      Blocks   Id  System
+<i>/dev/sdb1   *           1          15      120456    c  W95 FAT32 (LBA)</i>
+</pre>
+<p>Now, <i>really</i> write configuration to card (until here, card is not changed):
+</p>
+<pre>Command (m for help): <i>w</i>
+The partition table has been altered!
+
+Calling ioctl() to re-read partition table.
+
+WARNING: If you have created or modified any DOS 6.x
+partitions, please see the fdisk manual page for additional
+information.
+Syncing disks.
+</pre>
+<p>Done! What's left is to format our partition as FAT32 to be mounted and populated:
+</p>
+<pre># mkfs.vfat -F 32 /dev/sdb1
+mkfs.vfat 2.11 (12 Mar 2005)
+</pre>
+<p>Note: before running mkfs.vfat (included in the dosfstools package in Debian) make sure /dev/sdb is not mounted.
+</p>
+<pre># mount /dev/sdb1 /mnt/tmp
+</pre>
+<p>Note: If you use additional mkfs.vfat parameter <i>-n</i> you can give the card a name, e.g. for easier identification (i.e. <i>mkfs.vfat -n omap3 -F 32 /dev/sdb1</i>)
+</p><p>The SD/MMC card is now ready to be used to boot <a rel="nofollow" class="external text" href="http://elinux.org/BeagleBoard#Other_OMAP_boards">OMAP3 boards</a>.
+</p>
+<h3><span class="mw-headline" id="sfdisk">sfdisk</span></h3>
+<p>In order to format same card using sfdisk, one needs to do the following:
+</p>
+<pre># sfdisk -H 255 -S 63 -C 15 /dev/sdb &lt;&lt; EOF
+&gt; ,,b,*
+&gt; EOF
+</pre>
+<p>And follow with the mkfs.vfat commands above.
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.016 seconds
+Real time usage: 0.028 seconds
+Preprocessor visited node count: 6/1000000
+Preprocessor generated node count: 18/1000000
+Post‐expand include size: 116/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    8.480      1 - -total
+100.00%    8.480      1 - Template:Sitara_Devices
+-->
+
+<!-- Saved in parser cache with key davincid_wikidb:pcache:idhash:206-0!*!0!*!*!*!* and timestamp 20160627135014 and revision id 114261
+ -->
+<div class="hf-footer"></div><div class="hf-nsfooter"><table style="background: white none repeat scroll 0% 0%; width: 100%; text-align: left; border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid; border-width: 1px; border-style: solid;">
+<tbody><tr>
+<td width="305px"><a href="http://processors.wiki.ti.com/index.php/File:E2e.jpg" class="image"><img alt="E2e.jpg" src="e2e.jpg" height="63" width="305"></a>
+</td>
+<td><i>For technical support please post your questions at <a rel="nofollow" class="external free" href="http://e2e.ti.com/">http://e2e.ti.com</a>. Please post only comments about the article <b>MMC Boot Format</b> here.</i>
+</td></tr></tbody></table>
+<table style="border-style: solid; border-width: 1px; text-align: center; width: 100%;">
+
+<tbody><tr style="font-size: 150%;">
+<td rowspan="2"> <a href="http://processors.wiki.ti.com/index.php/File:Hyperlink_blue.png" class="image"><img alt="Hyperlink blue.png" src="hyperlink_blue.png" height="96" width="96"></a>
+</td>
+<td><b>Links</b>
+</td></tr>
+<tr>
+<td>
+<table style="text-align: left;">
+<tbody><tr>
+<td style="padding-right: 10px; vertical-align: top;">
+<p><a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/analog/amplifier_and_linear.page">Amplifiers &amp; Linear</a><br>
+<a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/analog/audio/audio_overview.page">Audio</a><br>
+<a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/analog/rfif.page">Broadband RF/IF &amp; Digital Radio</a><br>
+<a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/analog/clocksandtimers/clocks_and_timers.page">Clocks &amp; Timers</a><br>
+<a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/analog/dataconverters/data_converter.page">Data Converters</a>
+</p>
+</td>
+<td style="padding-right: 10px; vertical-align: top;">
+<p><a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/analog/mems/mems.page">DLP &amp; MEMS</a><br>
+<a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/analog/high_reliability.page">High-Reliability</a><br>
+<a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/analog/interface/interface.page">Interface</a><br>
+<a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/logic/home_overview.page">Logic</a><br>
+<a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/analog/powermanagement/power_portal.page">Power Management</a>
+</p>
+</td>
+<td style="padding-right: 10px; vertical-align: top;">
+<p><a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/dsp/embedded_processor.page">Processors</a>
+</p>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/dsp/arm.page">ARM Processors</a></li>
+<li> <a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/dsp/home.page">Digital Signal Processors (DSP)</a></li>
+<li> <a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/microcontroller/home.page">Microcontrollers (MCU)</a></li>
+<li> <a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/omap-applications-processors/the-omap-experience.page">OMAP Applications Processors</a></li></ul>
+</td>
+<td style="padding-right: 10px; vertical-align: top;">
+<p><a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/analog/switches_and_multiplexers.page">Switches &amp; Multiplexers</a><br>
+<a rel="nofollow" class="external text" href="http://www.ti.com/lsds/ti/analog/temperature_sensor.page">Temperature Sensors &amp; Control ICs</a><br>
+<a rel="nofollow" class="external text" href="http://focus.ti.com/wireless/docs/wirelessoverview.tsp?familyId=2003&amp;sectionId=646&amp;tabId=2735">Wireless Connectivity</a>
+</p>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+<p><!-- HitBox Sub accounts Code START -->
+
+<!-- HitBox Sub accounts Code END -->
+</p></div></div>									<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="http://processors.wiki.ti.com/index.php?title=SD/MMC_format_for_OMAP3_boot&amp;oldid=114261">http://processors.wiki.ti.com/index.php?title=SD/MMC_format_for_OMAP3_boot&amp;oldid=114261</a>"					</div>
+													<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://processors.wiki.ti.com/index.php/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://processors.wiki.ti.com/index.php/Category:AM437x" title="Category:AM437x">AM437x</a></li><li><a href="http://processors.wiki.ti.com/index.php/Category:AM335x" title="Category:AM335x">AM335x</a></li><li><a href="http://processors.wiki.ti.com/index.php/Category:AM35x" title="Category:AM35x">AM35x</a></li><li><a href="http://processors.wiki.ti.com/index.php/Category:AM37x" title="Category:AM37x">AM37x</a></li><li><a href="http://processors.wiki.ti.com/index.php/Category:AM1x" title="Category:AM1x">AM1x</a></li><li><a href="http://processors.wiki.ti.com/index.php/Category:AM18x" title="Category:AM18x">AM18x</a></li><li><a href="http://processors.wiki.ti.com/index.php/Category:Linux" title="Category:Linux">Linux</a></li><li><a href="http://processors.wiki.ti.com/index.php/Category:Boot" title="Category:Boot">Boot</a></li><li><a href="http://processors.wiki.ti.com/index.php/Category:SD/MMC" title="Category:SD/MMC">SD/MMC</a></li><li><a href="http://processors.wiki.ti.com/index.php/Category:OMAP35x" title="Category:OMAP35x">OMAP35x</a></li><li><a href="http://processors.wiki.ti.com/index.php/Category:DM37xxHW" title="Category:DM37xxHW">DM37xxHW</a></li></ul></div></div>												<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-login"><a href="http://processors.wiki.ti.com/index.php?title=Special:UserLogin&amp;returnto=SD%2FMMC+format+for+OMAP3+boot" title="You are encouraged to log in; however, it is not mandatory [Alt+Shift+o]" accesskey="o">Log in</a></li><li id="pt-createaccount"><a href="http://processors.wiki.ti.com/index.php/Special:RequestAccount" title="You are encouraged to create an account and log in; however, it is not mandatory">Request account</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li id="ca-nstab-main" class="selected"><span><a href="http://processors.wiki.ti.com/index.php/SD/MMC_format_for_OMAP3_boot" title="View the content page [Alt+Shift+c]" accesskey="c">Page</a></span></li>
+															<li id="ca-talk"><span><a href="http://processors.wiki.ti.com/index.php/Talk:SD/MMC_format_for_OMAP3_boot" title="Discussion about the content page [Alt+Shift+t]" accesskey="t">Discussion</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 tabindex="0" id="p-variants-label"><span>Variants</span><a tabindex="-1" href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="http://processors.wiki.ti.com/index.php/SD/MMC_format_for_OMAP3_boot">Read</a></span></li>
+															<li id="ca-viewsource"><span><a href="http://processors.wiki.ti.com/index.php?title=SD/MMC_format_for_OMAP3_boot&amp;action=edit" title="This page is protected.
+You can view its source [Alt+Shift+e]" accesskey="e">View source</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="http://processors.wiki.ti.com/index.php?title=SD/MMC_format_for_OMAP3_boot&amp;action=history" title="Past revisions of this page [Alt+Shift+h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div style="" id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 tabindex="0" id="p-cactions-label"><span>More</span><a tabindex="-1" href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="http://processors.wiki.ti.com/index.php" id="searchform">
+														<div id="simpleSearch">
+															<input autocomplete="off" tabindex="1" name="search" placeholder="Search" title="Search Texas Instruments Wiki [Alt+Shift+f]" accesskey="f" id="searchInput" type="search"><input value="Special:Search" name="title" type="hidden"><input name="go" value="Go" title="Go to a page with this exact name if exists" id="searchButton" class="searchButton" type="submit">								</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="http://processors.wiki.ti.com/index.php/Main_Page" title="Visit the main page"></a></div>
+						<div class="portal first" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+			<h3 id="p-navigation-label">Navigation</h3>
+
+			<div class="body">
+									<ul>
+													<li id="n-mainpage"><a href="http://processors.wiki.ti.com/index.php/Main_Page" title="Visit the main page [Alt+Shift+z]" accesskey="z">Main Page</a></li>
+													<li id="n-All-pages"><a href="http://processors.wiki.ti.com/index.php/Special:AllPages">All pages</a></li>
+													<li id="n-All-categories"><a href="http://processors.wiki.ti.com/index.php/Special:Categories">All categories</a></li>
+													<li id="n-recentchanges"><a href="http://processors.wiki.ti.com/index.php/Special:RecentChanges" title="A list of recent changes in the wiki [Alt+Shift+r]" accesskey="r">Recent changes</a></li>
+													<li id="n-randompage"><a href="http://processors.wiki.ti.com/index.php/Special:Random" title="Load a random page [Alt+Shift+x]" accesskey="x">Random page</a></li>
+													<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" title="The place to find out">Help</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-coll-print_export" aria-labelledby="p-coll-print_export-label">
+			<h3 id="p-coll-print_export-label">Print/export</h3>
+
+			<div class="body">
+									<ul>
+													<li id="coll-create_a_book"><a href="http://processors.wiki.ti.com/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=SD%2FMMC+format+for+OMAP3+boot">Create a book</a></li>
+													<li id="coll-download-as-rl"><a href="http://processors.wiki.ti.com/index.php?title=Special:Book&amp;bookcmd=render_article&amp;arttitle=SD%2FMMC+format+for+OMAP3+boot&amp;oldid=114261&amp;writer=rl">Download as PDF</a></li>
+													<li id="t-print"><a href="http://processors.wiki.ti.com/index.php?title=SD/MMC_format_for_OMAP3_boot&amp;printable=yes" title="Printable version of this page [Alt+Shift+p]" accesskey="p">Printable version</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Toolbox</h3>
+
+			<div class="body">
+									<ul>
+													<li id="t-whatlinkshere"><a href="http://processors.wiki.ti.com/index.php/Special:WhatLinksHere/SD/MMC_format_for_OMAP3_boot" title="A list of all wiki pages that link here [Alt+Shift+j]" accesskey="j">What links here</a></li>
+													<li id="t-recentchangeslinked"><a href="http://processors.wiki.ti.com/index.php/Special:RecentChangesLinked/SD/MMC_format_for_OMAP3_boot" title="Recent changes in pages linked from this page [Alt+Shift+k]" accesskey="k">Related changes</a></li>
+													<li id="t-specialpages"><a href="http://processors.wiki.ti.com/index.php/Special:SpecialPages" title="A list of all special pages [Alt+Shift+q]" accesskey="q">Special pages</a></li>
+													<li id="t-permalink"><a href="http://processors.wiki.ti.com/index.php?title=SD/MMC_format_for_OMAP3_boot&amp;oldid=114261" title="Permanent link to this revision of the page">Permanent link</a></li>
+													<li id="t-info"><a href="http://processors.wiki.ti.com/index.php?title=SD/MMC_format_for_OMAP3_boot&amp;action=info" title="More information about this page">Page information</a></li>
+											</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 24 July 2012, at 17:36.</li>
+											<li id="footer-info-viewcount">This page has been accessed 7,293 times.</li>
+											<li id="footer-info-copyright">Content is available under <a class="external" rel="nofollow" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike</a> unless otherwise noted.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://processors.wiki.ti.com/index.php/Project:Privacy_policy" title="Project:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://processors.wiki.ti.com/index.php/Project:About" title="Project:About">About Texas Instruments Wiki</a></li>
+											<li id="footer-places-disclaimer"><a href="http://processors.wiki.ti.com/index.php/Project:General_disclaimer" title="Project:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-termsofservice"><a href="http://processors.wiki.ti.com/index.php/Project:Terms_of_Service" title="Project:Terms of Service">Terms of Use</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+															<a href="http://creativecommons.org/licenses/by-sa/3.0/"><img src="cc-by-sa.png" alt="Creative Commons Attribution-ShareAlike" height="31" width="88"></a>
+													</li>
+											<li id="footer-poweredbyico">
+															<a href="http://www.mediawiki.org/"><img src="poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" height="31" width="88"></a>
+													</li>
+									</ul>
+						<div style="clear: both;"></div>
+		</div>
+		
+
+
+
+
+	
+
+<div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body>
+</html>

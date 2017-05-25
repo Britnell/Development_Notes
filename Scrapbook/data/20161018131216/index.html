@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Weeks 11-12: AVR USB Devices and Programming</title>
+    <meta name="description" content="Blog for MAS 863 made in Jekyll. See the About page for more details.
+">
+
+    
+    <link rel="canonical" href="http://fab.cba.mit.edu/classes/863.14/people/andrew_mao/week11/">
+
+<link media="all" href="index.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="http://fab.cba.mit.edu/classes/863.14/people/andrew_mao/">Andrew Mao @ 863.14</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"></path>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"></path>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"></path>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="http://fab.cba.mit.edu/classes/863.14/people/andrew_mao/about/">About</a>
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Weeks 11-12: AVR USB Devices and Programming</h1>
+    <p class="post-meta"></p>
+  </header>
+
+  <article class="post-content">
+    <p>One of the relatively unexplored topics in this week’s lecture was
+USB, the ubiquitous protocol that allows computers to communicate with
+peripheral devices (containing microcontrollers). Creating a USB
+device allows any computer to talk to it without the specialized
+software and hardware we’ve been using so far. For these two weeks, I
+decided to understand the requirements to create USB-compatible device
+circuits and write the necessary software for a computer to talk to
+them.</p>
+
+<p><strong>This is an epically long post about creating a USB device from
+  scratch and programming it.</strong></p>
+
+<h2 id="hardware-or-software-usb">Hardware or Software USB?</h2>
+
+<p>Making a USB device requires programming a microcontroller that can
+talk to a computer with the USB protocol. So far in the class, we’ve
+been writing microcontroller code that communicates with various
+protocols. It’s also possible to do this with USB, and the
+<a href="https://github.com/obdev/v-usb">V-USB</a> library implements this. However, having the
+microcontroller emulate USB in <strong>software</strong> has several drawbacks,
+including that it’s slow, and that the microcontroller will need to
+devote some amount of time to USB communication.</p>
+
+<p>On the other hand, microcontrollers with <strong>hardware</strong> USB support
+offload the necessary computations to dedicated circuitry. In Atmel’s
+AVR line, Mega and XMega devices with the <code>U</code> suffix have hardware USB
+support. In order to write microcontroller code to interact with the
+USB hardware, there are helper libraries such as Atmel’s
+<a href="http://www.atmel.com/images/doc8360.pdf">USB stack</a> and <a href="http://www.atmel.com/images/doc8360.pdf">LUFA</a>. I’ll be exploring LUFA as
+it’s open source, is well documented, and has many examples.</p>
+
+<h2 id="circuit-design">Circuit Design</h2>
+
+<p>In the class inventory, we have a couple of devices with hardware USB
+support: the <strong>ATmega16U2</strong> and the <strong>ATXMEGA16A4U</strong>. Because LUFA
+support for the XMEGA AVRs is currently
+<a href="http://www.fourwalledcubicle.com/files/LUFA/Doc/120219/html/_page__x_m_e_g_a_support.html">not well-supported</a>, I’ve opted to go with the ATmega
+chip.</p>
+
+<p>Given that we’ll use the ATMega16U2, what’s next? Well, it turns out
+that there aren’t many examples of USB device circuits for
+microcontrollers floating around online. Even the datasheet isn’t very
+specific about examples of application circuits. However, after a long
+search, I was happy to discover that the Arduino Uno revision 3 uses
+an ATMega16U2 chip as a USB to serial converter for the actual
+ATmega328p being programmed. <a href="http://arduino.cc/en/uploads/Main/Arduino_Uno_Rev3-schematic.pdf">Its schematic</a> was very helpful
+as an example to build a basic circuit.</p>
+
+<p>From various datasheets and other examples, I have found several
+things to be aware of when designing these circuits:</p>
+
+<ul>
+  <li>
+    <p>In order to use Full-speed (12 Mbit/s) USB, the microcontroller
+needs to be able to generate a precize 48 MHz clock with a deviation
+of no more than 0.25%. Since resonators have 0.5% tolerance, This
+means only quartz crystals can be used, and moreover they need to
+evenly divide into this frequency in order for a
+<a href="http://en.wikipedia.org/wiki/Phase-locked_loop">phase-locked loop</a> to generate this clock. For the ATMega16U2,
+this will require a 8MHz or 16MHz crystal - no substitutes.</p>
+  </li>
+  <li>
+    <p>Different quartz crystals at the same frequency are not
+interchangeable; they are specced at a fixed
+<a href="https://www.adafruit.com/blog/2012/01/24/choosing-the-right-crystal-and-caps-for-your-design/">load capacitance</a> that must be matched by the circuit for
+the specified accuracy. If this capacitance is far off, the crystal
+can be slower or faster than intended.</p>
+  </li>
+  <li>
+    <p>The USB signaling pins require resistors for
+<a href="http://www.usb.org/developers/usbfaq#sig6">impedance matching</a> to optimize signal quality. The
+datasheet shows some unspecified resistors here, and I discovered
+the reason by asking
+<a href="http://electronics.stackexchange.com/q/140081/57973">this Electronics StackExchange question</a>.</p>
+  </li>
+</ul>
+
+<p>After the due diligence on the circuit engineering, I was finally
+ready to design the schematic. Because I was using some non-standard
+parts here, I found the <a href="https://github.com/adafruit/Adafruit-Eagle-Library">Ladyada</a> and
+<a href="https://github.com/sparkfun/SparkFun-Eagle-Libraries">Sparkfun</a> Eagle libraries to be useful. In the circuit
+below, I’m using a 16MHz crystal in a HC-49 surface mount package, an
+ATmega32U2 - pin compatible with the ATmega16U2, and a USB A connector
+directly on the PCB.</p>
+
+<p>The Eagle libraries also include <strong>supply parts</strong> which make it easier
+to create <code>VCC</code> and <code>GND</code> connections by dropping parts instead of
+naming nets. <strong>I strongly recommend this as a workflow</strong>! Note also
+the impedance matching signaling resistors, and the capacitors paired
+with the crystal, the values of which I borrowed from the Uno rev. 3
+because of its similar configuration.</p>
+
+<p>A power LED automatically lights up when the board is powered - a nice
+feature to have. The RGB LED in the circuit is attached to hardware
+PWM pins, so that it can be controlled with full color by setting the
+corresponding PWM rates.</p>
+
+<p><img src="schematic.png" alt=""></p>
+
+<p>The mega16U2 comes in a TQFP32 package, similar to the
+mega328P. Compared with the pins on the tiny44 and tiny45, they are
+much closer together and smaller. In order to mill traces for them,
+one will either need to use a 10 mil end mill, or edit the pads to
+allow for more space with them. Given the overall stress caused to the
+class from 10 mil end mills, I decided to edit the pads to so that I
+could mill the board with the normal 1/64” end mill. Note that this
+makes the pads narrower than the pins, so soldering will be harder.</p>
+
+<p>To change the pad size, you can just open the library in Eagle and use
+the following menu. Here, I’ve changed the TQFP32 package’s pads from
+<code>0.16 x 0.05</code> to <code>0.14 x 0.06</code> - slightly thinner, but longer. In
+routing the board, I used 0.14” routes when connecting to all of the
+pads, and widened them to the 0.16” routes as soon as they left the
+vicinity of the microcontroller.</p>
+
+<p><img src="change-smd.png" alt=""></p>
+
+<p>This is the board, all laid out. My original design had many more LEDs
+and switches, but it turned out I had bit off much more than I could
+chew - or lay out on a single-sided board. I removed many of the extra
+parts, and settled on three switches and one RGB LED. After many hours
+of routing, I came up with this compact, symmetric design using the
+integrated USB connector. It’s a pity that the mega16U2 doesn’t have
+any ADC hardware, or I would have added several sensors to read later
+via USB.</p>
+
+<p><img src="board.png" alt=""></p>
+
+<p>Here’s the result of milling the board. Note that there are some
+<strong>traces pulling off</strong> in the center of the board, which is less than
+ideal. This board was exported at 1200 DPI, but that still wasn’t
+enough for the very fine detail in the middle - the microcontroller
+pads and traces should only be slightly narrower than normal, but they
+appear to be significantly narrower in some spots. If I were to do
+this again, I’d export at an even higher resolution.</p>
+
+<p>However, nothing essential has been damaged, and hopefully some solder
+will hold it all in place.</p>
+
+<p><img src="milling.jpg" alt=""> </p>
+
+<p>Although I used 6 offset paths instead of the normal 4, there are
+still copper traces around the edge of the board. This is a problem
+around the USB connector, where we don’t want to be shorting random
+pins to each other. I shaved these unwanted copper parts off with an
+X-acto knife.</p>
+
+<p>I tested the board out in a USB socket and read the pin voltages, just
+to make sure the connector will work:</p>
+
+<p><img src="usb-voltage.jpg" alt=""></p>
+
+<p>Soldering really small packages to a board is incredibly difficult,
+and one of the main reasons is the initial positioning of the IC. I
+didn’t want to use an initial solder joint to position the chip,
+because this risked damaging the delicate traces and it is very hard
+to position with tweezers in the first place. Nate Melenbrink
+suggested putting tape down over half of the chip to position it. This
+actually worked really well, because the length of the tape creates an
+“arm” that makes it much easier to make small adjustments, and it can
+be pressed down to hold the part in place. Masking tape works well for
+this, and leaves no residue.</p>
+
+<p><img src="masking-tape.jpg" alt=""></p>
+
+<p>The traces on this chip are much too small to solder
+individually. Just do them all in a row, and use a wick to soak up any
+excess solder.</p>
+
+<p><img src="tinning.jpg" alt=""></p>
+
+<p>At the same time, I’ve tinned the USB connection pins. This serves two
+purposes. First, it protects the copper traces from oxidation, so that
+the pins don’t develop a coating that inhibits electrical
+contact. Second, it thickens up the contacts a bit so that they mate
+more tightly with the USB socket.</p>
+
+<p>Note that the schematic called for 22pF capacitors between the crystal
+terminals and ground, and 22 Ohm resistors on the signaling pins. We
+don’t have those in the inventory, so I approximated by soldering two
+10pF capacitors on top of each other for the crystal, and two 49.9 Ohm
+resistors on top of each other for the signaling pins. The finished
+board is below:</p>
+
+<p><img src="finished-board.jpg" alt=""></p>
+
+<p>The power LED turns on when I plug it into the USB port, and there’s
+no smoke or heating. That’s a good sign…</p>
+
+<p><img src="power-on.jpg" alt=""></p>
+
+<p>The best sign that things are working is that the board shows up
+immediately in the Windows Device Manager as a USB device called
+<code>ATmega16u2 DFU</code>. </p>
+
+<blockquote>
+  <p><img src="usb-device.png" alt=""></p>
+</blockquote>
+
+<p>Note that it hasn’t even been programmed yet!  However, this is
+because all AVR chips with hardware USB come with a DFU (Device
+Firmware Updater) bootloader that allows them to be programmed
+directly from the USB port without needing an ISP or other
+programmer. The DFU bootloader presents itself as a USB device that
+can be recognized by a computer.</p>
+
+<p>This means that the microcontroller is able to talk to the computer
+and identify itself, and hopefully we are in a good position to
+program the board.</p>
+
+<h2 id="programming-via-dfu">Programming via DFU</h2>
+
+<p>The DFU bootloader (and any bootloader in general) seems rather
+convenient for uploading code without needing an ISP. Atmel provides
+the <a href="http://www.atmel.com/tools/FLIP.aspx">FLIP</a> program for communicating with DFU chips, but that
+looks like it hasn’t been updated for a while. There’s also an
+<a href="https://github.com/dfu-programmer/dfu-programmer">dfu-programmer</a>, an open source project for doing
+this and the analogue to avrdude for uploading over DFU.</p>
+
+<p>One thing to note is that the fuses cannot be changed over the DFU
+protocol; only the flash and EEPROM can. Luckily, all AVR chips with
+hardware USB have fuses programmed by default to use the external
+crystal oscillator as a clock, which will work immediately as long as
+the crystal has a 8 MHz or 16 MHz frequency with correctly paired
+capacitors.</p>
+
+<p>If you want to change the fuses, you will need to use an ISP or other
+programmer.
+<a href="http://www.engbedded.com/fusecalc/">http://www.engbedded.com/fusecalc/</a>
+is a useful website if you want to figure out fuse settings for AVR
+chips that you are unfamiliar with.</p>
+
+<blockquote>
+  <p>Note: the datasheet incorrectly specifies that the fuses are
+  configured by default to use the internal 8MHz RC oscillator with
+  <code>CKDIV8</code> set, so that the system clock runs 1 MHz by default. This
+  turns out to be incorrect, and in fact the DFU bootloader would not
+  be able to communicate over USB to the computer if this was the
+  case. See
+  <a href="http://www.avrfreaks.net/forum/atmega16u2-minimal-connections-test-isp">this thread</a>
+  for more information.</p>
+</blockquote>
+
+<p>Installation of <code>dfu-programmer</code> is pretty straightforward. On
+windows, it also comes with a <code>libusb-win32</code> driver so that it can
+talk to the DFU bootloader over USB. Install this driver via the
+Device Manager:</p>
+
+<p><img src="dfu-driver.png" alt=""></p>
+
+<p>The board then shows up as <code>ATmega16U2</code> under <strong>libusb-win32 devices</strong>
+when the bootloader is running.</p>
+
+<p><img src="usb-installed.png" alt=""></p>
+
+<p>Be sure to check out the <a href="https://cdn.rawgit.com/dfu-programmer/dfu-programmer/master/docs/dfu-programmer.html">dfu-programmer documentation</a>
+before forging ahead with programming over USB. One important note is
+that the entire chip has to be erased before you can run other
+commands on it. The following command does this and clears the <strong>lock
+bits</strong> in flash memory:</p>
+
+<pre><code>&gt; dfu-programmer atmega16u2 erase --force
+Erasing flash...  Success
+Checking memory from 0x0 to 0x2FFF...  Empty.
+</code></pre>
+
+<p>Now, the board can be programmed. As usually recommended; I’ll start
+with something simple: blinking LEDs. Here’s my <code>Makefile</code> for
+programming and erasing the board over DFU:</p>
+
+<pre><code>PROJECT=blink
+SOURCES=$(PROJECT).c
+
+MMCU=atmega16u2
+DFU_TARGET=$(MMCU)
+
+F_CPU=16000000
+
+CFLAGS=-mmcu=$(MMCU) -Wall -Os -DF_CPU=$(F_CPU)
+
+$(PROJECT).c.hex: $(PROJECT).out
+    avr-objcopy -O ihex $(PROJECT).out $(PROJECT).c.hex;\
+    avr-size --mcu=$(MMCU) --format=avr $(PROJECT).out
+ 
+$(PROJECT).out: $(SOURCES)
+    avr-gcc $(CFLAGS) -I./ -o $(PROJECT).out $(SOURCES)
+ 
+program-dfu: $(PROJECT).c.hex
+    dfu-programmer $(DFU_TARGET) flash $(PROJECT).c.hex
+
+erase-dfu:
+    dfu-programmer $(DFU_TARGET) erase
+
+clean: 
+    rm $(PROJECT).c.hex $(PROJECT).out
+</code></pre>
+
+<p>Note that the compilation toolchain is basically the same, but the hex
+file is uploaded with <code>dfu-programmer</code> instead of <code>avrdude</code>. After the
+first program, the flash needs to be erased before being programmed
+again, so the <code>erase-dfu</code> target accomplishes that. If all is working,
+programming is pretty straightforward:</p>
+
+<pre><code>&gt; make program-dfu
+dfu-programmer atmega16u2 flash blink.c.hex
+Checking memory from 0x0 to 0xFF...  Empty.
+0%                            100%  Programming 0x100 bytes...
+[&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;]  Success
+0%                            100%  Reading 0x3000 bytes...
+[&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;]  Success
+Validating...  Success
+0x100 bytes written into 0x3000 bytes memory (2.08%).
+</code></pre>
+
+<p>At this point, the programming appears to be successful, but the LED
+is not blinking and the device still shows up with the DFU
+driver. However, there’s no need to panic here; this is because the
+bootloader is still running and it hasn’t changed to the program code
+yet. To run the uploaded program, one can just do <code>dfu-programmer
+(target) reset</code> or pull out the board and plug it back in. </p>
+
+<p>As a result, we have a nice way to program a board directly over USB,
+with no other tools required. This process is basically what the
+Arduino does, but without the nice GUI and tooling. Below, the LED is
+blinking after being programmed right from a USB port on my
+desktop. <strong>Look ma, no ISP!</strong></p>
+
+<p><img src="usb-pluggedin.jpg" alt=""></p>
+
+<p>What if we want to program the board again after this? Well, when the
+blinking program is running, the board is not communicating over USB
+at all, so the system sees no device and therefore cannot program the
+board. We need some way to re-activate the bootloader to program the
+board. The datasheet lists three ways to do this, in <strong>Section 23.6</strong>:</p>
+
+<ul>
+  <li>Jump to the bootloader section while the board is running, from
+program code. (We can’t do that, because we didn’t include such
+functions in the code to blink the LED.)</li>
+  <li>Program the boot reset fuse, which always starts the board at the
+bootloader instead of the user code. However, this requires the fuse
+to be un-programmed afterward.</li>
+  <li>Reset the board with the hardware boot enable fuse <code>HWBE</code>
+programmed, and the <code>PD7</code> pin pulled low. This just temporarily
+enters the bootloader.</li>
+</ul>
+
+<p>The <code>HWBE</code> fuse is programmed by default to make this mode of
+resetting the board easy. The rightmost button on the board connects
+<code>PD7</code> and <code>GND</code>, so it can be pressed during reset to trigger this
+condition. Resetting the board is as easy as briefly touching the
+<code>RST</code> and <code>GND</code> pins together, which are adjacent on the ISP
+header. Touching these two turns off the LEDs and the board shows up
+as a DFU device again. Now, it’s ready to accept another program.</p>
+
+<p><em>(In my case, I didn’t actually need to press the button while doing
+this. The Internet suggests that the board will always start in DFU
+mode if reset manually with the <code>HWBE</code> fuse programmed.)</em></p>
+
+<h2 id="programming-with-lufa">Programming with LUFA</h2>
+
+<p>In the previous section, programming the board and restarting it made
+it disappear from the USB bus, and that’s because it no longer acts
+like a USB device when busy blinking the LED. For the board to appear
+as a USB device, it must use the USB protocol to be detected by and
+communicate with the computer. This is where the USB hardware comes
+in. It’s possible to write low-level code to interact directly with
+the USB hardware, but libraries like LUFA simplify this process
+significantly.</p>
+
+<p>At a high level, LUFA provides a set of libraries for writing AVR
+microcontroller code, implementing USB devices. It does not include
+any host-side (computer) code. There are many
+<a href="https://github.com/abcminiuser/lufa/tree/master/Demos">example applications</a> for LUFA which can be compiled
+on to many common demonstration and breakout boards. LUFA focuses on a
+modular approach to this software, and comprises the following parts
+at a high level:</p>
+
+<ul>
+  <li><a href="https://github.com/abcminiuser/lufa/tree/master/LUFA/Drivers/USB/Core">Low level modules</a> to interact with the USB hardware on
+different microcontrollers</li>
+  <li><a href="https://github.com/abcminiuser/lufa/tree/master/LUFA/Drivers/USB/Class">Class drivers</a> to emulate the behavior of various
+common USB devices</li>
+  <li><a href="https://github.com/abcminiuser/lufa/tree/master/LUFA/Drivers/Board">Board drivers</a> to interact with the hardware on
+prototyping boards, and custom implementations</li>
+  <li>A <a href="https://github.com/abcminiuser/lufa/tree/master/LUFA/Build">build system</a> to compile all relevant modules
+together and program the microcontroller (including over DFU!)</li>
+</ul>
+
+<p>A completely custom LUFA application would use the low-level modules
+to interact directly with hardware, and a custom driver on the host to
+communicate with the device. You can find a useful (albeit somewhat
+outdated) guide for this <a href="http://tommd.wordpress.com/2009/12/08/lightweight-usb-framework-for-avrs-lufa/">here</a>.</p>
+
+<p>To start with something easier for this assignment, I’m going to
+modify the LUFA keyboard demo to work with the board I just created,
+and write custom board drivers. The goal is to turn this device into a
+(somewhat limited) HID-compliant USB keyboard that can be plugged into
+any computer and immediately recognized without the need to install
+drivers.</p>
+
+<p>The project files are arranged as follows. I’ll go over the different
+parts below.</p>
+
+<p><img src="lufa-project.png" alt=""></p>
+
+<h3 id="makefile">Makefile</h3>
+
+<p>This Makefile uses the LUFA build system, which requires some
+variables to be set properly but otherwise handles both the building
+and uploading.</p>
+
+<pre><code>MCU          = atmega16u2
+ARCH         = AVR8
+BOARD        = USER
+F_CPU        = 16000000
+F_USB        = $(F_CPU)
+OPTIMIZATION = s
+TARGET       = Keyboard
+SRC          = $(TARGET).c Descriptors.c $(LUFA_SRC_USB) $(LUFA_SRC_USBCLASS)
+LUFA_PATH    = ../../lufa/LUFA
+CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER -IConfig/
+LD_FLAGS     =
+
+# Default target
+all:
+
+# Include LUFA build script makefiles
+include $(LUFA_PATH)/Build/lufa_core.mk
+include $(LUFA_PATH)/Build/lufa_sources.mk
+include $(LUFA_PATH)/Build/lufa_build.mk
+include $(LUFA_PATH)/Build/lufa_cppcheck.mk
+include $(LUFA_PATH)/Build/lufa_doxygen.mk
+include $(LUFA_PATH)/Build/lufa_dfu.mk
+include $(LUFA_PATH)/Build/lufa_hid.mk
+include $(LUFA_PATH)/Build/lufa_avrdude.mk
+include $(LUFA_PATH)/Build/lufa_atprogram.mk
+</code></pre>
+
+<p>A few things to note for the <code>Makefile</code>:</p>
+
+<ul>
+  <li>The <code>MCU</code> variable is used in <code>avr-gcc</code> for compilation, and must be
+set to the right microcontroller model.</li>
+  <li>The <code>BOARD</code> variable specifies which board driver to use. LUFA comes
+with board drivers for many common boards, but I’ve specified the
+<code>USER</code> value here, which indicates that I’ll be writing custom board
+drivers and that they will be found in the <code>Board/</code> subdirectory.    </li>
+  <li><code>F_CPU</code> is the clock frequency, and needs to be set to the same
+value as the installed crystal for USB communication to work
+properly.</li>
+  <li><code>TARGET</code> is the main file to be compiled.</li>
+  <li><code>LUFA_PATH</code> indicates the relative path to the LUFA library (which I
+cloned from GitHub on to my computer).</li>
+  <li>The final lines pull in the other LUFA libraries and tools,
+including the core drivers and microcontroller programming tools.</li>
+</ul>
+
+<h3 id="board-drivers">Board Drivers</h3>
+
+<p>Board drivers allow different LUFA modules to be compiled to
+microcontrollers on different boards while abstracting away their
+implementation. LUFA contains provisions for boards with buttons,
+LEDs, DataFlash ICs, and a joystick. My board only has three buttons
+and three LEDs, so I’ve implemented those here.</p>
+
+<p>The button driver requires three functions: <code>Buttons_Init</code>,
+<code>Buttons_Disable</code>, and <code>Buttons_GetStatus</code>, which are pretty
+self-explanatory as commented below. My buttons are connected to pins
+1, 4, and 7 on port D, so the implementation is straightforward.</p>
+
+<pre><code>#define BUTTONS_BUTTON1 (1 &lt;&lt; PD1)
+#define BUTTONS_BUTTON2 (1 &lt;&lt; PD4)  
+#define BUTTONS_BUTTON3 (1 &lt;&lt; PD7)
+
+#define BUTTONS_ALL (BUTTONS_BUTTON1 | BUTTONS_BUTTON2 | BUTTONS_BUTTON3)
+
+static inline void Buttons_Init(void)
+{
+    // Initialize the appropriate port pins as an inputs here, with pull-ups
+    // See Atmel doc 7799, section 12.2.3
+    DDRD &amp;= ~BUTTONS_ALL;
+    PORTD |= BUTTONS_ALL;
+}
+
+static inline void Buttons_Disable(void)
+{
+    // Clear the appropriate port pins as high impedance inputs here
+    DDRD &amp;= ~BUTTONS_ALL;
+    PORTD &amp;= ~BUTTONS_ALL;
+}
+
+static inline uint8_t Buttons_GetStatus(void)
+{
+    // Return current button status here, debounced if required
+    return ((PIND &amp; BUTTONS_ALL) ^ BUTTONS_ALL);
+}
+</code></pre>
+
+<p>The LED driver is a bit more complicated, because I’ve hooked up the
+pins of the RGB LED on different ports (the pins with PWM capability
+from the 16-bit counter). The LED code is shown below. Note that the
+RGB LED has a common anode, so the LEDs are turned on by driving their
+respective pins low. This means that the binary operations are
+flipped: <code>PORT |= PIN</code> becomes <code>PORT &amp;= ~PIN</code> and vice versa. These
+macro definitions look confusing, but they will come in very handy
+later.</p>
+
+<p><em>Note that I could not have implemented things as below if different
+ LEDs were on the same pin number of different ports, due to the way
+ the mask is used to select LED pins.</em></p>
+
+<pre><code>/** LED mask for the first LED on the board. */
+#define LEDS_LED1   (1 &lt;&lt; PB7)
+
+/** LED mask for the second LED on the board. */
+#define LEDS_LED2   (1 &lt;&lt; PC6)
+
+/** LED mask for the third LED on the board. */
+#define LEDS_LED3   (1 &lt;&lt; PC5)
+
+#define LEDS_GB (LEDS_LED2 | LEDS_LED3)
+
+/** LED mask for all the LEDs on the board. */
+#define LEDS_ALL_LEDS    (LEDS_LED1 | LEDS_LED2 | LEDS_LED3)
+
+/** LED mask for none of the board LEDs. */
+#define LEDS_NO_LEDS     0
+
+/* Inline Functions: */
+static inline void LEDs_Init(void)
+{
+    // initialize LED port pins as outputs here
+    DDRB |= LEDS_LED1;
+    DDRC |= LEDS_GB;
+
+    // Initialize to off by driving high
+    PORTB |= LEDS_LED1;
+    PORTC |= LEDS_GB;               
+}
+
+static inline void LEDs_Disable(void)
+{
+    // Clear the LED port pins as high impedance inputs here
+    DDRB &amp;= ~LEDS_LED1;
+    DDRC &amp;= ~LEDS_GB;
+
+    PORTB &amp;= ~LEDS_LED1;
+    PORTC &amp;= ~LEDS_GB;                  
+}
+
+static inline void LEDs_TurnOnLEDs(const uint8_t LEDMask)
+{
+    // turn on LEDs given in the LEDMask mask here, leave others as-is
+    PORTB &amp;= ~(LEDMask &amp; LEDS_LED1);
+    PORTC &amp;= ~(LEDMask &amp; LEDS_GB);
+}
+
+static inline void LEDs_TurnOffLEDs(const uint8_t LEDMask)
+{
+    // turn off LEDs given in the LEDMask mask here, leave others as-is
+    PORTB |= LEDMask &amp; LEDS_LED1;
+    PORTC |= LEDMask &amp; LEDS_GB;
+}
+
+static inline void LEDs_SetAllLEDs(const uint8_t LEDMask)
+{
+    // turn on only LEDs given in the LEDMask mask here, all others off
+    PORTB = ( (PORTB | LEDS_LED1) &amp; ~LEDMask);
+    PORTC = ( (PORTC | LEDS_GB) &amp; ~LEDMask);
+}
+
+static inline void LEDs_ChangeLEDs(const uint8_t LEDMask, const uint8_t ActiveMask)
+{
+    // set the Leds in the given LEDMask to the status given in ActiveMask here
+    PORTB = ( (PORTB | (LEDS_LED1 &amp; LEDMask)) &amp; ~ActiveMask);
+    PORTC = ( (PORTC | (LEDS_GB &amp; LEDMask)) &amp; ~ActiveMask);
+}
+
+static inline void LEDs_ToggleLEDs(const uint8_t LEDMask)
+{
+    // toggle the Leds in the given LEDMask, ignoring all others
+    PINB = LEDMask &amp; LEDS_LED1;
+    PINC = LEDMask &amp; LEDS_GB;
+}
+
+static inline uint8_t LEDs_GetLEDs(void)
+{
+    // return the current LEDs status' here which can be masked against LED_LED* macros
+    return ((PORTB &amp; LEDS_LED1) | (PORTC &amp; LEDS_GB));
+}
+</code></pre>
+
+<h3 id="keyboard-code">Keyboard Code</h3>
+
+<p>Finally, we are ready to implement the keyboard itself. Most of my
+code is similar to the existing demo, but I’ll highlight the changes
+below.</p>
+
+<p>First up is to define masks in <code>Keyboard.h</code> to use the drivers we
+wrote earlier. LEDs 1, 2, and 3 correspond to red, green, and blue
+respectively. The code below will defines the LED color to be red,
+yellow, and green as the device is powered on, enumerating, and ready,
+and purple if there is an error.</p>
+
+<pre><code>/** LED mask for the library LED driver, to indicate that the USB interface is not ready. */
+#define LEDMASK_USB_NOTREADY     (LEDS_LED1)
+
+/** LED mask for the library LED driver, to indicate that the USB interface is enumerating. */
+#define LEDMASK_USB_ENUMERATING  (LEDS_LED1 | LEDS_LED2)
+
+/** LED mask for the library LED driver, to indicate that the USB interface is ready. */
+#define LEDMASK_USB_READY        (LEDS_LED2)
+
+/** LED mask for the library LED driver, to indicate that an error has occurred in the USB interface. */
+#define LEDMASK_USB_ERROR        (LEDS_LED1 | LEDS_LED3)
+</code></pre>
+
+<p>The main function calls some functions to set up the hardware and
+enable interrupts that call various functions we define—this is how
+the LUFA library interacts with our code. The loop that follows just
+alternates between receiving data from the host and sending data back.</p>
+
+<pre><code>int main(void)
+{
+    SetupHardware();
+
+    LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
+    GlobalInterruptEnable();
+
+    for (;;)
+    {       
+        HID_Device_USBTask(&amp;Keyboard_HID_Interface);        
+        USB_USBTask();
+    }
+}
+</code></pre>
+
+<p>The initialization code, which calls initialization
+functions in the libraries we wrote earlier, and in the LUFA USB
+device driver. It also disables the clock prescaler, but we have to do
+this manually because there is a bug where <code>clock_prescale_set</code>
+function <a href="http://savannah.nongnu.org/bugs/?39061">is undefined for certain microcontrollers</a> in
+<code>avr/power.h</code>.</p>
+
+<pre><code>void SetupHardware()
+{
+    /* Disable watchdog if enabled by bootloader/fuses */
+    MCUSR &amp;= ~(1 &lt;&lt; WDRF);
+    wdt_disable();
+
+    /* Disable clock division */
+    // Implementation missing - http://savannah.nongnu.org/bugs/?39061
+    // clock_prescale_set(clock_div_1);
+    CLKPR = (1 &lt;&lt; CLKPCE);
+    CLKPR = (0 &lt;&lt; CLKPS3) | (0 &lt;&lt; CLKPS2) | (0 &lt;&lt; CLKPS1) | (0 &lt;&lt; CLKPS0);
+
+    /* Hardware Initialization */   
+    LEDs_Init();
+    Buttons_Init();
+    USB_Init();
+}
+</code></pre>
+
+<p>The LUFA library allows various handlers to be defined that are
+triggered by interrupts. The following code uses the LED masks we set
+earlier to set the LED color display as different USB events are
+triggered. During a normal startup sequence, the board should display
+red, yellow, and finally green. If there is an error, it will be
+purple.</p>
+
+<pre><code>/** Event handler for the library USB Connection event. */
+void EVENT_USB_Device_Connect(void)
+{
+    LEDs_SetAllLEDs(LEDMASK_USB_ENUMERATING);
+}
+
+/** Event handler for the library USB Disconnection event. */
+void EVENT_USB_Device_Disconnect(void)
+{
+    LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
+}
+
+/** Event handler for the library USB Configuration Changed event. */
+void EVENT_USB_Device_ConfigurationChanged(void)
+{
+    bool ConfigSuccess = true;
+
+    ConfigSuccess &amp;= HID_Device_ConfigureEndpoints(&amp;Keyboard_HID_Interface);
+
+    USB_Device_EnableSOFEvents();
+
+    LEDs_SetAllLEDs(ConfigSuccess ? LEDMASK_USB_READY : LEDMASK_USB_ERROR);
+}
+</code></pre>
+
+<p>Finally, the two most interesting parts. The HID (Human Interface
+Device) protocol requires that a device regularly report state to the
+host. For the keyboard, this is simply which keys are being
+pressed. The following function reads the state of the three buttons,
+using the <code>Buttons_GetStatus()</code> function from before, and reports them
+as capital <code>A</code>, <code>B</code>, and <code>C</code> keys respectively if they are being
+pressed. Basically, this is a keyboard with just three keys.</p>
+
+<pre><code>bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDInterfaceInfo,
+                                         uint8_t* const ReportID,
+                                         const uint8_t ReportType,
+                                         void* ReportData,
+                                         uint16_t* const ReportSize)
+{
+    USB_KeyboardReport_Data_t* KeyboardReport = (USB_KeyboardReport_Data_t*)ReportData;
+    
+    uint8_t ButtonStatus_LCL = Buttons_GetStatus();
+
+    uint8_t UsedKeyCodes = 0;
+
+    if (ButtonStatus_LCL &amp; BUTTONS_BUTTON1)
+      KeyboardReport-&gt;KeyCode[UsedKeyCodes++] = HID_KEYBOARD_SC_A;
+
+    if (ButtonStatus_LCL &amp; BUTTONS_BUTTON2)
+      KeyboardReport-&gt;KeyCode[UsedKeyCodes++] = HID_KEYBOARD_SC_B;
+
+    if (ButtonStatus_LCL &amp; BUTTONS_BUTTON3)
+      KeyboardReport-&gt;KeyCode[UsedKeyCodes++] = HID_KEYBOARD_SC_C;
+
+    if (UsedKeyCodes)
+      KeyboardReport-&gt;Modifier = HID_KEYBOARD_MODIFIER_LEFTSHIFT;
+
+    *ReportSize = sizeof(USB_KeyboardReport_Data_t);
+    return false;
+}
+</code></pre>
+
+<p>We can make the LEDs do something as well. Since there are three of
+them, the natural thing would be to use them to display the state of
+Num Lock, Caps Lock, and Scroll Lock respectively. Adapting from the
+demo, the code for this is pretty straightforward:</p>
+
+<pre><code>void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDInterfaceInfo,
+                                          const uint8_t ReportID,
+                                          const uint8_t ReportType,
+                                          const void* ReportData,
+                                          const uint16_t ReportSize)
+{
+    uint8_t  LEDMask   = LEDS_NO_LEDS;
+    uint8_t* LEDReport = (uint8_t*)ReportData;
+
+    if (*LEDReport &amp; HID_KEYBOARD_LED_NUMLOCK)
+      LEDMask |= LEDS_LED1;
+
+    if (*LEDReport &amp; HID_KEYBOARD_LED_CAPSLOCK)
+      LEDMask |= LEDS_LED2;
+
+    if (*LEDReport &amp; HID_KEYBOARD_LED_SCROLLLOCK)
+      LEDMask |= LEDS_LED3;
+
+    LEDs_SetAllLEDs(LEDMask);
+}
+</code></pre>
+
+<p>That was a lot of stuff, but if all goes well, we should have a
+limited functionality keyboard which is able to type three letters,
+and display the system lock key states!</p>
+
+<h3 id="programming-the-device">Programming the Device</h3>
+
+<p>Programming the device with LUFA’s build system is pretty easy. With
+<code>dfu-programmer</code> installed, and the board in DFU mode, it’s just:</p>
+
+<pre><code>&gt; make dfu
+</code></pre>
+
+<p>After the compilation is done, we see the following:</p>
+
+<pre><code> [DFU]     : Programming FLASH with dfu-programmer using "Keyboard.hex"
+dfu-programmer atmega16u2 erase
+Checking memory from 0x0 to 0x2FFF...  Not blank at 0x1.
+Erasing flash...  Success
+Checking memory from 0x0 to 0x2FFF...  Empty.
+dfu-programmer atmega16u2 flash Keyboard.hex
+Checking memory from 0x0 to 0x10FF...  Empty.
+0%                            100%  Programming 0x1100 bytes...
+[&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;]  Success
+0%                            100%  Reading 0x3000 bytes...
+[&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;]  Success
+Validating...  Success
+0x1100 bytes written into 0x3000 bytes memory (35.42%).
+dfu-programmer atmega16u2 reset
+</code></pre>
+
+<p>This is really nice! It erases the flash, writes the program, then
+resets the board to run the newly flashed program—so it’s just one
+command to get from code to running on the board. (To program the
+board again, we do have to manually reset it into DFU mode, as
+mentioned earlier.)</p>
+
+<p>Note that the bootloader takes up 4K of the ATmega16U2’s 16K flash
+memory. If a bigger program is needed, it would be time to switch to
+an ISP.</p>
+
+<p>The first time I programmed the board, I saw the following dreaded
+message. It turns out this was a result of setting the wrong <code>F_CPU</code>
+value, due to the datasheet error that caused me to misunderstand the
+default clock settings on the microcontroller. A correct value of 16
+MHz, and this error went away.</p>
+
+<p><img src="usb-malfunction.png" alt=""></p>
+
+<h2 id="success">Success!</h2>
+
+<p>This has been a long post. It was quite a lot of work to create a USB
+device from scratch, but very satisfying to figure out all the quirks
+to make it work. The following video demonstrates how the USB board
+displays the state of the system’s lock keys as red, green, and blue,
+and also using the three buttons for input. Note that when the device
+is first plugged in, it quickly flashes from red to yellow to green
+before displaying the lock key states. When multiple lock keys are on,
+the LED produces additive colors.</p>
+
+<iframe src="index_1.html" allowfullscreen="" height="405" frameborder="0" width="720"></iframe>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Andrew Mao @ 863.14</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Andrew Mao @ 863.14</li>
+          <li><a href="mailto:mizzao%20_AT_%20gmail.com">mizzao _AT_ gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/mizzao">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"></path>
+                </svg>
+              </span>
+
+              <span class="username">mizzao</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/mizzao">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"></path>
+                </svg>
+              </span>
+
+              <span class="username">mizzao</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Blog for MAS 863 made in Jekyll. See the About page for more details.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  
+
+
+</body>
+</html>

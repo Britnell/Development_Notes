@@ -1,0 +1,870 @@
+/* ::::: https://www.kskmse.de/etc/clientlibs/myif/ksk-muenchen-starnberg-ebersberg/base/internetfiliale.min.70401c90a4dbbdf1a98fd387b6e8a107.css ::::: */
+
+@font-face {
+	font-family: "SparkasseWeb";
+	font-style: normal;
+	font-weight: normal;
+	src: url('sparkasse_web_rg.eot') format("embedded-opentype"), url('sparkasse_web_rg.woff') format("woff"), url('sparkasse_web_rg.ttf') format("truetype");
+}
+@font-face {
+	font-family: "SparkasseWeb";
+	font-style: normal;
+	font-weight: bold;
+	src: url('sparkasse_web_bd.eot') format("embedded-opentype"), url('sparkasse_web_bd.woff') format("woff"), url('sparkasse_web_bd.ttf') format("truetype");
+}
+@font-face {
+	font-family: "SparkasseWebLight";
+	font-style: normal;
+	font-weight: normal;
+	src: url('sparkasse_web_lt.eot') format("embedded-opentype"), url('sparkasse_web_lt.woff') format("woff"), url('sparkasse_web_lt.ttf') format("truetype");
+}
+@font-face {
+	font-family: "Pictos-IF";
+	font-style: normal;
+	font-weight: normal;
+	src: url('pictos-if.eot') format("embedded-opentype"), url('pictos-if.woff') format("woff"), url('pictos-if.ttf') format("truetype");
+}
+.ui-helper-clearfix::before, .ui-helper-clearfix::after { content: ""; display: table; border-collapse: collapse; }
+.ui-helper-clearfix::after { clear: both; }
+html { height: 100%; width: 100%; }
+.if6 { font: 14px/150% SparkasseWeb,Helvetica,Arial,sans-serif; }
+body.if6 { margin: 0px; height: 100%; width: 100%; overflow-x: hidden; background-color: rgb(240, 240, 240); }
+body .if6_main { overflow-x: hidden; }
+section, nav, footer, header { display: block; }
+.if6 input, .if6 select, .if6 textarea { background: rgb(255, 255, 255) none repeat scroll 0px center; color: rgb(102, 102, 102); border: 2px solid rgb(102, 102, 102); border-radius: 5px; padding: 5px; font: 18px/21px SparkasseWeb,Helvetica,Arial,sans-serif; box-sizing: border-box; }
+.if6_main input[type="submit"]::-moz-focus-inner { padding: 0px ! important; border: medium none ! important; }
+span.select::before { border-top: 9px solid rgb(102, 102, 102); border-left: 10px solid transparent; border-right: 10px solid transparent; content: ""; display: block; position: absolute; top: 50%; margin-top: -3px; }
+select[disabled] + span.select::before { border-top-color: rgb(179, 179, 179); }
+span.checkbox::before, span.radio::before { color: rgb(102, 102, 102); border: 2px solid rgb(102, 102, 102); border-radius: 5px; padding: 5px; font: 18px/21px SparkasseWeb,Helvetica,Arial,sans-serif; box-sizing: border-box; background-color: rgb(255, 255, 255); width: 22px; height: 22px; display: inline-block; margin: 4px 0px 0px 4px; content: ""; }
+span.radio::before { border-radius: 11px; }
+span.radio::after { display: block; width: 0px; height: 0px; content: ""; margin: -26px 0px 0px 10px; position: absolute; }
+span.radio.checked::after { border: 5px solid rgb(255, 0, 0); border-radius: 5px; }
+span.checkbox.checked::before { background: rgb(255, 0, 0) none repeat scroll 0% 0%; }
+input.error[type="checkbox"] + span.checkbox::before, input.error[type="radio"] + span.radio::before { border-color: rgb(255, 0, 0); }
+input[disabled] + span.checkbox::before, input[disabled] + span.radio::before, .if6 input[disabled], .if6 textarea[disabled], .if6 select[disabled] { background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-color: rgb(179, 179, 179); cursor: default; }
+input[disabled] + span.checkbox.checked::before { background: rgb(255, 153, 153) none repeat scroll 0% 0%; }
+input[disabled] + span.radio.checked::before { background-color: transparent; }
+input[disabled] + span.radio.checked::after { border-color: rgb(255, 153, 153); }
+.if6 label, .if6 .label { color: rgb(102, 102, 102); font: 14px/150% SparkasseWeb,Helvetica,Arial,sans-serif; }
+.if6 ul { list-style: outside none none; padding: 0px; margin: 0px; text-align: left; }
+.if6_opener .overlay ul, .cbox ul, .text ul { padding-left: 30px; }
+.if6_opener .overlay ul li::before, .cbox ul li::before, .text ul li::before { content: "•"; display: block; position: absolute; width: 30px; margin-left: -30px; text-align: center; }
+.if6 h1, .if6 .h1 { font: 40px/150% SparkasseWebLight,Helvetica,Arial,sans-serif; color: rgb(255, 0, 0); margin: 0px; }
+.if6 h2, .if6 .h2 { font: 25px/150% SparkasseWeb,Helvetica,Arial,sans-serif; color: rgb(255, 0, 0); margin: 0px; }
+.if6 h3, .if6 .h3 { font: 18px/150% SparkasseWeb,Helvetica,Arial,sans-serif; color: rgb(255, 0, 0); margin: 0px; }
+.if6 a { color: inherit; }
+.if6 img { border: 0px none; }
+.if6 p { margin: 0px; }
+.if6 p + p, .if6 ol + p, .if6 p + ol, .if6 ul + p, .if6 p + ul, .if6 ul + ol, .if6 ol + ul { margin-top: 15px; }
+.if6 table { width: 100%; border-spacing: 0px; border-collapse: collapse; border: 0px none; }
+.if6 th { font-weight: normal; color: rgb(0, 0, 0); padding: 15px 10px; vertical-align: middle; text-align: left; }
+.if6 th:first-child, .if6 td:first-child { padding-left: 20px; }
+.if6 th:last-child, .if6 td:last-child { padding-right: 20px; }
+.if6 td { padding: 15px 10px; vertical-align: middle; border: 0px none; }
+.if6_outer { width: 100%; overflow: hidden; position: relative; background-color: rgb(240, 240, 240); margin-left: 0px; transition: margin-left 0.5s ease 0.2s; }
+.if6_inner { margin: 0px auto; width: 960px; overflow: hidden; }
+ul.navpath li + li::before { color: rgb(102, 102, 102); content: " > "; }
+.if6_navigation { z-index: 2001; }
+.if6_navigation > div { left: -330px; position: fixed; top: 0px; bottom: 0px; transition: left 0.5s ease 0.2s; width: 330px; background-color: rgb(255, 255, 255); z-index: 2002; }
+.js .if6_navigation > div { overflow-y: auto; overflow-x: hidden; box-shadow: -10px 0px 10px -10px rgb(136, 136, 136) inset; }
+.if6_navigation:hover > div { left: 0px; }
+.js .if6_navigation:hover > div { left: -330px; }
+.if6_navigation > a, .if6_bstart, .if6_home { display: block; background-color: rgb(255, 0, 0); width: 50px; height: 50px; position: fixed; left: 0px; transition: left 0.5s ease 0.2s; top: 116px; z-index: 2002; overflow: hidden; text-decoration: none; white-space: nowrap; color: transparent; }
+.if6 .if6_bstart, .if6 .if6_home { top: 186px; }
+.if6_home { display: none; }
+.if6_navigation div div { position: absolute; background-color: rgb(255, 255, 255); width: 330px; }
+.js .if6_navigation div div { top: 0px; bottom: 0px; }
+.if6_navigation > div > div { left: 0px; padding-top: 20px; z-index: 2002; }
+.if6_navigation div div div { margin-left: 230px; margin-top: -30px; display: none; }
+.if6_navigation li:hover > div { display: block; }
+.js .if6_navigation li:hover > div { display: none; }
+.js .if6_navigation div div { box-shadow: -10px 0px 10px -10px rgb(136, 136, 136) inset; }
+.js .if6_navigation div div div { left: 330px; margin-left: 0px; margin-top: 0px; padding-top: 10px; }
+.if6_navigation .h2 { color: rgb(255, 0, 0); margin: 0px 20px 15px; }
+.if6_navigation ul li > a { display: block; padding: 15px 20px; font: 18px SparkasseWeb,Helvetica,Arial,sans-serif; color: rgb(0, 0, 0); text-decoration: none; }
+.no-touch .if6_navigation ul li:hover > a, .if6 .if6_navigation ul li > a:focus, .if6 .if6_navigation ul li.focus > a, .if6_navigation ul li.active > a, .if6_navigation ul li.current > a { background-color: rgb(255, 0, 0); color: rgb(255, 255, 255); }
+.if6_navigation ul li.overview { border-bottom: 3px solid rgb(240, 240, 240); }
+.if6_navigation .navtop, .if6_navigation .navback { font: 18px SparkasseWeb,Helvetica,Arial,sans-serif; display: inline-block; padding: 10px 0px; color: rgb(102, 102, 102); text-decoration: none; margin-left: 20px; }
+.if6_navigation .navtop + .h2, .if6_navigation .navback + .h2 { margin-top: 20px; }
+.if6_navigation .navtop, .if6_navigation .navback, .if6_navigation .h2, .if6_navigation li.overview { display: none; }
+.js .if6_navigation .navtop, .js .if6_navigation .navback, .js .if6_navigation .h2, .js .if6_navigation li.overview { display: inherit; }
+.if6_iconbar .if6_inner .iconbar { display: none; width: 100%; background-color: rgb(255, 255, 255); height: 40px; box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1); z-index: 2000; text-align: center; }
+.if6_contact { z-index: 2001; }
+.if6_contact > a { display: block; background-color: rgb(255, 0, 0); width: 50px; height: 50px; position: fixed; right: 0px; transition: right 0.5s ease 0.2s; top: 116px; z-index: 2002; overflow: hidden; text-decoration: none; white-space: nowrap; color: transparent; }
+.if6_contact > a + a { top: 156px; }
+.if6_contact > a + a + a { top: 196px; }
+.if6_contact > a + a + a.postlink { top: 226px; text-decoration: none; }
+.chat_online .if6_contact > a:first-child + a::after { border: 2px solid rgb(255, 255, 255); border-radius: 50%; width: 10px; height: 10px; background-color: rgb(0, 152, 100); display: block; content: ""; margin-left: 2px; margin-top: -37px; position: relative; }
+.if6_contact > div { position: fixed; background-color: rgb(255, 255, 255); color: rgb(102, 102, 102); width: 330px; right: -330px; transition: right 0.5s ease 0.2s, width 0.5s ease 0.2s; top: 0px; bottom: 0px; overflow: auto; box-shadow: 10px 0px 10px -10px rgb(136, 136, 136) inset; z-index: 2002; }
+.if6_contact:hover > div { right: 0px; transition: right 0.5s ease 0.2s; }
+.js .if6_contact:hover > div { right: -330px; }
+.if6_contact .c_block { padding: 20px; border-top: 2px solid rgb(227, 227, 227); }
+.if6_contact > div > div { margin-top: -2px; }
+.if6_contact .c_block table { width: auto; white-space: nowrap; }
+.if6_contact .c_block td, .if6_contact .c_block th { margin: 0px; width: auto; }
+.if6_contact .c_block td { padding: 0px 25px 0px 0px; }
+.if6_contact .c_block th { text-align: left; padding: 0px 25px 10px 0px; }
+.if6_contact .c_block th:last-child, .if6_contact .c_block td:last-child { padding-right: 0px; }
+.if6_contact h2, .if6_contact .h2, .if6_contact h3, .if6_contact .h3 { color: rgb(102, 102, 102); }
+.if6_contact .c_block .c_block_heading { margin-bottom: 20px; }
+.if6_contact .c_block .filialfinder a, .if6_contact .c_block .c_button a, .if6_contact .c_block .c_button span { color: rgb(102, 102, 102); text-decoration: none; font: 18px SparkasseWeb,Helvetica,Arial,sans-serif; }
+.c_button + .c_button, .cq-wcm-edit .c_button + * + .c_button, .cq-wcm-edit .c_button + * + * + .c_button { margin-top: 10px; }
+.c_button.special + .c_button, .cq-wcm-edit .c_button.special + * + .c_button, .cq-wcm-edit .c_button.special + * + * + .c_button { margin-top: 25px; }
+.if6_contact .c_block .filialfinder span, .if6_contact .c_block .c_button.special span > span, .if6_contact .c_block .c_button.special a > span { font: 14px SparkasseWeb,Helvetica,Arial,sans-serif; }
+.if6_contact .c_block .c_button.special > a, .if6_contact .c_block .c_button.special > span { font: 25px/100% SparkasseWeb,Helvetica,Arial,sans-serif; padding-left: 30px; display: inline-block; }
+.if6_contact .c_analyst { padding-bottom: 10px; }
+.if6_contact .c_analystdata { margin-top: 20px; }
+.if6_contact .c_analystdata > div { float: left; margin-bottom: 10px; }
+.if6_contact .c_analystdata > div div { float: none; }
+.if6_contact .c_analystdata .image { position: relative; overflow: hidden; margin-right: 20px; -moz-user-select: none; }
+.if6_contact .c_analystdata .image img { position: absolute; width: 270px; vertical-align: middle; }
+.if6_contact .c_analystdata .image img + img { position: inherit; width: 111px; }
+.if6_section { background-color: rgb(240, 240, 240); font: 18px/150% SparkasseWeb,Helvetica,Arial,sans-serif; clear: left; overflow: visible; }
+.if6_section .if6_inner { padding: 50px 20px 30px; }
+.if6_section .if6_inner > .parsys { margin-right: -20px; }
+.if6_section .if6_inner > .parsys > * { padding-right: 20px; margin-bottom: 20px; }
+.cbox { float: left; background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding: 20px; border-top: 20px solid rgb(240, 240, 240); border-right: 20px solid rgb(240, 240, 240); box-sizing: border-box; margin: -20px 0px 20px; position: relative; }
+.cbox + * { clear: left; }
+.cbox + .cbox { clear: none; }
+.cbox-medium { width: 66.66%; }
+.cbox-small { width: 33.33%; }
+.cbox > h2, .cbox > .h2, .cbox > p .h2, .cbox > h3 .h2 { margin-top: -7px; }
+.if6_section .if6_inner > .parsys > .cbox-banking { padding: 0px; }
+.cbox-banking { color: rgb(102, 102, 102); font: 14px/150% SparkasseWeb,Helvetica,Arial,sans-serif; }
+.cbox-banking a { color: rgb(255, 0, 0); }
+.cbox-banking > h2 { margin-top: 0px; padding-left: 20px; }
+.cbox-banking > h2:first-child { margin-top: -7px; padding-top: 20px; }
+.cbox-banking > h2:last-child { padding-bottom: 20px; }
+.cbox-product > :first-child::before { content: ""; display: block; width: 100%; border-top: 3px solid rgb(255, 0, 0); position: absolute; margin: -20px 0px 0px -20px; }
+.cbox-campaign .linklist li::before, .cbox-mainproduct .linklist li::before, .campaign .linklist li::before { display: none; }
+.templ-bankingstartpage .cbox-small:last-child::after { width: 960px; height: 326.67px; content: " "; background-color: rgb(240, 240, 240); display: block; left: 330px; position: absolute; top: -20px; }
+.templ-bankingstartpage .if6_section > .if6_inner > .parsys::after { content: " "; display: block; background-color: rgb(240, 240, 240); width: 960px; height: 50px; position: absolute; bottom: 0px; }
+.cbox ol li::before { content: counter(item, decimal); counter-increment: item; text-align: right; color: rgb(102, 102, 102); padding-right: 10px; width: 20px; display: block; margin-left: -30px; position: absolute; font: 25px SparkasseWeb,Helvetica,Arial,sans-serif; }
+.cbox ul li::before { color: rgb(102, 102, 102); }
+.if6 .cbox ul.checked li::before { color: rgb(0, 152, 100); }
+.pagenav li.active > div::before { border-left: 13px solid transparent; border-right: 13px solid transparent; border-top: 12px solid rgb(255, 0, 0); position: absolute; top: 80px; left: 50%; margin-left: -13px; content: ""; display: block; z-index: 2000; }
+.text h1 { margin-top: -15px; }
+.if6_section .if6_inner > .parsys > .if6_tabnav { margin-bottom: 0px; }
+.if6_tabnav ul.tabnav { padding-bottom: 30px; margin-right: -20px; }
+.tabnav li { display: inline-block; margin-right: 20px; position: relative; font: 25px/150% SparkasseWeb,Helvetica,Arial,sans-serif; background-color: rgb(227, 227, 227); color: rgb(102, 102, 102); }
+.tabnav li.active { background-color: rgb(255, 0, 0); color: rgb(255, 255, 255); }
+.tabnav li > div > a { text-decoration: none; padding: 6px 10px; display: block; }
+.tabnav li.active > div::before, .tabnav li.active > div::after { border-top: 12px solid rgb(255, 0, 0); position: absolute; bottom: 0px; margin-bottom: -12px; left: 50%; content: ""; display: block; z-index: 10; }
+.tabnav li.active > div::before { border-left: 12px solid transparent; margin-left: -12px; }
+.tabnav li.active > div::after { border-right: 12px solid transparent; }
+.if6_section .if6_inner > .parsys > .if6_glossar { margin-bottom: 0px; text-align: right; box-sizing: border-box; }
+.text + .if6_glossar, .if6_tabnav + .if6_glossar { float: left; margin-left: -20px; }
+.if6_glossar a { display: inline-block; overflow: hidden; white-space: nowrap; width: 28px; margin: 3px 0px 20px -28px; text-decoration: none; }
+.templ-bankingpage .text, .templ-bankingstartpage .text, .templ-bankingpage .if6_tabnav { float: left; width: 100%; box-sizing: border-box; clear: left; }
+.if6_header { height: 96px; background-color: rgb(255, 0, 0); box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.05); display: table; overflow: visible; }
+.js .if6_header { z-index: 2005; }
+.if6_header .if6_inner { height: 100%; color: rgb(255, 255, 255); display: table-row; width: 100%; }
+.logo { display: table-cell; vertical-align: middle; width: 10px; max-width: 312px; }
+.logo img { vertical-align: middle; }
+.logo img.only-desktop { height: 96px; margin-left: 12px; }
+.logo img.only-M { height: 60px; }
+.logo img.symbol { display: none; }
+.logo img.only-print { display: none; }
+.logo a { text-decoration: none; }
+.loginlogout { display: table-cell; text-align: center; vertical-align: middle; color: rgb(255, 255, 255); line-height: 0; }
+.loginlogout form { text-align: left; display: inline-block; }
+.loginlogout form.header-logout { line-height: 150%; background-color: rgba(0, 0, 0, 0.1); border-radius: 5px; width: 476px; text-align: right; height: 36px; padding: 0px 12px; white-space: nowrap; }
+.if6 .loginlogout input { border: 0px none; width: 120px; background-color: transparent; vertical-align: top; float: left; margin-right: 10px; border-radius: 4px; height: 36px; }
+.if6 .loginlogout input.nonempty { background-color: rgb(255, 255, 255); }
+.loginlogout .header-logout p { float: left; overflow: hidden; text-overflow: ellipsis; max-width: 285px; text-align: left; font: bold 14px/36px SparkasseWeb,Helvetica,Arial,sans-serif; }
+.loginlogout .header-logout div.logout { vertical-align: top; display: inline-block; }
+.loginlogout .header-logout div.logout + p { width: auto; float: none; font: 14px/36px SparkasseWeb,Helvetica,Arial,sans-serif; overflow: visible; display: inline-block; }
+.loginlogout div.logout input[type="submit"] { color: rgb(255, 255, 255); font: 14px/36px SparkasseWeb,Helvetica,Arial,sans-serif; margin: 0px; padding: 0px 5px 0px 19px; vertical-align: baseline; cursor: pointer; width: auto; border: 0px none; float: none; }
+.no-touch .loginlogout div.logout:hover { background-color: rgba(0, 0, 0, 0.25); }
+.loginlogout div.logout + p span { position: absolute; padding: 0px; cursor: default; }
+.loginlogout div.logout + p span span { position: relative; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); padding: 12px; outline: 3px solid rgba(0, 0, 0, 0.1); font: 14px SparkasseWeb,Helvetica,Arial,sans-serif; display: block; z-index: 2105; margin-left: -300px; }
+.loginlogout div.logout + p:hover span { display: block; }
+.loginlogout div.logout + p > span::before, .loginlogout div.logout + p > span::after { display: block; content: ""; position: absolute; z-index: 2106; border-bottom: 5px solid rgb(255, 255, 255); border-left: 6px solid transparent; border-right: 6px solid transparent; margin-left: -6px; margin-top: -5px; top: 0px; left: 25%; }
+.loginlogout div.logout + p > span::before { border-bottom: 5px solid rgba(0, 0, 0, 0.1); margin-top: -8px; }
+.loginlogout span { font: 18px SparkasseWeb,Helvetica,Arial,sans-serif; padding: 10px 0px; text-decoration: none; color: rgb(255, 255, 255); cursor: pointer; display: none; }
+.search { display: table-cell; vertical-align: middle; width: 250px; padding-right: 20px; text-align: right; }
+.if6 .search label { background-color: rgb(255, 255, 255); padding: 5px 5px 5px 32px; box-sizing: border-box; border: 0px none; border-radius: 4px; color: rgb(227, 227, 227); width: 250px; margin-right: -250px; display: inline-block; vertical-align: top; text-align: left; font: italic 14px/26px SparkasseWeb,Helvetica,Arial,sans-serif; height: 36px; white-space: nowrap; overflow: hidden; }
+.js .if6 .search label { color: rgb(102, 102, 102); }
+.if6 .search input { padding-left: 27px; width: 250px; background-color: transparent; vertical-align: top; border: 0px none; height: 36px; border-radius: 4px; }
+.search span { display: none; cursor: pointer; vertical-align: middle; }
+.if6_langselect > div > div::before, .if6_langselect > div > div::after { display: block; content: ""; position: absolute; border-bottom: 8px solid rgb(255, 255, 255); border-left: 9px solid transparent; border-right: 9px solid transparent; margin-left: 5px; margin-top: 5px; z-index: 2004; }
+.if6_langselect > div > div::before { border-bottom: 8px solid rgba(0, 0, 0, 0.1); margin-top: 2px; }
+.if6_footer { background-color: rgb(102, 102, 102); color: rgb(255, 255, 255); }
+.if6_footer .if6_inner { display: table; }
+.if6_footer .if6_impressum { display: table-cell; vertical-align: middle; padding: 25px 0px; }
+.if6_footer .if6_impressum > ul { display: inline; margin-right: -20px; }
+.if6_footer .if6_impressum > ul > li { display: inline; margin-right: 20px; }
+.if6_footer .if6_impressum > ul > li > a { color: rgb(255, 255, 255); text-decoration: none; }
+.if6_footer .if6_social { display: table-cell; vertical-align: middle; }
+.if6_social div { float: right; }
+.if6_social div div { float: left; }
+.if6_social .icon { margin-left: 10px; }
+.if6_social .icon a { display: block; overflow: hidden; white-space: nowrap; width: 20px; text-decoration: none; }
+.if6_sitemap { background-color: rgb(102, 102, 102); color: rgb(227, 227, 227); }
+.if6_sitemap .if6_inner > ul { width: 980px; margin-right: -20px; }
+.if6_sitemap .if6_inner > ul > li { float: left; width: 25%; margin-bottom: 20px; padding-right: 20px; box-sizing: border-box; }
+.if6_sitemap .h4 { color: rgb(255, 255, 255); margin: 20px 0px 10px; font-weight: bold; }
+.if6_sitemap a { text-decoration: none; }
+.bterm { clear: both; }
+a.chatlink, .chat_online a.chatlink.alt_chat { pointer-events: none; display: inline-block; }
+.chat_online a.chatlink, .js .chat_online a.chatlink.alt_chat { pointer-events: inherit; }
+.chat_online .servicetiles .serviceelement a.chatlink::after { border: 2px solid rgb(255, 255, 255); border-radius: 50%; width: 20px; height: 20px; background-color: rgb(0, 152, 100); display: block; content: ""; margin-left: -39px; position: absolute; left: 50%; top: 25px; }
+.chat_online .servicelinks .serviceelement a.chatlink::after { border: 1px solid rgb(255, 255, 255); border-radius: 50%; width: 8px; height: 8px; background-color: rgb(0, 152, 100); display: block; content: ""; margin-left: 3px; margin-top: -27px; position: absolute; }
+.table tbody tr:nth-child(2n+1) { background-color: rgb(255, 255, 255); }
+.table tbody tr:nth-child(2n) { background-color: rgb(227, 227, 227); }
+.cbox-eyecatcher .linklist li::before { display: none; }
+.close-icon { position: absolute; top: 15px; right: 15px; padding: 0px; width: 32px; height: 32px; display: block; white-space: nowrap; overflow: hidden; cursor: pointer; z-index: 2010; text-decoration: none; }
+.if6_navigation .close-icon, .if6_contact .close-icon { display: none; }
+.js .if6_navigation .close-icon, .js .if6_contact .close-icon { display: block; right: auto; left: 291px; }
+.js .iconfonttest span.before::before { display: inline-block; font: 26px/81% Pictos-IF,sans-serif; content: "i"; }
+.msgerror, .msginfo { padding: 20px; }
+.msgerror h3, .msginfo h3 { display: none; }
+.msgerror ul, .msginfo ul { padding: 0px; }
+.msginfo ul li { color: rgb(102, 102, 102); }
+.msgerror ul li::before, .msginfo ul li::before { display: none; }
+.block { padding: 20px 10px 20px 20px; }
+.block + .block, .block + .expand, .expand + .expand, .expand + .block { border-top: 10px solid rgb(240, 240, 240); }
+.expand.open + .block { border-top: 0px none; }
+.bline { padding-top: 8px; }
+.bline + .bline { margin-top: 12px; }
+.bline + .bcontinue { margin-top: 5px; }
+div.bcontinue { padding-left: 240px; }
+.bline .bterm { clear: both; }
+.bline div, .bline label { display: inline-block; vertical-align: top; margin-right: 10px; }
+.bline > label, .bline > .label, .bline > .blineover + label, .bline > .blineover + .label { width: 220px; float: left; text-align: right; margin-right: 20px; }
+.bline.btext-only { padding-top: 0px; }
+.bline + .bline.btext-only, .tanlabel + .bline.btext-only { margin-top: 0px; padding-top: 8px; }
+.block ol li::before { display: none; }
+.bline .ixxl, .btable .ixxl { width: 305px; }
+.bline .ixl, .btable .ixl { width: 305px; }
+u.wbr::after { content: "​"; }
+.expand { padding: 20px; }
+.expand input { margin: 0px; vertical-align: top; }
+.expand input[type="submit"] { background-color: transparent; vertical-align: middle; display: inline-block; border: 0px none; padding: 0px; cursor: pointer; }
+.bsayt ul li::before { display: none; }
+.buttonline { text-align: right; padding: 20px 0px 0px 20px; }
+.buttonline div { display: inline-block; }
+.buttonline > div > * { margin-right: 20px; margin-bottom: 20px; }
+.buttonline input { border: 0px none; background: transparent none repeat scroll 0% 0%; cursor: pointer; padding: 0px; border-radius: 0px; }
+.buttonline a { text-decoration: none; display: inline-block; }
+.buttonline .bgroup1 > a:last-child, .buttonline .bgroup1 > div:last-child { background-color: rgb(255, 0, 0); color: rgb(255, 255, 255); }
+.buttonline .bgroup1 > a, .buttonline .bgroup1 > div input { font: 25px SparkasseWeb,Helvetica,Arial,sans-serif; display: inline-block; padding: 10px; color: rgb(102, 102, 102); background-color: rgb(227, 227, 227); }
+.buttonline .bgroup1 > div:last-child input { color: rgb(255, 255, 255); background-color: transparent; padding-right: 47px; position: relative; z-index: 1; }
+.buttonline .bgroup2 div input, .buttonline .bgroup2 a, .buttonline .bgroup4 div input, .buttonline .bgroup4 a { font: 18px SparkasseWeb,Helvetica,Arial,sans-serif; color: rgb(102, 102, 102); padding: 10px 0px; }
+.bline ul.linklist li::before { display: none; }
+.bline .verticalbuttons .ficon::before { display: none; }
+.progress li + li::before { width: 28px; margin: 0px 9px 0px -39px; content: ""; vertical-align: middle; display: inline-block; border: 1px solid rgb(255, 0, 0); }
+.progress li + li.active::before { margin: 0px 12px 0px -42px; }
+.progress li.active + li::before, .progress li.active + li + li::before, .progress li.active + li + li + li::before, .progress li.active + li + li + li + li::before, .progress li.active + li + li + li + li + li::before, .progress li.active + li + li + li + li + li + li::before { border-color: rgb(102, 102, 102); }
+div.helptxt > div::before { border-bottom: 9px solid rgb(0, 0, 0); display: block; content: ""; position: absolute; margin-top: -9px; border-right: 10px solid transparent; border-left: 10px solid transparent; }
+.ficon { cursor: pointer; display: inline-block; margin: 2px; white-space: nowrap; overflow: hidden; width: 28px; height: 28px; vertical-align: top; }
+.ficon input, a.ficon { border: 0px none; color: transparent; width: 28px; height: 28px; background-color: transparent; display: inline-block; cursor: pointer; vertical-align: top; }
+.ficon input { margin: 0px; padding-left: 30px; width: auto; position: relative; }
+.ficon.icon-blank, .ficon.icon-null { width: 1px; height: 1px; padding: 0px; border: 0px none; margin: 0px; font-size: 1px; color: transparent; cursor: default; }
+.bpulldown > div::before, .bpulldown > div::after { display: block; content: ""; position: absolute; z-index: 10; border-bottom: 8px solid rgb(255, 255, 255); border-left: 9px solid transparent; border-right: 9px solid transparent; margin-left: 10px; margin-top: -5px; }
+.bpulldown > div::before { border-bottom: 8px solid rgba(0, 0, 0, 0.1); margin-top: -8px; }
+.cbox .bpulldown ul li::before { display: none; }
+.bpulldown.baction > div::before, .bpulldown.baction > div::after { margin-left: 14px; }
+.tablerowodd .bpulldown.baction > div::after { border-bottom-color: rgb(227, 227, 227); }
+.postbox .numbered-icon::before { margin-left: -38px; margin-top: -37px; }
+.cbox-small .postbox .numbered-icon::before { margin-left: -50px; margin-top: -63px; }
+.favorites ul.user li::before { display: none; }
+.market .tabnav li::before { display: none; }
+.market .tabnav li.active > div::before, .market .tabnav li.active > div::after { display: none; }
+.next-task { padding: 0px 20px 20px; }
+.next-task ul { padding-left: 0px; }
+.cbox .next-task ul li::before { display: none; }
+.next-task ul li { margin-top: 15px; }
+.next-task ul li a { text-decoration: none; color: rgb(102, 102, 102); font: 18px/150% SparkasseWeb,Helvetica,Arial,sans-serif; }
+.next-task ul li div { font: 14px/150% SparkasseWeb,Helvetica,Arial,sans-serif; }
+.kkiAuftragsbestaetigung .buttonline .bgroup1 div:last-child::after { display: none; }
+.cbox .msglink .textbutton a::after { color: rgb(255, 0, 0); border-color: rgb(255, 0, 0); }
+.no-touch .cbox .msglink .textbutton a:hover::after, .cbox .msglink .textbutton a:focus::after { color: rgb(255, 255, 255); background-color: rgb(255, 0, 0); }
+.loginlogout div.login::before { font: 26px/81% Pictos-IF; width: 26px; height: 26px; border: 1px solid rgb(255, 255, 255); border-radius: 50%; color: rgb(255, 255, 255); display: inline-block; text-align: center; content: ">"; margin-right: -28px; }
+.loginlogout div.login::after { font: 26px/81% Pictos-IF; width: 26px; height: 26px; border: 1px solid rgb(255, 255, 255); border-radius: 50%; color: rgb(255, 255, 255); display: none; text-align: center; content: ">"; margin-left: -28px; }
+.no-touch .loginlogout div.login:hover::before, .no-touch .loginlogout div.login:hover::after, .loginlogout div.login.focus::before, .loginlogout div.login.focus::after { color: rgb(255, 0, 0); background-color: rgb(255, 255, 255); }
+.loginlogout .secselect li:first-child div::after { content: "d"; font: 21px/81% Pictos-IF; position: absolute; width: 21px; height: 21px; margin-top: 3px; }
+.no-touch .loginlogout .secselect li:first-child:hover div::after { color: rgb(255, 0, 0); }
+.loginlogout div.logout::before { content: "q"; font: 20px/81% Pictos-IF; color: rgb(255, 255, 255); margin-right: -23px; display: inline-block; }
+.loginlogout div.logout + p::before { content: "l"; font: 20px/81% Pictos-IF; display: none; color: rgb(255, 255, 255); }
+.js .loginlogout div.logout + p::before { display: inline-block; }
+.loginlogout > span::after { font: 20px/81% Pictos-IF; border: 1px solid rgb(255, 255, 255); color: rgb(255, 255, 255); width: 20px; height: 20px; border-radius: 50%; display: inline-block; text-align: center; content: ">"; margin-left: 7px; }
+.no-touch .loginlogout > span:hover::after { color: rgb(255, 0, 0); background-color: rgb(255, 255, 255); }
+.search > span::after { font: 43px/85% Pictos-IF; width: 43px; height: 43px; border: 1px solid rgb(255, 255, 255); border-radius: 50%; background-color: rgb(255, 255, 255); color: rgb(255, 0, 0); display: inline-block; content: "s"; }
+.no-touch .search > span:hover::after { color: rgb(255, 255, 255); background-color: rgb(255, 0, 0); }
+.search form::before { font: 28px/81% Pictos-IF; color: rgb(102, 102, 102); content: "s"; margin-left: 3px; margin-top: 4px; position: absolute; }
+.if6_navigation > a::before { color: rgb(255, 255, 255); font: 60px/81% Pictos-IF; margin-left: -6px; margin-top: -4px; display: inline-block; content: "n"; }
+.if6_bstart::before { color: rgb(255, 255, 255); font: 60px/81% Pictos-IF; content: "b"; margin-left: -6px; margin-top: -4px; display: block; }
+.if6_contact > a::before { color: rgb(255, 255, 255); font: 60px/81% Pictos-IF; margin-left: -6px; margin-top: -4px; display: inline-block; content: "h"; }
+.if6_contact > a + a::before { color: rgb(255, 255, 255); font: 60px/81% Pictos-IF; margin-left: -6px; margin-top: -4px; content: "c"; }
+.if6_contact > a + a + a::before { color: rgb(255, 255, 255); font: 60px/81% Pictos-IF; margin-left: -6px; margin-top: -4px; content: "m"; }
+.if6_contact > a + a + a.new-message::before { color: rgb(255, 255, 255); font: 60px/81% Pictos-IF; margin-left: -6px; margin-top: -4px; content: ""; }
+.chat_online .if6_contact a.chatlink::before { color: rgb(0, 152, 100); border-color: rgb(0, 152, 100); }
+.no-touch .chat_online .if6_contact .c_button.standard a.chatlink:hover::before, .no-touch .chat_online .if6_contact .c_button.icon a.chatlink:hover::before { color: rgb(255, 255, 255); background-color: rgb(0, 152, 100); }
+.no-touch .if6_navigation ul li:hover > a::after, .if6_navigation ul li > a:focus::after { content: ">"; color: rgb(255, 0, 0); font: 18px/81% Pictos-IF; float: right; display: inline-block; width: 18px; height: 18px; border: 1px solid rgb(255, 255, 255); border-radius: 50%; background-color: rgb(255, 255, 255); margin-left: -18px; text-align: center; }
+.if6_navigation .navtop::before { font: 18px/81% Pictos-IF; margin-right: 10px; display: inline-block; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; content: "u"; color: rgb(102, 102, 102); }
+.if6_navigation .navback::before { font: 18px/81% Pictos-IF; margin-right: 10px; display: inline-block; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; content: "<"; color: rgb(102, 102, 102); }
+.no-touch .if6_navigation .navtop:hover::before, .if6_navigation .navtop:focus::before, .no-touch .if6_navigation .navback:hover::before, .if6_navigation .navback:focus::before { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+.if6_opener .ty1 .overlay .linktext::after, .if6_buttonline div.primary a::after, .buttonline .bgroup1 > a:last-child::after, .buttonline .bgroup1 > div:last-child::after { content: ">"; font: 25px/81% Pictos-IF; margin-left: 10px; color: rgb(255, 255, 255); display: inline-block; width: 25px; height: 25px; border: 1px solid rgb(255, 255, 255); border-radius: 50%; margin-bottom: -2px; }
+.no-touch .if6_opener .ty1 .overlay:hover .linktext::after, .if6_opener .ty1 .overlay a:focus .linktext::after, .no-touch .if6_buttonline div.primary:hover a::after, .if6_buttonline div.primary a:focus::after, .no-touch .buttonline .bgroup1 > a:last-child:hover::after, .buttonline .bgroup1 > a:last-child:focus::after, .no-touch .buttonline .bgroup1 > div:last-child:hover::after, .buttonline .bgroup1 > div.focus:last-child::after { color: rgb(255, 0, 0); background-color: rgb(255, 255, 255); }
+.if6_buttonline div.primaryicon a::before { font: 25px/81% Pictos-IF; color: rgb(255, 255, 255); display: inline-block; width: 25px; height: 25px; border: 1px solid rgb(255, 255, 255); border-radius: 50%; margin-right: 10px; margin-bottom: -2px; }
+.no-touch .if6_buttonline div.primaryicon:hover a::before, .if6_buttonline div.primaryicon a:focus::before { color: rgb(255, 0, 0); background-color: rgb(255, 255, 255); }
+.carousel_play .left::before { font: 18px/81% Pictos-IF; color: rgb(102, 102, 102); width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; display: block; content: "<"; }
+.carousel_play .right::before { font: 18px/81% Pictos-IF; color: rgb(102, 102, 102); width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; display: block; content: ">"; }
+.no-touch .carousel_play .left:hover::before, .no-touch .carousel_play .right:hover::before { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+.if6_openerstage .carousel_play .left::before { font: 30px/81% Pictos-IF; color: rgb(255, 255, 255); width: 30px; height: 30px; border: 1px solid rgb(255, 255, 255); border-radius: 50%; background-color: rgba(0, 0, 0, 0.4); display: block; content: "<"; }
+.if6_openerstage .carousel_play .right::before { font: 30px/81% Pictos-IF; color: rgb(255, 255, 255); width: 30px; height: 30px; border: 1px solid rgb(255, 255, 255); border-radius: 50%; background-color: rgba(0, 0, 0, 0.4); display: block; content: ">"; }
+.no-touch .if6_openerstage .carousel_play .left:hover::before, .no-touch .if6_openerstage .carousel_play .right:hover::before { color: rgba(0, 0, 0, 0.4); background-color: rgb(255, 255, 255); }
+.accordion .accordion-head .h2::before, .accordion .accordion-head h2::before { content: "d"; font: 30px/81% Pictos-IF; width: 30px; height: 30px; margin-left: -30px; display: inline-block; color: rgb(255, 255, 255); }
+.js .accordion .accordion-head .h2::before, .js .accordion .accordion-head h2::before { color: rgb(255, 0, 0); content: ">"; font: 30px/81% Pictos-IF; width: 30px; height: 30px; }
+.no-touch .accordion .accordion-head:hover .h2::before, .no-touch .accordion .accordion-head:hover h2::before { color: rgb(255, 255, 255); }
+.accordion .accordion-head.open .h2::before, .accordion .accordion-head.open h2::before { content: "d"; font: 30px/81% Pictos-IF; width: 30px; height: 30px; color: rgb(255, 255, 255); }
+.accordion .showall::before { content: "d"; font: 18px/81% Pictos-IF; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; color: rgb(102, 102, 102); display: inline-block; margin-right: 10px; }
+.accordion .hideall::before { content: ">"; font: 18px/81% Pictos-IF; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; color: rgb(102, 102, 102); display: inline-block; margin-right: 10px; }
+.no-touch .accordion .showall:hover::before, .no-touch .accordion .hideall:hover::before { color: rgb(240, 240, 240); background-color: rgb(102, 102, 102); }
+.servicetiles .serviceelement a::before { font: 100px/81% Pictos-IF; position: absolute; display: block; color: rgb(255, 0, 0); width: 100px; height: 100px; text-align: center; top: 8px; left: 50%; margin-left: -50px; }
+.servicelinks .serviceelement a::before { font: 36px/81% Pictos-IF; color: rgb(102, 102, 102); width: 36px; height: 36px; text-align: center; display: inline-block; margin-bottom: -5px; margin-top: -15px; position: relative; top: 2px; }
+.servicelinks .serviceelement::after { font: 27px/81% Pictos-IF; display: block; color: rgb(102, 102, 102); width: 27px; height: 27px; text-align: center; content: ">"; position: absolute; right: 7px; top: 12px; }
+.servicebuttons .serviceelement a::before { font: 36px/81% Pictos-IF; color: rgb(255, 255, 255); width: 36px; height: 36px; text-align: center; display: inline-block; margin-bottom: -5px; margin-top: -15px; position: relative; top: 2px; }
+.searchresult > ul > li::before { display: inline-block; font: 48px/33% Pictos-IF; width: 55px; height: 48px; color: rgb(255, 0, 0); position: absolute; margin: 0px 0px 0px -55px; text-align: center; }
+.searchresult .searchpaging .paging .left::before { font: 30px/81% Pictos-IF; width: 30px; height: 30px; display: inline-block; text-align: center; content: "<"; }
+.searchresult .searchpaging .paging .right::before { font: 30px/81% Pictos-IF; width: 30px; height: 30px; display: inline-block; text-align: center; content: ">"; }
+.if6_contact .c_block .filialfinder a::after { content: ">"; font: 18px/81% Pictos-IF; margin-left: 10px; color: rgb(102, 102, 102); display: inline-block; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; }
+.c_button.standard a::before, .c_button.standard span::before, .c_button.icon a::before, .c_button.icon span::before { font: 18px/81% Pictos-IF; margin-right: 10px; width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgb(102, 102, 102); display: inline-block; color: rgb(102, 102, 102); }
+.c_button.special > *::before { font: 50px/81% Pictos-IF; margin: 5px 10px 0px -43px; width: 50px; height: 50px; position: absolute; display: inline-block; color: rgb(102, 102, 102); }
+.no-touch .if6_contact .c_block .filialfinder a:hover::after, .no-touch .c_button.standard a:hover::before, .no-touch .c_button.icon a:hover::before { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+.icon-none::before { display: none; }
+.if6_social .icon a::before { border: 1px solid rgb(255, 255, 255); border-radius: 50%; color: rgb(255, 255, 255); display: inline-block; font: 18px/81% Pictos-IF; height: 18px; width: 18px; }
+.no-touch .if6_social .icon a:hover::before, .if6_social .icon a:focus::before { color: rgb(102, 102, 102); background-color: rgb(255, 255, 255); }
+.cbox-icon .icon::before { font: 75px/45% Pictos-IF; position: absolute; display: block; color: rgb(255, 0, 0); margin-left: -83px; width: 75px; height: 75px; text-align: center; }
+.cbox .textbutton a::after, .cbox-eyecatcher .linklist a::after, .cbox-campaign .linklist a::after, .cbox-mainproduct .linklist a::after, .campaign .linklist a::after { content: ">"; font: 18px/81% Pictos-IF; margin-left: 10px; display: inline-block; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; color: rgb(102, 102, 102); }
+.no-touch .cbox .textbutton a:hover::after, .cbox .textbutton a:focus::after, .no-touch .cbox-eyecatcher .linklist a:hover::after, .cbox-eyecatcher .linklist a:focus::after, .no-touch .cbox-campaign .linklist a:hover::after, .cbox-campaign .linklist a:focus::after, .no-touch .cbox-mainproduct .linklist a:hover::after, .cbox-mainproduct .linklist a:focus::after, .no-touch .campaign .linklist a:hover::after, .campaign .linklist a:focus::after { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+.cbox-eyecatcher .linklist .primary a::after, .cbox-campaign .linklist .primary a::after, .cbox-mainproduct .linklist .primary a::after, .campaign .linklist .primary a::after { content: ">"; font: 18px/81% Pictos-IF; display: inline-block; width: 18px; height: 18px; border: 1px solid rgb(255, 0, 0); border-radius: 50%; color: rgb(255, 0, 0); }
+.no-touch .cbox-eyecatcher .linklist .primary a:hover::after, .cbox-eyecatcher .linklist .primary a:focus::after, .no-touch .cbox-campaign .linklist .primary a:hover::after, .cbox-campaign .linklist .primary a:focus::after, .no-touch .cbox-mainproduct .linklist .primary a:hover::after, .cbox-mainproduct .linklist .primary a:focus::after, .no-touch .campaign .linklist .primary a:hover::after, .campaign .linklist .primary a:focus::after { color: rgb(255, 255, 255); background-color: rgb(255, 0, 0); }
+.if6_glossar a::before { border: 1px solid rgb(102, 102, 102); border-radius: 50%; color: rgb(102, 102, 102); display: inline-block; font: 26px/81% Pictos-IF; height: 26px; width: 26px; content: ""; text-align: center; }
+.no-touch .if6_glossar a:hover::before, .if6_glossar a:focus::before { color: rgb(240, 240, 240); background-color: rgb(102, 102, 102); }
+.templ-bankingstartpage .cbox-banking > h2:first-child::before { color: rgb(255, 0, 0); font: 37px/81% Pictos-IF; width: 37px; margin-left: -8px; display: inline-block; }
+span.checkbox::after { content: "v"; font: 18px/90% Pictos-IF; display: block; width: 18px; height: 18px; text-align: center; margin: -30px 0px 0px 7px; color: rgb(255, 255, 255); position: relative; z-index: 1; }
+.if6 ul.checked li::before { content: "v"; font: 18px/81% Pictos-IF; display: block; width: 30px; margin-left: -30px; position: absolute; text-align: center; color: rgb(0, 0, 0); margin-top: 7px; }
+.if6_opener ul.checked li::before { content: "v"; font: 18px/81% Pictos-IF; display: block; width: 30px; margin-left: -30px; margin-top: 7px; position: absolute; text-align: center; color: rgb(255, 255, 255); }
+.bline ul.linklist li a::before { content: ">"; font: 14px/81% Pictos-IF; margin-left: -14px; color: rgb(255, 0, 0); display: inline-block; }
+a.arrowLink::before { content: ">"; font: 14px/81% Pictos-IF; display: inline-block; color: rgb(102, 102, 102); }
+.buttonline .bgroup1 > div:last-child::after { margin-left: -38px; margin-right: 10px; }
+.buttonline .bgroup2 > a::before, .buttonline .bgroup2 > div::before, .buttonline .bgroup4 > a::before, .buttonline .bgroup4 > div::before, .if6_buttonline div.back a::before { font: 18px/81% Pictos-IF; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; display: inline-block; color: rgb(102, 102, 102); text-align: center; content: "<"; margin-right: 10px; }
+.buttonline .bgroup4 > a::before, .buttonline .bgroup4 > div::before { content: "p"; }
+.buttonline .bgroup4 > a.icon-if5_b_druckansicht_schliessen::before { content: "×"; }
+.buttonline .bgroup2 > div.icon-if5_b_chat_fenster_schliessen::before { content: "×"; }
+.buttonline .bgroup2 > div.icon-if5_b_chat_beenden::before { content: "q"; }
+.buttonline .bgroup2 > div::before, .buttonline .bgroup4 > div::before { margin-right: -20px; }
+.no-touch .buttonline .bgroup2 > a:hover::before, .buttonline .bgroup2 > a:focus::before, .no-touch .buttonline .bgroup2 > div:hover::before, .buttonline .bgroup2 > div.focus::before, .no-touch .buttonline .bgroup4 > a:hover::before, .buttonline .bgroup4 > a:focus::before, .no-touch .buttonline .bgroup4 > div:hover::before, .buttonline .bgroup4 > div.focus::before, .no-touch .if6_buttonline div.back a:hover::before, .if6_buttonline div.back a:focus::before { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+.buttonline .ficon::before, .abschlussweiche .buttonline .arrowLink::before, .pf-nachricht .arrowLink::before { display: none; }
+.buttonline .ficon::after { margin-left: -22px; content: ">"; font: 18px/81% Pictos-IF; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; display: inline-block; color: rgb(102, 102, 102); text-align: center; }
+.abschlussweiche .buttonline .ficon.icon-if5_button_anmelden_rot::after, .kkilaufzeitbaender .buttonline .ficon.icon-if5_b_neu-berech::after, .oa_kreditwunsch .buttonline .ficon.icon-if5_b_neu-berech::after, .oa_vergleich .buttonline .ficon.icon-if5_b_neu-berech::after { color: rgb(255, 0, 0); border: 1px solid rgb(255, 0, 0); }
+.abschlussweiche .buttonline .arrowLink::after { margin-left: 10px; content: ">"; font: 18px/81% Pictos-IF; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; display: inline-block; color: rgb(102, 102, 102); text-align: center; }
+.no-touch .buttonline .ficon:hover::after, .buttonline .ficon.focus::after, .no-touch .abschlussweiche .buttonline .arrowLink:hover::after, .abschlussweiche .buttonline .arrowLink:focus::after { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+.no-touch .abschlussweiche .buttonline .ficon.icon-if5_button_anmelden_rot:hover::after, .abschlussweiche .buttonline .ficon.icon-if5_button_anmelden_rot.focus::after, .kkilaufzeitbaender .buttonline .ficon.icon-if5_b_neu-berech:hover::after, .kkilaufzeitbaender .buttonline .ficon.icon-if5_b_neu-berech.focus::after, .no-touch .oa_kreditwunsch .buttonline .ficon.icon-if5_b_neu-berech:hover::after, .oa_kreditwunsch .buttonline .ficon.icon-if5_b_neu-berech.focus::after, .no-touch .oa_vergleich .buttonline .ficon.icon-if5_b_neu-berech:hover::after, .oa_vergleich .buttonline .ficon.icon-if5_b_neu-berech.focus::after { background-color: rgb(255, 0, 0); }
+.pf-nachricht .arrowLink::after { margin-left: 10px; content: ">"; font: 18px/81% Pictos-IF; width: 18px; height: 18px; border: 1px solid rgb(255, 0, 0); border-radius: 50%; display: inline-block; color: rgb(255, 0, 0); text-align: center; }
+.no-touch .pf-nachricht .arrowLink:hover::after { color: rgb(255, 255, 255); background-color: rgb(255, 0, 0); }
+.kkikreditentscheidung .buttonline .ficon.icon-if5_b_beantragen::after { color: rgb(255, 255, 255); border-color: rgb(255, 255, 255); margin-right: 10px; margin-left: -38px; font: 25px/81% Pictos-IF; width: 25px; height: 25px; content: ">"; }
+.no-touch .kkikreditentscheidung .buttonline .ficon.icon-if5_b_beantragen:hover::after, .kkikreditentscheidung .buttonline .ficon.icon-if5_b_beantragen.focus::after { color: rgb(255, 0, 0); background-color: rgb(255, 255, 255); }
+.kki-continue a::after { content: ">"; font: 18px/81% Pictos-IF; margin-left: 10px; display: inline-block; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; color: rgb(102, 102, 102); }
+.no-touch .kki-continue a:hover::after, .kki-continue a:focus::after { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+.ficon::before { font: 26px/81% Pictos-IF; width: 26px; height: 26px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; display: inline-block; color: rgb(102, 102, 102); text-align: center; }
+.ficon::before { content: ""; }
+div.ficon::before { margin-right: -28px; }
+.ficon.icon-if5_refresh::before { margin-right: -20px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; color: rgb(102, 102, 102); font: 18px/81% Pictos-IF; height: 18px; text-align: center; width: 18px; content: ""; }
+.no-touch .ficon:hover::before, .if6 .ficon:focus::before, .if6 .ficon.focus::before { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+.nicon::before { font: 26px/81% Pictos-IF; width: 26px; height: 26px; display: inline-block; color: rgb(102, 102, 102); margin-right: 0px; text-align: center; }
+.nicon::before { content: "?"; }
+.icon-if5_i_pfeil_gefallen::before { color: rgb(255, 0, 0); transform: rotate(90deg); }
+.icon-if5_i_pfeil_gestiegen::before { color: rgb(0, 152, 100); }
+.icon-if5_i_pfeil_gleich::before { color: rgb(102, 102, 102); transform: rotate(45deg); }
+.icon-if5_i_pfeil_stark_gefallen::before { color: rgb(255, 0, 0); transform: rotate(135deg); }
+.icon-if5_i_pfeil_stark_gestiegen::before { color: rgb(0, 152, 100); transform: rotate(-45deg); }
+.icon-if5_i_limit_erhoehen::before { transform: rotate(180deg); }
+.ficon.icon-blank::before, .ficon.icon-null::before { display: none; }
+.bpulldown .ficon::before { margin-right: 10px; font: 18px/81% Pictos-IF; height: 18px; width: 18px; }
+.bpulldown.baction .ficon::before { margin-right: 0px; font: 26px/81% Pictos-IF; height: 26px; width: 26px; }
+.bpulldown.baction a.ficon::before { margin-right: 5px; }
+th .ficon.icon-if5_symbol_up::before { border: 0px none; font: 18px/81% Pictos-IF; width: 18px; height: 18px; margin-right: -20px; content: "u"; color: rgb(102, 102, 102); }
+th .ficon.icon-if5_symbol_down::before { border: 0px none; font: 18px/81% Pictos-IF; width: 18px; height: 18px; margin-right: -20px; content: "d"; color: rgb(102, 102, 102); }
+th .ficon.icon-if5_symbol_up_a::before { border: 0px none; font: 18px/81% Pictos-IF; width: 18px; height: 18px; margin-right: -20px; content: "u"; color: rgb(179, 179, 179); }
+th .ficon.icon-if5_symbol_down_a::before { border: 0px none; font: 18px/81% Pictos-IF; width: 18px; height: 18px; margin-right: -20px; content: "d"; color: rgb(179, 179, 179); }
+.no-touch th .ficon.icon-if5_symbol_up_a:hover::before, th .ficon.icon-if5_symbol_up_a.focus::before, .no-touch th .ficon.icon-if5_symbol_down_a:hover::before, th .ficon.icon-if5_symbol_down_a.focus::before { background-color: rgb(179, 179, 179); color: rgb(255, 255, 255); }
+div.helptxt::before { border: 1px solid rgb(102, 102, 102); border-radius: 50%; color: rgb(102, 102, 102); display: inline-block; font: 26px/81% Pictos-IF; height: 26px; width: 26px; content: ""; text-align: center; }
+.no-touch div.helptxt:hover::before { color: rgb(240, 240, 240); background-color: rgb(102, 102, 102); }
+table.kkilaufzeitbaender div.helptxt::before { color: rgb(102, 102, 102); content: "i"; font: 26px/81% Pictos-IF; height: 26px; width: 26px; }
+.actioniconLink::before { font: 18px/81% Pictos-IF; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; display: inline-block; color: rgb(102, 102, 102); margin-right: 10px; text-align: center; }
+.actioniconLink::before { content: "?"; }
+.no-touch .actioniconLink:hover::before, .actioniconLink:focus::before { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+.tableheader .actioniconLink::before { font: 18px/81% Pictos-IF; width: 18px; height: 18px; border: 1px solid rgb(255, 255, 255); border-radius: 50%; display: inline-block; margin-right: 10px; text-align: center; color: rgb(255, 255, 255); }
+.no-touch .tableheader .actioniconLink:hover::before, .tableheader .actioniconLink:focus::before { color: rgb(102, 102, 102); background-color: rgb(255, 255, 255); }
+.bpager .pagerbuttons div.left::before { display: inline-block; color: rgb(102, 102, 102); background-color: rgb(227, 227, 227); font: 30px/81% Pictos-IF; content: "<"; margin-right: -30px; }
+.bpager .pagerbuttons div.right::before { display: inline-block; color: rgb(102, 102, 102); background-color: rgb(227, 227, 227); font: 30px/81% Pictos-IF; content: ">"; margin-right: -30px; }
+.bsayt ul li div::after { content: ">"; font: 18px/81% Pictos-IF; border: 1px solid rgb(102, 102, 102); color: rgb(102, 102, 102); border-radius: 50%; width: 18px; height: 18px; display: inline-block; float: right; margin-right: 15px; margin-top: -26px; }
+.bsayt ul li p + div::after { margin-top: -36px; }
+.no-touch .bsayt ul li:hover div::after { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+.cal_close a::before { font: 18px/81% Pictos-IF; width: 18px; height: 18px; display: inline-block; color: rgb(102, 102, 102); text-align: center; content: "×"; }
+.cal_button a::before { font: 18px/81% Pictos-IF; width: 20px; height: 20px; display: inline-block; color: rgb(102, 102, 102); text-align: center; content: "<"; }
+.cal_button span::before { font: 18px/81% Pictos-IF; width: 20px; height: 20px; display: inline-block; color: rgb(102, 102, 102); text-align: center; content: "<"; }
+.no-touch .cal_close a:hover::before, .no-touch .cal_button a:hover::before { color: rgb(255, 0, 0); }
+.cal_button:last-child a::before, .cal_button:last-child span::before { font: 18px/81% Pictos-IF; width: 20px; height: 20px; display: inline-block; color: rgb(102, 102, 102); text-align: center; content: ">"; }
+.numbered-icon::before { font: 250px/81% Pictos-IF; color: rgb(255, 0, 0); width: 250px; height: 250px; display: inline-block; text-align: center; }
+.postbox .numbered-icon::before { font: 150px/81% Pictos-IF; height: 150px; width: 150px; color: rgb(255, 0, 0); }
+.cbox-small .postbox .numbered-icon::before { font: 250px/81% Pictos-IF; width: 250px; height: 250px; color: rgb(255, 0, 0); }
+.postbox.no-messages .numbered-icon::before, .postbox.no-configuration .numbered-icon::before { font: 150px/81% Pictos-IF; height: 150px; width: 150px; color: rgb(227, 227, 227); }
+.cbox-small .postbox.no-messages .numbered-icon::before, .cbox-small .postbox.no-configuration .numbered-icon::before { font: 250px/81% Pictos-IF; width: 250px; height: 250px; color: rgb(227, 227, 227); }
+.favorites.no-favorites p::before { font: 200px/81% Pictos-IF; width: 200px; height: 200px; display: block; margin: -50px auto -30px; text-align: center; color: rgb(227, 227, 227); content: ""; }
+.favorites ul.user li a::after { content: ">"; font: 18px/81% Pictos-IF; margin-left: 10px; display: inline-block; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; color: rgb(102, 102, 102); }
+.no-touch .favorites ul.user li a:hover::after { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+.next-task ul li a::after { color: rgb(102, 102, 102); font: 18px/81% Pictos-IF; content: ">"; display: inline-block; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; margin-left: 7px; }
+.no-touch .next-task ul li a:hover::after { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+.close-icon::before { color: rgb(0, 0, 0); font: 30px/81% Pictos-IF; width: 30px; height: 30px; display: block; content: "×"; border-radius: 50%; border: 1px solid transparent; background-color: rgba(255, 255, 255, 0.5); text-align: center; }
+.no-touch .close-icon:hover::before { color: rgb(255, 0, 0); background-color: rgb(255, 255, 255); }
+.if5_waitNotice::after { content: ""; font: 26px/81% Pictos-IF; width: 26px; height: 26px; text-align: center; margin: 10px auto 0px; display: block; }
+.iconbar .pagenavcurrent::after { font: 28px/81% Pictos-IF; content: "d"; width: 28px; color: rgb(102, 102, 102); left: 50%; top: 15px; position: absolute; margin-left: -14px; }
+.pagenav_visible .iconbar .pagenavcurrent::after { content: "u"; }
+.no-touch .iconbar .pagenavcurrent:hover::after { color: rgb(255, 0, 0); }
+.analyst .icon::before { font: 28px/81% Pictos-IF; color: rgb(102, 102, 102); display: inline-block; margin-left: -5px; margin-top: -8px; vertical-align: middle; }
+.icon-anchor::before { content: ""; }
+.icon-app::before { content: ""; }
+.icon-arrow-back::before { content: ""; }
+.icon-arrow-circle::before { content: ""; }
+.icon-arrow-circ-perspective::before { content: ""; }
+.icon-arrow-direction::before { content: ""; }
+.icon-arrow-fork::before { content: ""; }
+.icon-arrow-leftright::before { content: ""; }
+.icon-arrow-out::before { content: ""; }
+.icon-arrows-center::before { content: ""; }
+.icon-arrows-change::before { content: ""; }
+.icon-arrows-circle::before { content: ""; }
+.icon-atom::before { content: ""; }
+.icon-bag::before { content: ""; }
+.icon-balance::before { content: ""; }
+.icon-balloon::before { content: ""; }
+.icon-ban::before { content: ""; }
+.icon-banderole::before { content: ""; }
+.icon-banknote::before { content: ""; }
+.icon-banknote-euro::before { content: ""; }
+.icon-barcode::before { content: ""; }
+.icon-bell::before { content: ""; }
+.icon-bicycle::before { content: ""; }
+.icon-binoculars::before { content: ""; }
+.icon-book-checkmark1::before { content: ""; }
+.icon-book-checkmark2::before { content: ""; }
+.icon-book-close-mark::before { content: ""; }
+.icon-book-open::before { content: ""; }
+.icon-book-pen::before { content: ""; }
+.icon-book-text::before { content: ""; }
+.icon-bstart::before { content: "b"; }
+.icon-buggy::before { content: ""; }
+.icon-calculator::before { content: ""; }
+.icon-calendar::before { content: "k"; }
+.icon-camera-movie::before { content: ""; }
+.icon-camera-picture::before { content: ""; }
+.icon-canvas::before { content: ""; }
+.icon-car::before { content: ""; }
+.icon-car-palm::before { content: ""; }
+.icon-card-magnetic-strip::before { content: ""; }
+.icon-cashpoint::before { content: ""; }
+.icon-chain-links::before { content: ""; }
+.icon-chart-bar::before { content: ""; }
+.icon-chart-bar-line::before { content: ""; }
+.icon-chart-line1::before { content: ""; }
+.icon-chart-line2::before { content: ""; }
+.icon-chart-line-borderless::before { content: ""; }
+.icon-chart-pie::before { content: ""; }
+.icon-chart-rack::before { content: ""; }
+.icon-chat::before { content: "c"; }
+.icon-checked::before { content: "v"; }
+.icon-clapperboard::before { content: ""; }
+.icon-clock-alarm::before { content: ""; }
+.icon-clock::before { content: ""; }
+.icon-cloud::before { content: ""; }
+.icon-cloud-sun::before { content: ""; }
+.icon-coffee-cup::before { content: ""; }
+.icon-compass::before { content: ""; }
+.icon-compass-rose::before { content: ""; }
+.icon-couch::before { content: ""; }
+.icon-cup::before { content: ""; }
+.icon-diamond::before { content: ""; }
+.icon-doctoral-cap::before { content: ""; }
+.icon-dog::before { content: ""; }
+.icon-doublequote::before { content: ""; }
+.icon-download::before { content: "r"; }
+.icon-emblem::before { content: ""; }
+.icon-emblem-empty::before { content: ""; }
+.icon-euro-coins::before { content: ""; }
+.icon-euro-symbol::before { content: ""; }
+.icon-facebook::before { content: "f"; }
+.icon-factory::before { content: ""; }
+.icon-fax::before { content: ""; }
+.icon-feather::before { content: ""; }
+.icon-flag::before { content: ""; }
+.icon-football::before { content: ""; }
+.icon-fuel-dispenser::before { content: ""; }
+.icon-gamepad::before { content: ""; }
+.icon-gauge::before { content: ""; }
+.icon-gear-wheel::before { content: ""; }
+.icon-gear-wheels::before { content: ""; }
+.icon-glasses::before { content: ""; }
+.icon-googleplus::before { content: "g"; }
+.icon-graph::before { content: ""; }
+.icon-hammer::before { content: ""; }
+.icon-hat-chef::before { content: ""; }
+.icon-health::before { content: ""; }
+.icon-heart::before { content: ""; }
+.icon-homenav::before { content: ""; }
+.icon-hourglas::before { content: ""; }
+.icon-house::before { content: ""; }
+.icon-info::before { content: "i"; }
+.icon-inline-skate::before { content: ""; }
+.icon-ipod::before { content: ""; }
+.icon-key::before { content: ""; }
+.icon-keys::before { content: ""; }
+.icon-laptop::before { content: ""; }
+.icon-laptop-euro::before { content: ""; }
+.icon-leaf::before { content: ""; }
+.icon-letter-in-envelope::before { content: ""; }
+.icon-letter-sending::before { content: ""; }
+.icon-lifesaver::before { content: ""; }
+.icon-lightbulb::before { content: ""; }
+.icon-location1::before { content: ""; }
+.icon-location::before { content: ""; }
+.icon-locations::before { content: ""; }
+.icon-lock-closed::before { content: ""; }
+.icon-lock-euro::before { content: ""; }
+.icon-lock-open::before { content: ""; }
+.icon-mail::before { content: "m"; }
+.icon-mail-badge::before { content: ""; }
+.icon-masks::before { content: ""; }
+.icon-minus::before { content: ""; }
+.icon-mobile-phone-old::before { content: ""; }
+.icon-moped::before { content: ""; }
+.icon-mountains::before { content: ""; }
+.icon-mousepointer::before { content: ""; }
+.icon-move::before { content: "4"; }
+.icon-multiply::before { content: "×"; }
+.icon-note::before { content: ""; }
+.icon-page-list::before { content: ""; }
+.icon-page-pdf::before { content: ""; }
+.icon-page-pen::before { content: ""; }
+.icon-page-text::before { content: ""; }
+.icon-paint-roller::before { content: ""; }
+.icon-palette::before { content: ""; }
+.icon-paper-clip::before { content: ""; }
+.icon-paper-plane::before { content: ""; }
+.icon-parcel::before { content: ""; }
+.icon-pen::before { content: ""; }
+.icon-percent::before { content: "%"; }
+.icon-person::before { content: ""; }
+.icon-person-tie::before { content: ""; }
+.icon-phone::before { content: "h"; }
+.icon-picture::before { content: ""; }
+.icon-piggybank::before { content: ""; }
+.icon-pin::before { content: ""; }
+.icon-plane::before { content: ""; }
+.icon-play::before { content: ""; }
+.icon-plus::before { content: "+"; }
+.icon-potted-plant::before { content: ""; }
+.icon-present::before { content: ""; }
+.icon-price-tag::before { content: ""; }
+.icon-puzzle-piece::before { content: ""; }
+.icon-questionmark::before { content: ""; }
+.icon-quit::before { content: "q"; }
+.icon-sailboat::before { content: ""; }
+.icon-savingsbank::before { content: ""; }
+.icon-scissors::before { content: ""; }
+.icon-screen::before { content: ""; }
+.icon-search::before { content: "s"; }
+.icon-sector-1-4::before { content: ""; }
+.icon-sector-1-8::before { content: ""; }
+.icon-sheet-long-text::before { content: ""; }
+.icon-ship::before { content: ""; }
+.icon-shopping-bag::before { content: ""; }
+.icon-shopping-cart1::before { content: ""; }
+.icon-shopping-cart2::before { content: ""; }
+.icon-shovel-helmet::before { content: ""; }
+.icon-signpost::before { content: ""; }
+.icon-skype::before { content: "H"; }
+.icon-smartphone::before { content: ""; }
+.icon-sound-level::before { content: ""; }
+.icon-spade::before { content: ""; }
+.icon-speacker::before { content: ""; }
+.icon-speech-bubbles::before { content: ""; }
+.icon-speedo::before { content: ""; }
+.icon-star::before { content: ""; }
+.icon-stopwatch::before { content: ""; }
+.icon-sun1::before { content: ""; }
+.icon-sun2::before { content: ""; }
+.icon-tablet::before { content: ""; }
+.icon-target-arrow::before { content: ""; }
+.icon-target::before { content: ""; }
+.icon-teamviewer::before { content: ""; }
+.icon-television::before { content: ""; }
+.icon-text-Aa::before { content: ""; }
+.icon-thermometer::before { content: ""; }
+.icon-tickets::before { content: ""; }
+.icon-traffic-cone::before { content: ""; }
+.icon-train-rails::before { content: ""; }
+.icon-trashcan::before { content: ""; }
+.icon-truck::before { content: ""; }
+.icon-twitter::before { content: "t"; }
+.icon-umbrella::before { content: ""; }
+.icon-video::before { content: ""; }
+.icon-wedding-rings::before { content: ""; }
+.icon-wheelchair::before { content: ""; }
+.icon-window::before { content: ""; }
+.icon-world::before { content: ""; }
+.icon-xing::before { content: ""; }
+.icon-xmas-tree::before { content: ""; }
+.icon-youtube::before { content: "y"; }
+.icon-sr-banking::before { content: ""; }
+.icon-sr-default::before { content: ""; }
+.icon-sr-pdf::before { content: ""; }
+.icon-sr-text::before { content: ""; }
+.icon-if5_i_aktionen::before { content: ""; }
+.icon-if5_i_auss_aendern::before { content: ""; }
+.icon-if5_i_auss_loeschen::before { content: ""; }
+.icon-if5_i_aussetzen::before { content: ""; }
+.icon-if5_i_bearb::before { content: ""; }
+.icon-if5_i_bearb_off_auftr::before { content: ""; }
+.icon-if5_i_brief_closed::before { content: ""; }
+.icon-if5_i_brief_open_rot::before { content: ""; }
+.icon-if5_i_cal::before { content: "k"; }
+.icon-if5_i_chart::before { content: ""; }
+.icon-if5_i_depotaufstellung::before { content: ""; }
+.icon-if5_i_depothistorie::before { content: "l"; }
+.icon-if5_i_eur::before { content: ""; }
+.icon-if5_i_gesendete_nachrichten::before { content: ""; }
+.icon-if5_i_haken::before { content: "v"; }
+.icon-if5_i_konditionen1::before { content: ""; }
+.icon-if5_i_kreditabrech::before { content: ""; }
+.icon-if5_i_lastrueckgabe::before { content: ""; }
+.icon-if5_i_legilink::before { content: ""; }
+.icon-if5_i_limit_erhoehen::before { content: ""; }
+.icon-if5_i_limit_erhoehen_temp::before { content: "l"; }
+.icon-if5_i_limit_senken::before { content: ""; }
+.icon-if5_i_liquiditaetsvorschau::before { content: ""; }
+.icon-if5_i_loesch::before { content: ""; }
+.icon-if5_i_minus_rot::before { content: ""; }
+.icon-if5_i_nachricht_verfassen::before { content: ""; }
+.icon-if5_i_nachrichtenuebersicht::before { content: ""; }
+.icon-if5_i_neartime::before { content: ""; }
+.icon-if5_i_neu_rot::before { content: ""; }
+.icon-if5_i_neue_nachrichten::before { content: ""; }
+.icon-if5_i_orderstatus::before { content: ""; }
+.icon-if5_i_pfeil_gefallen::before { content: ""; }
+.icon-if5_i_pfeil_gestiegen::before { content: ""; }
+.icon-if5_i_pfeil_gleich::before { content: ""; }
+.icon-if5_i_pfeil_stark_gefallen::before { content: ""; }
+.icon-if5_i_pfeil_stark_gestiegen::before { content: ""; }
+.icon-if5_i_piechart::before { content: ""; }
+.icon-if5_i_plus_minus::before { content: ""; }
+.icon-if5_i_plus_rot::before { content: "+"; }
+.icon-if5_i_pushtan_freischalten::before { content: ""; }
+.icon-if5_i_pushtan_hinzu::before { content: ""; }
+.icon-if5_i_pushtan_loeschen::before { content: ""; }
+.icon-if5_i_realtime::before { content: ""; }
+.icon-if5_i_sammel_import::before { content: ""; }
+.icon-if5_i_schloss_auf::before { content: ""; }
+.icon-if5_i_schloss_zu::before { content: ""; }
+.icon-if5_i_telefon::before { content: "h"; }
+.icon-if5_i_umr-euro::before { content: ""; }
+.icon-if5_i_uportrait::before { content: ""; }
+.icon-if5_i_vortag::before { content: ""; }
+.icon-if5_i_weiter1::before { content: ""; }
+.icon-if5_i_wp-tausch::before { content: ""; }
+.icon-if5_i_WP-News::before { content: ""; }
+.icon-if5_ifa_bedingungen::before { content: ""; }
+.icon-if5_ifa_ifauftrag::before { content: ""; }
+.icon-if5_ifa_konditionen::before { content: ""; }
+.icon-if5_ifa_kontaktformular::before { content: ""; }
+.icon-if5_ifa_modellberechnung::before { content: ""; }
+.icon-if5_io_haken::before { content: "v"; }
+.icon-if5_io_x::before { content: "×"; }
+.icon-if5_symbol_banking_2::before { content: ""; }
+.icon-if5_symbol_banking_3::before { content: ""; }
+.icon-if5_symbol_banking_4::before { content: ""; }
+.icon-if5_symbol_banking_5::before { content: ""; }
+.icon-if5_symbol_banking_6::before { content: "i"; }
+.icon-if5_symbol_bigcirc_minus::before { content: ""; }
+.icon-if5_symbol_bigcirc_plus::before { content: "+"; }
+.icon-if5_symbol_buch::before { content: ""; }
+.icon-if5_symbol_diskette::before { content: ""; }
+.icon-if5_symbol_down::before { content: "d"; }
+.icon-if5_symbol_down_a::before { content: "d"; }
+.icon-if5_symbol_lupe::before { content: ""; }
+.icon-if5_symbol_plus::before { content: "+"; }
+.icon-if5_symbol_redcircle_pfeil::before { content: ""; }
+.icon-if5_symbol_redcircle_plus::before { content: "+"; }
+.icon-if5_symbol_redcircle_minus::before { content: ""; }
+.icon-if5_symbol_refresh::before { content: ""; }
+.icon-if5_symbol_skontorechner::before { content: ""; }
+.icon-if5_symbol_up::before { content: "u"; }
+.icon-if5_symbol_up_a::before { content: "u"; }
+.icon-ipo_abschluss::before { content: ""; }
+.icon-ipo_agb::before { content: ""; }
+.sayt-container { text-align: left; color: rgb(102, 102, 102); z-index: 2100; position: absolute; margin-left: -152px; }
+.autocomplete-suggestions { background-color: rgb(255, 255, 255); vertical-align: top; overflow: auto; width: 400px; padding-top: 10px; padding-bottom: 10px; }
+.autocomplete-suggestions-wrapper { border-width: 1px 1px 0px; border-style: solid; border-color: rgb(214, 214, 214); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; }
+.sayt-display-detect { position: absolute; width: 1px; height: 1px; }
+.sayt-results li > a::after { content: ">"; color: rgb(102, 102, 102); font: 18px/81% Pictos-IF; float: right; display: inline-block; width: 18px; height: 18px; border: 1px solid rgb(102, 102, 102); border-radius: 50%; background-color: rgb(255, 255, 255); margin-left: -18px; margin-right: 15px; margin-top: 8px; }
+.no-touch .sayt-results li > a:hover::after { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+.sayt-results li > h3 + p + a::after { margin-top: 18px; }
+.sayt-all > a::after { content: ">"; color: rgb(255, 0, 0); font: 18px/81% Pictos-IF; float: right; display: inline-block; width: 18px; height: 18px; border: 1px solid rgb(255, 0, 0); border-radius: 50%; background-color: rgb(255, 255, 255); margin-left: 10px; }
+.no-touch .sayt-all > a:hover::after { background-color: rgb(255, 0, 0); color: rgb(255, 255, 255); }
+.only-M { display: none; }
+@media screen and (max-width: 839px) {
+	.loginlogout form.header-logout { width: 376px; }
+	.loginlogout .header-logout p { max-width: 185px; }
+}
+@media screen and (max-width: 759px) {
+	.sayt-display-detect { display: none; }
+	.if6_sitemap { display: none; }
+	.if6_tabnav ul.tabnav { margin-right: 0px; }
+	.tabnav li { display: block; margin-right: 0px; }
+	.tabnav li > div { display: block; }
+	.tabnav li > div > a { display: block; }
+	.tabnav li.active > div::before { display: none; }
+	.tabnav li.active > div::after { display: none; }
+	.tabnav li + li { margin-top: 2px; }
+}
+@media screen and (max-width: 649px) {
+	.loginlogout { text-align: right; padding-right: 20px; }
+	.loginlogout * + span { display: inline-block; font: 15px SparkasseWeb,Helvetica,Arial,sans-serif; }
+	.if6 .loginlogout label::after { content: ":"; }
+	.if6 .loginlogout input { border: 2px solid rgb(102, 102, 102); border-radius: 5px; padding: 5px; width: 100%; margin: 0px; }
+	.loginlogout div.login::before { display: none; }
+	.loginlogout div.login::after { margin-left: -22px; color: rgb(255, 0, 0); border-color: rgb(255, 0, 0); height: 20px; width: 20px; font: 20px/81% Pictos-IF; margin-top: 4px; display: inline-block; }
+	.no-touch .loginlogout div.login:hover::after { background-color: rgb(255, 0, 0); color: rgb(255, 255, 255); }
+	.loginlogout form.header-logout + span, .loginlogout form.header-logout + * + span { display: none; }
+	.loginlogout form.header-logout { width: auto; }
+	.loginlogout form.header-logout p { display: none; }
+	.logo img.symbol { display: inherit; }
+	.logo .symbol + img, .logo .symbol + img + img { display: none; }
+	.servicetiles .serviceelement a::before { font: 80px/81% Pictos-IF; height: 80px; width: 80px; margin-left: -42px; top: -9px; }
+	.if6 td + td { padding-top: 0px; }
+	.cbox .table thead + * td::before { content: attr(data-header); float: left; }
+	.chat_online .servicetiles .serviceelement a.chatlink::after { width: 15px; height: 15px; top: 6px; margin-left: -31px; }
+	.lefthalf::before { display: block; content: ""; border-top: 10px solid rgb(240, 240, 240); width: 100%; margin-left: -10px; margin-top: -20px; position: absolute; }
+	.lefthalf:first-child::before { display: none; }
+	.leftthird::before { display: block; content: ""; border-top: 10px solid rgb(240, 240, 240); width: 100%; margin-left: -10px; margin-top: -20px; position: absolute; }
+	.leftthird:first-child::before { display: none; }
+	.rightthird::before { display: block; content: ""; border-top: 10px solid rgb(240, 240, 240); width: 100%; margin-right: -10px; margin-top: -20px; position: absolute; }
+	.bpager .pagerbuttons div.prev::before { display: inline-block; color: rgb(102, 102, 102); background-color: rgb(227, 227, 227); font: 30px/81% Pictos-IF; content: "<"; margin-right: -30px; }
+	.bpager .pagerbuttons div.next::before { display: inline-block; color: rgb(102, 102, 102); background-color: rgb(227, 227, 227); font: 30px/81% Pictos-IF; content: ">"; margin-right: -30px; }
+	.next-task ul li div { display: none; }
+	.btable.autoheader .tablerowodd td[data-header]::before, .btable.autoheader .tableroweven td[data-header]::before { content: attr(data-header); float: left; text-align: left; margin-right: 5px; white-space: pre; }
+	.has-action-column.autoheader .tablerowodd td:first-child::before, .has-action-column.autoheader .tableroweven td:first-child::before { width: 100%; padding-bottom: 10px; }
+	.has-action-column.autoheader.has-checkbox-column .tablerowodd td:first-child::before, .has-action-column.autoheader.has-checkbox-column .tableroweven td:first-child::before { width: auto; padding-bottom: 0px; }
+	.btable.autoheader.has-header-column td:first-child::before { display: none; }
+	.kkilaufzeitbaender td:first-child::before { display: none; }
+	.kkivergleich td::before { content: attr(data-header); float: left; }
+	.table_baufi_zahlungsplan td:first-child::before { display: none; }
+	.table_dekadepotaufstellung.has-action-column.autoheader .tablerowodd td:first-child::before, .table_dekadepotaufstellung.has-action-column.autoheader .tableroweven td:first-child::before { display: none; }
+	table.table_depotaufstellung .tablerowodd + .tablerowodd td::before, table.table_depotaufstellung .tableroweven + .tableroweven td::before { display: none; }
+}
+@media screen and (max-width: 549px) {
+	.bline + .bline { margin-top: 0px; }
+	div.bcontinue { padding-left: 0px; }
+	.bline div, .bline label { margin-right: 10px; }
+	.js .bline .ixxl, .js .btable .ixxl { width: calc(100% - 10px); }
+	.js .bline .ixl, .js .btable .xl { width: calc(100% - 10px); }
+	.bline > label, .bline > .label, .bline > .blineover + label, .bline > .blineover + .label { float: none; display: block; text-align: left; width: auto; padding-bottom: 7px; }
+	.bline > .label, .bline > .blineover + .label { padding-bottom: 2px; }
+	.favorites ul.user li a::after { display: none; }
+	.favorites.no-favorites p::before { font: 100px/81% Pictos-IF; height: 100px; margin: -5px auto; width: 100px; }
+	.js .market .tabnav li.active > div::before, .js .market .tabnav li.active > div::after { display: block; bottom: 20px; left: auto; right: 10px; border-width: 6px; border-top-color: rgb(102, 102, 102); z-index: 0; }
+	.js .market .tabnav li.active > div::before { margin-right: 6px; }
+}
+@media screen and (max-width: 539px) {
+	.loginlogout form.header-logout { width: auto; background-color: transparent; padding: 0px; }
+	.loginlogout form.header-logout div.logout:hover { background-color: transparent; }
+	.loginlogout .header-logout div.logout + p { display: none; }
+}
+@media screen and (max-width: 480px) {
+	.cbox-small { width: 100%; }
+}
+@media screen and (max-width: 319px) {
+	.js .if6_navigation .close-icon, .js .if6_contact .close-icon { left: 210px; }
+}
+@media screen and (min-width: 1080px) {
+	.hnav .if6_iconbar + *, .hnav .if6_iconbar + .parsys > :first-child { margin-top: 50px; }
+	.hnav .if6_navigation > a, .hnav .if6_navigation .close-icon, .hnav .if6_navigation .h2, .hnav .if6_navigation .navtop, .hnav .if6_navigation .navback { display: none; }
+	.hnav .if6_navigation > div { left: 0px; position: relative; width: 100%; top: 20px; overflow: visible; }
+	.hnav .if6_navigation > div > div { width: 100%; padding-top: 0px; left: 0px ! important; height: 0px; }
+	.js .hnav .if6_navigation:hover > div { left: 0px; }
+	.hnav .if6_navigation > div > div > ul { padding-left: 50px; width: 930px; height: 50px; margin: 0px auto; }
+	.hnav .bstart + .if6_navigation > div > div > ul { padding-left: 91px; width: 889px; }
+	.hnav .bstart, .hnav .home { width: 960px; margin: 0px auto; height: 0px; }
+	.hnav .home .if6_home, .hnav .bstart .if6_bstart { position: relative; width: 40px; height: 40px; top: 20px; z-index: 2003; display: block; }
+	.hnav .home .if6_home { border-radius: 5px 0px 0px 5px; }
+	.hnav .bstart > div { border-left: 1px solid rgba(255, 255, 255, 0.4); display: inline-block; margin-left: 40px; position: relative; z-index: 2003; top: 20px; }
+	.hnav .bstart .if6_bstart { background-color: rgba(68, 68, 68, 0.8); top: 0px; }
+	.hnav .home .if6_home::before { color: rgb(255, 255, 255); content: ""; font: 31px/81% Pictos-IF; display: block; margin-left: 5px; margin-top: 5px; width: 31px; height: 31px; }
+	.hnav .bstart .if6_bstart::before { color: rgb(255, 255, 255); content: "b"; font: 31px/81% Pictos-IF; margin-left: 5px; margin-top: 5px; width: 31px; height: 31px; }
+	.hnav .if6_navigation ul li a span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block; width: 100%; }
+	.hnav .if6_navigation > div > div > ul > li { float: left; border-left: 1px solid rgba(255, 255, 255, 0.4); }
+	.hnav .if6_navigation > div > div > ul > li > a { display: inline-block; color: rgb(255, 255, 255); font: bold 14px/30px SparkasseWeb,Helvetica,Arial,sans-serif; text-align: center; vertical-align: middle; padding: 5px; background-color: rgba(68, 68, 68, 0.8); box-sizing: border-box; height: 40px; position: relative; z-index: 10; }
+	.hnav .if6_navigation > div > div > ul.with-1-items > li:nth-child(1) > a { border-radius: 0px 5px 5px 0px; }
+	.hnav .if6_navigation > div > div > ul.with-2-items > li:nth-child(2) > a { border-radius: 0px 5px 5px 0px; }
+	.hnav .if6_navigation > div > div > ul.with-3-items > li:nth-child(3) > a { border-radius: 0px 5px 5px 0px; }
+	.hnav .if6_navigation > div > div > ul.with-4-items > li:nth-child(4) > a { border-radius: 0px 5px 5px 0px; }
+	.hnav .if6_navigation > div > div > ul.with-5-items > li > a { width: 183px; font: bold 16px/30px SparkasseWeb,Helvetica,Arial,sans-serif; }
+	.hnav .bstart + .if6_navigation > div > div > ul.with-5-items > li > a { width: 174.8px; }
+	.hnav .if6_navigation > div > div > ul.with-5-items > li:nth-child(5) > a { border-radius: 0px 5px 5px 0px; }
+	.hnav .if6_navigation > div > div > ul.with-6-items > li:nth-child(6) > a { border-radius: 0px 5px 5px 0px; }
+	.hnav .if6_navigation > div > div > ul.with-7-items > li:nth-child(7) > a { border-radius: 0px 5px 5px 0px; }
+	.hnav .if6_navigation > div > div > ul > li > a { width: 114px; }
+	.hnav .bstart + .if6_navigation > div > div > ul > li > a { width: 108.87px; }
+	.hnav .if6_navigation > div > div > ul > li:nth-child(8) > a { border-radius: 0px 5px 5px 0px; }
+	.hnav .if6_navigation > div > div > ul > li.active > a { border-bottom: 3px solid rgb(255, 0, 0); padding-bottom: 2px; }
+	.hnav .if6_navigation > div > div > ul > li > div > ul li.active > a, .hnav .if6_navigation > div > div > ul > li > div > ul li.current > a { background-color: rgb(255, 255, 255); }
+	.hnav .if6_navigation > div > div > ul li > a:focus { outline: 0px none; }
+	.hnav .if6_navigation > div > div > ul > li > div > ul li.active > a::before, .hnav .if6_navigation > div > div > ul > li > div > ul li.current > a::before { color: rgb(255, 0, 0); content: ">"; font: 20px/81% Pictos-IF; width: 20px; margin-left: -17px; display: inline-block; position: absolute; margin-top: 8px; }
+	.if6_navigation ul li.overview { border-bottom: 0px none; }
+	.no-touch .hnav .if6_navigation > div > div > ul > li:hover > a::after, .hnav .if6_navigation > div > div > ul > li > a:focus::after, .hnav .if6_navigation > div > div > ul > li.focus > a::after { content: ""; border-width: 7.5px 7.5px 0px; border-style: solid solid none; border-color: rgb(255, 0, 0) transparent -moz-use-text-color; position: absolute; left: 50%; top: 40px; margin-left: -7.5px; width: 0px; height: 0px; background-color: transparent; border-radius: 0px; z-index: 1; }
+	.no-touch .hnav .if6_navigation > div > div > ul > li:hover > a:last-child::after, .hnav .if6_navigation > div > div > ul > li > a:last-child:focus::after, .hnav .if6_navigation > div > div > ul > li.focus > a:last-child::after { display: none; }
+	.hnav .if6_iconbar, .hnav .if6_iconbar .if6_inner { overflow: visible; width: 100%; }
+	.hnav .if6_navigation div div { box-shadow: none; margin: 0px; }
+	.hnav .if6_navigation > div > div > ul > li > div { left: 0px; top: 40px; width: 100%; padding-top: 20px; }
+	.hnav .if6_navigation > div > div > ul > li div { height: 500px; padding-top: 0px; width: 100%; z-index: 0; }
+	.js .hnav .if6_navigation > div > div > ul > li > div { display: block; visibility: hidden; opacity: 0; transition: visibility 200ms ease 0s, opacity 200ms ease 0s; }
+	.hnav .if6_navigation > div > div > ul li:hover > div, .hnav .if6_navigation > div > div > ul li.focus > div, .hnav .if6_navigation > div > div > ul li.anim > div { display: block; visibility: visible; opacity: 1; }
+	.hnav .if6_navigation > div > div > ul > li > div > ul { width: 960px; margin: 0px auto; position: relative; padding-left: 20px; padding-top: 20px; box-sizing: border-box; }
+	.hnav .if6_navigation > div > div > ul > li > div > ul ul { margin-top: 0px; padding-top: 20px; padding-left: 20px; }
+	.hnav .if6_navigation > div > div > ul > li > div > ul li { width: 272px; display: block; }
+	.hnav .if6_navigation > div > div > ul > li > div > ul div { left: 292px; padding-left: 32px; top: 0px; }
+	.hnav .if6_navigation > div > div > ul > li > div > ul div div { left: 324px; }
+	.hnav .if6_navigation > div > div > ul > li > div > ul li + li { border-top: 1px solid rgb(204, 204, 204); }
+	.no-touch .hnav .if6_navigation > div > div > ul > li > div > ul li + li:hover, .no-touch .hnav .if6_navigation > div > div > ul > li > div > ul li:hover + li, .hnav .if6_navigation > div > div > ul > li > div > ul li + li.focus, .hnav .if6_navigation > div > div > ul > li > div > ul li.focus + li { border-top: 1px solid rgb(102, 102, 102); }
+	.hnav .if6_navigation > div > div > ul > li > div > ul li > a { position: relative; font: 16px/34px SparkasseWeb,Helvetica,Arial,sans-serif; color: rgb(102, 102, 102); padding: 0px 30px 0px 20px; height: 34px; }
+	.no-touch .hnav .if6_navigation > div > div > ul > li > div > ul li:hover > a, .hnav .if6_navigation > div > div > ul > li > div > ul li > a:focus, .hnav .if6_navigation > div > div > ul > li > div > ul li.focus > a { color: rgb(255, 255, 255); background-color: rgb(102, 102, 102); }
+	.no-touch .hnav .if6_navigation > div > div > ul > li > div > ul li.active:hover > a::before, .hnav .if6_navigation > div > div > ul > li > div > ul li.active > a:focus::before, .hnav .if6_navigation > div > div > ul > li > div > ul li.active.focus > a::before, .no-touch .hnav .if6_navigation > div > div > ul > li > div > ul li.current:hover > a::before, .hnav .if6_navigation > div > div > ul > li > div > ul li.current > a:focus::before, .hnav .if6_navigation > div > div > ul > li > div > ul li.current.focus > a::before { display: none; }
+	.no-touch .hnav .if6_navigation > div > div > ul > li > div > ul li:hover > a::after, .hnav .if6_navigation > div > div > ul > li > div > ul li > a:focus::after, .hnav .if6_navigation > div > div > ul > li > div > ul li.focus > a::after { border-width: 7px 0px 7px 7px; border-style: solid none solid solid; border-color: transparent -moz-use-text-color transparent rgb(102, 102, 102); content: ""; display: block; position: absolute; right: 0px; margin-right: -7px; margin-top: -36px; z-index: 1; border-radius: 0px; width: 0px; height: 0px; }
+	.no-touch .hnav .if6_navigation > div > div > ul > li > div > ul li:hover > a:last-child::after, .hnav .if6_navigation > div > div > ul > li > div > ul li > a:last-child:focus::after, .hnav .if6_navigation > div > div > ul > li > div > ul li.focus > a:last-child::after, .no-touch .hnav .if6_navigation > div > div > ul > li > div > ul li li li:hover > a::after, .hnav .if6_navigation > div > div > ul > li > div > ul li li li > a:focus::after { content: ">"; border: 1px solid rgb(255, 255, 255); color: rgb(255, 255, 255); border-radius: 50%; width: 18px; height: 18px; font: 18px/81% Pictos-IF; margin-right: 10px; margin-top: -39px; background-color: transparent; text-align: center; }
+	.hnav .if6_navigation > div > div > ul > li > div > .h2 { position: absolute; background-color: rgb(255, 255, 255); width: 100%; height: 560px; display: block; margin: -60px 0px 0px; left: 0px; right: 0px; top: 0px; color: transparent; }
+}
+.baufi .pfeil_baufi::before { content: "="; }
+.js .baufi .settings_baufi2::before { border: 1px solid rgb(255, 255, 255); border-radius: 50%; color: rgb(255, 0, 0); display: inline-block; font: 26px/81% Pictos-IF; height: 26px; width: 26px; content: "d"; text-align: center; }
+.no-touch .baufi .settings_baufi2:hover::before { color: rgb(255, 255, 255); background-color: rgb(255, 0, 0); }
+.js .baufi .nebenkosten-sichtbar .settings_baufi2::before { border: 1px solid rgb(255, 255, 255); border-radius: 50%; color: rgb(255, 0, 0); display: inline-block; font: 26px/81% Pictos-IF; height: 26px; width: 26px; text-align: center; content: "u"; }
+.no-touch .baufi .nebenkosten-sichtbar .settings_baufi2:hover::before { color: rgb(255, 255, 255); background-color: rgb(255, 0, 0); }
+.baufi .tabnav li.active > div::before, .baufi .tabnav li.active > div::after { display: none; }
+.baufi .waiticon::before { content: ""; font: 40px/81% Pictos-IF; width: 40px; height: 40px; display: inline-block; vertical-align: middle; margin-top: -5px; }
+.baufi .button_immobilien_rot::after { content: ">"; font: 18px/81% Pictos-IF; margin-left: 10px; display: inline-block; width: 18px; height: 18px; border: 1px solid rgb(255, 0, 0); border-radius: 50%; color: rgb(255, 0, 0); }
+.no-touch .baufi .button_immobilien_rot:hover::after { color: rgb(227, 227, 227); background-color: rgb(255, 0, 0); }
+.baufi div.ficon::before { margin-right: 0px; }
+@media screen and (max-width: 879px) {
+}
+@media screen and (max-width: 549px) {
+}
+@media screen and (max-width: 480px) {
+}
+@media screen and (max-width: 549px) {
+}
+.webview .loginlogout form.header-logout div.logout::before { display: none; }
+.webview .loginlogout div.logout::after { color: rgb(255, 0, 0); display: inline-block; }
+@media screen and (max-width: 649px) {
+}

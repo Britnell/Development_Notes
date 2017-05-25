@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/">
+<title>Using a ZTE MF180 on GNU/Linux with wvdial</title>
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div class="document" id="using-a-zte-mf180-on-gnu-linux-with-wvdial">
+<h1 class="title">Using a ZTE MF180 on GNU/Linux with wvdial</h1>
+
+<p>To use a "<a class="reference external" href="http://www.zte.com.cn/">ZTE</a> MF180 HSDPA USB Stick" (a device typically retailed by network providers like the Austrian <a class="reference external" href="http://www.bob.at/">bob</a> as the "bob datenstick" (bob data stick)) on a (e.g Debian) GNU/Linux system, these instructions worked for me.</p>
+<p>Please note that some of the commads I send to the device were from somewhere in the internet (links given where relevant) or even guessed. They worked for me, but might turn your device into a useless brick!</p>
+<div class="section" id="step-1-identify-device">
+<h1>Step 1: Identify device</h1>
+<p>When first connecting the stick, it presents itself as as CD-ROM device after a few seconds. <tt class="docutils literal">dmesg shows</tt>:</p>
+<pre class="literal-block">[...] usb 1-3: new high speed USB device using ehci_hcd and address 45
+[...] usb 1-3: New USB device found, idVendor=19d2, idProduct=2000
+[...] usb 1-3: New USB device strings: Mfr=3, Product=2, SerialNumber=4
+[...] usb 1-3: Product: ZTE WCDMA Technologies MSM
+[...] usb 1-3: Manufacturer: ZTE,Incorporated
+[...] usb 1-3: SerialNumber: MF1800ZTED010000
+[...] scsi46 : usb-storage 1-3:1.0
+[...] scsi 46:0:0:0: CD-ROM            ZTE      USB SCSI CD-ROM  2.31 PQ: 0 ANSI: 2
+[...] sr0: scsi-1 drive
+[...] sr 46:0:0:0: Attached scsi CD-ROM sr0
+[...] sr 46:0:0:0: Attached scsi generic sg1 type 5
+</pre>
+<p>and <tt class="docutils literal">lsusb</tt> lists it as:</p>
+<pre class="literal-block">Bus 001 Device 045: ID 19d2:2000 ONDA Communication S.p.A. ZTE MF627/MF628/MF628+ HSDPA
+</pre>
+<p>(Of course, som details will differ from system to system.)</p>
+<p>This CD typically contains vendor specific Windows drivers; you might want to look for a fitting icon there if you intend to create a graphical button for launching wvdial.</p>
+<p>At this stage, the LED on the device should be red.</p>
+</div>
+<div class="section" id="step-2-get-rid-of-the-cd-thing">
+<h1>Step 2: Get rid of the CD thing</h1>
+<p>In order to access the modem proper, you'll need to signal to the stick that it may switch now. Fortunately, on this particular stick this is implemented in a quite straigt-forward way -- simply eject the CD:</p>
+<pre class="literal-block">eject /dev/sr0
+</pre>
+<p>After ejecting, three new devices will show up at <tt class="docutils literal">ls /dev/ttyUSB*</tt>:</p>
+<pre class="literal-block">/dev/ttyUSB0  /dev/ttyUSB1  /dev/ttyUSB2
+</pre>
+<p>The important one is <tt class="docutils literal">/dev/ttyUSB2</tt>. According to <a class="reference external" href="http://ubuntuforums.org/archive/index.php/t-1017630.html">an ubuntuforums entry</a>, <tt class="docutils literal">/dev/ttyUSB0</tt> is a NMEA port (which I have not yet seen doing anything) and <tt class="docutils literal">/dev/ttyUSB1</tt> is for montioring (e.g. querying signal strength while a connection is open).</p>
+<p>At this stage, the LED should still be red.</p>
+<p>You can now communicate with the device using AT commands, e.g. by using <tt class="docutils literal">screen /dev/ttyUSB2</tt>. For example, you can query the security status by entering <tt class="docutils literal">AT+ZSEC?</tt>:</p>
+<pre class="literal-block">AT+ZSEC?
++ZSEC: 0,0
+
+OK
+</pre>
+<p>(That is, you enter <tt class="docutils literal">AT+ZSEC?</tt>, followed by return, and the stick responds with a status and an OK message. You can leave the screen session by pressing Ctrl-a, k, and y. If screen complains about "Cannot access line", you might need to invoke it with sudo.)</p>
+<p>The exact interpretation of the ZSEC reply is explained in <a class="reference external" href="http://3g-modem.wetpaint.com/page/ZTE+AT-commands">the 3g-modem wiki</a>, but for now it will be sufficient to know that <tt class="docutils literal">0,0</tt> means that no PIN has been entered.</p>
+<div class="admonition-disabling-cd-mode admonition">
+<p class="first admonition-title">Disabling CD mode</p>
+<p>There are two parameters that can be set: "autorun" and "download".</p>
+<p>Autorun can be enabled using AT+ZCDRUN=9, disabled using AT+ZCDRUN=8 and queried using AT+ZCDRUN=4. <a class="reference external" href="http://ubuntuforums.org/archive/index.php/t-1017630.html">[1]</a></p>
+<p>Download mode can be enabled using AT+ZCDRUN=E, disabled using AT+ZCDRUN=F and queried using AT+ZCDRUN=G. <a class="reference external" href="http://startubuntu.ru/?p=5641">[2]</a></p>
+<p class="last">Enabling download mode works best for me as it hides the CD completely. (Autorun mode just makes both the ttyUSB and the CD show up at the same time.)</p>
+</div>
+</div>
+<div class="section" id="step-3-unlock-the-sim-card">
+<h1>Step 3: Unlock the SIM card</h1>
+<p>Before the modem accepts any commands from wvdial to set up the modem connection, it needs the SIM card unlocked by entering the PIN (where 1234 is your PIN):</p>
+<pre class="literal-block">AT+CPIN=1234
+OK
+</pre>
+<p>The LED will then turn blue after a few seconds, and <tt class="docutils literal">AT+ZSEC?</tt> will then receive the response <tt class="docutils literal">3,0</tt>.</p>
+<div class="admonition-led-color admonition">
+<p class="first admonition-title">LED color</p>
+<p class="last">It might happen that you LED remains red or goes back to red after some time, or goes to green. This seems to be due to bad network connectivity; <tt class="docutils literal">AT+ZPAS?</tt> reported "Limited Service" instead of "UMTS","CS_PS" for me iff the LED was red, and "GPRS","CS_PS" iff the LED was green.</p>
+</div>
+<div class="admonition-disabling-the-pin admonition">
+<p class="first admonition-title">Disabling the PIN</p>
+<p>To use the wvdial configuration below, you need to allow the SIM card to connect without a password. Disable password prompting by issuing <tt class="docutils literal"><span class="pre">AT+CLCK="SC",0,"1234"</span></tt> (again, for you PIN being 1234). You can re-enable it using <tt class="docutils literal"><span class="pre">AT+CLCK="SC",1,"1234"</span></tt>.</p>
+<p class="last">The more secure version would be writing a chat script that enters the pin and polls for the response to <tt class="docutils literal">AT+ZSEC?</tt> or <tt class="docutils literal">AT+ZPAS?</tt> to indicate that everything is ready.</p>
+</div>
+</div>
+<div class="section" id="step-4-get-a-network-connection">
+<h1>Step 4: Get a network connection</h1>
+<p>After the device is unlocked and connected to the network, a pretty straightforward <tt class="docutils literal">/etc/wvdial.conf</tt> setting for <a class="reference external" href="http://alumnit.ca/wiki/index.php?page=WvDial">wvdial</a> is required to get things running; I use this:</p>
+<pre class="literal-block">[Dialer bobstick]
+Phone = *99#
+Username = data@bob.at
+Password = ppp
+Init2 = AT+CGDCONT=4,"IP","bob.at"
+Modem = /dev/ttyUSB2
+Stupid Mode = 1
+</pre>
+<p>The Phone, Username and Password parts, the "bob.at" section in the Init2 (that's the APN) and the "Stupid Mode" are specific to bob; instructions what to put there should come with your SIM card.</p>
+<p>Then, start <tt class="docutils literal">wvdial bobstick</tt> (you might need sudo again, and don't forget to close screen sessions running on <tt class="docutils literal">/dev/ttyUSB2</tt> as they'll eat the stick's responses):</p>
+<pre class="literal-block">--&gt; WvDial: Internet dialer version 1.60
+--&gt; Cannot get information for serial port.
+--&gt; Initializing modem.
+--&gt; Sending: ATZ
+ATZ
+OK
+--&gt; Sending: AT+CGDCONT=4,"IP","bob.at"
+AT+CGDCONT=4,"IP","bob.at"
+OK
+--&gt; Modem initialized.
+--&gt; Sending: ATDT*99#
+--&gt; Waiting for carrier.
+ATDT*99#
+CONNECT 3600000
+--&gt; Carrier detected.  Starting PPP immediately.
+--&gt; Starting pppd at [...]
+--&gt; Pid of pppd: 22867
+--&gt; Using interface ppp0
+--&gt; local  IP address [...]
+[...]
+</pre>
+<p>And there you go, network up and running!</p>
+<p>The LED should be blinking now.</p>
+<p>If you want to further interact with the device, use <tt class="docutils literal">screen /dev/ttyUSB1</tt> as <tt class="docutils literal">ttyUSB2</tt> is now in use by PPP.</p>
+</div>
+<div class="section" id="step-5-reset">
+<h1>Step 5: Reset</h1>
+<p>(Remember what I said about bricking? That's the part where I guessed brutally.)</p>
+<p>When a connection is active, just stopping wvdial is not enough to make the connection stop on the stick's side -- the LED keeps blinking. Sending the command <tt class="docutils literal">AT+ZRST</tt> resets the device.</p>
+</div>
+<div class="section" id="more-commands-and-devices">
+<h1>More commands and devices</h1>
+<p>jtrenchard <a class="reference external" href="http://www.3g.co.uk/3GForum/showpost.php?p=434728&amp;postcount=2">found some more commands</a> in the binary code of a similar dongle, e.g. a <tt class="docutils literal">AT+ZVN</tt> which I guess stants for "ZTE version" and reports "BD_MF180TLF3V1.0.0B01 [JUNE 8 2010 17:00:00]" for me. The <tt class="docutils literal">AT+ZRST</tt> very much looks like a reset command (as does <tt class="docutils literal">AT+ZOPRT=0</tt>), <tt class="docutils literal">AT+ZECC?</tt> returns US and European emergency numbers.</p>
+<p>Similar devices probably have different tty numbers. For example, see the <a class="reference external" href="http://blog.stone-head.org/getting-movistar-peru-zte-mf193-work-in-debian/">ZTE MF193 guide</a> by Rudy Godoy.</p>
+<hr class="docutils">
+<p>Written by <a class="reference external" href="http://christian.amsuess.com/#CMA">chrysn</a> 2010-10-26 (updated 2014-02-14), published under the terms of <a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>. For the latest version, look at the <a class="reference external" href="http://christian.amsuess.com/tutorials/zte_mf180/">original address</a>, where you will also find the <a class="reference external" href="http://christian.amsuess.com/tutorials/zte_mf180/index.rst">reStructuredText</a> source.</p>
+</div>
+</div>
+
+
+</body>
+</html>

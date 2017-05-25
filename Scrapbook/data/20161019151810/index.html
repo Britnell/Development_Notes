@@ -1,0 +1,123 @@
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+
+</head>
+<body><div id="main">
+
+<h1>Anduino</h1>
+
+<center><img src="anduino.jpg" width="680" border="1"></center>
+<p style="text-align: center;">
+<i>Anduino revisions</i>
+</p>
+
+<p>
+The Anduino is a pretty streightforward clone of a <a href="http://www.sparkfun.com/products/9218">Sparkfun Arduino Pro Mini</a> and Ed Baafi's <a href="http://fab.cba.mit.edu/content/projects/fabkit/">Fabkit</a>. Just as Ed did, since there is no 8/16Mhz oscillator in the fab inventory, I used the internal oscillator.
+</p>
+
+<p>
+I felt compelled to put together an Arduino clone because I have been developing quite a few shields recently, and needed a clone to prototype with. The Anduino is fully "shield compatible" (except for ARef). 
+</p>
+
+<p>
+For 5V in there is a two pin 0.1" header and a mini-B USB connector (because I have been powering projects recently with USB chargers). I removed the copper from around the Vin pins so you can graft a right angle header there if needed. On many of my prototypes, I didn't install the 5V regulator, choosing instead to power it with only the USB connector.
+</p>
+
+<h2>Errata</h2>
+
+<p>
+There are some errata, and will reproduce the list of errata here for my notes (and I expect some of the problems to not be resolved)
+</p>
+
+<ul>
+    <li> <strike>No ICSP header</strike> See the ICSP shield below</li>
+    <li> No USB Serial converter - requires use of FTDI cable (I'll probably add a different version with a ATMega16U2 like the UNO)</li> 
+    <li> <strike>RX and TX swapped</strike> Fixed</li>
+    <li> AREF not connected</li>
+    <li> <strike>Reset requires jumper wire</strike> Yea...</li>
+    <li> <strike>Vin voltage regulator is only 150mA, should probably be 500mA</strike> now has pads for both types of regulators</li>
+</ul>
+
+<p>
+<strike>None of those errata are show stoppers except for RX/TX swapped. This will be fixed in a near future revision.</strike> Fixed.
+</p>
+
+<h2>Programming</h2>
+
+<center><img src="icsp.jpg" width="680" border="1"></center>
+<p style="text-align: center;">
+<i>ICSP Shield</i>
+</p>
+
+<p>
+I built an ICSP shield to program the board with the FabISPkey (and to work around the lack of an ICSP header).
+</p>
+
+<p>
+To use the Arduino environment with my Anduino, I followed <a href="http://fab.cba.mit.edu/content/projects/fabkit/">Ed's</a> notes - particularly those for OSX.
+</p>
+
+<p>
+First, I placed a board description file <a href="http://fab.cba.mit.edu/content/projects/anduino/boards.txt">boards.txt</a> in <code>~/Documents/Arduino/hardware/anduino/boards.txt</code>
+</p>
+
+<p>
+Then, I selected my board from the list of boards, and used my <a href="http://fab.cba.mit.edu/content/projects/elec/index.html">FabISPkey</a> to program it (select USBTinyISP).
+</p>
+
+<p>
+<strike>Then, with the RX and TX pins swapped</strike> (fixed) connect a FTDI cable, and program normally.
+</p>
+
+<h2>Headers</h2>
+
+<table cellspacing="30" align="center">
+<tbody>
+<tr>
+<td><img src="header0.jpg" width="300" border="1"></td>
+<td><img src="header1.jpg" width="300" border="1"></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+It's kinda difficult to find headers that you can surface mount like this, I used <a href="http://parts.digikey.com/1/parts/339460-conn-rcpt-50pos-100-sngl-horz-bcs-150-l-s-he.html">these</a> and heavily modified them.
+</p>
+
+<p>
+Better choices for these headers might be:
+</p>
+
+<ul>
+    <li> <a href="http://search.digikey.com/us/en/products/PPPC061LGBN-RC/S5481-ND/775939">6 Position</a>
+    </li><li> <a href="http://search.digikey.com/us/en/products/PPPC081LGBN-RC/S5483-ND/775941">8 Position</a>
+</li></ul>
+
+<p>
+They're pass through headers, so I aligned them by putting a header through the holes, then surface mounting the headers as the photos above show.
+</p>
+
+<h2>Doing it Yourself</h2>
+
+<table align="center"><tbody>
+<tr><td><a href="http://fab.cba.mit.edu/content/projects/anduino/hw/fab_mod/fabduino_cmp.png"><img title="fabduino_cmp" src="fabduino_cmp.png" width="300"></a></td>
+<td><a href="http://fab.cba.mit.edu/content/projects/anduino/hw/fab_mod/fabduino_drd.png"><img title="fabduino_drd" src="fabduino_drd.png" width="300"></a></td>
+</tr>
+</tbody>
+</table><p style="text-align: center;">
+Version 2.1 Anduino.
+</p>
+
+<p>
+To play along at home, you can grab a <a href="http://bardagjy.com/wp-content/uploads/2011/11/fabduino.zip">zip made 12/7/11</a> or check out the most recent version from the repo.
+</p>
+
+<p>
+<em>Created by <a href="http://bardagjy.com/">Andy Bardagjy</a> 12/19/2011</em>
+</p>
+
+</div>
+</body>
+</html>

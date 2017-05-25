@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="rgb(80, 80, 80)">
+
+        <meta name="description" content="Personal website of David Maitland">
+        <meta name="author" content="David Maitland">
+
+        <title>Raspberry Pi Zero Headless Setup</title>
+
+        <!-- Canonical link -->
+        <link rel="canonical" href="https://davidmaitland.me/2015/12/raspberry-pi-zero-headless-setup/">
+
+        <!-- Bootstrap core CSS -->
+        
+
+        <!-- Icons -->
+        
+
+        <!-- syntax highlighting CSS -->
+        
+
+        <!-- Custom CSS -->
+        
+
+        
+
+        <!-- Fonts -->
+        
+
+         
+        <!-- Link to the Google page. -->
+        <link rel="author" href="https://plus.google.com/+DavidMaitland?rel=author">
+        
+
+    
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+
+      <div id="menu">
+
+        <ul class="left">
+          <li><a href="https://davidmaitland.me/">Blog</a></li>
+          <li><a href="https://davidmaitland.me/about">About</a></li>
+        </ul>
+
+        <ul class="right">
+          <li><a href="https://github.com/davidmaitland" target="_top">GitHub</a></li>
+          <li><a href="https://twitter.com/DavidMaitland" target="_top">Twitter</a></li>
+          <li><a href="https://instagram.com/davidmaitland" target="_top">Instagram</a></li>
+          <li><a href="https://500px.com/DavidMaitland" target="_top">500px</a></li>
+        </ul>
+
+      
+
+      </div>
+
+      <div id="banner">
+
+        <div class="title">
+          <a href="https://davidmaitland.me/"><h1 class="text-center">DavidMaitland.me</h1></a>
+          <h2 class="text-center">Photography, Code &amp; Linux</h2>
+        </div> <!-- /title  -->
+
+      </div> <!-- /banner -->
+
+      <div class="main">
+
+        <div class="container">
+
+          <div class="content">
+            <div class="post">
+  <h3 class="text-center"><a href="https://davidmaitland.me/2015/12/raspberry-pi-zero-headless-setup/">Raspberry Pi Zero Headless Setup</a></h3>
+  <h4 class="date text-center">01 Dec 2015</h4>
+  <p></p><p><img src="raspberry-pi-zero-otg.jpg" alt="raspberry-pi-zero-otg"></p>
+
+<p>So last Thursday (26th Nov 2015) the <a href="https://www.raspberrypi.org/blog/raspberry-pi-zero/">Raspberry Pi Zero</a> was announced and made available that very day. Basically the Zero is a small and ultra cheap (<a href="https://shop.pimoroni.com/products/raspberry-pi-zero">£4</a>) fully functioning Raspberry Pi, but it doesn't have any native networking and has only one USB port (which you need an OTG adapter to use).</p>
+
+<p>In the UK I was lucky enough to be able to order two Pi Zero's and have them delivered the next day. The only problem was I didn't have an HDMI monitor or a USB hub to connect a keyboard and a WiFi adapter at the same time. My intended use for the Zero's is for them to be little headless Linux boxes that I can put into various electronic projects and program them over WiFi (Think <a href="https://en.wikipedia.org/wiki/Internet_of_Things">IoT</a>), so I didn't want to mess around with HDMI and GUI interfaces.</p>
+
+<p>So here is a little guide showing you how to setup a Raspberry Pi Zero without an HDMI monitor or a keyboard / mouse. We will just use a USB WiFi adapter (connected to the OTG USB port) and a Linux machine to do the setup. If you don't have a Linux machine available, you could even use another Rasberry Pi with a card reader to set this up.</p>
+
+<p><em>This should be possible to do on other platforms as well but you will need to be able to mount an Ext4 partition natively.</em></p>
+
+<h2>Step One - Install the Linux image</h2>
+
+<p>First you will need to install a copy of Raspbian Jessie onto your micro SD card. You can find the downloads <a href="https://www.raspberrypi.org/downloads/raspbian/">here</a> and the installation guides are on the same page as well. For Linux I will be using <a href="https://www.raspberrypi.org/documentation/installation/installing-images/linux.md">this</a> guide.</p>
+
+<h2>Step Two - Mounting it locally</h2>
+
+<p>After you have copied the Raspbian image onto the SD card you will need to mount it to your system. The easiest way to do this is just unplug your card reader and plug it back in.</p>
+
+<p>Once the drive has mounted to your system you will need to find where it has mounted. An easy way to do this is using the command <code>df -h</code>. For example for me it returns:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">Filesystem                       Size  Used Avail Use% Mounted on
+/dev/mapper/fedora_dhcppc8-root   25G  9.8G   14G  43% /
+/dev/sda1                        477M  258M  190M  58% /boot
+/dev/mapper/fedora_dhcppc8-home   85G   24G   58G  29% /home
+/dev/sdc1                         60M   20M   41M  34% /run/media/davidmaitland/boot
+/dev/sdc2                         59G  3.4G   53G   6% /run/media/davidmaitland/ad6203a1-ec50-4f44-a1c0-e6c3dd4c9202
+</code></pre></figure>
+<p>I can see from this my 64GB SD card is the device <strong>/dev/sdc</strong> and the boot and main partition are mounted under <code>/run/media/davidmaitland/</code>. Change directory into the main partition as root ready to edit the files. This is likely to be the same drive that was referenced during the image installation earlier.</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">[user@linux ~]# sudo su
+[root@linux ~]# cd /run/media/davidmaitland/ad6203a1-ec50-4f44-a1c0-e6c3dd4c9202
+[root@linux ad6203a1-ec50-4f44-a1c0-e6c3dd4c9202]# ls
+bin  boot  boot.bak  dev  etc  home  lib  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+</code></pre></figure>
+<h2>Step Three - Configure your WiFi</h2>
+
+<p>Next we're going to configure the network interface. Edit the interfaces file <code>etc/network/interfaces</code>. Pay attention to the path in the files I reference, there is no leading slash as you want to edit the files on your SD card and not the ones on your host system!</p>
+
+<p><em>If you're not sure how to edit files on Linux, try <code>nano etc/network/interfaces</code> then <code>Ctrl + x</code> to save when done.</em></p>
+
+<p>Find this block in the file:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">allow-hotplug wlan0
+iface wlan0 inet manual
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+</code></pre></figure>
+<p>Then change it to this:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+</code></pre></figure>
+<p>If you want to have a static IP instead of using DHCP (easier to find once the Pi has come up on your network) then change it to this instead:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet static
+    address 192.168.1.20 # IP for the Zero
+    netmask 255.255.255.0
+    gateway 192.168.1.1 # Your router IP
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+</code></pre></figure>
+<p>As pointed out by someone on Reddit, if you're using static networking you will want to setup your DNS servers as well. Edit <code>etc/resolv.conf</code> and add the following:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text"># Google's public DNS servers
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+</code></pre></figure>
+<p>Now let's setup the WiFi connection and passkey. Edit the file <code>etc/wpa_supplicant/wpa_supplicant.conf</code>.</p>
+
+<p>Add this to the end:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">network={
+  ssid="my network name"
+  psk="my network password"
+  proto=RSN
+  key_mgmt=WPA-PSK
+  pairwise=CCMP
+  auth_alg=OPEN
+}
+</code></pre></figure>
+<p>Finally remove the SD card from your computer (you may wish to unmount it first) and place into your Zero.</p>
+
+<h2>Step Four - Boot the Pi Zero!</h2>
+
+<p>Now it's time to boot the Raspberry Pi Zero. Make sure you have your WiFi adapter plugged into the Zero and give it some power. For me it takes about <strong>45</strong> seconds to boot and connect to my WiFi network.</p>
+
+<p>Now you can SSH directly into your Raspberry Pi Zero!</p>
+
+<p>If you configured your Zero to use DHCP you will need to find it's IP address. There are a few ways you can do this:</p>
+
+<ul>
+<li>Most routers will tell you somewhere in their web interfaces what IP allocations they have assigned to devices.</li>
+<li>You could use <a href="https://nmap.org/">nmap</a> to scan the local network for devices running with port 22 open <code>sudo nmap -p22 -sV 192.168.0.0/24</code>.</li>
+<li>From the comments <em>Coder-256</em> pointed out the default hostname for a Raspberry Pi is <code>raspberrypi</code> and on most networks you can SSH directly to this instead of the IP address <code>ssh pi@raspberrypi.local</code>.</li>
+</ul>
+
+<p>The default password is <code>raspberry</code>.</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">[user@linux ~]# ssh pi@192.168.1.20
+pi@raspberrypi:~ $
+</code></pre></figure>
+<h2>Extras</h2>
+
+<p>After a new install there are a few things you're probably going to want to do.</p>
+
+<p>First I would update the software running on your Zero:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get update -y
+sudo apt-get upgrade -y
+</code></pre></figure>
+<p>If you're going to be using your Zero completely headlessly like me there are various things you can do to save energy and speed up the device.</p>
+
+<p>Boot up into multi-user mode (disable GUI on boot) <code>sudo systemctl set-default multi-user.target</code>.</p>
+
+<p>To disable HDMI edit <code>/etc/rc.local</code> and add the following line at the bottom above <code>exit 0</code> line:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">/usr/bin/tvservice -o
+</code></pre></figure>
+<p>You may want to run <code>sudo raspi-config</code> to change other common Raspberry Pi settings as well.</p>
+
+<p>Let me know below if this guide was useful or if you have any suggestions!</p>
+<p></p>
+
+  <hr>
+
+  <div class="text-center">
+    <a href="https://pactcoffee.com/sign-up?voucher=ONEPOUNDCOFFEE" class="btn btn-info" role="button">Coffee delivered for £1</a>
+  </div>
+  <p class="text-center">Love coffee and live in the UK? Have some freshly ground coffee delivered to your door for only one pound. Give <a href="http://pactcoffee.com/?voucher=ONEPOUNDCOFFEE">Pact</a> coffee a try using the promo code "<a href="https://pactcoffee.com/sign-up?voucher=ONEPOUNDCOFFEE">ONEPOUNDCOFFEE</a>".</p>
+
+  <hr>
+
+  
+  
+  
+  <div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="index_1.html" style="width: 1px ! important; min-width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 7414px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" name="dsq-app2" id="dsq-app2" frameborder="0" width="100%"></iframe></div>
+  
+  
+<!--   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a> -->
+  
+</div>
+
+          </div> <!-- /content -->
+
+        </div> <!-- /container -->
+
+      </div>
+
+      <div class="footer">
+        Copyright David Maitland 2016
+      </div> <!-- /footer -->
+
+      <div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="index_2.html" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+
+</body>
+</html>

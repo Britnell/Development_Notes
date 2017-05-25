@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>FabISP - Fab-able In-System Programmer</title>
+
+
+<link media="all" href="index.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>FabISP, a fab-able in-system programmer</h1>
+
+<img src="fabisp570.jpg">
+<p>
+The FabISP is an in-system programmer for AVR microcontrollers, designed for production within a FabLab.  That is, it allows you to program the microcontrollers on other boards you make, using nothing but a USB cable and 6-pin IDC to 6-pin IDC cable.  It's based on the <a href="http://www.xs4all.nl/~dicks/avr/usbtiny/">USBtiny</a> and <a href="http://www.obdev.at/products/vusb/">V-USB</a> firmwares, which allow the ATtiny44 to perform USB communication in software.  Programming can be done through avrdude.  The <a href="http://fab.cba.mit.edu/content/projects/fabisp/fabisp.pdf">schematic (PDF)</a> is super simple: USB connector, ATtiny44, and 6-pin ISP header, with assorted passive components.  I started with the Eagle files for the <a href="http://www.ladyada.net/make/usbtinyisp/">USBtinyISP</a>, although there's almost nothing left of it.  Most of the parts for the FabISP are in the FabLab inventory.  Exceptions include the Mini-B USB connector (<a href="http://www.sparkfun.com/commerce/product_info.php?products_id=587">SparkFun</a>, <a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=H2961CT-ND">Digi-Key</a>), 12 MHz crystal (<a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=XC717CT-ND">Digi-Key</a>), and 18 pF capacitors for the crystal (<a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=311-1152-1-ND">Digi-Key</a>).  
+</p>
+<p>
+<b>Eagle:</b> <a href="http://fab.cba.mit.edu/content/projects/fabisp/fabisp.sch">fabisp.sch</a>, <a href="http://fab.cba.mit.edu/content/projects/fabisp/fabisp.brd">fabisp.brd</a><br>
+<b>Schematic:</b> <a href="http://fab.cba.mit.edu/content/projects/fabisp/fabisp.pdf">fabisp.pdf</a><br>
+<b>PNGs:</b> <a href="http://fab.cba.mit.edu/content/projects/fabisp/fabisp.png">fabisp.png</a>, <a href="http://fab.cba.mit.edu/content/projects/fabisp/fabispdim.png">fabispdim.png</a><br>
+<b>Firmware:</b> <a href="http://fab.cba.mit.edu/content/projects/fabisp/firmware.zip">firmware.zip</a>
+</p>
+
+
+<img src="layout.png">
+
+<h2>Hardware Interface</h2>
+<p>
+The board connects to the computer using a Mini USB cable.  It connects to the target (the board being programmed) with an 6-pin cable on the 2x3 ISP header.
+</p>
+<img src="avrisppinout.jpg">
+<p></p>
+<p>
+The FabISP board contains two solder jumpers: pairs of adjacent pads with no components mounted on them.  These can be closed (connected with solder) to configure the board.  They are:
+</p>
+<dl>
+<dt>SJ1 (between the crystal and microcontroller)</dt>
+<dd>Close to program the ATtiny44 on the FabISP.  (Connects reset on the 2x3 ISP header with reset on the ATtiny44.)</dd>
+<dt>SJ2 (lower right corner of the board)</dt>
+<dd>Close to provide power to the target board being programmed by the FabISP.  (Connects VCC on the board with VCC on the ISP header.)
+</dd></dl>
+
+<h2>Making the Board</h2>
+<p>
+You probably want to <a href="http://fab.cba.mit.edu/content/processes/PCB/modela2.html">mill the circuit board on the Modela</a>, although you could try making a vinyl cut version or ordering a PCB.  Check for shorts (i.e. things that shouldn't be connected but are) using the multimeter before soldering the components onto the board.  
+</p>
+
+<h2>Soldering the Board</h2>
+<p>
+Start with the shorter components.  If you haven't soldered before, it's probably good to practice with the smaller components (e.g. resistors and capacitors) before trying the microcontroller.  The USB connector is probably the hardest, because the traces are so narrow.  Do the ISP header at the end, so it doesn't get in the way when you're trying to solder other components.  Most of the components can be oriented either way, with the exception of the microcontroller (the circle marking pin 1 should be in the lower left) and the zener diodes (the lines on the case should align with those in the Eagle board file).
+</p>
+
+<img src="assembled570.jpg">
+<p>
+<em>An assembled version of the previous revision of the board.  Pin 1 of the 6-pin header was marked with a black dot from a Sharpie.</em>
+</p>
+
+<h2>Programming the ATtiny44</h2>
+<p>
+Before using the FabISP, you need to program the ATtiny44 on it.  To do this, you'll need another (programmed) FabISP, some other in-system programmer (like an AVRISP mkII) or serial cable and dasa (level convertor) board.  Make sure SJ1 (the solder jumper near the microcontroller) is closed.  Connect the 6 pin cable of the other programmer to your FabISP, being sure to orient it correctly (pin 1 to pin 1).  You'll also need to provide power to your FabISP.  You can do this by connecting it to your computer with a USB cable, or, if you're using another FabISP, by closing the SJ2 jumper on both boards.
+</p>
+<p>
+Download the firmware.zip file above and unzip it.  You'll also need to install the development tools for AVR microcontrollers.  The easiest way to do this is with <a href="http://www.obdev.at/products/crosspack/index.html">CrossPack</a> on Mac OS X, <a href="http://winavr.sourceforge.net/">WinAVR</a> on Windows, and via the avr-gcc, avr-libc, and avrdude packages on Linux.  
+</p>
+<p>
+If you're not using another FabISP to program your FabISP, you'll need to edit the Makefile and modify the line <tt>AVRDUDE = avrdude -c usbtiny -p $(DEVICE)</tt> for your programmer.  For example, to use an AVRISP mkII replace the <tt>-c usbtiny</tt> with <tt>-c avrispmkii -P usb</tt> (keeping the <tt>-p $(DEVICE)</tt>).  For serial cable and dasa board, use <tt>-c dasa</tt>.
+</p>
+<p>
+Once you've modified the Makefile, run <tt>make program</tt> from the command line to program the firmware onto the ATtiny44 on the FabISP.
+</p>
+<p>
+Once the ATtiny44 is programmed, open the SJ1 solder jumper (disconnect the two pads).
+</p>
+<h2>Using the FabISP</h2>
+<p>
+If you connect the FabISP to your computer, it should appear as a USB device that can be seen in the Device Manager on Windows, in the System Profiler on Mac OS X, or in dmesg on Linux.  (It will not generate a virtual com port or serial device.)  On Mac OS X and Linux, the FabISP should work from avrdude without a driver.  On Windows, you'll need the <a href="http://www.ladyada.net/make/usbtinyisp/download.html">Windows USBtinyISP driver</a> built with libusb v1.12 (<a href="http://www.ladyada.net/media/usbtinyisp/usbtinyisp%20w32%20driver%20v1.12.zip">usbtinyisp w32 driver v1.12.zip</a>).  On the 64-bit version of Windows, try <a href="http://mightyohm.com/blog/2010/09/fixed-usbtinyisp-drivers-for-64-bit-windows-7/">these drivers</a> instead.  When you plug in the FabISP, point the Windows add hardware wizard at that folder.  To use the FabISP from avrdude, supply <tt>usbtiny</tt> as the <tt>-c</tt> parameter.  See the <a href="http://fab.cba.mit.edu/content/tools/microcontrollers/compiling.html">tutorial on programming microcontrollers</a> for more information.
+</p>
+
+<h2>Troubleshooting</h2>
+<p>
+<em>Please fill in this section based on your experiences.</em>
+</p>
+
+<p>&nbsp;</p>
+
+<p>
+<em>Created by David A. Mellis</em>
+</p>
+
+
+</body>
+</html>

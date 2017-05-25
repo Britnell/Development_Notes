@@ -1,0 +1,517 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+	
+	
+	
+	
+	<meta name="description" content="Pocket Transceiver and antenna question">
+	<meta name="keywords" content="Moteino,RFM69,LoRa,Arduino,Wireless,IoT,internet of things,home automation,LowPowerLab,RaspberryPi">
+	<title>Pocket Transceiver and antenna question</title>
+	<meta name="robots" content="noindex">
+	<link rel="canonical" href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/">
+	<link rel="help" href="https://lowpowerlab.com/forum/help/">
+	<link rel="search" href="https://lowpowerlab.com/forum/search/">
+	<link rel="contents" href="https://lowpowerlab.com/forum/index.php">
+	<link rel="alternate" type="application/rss+xml" title="LowPowerLab community forum - RSS" href="https://lowpowerlab.com/forum/.xml/?type=rss">
+	<link rel="prev" href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/?prev_next=prev">
+	<link rel="next" href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/?prev_next=next">
+	<link rel="index" href="https://lowpowerlab.com/forum/projects/">
+	
+	
+		
+	
+	
+	
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div id="wrapper" style="width: 90%;">
+	<div id="header"><div class="frame">
+		<div id="top_section">
+			<h1 class="forumtitle">
+				<a href="https://lowpowerlab.com/forum/index.php">LowPowerLab community forum</a>
+			</h1>
+			<img id="upshrink" src="upshrink.png" alt="*" title="Shrink or expand the header." style="cursor: pointer;">
+			<img id="smflogo" src="smflogo.png" alt="Simple Machines Forum" title="Simple Machines Forum">
+		</div>
+		<div id="upper_section" class="middletext">
+			<div class="user">
+				
+				<form id="guest_form" action="https://lowpowerlab.com/forum/login2/" method="post" accept-charset="ISO-8859-1" onsubmit="hashLoginPassword(this, '1097c011e17dcd891c435a5ebe0be71a');">
+					<div class="info">Welcome, <strong>Guest</strong>. Please <a href="https://lowpowerlab.com/forum/login/">login</a> or <a href="https://lowpowerlab.com/forum/register/">register</a>.<br>Did you miss your <a href="https://lowpowerlab.com/forum/activate/">activation email</a>?</div>
+					<input value="" name="user" size="10" class="input_text" type="text">
+					<input name="passwrd" size="10" class="input_password" type="password">
+					<select name="cookielength">
+						<option value="60">1 Hour</option>
+						<option value="1440">1 Day</option>
+						<option value="10080">1 Week</option>
+						<option value="43200">1 Month</option>
+						<option value="-1" selected="selected">Forever</option>
+					</select>
+					<input value="Login" class="button_submit" type="submit"><br>
+					<div class="info">Login with username, password and session length</div>
+					<br><input value="" name="openid_identifier" id="openid_url" size="25" class="input_text openid_login" type="text">
+					<input name="hash_passwrd" value="" type="hidden">
+				</form>
+			</div>
+			<div class="news normaltext">
+				<form id="search_form" action="https://lowpowerlab.com/forum/search2/" method="post" accept-charset="ISO-8859-1">
+					<input name="search" value="" class="input_text" type="text">&nbsp;
+					<input name="submit" value="Search" class="button_submit" type="submit">
+					<input name="advanced" value="0" type="hidden">
+					<input name="topic" value="653" type="hidden"></form>
+				<h2>News: </h2>
+				<p>SMF just installed</p>
+			</div>
+		</div>
+		<br class="clear">
+		
+		<div id="main_menu">
+			<ul class="dropmenu" id="menu_nav">
+				<li id="button_home">
+					<a class="active firstlevel" href="https://lowpowerlab.com/forum/index.php">
+						<span class="last firstlevel">Home</span>
+					</a>
+				</li>
+				<li id="button_blog">
+					<a class="firstlevel" href="http://lowpowerlab.com/">
+						<span class="last firstlevel">Blog</span>
+					</a>
+				</li>
+				<li id="button_shop">
+					<a class="firstlevel" href="http://lowpowerlab.com/shop">
+						<span class="last firstlevel">Shop</span>
+					</a>
+				</li>
+				<li id="button_help">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/help/">
+						<span class="firstlevel">Help</span>
+					</a>
+				</li>
+				<li id="button_search">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/search/">
+						<span class="firstlevel">Search</span>
+					</a>
+				</li>
+				<li id="button_login">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/login/">
+						<span class="firstlevel">Login</span>
+					</a>
+				</li>
+				<li id="button_register">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/register/">
+						<span class="last firstlevel">Register</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<br class="clear">
+	</div></div>
+	<div id="content_section"><div class="frame">
+		<div id="main_content_section">
+	<div class="navigate_section">
+		<ul>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php"><span>LowPowerLab community forum</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php#c1"><span>Support &amp; discussion forums</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/projects/"><span>Projects</span></a> »
+			</li>
+			<li class="last">
+				<a href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/"><span>Pocket Transceiver and antenna question</span></a>
+			</li>
+		</ul>
+	</div>
+			<a id="top"></a>
+			<a id="msg3827"></a><a id="new"></a>
+			<div class="pagesection">
+				<div class="nextlinks"><a href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/?prev_next=prev#new">« previous</a> <a href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/?prev_next=next#new">next »</a></div>
+		<div class="buttonlist floatright">
+			<ul>
+				<li><a class="button_strip_print" href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/?action=printpage" rel="new_win nofollow"><span class="last">Print</span></a></li>
+			</ul>
+		</div>
+				<div class="pagelinks floatleft">Pages: [<strong>1</strong>] </div>
+			</div>
+			<div id="forumposts">
+				<div class="cat_bar">
+					<h3 class="catbg">
+						<img src="normal_post.gif" alt="" align="bottom">
+						<span id="author">Author</span>
+						Topic: Pocket Transceiver and antenna question &nbsp;(Read 490 times)
+					</h3>
+				</div>
+				<form action="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/?action=quickmod2" method="post" accept-charset="ISO-8859-1" name="quickModForm" id="quickModForm" style="margin: 0px;" onsubmit="return oQuickModify.bInEditMode ? oQuickModify.modifySave('1097c011e17dcd891c435a5ebe0be71a', 'ee07bf4f045') : false">
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=392" title="View the profile of Zeph">Zeph</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_3827_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 9</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=392"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_3827">
+										<a href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/msg3827/#msg3827" rel="nofollow">Pocket Transceiver and antenna question</a>
+									</h5>
+									<div class="smalltext">« <strong> on:</strong> September 21, 2014, 02:15:32 PM »</div>
+									<div id="msg_3827_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_3827">I've done some searching, but I'm not finding quite this topic....<br><br>What I want to do is have a pocket sized wireless transceiver with Arduino programmability, running on 2 or 3 AA's - a moteino would be perfect, except that I'm not sure how to handle the antenna. <br><br>My "default" solution would be an Arduino Pro Micro 3.3v + nRF24L01+, but I'd like the range of 433 MHz, and the compactness of the Moteino.&nbsp; But I'm not sure about how to fit the antenna into a small package - which should certainly be smaller than a cigarette pack.<br><br>For a wireless sensor node a monopole wire antenna hanging out would often be no problem but in a pocket it would be.&nbsp; Would I need to reserve a space inside the case for a coil similar in size to another AA battery?&nbsp; Or what?<br><br>Moving to 915 MHz would cut the length/size of the antenna, at some cost of range, right?<br><br>Thanks for any experience or ideas.<br></div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_3827">
+								« <em>Last Edit: September 21, 2014, 02:22:31 PM by Felix</em> »
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg3829"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=1" title="View the profile of Felix">Felix</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_3829_extra_info">
+								<li class="membergroup">Administrator</li>
+								<li class="postgroup">Hero Member</li>
+								<li class="stars"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"></li>
+								<li class="avatar">
+									<a href="https://lowpowerlab.com/forum/profile/?u=1">
+										<img class="avatar" src="index.php" alt="">
+									</a>
+								</li>
+								<li class="postcount">Posts: 3565</li>
+								<li class="gender">Country: <img src="us.png" alt="us" title="United States"></li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=1"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+										<li><a href="http://lowpowerlab.com/" title="LowPowerLab" target="_top" class="new_win"><img src="www_sm.gif" alt="LowPowerLab"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_3829">
+										<a href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/msg3829/#msg3829" rel="nofollow">Re: Pocket Transceiver and antenna issues</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #1 on:</strong> September 21, 2014, 02:22:11 PM »</div>
+									<div id="msg_3829_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_3829">I doubt your range will suffer significantly at 915mhz. I've not seen evidence of that. Coiling your antenna will definitely alter range very significantly. The best ideal antenna solution is to have it perpendicular to the GND plane (PCB) sticking straight up. And same on the other end.<br>In lack of a better solution it's better to have the antenna wrapped around the inside or outside of your package, but as non-coiled as possible (ie spread out). That seems to work pretty well for my MotionMotes where I don't want/need the antenna to stick out.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_3829">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg3831"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=392" title="View the profile of Zeph">Zeph</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_3831_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 9</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=392"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_3831">
+										<a href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/msg3831/#msg3831" rel="nofollow">Re: Pocket Transceiver and antenna question</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #2 on:</strong> September 21, 2014, 05:19:22 PM »</div>
+									<div id="msg_3831_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_3831">Hmm.&nbsp; So non-coiled is good?<br><br>I was thinking of the cheap, dumb 433 MHz tranmitter/receiver pairs, that often use a coiled antenna - at the same frequency.<br></div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_3831">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg3832"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=1" title="View the profile of Felix">Felix</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_3832_extra_info">
+								<li class="membergroup">Administrator</li>
+								<li class="postgroup">Hero Member</li>
+								<li class="stars"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"></li>
+								<li class="avatar">
+									<a href="https://lowpowerlab.com/forum/profile/?u=1">
+										<img class="avatar" src="index.php" alt="">
+									</a>
+								</li>
+								<li class="postcount">Posts: 3565</li>
+								<li class="gender">Country: <img src="us.png" alt="us" title="United States"></li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=1"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+										<li><a href="http://lowpowerlab.com/" title="LowPowerLab" target="_top" class="new_win"><img src="www_sm.gif" alt="LowPowerLab"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_3832">
+										<a href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/msg3832/#msg3832" rel="nofollow">Re: Pocket Transceiver and antenna question</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #3 on:</strong> September 21, 2014, 05:54:03 PM »</div>
+									<div id="msg_3832_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_3832">Oh yeah, those will often have helical antennas. Those are much different than the transceivers used with Moteino, not sure how much advice there is for those in this forum though.<br>Coiled/helical will not work well for RFM69.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_3832">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg3847"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=392" title="View the profile of Zeph">Zeph</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_3847_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 9</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=392"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_3847">
+										<a href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/msg3847/#msg3847" rel="nofollow">Re: Pocket Transceiver and antenna question</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #4 on:</strong> September 22, 2014, 07:00:07 PM »</div>
+									<div id="msg_3847_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_3847"><div class="quoteheader"><div class="topslice_quote"><a href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/msg3832/#msg3832">Quote from: Felix on September 21, 2014, 05:54:03 PM</a></div></div><blockquote class="bbc_standard_quote">Coiled/helical will not work well for RFM69.<br></blockquote><div class="quotefooter"><div class="botslice_quote"></div></div><br>OK, that's very useful advice.&nbsp; Scratch that idea.<br><br>I'm still pondering what a non-coiled monopole layout within a smallish case might look like - alas the MotionMote write-up (while cool) doesn't show much about the antenna.&nbsp; It may be short enough to be stuffed in the case in an L shape.&nbsp; A longer monopole antenna (I'd prefer 433 MHz) might need to be bent in some way - U shaped, or Z shaped or a full loop around the inside of the case (which is sort of a single coil albeit loose).&nbsp; Any advice?<br><br>And - i anybody could explain why a 433 MHz helical would not work, it would help my understanding of these things.&nbsp; &nbsp;I would have thought that an antenna for 433 MHz OOK transmitters and receivers, would also work for FSK transceivers.&nbsp; The only thing which occurs to me would be if the helical has a much narrower hi-Q&nbsp; bandwidth than is desirable for the more frequency flexible RF69's full range.&nbsp; But that might mean it would work really well for some frequencies (and filter out others).<br></div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_3847">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg3848"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=1" title="View the profile of Felix">Felix</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_3848_extra_info">
+								<li class="membergroup">Administrator</li>
+								<li class="postgroup">Hero Member</li>
+								<li class="stars"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"></li>
+								<li class="avatar">
+									<a href="https://lowpowerlab.com/forum/profile/?u=1">
+										<img class="avatar" src="index.php" alt="">
+									</a>
+								</li>
+								<li class="postcount">Posts: 3565</li>
+								<li class="gender">Country: <img src="us.png" alt="us" title="United States"></li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=1"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+										<li><a href="http://lowpowerlab.com/" title="LowPowerLab" target="_top" class="new_win"><img src="www_sm.gif" alt="LowPowerLab"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_3848">
+										<a href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/msg3848/#msg3848" rel="nofollow">Re: Pocket Transceiver and antenna question</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #5 on:</strong> September 22, 2014, 07:31:27 PM »</div>
+									<div id="msg_3848_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_3848">Hmm .. not sure man. I know quite a bit what works and what not with the RFM69 FSK radios. Not much about anything else.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_3848">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				</form>
+			</div>
+			<a id="lastPost"></a>
+			<div class="pagesection">
+				
+		<div class="buttonlist floatright">
+			<ul>
+				<li><a class="button_strip_print" href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/?action=printpage" rel="new_win nofollow"><span class="last">Print</span></a></li>
+			</ul>
+		</div>
+				<div class="pagelinks floatleft">Pages: [<strong>1</strong>] </div>
+				<div class="nextlinks_bottom"><a href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/?prev_next=prev#new">« previous</a> <a href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/?prev_next=next#new">next »</a></div>
+			</div>
+	<div class="navigate_section">
+		<ul>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php"><span>LowPowerLab community forum</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php#c1"><span>Support &amp; discussion forums</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/projects/"><span>Projects</span></a> »
+			</li>
+			<li class="last">
+				<a href="https://lowpowerlab.com/forum/projects/pocket-transceiver-and-antenna-question/"><span>Pocket Transceiver and antenna question</span></a>
+			</li>
+		</ul>
+	</div>
+			<div id="moderationbuttons"></div>
+			<div class="plainbox" id="display_jump_to"><label class="smalltext" for="display_jump_to_select">Jump to:</label> <select name="display_jump_to_select" id="display_jump_to_select" onfocus="grabJumpToContent();"><option value="?board=4.0">=&gt; Projects</option></select>&nbsp;<input value="go" onclick="window.location.href = 'https://lowpowerlab.com/forum/index.php?board=4.0';" type="button"></div>
+		<br class="clear">
+				
+				
+		
+		
+			
+		</div>
+	</div></div>
+	<div id="footer_section"><div class="frame">
+		<ul class="reset">
+			<li class="copyright">
+			<span class="smalltext" style="display: inline; visibility: visible; font-family: Verdana,Arial,sans-serif;"><a href="https://lowpowerlab.com/forum/credits/" title="Simple Machines Forum" target="_top" class="new_win">SMF 2.0.11</a> |
+ <a href="http://www.simplemachines.org/about/smf/license.php" title="License" target="_top" class="new_win">SMF © 2015</a>, <a href="http://www.simplemachines.org/" title="Simple Machines" target="_top" class="new_win">Simple Machines</a>
+			</span></li>
+			<li><a id="button_xhtml" href="http://validator.w3.org/check?uri=referer" target="_top" class="new_win" title="Valid XHTML 1.0!"><span>XHTML</span></a></li>
+			<li><a id="button_rss" href="https://lowpowerlab.com/forum/.xml/?type=rss" class="new_win"><span>RSS</span></a></li>
+			<li class="last"><a id="button_wap2" href="https://lowpowerlab.com/forum/index.php?wap2" class="new_win"><span>WAP2</span></a></li>
+		</ul>
+	</div></div>
+</div>
+</body>
+</html>

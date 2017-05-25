@@ -1,0 +1,932 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+	
+	
+	
+	
+	<meta name="description" content="Antenna Tutorial    or    Antennas in a Mote">
+	<meta name="keywords" content="Moteino,RFM69,LoRa,Arduino,Wireless,IoT,internet of things,home automation,LowPowerLab,RaspberryPi">
+	<title>Antenna Tutorial    or    Antennas in a Mote</title>
+	<link rel="canonical" href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/">
+	<link rel="help" href="https://lowpowerlab.com/forum/help/">
+	<link rel="search" href="https://lowpowerlab.com/forum/search/">
+	<link rel="contents" href="https://lowpowerlab.com/forum/index.php">
+	<link rel="alternate" type="application/rss+xml" title="LowPowerLab community forum - RSS" href="https://lowpowerlab.com/forum/.xml/?type=rss">
+	<link rel="prev" href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/?prev_next=prev">
+	<link rel="next" href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/?prev_next=next">
+	<link rel="index" href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/">
+	
+	
+		
+	
+	
+	
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div id="wrapper" style="width: 90%;">
+	<div id="header"><div class="frame">
+		<div id="top_section">
+			<h1 class="forumtitle">
+				<a href="https://lowpowerlab.com/forum/index.php">LowPowerLab community forum</a>
+			</h1>
+			<img id="upshrink" src="upshrink.png" alt="*" title="Shrink or expand the header." style="cursor: pointer;">
+			<img id="smflogo" src="smflogo.png" alt="Simple Machines Forum" title="Simple Machines Forum">
+		</div>
+		<div id="upper_section" class="middletext">
+			<div class="user">
+				
+				<form id="guest_form" action="https://lowpowerlab.com/forum/login2/" method="post" accept-charset="ISO-8859-1" onsubmit="hashLoginPassword(this, '1097c011e17dcd891c435a5ebe0be71a');">
+					<div class="info">Welcome, <strong>Guest</strong>. Please <a href="https://lowpowerlab.com/forum/login/">login</a> or <a href="https://lowpowerlab.com/forum/register/">register</a>.<br>Did you miss your <a href="https://lowpowerlab.com/forum/activate/">activation email</a>?</div>
+					<input value="" name="user" size="10" class="input_text" type="text">
+					<input name="passwrd" size="10" class="input_password" type="password">
+					<select name="cookielength">
+						<option value="60">1 Hour</option>
+						<option value="1440">1 Day</option>
+						<option value="10080">1 Week</option>
+						<option value="43200">1 Month</option>
+						<option value="-1" selected="selected">Forever</option>
+					</select>
+					<input value="Login" class="button_submit" type="submit"><br>
+					<div class="info">Login with username, password and session length</div>
+					<br><input value="" name="openid_identifier" id="openid_url" size="25" class="input_text openid_login" type="text">
+					<input name="hash_passwrd" value="" type="hidden">
+				</form>
+			</div>
+			<div class="news normaltext">
+				<form id="search_form" action="https://lowpowerlab.com/forum/search2/" method="post" accept-charset="ISO-8859-1">
+					<input name="search" value="" class="input_text" type="text">&nbsp;
+					<input name="submit" value="Search" class="button_submit" type="submit">
+					<input name="advanced" value="0" type="hidden">
+					<input name="topic" value="181" type="hidden"></form>
+				<h2>News: </h2>
+				<p>SMF just installed</p>
+			</div>
+		</div>
+		<br class="clear">
+		
+		<div id="main_menu">
+			<ul class="dropmenu" id="menu_nav">
+				<li id="button_home">
+					<a class="active firstlevel" href="https://lowpowerlab.com/forum/index.php">
+						<span class="last firstlevel">Home</span>
+					</a>
+				</li>
+				<li id="button_blog">
+					<a class="firstlevel" href="http://lowpowerlab.com/">
+						<span class="last firstlevel">Blog</span>
+					</a>
+				</li>
+				<li id="button_shop">
+					<a class="firstlevel" href="http://lowpowerlab.com/shop">
+						<span class="last firstlevel">Shop</span>
+					</a>
+				</li>
+				<li id="button_help">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/help/">
+						<span class="firstlevel">Help</span>
+					</a>
+				</li>
+				<li id="button_search">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/search/">
+						<span class="firstlevel">Search</span>
+					</a>
+				</li>
+				<li id="button_login">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/login/">
+						<span class="firstlevel">Login</span>
+					</a>
+				</li>
+				<li id="button_register">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/register/">
+						<span class="last firstlevel">Register</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<br class="clear">
+	</div></div>
+	<div id="content_section"><div class="frame">
+		<div id="main_content_section">
+	<div class="navigate_section">
+		<ul>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php"><span>LowPowerLab community forum</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php#c1"><span>Support &amp; discussion forums</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/"><span>RF - Range - Antennas - RFM69 library</span></a> »
+			</li>
+			<li class="last">
+				<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/"><span>Antenna Tutorial    or    Antennas in a Mote</span></a>
+			</li>
+		</ul>
+	</div>
+			<a id="top"></a>
+			<a id="msg700"></a>
+			<div class="pagesection">
+				<div class="nextlinks"><a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/?prev_next=prev#new">« previous</a> <a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/?prev_next=next#new">next »</a></div>
+		<div class="buttonlist floatright">
+			<ul>
+				<li><a class="button_strip_print" href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/?action=printpage" rel="new_win nofollow"><span class="last">Print</span></a></li>
+			</ul>
+		</div>
+				<div class="pagelinks floatleft">Pages: [<strong>1</strong>] <a class="navPages" href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/15/">2</a> <a class="navPages" href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/30/">3</a> </div>
+			</div>
+			<div id="forumposts">
+				<div class="cat_bar">
+					<h3 class="catbg">
+						<img src="veryhot_post_sticky.gif" alt="" align="bottom">
+						<span id="author">Author</span>
+						Topic: Antenna Tutorial    or    Antennas in a Mote &nbsp;(Read 19374 times)
+					</h3>
+				</div>
+				<form action="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/?action=quickmod2" method="post" accept-charset="ISO-8859-1" name="quickModForm" id="quickModForm" style="margin: 0px;" onsubmit="return oQuickModify.bInEditMode ? oQuickModify.modifySave('1097c011e17dcd891c435a5ebe0be71a', 'ee07bf4f045') : false">
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=124" title="View the profile of john k2ox">john k2ox</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_700_extra_info">
+								<li class="postgroup">Full Member</li>
+								<li class="stars"><img src="star.gif" alt="*"><img src="star.gif" alt="*"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 110</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=124"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="exclamation.gif" alt="">
+									</div>
+									<h5 id="subject_700">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg700/#msg700" rel="nofollow">Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong> on:</strong> October 25, 2013, 01:36:23 PM »</div>
+									<div id="msg_700_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_700"><br><div align="center">&nbsp; &nbsp; &nbsp; &nbsp; <span class="bbc_u"><strong>Practical Information Regarding Antennas for use with Moteino’s.&nbsp; &nbsp; &nbsp; John k2ox 10/25/13</strong></span></div><br><br><strong>1.&nbsp;&nbsp;&nbsp;Antenna performance is usually referenced to that of a dipole antenna.</strong><br><ul class="bbc_list"><li>A dipole antenna is quite often constructed of wire ½ a wavelength long.&nbsp; My tuned dipole is trimmed to 5.8 inches for use at 915 MHz.&nbsp; The antenna is fed at the center, it is cut into two with one side connected to ground and the other to the radio’s ant pin.<br></li><li>The dipole antenna has maximum radiation broadside to the wire and nearly zero off the ends.<br></li></ul><br><strong>2.</strong>&nbsp;&nbsp;&nbsp;If your antenna design radiates the same power in all directions as a dipole it is said to have <strong>zero gain referenced to a dipole</strong> antenna.&nbsp; <strong>Its gain is 0db<sub>dipole</sub></strong>.<br><br><br><strong>3.&nbsp;&nbsp;&nbsp;Antennas are reciprocal.</strong>&nbsp; Their transmit gain is equal to their receive gain.&nbsp; If the antenna transmits best in one direction it also hears best from that direction.<br><br><br><strong>4.&nbsp;&nbsp;&nbsp;You cannot get more power out of an antenna than you put into it!</strong><br><ul class="bbc_list"><li>You ‘can’ take power radiated in one direction and focus it into another.</li><li>Say you modify a dipole antenna in some way so that all the power radiated from the back side is redirected to the front.&nbsp; The two powers get added together in the front which doubles the radiation in the forward direction.&nbsp; This antenna would be specified as having 3db of gain over a dipole (+3db<sub>dipole</sub>).&nbsp; Although it can’t hear or transmit to anything behind it!</li><li>This reminds me of the saying “you can’t get something for nothing”.&nbsp; Kind of like the gambler who tells you about his “gains”, but never mentions his “losses”.</li><li><span class="bbc_u">Antenna gain is with respect to a reference antenna not to its input power!</span></li></ul><br><strong>5.&nbsp;&nbsp;&nbsp;So what determines the size antenna?</strong>&nbsp; Well now things get complicated.&nbsp; I’ve spent years devising techniques to explain antenna theory without referring to Maxwell’s equations.&nbsp; Hopefully, this will get you started.<br><ul class="bbc_list"><li>For maximum radiation an antenna must be ‘resonant’.&nbsp; BTW if you’re new to RF/MW forget about most things you already know about AC and DC circuits.&nbsp; For instance, when you take a look at a DC circuit, an open or short circuit is quite obvious.&nbsp; A direct metal connection between two conductors is a short at DC but, at RF it can and will result in an open circuit at some frequency.</li><li>You’ve experience resonance in musical instruments.&nbsp; You pluck the string and it radiates sound at its resonant frequency.</li><li>Dipole antennas are resonated by varying their length.&nbsp; When they are multiples of ½ wavelength they are resonant.</li><li>Since the ends of a dipole antenna aren’t connected to anything the current at the very ends are zero. Now picture the amplitude of a sine wave. It starts at zero, goes to a positive maximum at 90 degrees, returns to zero at 180 degrees, then a negative max at 270 and once again to zero amplitude at 360 degrees.&nbsp; Notice that every 180 degrees or ½ wave the amplitude returns to zero.&nbsp; When the frequency of an RF signal and the length a conductor are such that the current smoothly goes to zero at its ends it is resonant.</li><li>Radio waves travel at the speed of light!&nbsp; That’s because they are Electro-Magnetic waves.&nbsp; Guess what?&nbsp; So is light, just at a much higher frequency.</li><li>EM waves travel at 300,000,000 meters/second or 186,000 miles/sec.&nbsp; These numbers are pretty hard to visualize so I use a more useful number for radio.&nbsp; If you calculate how many feet/sec that is, you’ll realize it’s a nice round number.&nbsp; A billion or 1 x 10e9 feet/sec.&nbsp; When dealing with RF, seconds are way too long.&nbsp; Let’s use a nanosecond (nS), one billionth of a second.&nbsp; A radio wave therefore travels about 1 foot per nS!&nbsp; So if anyone asks “How long is a Nano Second?” tell them a foot.&nbsp; &nbsp;<img src="smiley.gif" alt=":)" title="Smiley" class="smiley"></li><li>My radio operates at 915 MHz, pretty close to 1 GHz.&nbsp; The period of one cycle or 360 degrees at 1 GHz is 1 divided by 1GHz and that’s 1nS.&nbsp; At 1 GHZ, one full wavelength is one foot long. </li></ul>&nbsp; <br><br><strong>6.&nbsp;&nbsp;&nbsp;The smallest resonant antenna (1/2 wavelength) is 6 inches at 1000 MHz!</strong>&nbsp; Now you have a method of calculating antenna lengths without formulas, calculators, etc.&nbsp; At 500 MHz, 12 inches (2x).&nbsp; For the FM radio band (100MHz), 60(10x) inches. All referenced to a Moteino antenna! The lower the frequency the longer the antenna.&nbsp; <em>Real antennas are a little shorter because radio waves are slower in air than in a vacuum.</em><br><br><br><strong>7.&nbsp;&nbsp;&nbsp;Why is Moteino’s wire antenna only 3 inches long?</strong>&nbsp; It was discovered in the early days of radio that ¼ wave antennas (hundreds of feet tall for the low freq’s used at that time) mounted vertically on the ground acted like full size ½ wave antennas.&nbsp; Since the earth is so much larger than the missing quarter wavelength it acts like an image of the real quarter wave vertical.&nbsp; If a conducting object on the ground side of the antenna is a ¼ wavelength or longer in some dimension the antenna will be an effective radiator.&nbsp; The asymmetry will result in a nonsymmetrical radiation pattern though.&nbsp; For the 3 inch ¼ wave Moteino antenna to be most efficient it needs a rf conductive mass at least 3 inches long.&nbsp; The ideal ground plane is a disk with a radius of 3 inches with the 3 inch wire sticking out of its center.&nbsp; The disk being connected to the Moteino ground terminal and the monopole the ‘ant’ terminal.<br><br><br><strong>8.&nbsp;&nbsp;&nbsp;&nbsp; What happens if I have a little coin cell mounted in as small of a package as possible?</strong>&nbsp; Well, it will certainly be smaller dimensionally than the 3 inches needed for the ground plane.&nbsp; There are two concerns, it will be an inefficient radiator and something we haven’t discussed yet, it will have an impedance mismatch. <br><ul class="bbc_list"><li>Here I will use an analogy; <br>Suppose you have a large container you can’t lift.&nbsp; If it is setting in your driveway you can push against it and it will move in the direction it’s being pushed.&nbsp; You are delivering power to the load.&nbsp; Now suppose the container is located on a frozen pond.&nbsp; When you push, your feet slip and the box doesn’t move.&nbsp; You can’t deliver any power to the load.&nbsp; The same goes for your radio.&nbsp; It needs something to push against.</li><li>Mismatch reduces the power delivered to the antenna.&nbsp; The maximum power transfer theorem states, to get the maximum power transferred from a source to the load the source impedance must ‘match’ the load impedance. Feeding a ½ wave dipole in the center yields impedance in the range of 50 to 75 ohms.&nbsp; A ¼ wave antenna with a good ground plane is ½ that, about 23 ohms.&nbsp; Moteino’s source impedance is specified as 50 ohms.</li></ul> <br><br><br><strong>9.&nbsp;&nbsp;&nbsp;Antenna users always wish their antennas were smaller. </strong> AM radio stations use ¼ wavelength verticals that are two hundred feet tall.&nbsp; These are very expensive antennas.&nbsp; The installation costs, real estate, maintenance, power for aircraft warning lights and on and on.&nbsp; &nbsp;Moteino users also don’t like dealing with antennas dangling from their projects.&nbsp; Small antennas do have their down sides.&nbsp; If they didn’t AM Broadcast stations would be extremely happy to eliminate the expense of those gigantic ¼ wave verticals.<br><ul class="bbc_list"><li>Small antennas have lower radiation resistance. The input impedance of an antenna at resonance is the sum of the radiation resistance and the antenna loss resistance.&nbsp; For antennas very small compared to ½ wavelength the antenna/radiation resistance ratio gets very large and its efficiency goes into the dumpster.</li><li>Small antennas have narrow bandwidth.&nbsp; Small changes in frequency yield large changes in impedance.</li><li>Nearby structure has a larger effect on impedance.&nbsp; Moving your hand in an area of a couple feet from a short antenna can easily change the impedance over a four to one range.</li><li>Reduced size antennas are often directional.&nbsp; They work best in one direction.</li><li>Additional components are required to match the impedance of shortened antennas.&nbsp; These components add additional loss. </li><li>Antenna designers are always trying to make a small antenna work as well as a dipole.</li></ul> <br><br><br><strong>10.&nbsp;&nbsp;&nbsp;The smaller the antenna the more you have to compromise.</strong>&nbsp; That doesn’t have to be a bad thing though.<br><ul class="bbc_list"><li>In cell phones small antennas are good.&nbsp; They fit in a small package.&nbsp; They’re directional. <span class="bbc_u">That keeps the radiation away from your head.</span></li><li>For Moteino’s, antennas can be downsized to fit in small packages too.&nbsp; The loss of antenna’s efficiency may have no effect if the distance between radios is short.</li><li>For greater range orient the antenna to take advantage of directional gain.</li><li>Interference can be mitigated by positioning a directional antenna so that the interferer is in a null. </li><li>Directional antennas can put the signal where you want it and they hear best from that direction.</li></ul> <br><br><br><strong>11.</strong>&nbsp;&nbsp;&nbsp;Antennas radiate Electro Magnetic waves.&nbsp; <strong>The orientation of the electric wave describes its polarization.</strong>&nbsp; A dipole antenna positioned with its elements parallel to the ground has horizontal polarization. One pointing up and down is vertically polarized.&nbsp; The largest signal is received when the received signal has the same polarization as the antenna.&nbsp; If the polarization of the received signal is opposite of the antenna polarization then no signal will be received!&nbsp; In this case there may be a lot of signal but it has the wrong orientation to fit through the ‘mail slot’. <br><ul class="bbc_list"><li>High frequency signals bounce off things, they are reflected. When this happens they change their polarization.&nbsp; In your house a transmit signal will reflect off your dishwasher, the leaves on you plants, the walls and on and on.&nbsp; All of these reflected signals have different polarizations and many of them find their way to your receiver.&nbsp; That’s why you are able to orient one dipole vertical and another horizontal and it may work just fine.&nbsp; If you try this in space (satellites) or line of sight in a large open area you will have a very degraded receive signal.</li></ul> <br><br><br><strong>12.&nbsp;&nbsp;&nbsp;Small printed circuit antennas.</strong>&nbsp; Electrically steerable RADAR systems use very small antennas arranged in arrays on a flat surface. These small antennas are built on ceramic substrates and other low loss materials.&nbsp; Early cellphones had dipole antennas poking from the tops of their cases. Antenna engineers have adapted the RADAR designs for use in modern cellphones.&nbsp; These are often referred to as patch antennas.&nbsp; A 915 MHz patch antenna should easily fit on a 2 by 2 inch piece of printed circuit board.&nbsp; <br><ul class="bbc_list"><li>I am going to design some Moteino patch antennas and will share the results.&nbsp; <span style="font-size: 10pt;" class="bbc_size"><span style="font-size: 8pt;" class="bbc_size"><strong>Stay resonant!</strong></span></span></li></ul><br></div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_700">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg702"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=1" title="View the profile of Felix">Felix</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_702_extra_info">
+								<li class="membergroup">Administrator</li>
+								<li class="postgroup">Hero Member</li>
+								<li class="stars"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"></li>
+								<li class="avatar">
+									<a href="https://lowpowerlab.com/forum/profile/?u=1">
+										<img class="avatar" src="index.php" alt="">
+									</a>
+								</li>
+								<li class="postcount">Posts: 3565</li>
+								<li class="gender">Country: <img src="us.png" alt="us" title="United States"></li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=1"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+										<li><a href="http://lowpowerlab.com/" title="LowPowerLab" target="_top" class="new_win"><img src="www_sm.gif" alt="LowPowerLab"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_702">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg702/#msg702" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #1 on:</strong> October 26, 2013, 12:26:34 AM »</div>
+									<div id="msg_702_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_702">Excellent stuff!<br>Really looking forward for the follow up <img src="smiley.gif" alt=":)" title="Smiley" class="smiley"></div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_702">
+								« <em>Last Edit: October 26, 2013, 10:36:37 PM by Felix</em> »
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg704"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=129" title="View the profile of Vince">Vince</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_704_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 14</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=129"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_704">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg704/#msg704" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #2 on:</strong> October 26, 2013, 09:52:04 PM »</div>
+									<div id="msg_704_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_704">John,<br><br>&nbsp; &nbsp; &nbsp;Excellent information!<br><br>Vince - WB2FYZ</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_704">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg706"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=147" title="View the profile of jbeale">jbeale</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_706_extra_info">
+								<li class="postgroup">Jr. Member</li>
+								<li class="stars"><img src="star.gif" alt="*"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 62</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=147"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_706">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg706/#msg706" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #3 on:</strong> October 27, 2013, 12:20:52 AM »</div>
+									<div id="msg_706_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_706">Nice writeup. I'm curious how you design patch antennas, do you work from first principals, scale a generic existing layout, or is there a a good software package for that? I remember using MININEC back in the day, but it just analyzed what you already had, did not suggest new ideas.<br><br>cheers, another john (n8juf)</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_706">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg713"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=124" title="View the profile of john k2ox">john k2ox</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_713_extra_info">
+								<li class="postgroup">Full Member</li>
+								<li class="stars"><img src="star.gif" alt="*"><img src="star.gif" alt="*"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 110</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=124"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_713">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg713/#msg713" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #4 on:</strong> October 28, 2013, 10:36:23 AM »</div>
+									<div id="msg_713_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_713">I was just thinking I'd start with something that's follows published design rules, make measurements, and then scale it.&nbsp; I need to see how dependent it is on the PCB substrate.<br><br>My tool of choice is EZNEC.&nbsp; I've used it quite a bit to model long thin antennas.&nbsp; I should take a look to see how it might be used for the patch.&nbsp; They all use the NEC engines and have custom UIs.&nbsp; I'm not sure it is setup for planar stuff.<br><br>Good thought.&nbsp; I'll check it out.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_713">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg717"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=169" title="View the profile of billchurch">billchurch</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_717_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 12</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=169"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_717">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg717/#msg717" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #5 on:</strong> October 28, 2013, 06:43:48 PM »</div>
+									<div id="msg_717_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_717">This was a great read.&nbsp; Right now my range requirements are pretty minimal, but when I start going outside with this stuff I'm probably going to need to be a little more exact about things.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_717">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg719"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=147" title="View the profile of jbeale">jbeale</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_719_extra_info">
+								<li class="postgroup">Jr. Member</li>
+								<li class="stars"><img src="star.gif" alt="*"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 62</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=147"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_719">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg719/#msg719" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #6 on:</strong> October 29, 2013, 12:23:19 AM »</div>
+									<div id="msg_719_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_719"><div class="quoteheader"><div class="topslice_quote"><a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg713/#msg713">Quote from: john k2ox on October 28, 2013, 10:36:23 AM</a></div></div><blockquote class="bbc_standard_quote">I was just thinking I'd start with something that's follows published design rules, make measurements, and then scale it.&nbsp; I need to see how dependent it is on the PCB substrate.</blockquote><div class="quotefooter"><div class="botslice_quote"></div></div>I was tangentially involved in a FR4 PCB slot-antenna design for 433 MHz, long ago. The PCB was space-constrained (aren't they always?) so the design was fairly narrow bandwidth (high-Q). In that case we had to measure each batch of boards that came in and select a tuning capacitor based on the measured properties. Within the batch, the FR4 dielectric constant was fairly constant, but across batches it varied a lot.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_719">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg1195"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=192" title="View the profile of sketchy">sketchy</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_1195_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 38</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=192"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_1195">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg1195/#msg1195" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #7 on:</strong> December 29, 2013, 04:27:10 AM »</div>
+									<div id="msg_1195_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_1195">Thank you for the excellent info.&nbsp; <br><br>What is the best wire to use for monopole antennas in an in-home network?&nbsp; Is there a certain kind you use?</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_1195">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg1196"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=176" title="View the profile of Cabe">Cabe</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_1196_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 15</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=176"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_1196">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg1196/#msg1196" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #8 on:</strong> December 29, 2013, 11:14:23 AM »</div>
+									<div id="msg_1196_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_1196">Anything copper that will hold its shape really, solid core ethernet network cable is pretty good stuff (everyone of the hopeRF style systems I have come across use it).<br><br>Personally I have a stash of helical bead antennas I am keen to try and some "rubber ducky" style as well.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_1196">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg1197"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=192" title="View the profile of sketchy">sketchy</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_1197_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 38</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=192"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_1197">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg1197/#msg1197" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #9 on:</strong> December 29, 2013, 01:44:04 PM »</div>
+									<div id="msg_1197_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_1197">(thank you for the reply).<br><br>So the 22 AWG gauge copper wire I use on my bread board will work as well as the wire that comes with the Mote?</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_1197">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg1198"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=124" title="View the profile of john k2ox">john k2ox</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_1198_extra_info">
+								<li class="postgroup">Full Member</li>
+								<li class="stars"><img src="star.gif" alt="*"><img src="star.gif" alt="*"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 110</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=124"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_1198">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg1198/#msg1198" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #10 on:</strong> December 29, 2013, 02:02:30 PM »</div>
+									<div id="msg_1198_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_1198">Thanks sketchy.<br><br>Your solid core copper wire will work just fine.<br><br>Enjoy your motes.<br><br>john</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_1198">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg1202"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=228" title="View the profile of tve">tve</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_1202_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 9</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=228"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_1202">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg1202/#msg1202" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #11 on:</strong> December 30, 2013, 03:35:19 AM »</div>
+									<div id="msg_1202_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_1202">Interesting read, I looks forward to the patch antennas!<br><br>As far as I 've read, thicker 1/4 wave antennas (and dipoles as well) have wider bandwidth, which should provide a bit more tolerance on the length. I've used some hollow brass rods for a dipole (using a toothpick inserted into the rods to mechanically join the halves) and it looks good plus holds it shape well. Dunno whether the extra diameter really makes a difference, though...<br><br>Can someone explain why the coiled wires are so popular? As far as I can gather, the gain is lower over a 1/4 wave monopole, but there's less polarization. What am I missing? The cool factor?</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_1202">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg1204"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=176" title="View the profile of Cabe">Cabe</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_1204_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 15</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=176"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_1204">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg1204/#msg1204" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #12 on:</strong> December 30, 2013, 08:54:55 AM »</div>
+									<div id="msg_1204_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_1204">They allow a physically shorter antenna, but still resonate.<br><br>But of course you sacrifice reception gain for that shorter length.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_1204">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg1267"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=248" title="View the profile of photogphred">photogphred</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_1267_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 1</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=248"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_1267">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg1267/#msg1267" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #13 on:</strong> January 04, 2014, 02:49:43 PM »</div>
+									<div id="msg_1267_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_1267">I'm curious, if a 1/4 wave antenna needs a 1/4 wave sized ground plane, what does a 1/2 wave antenna need? I'm assuming nothing? If so, then if you wanted to coil your antenna would it be better to coil a 1/2 wave instead of a 1/4 wave antenna given the layout of the Moteino? Is there an optimal coil size too?<br><br>Great discussion, by the way.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_1267">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg1270"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=222" title="View the profile of LazyGlen">LazyGlen</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_1270_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 48</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=222"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_1270">
+										<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/msg1270/#msg1270" rel="nofollow">Re: Antenna Tutorial    or    Antennas in a Mote</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #14 on:</strong> January 04, 2014, 03:24:58 PM »</div>
+									<div id="msg_1270_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_1270">In another post, I suggested including an antenna on a sheild:<br><div class="quoteheader"><div class="topslice_quote"><a href="https://lowpowerlab.com/forum/projects/weathershield!/msg1257/#msg1257">Quote from: LazyGlen on January 03, 2014, 01:59:11 PM</a></div></div><blockquote class="bbc_standard_quote">Has anyone tried using a PCB trace antenna? I laid it out in AutoCAD and found that about 1.5 perimeters would provide the right length antenna for 413MHz. "Cut Here" marks could allow the other 2 frequencies to use the same trace. Analog RF design is WAY outside my knowledge base, so I don't know if this is even possible.<br></blockquote><div class="quotefooter"><div class="botslice_quote"></div></div> I won't include the picture again to help with backup size's.<br><br>I understand the ideal is to have antennas perpendicular to the ground plane. However, as you point out in your post, antenna design is an exercise in compromise. Furthermore, if it transmits the distance you need it to, it's good enough, and most of us coil up the wire to make it more convenient anyway.<br><br>What are your thoughts on trace antennae? Being on a shield would require it to be connected to the current connection point anyway, so if it didn't achieve the desired range, a different antenna could be simply swapped in. <br><br>I'm not at the point that I'm ready to design a shield, but thought I would put the idea out. Both for input on feasibility and in case someone else could use it.<br><br>LG</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_1270">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				</form>
+			</div>
+			<a id="lastPost"></a>
+			<div class="pagesection">
+				
+		<div class="buttonlist floatright">
+			<ul>
+				<li><a class="button_strip_print" href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/?action=printpage" rel="new_win nofollow"><span class="last">Print</span></a></li>
+			</ul>
+		</div>
+				<div class="pagelinks floatleft">Pages: [<strong>1</strong>] <a class="navPages" href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/15/">2</a> <a class="navPages" href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/30/">3</a> </div>
+				<div class="nextlinks_bottom"><a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/?prev_next=prev#new">« previous</a> <a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/?prev_next=next#new">next »</a></div>
+			</div>
+	<div class="navigate_section">
+		<ul>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php"><span>LowPowerLab community forum</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php#c1"><span>Support &amp; discussion forums</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/"><span>RF - Range - Antennas - RFM69 library</span></a> »
+			</li>
+			<li class="last">
+				<a href="https://lowpowerlab.com/forum/rf-range-antennas-rfm69-library/antenna-tutorial-or-antennas-in-a-mote/"><span>Antenna Tutorial    or    Antennas in a Mote</span></a>
+			</li>
+		</ul>
+	</div>
+			<div id="moderationbuttons"></div>
+			<div class="plainbox" id="display_jump_to"><label class="smalltext" for="display_jump_to_select">Jump to:</label> <select name="display_jump_to_select" id="display_jump_to_select" onfocus="grabJumpToContent();"><option value="?board=11.0">=&gt; RF - Range - Antennas - RFM69 library</option></select>&nbsp;<input value="go" onclick="window.location.href = 'https://lowpowerlab.com/forum/index.php?board=11.0';" type="button"></div>
+		<br class="clear">
+				
+				
+		
+		
+			
+		</div>
+	</div></div>
+	<div id="footer_section"><div class="frame">
+		<ul class="reset">
+			<li class="copyright">
+			<span class="smalltext" style="display: inline; visibility: visible; font-family: Verdana,Arial,sans-serif;"><a href="https://lowpowerlab.com/forum/credits/" title="Simple Machines Forum" target="_top" class="new_win">SMF 2.0.11</a> |
+ <a href="http://www.simplemachines.org/about/smf/license.php" title="License" target="_top" class="new_win">SMF © 2015</a>, <a href="http://www.simplemachines.org/" title="Simple Machines" target="_top" class="new_win">Simple Machines</a>
+			</span></li>
+			<li><a id="button_xhtml" href="http://validator.w3.org/check?uri=referer" target="_top" class="new_win" title="Valid XHTML 1.0!"><span>XHTML</span></a></li>
+			<li><a id="button_rss" href="https://lowpowerlab.com/forum/.xml/?type=rss" class="new_win"><span>RSS</span></a></li>
+			<li class="last"><a id="button_wap2" href="https://lowpowerlab.com/forum/index.php?wap2" class="new_win"><span>WAP2</span></a></li>
+		</ul>
+	</div></div>
+</div>
+</body>
+</html>

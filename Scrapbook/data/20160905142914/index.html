@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en-US" class="js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="alexaVerifyID" content="qqxQUyWSeUfqZOencfEoRM9vrVk">
+<meta name="msvalidate.01" content="E8C9208AD2F47ED874ED18E35FC370CE">
+<meta name="google-translate-customization" content="c567e5d7624a883b-609bf053fa02c58b-g01de0b1961de0feb-f">
+<meta property="article:publisher" content="https://facebook.com/tecmint">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://www.tecmint.com/xmlrpc.php">
+<title>How to Create GUI Applications Under Linux Desktop Using PyGObject - Part 1</title>
+
+<!-- All in One SEO Pack 2.3.9.1 by Michael Torbert of Semper Fi Web Design[621,763] -->
+<link rel="author" href="https://plus.google.com/u/0/107665449243972690526">
+<meta name="description" itemprop="description" content="Today, we're going to start a series about creating GUI (Graphical User Interface) applications under the Linux desktop using GTK+ library and PyGobject">
+<meta name="keywords" itemprop="keywords" content="create gui applications using gtk+,create gui applications using python,create graphical applications in linux,develop applications in linux,glade,python">
+<link rel="canonical" href="http://www.tecmint.com/create-gui-applications-in-linux/">
+
+<!-- /all in one seo pack -->
+<link rel="alternate" type="application/rss+xml" title="Tecmint: Linux Howtos, Tutorials &amp; Guides » Feed" href="http://feeds.feedburner.com/tecmint">
+<link rel="alternate" type="application/rss+xml" title="Tecmint: Linux Howtos, Tutorials &amp; Guides » Comments Feed" href="http://www.tecmint.com/comments/feed/">
+
+<link rel="alternate" type="application/rss+xml" title="Tecmint: Linux Howtos, Tutorials &amp; Guides » How to Create GUI Applications Under Linux Desktop Using PyGObject – Part 1 Comments Feed" href="http://www.tecmint.com/create-gui-applications-in-linux/feed/">
+<!-- <link rel='stylesheet' id='dgd-scrollbox-plugin-core-css'  href='http://www.tecmint.com/wp-content/plugins/dreamgrow-scroll-triggered-box/css/style.css?ver=2.3' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='fancybox-style-css'  href='http://www.tecmint.com/wp-content/plugins/light/css/jquery.fancybox.css?ver=4.5.3' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='style-css'  href='http://www.tecmint.com/wp-content/themes/tecmint/style.css?ver=4.5.3' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='responsive-css'  href='http://www.tecmint.com/wp-content/themes/tecmint/responsive.css?ver=4.5.3' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='custom-css'  href='http://www.tecmint.com/wp-content/themes/tecmint/custom.css?ver=4.5.3' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='font-awesome-css'  href='http://www.tecmint.com/wp-content/themes/tecmint/fonts/font-awesome.min.css?ver=4.5.3' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='qbp-css'  href='http://www.tecmint.com/wp-content/plugins/quickiebar-pro/public/style/qbp.css?ver=1.4.5' type='text/css' media='all' /> -->
+
+
+<!-- <script type='text/javascript' src='http://www.tecmint.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script> -->
+<!-- <script type='text/javascript' src='http://www.tecmint.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script> -->
+
+
+<!-- <script type='text/javascript' src='http://www.tecmint.com/wp-content/plugins/dreamgrow-scroll-triggered-box/js/script.js?ver=2.3'></script> -->
+
+
+<!-- <script type='text/javascript' src='http://www.tecmint.com/wp-content/plugins/quickiebar-pro/public/js/qbp.js?ver=1.4.5'></script> -->
+<link rel="https://api.w.org/" href="http://www.tecmint.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.tecmint.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.tecmint.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Growing an Existing RAID Array and Removing Failed Disks in Raid – Part 7" href="http://www.tecmint.com/grow-raid-array-in-linux/">
+<link rel="next" title="Setting Up RAID 10 or 1+0 (Nested) in Linux  – Part 6" href="http://www.tecmint.com/create-raid-10-in-linux/">
+<meta name="generator" content="WordPress 4.5.3">
+<link rel="shortlink" href="http://www.tecmint.com/?p=9817">
+<link rel="alternate" type="application/json+oembed" href="http://www.tecmint.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.tecmint.com%2Fcreate-gui-applications-in-linux%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.tecmint.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.tecmint.com%2Fcreate-gui-applications-in-linux%2F&amp;format=xml">
+<!-- Facebook Like Thumbnail (v0.3.4) -->
+<meta property="og:image" content="http://www.tecmint.com/wp-content/uploads/2014/11/Create-GUI-Applications-in-Linux.jpg">
+<!-- using featured thumbnail -->
+<!-- Facebook Like Thumbnail (By Ashfame - https://github.com/ashfame/facebook-like-thumbnail) -->
+<link rel="shortcut icon" href="favicon.ico">
+<!--[if lt IE 9]>
+<script src="http://www.tecmint.com/wp-content/themes/tecmint/js/ie/html5.js"></script>
+<script src="http://www.tecmint.com/wp-content/themes/tecmint/js/ie/selectivizr.js"></script>
+<![endif]-->
+
+<link rel="author" href="https://plus.google.com/107665449243972690526/posts">
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-9817 single-format-standard col-2cl full-width topbar-enabled chrome s1-collapse s2-collapse">
+<div id="wrapper">
+<header id="header">
+<nav class="nav-container group" id="nav-topbar">
+<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+<div class="nav-text"><!-- put your mobile menu text here --></div>
+<div class="nav-wrap container"><ul id="menu-home" class="nav container-inner group"><li id="menu-item-334" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-334"><a href="http://www.tecmint.com/">Home</a></li>
+<li id="menu-item-10774" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10774"><a target="_top" href="http://www.tecmint.com/who-we-are/">About</a></li>
+<li id="menu-item-3912" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3912"><a title="Free Linux eBooks" target="_top" href="http://tecmint.tradepub.com/category/information-technology-servers-and-linux-server-os/806/">Free eBooks</a></li>
+<li id="menu-item-10439" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10439"><a title="LinuxSay – A Discussion Forum for Linux Enthusiasts" target="_top" href="http://linuxsay.com/">Discussion</a></li>
+<li id="menu-item-17151" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17151"><a title="Discover and save on the best gear, gadgets, and software" target="_top" href="http://deals.tecmint.com/">Deals</a></li>
+<li id="menu-item-18575" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18575"><a title="Support Us" href="http://www.tecmint.com/donate-to-tecmint/">Donate</a></li>
+<li id="menu-item-10775" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10775"><a target="_top" href="http://www.tecmint.com/submit-articles/">Join TecMint</a></li>
+<li id="menu-item-11736" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11736"><a target="_top" href="http://www.tecmint.com/linux-online-training-courses/">Linux Online Courses</a></li>
+<li id="menu-item-11907" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11907"><a title="Subscribe to Daily Updates" target="_top" href="http://www.tecmint.com/subscribe-to-blog/">Subscribe</a></li>
+<li id="menu-item-13338" class="hosting menu-item menu-item-type-custom menu-item-object-custom menu-item-13338"><a title="Best Web Hosting Companies" target="_top" href="http://www.tecmint.com/best-web-hosting-for-linux/">Linux Hosting</a></li>
+<li id="menu-item-15139" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15139"><a target="_top" href="http://www.tecmint.com/free-wordpress-installation-setup/">Free WordPress Setup</a></li>
+</ul></div>
+<div class="container">
+<div class="container-inner">		
+<div class="toggle-search"><i class="fa fa-search"></i></div>
+<div class="search-expand">
+<div class="search-expand-inner">
+<form action="http://www.tecmint.com/search/" id="cse-search-box">
+<div>
+<input name="cx" value="partner-pub-2601749019656699:2173448976" type="hidden">
+<input name="cof" value="FORID:10" type="hidden">
+<input name="ie" value="UTF-8" type="hidden">
+<input value="" style="border: 1px solid rgb(126, 157, 185); padding: 2px; background: rgb(255, 255, 255) url('google_custom_search_watermark.gif') no-repeat scroll left center;" class="search" name="q" size="20" type="text">
+<input name="sa" value="Search" type="submit">
+</div>
+<input value="www.tecmint.com/create-gui-applications-in-linux/" name="siteurl" type="hidden"><input value="www.google.com" name="ref" type="hidden"><input name="ss" type="hidden"></form>
+							</div>
+</div>
+</div><!--/.container-inner-->
+</div><!--/.container-->
+</nav><!--/#nav-topbar-->
+<div class="container group">
+<div class="container-inner">
+<div class="group pad">
+<p class="site-title"><a href="http://www.tecmint.com/" rel="home"><img src="logo.png" alt="Tecmint: Linux Howtos, Tutorials &amp; Guides"></a></p>
+<div id="header-ads">
+<div id="text-17" class="widget widget_text">			<div class="textwidget"><!-- Top Banner Ads 728x90 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 728px; height: 90px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="8210224606"></ins>
+
+</div>
+</div>					</div><!--/#header-ads-->
+</div>
+<nav class="nav-container group" id="nav-header">
+<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+<div class="nav-text"><!-- put your mobile menu text here --></div>
+<div class="nav-wrap container"><ul id="menu-header" class="nav container-inner group"><li id="menu-item-20410" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20410"><a target="_top" href="http://news.tecmint.com/">News</a></li>
+<li id="menu-item-10770" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10770"><a href="http://www.tecmint.com/best-linux-distributions/">Linux Distro’s</a></li>
+<li id="menu-item-10771" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10771"><a href="http://www.tecmint.com/category/interview-questions/">Interview Questions</a></li>
+<li id="menu-item-20869" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-20869"><a href="http://www.tecmint.com/#">Programming</a>
+<ul style="display: none;" class="sub-menu">
+<li id="menu-item-10772" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10772"><a title="Learn Linux Shell Scripting" href="http://www.tecmint.com/category/bash-shell/">Shell Scripting</a></li>
+<li id="menu-item-20870" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20870"><a href="http://www.tecmint.com/category/python/">Learn Python</a></li>
+<li id="menu-item-20871" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20871"><a href="http://www.tecmint.com/category/awk-command/">Learn Awk</a></li>
+</ul>
+</li>
+<li id="menu-item-10773" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10773"><a href="http://www.tecmint.com/category/linux-commands/">Linux Commands</a></li>
+<li id="menu-item-14795" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14795"><a href="http://www.tecmint.com/tag/linux-tricks/">Linux Tricks</a></li>
+<li id="menu-item-19684" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-19684"><a href="http://www.tecmint.com/category/top-tools/">Best Linux Tools</a></li>
+<li id="menu-item-10443" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-10443"><a target="_top" href="http://www.tecmint.com/#">Certifications</a>
+<ul style="display: none;" class="sub-menu">
+<li id="menu-item-14880" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14880"><a href="http://www.tecmint.com/how-to-setup-and-configure-static-network-routing-in-rhel/">RHCE Exam</a></li>
+<li id="menu-item-11906" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11906"><a target="_top" href="http://www.tecmint.com/rhcsa-exam-reviewing-essential-commands-system-documentation/">RHCSA Exam</a></li>
+<li id="menu-item-10444" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10444"><a target="_top" href="http://www.tecmint.com/installing-network-services-and-configuring-services-at-system-boot/">LFCE Exam</a></li>
+<li id="menu-item-14793" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14793"><a href="http://www.tecmint.com/sed-command-to-create-edit-and-manipulate-files-in-linux/">LFCS Exam</a></li>
+</ul>
+</li>
+<li id="menu-item-12399" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children menu-item-12399"><a href="http://www.tecmint.com/#">Guides</a>
+<ul style="display: none;" class="sub-menu">
+<li id="menu-item-18564" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18564"><a href="http://www.tecmint.com/install-docker-and-learn-containers-in-centos-rhel-7-6/">Docker Seires</a></li>
+<li id="menu-item-17150" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17150"><a href="http://www.tecmint.com/setup-postfix-mail-server-and-dovecot-with-mariadb-in-centos/">Postfix Mail</a></li>
+<li id="menu-item-15041" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15041"><a href="http://www.tecmint.com/citrix-xenserver-installation-and-network-configuration-in-linux/">XenServer Series</a></li>
+<li id="menu-item-14794" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14794"><a href="http://www.tecmint.com/install-redhat-virtualization-rhev/">RHEV Series</a></li>
+<li id="menu-item-14805" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14805"><a href="http://www.tecmint.com/what-is-clustering-and-advantages-disadvantages-of-clustering-in-linux/">Clustering Series</a></li>
+<li id="menu-item-12400" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12400"><a href="http://www.tecmint.com/create-lvm-storage-in-linux/">LVM Series</a></li>
+<li id="menu-item-12402" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12402"><a href="http://www.tecmint.com/understanding-raid-setup-in-linux/">RAID Series</a></li>
+<li id="menu-item-12403" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12403"><a href="http://www.tecmint.com/install-and-configure-kvm-in-linux/">KVM Series</a></li>
+<li id="menu-item-12401" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12401"><a href="http://www.tecmint.com/create-centralized-secure-storage-using-iscsi-targetin-linux/">iSCSI Series</a></li>
+<li id="menu-item-12406" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12406"><a href="http://www.tecmint.com/install-zentyal-as-primary-domain-controller-and-integrate-windows-system/">Zentyal Series</a></li>
+<li id="menu-item-16084" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16084"><a href="http://www.tecmint.com/install-and-configure-ansible-automation-tool-in-linux/">Ansible Series</a></li>
+<li id="menu-item-16395" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16395"><a href="http://www.tecmint.com/install-and-configure-django-web-framework-in-centos-debian-ubuntu/">Django Series</a></li>
+<li id="menu-item-14603" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-14603"><a href="http://www.tecmint.com/create-gui-applications-in-linux/">Create GUI Apps</a></li>
+</ul>
+</li>
+<li id="menu-item-14796" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-14796"><a href="http://www.tecmint.com/command-line-tools-to-monitor-linux-performance/">Monitoring Tools</a>
+<ul style="display: none;" class="sub-menu">
+<li id="menu-item-14797" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14797"><a href="http://www.tecmint.com/install-nagios-in-linux/">Nagios</a></li>
+<li id="menu-item-14798" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14798"><a href="http://www.tecmint.com/install-and-configure-zabbix-monitoring-on-debian-centos-rhel/">Zabbix</a></li>
+<li id="menu-item-14799" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14799"><a href="http://www.tecmint.com/install-cacti-network-monitoring-on-rhel-centos-6-3-5-8-and-fedora-17-12/">Cacti</a></li>
+<li id="menu-item-14800" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14800"><a href="http://www.tecmint.com/install-observium-in-centos/">Observium</a></li>
+<li id="menu-item-14801" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14801"><a href="http://www.tecmint.com/monitorix-a-lightweight-system-and-network-monitoring-tool-for-linux/">Monitorix</a></li>
+<li id="menu-item-14802" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14802"><a href="http://www.tecmint.com/install-collectd-and-collectd-web-to-monitor-server-resources-in-linux/">Collectd</a></li>
+<li id="menu-item-14803" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14803"><a href="http://www.tecmint.com/linux-performance-monitoring-with-collectl-tool/">Collectl</a></li>
+<li id="menu-item-14804" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14804"><a href="http://www.tecmint.com/mysql-performance-monitoring/">MySQL Monitoring</a></li>
+</ul>
+</li>
+</ul></div>
+</nav><!--/#nav-header-->
+</div><!--/.container-inner-->
+</div><!--/.container-->
+</header><!--/#header-->
+<div class="container" id="page">
+<div class="container-inner">			
+<div class="main">
+<div class="main-inner group">
+<section class="content">
+<div class="page-title pad group">
+<ul class="meta-single group">
+<li class="category"><a href="http://www.tecmint.com/category/gtk-2/" rel="category tag">GTK</a></li>
+<li class="comments"><a href="http://www.tecmint.com/create-gui-applications-in-linux/#comments"><i class="fa fa-comments-o"></i>6</a></li>
+</ul>
+</div><!--/.page-title-->	
+<div class="pad group">
+<article class="post-9817 post type-post status-publish format-standard has-post-thumbnail hentry category-gtk-2 tag-glade tag-python">	
+<div class="post-inner group">
+<h1 class="post-title">How to Create GUI Applications Under Linux Desktop Using PyGObject – Part 1</h1>
+<p class="post-byline">by <a href="http://www.tecmint.com/author/hannyhelal/" title="Posts by Hanny Helal" rel="author">Hanny Helal</a> | Published: November 18, 2014 | <!-- if the post updated datetime is not equal to the post datetime, show the updated datetime -->
+Last Updated: January 19, 2015    </p>
+<div class="clear"></div>
+<!-- Above Post Ads 468x15 -->
+<div class="add-box">
+<ins class="adsbygoogle" style="display: inline-block; width: 468px; height: 15px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="1986283779"></ins>
+
+</div>
+<div class="clear"></div>
+<div id="exam_announcement">
+<i style="color: rgb(40, 85, 122); font-size: 20px;" class="fa fa-book"></i>
+<b>Download Your Free eBooks NOW</b> - <a target="_top" style="text-decoration: underline;" href="http://www.tecmint.com/10-useful-free-linux-ebooks-for-newbies-and-administrators/">10 Free Linux eBooks for Administrators</a> | <a style="text-decoration: underline;" target="_top" href="http://www.tecmint.com/free-linux-shell-scripting-books/">4 Free Shell Scripting eBooks</a>
+</div>
+<div class="clear"></div>
+<div class="ads-inner-mobile">
+<center>
+<!-- Post Inner Mobile Ads -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="9946480174"></ins>
+
+</center>
+</div>
+<div class="clear"></div>
+<div class="entry share">	
+<div class="entry-inner">
+<p>Creating applications on Linux can be done using different ways, but there are a limited ways of doing, so using the simplest and the most functional programming languages and libraries, that’s why we’re going to have a quick look about creating applications under the Linux desktop using the GTK+ library with Python programming language which is called “<strong>PyGObject</strong>”.</p>
+<p><strong>PyGObject</strong> uses the GObject Introspection to create binding for programming languages like Python, PyGObject is the next generation from PyGTK, you can say that PyGObject = Python + GTK3.</p>
+<div id="attachment_9840" style="width: 610px;" class="wp-caption aligncenter"><a href="http://www.tecmint.com/wp-content/uploads/2014/11/Create-Applications-in-Linux-1.png"><img data-lazy-loaded="true" style="display: inline;" src="create-applications-in-linux-1.png" class="size-full wp-image-9840" alt="Create GUI Applications in Linux " height="400" width="600"></a><p class="wp-caption-text">Create GUI Applications in Linux – Part 1</p></div>
+<p>Today, we’re going to start a series about creating GUI (Graphical User Interface) applications under the Linux desktop using GTK+ library and <b>PyGobject</b> language, the series will cover the following topics:</p>
+<div id="exam_announcement"><b>Part 1</b>: <b>How to Create GUI Applications Under Linux Desktop Using PyGObject</b></div>
+<div id="exam_announcement"><b>Part 2</b>: <a style="text-decoration: none;" href="http://www.tecmint.com/create-more-advance-gui-applications-in-linux/" target="_top">Creating More Advance PyGobject Applications on Linux</a></div>
+<div id="exam_announcement"><b>Part 3</b>: <a style="text-decoration: none;" href="http://www.tecmint.com/create-web-brower-and-recorder-using-pygobject/" target="_top">Create Your Own ‘Web Browser’ and ‘Desktop Recorder’ Applications Using PyGobject</a></div>
+<div id="exam_announcement"><b>Part 4</b>: <a style="text-decoration: none;" href="http://www.tecmint.com/package-pygobject-applications-as-deb-package/" target="_top">Packaging PyGobject Programs for the Linux Desktop</a></div>
+<div id="exam_announcement"><b>Part 5</b>: <a style="text-decoration: none;" href="http://www.tecmint.com/translate-pygobject-applications-into-different-languages-in-linux/" target="_top">Translating PyGobject Applications into Different Languages</a></div>
+<h5>About Python</h5>
+<p>First of all, you must have some basic knowledge in Python; <b>Python</b> is a very modern and easy to use programming language. It’s one of the most famous programming languages in the world, using Python, you will be able to create many great applications &amp; tools. You may take some free courses like those at <a href="http://www.codecademy.com/en/tracks/python" target="_top" rel="nofollow">codeacademy.com</a> or you may read some books about Python at:</p>
+<div id="ads" style="margin-top: 15px; padding-top: 1px;">
+<div style="float: left; margin-right: 6px;"><a href="http://tecmint.tradepub.com/free/w_dive01/prgm.cgi" target="_top" rel="nofollow"><img data-lazy-loaded="true" style="display: inline;" src="w_dive01c4.gif" title="Dive Into Python" alt="Dive Into Python" height="200" width="140"></a></div>
+<div style="float: left; margin-right: 6px;"><a href="http://tecmint.tradepub.com/free/w_pack35/prgm.cgi" target="_top" rel="nofollow"><img data-lazy-loaded="true" style="display: inline;" src="w_pack35c4.gif" title="Python Testing: Beginner's Guide" alt="Python Testing: Beginner's Guide" height="200" width="140"></a></div>
+<div style="float: left; margin-right: 6px;"><a href="http://tecmint.tradepub.com/free/w_invb02/prgm.cgi" target="_top" rel="nofollow"><img data-lazy-loaded="true" style="display: inline;" src="w_invb02c4.gif" title="Making Games with Python &amp; Pygame" alt="Making Games with Python &amp; Pygame" height="200" width="140"></a></div>
+<div style="float: left; margin-right: 6px;"><a href="http://tecmint.tradepub.com/free/w_invb01/prgm.cgi" target="_top" rel="nofollow"><img data-lazy-loaded="true" style="display: inline;" src="w_invb01c4.gif" title="Invent Your Own Computer Games with Python" alt="Invent Your Own Computer Games with Python" height="200" width="140"></a></div>
+</div>
+<div class="clear"></div>
+<h5>About GTK+</h5>
+<center style="padding-bottom: 20px; padding-top: 10px;"><ins class="adsbygoogle" style="display: inline-block; width: 200px; height: 90px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="9878518176"></ins></center><p><b>GTK+</b> is an open-source cross-platform toolkit to create graphical user interfaces for desktop applications, it was first started in 1998 as a GUI toolkit for the GIMP, later, it was used in many other applications and soon became one of the most famous libraries to create GUIs. GTK+ is released under the LGPL license.</p>
+<h3>Creating GUI Applications Under Linux</h3>
+<p>There are 2 ways for creating the applications using GTK+ &amp; Python:</p>
+<ol>
+<li>Writing the graphical interface using code only.</li>
+<li>Designing the graphical interface using the “<b>Glade</b>” program; which is RAD tool to design GTK+ interfaces easily, Glade generates the GUI as a XML file which can be used with any programming language to build the GUI, after exporting the GUI’s XML file, we’ll be able to link the XML file with our program to do the jobs we want.</li>
+</ol>
+<p>We’ll explain both ways in short.</p>
+<h4>The Code-Only Way</h4>
+<p>Writing the GUI using code only can be little bit hard for noob programmer’s and very time-wasting, but using it, we can create very functional GUIs for our programs, more than those we create using some tools like Glade.</p>
+<p>Let’s take the following example.</p>
+<pre>#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from gi.repository import Gtk
+class ourwindow(Gtk.Window):
+def __init__(self):
+Gtk.Window.__init__(self, title="My Hello World Program")
+Gtk.Window.set_default_size(self, 400,325)
+Gtk.Window.set_position(self, Gtk.WindowPosition.CENTER)
+button1 = Gtk.Button("Hello, World!")
+button1.connect("clicked", self.whenbutton1_clicked)
+self.add(button1)
+def whenbutton1_clicked(self, button):
+print "Hello, World!"
+window = ourwindow()        
+window.connect("delete-event", Gtk.main_quit)
+window.show_all()
+Gtk.main()
+</pre>
+<p>Copy the above code, paste it in a “<b>test.py</b>” file and set 755 permission on the test.py file and run the file later using “<b>./test.py</b>”, that’s what you will get.</p>
+<pre># nano test.py
+# chmod 755 test.py
+# ./test.py
+</pre>
+<div id="attachment_9821" style="width: 484px;" class="wp-caption aligncenter"><a href="http://www.tecmint.com/wp-content/uploads/2014/11/Hello-World-Script.png"><img data-lazy-loaded="true" style="display: inline;" src="hello-world-script.png" class="size-full wp-image-9821" alt="Hello World Script" height="410" width="474"></a><p class="wp-caption-text">Hello World Script</p></div>
+<p>By clicking the button, you see the “<b>Hello, World!</b>” sentence printed out in the terminal:</p>
+<div id="attachment_9838" style="width: 372px;" class="wp-caption aligncenter"><a href="http://www.tecmint.com/wp-content/uploads/2014/11/Test-Python-Script.png"><img data-lazy-loaded="true" style="display: inline;" src="test-python-script.png" class="size-full wp-image-9838" alt="Test Python Script" height="28" width="362"></a><p class="wp-caption-text">Test Python Script</p></div>
+<p>Let me explain the code in detailed explanation.</p>
+<ol>
+<li><b>#!/usr/bin/python</b>: The default path for the Python interpreter (version 2.7 in most cases), this line must be the first line in every Python file.</li>
+<li><b># -*- coding: utf-8 -*-</b>: Here we set the default coding for the file, UTF-8 is the best if you want to support non-English languages, leave it like that.</li>
+<li><b>from gi.repository import Gtk</b>: Here we are importing the GTK 3 library to use it in our program.</li>
+<li>Class ourwindow(Gtk.Window): Here we are creating a new class, which is called “ourwindow”, we are also setting the class object type to a “Gtk.Window”.</li>
+<li><b>def __init__(self)</b>: Nothing new, we’re defining the main window components here.</li>
+<li><b>Gtk.Window.__init__(self, title=”My Hello World Program”)</b>: We’re using this line to set the “My Hello World Program” title to “ourwindow” window, you may change the title if you like.</li>
+<li><b>Gtk.Window.set_default_size(self, 400,325)</b>: I don’t think that this line need explanation, here we’re setting the default width and height for our window.</li>
+<li><b>Gtk.Window.set_position(self, Gtk.WindowPosition.CENTER)</b>: Using this line, we’ll be able to set the default position for the window, in this case, we set it to the center using the “Gtk.WindowPosition.CENTER” parameter, if you want, you can change it to “Gtk.WindowPosition.MOUSE” to open the window on the mouse pointer position.</li>
+<li><b>button1 = Gtk.Button(“Hello, World!”)</b>: We created a new Gtk.Button, and we called it “button1”, the default text for the button is “Hello, World!”, you may create any Gtk widget if you want.</li>
+<li><b>button1.connect(“clicked”, self.whenbutton1_clicked)</b>: Here we’re linking the “clicked” signal with the “whenbutton1_clicked” action, so that when the button is clicked, the “whenbutton1_clicked” action is activated.</li>
+<li><b>self.add(button1)</b>: If we want our Gtk widgets to appear, we have to add them to the default window, this simple line adds the “button1” widget to the window, it’s very necessary to do this.</li>
+<li><b>def whenbutton1_clicked(self, button)</b>: Now we’re defining the “whenbutton1_clicked” action here, we’re defining what’s going to happen when the “button1” widget is clicked, the “(self, button)” parameter is important in order to specific the signal parent object type.</li>
+<li><b>print “Hello, World!”</b>: I don’t have to explain more here.</li>
+<li><b>window = ourwindow()</b>: We have to create a new global variable and set it to ourwindow() class so that we can call it later using the GTK+ library.</li>
+<li><b>window.connect(“delete-event”, Gtk.main_quit)</b>: Now we’re connecting the “delete-event” signal with the “Gtk.main_quit” action, this is important in order to delete all the widgets after we close our program window automatically.</li>
+<li><b>window.show_all()</b>: Showing the window.</li>
+<li><b>Gtk.main()</b>: Running the Gtk library.</li>
+</ol>
+<p>That’s it, easy isn’t? And very functional if we want to create some large applications. For more information about creating GTK+ interfaces using the code-only way, you may visit the official documentation website at:</p>
+<p><a href="http://python-gtk-3-tutorial.readthedocs.org/en/latest/" target="_top" rel="nofollow">Python GTK3 Tutorials</a></p>
+<h4>The Glade Designer Way</h4>
+<p>Like I said in the beginning of the article, Glade is a very easy tool to create the interfaces we need for our programs, it’s very famous among developers and many great applications interfaces were created using it. This way is called “Rapid applications development”.</p>
+<p>You have to install Glade in order to start using it, on Debian/Ubuntu/Mint run:</p>
+<pre>$ sudo apt­-get install glade
+</pre>
+<p>On RedHat/Fedora/CentOS, run:</p>
+<pre># yum install glade
+</pre>
+<p>After you download and install the program, and after you run it, you will see the available Gtk widgets on the left, click on the “<b>window</b>” widget in order to create a new window.</p>
+<div id="attachment_9822" style="width: 238px;" class="wp-caption aligncenter"><a href="http://www.tecmint.com/wp-content/uploads/2014/11/Create-New-Widget.png"><img src="1x1.trans.gif" data-lazy-src="http://www.tecmint.com/wp-content/uploads/2014/11/Create-New-Widget.png" class="size-full wp-image-9822" alt="Create New Widget" height="185" width="228"></a><p class="wp-caption-text">Create New Widget</p></div>
+<p>You will notice that a new empty window is created.</p>
+<div id="attachment_9823" style="width: 630px;" class="wp-caption aligncenter"><a href="http://www.tecmint.com/wp-content/uploads/2014/11/New-Window-Widget.png"><img src="1x1.trans.gif" data-lazy-src="http://www.tecmint.com/wp-content/uploads/2014/11/New-Window-Widget-620x339.png" class="size-medium wp-image-9823" alt="New Window Widget" srcset="http://www.tecmint.com/wp-content/uploads/2014/11/New-Window-Widget-620x339.png 620w, http://www.tecmint.com/wp-content/uploads/2014/11/New-Window-Widget-1024x560.png 1024w, http://www.tecmint.com/wp-content/uploads/2014/11/New-Window-Widget.png 1169w" sizes="(max-width: 620px) 100vw, 620px" height="339" width="620"></a><p class="wp-caption-text">New Window Widget</p></div>
+<p>You can now add some widgets to it, on the left toolbar, click on the “<b>button</b>” widget, and click on the empty window in order to add the button to the window.</p>
+<div id="attachment_9824" style="width: 254px;" class="wp-caption aligncenter"><a href="http://www.tecmint.com/wp-content/uploads/2014/11/Add-Widget.png"><img src="1x1.trans.gif" data-lazy-src="http://www.tecmint.com/wp-content/uploads/2014/11/Add-Widget.png" class="size-full wp-image-9824" alt="Add Widget" height="366" width="244"></a><p class="wp-caption-text">Add Widget</p></div>
+<p>You will notice that the button ID is “<b>button1</b>”, now refer to the Signals tab in the right toolbar, and search for the “<b>clicked</b>” signal and enter “<b>button1_clicked</b>” under it.</p>
+<div id="attachment_9825" style="width: 630px;" class="wp-caption aligncenter"><a href="http://www.tecmint.com/wp-content/uploads/2014/11/Button-Properties.png"><img src="1x1.trans.gif" data-lazy-src="http://www.tecmint.com/wp-content/uploads/2014/11/Button-Properties-620x338.png" class="size-medium wp-image-9825" alt="Glade Button Properties" srcset="http://www.tecmint.com/wp-content/uploads/2014/11/Button-Properties-620x338.png 620w, http://www.tecmint.com/wp-content/uploads/2014/11/Button-Properties-1024x559.png 1024w, http://www.tecmint.com/wp-content/uploads/2014/11/Button-Properties.png 1176w" sizes="(max-width: 620px) 100vw, 620px" height="338" width="620"></a><p class="wp-caption-text">Button Properties</p></div>
+<div id="attachment_9826" style="width: 630px;" class="wp-caption aligncenter"><a href="http://www.tecmint.com/wp-content/uploads/2014/11/Signals-Tab.png"><img src="1x1.trans.gif" data-lazy-src="http://www.tecmint.com/wp-content/uploads/2014/11/Signals-Tab-620x300.png" class="size-medium wp-image-9826" alt="Glade Signals Tab" srcset="http://www.tecmint.com/wp-content/uploads/2014/11/Signals-Tab-620x300.png 620w, http://www.tecmint.com/wp-content/uploads/2014/11/Signals-Tab.png 641w" sizes="(max-width: 620px) 100vw, 620px" height="300" width="620"></a><p class="wp-caption-text">Signals Tab</p></div>
+<p>Now that we’ve created our GUI, let’s export it. Click on the “<b>File</b>” menu and choose “<b>Save</b>”, save the file in your home directory in the name “<b>myprogram.glade</b>” and exit.</p>
+<div id="attachment_9827" style="width: 590px;" class="wp-caption aligncenter"><a href="http://www.tecmint.com/wp-content/uploads/2014/11/Export-Widget-File.png"><img src="1x1.trans.gif" data-lazy-src="http://www.tecmint.com/wp-content/uploads/2014/11/Export-Widget-File-580x450.png" class="size-medium wp-image-9827" alt="Glade Export Widget File" srcset="http://www.tecmint.com/wp-content/uploads/2014/11/Export-Widget-File-580x450.png 580w, http://www.tecmint.com/wp-content/uploads/2014/11/Export-Widget-File.png 919w" sizes="(max-width: 580px) 100vw, 580px" height="450" width="580"></a><p class="wp-caption-text">Export Widget File</p></div>
+<p>Now, create a new “<b>test.py</b>” file, and enter the following code inside it.</p>
+<pre>#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from gi.repository import Gtk
+class Handler:
+def button_1clicked(self, button):
+print "Hello, World!"
+builder = Gtk.Builder()
+builder.add_from_file("myprogram.glade")
+builder.connect_signals(Handler())
+ournewbutton = builder.get_object("button1")
+ournewbutton.set_label("Hello, World!")
+window = builder.get_object("window1")
+window.connect("delete-event", Gtk.main_quit)
+window.show_all()
+Gtk.main()
+</pre>
+<p>Save the file, give it 755 permissions like before, and run it using “<b>./test.py</b>”, and that’s what you will get.</p>
+<pre># nano test.py
+# chmod 755 test.py
+# ./test.py
+</pre>
+<div id="attachment_9828" style="width: 379px;" class="wp-caption aligncenter"><a href="http://www.tecmint.com/wp-content/uploads/2014/11/Hello-World-Window.png"><img src="1x1.trans.gif" data-lazy-src="http://www.tecmint.com/wp-content/uploads/2014/11/Hello-World-Window.png" class="size-full wp-image-9828" alt="Hello World Window" height="227" width="369"></a><p class="wp-caption-text">Hello World Window</p></div>
+<p>Click on the button, and you will notice that the “<b>Hello, World!</b>” sentence is printed in the terminal.</p>
+<p>Now let’s explain the new things:</p>
+<ol>
+<li><b>class Handler</b>: Here we’re creating a class called “Handler” which will include the the definitions for the actions &amp; signals, we create for the GUI.</li>
+<li><b>builder = Gtk.Builder()</b>: We created a new global variable called “builder” which is a Gtk.Builder widget, this is important in order to import the .glade file.</li>
+<li><b>builder.add_from_file(“myprogram.glade”)</b>: Here we’re importing the “myprogram.glade” file to use it as a default GUI for our program.</li>
+<li><b>builder.connect_signals(Handler())</b>: This line connects the .glade file with the handler class, so that the actions and signals that we define under the “Handler” class work fine when we run the program.</li>
+<li><b>ournewbutton = builder.get_object(“button1”)</b>: Now we’re importing the “button1” object from the .glade file, we’re also passing it to the global variable “ournewbutton” to use it later in our program.</li>
+<li><b>ournewbutton.set_label(“Hello, World!”)</b>: We used the “set.label” method to set the default button text to the “Hello, World!” sentence.</li>
+<li><b>window = builder.get_object(“window1”)</b>: Here we called the “window1” object from the .glade file in order to show it later in the program.</li>
+</ol>
+<p>And that’s it! You have successfully created your first program under Linux!</p>
+<p>Of course there are a lot more complicated things to do in order to create a real application that does something, that’s why I recommend you to take a look into the GTK+ documentation and GObject API at:</p>
+<ol>
+<li><a href="https://developer.gnome.org/gtk3/stable/" target="_top" rel="nofollow">GTK+ Reference Manual</a></li>
+<li><a href="http://lazka.github.io/pgi-docs/" target="_top" rel="nofollow">Python GObject API Reference</a></li>
+<li><a href="https://wiki.gnome.org/action/show/Projects/PyGObject?action=show&amp;redirect=PyGObject" target="_top" rel="nofollow">PyGObject Reference</a></li>
+</ol>
+<p>Have you developed any application before under the Linux desktop? What programming language and tools have used to do it? What do you think about creating applications using Python &amp; GTK 3?</p>
+</div>
+<div style="position: relative; top: 4.00003px; left: 0px;" class="sharrre-container">
+<span>Share</span>
+<div class="sharrre" id="twitter" data-url="http://www.tecmint.com/create-gui-applications-in-linux/" data-text="How to Create GUI Applications Under Linux Desktop Using PyGObject – Part 1" data-title="Tweet"><a class="box" href="#"><div class="count" href="#">+</div><div class="share"><i class="fa fa-twitter"></i></div></a></div>
+<div class="sharrre" id="facebook" data-url="http://www.tecmint.com/create-gui-applications-in-linux/" data-text="How to Create GUI Applications Under Linux Desktop Using PyGObject – Part 1" data-title="Like"><a class="box" href="#"><div class="count" href="#">0</div><div class="share"><i class="fa fa-facebook-square"></i></div></a></div>
+<div class="sharrre" id="googleplus" data-url="http://www.tecmint.com/create-gui-applications-in-linux/" data-text="How to Create GUI Applications Under Linux Desktop Using PyGObject – Part 1" data-title="+1"><a class="box" href="#"><div class="count" href="#">91</div><div class="share"><i class="fa fa-google-plus-square"></i></div></a></div>
+<div class="sharrre" id="linkedin" data-url="http://www.tecmint.com/create-gui-applications-in-linux/" data-text="How to Create GUI Applications Under Linux Desktop Using PyGObject – Part 1" data-title="Share It"><a class="box" href="#" rel="nofollow"><div class="count" href="#">8</div><div class="share"><i class="fa fa-linkedin"></i></div></a></div>
+<div style="text-align: center; font-weight: 600; padding-top: 5px;"><a href="#comments"><i class="fa fa-comments-o"></i></a><a href="http://www.tecmint.com/create-gui-applications-in-linux/#comments" class="comments-link">6 <span style="font-size: 10px; color: rgb(39, 118, 198); margin-top: -8px;">comments</span></a></div>
+</div><!--/.sharrre-container-->
+						<div class="clear"></div>				
+</div><!--/.entry-->
+</div><!--/.post-inner-->
+</article><!--/.post-->				
+<div class="clear"></div>
+<div class="clear"></div>
+<div class="ads-inner-mobile">
+<center style="padding-top: 30px;">
+<!-- Post-Bottom-Inner-300x250 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="7807254572"></ins>
+
+</center>
+</div>
+<div class="clear"></div>
+<div class="after-post-box">
+<h2>If You Appreciate What We Do Here On TecMint, You Should Consider:</h2>
+<ol>
+<li>Stay Connected to: <strong><a target="_top" rel="nofollow" href="http://bit.ly/1TP6lcM" title="Follow TecMint on Twitter">Twitter</a></strong> | <strong><a target="_top" rel="nofollow" href="http://bit.ly/1rDYrdj" title="Like Us on Facebook">Facebook</a></strong> | <strong><a target="_top" rel="nofollow" href="http://bit.ly/24J6lna" title="Join Us On Google+">Google Plus</a></strong></li>
+<li>Subscribe to our email updates: <strong><a target="_top" rel="nofollow" href="http://bit.ly/1T2Gxb4" title="Subscribe to TecMint Email Updates">Sign Up Now</a></strong></li>
+<li>Use our <strong><a target="_top" rel="nofollow" title="Linode Linux Hosting" href="http://bit.ly/1ZzMwrv">Linode referral link</a></strong> if you plan to buy VPS <i>(it starts at only $10/month)</i>.
+</li>
+<li>Support us via <strong>PayPal donate</strong> - <strong><a target="_top" href="http://www.tecmint.com/donate-to-tecmint/">Make a Donation</a></strong></li>
+<li>Support us by <strong><a href="http://www.tecmint.com/linux-books-in-pdf-format/" target="_top">purchasing our premium books</a></strong> in PDF format.</li>
+<li>Support us by taking our <strong><a rel="nofollow" target="_top" href="https://deals.tecmint.com/search?utf8=%E2%9C%93&amp;query=linux">online Linux courses</a></strong></li>
+</ol>
+<p style="text-align: center;"><strong style="color: rgb(254, 51, 0); font-size: 20px;">We are thankful for your never ending support.</strong></p>
+</div>
+<div class="clear"></div>
+<p class="post-tags"><span>Tags:</span> <a href="http://www.tecmint.com/tag/glade/" rel="tag">glade</a><a href="http://www.tecmint.com/tag/python/" rel="tag">python</a></p>					<div class="author-bio">
+<div class="bio-avatar"><img src="1x1.trans.gif" data-lazy-src="http://1.gravatar.com/avatar/1374d0df45065e405e1b059d2fca04ff?s=128&amp;d=blank&amp;r=g" alt="" srcset="http://1.gravatar.com/avatar/1374d0df45065e405e1b059d2fca04ff?s=256&amp;d=blank&amp;r=g 2x" class="avatar avatar-128 photo" height="128" width="128"></div>
+<p style="float: right; font-weight: 600;"><a target="_top" class="author-link" href="http://www.tecmint.com/author/hannyhelal/" rel="author">View all Posts</a></p>
+<p class="bio-name">Hanny Helal</p>
+<p class="bio-desc">A Linux &amp; Foss user since 2010, working on many projects in the field of Free Software.</p>
+<p><span style="font-size: 20px; font-weight: 400; color: rgb(162, 4, 46);">Your name can also be listed here. Got a tip? <a style="text-decoration: underline;" target="_top" href="http://www.tecmint.com/submit-articles/">Submit it here</a> to become an <b>TecMint</b> author.</span></p>
+<div class="clear"></div>
+</div>
+<div id="exam_announcement">
+<span style="color: rgb(247, 93, 89); font-weight: 400; font-size: 18px;">Receive Your Free Complimentary eBook NOW!</span> - <span style="color: rgb(39, 118, 198); font-weight: 600; font-size: 18px; text-decoration: underline;"><a target="_top" rel="nofollow" href="http://tecmint.tradepub.com/free/w_ubub01/prgm.cgi">Ubuntu Documentation: Ubuntu Server Guide 2014</a></span></div>
+<div class="hr"></div>
+<div class="freebooks">
+<center><h1 style="padding-bottom: 15px; font-size: 25px;">Download Free Linux eBooks</h1></center>
+<div class="grid one-fourth">
+<a rel="nofollow" target="_top" href="http://tecmint.tradepub.com/free/w_advb01/prgm.cgi" onclick="ga('send','event','Advance-Bash-Scripting','tecmint.tradepub.com')"><img title="Advanced Bash-Scripting Guide" src="w_advb01c4.png" alt="Advanced Bash-Scripting Guide"></a>
+</div>
+<div class="grid one-fourth">
+<a rel="nofollow" target="_top" href="http://tecmint.tradepub.com/free/w_wile13/prgm.cgi" onclick="ga('send','event','Linux-Bible','tecmint.tradepub.com')"><img title="Linux Bible" src="w_wile13c4.png" alt="Linux Bible"></a>
+</div>
+<div class="grid one-fourth">
+<a rel="nofollow" target="_top" href="http://tecmint.tradepub.com/free/w_make07/prgm.cgi" onclick="ga('send','event','Linux-Newbies-Guide','tecmint.tradepub.com')"><img title="A Newbie's Getting Started Guide to Linux" src="w_make07c4.png" alt="A Newbie's Getting Started Guide to Linux"></a>
+</div>
+<div class="grid one-fourth last">
+<a rel="nofollow" target="_top" href="http://tecmint.tradepub.com/free/w_mach01/prgm.cgi" onclick="ga('send','event','Introduction to Linux - A Hands on Guide','tecmint.tradepub.com')"><img title="Introduction to Linux - A Hands on Guide" src="w_mach01c4.png" alt="Introduction to Linux - A Hands on Guide"></a>
+</div>
+<div class="clear"></div>
+</div>
+<ul class="post-nav group">
+<li class="next"><a href="http://www.tecmint.com/create-raid-10-in-linux/" rel="next"><i class="fa fa-chevron-right"></i><strong>Next story</strong> <span>Setting Up RAID 10 or 1+0 (Nested) in Linux  – Part 6</span></a></li>
+<li class="previous"><a href="http://www.tecmint.com/grow-raid-array-in-linux/" rel="prev"><i class="fa fa-chevron-left"></i><strong>Previous story</strong> <span>Growing an Existing RAID Array and Removing Failed Disks in Raid – Part 7</span></a></li>
+</ul>
+<h4 class="heading">
+<i class="fa fa-hand-o-right"></i>You may also like...</h4>
+<ul class="related-posts group">
+<li class="related post-hover">
+<article class="post-10231 post type-post status-publish format-standard has-post-thumbnail hentry category-gtk-2 tag-glade tag-python">
+<div class="post-thumbnail">
+<a href="http://www.tecmint.com/create-web-brower-and-recorder-using-pygobject/" title="Create Your Own ‘Web Browser’ and ‘Desktop Recorder’ Applications Using PyGobject – Part 3">
+<img src="1x1.trans.gif" data-lazy-src="http://www.tecmint.com/wp-content/uploads/2014/12/Create-Own-Browser-Using-Pygobject-520x245.jpg" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Create Own Web Browser and Recorder" srcset="http://www.tecmint.com/wp-content/uploads/2014/12/Create-Own-Browser-Using-Pygobject-520x245.jpg 520w, http://www.tecmint.com/wp-content/uploads/2014/12/Create-Own-Browser-Using-Pygobject-720x340.jpg 720w" sizes="(max-width: 520px) 100vw, 520px" height="245" width="520">																								</a>
+<a class="post-comments" href="http://www.tecmint.com/create-web-brower-and-recorder-using-pygobject/#comments"><span><i class="fa fa-comments-o"></i>1</span></a>
+</div><!--/.post-thumbnail-->
+<div class="related-inner">
+<h4 class="post-title">
+<a href="http://www.tecmint.com/create-web-brower-and-recorder-using-pygobject/" rel="bookmark" title="Create Your Own ‘Web Browser’ and ‘Desktop Recorder’ Applications Using PyGobject – Part 3">Create Your Own ‘Web Browser’ and ‘Desktop Recorder’ Applications Using PyGobject – Part 3</a>
+</h4><!--/.post-title-->
+<div class="post-meta group">
+<p class="post-date">15 Dec, 2014</p>
+</div><!--/.post-meta-->
+</div><!--/.related-inner-->
+</article>
+</li><!--/.related-->
+<li class="related post-hover">
+<article class="post-10065 post type-post status-publish format-standard has-post-thumbnail hentry category-gtk-2 tag-glade tag-python">
+<div class="post-thumbnail">
+<a href="http://www.tecmint.com/create-more-advance-gui-applications-in-linux/" title="Create More Advance GUI Applications Using PyGobject Tool in Linux – Part 2">
+<img src="1x1.trans.gif" data-lazy-src="http://www.tecmint.com/wp-content/uploads/2014/12/Create-GUI-Applications-in-Linux-520x245.jpg" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Create GUI Applications in Linux" srcset="http://www.tecmint.com/wp-content/uploads/2014/12/Create-GUI-Applications-in-Linux-520x245.jpg 520w, http://www.tecmint.com/wp-content/uploads/2014/12/Create-GUI-Applications-in-Linux-720x340.jpg 720w" sizes="(max-width: 520px) 100vw, 520px" height="245" width="520">																								</a>
+<a class="post-comments" href="http://www.tecmint.com/create-more-advance-gui-applications-in-linux/#comments"><span><i class="fa fa-comments-o"></i>6</span></a>
+</div><!--/.post-thumbnail-->
+<div class="related-inner">
+<h4 class="post-title">
+<a href="http://www.tecmint.com/create-more-advance-gui-applications-in-linux/" rel="bookmark" title="Create More Advance GUI Applications Using PyGobject Tool in Linux – Part 2">Create More Advance GUI Applications Using PyGobject Tool in Linux – Part 2</a>
+</h4><!--/.post-title-->
+<div class="post-meta group">
+<p class="post-date">3 Dec, 2014</p>
+</div><!--/.post-meta-->
+</div><!--/.related-inner-->
+</article>
+</li><!--/.related-->
+<li class="related post-hover">
+<article class="post-5498 post type-post status-publish format-standard has-post-thumbnail hentry category-gtk-2 tag-command-line-graphical-boxes tag-graphical-shell-scripts tag-zenity">
+<div class="post-thumbnail">
+<a href="http://www.tecmint.com/zenity-creates-graphical-gtk-dialog-boxes-in-command-line-and-shell-scripts/" title="Zenity – Creates Graphical (GTK+) Dialog Boxes in Command-line and Shell Scripts">
+<img src="1x1.trans.gif" data-lazy-src="http://www.tecmint.com/wp-content/uploads/2014/02/Zenity.jpeg" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Install Zenity in Linux" srcset="http://www.tecmint.com/wp-content/uploads/2014/02/Zenity.jpeg 651w, http://www.tecmint.com/wp-content/uploads/2014/02/Zenity-620x445.jpeg 620w" sizes="(max-width: 651px) 100vw, 651px" height="468" width="651">																								</a>
+<a class="post-comments" href="http://www.tecmint.com/zenity-creates-graphical-gtk-dialog-boxes-in-command-line-and-shell-scripts/#comments"><span><i class="fa fa-comments-o"></i>9</span></a>
+</div><!--/.post-thumbnail-->
+<div class="related-inner">
+<h4 class="post-title">
+<a href="http://www.tecmint.com/zenity-creates-graphical-gtk-dialog-boxes-in-command-line-and-shell-scripts/" rel="bookmark" title="Zenity – Creates Graphical (GTK+) Dialog Boxes in Command-line and Shell Scripts">Zenity – Creates Graphical (GTK+) Dialog Boxes in Command-line and Shell Scripts</a>
+</h4><!--/.post-title-->
+<div class="post-meta group">
+<p class="post-date">4 Feb, 2014</p>
+</div><!--/.post-meta-->
+</div><!--/.related-inner-->
+</article>
+</li><!--/.related-->
+</ul><!--/.post-related-->
+<section id="comments" class="themeform">
+<h3 class="heading">6 Responses</h3>
+<ul class="comment-tabs group">
+<li class="active"><a href="#commentlist-container"><i class="fa fa-comments-o"></i>Comments<span>6</span></a></li>
+<li><a href="#pinglist-container"><i class="fa fa-share"></i>Pingbacks<span>0</span></a></li>
+</ul>
+<div id="commentlist-container" class="comment-tab">
+<ol class="commentlist">
+<li class="comment even thread-even depth-1 parent" id="comment-665389">
+<div id="div-comment-665389" class="comment-body">
+<div class="comment-author vcard">
+<img src="1x1.trans.gif" data-lazy-src="http://0.gravatar.com/avatar/0df82e9997b935c193552b1bdbe992f4?s=96&amp;d=blank&amp;r=g" alt="" srcset="http://0.gravatar.com/avatar/0df82e9997b935c193552b1bdbe992f4?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96">			<cite class="fn">Anonymus</cite> <span class="says">says:</span>		</div>
+<div class="comment-meta commentmetadata"><a href="http://www.tecmint.com/create-gui-applications-in-linux/#comment-665389">
+September 14, 2015 at 4:09 am</a>		</div>
+<p>You have a minor syntax error in the first script, try to add parentheses to the print command</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.tecmint.com/create-gui-applications-in-linux/?replytocom=665389#respond" onclick="return addComment.moveForm( &quot;div-comment-665389&quot;, &quot;665389&quot;, &quot;respond&quot;, &quot;9817&quot; )" aria-label="Reply to Anonymus">Reply</a></div>
+</div>
+<ul class="children">
+<li class="comment odd alt depth-2" id="comment-665833">
+<div id="div-comment-665833" class="comment-body">
+<div class="comment-author vcard">
+<img src="1x1.trans.gif" data-lazy-src="http://1.gravatar.com/avatar/1374d0df45065e405e1b059d2fca04ff?s=96&amp;d=blank&amp;r=g" alt="" srcset="http://1.gravatar.com/avatar/1374d0df45065e405e1b059d2fca04ff?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96">			<cite class="fn">M.Hanny Sabbagh</cite> <span class="says">says:</span>		</div>
+<div class="comment-meta commentmetadata"><a href="http://www.tecmint.com/create-gui-applications-in-linux/#comment-665833">
+September 14, 2015 at 6:27 pm</a>		</div>
+<p>Nope, I don’t, I just tested the script and it works perfectly.</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.tecmint.com/create-gui-applications-in-linux/?replytocom=665833#respond" onclick="return addComment.moveForm( &quot;div-comment-665833&quot;, &quot;665833&quot;, &quot;respond&quot;, &quot;9817&quot; )" aria-label="Reply to M.Hanny Sabbagh">Reply</a></div>
+</div>
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-384905">
+<div id="div-comment-384905" class="comment-body">
+<div class="comment-author vcard">
+<img src="1x1.trans.gif" data-lazy-src="http://1.gravatar.com/avatar/18d2470041d894062af166f858a12feb?s=96&amp;d=blank&amp;r=g" alt="" srcset="http://1.gravatar.com/avatar/18d2470041d894062af166f858a12feb?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96">			<cite class="fn">Jimmy</cite> <span class="says">says:</span>		</div>
+<div class="comment-meta commentmetadata"><a href="http://www.tecmint.com/create-gui-applications-in-linux/#comment-384905">
+November 27, 2014 at 9:49 pm</a>		</div>
+<p>There is an error in the script of the builder. The name of the function in the Handler() should be the same as the one in glade.</p>
+<p> Instead of buttonclicked, it should be button1_clicked  ;)</p>
+<p>Thanks for this tuto! Really helpful</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.tecmint.com/create-gui-applications-in-linux/?replytocom=384905#respond" onclick="return addComment.moveForm( &quot;div-comment-384905&quot;, &quot;384905&quot;, &quot;respond&quot;, &quot;9817&quot; )" aria-label="Reply to Jimmy">Reply</a></div>
+</div>
+<ul class="children">
+<li class="comment odd alt depth-2" id="comment-386415">
+<div id="div-comment-386415" class="comment-body">
+<div class="comment-author vcard">
+<img src="1x1.trans.gif" data-lazy-src="http://1.gravatar.com/avatar/1374d0df45065e405e1b059d2fca04ff?s=96&amp;d=blank&amp;r=g" alt="" srcset="http://1.gravatar.com/avatar/1374d0df45065e405e1b059d2fca04ff?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96">			<cite class="fn">Hanny Helal</cite> <span class="says">says:</span>		</div>
+<div class="comment-meta commentmetadata"><a href="http://www.tecmint.com/create-gui-applications-in-linux/#comment-386415">
+November 29, 2014 at 12:25 pm</a>		</div>
+<p>Thanks Jimmy ! This error will be fixed.<br>
+Greetings.</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.tecmint.com/create-gui-applications-in-linux/?replytocom=386415#respond" onclick="return addComment.moveForm( &quot;div-comment-386415&quot;, &quot;386415&quot;, &quot;respond&quot;, &quot;9817&quot; )" aria-label="Reply to Hanny Helal">Reply</a></div>
+</div>
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+<li class="comment even thread-even depth-1" id="comment-382090">
+<div id="div-comment-382090" class="comment-body">
+<div class="comment-author vcard">
+<img src="1x1.trans.gif" data-lazy-src="http://0.gravatar.com/avatar/92ca297a849f10e1152346e403672bc2?s=96&amp;d=blank&amp;r=g" alt="" srcset="http://0.gravatar.com/avatar/92ca297a849f10e1152346e403672bc2?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96">			<cite class="fn">Israel</cite> <span class="says">says:</span>		</div>
+<div class="comment-meta commentmetadata"><a href="http://www.tecmint.com/create-gui-applications-in-linux/#comment-382090">
+November 24, 2014 at 1:13 pm</a>		</div>
+<p>Thanks a lot !!<br>
+it’s exactly what I need</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.tecmint.com/create-gui-applications-in-linux/?replytocom=382090#respond" onclick="return addComment.moveForm( &quot;div-comment-382090&quot;, &quot;382090&quot;, &quot;respond&quot;, &quot;9817&quot; )" aria-label="Reply to Israel">Reply</a></div>
+</div>
+</li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-378102">
+<div id="div-comment-378102" class="comment-body">
+<div class="comment-author vcard">
+<img src="1x1.trans.gif" data-lazy-src="http://0.gravatar.com/avatar/0b3e8a54151c1f9b950ed346293d65cb?s=96&amp;d=blank&amp;r=g" alt="" srcset="http://0.gravatar.com/avatar/0b3e8a54151c1f9b950ed346293d65cb?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96">			<cite class="fn"><a href="http://www.linuxando.com/" rel="external nofollow" class="url">Virneto</a></cite> <span class="says">says:</span>		</div>
+<div class="comment-meta commentmetadata"><a href="http://www.tecmint.com/create-gui-applications-in-linux/#comment-378102">
+November 20, 2014 at 6:02 pm</a>		</div>
+<p>Very cool and usefull content.<br>
+I’ve put it already in my task list.</p>
+<p>Cheers!!</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.tecmint.com/create-gui-applications-in-linux/?replytocom=378102#respond" onclick="return addComment.moveForm( &quot;div-comment-378102&quot;, &quot;378102&quot;, &quot;respond&quot;, &quot;9817&quot; )" aria-label="Reply to Virneto">Reply</a></div>
+</div>
+</li><!-- #comment-## -->
+</ol><!--/.commentlist-->
+</div>	
+<div id="respond" class="comment-respond">
+<h3 id="reply-title" class="comment-reply-title">Got something to say? Join the discussion. <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.tecmint.com/create-gui-applications-in-linux/#respond" style="display: none;">Cancel reply</a></small></h3>				<form action="http://www.tecmint.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" value="" size="30" maxlength="245" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" value="" size="30" maxlength="200" type="text"></p>
+<!-- Subscribe to Comments Reloaded version 160902 --><!-- BEGIN: subscribe to comments reloaded --><p class="comment-form-subscriptions"><label for="subscribe-reloaded"><input style="width: 30px;" name="subscribe-reloaded" id="subscribe-reloaded" value="yes" type="checkbox"> Notify me of followup comments via e-mail. You can also <a href="http://www.tecmint.com/comment-subscriptions/?srp=9817&amp;srk=673f0568a0637a1105113a34047afde3&amp;sra=s&amp;srsrc=f">subscribe</a> without commenting.</label></p><!-- END: subscribe to comments reloaded --><p class="form-submit"><input name="submit" id="submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="9817" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="416ea3aa83" type="hidden"></p><p style="display: none;"></p>				<input id="ak_js" name="ak_js" value="1473078165568" type="hidden"></form>
+</div><!-- #respond -->
+</section><!--/#comments-->		
+</div><!--/.pad-->
+</section><!--/.content-->
+<div class="sidebar s1">
+<a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+<div class="sidebar-content">
+<div class="sidebar-top group">
+<span style="color: rgb(0, 40, 115); font-weight: 600; font-size: 20px;">I <i class="fa fa-heart col-love-l"></i> TecMint :</span>
+<ul class="social-links"><li><a rel="nofollow" class="social-tooltip" title="twitter" href="http://twitter.com/tecmint" target="Array"><i class="fa fa-twitter" style="color: rgb(51, 204, 255);"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="facebook" href="https://www.facebook.com/TecMint" target="Array"><i class="fa fa-facebook" style="color: rgb(59, 89, 152);"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Google+" href="https://plus.google.com/101049688653487009744" target="Array"><i class="fa fa-google-plus" style="color: rgb(219, 74, 57);"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Feedly" href="http://feedly.com/i/subscription/feed/http://www.tecmint.com/feed/" target="Array"><i class="fa fa-rss" style="color: rgb(135, 192, 64);"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Youtube" href="https://www.youtube.com/channel/UCkiRkzdLvoGBtW_YArytJlQ" target="Array"><i class="fa fa fa-youtube-square" style="color: rgb(196, 48, 43);"></i></a></li></ul>			</div>
+<div id="text-23" class="widget widget_text">			<div class="textwidget">  <div style="background: rgb(219, 68, 85) none repeat scroll 0% 0%;" class="message">
+<center><a href="http://www.tecmint.com/free-online-linux-learning-guide-for-beginners/" target="_top"><span style="font-weight: bold; font-size: 18px;"><i class="fa fa-linux"></i> BEGINNER'S GUIDE FOR LINUX <i class="fa fa-linux"></i></span> <span style="font-weight: bold; font-size: 16px;">Start learning Linux in minutes</span> <i class="fa fa-arrow-right"></i></a>
+</center>
+</div></div>
+</div><div id="text-21" class="widget widget_text">			<div class="textwidget"><center>
+<!-- Sidebar Top Ad 300x250 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="7270921771"></ins>
+
+</center></div>
+</div><div id="text-25" class="widget widget_text">			<div class="textwidget"><div class="message"><center><a href="http://www.tecmint.com/vi-editor-usage/" target="_top"><span style="font-weight: bold; font-size: 17px;"><i class="fa fa-linux"></i> Vi/Vim Editor BEGINNER'S GUIDE <i class="fa fa-linux"></i></span> <span style="font-weight: bold; font-size: 16px;">Learn vi/vim as a Full Text Editor</span> <i class="fa fa-file-text"></i>
+</a></center></div></div>
+</div><div id="text-24" class="widget widget_text">			<div class="textwidget"><span style="float: right; text-decoration: underline;"><a onclick="ga('send','event','Advertise Here','www.tecmint.com')" target="_top" href="http://www.tecmint.com/advertise/">Advertise Here</a></span>
+
+
+</div>
+</div><div id="text-26" class="widget widget_text">			<div class="textwidget"><div class="message" style="background-color: rgb(171, 6, 25);"><center><span style="font-weight: bold; font-size: 17px;"><i class="fa fa-linux"></i> Linux Foundation Certification <i class="fa fa-linux"></i></span> <span style="font-weight: bold; font-size: 16px;">Exam Study Guide to <a style="text-decoration: underline;" target="_top" href="http://www.tecmint.com/sed-command-to-create-edit-and-manipulate-files-in-linux/">LFCS</a> and <a style="text-decoration: underline;" target="_top" href="http://www.tecmint.com/installing-network-services-and-configuring-services-at-system-boot/">LFCE</a></span></center></div></div>
+</div><div id="text-3" class="widget widget_text">			<div class="textwidget"><div class="ads-sidebar-desktop">
+<center>
+<!-- SideBar2 Ads 300x600 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 600px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="9098920170"></ins>
+
+</center>
+</div></div>
+</div><div id="alxtabs-2" class="widget widget_alx_tabs">
+<ul class="alx-tabs-nav group tab-count-2"><li class="alx-tab tab-popular active"><a href="#tab-popular" title="Popular Posts"><i class="fa fa-star"></i><span>Popular Posts</span></a></li><li class="alx-tab tab-comments"><a href="#tab-comments" title="Recent Comments"><i class="fa fa-comments-o"></i><span>Recent Comments</span></a></li></ul>
+<div class="alx-tabs-container">
+<ul style="display: block;" id="tab-popular" class="alx-tab group ">
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="http://www.tecmint.com/how-to-add-linux-host-to-nagios-monitoring-server/" rel="bookmark" title="How to Add Linux Host to Nagios Monitoring Server Using NRPE Plugin">How to Add Linux Host to Nagios Monitoring Server Using NRPE Plugin</a></p>
+</div>
+</li>
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="http://www.tecmint.com/install-nagios-in-linux/" rel="bookmark" title="Nagios 4.2.0 Released – Install on RHEL/CentOS 7.x/6.x/5.x and Fedora 24-19">Nagios 4.2.0 Released – Install on RHEL/CentOS 7.x/6.x/5.x and Fedora 24-19</a></p>
+</div>
+</li>
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="http://www.tecmint.com/install-cacti-network-monitoring-on-rhel-centos-6-3-5-8-and-fedora-17-12/" rel="bookmark" title="Install Cacti (Network Monitoring) on RHEL/CentOS 7.x/6.x/5.x and Fedora 24-12">Install Cacti (Network Monitoring) on RHEL/CentOS 7.x/6.x/5.x and Fedora 24-12</a></p>
+</div>
+</li>
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="http://www.tecmint.com/install-google-chrome-on-redhat-centos-fedora-linux/" rel="bookmark" title="Google Chrome 52 Released – Install on RHEL/CentOS 7/6 and Fedora 23-15">Google Chrome 52 Released – Install on RHEL/CentOS 7/6 and Fedora 23-15</a></p>
+</div>
+</li>
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="http://www.tecmint.com/install-wine-in-rhel-centos-and-fedora/" rel="bookmark" title="Wine 1.8 Released After 17 Months of Development – Install on RHEL/CentOS and Fedora">Wine 1.8 Released After 17 Months of Development – Install on RHEL/CentOS and Fedora</a></p>
+</div>
+</li>
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="http://www.tecmint.com/install-apache-mysql-php-on-redhat-centos-fedora/" rel="bookmark" title="Install Latest Apache 2.4, MySQL 5.5/MariaDB 10.1 and PHP 5.5/5.6 on RHEL/CentOS 7/6 &amp; Fedora 24-18">Install Latest Apache 2.4, MySQL 5.5/MariaDB 10.1 and PHP 5.5/5.6 on RHEL/CentOS 7/6 &amp; Fedora 24-18</a></p>
+</div>
+</li>
+</ul><!--/.alx-tab-->
+<ul style="display: none;" id="tab-comments" class="alx-tab group avatars-enabled">
+<li>
+<div class="tab-item-avatar">
+<a href="http://www.tecmint.com/install-sugarcrm-community-edition-on-centos-debian-ubuntu/comment-page-1/#comment-812532">
+<img data-lazy-loaded="true" style="display: block;" src="be16e54026c7429d28490cce41b1e157" alt="" srcset="http://2.gravatar.com/avatar/be16e54026c7429d28490cce41b1e157?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96">							</a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Matei Cezar says:</div>
+<div class="tab-item-comment"><a href="http://www.tecmint.com/install-sugarcrm-community-edition-on-centos-debian-ubuntu/comment-page-1/#comment-812532">Looks like you've installed SugarCRM on a different location than /var/www/html...</a></div>
+</div>
+</li>
+<li>
+<div class="tab-item-avatar">
+<a href="http://www.tecmint.com/ssh-passwordless-login-using-ssh-keygen-in-5-easy-steps/comment-page-9/#comment-812503">
+<img data-lazy-loaded="true" style="display: block;" src="882076f2a23fb9617a62e50cb27c4eb0" alt="" srcset="http://2.gravatar.com/avatar/882076f2a23fb9617a62e50cb27c4eb0?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96">							</a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Alexander says:</div>
+<div class="tab-item-comment"><a href="http://www.tecmint.com/ssh-passwordless-login-using-ssh-keygen-in-5-easy-steps/comment-page-9/#comment-812503">It is maybe the first command which I run when somebody...</a></div>
+</div>
+</li>
+<li>
+<div class="tab-item-avatar">
+<a href="http://www.tecmint.com/upgrade-mariadb-5-5-to-10-centos-rhel-debian-ubuntu/comment-page-1/#comment-812449">
+<img data-lazy-loaded="true" style="display: block;" src="7badddbc53297b2e8ed7011cf45df0c0" alt="" srcset="http://1.gravatar.com/avatar/7badddbc53297b2e8ed7011cf45df0c0?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96">							</a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Ravi Saive says:</div>
+<div class="tab-item-comment"><a href="http://www.tecmint.com/upgrade-mariadb-5-5-to-10-centos-rhel-debian-ubuntu/comment-page-1/#comment-812449">@David,  Thanks for the tip, hope it will help other...</a></div>
+</div>
+</li>
+<li>
+<div class="tab-item-avatar">
+<a href="http://www.tecmint.com/how-to-enable-epel-repository-for-rhel-centos-6-5/comment-page-11/#comment-812447">
+<img data-lazy-loaded="true" style="display: block;" src="7badddbc53297b2e8ed7011cf45df0c0" alt="" srcset="http://1.gravatar.com/avatar/7badddbc53297b2e8ed7011cf45df0c0?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96">							</a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Ravi Saive says:</div>
+<div class="tab-item-comment"><a href="http://www.tecmint.com/how-to-enable-epel-repository-for-rhel-centos-6-5/comment-page-11/#comment-812447">@Ankit,  You need to enable your RedHat subscription to get...</a></div>
+</div>
+</li>
+<li>
+<div class="tab-item-avatar">
+<a href="http://www.tecmint.com/install-cinnamon-desktop-in-ubuntu-fedora-workstations/comment-page-1/#comment-812446">
+<img data-lazy-loaded="true" style="display: block;" src="7badddbc53297b2e8ed7011cf45df0c0" alt="" srcset="http://1.gravatar.com/avatar/7badddbc53297b2e8ed7011cf45df0c0?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96">							</a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Ravi Saive says:</div>
+<div class="tab-item-comment"><a href="http://www.tecmint.com/install-cinnamon-desktop-in-ubuntu-fedora-workstations/comment-page-1/#comment-812446">@JohnDoe,  If you want similar look and feel of Cinnamon...</a></div>
+</div>
+</li>
+<li>
+<div class="tab-item-avatar">
+<a href="http://www.tecmint.com/linux-server-hardening-security-tips/comment-page-5/#comment-812441">
+<img data-lazy-loaded="true" style="display: block;" src="7badddbc53297b2e8ed7011cf45df0c0" alt="" srcset="http://1.gravatar.com/avatar/7badddbc53297b2e8ed7011cf45df0c0?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96">							</a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Ravi Saive says:</div>
+<div class="tab-item-comment"><a href="http://www.tecmint.com/linux-server-hardening-security-tips/comment-page-5/#comment-812441">@Khusal,  Here are the ultimate guides to secure and harden...</a></div>
+</div>
+</li>
+</ul><!--/.alx-tab-->
+</div>
+</div>
+<div id="text-27" class="widget widget_text">			<div class="textwidget"><center>
+<a target="_top" href="http://www.tecmint.com/red-hat-rhcsa-rhce-exam-certification-book/"><img alt="RedHat RHCSA and RHCE Certification Exam Study Ebook" src="redhat-rhcsa-rhce-exam.png"></a>
+</center></div>
+</div><div id="text-28" class="widget widget_text">			<div class="textwidget"><div class="message" style="background-color: rgb(13, 124, 57);"><center><p style="font-weight: bold; font-size: 18px;">Linux System Administrator Bundle with 7-Courses (96% off)</p> 
+<p style="background-color: rgb(3, 68, 29); margin: 6px 35px; padding: 10px;"><a rel="nofollow" target="_top" href="https://deals.tecmint.com/sales/complete-linux-crash-course-includes-topics-on-red-hat-unix-kali-python-and-opensuse?utm_source=tecmint.com&amp;utm_medium=referral&amp;utm_campaign=complete-linux-crash-course-includes-topics-on-red-hat-unix-kali-python-and-opensu&amp;_ga=1.95416024.550662903.1451974395" style="font-size: 25px; font-weight: bold;">Add to Cart - $69</a></p>
+<p style="font-size: 14px; font-weight: bold;"><i aria-hidden="true" class="fa fa-clock-o"></i> Ending In: 3 days
+</p></center></div>
+<div style="background-color: rgb(244, 64, 59);" class="message"><center><p style="font-weight: bold; font-size: 18px;">CentOS &amp; Red Hat Certified System Administrator Course (90% off)</p> 
+<p style="background-color: rgb(157, 24, 21); margin: 6px 35px; padding: 10px;"><a style="font-size: 25px; font-weight: bold;" href="http://www.tecmint.com/redhat-linux-certified-system-administrator-course/" target="_top" rel="nofollow">Add to Cart - $19</a></p>
+<p style="font-size: 14px; font-weight: bold;"><i class="fa fa-clock-o" aria-hidden="true"></i> Ending In: 4 days
+</p></center></div></div>
+</div><div id="text-4" class="widget widget_text"><h3>Download Free Linux eBooks</h3>			<div class="textwidget"><ol>
+<li><a onclick="ga('send','event','Linux Command Line Cheat Sheet','tecmint.tradepub.com')" href="http://tecmint.tradepub.com/free/w_makb09/prgm.cgi" rel="nofollow" target="_top">Complete Linux Command Line Cheat Sheet</a></li>
+<li><a onclick="ga('send','event','The GNU/Linux Advanced Administration Guide','tecmint.tradepub.com')" href="http://tecmint.tradepub.com/free/w_free01/prgm.cgi" rel="nofollow" target="_top">The GNU/Linux Advanced Administration Guide</a></li>
+<li><a onclick="ga('send','event','Securing &amp; Optimizing Linux','tecmint.tradepub.com')" href="http://tecmint.tradepub.com/free/w_opeb01/prgm.cgi" rel="nofollow" target="_top">Securing &amp; Optimizing Linux Servers</a></li>
+<li><a onclick="ga('send','event','Linux Patch Management','tecmint.tradepub.com')" href="http://tecmint.tradepub.com/free/w_infk12/prgm.cgi" rel="nofollow" target="_top">Linux Patch Management: Keeping Linux Up To Date</a></li>
+<li><a onclick="ga('send','event','Introduction to Linux - A Hands on Guide','tecmint.tradepub.com')" href="http://tecmint.tradepub.com/free/w_mach01/prgm.cgi" rel="nofollow" target="_top">Introduction to Linux – A Hands on Guide</a></li>
+<li><a onclick="ga('send','event','Understanding the Linux - Virtual Memory Manager','tecmint.tradepub.com')" href="http://tecmint.tradepub.com/free/w_infk10/prgm.cgi" rel="nofollow" target="_top">Understanding the Linux® Virtual Memory Manager</a></li>
+<li><a onclick="ga('send','event','Linux Bible','tecmint.tradepub.com')" href="http://tecmint.tradepub.com/free/w_wile13/prgm.cgi" rel="nofollow" target="_top">Linux Bible – Packed with Updates and Exercises</a></li>
+<li><a onclick="ga('send','event','A Newbie’s Getting Started Guide','tecmint.tradepub.com')" href="http://tecmint.tradepub.com/free/w_make07/prgm.cgi" rel="nofollow" target="_top">A Newbie’s Getting Started Guide to Linux</a></li>
+<li><a onclick="ga('send','event','Linux from Scratch','tecmint.tradepub.com')" href="http://tecmint.tradepub.com/free/w_linu01/prgm.cgi" rel="nofollow" target="_top">Linux from Scratch – Create Your Own Linux OS</a></li>
+<li><a onclick="ga('send','event','Linux Shell Scripting Cookbook','tecmint.tradepub.com')" href="http://tecmint.tradepub.com/free/w_pack42/prgm.cgi" rel="nofollow" target="_top">Linux Shell Scripting Cookbook, Second Edition</a></li>
+<li><a onclick="ga('send','event','Securing and Optimizing Linux','tecmint.tradepub.com')" href="http://tecmint.tradepub.com/free/w_opeb01/prgm.cgi" rel="nofollow" target="_top">Securing &amp; Optimizing Linux: The Hacking Solution</a></li>
+<li><a onclick="ga('send','event','User Mode Linux','tecmint.tradepub.com')" href="http://tecmint.tradepub.com/free/w_infk09/prgm.cgi" rel="nofollow" target="_top">User Mode Linux – Understanding and Administration</a></li>
+</ol></div>
+</div><div id="text-29" class="widget widget_text">			<div class="textwidget"><div id="subscribebox">
+<div class="follow-subscribe-social">
+<ul>
+<li><a href="http://twitter.com/tecmint" target="_top"><i class="fa fa-twitter"></i></a></li>
+<li><a href="https://www.facebook.com/TecMint" target="_top"><i class="fa fa-facebook"></i></a></li>
+<li><a href="https://plus.google.com/101049688653487009744" target="_top"><i class="fa fa-google"></i></a></li>
+<li><a href="https://www.youtube.com/channel/UCkiRkzdLvoGBtW_YArytJlQ" target="_top"><i class="fa fa-youtube"></i></a></li>
+<li><a href="https://www.linkedin.com/company/tecmint" target="_top"><i class="fa fa-linkedin"></i></a></li>
+</ul>
+</div>
+<p>INSTANT UPDATES FOR NEW POSTS</p>
+<form target="popupwindow" onsubmit="window.open(&quot;https://feedburner.google.com/fb/a/mailverify?uri=tecmint&quot;, &quot;popupwindow&quot;, &quot;scrollbars=yes,width=550,height=520&quot;); return true" method="post" action="https://feedburner.google.com/fb/a/mailverify">
+<input name="uri" value="tecmint" type="hidden">
+<input name="loc" value="en_US" type="hidden">
+<input value="Enter Your Email Address :)" onfocus="if (this.value == &quot;Enter Your Email Address :)&quot;) {this.value = &quot;&quot;;}" onblur="if (this.value == &quot;&quot;) {this.value = &quot;Enter Your Email Address :)&quot;;}" name="email" class="subscribe-email" type="text">
+<input class="subscribe-button" value="Subscribe" type="submit">
+</form>
+</div></div>
+</div>			
+</div><!--/.sidebar-content-->
+</div><!--/.sidebar-->
+				</div><!--/.main-inner-->
+</div><!--/.main-->			
+</div><!--/.container-inner-->
+</div><!--/.container-->
+<footer id="footer">
+<section class="container" id="footer-ads">
+<div class="container-inner">
+</div><!--/.container-inner-->
+</section><!--/.container-->
+<section class="container" id="footer-widgets">
+<div class="container-inner">
+<div class="pad group">
+<div class="footer-widget-1 grid one-third ">
+<div id="alxposts-3" class="widget widget_alx_posts">
+<h3>Linux Monitoring Tools</h3>
+<ul class="alx-posts group ">
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="http://www.tecmint.com/goaccess-a-real-time-apache-and-nginx-web-server-log-analyzer/" rel="bookmark" title="GoAccess (A Real-Time Apache and Nginx) Web Server Log Analyzer">GoAccess (A Real-Time Apache and Nginx) Web Server Log Analyzer</a></p>
+<p class="post-item-date">12 Apr, 2016</p>			</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="http://www.tecmint.com/how-to-add-linux-host-to-nagios-monitoring-server/" rel="bookmark" title="How to Add Linux Host to Nagios Monitoring Server Using NRPE Plugin">How to Add Linux Host to Nagios Monitoring Server Using NRPE Plugin</a></p>
+<p class="post-item-date">8 Nov, 2013</p>			</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="http://www.tecmint.com/smem-linux-memory-usage-per-process-per-user/" rel="bookmark" title="Smem – Reports Memory Consumption Per-Process and Per-User Basis in Linux">Smem – Reports Memory Consumption Per-Process and Per-User Basis in Linux</a></p>
+<p class="post-item-date">4 Jun, 2016</p>			</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="http://www.tecmint.com/install-cacti-network-monitoring-on-rhel-centos-6-3-5-8-and-fedora-17-12/" rel="bookmark" title="Install Cacti (Network Monitoring) on RHEL/CentOS 7.x/6.x/5.x and Fedora 24-12">Install Cacti (Network Monitoring) on RHEL/CentOS 7.x/6.x/5.x and Fedora 24-12</a></p>
+<p class="post-item-date">19 Mar, 2015</p>			</div>
+</li>
+</ul><!--/.alx-posts-->
+</div>
+</div>
+<div class="footer-widget-2 grid one-third ">
+<div id="alxposts-4" class="widget widget_alx_posts">
+<h3>Linux Interview Questions</h3>
+<ul class="alx-posts group ">
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="http://www.tecmint.com/basic-linux-interview-questions-and-answers/" rel="bookmark" title="11 Basic Linux Interview Questions and Answers">11 Basic Linux Interview Questions and Answers</a></p>
+<p class="post-item-date">18 Nov, 2013</p>			</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="http://www.tecmint.com/networking-interview-questions/" rel="bookmark" title="10 Basic Interview Questions and Answers on Linux Networking – Part 1">10 Basic Interview Questions and Answers on Linux Networking – Part 1</a></p>
+<p class="post-item-date">2 Aug, 2014</p>			</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="http://www.tecmint.com/10-interview-questions-and-answers-on-various-commands-in-linux/" rel="bookmark" title="10 Interview Questions and Answers on Various Commands in Linux">10 Interview Questions and Answers on Various Commands in Linux</a></p>
+<p class="post-item-date">22 Mar, 2014</p>			</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="http://www.tecmint.com/10-useful-interview-questions-and-answers-on-linux-commands/" rel="bookmark" title="10 Useful Interview Questions and Answers on Linux Commands">10 Useful Interview Questions and Answers on Linux Commands</a></p>
+<p class="post-item-date">21 Jul, 2014</p>			</div>
+</li>
+</ul><!--/.alx-posts-->
+</div>
+</div>
+<div class="footer-widget-3 grid one-third last">
+<div id="alxposts-5" class="widget widget_alx_posts">
+<h3>Open Source Tools</h3>
+<ul class="alx-posts group ">
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="http://www.tecmint.com/the-truth-of-python-and-perl-features-pros-and-cons-discussed/" rel="bookmark" title="The Truth of Python and Perl  – Features, Pros and Cons Discussed">The Truth of Python and Perl  – Features, Pros and Cons Discussed</a></p>
+<p class="post-item-date">16 Jan, 2014</p>			</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="http://www.tecmint.com/automating-linux-system-administration-tasks/" rel="bookmark" title="Fabric – Automate Your Linux Administration Tasks and Application Deployments Over SSH">Fabric – Automate Your Linux Administration Tasks and Application Deployments Over SSH</a></p>
+<p class="post-item-date">18 Nov, 2015</p>			</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="http://www.tecmint.com/setup-remote-desktop-using-x2go-server-and-client-in-debian/" rel="bookmark" title="Installing and Configuring X2Go Server and Client on Debian 8">Installing and Configuring X2Go Server and Client on Debian 8</a></p>
+<p class="post-item-date">3 Jul, 2015</p>			</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="http://www.tecmint.com/avconv-command-examples/" rel="bookmark" title="11 ‘Avconv’ Commands to Record, Convert and Extract Videos &amp; Audios from Linux Terminal">11 ‘Avconv’ Commands to Record, Convert and Extract Videos &amp; Audios from Linux Terminal</a></p>
+<p class="post-item-date">26 Nov, 2014</p>			</div>
+</li>
+</ul><!--/.alx-posts-->
+</div>
+</div>
+</div><!--/.pad-->
+</div><!--/.container-inner-->
+</section><!--/.container-->	
+<nav class="nav-container group" id="nav-footer">
+<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+<div class="nav-text"><!-- put your mobile menu text here --></div>
+<div class="nav-wrap"><ul id="menu-footer" class="nav container group"><li id="menu-item-18572" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18572"><a href="http://www.tecmint.com/donate-to-tecmint/">Donate to TecMint</a></li>
+<li id="menu-item-10437" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10437"><a href="http://www.tecmint.com/contact-us/">Contact Us</a></li>
+<li id="menu-item-10442" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10442"><a href="http://www.tecmint.com/advertise/">Advertise on TecMint</a></li>
+<li id="menu-item-10441" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10441"><a href="http://www.tecmint.com/services/">Linux Services</a></li>
+<li id="menu-item-10435" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10435"><a href="http://www.tecmint.com/copyright-policy/">Copyright Policy</a></li>
+<li id="menu-item-10436" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10436"><a href="http://www.tecmint.com/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-13339" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13339"><a href="http://www.tecmint.com/career/">Career</a></li>
+<li id="menu-item-15143" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15143"><a target="_top" href="http://www.tecmint.com/linux-system-administration-jobs/">Linux Admin Jobs</a></li>
+</ul></div>
+</nav><!--/#nav-footer-->
+<section class="container" id="footer-bottom">
+<div class="container-inner">
+<a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+<div class="pad group">
+<div class="grid one-half">
+<div id="copyright">
+<p>Tecmint: Linux Howtos, Tutorials &amp; Guides © 2016. All Rights Reserved.</p>
+<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license"><b style="color: rgb(204, 204, 204);">(cc) BY-NC</b></a></p>
+<p>The material in this site cannot be republished either online or offline, without our permission.</p>
+</div><!--/#copyright-->
+</div>
+<div class="grid one-half last">	
+<ul class="social-links"><li><a rel="nofollow" class="social-tooltip" title="twitter" href="http://twitter.com/tecmint" target="Array"><i class="fa fa-twitter" style="color: rgb(51, 204, 255);"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="facebook" href="https://www.facebook.com/TecMint" target="Array"><i class="fa fa-facebook" style="color: rgb(59, 89, 152);"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Google+" href="https://plus.google.com/101049688653487009744" target="Array"><i class="fa fa-google-plus" style="color: rgb(219, 74, 57);"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Feedly" href="http://feedly.com/i/subscription/feed/http://www.tecmint.com/feed/" target="Array"><i class="fa fa-rss" style="color: rgb(135, 192, 64);"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Youtube" href="https://www.youtube.com/channel/UCkiRkzdLvoGBtW_YArytJlQ" target="Array"><i class="fa fa fa-youtube-square" style="color: rgb(196, 48, 43);"></i></a></li></ul>					</div>
+</div><!--/.pad-->
+</div><!--/.container-inner-->
+</section><!--/.container-->
+</footer><!--/#footer-->
+</div><!--/#wrapper-->
+
+
+
+
+
+
+
+
+<!--[if lt IE 9]>
+<script src="http://www.tecmint.com/wp-content/themes/tecmint/js/ie/respond.js"></script>
+<![endif]-->
+<!--     ===== START Dreamgrow Scroll Triggered Box 2.3 =====   -->
+<div class="dgd_overlay"></div>
+<div style="padding: 10px; opacity: 0; width: 300px; bottom: -189px; right: 10px; display: none;" class="dgd_stb_box clean_white" id="dgd_scrollbox-11027"><a class="dgd_stb_box_close dgd_stb_box_x" href="javascript:void(0);"> </a><h5>Join Over 150K+ Linux Users</h5>
+<div id="social_sprite">
+<ol>
+<li><a href="https://www.facebook.com/TecMint" target="_top"><span id="soc_fbuk" class="soc_icon"></span><span class="count">100,756</span></a></li>
+<li><a href="http://twitter.com/tecmint" target="_top"><span id="soc_twitter" class="soc_icon"> </span><span class="count">5,113</span></a></li>
+<li><a href="https://plus.google.com/101049688653487009744" target="_top"><span id="soc_gplus" class="soc_icon"> </span><span class="count">36,418</span></a></li>
+</ol>
+</div>
+<p>Enter your email to get latest Linux Howto's</p>
+<form class="stbContactForm" action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow"><input name="uri" value="tecmint" type="hidden"><input name="loc" value="en_US" type="hidden"><input name="email" value="Enter Your Email Address :)" type="text"><input class="stb-submit" value="Subscribe" type="submit"></form>
+<p class="stbMsgArea">
+</p><ul class="stb_social"></ul></div>
+<!--     ===== END OF Dreamgrow Scroll Triggered Box 2.3 =====   -->
+<div class="fixedBar">
+<div class="boxfloat">
+<ul id="tips">
+<li><a href="http://www.tecmint.com/51-useful-lesser-known-commands-for-linux-users/">51 Useful Lesser Known Commands for Linux Users</a></li>
+<li><a href="http://www.tecmint.com/linux-server-hardening-security-tips/">25 Hardening Security Tips for Linux Servers</a></li>
+<li><a href="http://www.tecmint.com/60-commands-of-linux-a-guide-from-newbies-to-system-administrator/">60 Commands of Linux : A Guide from Newbies to System Administrator</a></li>
+<li><a href="http://www.tecmint.com/command-line-tools-to-monitor-linux-performance/">20 Command Line Tools to Monitor Linux Performance</a></li>
+<li><a href="http://www.tecmint.com/18-tar-command-examples-in-linux/">18 Tar Command Examples in Linux</a></li>
+<li><a href="http://www.tecmint.com/20-linux-yum-yellowdog-updater-modified-commands-for-package-mangement/">20 Linux YUM (Yellowdog Updater, Modified) Commands</a></li>
+<li><a href="http://www.tecmint.com/useful-basic-commands-of-apt-get-and-apt-cache-for-package-management/">25 Useful Basic Commands of APT-GET and APT-CACHE</a></li>
+<li><a href="http://www.tecmint.com/20-funny-commands-of-linux-or-linux-is-fun-in-terminal/">20 Funny Commands of Linux or Linux is Fun in Terminal</a></li>
+<li style="display: list-item;"><a href="http://www.tecmint.com/red-hat-rhcsa-rhce-exam-certification-book/">Ebook: Introducing the RHCSA and RHCE Exam Preparation Guide</a></li>
+<li><a href="http://www.tecmint.com/sed-command-to-create-edit-and-manipulate-files-in-linux/">Preparation for the LFCS (Linux Foundation Certified SysAdmin) Exam</a></li>
+<li><a href="http://www.tecmint.com/installing-network-services-and-configuring-services-at-system-boot/">Preparation for the LFCE (Linux Foundation Certified Engineer) Exam</a></li>
+<li><a href="http://www.tecmint.com/10-useful-free-linux-ebooks-for-newbies-and-administrators/">10 Useful Free Linux eBooks for Newbies and Administrators</a></li>
+<li><a href="http://www.tecmint.com/free-linux-shell-scripting-books/">4 Free Shell Scripting eBooks for Newbies and Administrators</a></li>
+</ul>
+</div>
+</div>
+
+</body>
+</html>

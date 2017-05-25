@@ -1,0 +1,68 @@
+1: {text: "\n\n1. Downloading debian jessie img...\n\n2. FLash SD card according to
+    : \n\n=Emohub=\n#emonhub #pizero\n\nhttps://github.com/emonhub/emonhub\n\n- Install
+    Emonhub ([through Git \"\"https://openenergymonitor.org/emon/node/5986\"\"])\n\n-
+    Emonhub   PiZero[PiZero \"\"https://openenergymonitor.org/emon/node/11891\"\"]\n\n-
+    \ DietPi [thread \"\"https://openenergymonitor.org/emon/node/12384\"\"] \n\n\nThe
+    install steps are done by #ansible\n\n\nWe run the rmc_deploy script \t\t[gitlab
+    \"\"https://gitlab.com/jlark/rmc_deploy\"\"]\n\n\n\n\n\n=Linux=\n\nThe Linux Programming
+    Interface\n//Seems like the one//\n\n\n."}
+2: {text: "#rpi\n#raspbian\n#install\n\nFollowing Headless setup for Pi Zero - [Scrapbook
+    \"\"chrome://scrapbook/content/result.xul?q=headless\"\"]\n\nFollowing scrapbook
+    for instruction on Raspbian Jessie \n[Scrapbook \"\"file:///home/tom/Documents/Scrapbook/data/20160729153603/index.html\"\"]\n\nSD
+    Card is\n\ndf -h\n/dev/sdb1       7,5G  1,4G  6,2G  18% /media/tom/RASPBIAN_IM\n\nsdb1\n\n1.
+    umount /dev/sdb1\n\n2. sudo dd bs=4M if=/home/tom/Coding/Jessie/2016-05-27-raspbian-jessie-lite.img
+    of=/dev/sdb\n\n3. mount sd card again and edit PiZero config files:\n\n- /etc/network/interfaces\n-
+    auto wlan0\nallow-hotplug wlan0\niface wlan0 inet dhcp\n    address 192.168.0.101\n
+    \   gateway 192.168.0.1\n    wpa-conf /etc/wpa_supplicant/wpa_supplicant.con\n\n=Ansible=\n\n/home/PiZero/rmc_deploy\n\n-
+    [An Ansible Tutorial \"\"https://serversforhackers.com/an-ansible-tutorial\"\"]\n\n-
+    [Ansible Series \"\"https://serversforhackers.com/series/ansible\"\"]\n\n[> getting
+    started \"\"https://www.ansible.com/get-started\"\"]\n\n [> resources \"\"https://www.ansible.com/resources\"\"]\n\n-
+    github Ansible  [examples \"\"https://github.com/ansible/ansible-examples\"\"]\n\n#ansible\n\nplaybook.yml\n\nansible-playbook-s
+    \ nginx.yml\n\n1. hosts file\n[rmc]\n192.168.7.2\n\n\t# ansible all -m ping -s
+    -k -u vagrant\n\nLet's cover these commands:\n\n    all - Use all defined servers
+    from the inventory file\n     -a 'asd=123 asda=asdsad\"\n      flag is used to
+    pass any arguments to the module\n    -m ping - Use the \"ping\" module, which
+    simply runs the ping command and returns the results\n    -s - Use \"sudo\" to
+    run the commands\n    -k - Ask for a password rather than use key-based authentication\n
+    \   -u vagrant - Log into servers using user vagrant\n\n===Modules===\n\n\t# ansible
+    \t-m MODULENAME\t\t-a   'asd=123 asda=asdsad'\n\n\ngives result in json\n\n[ansible.documentation
+    on modules \"\"http://docs.ansible.com/modules_by_category.html\"\"]\n\n===PLaybook===\n\n~
+    same, but local instead of all servers\n\nPlaybook.yml\n//---\n- hosts: local\n
+    \ tasks:\n   - name: Install Nginx\n     apt: pkg=nginx state=installed update_cache=true\n//\n\n\t#
+    ansible-playbook -s playbook.yml\n\n===Handlers===\n\n\t# notify\n\nwill run any
+    handlers after the task is run\n\n\n//---\n- hosts: local\n  tasks:\n   - name:
+    Install Nginx\n     apt: pkg=nginx state=installed update_cache=true\n     notify:\n
+    \     - Start Nginx\n\n  handlers:\n   - name: Start Nginx\n     service: name=nginx
+    state=started\n//\n\n===Roles===\n\n\t$  roles/ rmc / tasks/  main.yml\n\n- Files\n
+    \  stuff to be copied onto \"server\"\n    >> roles/files/ directory\n\n- Handlers\n
+    \  All the handlers from previously\n   these can then be refered from other files\n\n\n==Rpi
+    Ansible==\n\n===1.===\n/etc/ansible/ansible.cfg\n\ncontains path to role(s)\n\n\t#
+    roles_path    = /home/tom/PiZero/rmc_deploy_pi_zero/roles\n\t\n===2.===\n\n\"Master\"
+    yaml file:\ndefines Roles and hosts\n\n/main.yml\n\n\t# hosts: all\n\t# roles:\n\t
+    \      - rmc\n\n/hosts\n\t[rmc]\n\t192.168.0.101\t\t#pi static IP\n\n===3.===\n\nthen
+    we can run\n\n\t#  ansible-playbook -s main.yml\n\n\t~   ansible-playbook -s /home/tom/PiZero/rmc_deploy_pi_zero/main.yml\n\n
+    \tactualy today I am running\n\ttom@Bongo:~$ ansible-playbook -s /home/tom/PiZero/rmc_deploy_pi_zero/main.yml
+    -vv -k\n\n \t-k asks for password then i enter SSH password >> def from config\t\tand
+    SUDO password from -k\n\n\n===4.===\n\n>> resume using task\t\t-tags\n \tansible-playbook
+    --tags packages main.yml\n\n \tStart at Task\n\ttom@Bongo:~$ ansible-playbook
+    -s /home/tom/PiZero/rmc_deploy_pi_zero/main.yml -vvvv -k --start-at-task=\"EmonPi
+    Download\"\n\n\n===5.===\n\n\n===6.===\n\n\n===7.===\n\n"}
+10: {text: "#ansible  deploy rmc v2\n\nupdated version from gitlab__707\n\n\t1. hosts
+    & main.retry\n \tchange to RPi IP\n\n\n\t2.\t\tGroup vars / all.yml\n \t> change
+    user\n\n\n\t3. \t\tetc/ ansible  .cfg\n \t  change path of roles\n \t>   /home/tom/PiZero/rmc_deploy_pi_one/roles\n\n\n\nRequirements
+    file\n\tsudo nano /home/debian/emonhub/requirements.txt\n\n\nProblem installing
+    numpy in Pip\n\tsudo nano /root/.pip/pip.log\n\nTried\n- sudo pip install 'numpy==1.11.1'
+    -v -i https://pypi.python.org/pypi/\n\n- $ sudo pip install 'numpy==1.6.2' -v
+    --extra-index-url https://pypi.python.org/pypi/\n\n- $ sudo pip install 'numpy==1.11.1'
+    -v\n\npip uses\nhttps://pypi.python.org/simple/numpy/\n- version number\n\nTried
+    using website \n- https://pypi.python.org/pypi/numpy\n\n\n\n.\n\n\n\n\n\n."}
+27: {text: "#openscad\n\n==OpenSCAD==\ninteresting #examples\n\n==union==\nunion()
+    { .... }\n\n==difference ( ) ==\n\n==intersection( )==\n\n\n#CSD modules\ncube+
+    circle\n2 * cylinder\ncombine diff subtract\n\n\n#linear_extrude\n\n#functions\n\nfunction
+    f(x) = 0.5 * x + 1;\n\ncolor(\"red\")\n    for (a = [ -100 : 5 : 100 ])\n        translate([a,
+    f(a), 0]) cube(2, center = true);\n\n\n#polygons\n\"list comprehension\"\n\nmodule
+    ngon(num, r) {\n  polygon([for (i=[0:num-1], a=i*360/num) [ r*cos(a), r*sin(a)
+    ]]);\n}\n\nngon(3, 10);\ntranslate([20,0]) ngon(6, 8);\ntranslate([36,0]) ngon(10,
+    6);\n\n#recursion\nfunction factorial(n) = n == 0 ? 1 : factorial(n - 1) * n;\n\ncolor(\"cyan\")
+    text(str(\"6! = \", factorial(6)), halign = \"center\");\n\n#GEB \nsweet\n\n\n#module_recursion\n\nsin
+    = oppos / hypothenuse\n\nsin * hypothenuse = opposite\n\n\n\n\n\n\n\n#end"}

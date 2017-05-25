@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<meta charset="UTF-8">
+<title>  How To Autostart Apps In Rasbian LXDE Desktop</title>
+
+ 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="pingback" href="http://www.raspberrypi-spy.co.uk/xmlrpc.php">
+	
+<link rel="shortcut icon" href="favicon.ico">	
+
+<link rel="apple-touch-icon-precomposed" href="http://www.raspberrypi-spy.co.uk/wp-content/uploads/2015/05/Raspberry-Pi-Spy-Logo-152x152-Outline.png">
+	
+<link rel="alternate" type="application/rss+xml" title="Raspberry Pi Spy » Feed" href="http://www.raspberrypi-spy.co.uk/feed/">
+<link rel="alternate" type="application/rss+xml" title="Raspberry Pi Spy » Comments Feed" href="http://www.raspberrypi-spy.co.uk/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Raspberry Pi Spy » How To Autostart Apps In Rasbian LXDE Desktop Comments Feed" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/feed/">
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+<link rel="https://api.w.org/" href="http://www.raspberrypi-spy.co.uk/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.raspberrypi-spy.co.uk/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.raspberrypi-spy.co.uk/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="How To Use Gnuplot To Graph Data On The Raspberry Pi" href="http://www.raspberrypi-spy.co.uk/2014/04/how-to-use-gnuplot-to-graph-data-on-the-raspberry-pi/">
+<link rel="next" title="How To Capture Minecraft Screenshots On The Raspberry Pi" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-capture-minecraft-screenshots-on-the-raspberry-pi/">
+<meta name="generator" content="WordPress 4.5.3">
+<link rel="canonical" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/">
+<link rel="shortlink" href="http://www.raspberrypi-spy.co.uk/?p=3017">
+<link rel="alternate" type="application/json+oembed" href="http://www.raspberrypi-spy.co.uk/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.raspberrypi-spy.co.uk%2F2014%2F05%2Fhow-to-autostart-apps-in-rasbian-lxde-desktop%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.raspberrypi-spy.co.uk/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.raspberrypi-spy.co.uk%2F2014%2F05%2Fhow-to-autostart-apps-in-rasbian-lxde-desktop%2F&amp;format=xml">
+ 
+
+<!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+
+
+<!-- End Cookie Consent plugin -->
+ 
+
+	
+<!--[if lt IE 9]>
+<script src="http://www.raspberrypi-spy.co.uk/wp-content/themes/smart-mag/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-3017 single-format-standard page-builder right-sidebar boxed has-nav-dark">
+
+<div class="main-wrap">
+
+	
+	
+	<div class="top-bar">
+
+		<div class="wrap">
+			<section class="top-bar-content cf">
+			
+								<div class="trending-ticker">
+					<span class="heading">Trending</span>
+
+					<ul>
+												
+												
+							<li style="display: none;" class=""><a href="http://www.raspberrypi-spy.co.uk/2012/03/welcome/" title="Welcome">Welcome</a></li>
+						
+												
+							<li style="display: none;" class=""><a href="http://www.raspberrypi-spy.co.uk/2016/05/raspberry-pi-zero-now-has-a-camera-connector/" title="Raspberry Pi Zero now has a camera connector">Raspberry Pi Zero now has a camera connector</a></li>
+						
+												
+							<li style="display: list-item;" class="active"><a href="http://www.raspberrypi-spy.co.uk/2016/05/top-5-raspberry-pi-3-project-ideas/" title="Top 5 Raspberry Pi 3 Project Ideas">Top 5 Raspberry Pi 3 Project Ideas</a></li>
+						
+												
+							<li><a href="http://www.raspberrypi-spy.co.uk/2016/05/using-the-bbc-microbit-with-the-raspberry-pi/" title="Using the BBC Microbit with the Raspberry Pi">Using the BBC Microbit with the Raspberry Pi</a></li>
+						
+												
+							<li><a href="http://www.raspberrypi-spy.co.uk/2016/04/kano-computer-kit-first-impressions/" title="Kano Computer Kit First Impressions">Kano Computer Kit First Impressions</a></li>
+						
+												
+							<li><a href="http://www.raspberrypi-spy.co.uk/2016/04/8-megapixel-raspberry-pi-camera-module-v2/" title="8-megapixel Raspberry Pi Camera Module v2">8-megapixel Raspberry Pi Camera Module v2</a></li>
+						
+												
+							<li><a href="http://www.raspberrypi-spy.co.uk/2016/04/writing-sd-card-images-using-etcher-on-windows-linux-mac/" title="Write SD Card Images Using Etcher On Windows, Linux &amp; Mac">Write SD Card Images Using Etcher On Windows, Linux &amp; Mac</a></li>
+						
+												
+							<li><a href="http://www.raspberrypi-spy.co.uk/2016/03/how-to-change-your-character-skin-in-minecraft-pi-edition/" title="How to Change Your Character Skin In Minecraft Pi Edition">How to Change Your Character Skin In Minecraft Pi Edition</a></li>
+						
+												
+							<li><a href="http://www.raspberrypi-spy.co.uk/2016/03/7-port-usb-hub-for-raspberry-pi/" title="7-Port USB Hub For Raspberry Pi">7-Port USB Hub For Raspberry Pi</a></li>
+						
+												
+											</ul>
+				</div>
+				
+									
+					
+		<div class="search">
+			<form role="search" action="http://www.raspberrypi-spy.co.uk/" method="get">
+				<input autocomplete="off" name="s" class="query live-search-query" value="" placeholder="Search..." type="text">
+				<button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+			</form>
+		</div> <!-- .search -->					
+				
+							<div class="textwidget"><ul class="social-icons cf">
+	<li><a data-original-title="RSS" href="http://www.raspberrypi-spy.co.uk/?feed=rss2" class="icon fa fa-rss"><span class="visuallyhidden">RSS</span></a></li>
+	<li><a data-original-title="Twitter" href="http://twitter.com/rpispy" class="icon fa fa-twitter"><span class="visuallyhidden">Twitter</span></a></li>
+	<li><a data-original-title="Google+" href="https://plus.google.com/+RaspberryPi-SpyCoUK" class="icon fa fa-google-plus"><span class="visuallyhidden">Google+</span></a></li>
+	<li><a data-original-title="Facebook" href="http://facebook.com/rpispy" class="icon fa fa-facebook"><span class="visuallyhidden">Facebook</span></a></li>
+	<li><a data-original-title="Pinterest" href="http://www.pinterest.com/rpispy/" class="icon fa fa-pinterest"><span class="visuallyhidden">Pinterest</span></a></li>
+	<li><a data-original-title="YouTube" href="https://www.youtube.com/user/rpispy" class="icon fa fa-youtube"><span class="visuallyhidden">YouTube</span></a></li>
+</ul></div>
+						
+			</section>
+		</div>
+		
+	</div>
+	
+	<div id="main-head" class="main-head">
+		
+		<div class="wrap">
+			
+			
+			<header class="default">
+			
+				<div class="title">
+							<a href="http://www.raspberrypi-spy.co.uk/" title="Raspberry Pi Spy" rel="home" class"="">
+		
+														
+								
+				<img src="raspberry-pi-spy-logo-140x140-outline.png" class="logo-image" alt="Raspberry Pi Spy" data-at2x="http://www.raspberrypi-spy.co.uk/wp-content/uploads/2015/05/Raspberry-Pi-Spy-Logo-280x280-Outline.png">
+					 
+						
+		</a>				</div>
+				
+									
+					<div class="right">
+					
+				
+					
+			<div class="adwrap-widget">
+			
+				
+<!-- Raspberry Pi Spy 728x90 -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 728px; height: 90px;" data-ad-client="ca-pub-5084177467956694" data-ad-slot="6936497659"><ins id="aswift_0_expand" style="display: inline-table; border: medium none; height: 90px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 728px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 90px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 728px; background-color: transparent;"><iframe src="index_1.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_0" name="aswift_0" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="90" width="728"></iframe></ins></ins></ins>
+			
+			</div>
+		
+				
+							</div>
+					
+								
+			</header>
+				
+							
+				
+<div class="navigation-wrap cf">
+
+	<nav class="navigation cf nav-dark">
+	
+		<div class="">
+		
+			<div class="mobile" data-type="classic" data-search="1">
+				<a href="#" class="selected">
+					<span class="text">Navigate</span><span class="current"></span> <i class="hamburger fa fa-bars"></i>
+				</a>
+			</div>
+			
+			<div class="menu-menu-1-container"><ul id="menu-menu-1" class="menu"><li id="menu-item-3147" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-3147"><a href="http://www.raspberrypi-spy.co.uk/">Home</a></li>
+<li id="menu-item-4895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4895"><a href="http://www.raspberrypi-spy.co.uk/categories/">Categories</a>
+<ul class="sub-menu">
+	<li id="menu-item-4896" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-cat-4 menu-item-4896"><a href="http://www.raspberrypi-spy.co.uk/category/general/">General</a></li>
+	<li id="menu-item-4897" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-cat-7 menu-item-4897"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/">Hardware</a></li>
+	<li id="menu-item-4898" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-cat-145 menu-item-4898"><a href="http://www.raspberrypi-spy.co.uk/category/programming-2/">Programming</a></li>
+	<li id="menu-item-4899" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-cat-10 menu-item-4899"><a href="http://www.raspberrypi-spy.co.uk/category/python/">Python</a></li>
+	<li id="menu-item-4900" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-cat-8 menu-item-4900"><a href="http://www.raspberrypi-spy.co.uk/category/software/">Software</a></li>
+	<li id="menu-item-4901" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-cat-9 menu-item-4901"><a href="http://www.raspberrypi-spy.co.uk/category/tutorials-help/">Tutorials &amp; Help</a></li>
+</ul>
+</li>
+<li id="menu-item-3148" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3148"><a href="http://www.raspberrypi-spy.co.uk/berryclip-6-led-add-on-board/">BerryClip</a>
+<ul class="sub-menu">
+	<li id="menu-item-3149" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3149"><a href="http://www.raspberrypi-spy.co.uk/berryclip-6-led-add-on-board/berryclip-6-led-add-on-board-instructions/">BerryClip Instructions</a></li>
+	<li id="menu-item-3150" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3150"><a href="http://www.raspberrypi-spy.co.uk/berryclip-6-led-add-on-board/berryclip-plus-instructions/">BerryClip Plus Instructions</a></li>
+	<li id="menu-item-3161" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3161"><a href="http://www.raspberrypi-spy.co.uk/2014/04/berryclip-assembly-articles-videos-and-reviews/">Videos &amp; Reviews</a></li>
+</ul>
+</li>
+<li id="menu-item-4894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4894"><a href="http://www.raspberrypi-spy.co.uk/buy/">Buy</a>
+<ul class="sub-menu">
+	<li id="menu-item-3151" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3151"><a href="http://www.raspberrypi-spy.co.uk/buy/buy-a-pi-2/">Buy Pi</a></li>
+	<li id="menu-item-3152" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3152"><a href="http://www.raspberrypi-spy.co.uk/buy/buy-accessories/">Buy Accessories</a></li>
+	<li id="menu-item-3153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3153"><a href="http://www.raspberrypi-spy.co.uk/buy/buy-books/">Buy Books</a></li>
+</ul>
+</li>
+<li id="menu-item-3154" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3154"><a href="http://www.raspberrypi-spy.co.uk/tools/">Tools</a>
+<ul class="sub-menu">
+	<li id="menu-item-3155" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3155"><a href="http://www.raspberrypi-spy.co.uk/tools/pi-lite-14x9-led-matrix-sprite-editor/">Pi-Lite 14×9 LED Matrix Sprite Editor</a></li>
+	<li id="menu-item-3853" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3853"><a href="http://www.raspberrypi-spy.co.uk/tools/pi-power-estimator-app/">Pi Power Estimator App</a></li>
+	<li id="menu-item-3807" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3807"><a href="http://www.raspberrypi-spy.co.uk/tools/rpiref-raspberry-pi-pin-out-reference-app/">RPiREF Pin-out Reference App</a></li>
+	<li id="menu-item-3156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3156"><a href="http://www.raspberrypi-spy.co.uk/tools/simple-ohms-law-calculator/">Simple Ohm’s Law Calculator</a></li>
+	<li id="menu-item-3158" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3158"><a href="http://www.raspberrypi-spy.co.uk/resources/web-sites-links/">Web Sites &amp; Links</a></li>
+</ul>
+</li>
+<li id="menu-item-5015" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-cat-9 menu-item-5015"><a href="http://www.raspberrypi-spy.co.uk/category/tutorials-help/">Tutorials &amp; Help</a></li>
+<li id="menu-item-3159" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3159"><a href="http://www.raspberrypi-spy.co.uk/contact-us/">Contact Us</a></li>
+<li id="menu-item-4987" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4987"><a href="http://www.raspberrypi-spy.co.uk/site-map/">Site Map</a></li>
+</ul></div>			
+				
+		</div>
+		
+	</nav>
+
+		
+</div>				
+							
+		</div>
+		
+				
+	</div>	
+	<div class="breadcrumbs-wrap">
+		
+		<div class="wrap">
+		<div class="breadcrumbs"><span class="location">You are at:</span><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="http://www.raspberrypi-spy.co.uk/"><span itemprop="title">Home</span></a></span><span class="delim">»</span><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="http://www.raspberrypi-spy.co.uk/category/raspbian/"><span itemprop="title">Raspbian</span></a></span><span class="delim">»</span><span class="current">How To Autostart Apps In Rasbian LXDE Desktop</span></div>		</div>
+		
+	</div>
+
+
+<div class="main wrap cf">
+
+		
+	<div class="row">
+	
+		<div class="col-8 main-content">
+		
+				
+				
+<article id="post-3017" class="post-3017 post type-post status-publish format-standard has-post-thumbnail category-raspbian category-tutorials-help tag-linux tag-lxde tag-raspbian-2 title-above" itemscope="" itemtype="http://schema.org/Article">
+	
+	<header class="post-header cf">
+	
+		
+				<div class="heading cf">
+				
+			<h1 class="post-title item fn" itemprop="name headline">
+			How To Autostart Apps In Rasbian LXDE Desktop			</h1>
+			
+			<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comments" class="comments"><i class="fa fa-comments-o"></i> 29</a>
+		
+		</div>
+
+		<div class="post-meta cf">
+			<span class="posted-by">By 
+				<span class="reviewer" itemprop="author"><a href="http://www.raspberrypi-spy.co.uk/author/matt/" title="Posts by Matt" rel="author">Matt</a></span>
+			</span>
+			 
+			<span class="posted-on">on				<span class="dtreviewed">
+					<time class="value-title" datetime="2014-05-03T18:13:18+01:00" title="2014-05-03" itemprop="datePublished">May 3, 2014</time>
+				</span>
+			</span>
+			
+			<span class="cats"><a href="http://www.raspberrypi-spy.co.uk/category/raspbian/" rel="category tag">Raspbian</a>, <a href="http://www.raspberrypi-spy.co.uk/category/tutorials-help/" rel="category tag">Tutorials &amp; Help</a></span>
+				
+		</div>		
+			
+
+			<div class="featured">
+						
+							
+				<a rel="prettyPhoto" href="http://www.raspberrypi-spy.co.uk/wp-content/uploads/2014/03/raspbian_lxde_autolaunch.png" title="How To Autostart Apps In Rasbian LXDE Desktop" itemprop="image">
+				
+								
+										
+						<img src="raspbian_lxde_autolaunch-702x336.png" class="attachment-main-slider size-main-slider wp-post-image no-display appear" alt="LXDE Desktop" title="How To Autostart Apps In Rasbian LXDE Desktop" srcset="http://www.raspberrypi-spy.co.uk/wp-content/uploads/2014/03/raspbian_lxde_autolaunch-702x336.png 702w, http://www.raspberrypi-spy.co.uk/wp-content/uploads/2014/03/raspbian_lxde_autolaunch-1078x516.png 1078w" sizes="(max-width: 702px) 100vw, 702px" height="336" width="702">					
+										
+												
+				</a>
+								
+								
+					</div>
+		
+			
+	</header><!-- .post-header -->
+
+	
+
+	<div class="post-container cf">
+	
+		<div class="post-content-right">
+			<div class="post-content description " itemprop="articleBody">
+	
+					
+				
+		<p>If you use the Raspbian operating system on your Raspberry Pi you will be aware that when you type startx you launch the graphical user interface “LXDE”. Within this environment there are plenty of applications and utilities. In your projects you may want to auto-load one or more of these applications when you run startx to save you having to launch them manually.</p>
+<p><span id="more-3017"></span></p>
+<p>Popular choices might include LXTerminal, Scratch, Midori and Leafpad.</p>
+<h4><span style="font-size: 16px;">There are two methods you can choose. For most people either one will work but if in doubt use Method 1.&nbsp;In the examples below I’ve added two applications (LXTerminal and Leafpad) but you can add however many you need.</span></h4>
+<p>Start by booting your Pi to the command prompt.</p>
+<h2>Method 1</h2>
+<p>This method uses a global list of autostart applications that applies to all user accounts. They will load whenever LXDE is loaded regardless of what user is logged in at the time. Usually this user is the default ‘Pi’ account.</p>
+<p>Use the following command to launch the nano text editor and edit the autostart file :</p>
+<pre>sudo nano&nbsp;/etc/xdg/lxsession/LXDE-pi/autostart</pre>
+<p><strong>Note :</strong> The newer Raspbian image changed the folder “LXDE” to “LXDE-pi” so the line above has been updated.</p>
+<p>After the last line add a line for each application you wish to autorun. For example if I add lines for LXTerminal and Leafpad my file looks like this :</p>
+<pre>@lxpanel --profile LXDE
+@pcmanfm --desktop --profile LXDE
+@lxterminal
+@leafpad
+@xscreensaver -no-splash@</pre>
+<p>To save and exit the nano editor press CTRL-X, Y and then ENTER. You can use your preferred text editor if nano isn’t your first choice.</p>
+<h2>Method 2</h2>
+<p>The alternative method is to create a configuration file that is unique to the currently logged in user.&nbsp;First you need to edit this text file :</p>
+<pre>sudo nano&nbsp;<code>~/.config/lxsession/LXDE/autostart</code></pre>
+<p>As in Method 1 this file represents a list of commands to be executed when the GUI loads. It is usually blank when you first edit it so just add the applications you need to auto-load:</p>
+<pre><span style="color: rgb(34, 34, 34); font-family: &quot;Courier 10 Pitch&quot;,Courier,monospace; line-height: 21px;">@lxterminal
+</span>@leafpad</pre>
+<p>To save and exit the nano editor press CTRL-X, Y and then ENTER.</p>
+<h2>Test</h2>
+<p>Once your configuration file has been updated you are ready to test.</p>
+<pre>startx</pre>
+<p>The LXDE desktop should load and your chosen applications should launch.</p>
+<h2>Both Methods At The Same Time?</h2>
+<p>Since v0.4.9 If both files are present, lxsession only executes the local file. This means you can no longer use both methods at the same time. Method 2 will take priority over Method 1.</p>
+<h2>Auto-run Minecraft</h2>
+<p>Assuming you have already <a title="How To Setup Minecraft On The Raspberry Pi" href="http://www.raspberrypi-spy.co.uk/2013/10/how-to-setup-minecraft-on-the-raspberry-pi/">installed Minecraft on your Pi</a>&nbsp;you can auto-run it as well. When I am in a Python-Minecraft mood I launch Minecraft and a terminal window ready for executing scripts using the following lines :</p>
+<pre>@~/mcpi/minecraft-pi
+@lxterminal</pre>
+<p>This assume the Minecraft executable is located in ~/mcpi/ (same as /home/pi/mcpi/).</p>
+<h2>Auto-run Python Scripts</h2>
+<p>You can auto-launch your own Python scripts by adding the line :</p>
+<pre>@/usr/bin/python /home/pi/example.py</pre>
+<p>This works best with Method 2 as in this example the Python script is stored in the home directory of the default Pi user. If another user is logged in they wouldn’t have access to this directory so LXDE may not be able to autoload it.</p>
+<p>Whichever method you used just type startx from the command line and your chosen applications should load automatically.</p>
+<p><a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/raspbian_lxde_autolaunch/" rel="attachment wp-att-3019"><img class="aligncenter wp-image-3019 size-large no-display" src="raspbian_lxde_autolaunch-1024x595.png" alt="LXDE Desktop" srcset="http://www.raspberrypi-spy.co.uk/wp-content/uploads/2014/03/raspbian_lxde_autolaunch-1024x595.png 1024w, http://www.raspberrypi-spy.co.uk/wp-content/uploads/2014/03/raspbian_lxde_autolaunch-300x174.png 300w" sizes="(max-width: 702px) 100vw, 702px" height="408" width="702"></a></p>
+<p><strong>Note 1 :</strong> The order that you place the application commands doesn’t always mean they will load in that order as different applications will take different amounts of time to load completely. I would tend to put the larger applications first so they have as much time as possible to fire up. i.e. Midori before LXTerminal.</p>
+<p><strong>Note 2 :</strong> Make sure your commands come before the @xscreensaver line.</p>
+
+		
+				
+				
+			</div><!-- .post-content -->
+		</div>
+		
+	</div>
+	
+	
+	
+	
+	<div class="post-share">
+		<span class="text">Share.</span>
+		
+		<span class="share-links">
+
+			<a data-original-title="Tweet It" href="http://twitter.com/home?status=http%3A%2F%2Fwww.raspberrypi-spy.co.uk%2F2014%2F05%2Fhow-to-autostart-apps-in-rasbian-lxde-desktop%2F" class="fa fa-twitter">
+				<span class="visuallyhidden">Twitter</span></a>
+				
+			<a data-original-title="Share on Facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.raspberrypi-spy.co.uk%2F2014%2F05%2Fhow-to-autostart-apps-in-rasbian-lxde-desktop%2F" class="fa fa-facebook">
+				<span class="visuallyhidden">Facebook</span></a>
+				
+			<a data-original-title="Share on Google+" href="http://plus.google.com/share?url=http%3A%2F%2Fwww.raspberrypi-spy.co.uk%2F2014%2F05%2Fhow-to-autostart-apps-in-rasbian-lxde-desktop%2F" class="fa fa-google-plus">
+				<span class="visuallyhidden">Google+</span></a>
+				
+			<a data-original-title="Share on Pinterest" href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.raspberrypi-spy.co.uk%2F2014%2F05%2Fhow-to-autostart-apps-in-rasbian-lxde-desktop%2F&amp;media=http%3A%2F%2Fwww.raspberrypi-spy.co.uk%2Fwp-content%2Fuploads%2F2014%2F03%2Fraspbian_lxde_autolaunch.png" class="fa fa-pinterest">
+				<span class="visuallyhidden">Pinterest</span></a>
+				
+			<a data-original-title="Share on LinkedIn" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwww.raspberrypi-spy.co.uk%2F2014%2F05%2Fhow-to-autostart-apps-in-rasbian-lxde-desktop%2F" class="fa fa-linkedin">
+				<span class="visuallyhidden">LinkedIn</span></a>
+				
+			<a data-original-title="Share on Tumblr" href="http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.raspberrypi-spy.co.uk%2F2014%2F05%2Fhow-to-autostart-apps-in-rasbian-lxde-desktop%2F&amp;name=How+To+Autostart+Apps+In+Rasbian+LXDE+Desktop" class="fa fa-tumblr">
+				<span class="visuallyhidden">Tumblr</span></a>
+				
+			<a data-original-title="Share via Email" href="mailto:?subject=How%20To%20Autostart%20Apps%20In%20Rasbian%20LXDE%20Desktop&amp;body=http%3A%2F%2Fwww.raspberrypi-spy.co.uk%2F2014%2F05%2Fhow-to-autostart-apps-in-rasbian-lxde-desktop%2F" class="fa fa-envelope-o">
+				<span class="visuallyhidden">Email</span></a>
+			
+		</span>
+	</div>
+	
+		
+</article>
+
+
+
+	<section class="navigate-posts">
+	
+		<div class="previous"><span class="main-color title"><i class="fa fa-chevron-left"></i> Previous Article</span><span class="link"><a href="http://www.raspberrypi-spy.co.uk/2014/04/how-to-use-gnuplot-to-graph-data-on-the-raspberry-pi/" rel="prev">How To Use Gnuplot To Graph Data On The Raspberry Pi</a></span>		</div>
+		
+		<div class="next"><span class="main-color title">Next Article <i class="fa fa-chevron-right"></i></span><span class="link"><a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-capture-minecraft-screenshots-on-the-raspberry-pi/" rel="next">How To Capture Minecraft Screenshots On The Raspberry Pi</a></span>		</div>
+		
+	</section>
+
+
+
+	
+	<section class="related-posts">
+		<h3 class="section-head">Related Posts</h3> 
+		<ul class="highlights-box three-col related-posts">
+		
+				
+			<li class="highlights column one-third">
+				
+				<article>
+						
+					<a href="http://www.raspberrypi-spy.co.uk/2016/04/writing-sd-card-images-using-etcher-on-windows-linux-mac/" title="Write SD Card Images Using Etcher On Windows, Linux &amp; Mac" class="image-link">
+						<img src="sd_card_benchmarking-428x280.jpg" class="image wp-post-image no-display" alt="SD Card Benchmarking on The Raspberry Pi" title="Write SD Card Images Using Etcher On Windows, Linux &amp; Mac" height="280" width="428">	
+											</a>
+					
+								<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-04-11T16:09:54+01:00" itemprop="datePublished" class="meta-item">April 11, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/04/writing-sd-card-images-using-etcher-on-windows-linux-mac/#comments"><i class="fa fa-comments-o"></i> 1</a></span>					
+			</div>
+							
+					<h2><a href="http://www.raspberrypi-spy.co.uk/2016/04/writing-sd-card-images-using-etcher-on-windows-linux-mac/" title="Write SD Card Images Using Etcher On Windows, Linux &amp; Mac">Write SD Card Images Using Etcher On Windows, Linux &amp; Mac</a></h2>
+					
+										
+				</article>
+			</li>
+			
+				
+			<li class="highlights column one-third">
+				
+				<article>
+						
+					<a href="http://www.raspberrypi-spy.co.uk/2016/03/how-to-change-your-character-skin-in-minecraft-pi-edition/" title="How to Change Your Character Skin In Minecraft Pi Edition" class="image-link">
+						<img src="minecraft_change_skin-428x280.jpg" class="image wp-post-image no-display" alt="Change Skin in Minecraft Pi Edition" title="How to Change Your Character Skin In Minecraft Pi Edition" height="280" width="428">	
+											</a>
+					
+								<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-03-24T20:57:33+01:00" itemprop="datePublished" class="meta-item">March 24, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/03/how-to-change-your-character-skin-in-minecraft-pi-edition/#comments"><i class="fa fa-comments-o"></i> 2</a></span>					
+			</div>
+							
+					<h2><a href="http://www.raspberrypi-spy.co.uk/2016/03/how-to-change-your-character-skin-in-minecraft-pi-edition/" title="How to Change Your Character Skin In Minecraft Pi Edition">How to Change Your Character Skin In Minecraft Pi Edition</a></h2>
+					
+										
+				</article>
+			</li>
+			
+				
+			<li class="highlights column one-third">
+				
+				<article>
+						
+					<a href="http://www.raspberrypi-spy.co.uk/2016/03/7-segment-display-modules-and-the-raspberry-pi/" title="7-segment Display Modules and the Raspberry Pi" class="image-link">
+						<img src="7_segment_04-428x280.jpg" class="image wp-post-image no-display" alt="7 Segment Display and the Raspberry Pi" title="7-segment Display Modules and the Raspberry Pi" height="280" width="428">	
+											</a>
+					
+								<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-03-10T20:31:49+01:00" itemprop="datePublished" class="meta-item">March 10, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/03/7-segment-display-modules-and-the-raspberry-pi/#comments"><i class="fa fa-comments-o"></i> 5</a></span>					
+			</div>
+							
+					<h2><a href="http://www.raspberrypi-spy.co.uk/2016/03/7-segment-display-modules-and-the-raspberry-pi/" title="7-segment Display Modules and the Raspberry Pi">7-segment Display Modules and the Raspberry Pi</a></h2>
+					
+										
+				</article>
+			</li>
+			
+				
+			<li class="highlights column one-third">
+				
+				<article>
+						
+					<a href="http://www.raspberrypi-spy.co.uk/2016/02/raspberry-pi-3-model-b-review-setup/" title="Raspberry Pi 3 Model B Review &amp; Setup" class="image-link">
+						<img src="raspberry_pi_3_rs_01-428x280.jpg" class="image wp-post-image no-display" alt="Raspberry Pi 3" title="Raspberry Pi 3 Model B Review &amp; Setup" height="280" width="428">	
+													<span class="post-format-icon video"><i class="fa fa-film"></i></span>
+											</a>
+					
+								<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-02-29T08:20:56+01:00" itemprop="datePublished" class="meta-item">February 29, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/02/raspberry-pi-3-model-b-review-setup/#respond"><i class="fa fa-comments-o"></i> 0</a></span>					
+			</div>
+							
+					<h2><a href="http://www.raspberrypi-spy.co.uk/2016/02/raspberry-pi-3-model-b-review-setup/" title="Raspberry Pi 3 Model B Review &amp; Setup">Raspberry Pi 3 Model B Review &amp; Setup</a></h2>
+					
+										
+				</article>
+			</li>
+			
+				
+			<li class="highlights column one-third">
+				
+				<article>
+						
+					<a href="http://www.raspberrypi-spy.co.uk/2016/02/how-to-list-the-pre-installed-packages-in-raspbian/" title="How to List the Pre-installed Packages in Raspbian" class="image-link">
+						<img src="raspberry-pi-spy-wordpress-banner-code-428x200.jpg" class="image wp-post-image no-display" alt="Raspberry Pi Spy WordPress Banner - Code" title="How to List the Pre-installed Packages in Raspbian" height="200" width="428">	
+											</a>
+					
+								<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-02-27T20:50:45+01:00" itemprop="datePublished" class="meta-item">February 27, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/02/how-to-list-the-pre-installed-packages-in-raspbian/#respond"><i class="fa fa-comments-o"></i> 0</a></span>					
+			</div>
+							
+					<h2><a href="http://www.raspberrypi-spy.co.uk/2016/02/how-to-list-the-pre-installed-packages-in-raspbian/" title="How to List the Pre-installed Packages in Raspbian">How to List the Pre-installed Packages in Raspbian</a></h2>
+					
+										
+				</article>
+			</li>
+			
+				
+			<li class="highlights column one-third">
+				
+				<article>
+						
+					<a href="http://www.raspberrypi-spy.co.uk/2015/10/how-to-autorun-a-python-script-on-boot-using-systemd/" title="How To Autorun A Python Script On Boot Using systemd" class="image-link">
+						<img src="systemd_screenshot-428x280.png" class="image wp-post-image no-display" alt="systemd Screenshot" title="How To Autorun A Python Script On Boot Using systemd" height="280" width="428">	
+											</a>
+					
+								<div class="cf listing-meta meta above">
+					
+				<time datetime="2015-10-12T13:32:00+01:00" itemprop="datePublished" class="meta-item">October 12, 2015</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2015/10/how-to-autorun-a-python-script-on-boot-using-systemd/#comments"><i class="fa fa-comments-o"></i> 15</a></span>					
+			</div>
+							
+					<h2><a href="http://www.raspberrypi-spy.co.uk/2015/10/how-to-autorun-a-python-script-on-boot-using-systemd/" title="How To Autorun A Python Script On Boot Using systemd">How To Autorun A Python Script On Boot Using systemd</a></h2>
+					
+										
+				</article>
+			</li>
+			
+				
+			<li class="highlights column one-third">
+				
+				<article>
+						
+					<a href="http://www.raspberrypi-spy.co.uk/2015/09/raspbian-configuration-utility-and-new-boot-options/" title="Raspbian Configuration Utility and New Boot Options" class="image-link">
+						<img src="raspi_config_boot_01-428x280.png" class="image wp-post-image no-display" alt="rasp-config boot options" title="Raspbian Configuration Utility and New Boot Options" height="280" width="428">	
+											</a>
+					
+								<div class="cf listing-meta meta above">
+					
+				<time datetime="2015-09-30T23:01:50+01:00" itemprop="datePublished" class="meta-item">September 30, 2015</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2015/09/raspbian-configuration-utility-and-new-boot-options/#respond"><i class="fa fa-comments-o"></i> 0</a></span>					
+			</div>
+							
+					<h2><a href="http://www.raspberrypi-spy.co.uk/2015/09/raspbian-configuration-utility-and-new-boot-options/" title="Raspbian Configuration Utility and New Boot Options">Raspbian Configuration Utility and New Boot Options</a></h2>
+					
+										
+				</article>
+			</li>
+			
+				
+			<li class="highlights column one-third">
+				
+				<article>
+						
+					<a href="http://www.raspberrypi-spy.co.uk/2015/09/how-to-use-a-hall-effect-sensor-with-the-raspberry-pi/" title="How To Use A Hall Effect Sensor With The Raspberry Pi" class="image-link">
+						<img src="hall_effect_01-428x280.jpg" class="image wp-post-image no-display" alt="Hall Effect Sensor and Magnet" title="How To Use A Hall Effect Sensor With The Raspberry Pi" height="280" width="428">	
+											</a>
+					
+								<div class="cf listing-meta meta above">
+					
+				<time datetime="2015-09-28T22:57:44+01:00" itemprop="datePublished" class="meta-item">September 28, 2015</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2015/09/how-to-use-a-hall-effect-sensor-with-the-raspberry-pi/#comments"><i class="fa fa-comments-o"></i> 2</a></span>					
+			</div>
+							
+					<h2><a href="http://www.raspberrypi-spy.co.uk/2015/09/how-to-use-a-hall-effect-sensor-with-the-raspberry-pi/" title="How To Use A Hall Effect Sensor With The Raspberry Pi">How To Use A Hall Effect Sensor With The Raspberry Pi</a></h2>
+					
+										
+				</article>
+			</li>
+			
+				
+			<li class="highlights column one-third">
+				
+				<article>
+						
+					<a href="http://www.raspberrypi-spy.co.uk/2015/06/basic-temperature-logging-to-the-internet-with-raspberry-pi/" title="Basic Temperature Logging To The Internet With Raspberry Pi" class="image-link">
+						<img src="temperature_logger_01-428x280.jpg" class="image wp-post-image no-display" alt="Basic Temperature Logger" title="Basic Temperature Logging To The Internet With Raspberry Pi" height="280" width="428">	
+											</a>
+					
+								<div class="cf listing-meta meta above">
+					
+				<time datetime="2015-06-20T16:36:30+01:00" itemprop="datePublished" class="meta-item">June 20, 2015</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2015/06/basic-temperature-logging-to-the-internet-with-raspberry-pi/#comments"><i class="fa fa-comments-o"></i> 33</a></span>					
+			</div>
+							
+					<h2><a href="http://www.raspberrypi-spy.co.uk/2015/06/basic-temperature-logging-to-the-internet-with-raspberry-pi/" title="Basic Temperature Logging To The Internet With Raspberry Pi">Basic Temperature Logging To The Internet With Raspberry Pi</a></h2>
+					
+										
+				</article>
+			</li>
+			
+				</ul>
+	</section>
+
+	
+				<div class="comments">
+				
+	
+	<div id="comments">
+
+			<h3 class="section-head">
+			29 Comments		</h3>
+
+		<ol class="comments-list">
+					
+			<li class="comment even thread-even depth-1" id="li-comment-48957">
+				<article id="comment-48957" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="48b23a95a6d117d2c000e452460d276e" srcset="http://1.gravatar.com/avatar/48b23a95a6d117d2c000e452460d276e?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Paul Adomshick</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-48957" class="comment-time" title="May 4, 2014 at 12:20 am">
+							<time pubdate="" datetime="2014-05-04T00:20:20+00:00">May 4, 2014 12:20 am</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Will the python script open in a terminal window or run as a process in the background?  I’d like to be able to get a python script that outputs text (generated from sensor outputs) to automatically run in a terminal window. Is there an easy way to accomplish that?</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=48957#respond" onclick="return addComment.moveForm( &quot;comment-48957&quot;, &quot;48957&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Paul Adomshick">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		<ul class="children">
+		
+			<li class="comment byuser comment-author-matt bypostauthor odd alt depth-2" id="li-comment-49037">
+				<article id="comment-49037" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="49044c5831a18ae589a1fcdd87644a6d" srcset="http://1.gravatar.com/avatar/49044c5831a18ae589a1fcdd87644a6d?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Matt</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-49037" class="comment-time" title="May 4, 2014 at 10:16 am">
+							<time pubdate="" datetime="2014-05-04T10:16:40+00:00">May 4, 2014 10:16 am</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>It runs in the background … but you can launch LXTerminal instead and pass it a command line parameter to run a Python script. Haven’t tested it but you could try something like :</p>
+<p>@lxterminal -e ‘/usr/bin/python /home/pi/myscript.py’ -t ‘MyTitle’</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=49037#respond" onclick="return addComment.moveForm( &quot;comment-49037&quot;, &quot;49037&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Matt">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		<ul class="children">
+		
+			<li class="comment even depth-3" id="li-comment-49469">
+				<article id="comment-49469" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="48b23a95a6d117d2c000e452460d276e" srcset="http://1.gravatar.com/avatar/48b23a95a6d117d2c000e452460d276e?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Paul Adomshick</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-49469" class="comment-time" title="May 6, 2014 at 4:13 am">
+							<time pubdate="" datetime="2014-05-06T04:13:25+00:00">May 6, 2014 4:13 am</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Much appreciated. I’ll try that.</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=49469#respond" onclick="return addComment.moveForm( &quot;comment-49469&quot;, &quot;49469&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Paul Adomshick">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+		
+			<li class="comment odd alt depth-3" id="li-comment-170175">
+				<article id="comment-170175" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="2eeebc13db3e3b429a151ee740998233" srcset="http://2.gravatar.com/avatar/2eeebc13db3e3b429a151ee740998233?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">AJ</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-170175" class="comment-time" title="December 2, 2015 at 3:35 am">
+							<time pubdate="" datetime="2015-12-02T03:35:03+00:00">December 2, 2015 3:35 am</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>IMPORTANT: this line has to be added before the @xscreensaver line.  Finally worked for me after reading about that here:  <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;t=65607" rel="nofollow">https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;t=65607</a></p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=170175#respond" onclick="return addComment.moveForm( &quot;comment-170175&quot;, &quot;170175&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to AJ">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		<ul class="children">
+		
+			<li class="comment byuser comment-author-matt bypostauthor even depth-4" id="li-comment-170418">
+				<article id="comment-170418" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="49044c5831a18ae589a1fcdd87644a6d" srcset="http://1.gravatar.com/avatar/49044c5831a18ae589a1fcdd87644a6d?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Matt</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-170418" class="comment-time" title="December 3, 2015 at 7:23 pm">
+							<time pubdate="" datetime="2015-12-03T19:23:27+00:00">December 3, 2015 7:23 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Thanks, I’ve added a note at the bottom of the post.</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=170418#respond" onclick="return addComment.moveForm( &quot;comment-170418&quot;, &quot;170418&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Matt">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		
+			<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-49124">
+				<article id="comment-49124" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="1e505c3fcb5ebede34625df72c61ee92" srcset="http://1.gravatar.com/avatar/1e505c3fcb5ebede34625df72c61ee92?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Don Sorensen</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-49124" class="comment-time" title="May 4, 2014 at 8:16 pm">
+							<time pubdate="" datetime="2014-05-04T20:16:11+00:00">May 4, 2014 8:16 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Looks like a “code” tag got misplaces in your first snippet above. I’m pretty sure the lines “To save and exit the nano editor press CTRL-X, Y and then ENTER. You can use your preferred text editor if nano isn’t your first choice.” don’t belong in the autostart file. I’m sorry if it sounds picky, but I’ve been fighting the way Wordpad puts tags into posts for about a week now. Thought you’d like to know.<br>
+Great site you’ve got here. Thank you for going through the trouble.</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=49124#respond" onclick="return addComment.moveForm( &quot;comment-49124&quot;, &quot;49124&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Don Sorensen">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		<ul class="children">
+		
+			<li class="comment byuser comment-author-matt bypostauthor even depth-2" id="li-comment-49125">
+				<article id="comment-49125" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="49044c5831a18ae589a1fcdd87644a6d" srcset="http://1.gravatar.com/avatar/49044c5831a18ae589a1fcdd87644a6d?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Matt</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-49125" class="comment-time" title="May 4, 2014 at 8:45 pm">
+							<time pubdate="" datetime="2014-05-04T20:45:02+00:00">May 4, 2014 8:45 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Thanks Don. I spotted that just before I published it … then obviously forgot to actually correct it! Thanks for pointing it out. It’s sorted now.</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=49125#respond" onclick="return addComment.moveForm( &quot;comment-49125&quot;, &quot;49125&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Matt">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		
+			<li class="comment odd alt thread-even depth-1" id="li-comment-107539">
+				<article id="comment-107539" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="615de7c0874f84492789cba2f184797f" srcset="http://0.gravatar.com/avatar/615de7c0874f84492789cba2f184797f?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Jeremy</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-107539" class="comment-time" title="January 11, 2015 at 7:23 pm">
+							<time pubdate="" datetime="2015-01-11T19:23:48+00:00">January 11, 2015 7:23 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>I couldn’t figure out why I couldn’t get this to work.<br>
+In the latest raspbian image I downloaded (around Dec 30, 2014) they changed the path for the autostart file that is used.<br>
+This in method #1:<br>
+sudo nano /etc/xdg/lxsession/LXDE/autostart<br>
+is now this:<br>
+sudo nano /etc/xdg/lxsession/LXDE-pi/autostart<br>
+I hope that saves someone some time.</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=107539#respond" onclick="return addComment.moveForm( &quot;comment-107539&quot;, &quot;107539&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Jeremy">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		<ul class="children">
+		
+			<li class="comment even depth-2" id="li-comment-107614">
+				<article id="comment-107614" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="347992ddcd92f33022ca341507f013d6" srcset="http://0.gravatar.com/avatar/347992ddcd92f33022ca341507f013d6?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">goodsayan</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-107614" class="comment-time" title="January 12, 2015 at 11:15 am">
+							<time pubdate="" datetime="2015-01-12T11:15:40+00:00">January 12, 2015 11:15 am</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>folder LXDE has changed, Thanks Jeremy!</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=107614#respond" onclick="return addComment.moveForm( &quot;comment-107614&quot;, &quot;107614&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to goodsayan">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+		
+			<li class="comment odd alt depth-2" id="li-comment-107843">
+				<article id="comment-107843" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="1641083dd5de513948a6e221cd24e756" srcset="http://1.gravatar.com/avatar/1641083dd5de513948a6e221cd24e756?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Claudio</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-107843" class="comment-time" title="January 13, 2015 at 11:18 pm">
+							<time pubdate="" datetime="2015-01-13T23:18:32+00:00">January 13, 2015 11:18 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>THANK YOU! This saved me really time!</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=107843#respond" onclick="return addComment.moveForm( &quot;comment-107843&quot;, &quot;107843&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Claudio">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		
+			<li class="comment even thread-odd thread-alt depth-1" id="li-comment-108196">
+				<article id="comment-108196" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="aa03731ce811515ca4c4fc2fbe48321b" srcset="http://1.gravatar.com/avatar/aa03731ce811515ca4c4fc2fbe48321b?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Daniel</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-108196" class="comment-time" title="January 16, 2015 at 3:29 am">
+							<time pubdate="" datetime="2015-01-16T03:29:31+00:00">January 16, 2015 3:29 am</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>As Jeremy was saying, with the changes to the new image for Raspbian, it also effect the per user basis. I tried to figure it out for hours why my apps were not auto starter per user and you have to change the folder ~/.config/lxsession/LXDE to ~/.config/lxsession/LXDE-pi for it to work properly. Hopes this helps.</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=108196#respond" onclick="return addComment.moveForm( &quot;comment-108196&quot;, &quot;108196&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Daniel">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+		
+			<li class="comment odd alt thread-even depth-1" id="li-comment-108433">
+				<article id="comment-108433" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="2fe18d39b332d3753340f1614caf7df9" srcset="http://2.gravatar.com/avatar/2fe18d39b332d3753340f1614caf7df9?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Ben</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-108433" class="comment-time" title="January 17, 2015 at 2:28 pm">
+							<time pubdate="" datetime="2015-01-17T14:28:56+00:00">January 17, 2015 2:28 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Thanks Jeremy – I am trying to use the user autostart (to start pipresents on startup) and it didn’t work until i created: ~/.config/lxsession/LXDE-pi/autostart</p>
+<p>Reading the above I guess this is new – I downloaded and installed NOOBS today, 17th Jan 2015. Hope this helps.</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=108433#respond" onclick="return addComment.moveForm( &quot;comment-108433&quot;, &quot;108433&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Ben">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+		
+			<li class="comment even thread-odd thread-alt depth-1" id="li-comment-116052">
+				<article id="comment-116052" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="ab7c2824d3cce195a2665ed892b76f60" srcset="http://1.gravatar.com/avatar/ab7c2824d3cce195a2665ed892b76f60?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Carlos</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-116052" class="comment-time" title="February 18, 2015 at 9:39 pm">
+							<time pubdate="" datetime="2015-02-18T21:39:09+00:00">February 18, 2015 9:39 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Thanks all,</p>
+<p>I was having issues with this as well…  I had set the pi to autostart into GUI (thru raspi-config) and all the instructions never made this work!!!</p>
+<p>However, figured out that if I disabled the autostart into GUI (via raspi-config) and run the command startx, it started working…</p>
+<p>any ideas how to make it boot the pi into GUI and have auto start of an application.</p>
+<p>My second issue is that I can now see my python script trying to execute (by running startx manually), but can’t start since input() has an EOF error…</p>
+<p>so I basically want to boot to GUI and ready for keyboard input.  </p>
+<p>Something relatively easy, but has been taking me several days to figure because of all the oddities of Raspian/Pi</p>
+<p>Thanks,</p>
+<p>-Carlos</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=116052#respond" onclick="return addComment.moveForm( &quot;comment-116052&quot;, &quot;116052&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Carlos">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+		
+			<li class="comment odd alt thread-even depth-1" id="li-comment-117406">
+				<article id="comment-117406" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="0baa22baf41100d1b80af241cb9cde08" srcset="http://0.gravatar.com/avatar/0baa22baf41100d1b80af241cb9cde08?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">David van Wyk</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-117406" class="comment-time" title="February 24, 2015 at 3:07 pm">
+							<time pubdate="" datetime="2015-02-24T15:07:14+00:00">February 24, 2015 3:07 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Hi Guys,</p>
+<p>I am busy with an application that utilises the GPIO and it needs root priviliges, but I want it to auto start on boot.  </p>
+<p>Do I need something extra, as on the command line ‘sudo’?  </p>
+<p>I usually have to open the current folder as root and then I can start my application by double clicking.</p>
+<p>The above code doesn’t start my application up. </p>
+<p>Thanks.</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=117406#respond" onclick="return addComment.moveForm( &quot;comment-117406&quot;, &quot;117406&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to David van Wyk">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		<ul class="children">
+		
+			<li class="comment even depth-2" id="li-comment-129184">
+				<article id="comment-129184" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="29897d4bca6c05d23bb64742d5736975" srcset="http://2.gravatar.com/avatar/29897d4bca6c05d23bb64742d5736975?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Howard</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-129184" class="comment-time" title="April 14, 2015 at 10:09 am">
+							<time pubdate="" datetime="2015-04-14T10:09:18+00:00">April 14, 2015 10:09 am</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>I used the following command to change the file ownership to pi and switch back to root afterward.</p>
+<p>chown pi:pi [filename]</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=129184#respond" onclick="return addComment.moveForm( &quot;comment-129184&quot;, &quot;129184&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Howard">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		<ul class="children">
+		
+			<li class="comment odd alt depth-3" id="li-comment-141157">
+				<article id="comment-141157" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="0baa22baf41100d1b80af241cb9cde08" srcset="http://0.gravatar.com/avatar/0baa22baf41100d1b80af241cb9cde08?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">David van Wyk</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-141157" class="comment-time" title="June 7, 2015 at 10:15 am">
+							<time pubdate="" datetime="2015-06-07T10:15:30+00:00">June 7, 2015 10:15 am</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Howard, I am not quite with you?  I have since also upgraded to the Rpi 2B, but still having trouble starting my app.<br>
+Now on the Rpi 2B I cant switch a window to root user, the option was removed. So my app doesn’t even start on normal double click anymore. It only runs if I remove gpio references from the code.</p>
+<p>How do I run a GUI with GPIO (root privileges)  on Rpi 2B and more especially how can I autostart the app. I changed the file ownership to root, still doesnt work.</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=141157#respond" onclick="return addComment.moveForm( &quot;comment-141157&quot;, &quot;141157&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to David van Wyk">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		
+			<li class="comment even thread-odd thread-alt depth-1" id="li-comment-117691">
+				<article id="comment-117691" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="7f034a5aed1b179ed6a234e855b62cf6" srcset="http://1.gravatar.com/avatar/7f034a5aed1b179ed6a234e855b62cf6?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Henry Hansel</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-117691" class="comment-time" title="February 25, 2015 at 12:05 pm">
+							<time pubdate="" datetime="2015-02-25T12:05:24+00:00">February 25, 2015 12:05 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>I too have been battling this on a RPI2 running Rasbian. My app uses GPIO and tkinter so I need X running. My intention is to auto boot to desktop and then for my application to launch covering the OS like a virtual machine. Strange behavior is that after locating the path .config/lxsession/LXDE-pi/ and creating my autostart file my python program will auto launch about 50% of the time on boot. I have not been able to determine why it will not the other times? I hope that someone can finally put a nail in this, I am dead in the water with this project until I can get 100% autostart to work. Thanks for all the input.</p>
+<p>Henry</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=117691#respond" onclick="return addComment.moveForm( &quot;comment-117691&quot;, &quot;117691&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Henry Hansel">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+		
+			<li class="comment odd alt thread-even depth-1" id="li-comment-118731">
+				<article id="comment-118731" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="7f034a5aed1b179ed6a234e855b62cf6" srcset="http://1.gravatar.com/avatar/7f034a5aed1b179ed6a234e855b62cf6?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Henry Hansel</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-118731" class="comment-time" title="March 1, 2015 at 12:01 pm">
+							<time pubdate="" datetime="2015-03-01T12:01:08+00:00">March 1, 2015 12:01 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Finally, I think that I have got autostart to work 100% of the time.<br>
+I had to modify my autostart file in</p>
+<p>/etc/xdg/lxsession/LXDE-pi/autostart</p>
+<p>to read:<br>
+@/usr/bin/python3.2/myscript.py</p>
+<p>myscript.py resides in home/pi</p>
+<p>I added python3.2 for it to work, apparently it was trying to run my python3 script with python2 even though the shebang statement at the top of the script calls for python3. I am a linux noob so any insight on why this works would be appreciated.</p>
+<p>Henry</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=118731#respond" onclick="return addComment.moveForm( &quot;comment-118731&quot;, &quot;118731&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Henry Hansel">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+		
+			<li class="comment even thread-odd thread-alt depth-1" id="li-comment-121947">
+				<article id="comment-121947" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="c30eeb36ef7c86b11a7c1d0304b5d302" srcset="http://0.gravatar.com/avatar/c30eeb36ef7c86b11a7c1d0304b5d302?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Ashley Burt</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-121947" class="comment-time" title="March 17, 2015 at 8:03 pm">
+							<time pubdate="" datetime="2015-03-17T20:03:29+00:00">March 17, 2015 8:03 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>I just put the commands I needed to autorun into the users .profile in their home directory.  Worked like a champ.</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=121947#respond" onclick="return addComment.moveForm( &quot;comment-121947&quot;, &quot;121947&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Ashley Burt">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+		
+			<li class="comment odd alt thread-even depth-1" id="li-comment-128560">
+				<article id="comment-128560" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="aed54a7c6916e536251f54b8018ff47a" srcset="http://1.gravatar.com/avatar/aed54a7c6916e536251f54b8018ff47a?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Rebecca</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-128560" class="comment-time" title="April 11, 2015 at 4:51 pm">
+							<time pubdate="" datetime="2015-04-11T16:51:01+00:00">April 11, 2015 4:51 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Is it possible to have multiple python scripts set to run at the start up of the GUI? I have tried just adding in another @/usr/bin/python /home/pi/example.py line to the autostart file but it doesn’t run the second python script</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=128560#respond" onclick="return addComment.moveForm( &quot;comment-128560&quot;, &quot;128560&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Rebecca">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		<ul class="children">
+		
+			<li class="comment even depth-2" id="li-comment-161780">
+				<article id="comment-161780" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="0a1a6c8305b1af5a0eb4cf17384dda1c" srcset="http://0.gravatar.com/avatar/0a1a6c8305b1af5a0eb4cf17384dda1c?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author"><a href="http://noguska.com/" rel="external nofollow" class="url">Frank</a></span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-161780" class="comment-time" title="October 6, 2015 at 2:35 pm">
+							<time pubdate="" datetime="2015-10-06T14:35:40+00:00">October 6, 2015 2:35 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>I was having issues trying to get the R Pi2 to launch a website on boot I ended up making the change to this config file to make it work</p>
+<p>sudo nano /home/pi/.config/lxsession/LXDE-pi/autostart</p>
+<p>It worked like a charm. I had a hard time finding this solution and i hope it helps others.</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=161780#respond" onclick="return addComment.moveForm( &quot;comment-161780&quot;, &quot;161780&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Frank">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		<ul class="children">
+		
+			<li class="comment odd alt depth-3" id="li-comment-165140">
+				<article id="comment-165140" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="3d320774128edd7678e874c5cc08ed13" srcset="http://0.gravatar.com/avatar/3d320774128edd7678e874c5cc08ed13?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Sal</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-165140" class="comment-time" title="October 26, 2015 at 5:18 am">
+							<time pubdate="" datetime="2015-10-26T05:18:05+00:00">October 26, 2015 5:18 am</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Frank thank you spent hours and hours looking for this solution, editing  </p>
+<p>sudo nano /home/pi/.config/lxsession/LXDE-pi/autostart</p>
+<p>Worked perfect!</p>
+<p>THANKS!!!!</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=165140#respond" onclick="return addComment.moveForm( &quot;comment-165140&quot;, &quot;165140&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Sal">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		
+			<li class="comment even thread-odd thread-alt depth-1" id="li-comment-165587">
+				<article id="comment-165587" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="ef4c28a8aa330c87d474d350a8b1e709" srcset="http://2.gravatar.com/avatar/ef4c28a8aa330c87d474d350a8b1e709?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Mark Baker</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-165587" class="comment-time" title="October 28, 2015 at 3:15 pm">
+							<time pubdate="" datetime="2015-10-28T15:15:33+00:00">October 28, 2015 3:15 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>I’ve modified /home/pi/.config/lxsession/LXDE-pi/autostart adding @xfreerdp server1 to automatically start a RDP session to a terminal server.  It works perfectly if I manually login as pi but as soon as I reconfigure it to automatically login as pi into the desktop it stops working.  If I add @leafpad to the autostart file it works but not the @xfreerdp  Any suggestions?</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=165587#respond" onclick="return addComment.moveForm( &quot;comment-165587&quot;, &quot;165587&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Mark Baker">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+		
+			<li class="comment odd alt thread-even depth-1" id="li-comment-174055">
+				<article id="comment-174055" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="3da4640435164546b9695a9927eefe48" srcset="http://0.gravatar.com/avatar/3da4640435164546b9695a9927eefe48?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Peter Triandafillou</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-174055" class="comment-time" title="January 24, 2016 at 10:42 pm">
+							<time pubdate="" datetime="2016-01-24T22:42:10+00:00">January 24, 2016 10:42 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>This thread has been very helpful – thanks to all the contributors.</p>
+<p>I have a question: I added a line to start an lxterminal to run my program, and it works. However, my program accesses a Sense Hat, and it needs to start with sudo to run properly. Is there a way to specify the user password in the autostart line so that it doesn’t need to be entered? I’m developing an application that would be better off without a keyboard.</p>
+<p>Thanks!</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=174055#respond" onclick="return addComment.moveForm( &quot;comment-174055&quot;, &quot;174055&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Peter Triandafillou">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+		
+			<li class="comment even thread-odd thread-alt depth-1" id="li-comment-175119">
+				<article id="comment-175119" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="4fa7af40c2f015d211716ba368c5225a" srcset="http://1.gravatar.com/avatar/4fa7af40c2f015d211716ba368c5225a?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Alex Cahill</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-175119" class="comment-time" title="February 11, 2016 at 10:59 pm">
+							<time pubdate="" datetime="2016-02-11T22:59:04+00:00">February 11, 2016 10:59 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Annonyingly I took me 2 days to figure out that method 1 no longer works.</p>
+<p><a href="https://wiki.archlinux.org/index.php/LXDE#Autostart" rel="nofollow">https://wiki.archlinux.org/index.php/LXDE#Autostart</a></p>
+<p>“Note: If both files are present, lxsession only executes the local file as of v0.4.9”</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=175119#respond" onclick="return addComment.moveForm( &quot;comment-175119&quot;, &quot;175119&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Alex Cahill">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		<ul class="children">
+		
+			<li class="comment byuser comment-author-matt bypostauthor odd alt depth-2" id="li-comment-175283">
+				<article id="comment-175283" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="49044c5831a18ae589a1fcdd87644a6d" srcset="http://1.gravatar.com/avatar/49044c5831a18ae589a1fcdd87644a6d?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Matt</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-175283" class="comment-time" title="February 15, 2016 at 8:27 pm">
+							<time pubdate="" datetime="2016-02-15T20:27:17+00:00">February 15, 2016 8:27 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Method should work as long as there are no local files defined. Thanks for the tip, I’ve modified the article to mention the local file take priority over the global file.</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=175283#respond" onclick="return addComment.moveForm( &quot;comment-175283&quot;, &quot;175283&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Matt">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		
+			<li class="comment even thread-even depth-1" id="li-comment-175652">
+				<article id="comment-175652" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="5830827d8ff66be615bfd3f6c9d971ca" srcset="http://2.gravatar.com/avatar/5830827d8ff66be615bfd3f6c9d971ca?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">Peter</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-175652" class="comment-time" title="February 23, 2016 at 12:54 pm">
+							<time pubdate="" datetime="2016-02-23T12:54:03+00:00">February 23, 2016 12:54 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>I have a small problem. I want to autostart two programs and of cause it works with mentioned method no.1. The problem is, I want to start them in two different virtuell desktops, unfortunately both programs are starting only on one desktop and I really do not find a way to start on the defined desktops. Any idea?</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=175652#respond" onclick="return addComment.moveForm( &quot;comment-175652&quot;, &quot;175652&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to Peter">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+		
+			<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-176543">
+				<article id="comment-176543" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="ed65b53fc34edda2538957195ecb12f7" srcset="http://2.gravatar.com/avatar/ed65b53fc34edda2538957195ecb12f7?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">jordan</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-176543" class="comment-time" title="March 12, 2016 at 11:09 pm">
+							<time pubdate="" datetime="2016-03-12T23:09:11+00:00">March 12, 2016 11:09 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>THANK YOU</p>
+<p>I have been trying to find a way to get this to work, and i’ve seen other tutorials like this, but only using method 1 and I could never get it to work. Method 2 worked perfectly for me. </p>
+<p>Thank you again!</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=176543#respond" onclick="return addComment.moveForm( &quot;comment-176543&quot;, &quot;176543&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to jordan">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+		
+			<li class="comment even thread-even depth-1" id="li-comment-179412">
+				<article id="comment-179412" class="comment">
+				
+					<div class="comment-avatar">
+					<img alt="" src="0bd9e43b1bf89cca4d06857ed77b9b26" srcset="http://0.gravatar.com/avatar/0bd9e43b1bf89cca4d06857ed77b9b26?s=80&amp;r=g 2x" class="avatar avatar-40 photo no-display" height="40" width="40">					</div>
+					
+					<div class="comment-meta">					
+						<span class="comment-author">ALI</span> on 
+						<a href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#comment-179412" class="comment-time" title="April 10, 2016 at 6:39 pm">
+							<time pubdate="" datetime="2016-04-10T18:39:55+00:00">April 10, 2016 6:39 pm</time>
+						</a>
+		
+											</div> <!-- .comment-meta -->
+		
+					<div class="comment-content">
+						<p>Can I run a shell file placed on Desktop on reboot??  How to do that?</p>
+						
+												
+			
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/?replytocom=179412#respond" onclick="return addComment.moveForm( &quot;comment-179412&quot;, &quot;179412&quot;, &quot;respond&quot;, &quot;3017&quot; )" aria-label="Reply to ALI">Reply <i class="fa fa-angle-right"></i></a>							
+						</div><!-- .reply -->
+						
+					</div>
+				</article><!-- #comment-N -->
+	
+		</li><!-- #comment-## -->
+		</ol>
+
+		
+		
+	
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title"><span class="section-head">Leave A Reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.raspberrypi-spy.co.uk/2014/05/how-to-autostart-apps-in-rasbian-lxde-desktop/#respond" style="display: none;">Cancel Reply</a></small></h3>				<form action="http://www.raspberrypi-spy.co.uk/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+					
+			<p>
+				<textarea name="comment" id="comment" cols="45" rows="8" aria-required="true" placeholder="Your Comment"></textarea>
+			</p>
+				<p>
+					<input name="author" id="author" size="30" aria-required="true" placeholder="Your Name" value="" type="text">
+				</p>
+
+				<p>
+					<input name="email" id="email" size="30" aria-required="true" placeholder="Your Email" value="" type="text">
+				</p>
+			
+
+				<p>
+					<input name="url" id="url" size="30" placeholder="Your Website" value="" type="text">
+				</p>
+			
+<p class="form-submit"><input name="submit" id="comment-submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="3017" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="17f2cb1f07" type="hidden"></p><p style="display: none;"></p>				<input id="ak_js" name="ak_js" value="1466673436426" type="hidden"></form>
+					</div><!-- #respond -->
+		
+	</div><!-- #comments -->
+				</div>
+	
+				
+		</div>
+		
+		
+			
+		
+		
+		<aside class="col-4 sidebar">
+			<ul>
+			
+			
+		<li id="bunyad_ads_widget-5" class="widget bunyad-ad">		
+					
+			<div class="adwrap-widget">
+			
+				
+<!-- RaspberryPi Spy 300x250 -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-5084177467956694" data-ad-slot="3339153257"><ins id="aswift_1_expand" style="display: inline-table; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><ins id="aswift_1_anchor" style="display: block; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><iframe src="index_7.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_1" name="aswift_1" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="250" width="300"></iframe></ins></ins></ins>
+			
+			</div>
+		
+		</li>
+		
+			
+			<li id="bunyad-tabbed-recent-widget-3" class="widget tabbed">	
+			<ul class="tabs-list">
+			
+								
+				<li class="active">
+					<a href="#" data-tab="1">Recent</a>
+				</li>
+				
+								
+				<li class="">
+					<a href="#" data-tab="2">Popular</a>
+				</li>
+				
+								
+				<li class="">
+					<a href="#" data-tab="3">News</a>
+				</li>
+				
+								
+			</ul>
+			
+			<div class="tabs-data">
+									
+				<ul class="tab-posts active posts-list" id="recent-tab-1">
+				
+								
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2016/05/raspberry-pi-zero-now-has-a-camera-connector/"><img src="pi_zero_with_camera_connector-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display appear" alt="Raspberry Pi Zero with camera connector" title="Raspberry Pi Zero now has a camera connector" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-05-16T11:59:32+01:00" itemprop="datePublished" class="meta-item">May 16, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/05/raspberry-pi-zero-now-has-a-camera-connector/#respond"><i class="fa fa-comments-o"></i> 0</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2016/05/raspberry-pi-zero-now-has-a-camera-connector/" title="Raspberry Pi Zero now has a camera connector">
+								Raspberry Pi Zero now has a camera connector</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2016/05/top-5-raspberry-pi-3-project-ideas/"><img src="top-5-project-ideas-from-rs-110x96.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display appear" alt="Top 5 Raspberry Pi 3 Project Ideas" title="Top 5 Raspberry Pi 3 Project Ideas" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-05-15T20:34:42+01:00" itemprop="datePublished" class="meta-item">May 15, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/05/top-5-raspberry-pi-3-project-ideas/#respond"><i class="fa fa-comments-o"></i> 0</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2016/05/top-5-raspberry-pi-3-project-ideas/" title="Top 5 Raspberry Pi 3 Project Ideas">
+								Top 5 Raspberry Pi 3 Project Ideas</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2016/05/using-the-bbc-microbit-with-the-raspberry-pi/"><img src="microbit_and_pi_01-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display appear" alt="BBC Microbit and Raspberry Pi" title="Using the BBC Microbit with the Raspberry Pi" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-05-01T19:59:34+01:00" itemprop="datePublished" class="meta-item">May 1, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/05/using-the-bbc-microbit-with-the-raspberry-pi/#comments"><i class="fa fa-comments-o"></i> 1</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2016/05/using-the-bbc-microbit-with-the-raspberry-pi/" title="Using the BBC Microbit with the Raspberry Pi">
+								Using the BBC Microbit with the Raspberry Pi</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2016/04/kano-computer-kit-first-impressions/"><img src="kano_kit_05-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display appear" alt="Raspberry Pi KANO Computer Kit" title="Kano Computer Kit First Impressions" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-04-28T20:48:35+01:00" itemprop="datePublished" class="meta-item">April 28, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/04/kano-computer-kit-first-impressions/#respond"><i class="fa fa-comments-o"></i> 0</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2016/04/kano-computer-kit-first-impressions/" title="Kano Computer Kit First Impressions">
+								Kano Computer Kit First Impressions</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2016/04/8-megapixel-raspberry-pi-camera-module-v2/"><img src="raspberry_pi_camera_v2_rs-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display appear" alt="Pi Camera v2" title="8-megapixel Raspberry Pi Camera Module v2" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-04-25T10:26:28+01:00" itemprop="datePublished" class="meta-item">April 25, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/04/8-megapixel-raspberry-pi-camera-module-v2/#respond"><i class="fa fa-comments-o"></i> 0</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2016/04/8-megapixel-raspberry-pi-camera-module-v2/" title="8-megapixel Raspberry Pi Camera Module v2">
+								8-megapixel Raspberry Pi Camera Module v2</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+										
+									
+				</ul>
+									
+				<ul class="tab-posts  posts-list" id="recent-tab-2">
+				
+								
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2012/07/16x2-lcd-module-control-using-python/"><img src="16x2_lcd_module_1-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="16x2_lcd_module_1" title="16×2 LCD Module Control Using Python" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2012-07-27T08:48:19+01:00" itemprop="datePublished" class="meta-item">July 27, 2012</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2012/07/16x2-lcd-module-control-using-python/#comments"><i class="fa fa-comments-o"></i> 86</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2012/07/16x2-lcd-module-control-using-python/" title="16×2 LCD Module Control Using Python">
+								16×2 LCD Module Control Using Python</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2013/10/analogue-sensors-on-the-raspberry-pi-using-an-mcp3008/"><img src="mcp3008_tmp36_02-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="MCP3008 Example Circuit #2" title="Analogue Sensors On The Raspberry Pi Using An MCP3008" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2013-10-20T11:26:28+01:00" itemprop="datePublished" class="meta-item">October 20, 2013</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2013/10/analogue-sensors-on-the-raspberry-pi-using-an-mcp3008/#comments"><i class="fa fa-comments-o"></i> 79</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2013/10/analogue-sensors-on-the-raspberry-pi-using-an-mcp3008/" title="Analogue Sensors On The Raspberry Pi Using An MCP3008">
+								Analogue Sensors On The Raspberry Pi Using An MCP3008</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2014/09/top-5-reasons-the-raspberry-pi-sucks/"><img src="raspberry_pi_sucks1-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="Raspberry Pi Sucks" title="Top 5 Reasons The Raspberry Pi Sucks" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2014-09-19T20:06:23+01:00" itemprop="datePublished" class="meta-item">September 19, 2014</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2014/09/top-5-reasons-the-raspberry-pi-sucks/#comments"><i class="fa fa-comments-o"></i> 63</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2014/09/top-5-reasons-the-raspberry-pi-sucks/" title="Top 5 Reasons The Raspberry Pi Sucks">
+								Top 5 Reasons The Raspberry Pi Sucks</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2013/03/raspberry-pi-1-wire-digital-thermometer-sensor/"><img src="ds18b20-command-line-setup-110x96.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="DS18B20 Command Line Setup" title="Raspberry Pi 1- Wire Digital Thermometer Sensor (DS18B20)" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2013-03-15T20:02:20+01:00" itemprop="datePublished" class="meta-item">March 15, 2013</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2013/03/raspberry-pi-1-wire-digital-thermometer-sensor/#comments"><i class="fa fa-comments-o"></i> 47</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2013/03/raspberry-pi-1-wire-digital-thermometer-sensor/" title="Raspberry Pi 1- Wire Digital Thermometer Sensor (DS18B20)">
+								Raspberry Pi 1- Wire Digital Thermometer Sensor (DS18B20)</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2012/07/stepper-motor-control-in-python/"><img src="default_featured-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="Raspberry Pi Model B+" title="Stepper Motor Control In Python" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2012-07-11T11:13:57+01:00" itemprop="datePublished" class="meta-item">July 11, 2012</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2012/07/stepper-motor-control-in-python/#comments"><i class="fa fa-comments-o"></i> 45</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2012/07/stepper-motor-control-in-python/" title="Stepper Motor Control In Python">
+								Stepper Motor Control In Python</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+										
+									
+				</ul>
+									
+				<ul class="tab-posts  posts-list" id="recent-tab-3">
+				
+								
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2016/02/introducing-the-raspberry-pi-3-model-b/"><img src="raspberry_pi_3_rs_01-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="Raspberry Pi 3" title="Introducing The Raspberry Pi 3 Model B" srcset="http://www.raspberrypi-spy.co.uk/wp-content/uploads/2016/02/raspberry_pi_3_rs_01-110x96.jpg 110w, http://www.raspberrypi-spy.co.uk/wp-content/uploads/2016/02/raspberry_pi_3_rs_01-300x260.jpg 300w, http://www.raspberrypi-spy.co.uk/wp-content/uploads/2016/02/raspberry_pi_3_rs_01-1024x886.jpg 1024w" sizes="(max-width: 110px) 100vw, 110px" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-02-28T10:36:52+01:00" itemprop="datePublished" class="meta-item">February 28, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/02/introducing-the-raspberry-pi-3-model-b/#comments"><i class="fa fa-comments-o"></i> 2</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2016/02/introducing-the-raspberry-pi-3-model-b/" title="Introducing The Raspberry Pi 3 Model B">
+								Introducing The Raspberry Pi 3 Model B</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2015/11/raspberry-pi-family-photo-by-raspi-tv/"><img src="raspberry_pi_model_b_plus_16-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="Raspberry Pi Model B+" title="Raspberry Pi Family Photo by RasPi.TV" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2015-11-30T14:28:12+01:00" itemprop="datePublished" class="meta-item">November 30, 2015</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2015/11/raspberry-pi-family-photo-by-raspi-tv/#respond"><i class="fa fa-comments-o"></i> 0</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2015/11/raspberry-pi-family-photo-by-raspi-tv/" title="Raspberry Pi Family Photo by RasPi.TV">
+								Raspberry Pi Family Photo by RasPi.TV</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2015/11/introducing-the-raspberry-pi-zero/"><img src="pizero_hand_cpc-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="Raspberry Pi Zero" title="Introducing the Raspberry Pi Zero" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2015-11-26T08:38:53+01:00" itemprop="datePublished" class="meta-item">November 26, 2015</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2015/11/introducing-the-raspberry-pi-zero/#comments"><i class="fa fa-comments-o"></i> 6</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2015/11/introducing-the-raspberry-pi-zero/" title="Introducing the Raspberry Pi Zero">
+								Introducing the Raspberry Pi Zero</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2015/11/the-official-raspberry-pi-projects-book/"><img src="pi_projects_featured-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="Pi Projects Book" title="The Official Raspberry Pi Projects Book" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2015-11-23T16:49:09+01:00" itemprop="datePublished" class="meta-item">November 23, 2015</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2015/11/the-official-raspberry-pi-projects-book/#respond"><i class="fa fa-comments-o"></i> 0</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2015/11/the-official-raspberry-pi-projects-book/" title="The Official Raspberry Pi Projects Book">
+								The Official Raspberry Pi Projects Book</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+						
+					<li>
+					
+						<a href="http://www.raspberrypi-spy.co.uk/2015/09/official-raspberry-pi-touchscreen-display-is-here/"><img src="raspberry_pi_display_cpc_1-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="Raspberry Pi Display" title="Official Raspberry Pi Touchscreen Display is here" height="96" width="110">	
+																									
+						</a>
+						
+						<div class="content">
+						
+										<div class="cf listing-meta meta above">
+					
+				<time datetime="2015-09-08T11:25:17+01:00" itemprop="datePublished" class="meta-item">September 8, 2015</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2015/09/official-raspberry-pi-touchscreen-display-is-here/#comments"><i class="fa fa-comments-o"></i> 5</a></span>					
+			</div>
+								
+							<a href="http://www.raspberrypi-spy.co.uk/2015/09/official-raspberry-pi-touchscreen-display-is-here/" title="Official Raspberry Pi Touchscreen Display is here">
+								Official Raspberry Pi Touchscreen Display is here</a>
+								
+															
+																																								
+						</div>
+					
+					</li>
+					
+										
+									
+				</ul>
+							
+			</div>
+			
+			</li>
+		
+		<li id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="http://www.raspberrypi-spy.co.uk/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input class="search-field" placeholder="Search …" value="" name="s" type="search">
+				</label>
+				<input class="search-submit" value="Search" type="submit">
+			</form></li>
+<li id="categories-2" class="widget widget_categories"><h3 class="widgettitle">Categories</h3>		<ul>
+	<li class="cat-item cat-item-268"><a href="http://www.raspberrypi-spy.co.uk/category/general/3d/" title="Posts that related to 3D printing.">3D Printing</a>
+</li>
+	<li class="cat-item cat-item-223"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/add-ons/">Add-ons</a>
+</li>
+	<li class="cat-item cat-item-276"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/bbc-microbit/">BBC Micro:bit</a>
+</li>
+	<li class="cat-item cat-item-82"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/berryclip-hardware/">BerryClip</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.raspberrypi-spy.co.uk/category/general/books/">Books</a>
+</li>
+	<li class="cat-item cat-item-128"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/camera-module/">Camera Module</a>
+</li>
+	<li class="cat-item cat-item-238"><a href="http://www.raspberrypi-spy.co.uk/category/general/cases/">Cases</a>
+</li>
+	<li class="cat-item cat-item-190"><a href="http://www.raspberrypi-spy.co.uk/category/general/events/">Events</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.raspberrypi-spy.co.uk/category/general/">General</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/">Hardware</a>
+</li>
+	<li class="cat-item cat-item-254"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/interfaces/i2c/" title="Articles that relate to the I2C (Inter-Integrated Circuit) bus.">I2C</a>
+</li>
+	<li class="cat-item cat-item-235"><a href="http://www.raspberrypi-spy.co.uk/category/general/infographics/">Infographics</a>
+</li>
+	<li class="cat-item cat-item-168"><a href="http://www.raspberrypi-spy.co.uk/category/software/minecraft/">Minecraft</a>
+</li>
+	<li class="cat-item cat-item-240"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/model-a-hardware/">Model A+</a>
+</li>
+	<li class="cat-item cat-item-228"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/model-b-hardware/">Model B+</a>
+</li>
+	<li class="cat-item cat-item-248"><a href="http://www.raspberrypi-spy.co.uk/category/general/news/" title="News articles that cover developments in the world of the Raspberry Pi.">News</a>
+</li>
+	<li class="cat-item cat-item-245"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/pi-2-model-b/">Pi 2 Model B</a>
+</li>
+	<li class="cat-item cat-item-253"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/models/">Pi Models</a>
+</li>
+	<li class="cat-item cat-item-267"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/zero/">Pi Zero</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/power-hardware/">Power</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.raspberrypi-spy.co.uk/category/programming-2/">Programming</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.raspberrypi-spy.co.uk/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-52"><a href="http://www.raspberrypi-spy.co.uk/category/raspbian/">Raspbian</a>
+</li>
+	<li class="cat-item cat-item-189"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/robotics/">Robotics</a>
+</li>
+	<li class="cat-item cat-item-250"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/sensors/">Sensors</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.raspberrypi-spy.co.uk/category/software/">Software</a>
+</li>
+	<li class="cat-item cat-item-274"><a href="http://www.raspberrypi-spy.co.uk/category/hardware/interfaces/spi/" title="Articles that relate to the Serial Peripheral Interface (SPI) bus.">SPI</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.raspberrypi-spy.co.uk/category/tutorials-help/">Tutorials &amp; Help</a>
+</li>
+		</ul>
+</li>
+
+		<li id="bunyad_ads_widget-7" class="widget bunyad-ad">		
+					
+			<div class="adwrap-widget">
+			
+				
+<!-- RaspberryPi Spy 300x250 -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-5084177467956694" data-ad-slot="3339153257"><ins id="aswift_2_expand" style="display: inline-table; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><ins id="aswift_2_anchor" style="display: block; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><iframe src="index_11.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_2" name="aswift_2" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="250" width="300"></iframe></ins></ins></ins>
+			
+			</div>
+		
+		</li>
+		
+		<li id="tag_cloud-3" class="widget widget_tag_cloud"><h3 class="widgettitle">Tags</h3><div class="tagcloud"><a href="http://www.raspberrypi-spy.co.uk/tag/3d-printing/" class="tag-link-208 tag-link-position-1" title="4 topics" style="font-size: 9.45833pt;">3D Printing</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/44780/" class="tag-link-58 tag-link-position-2" title="3 topics" style="font-size: 8pt;">44780</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/audio/" class="tag-link-39 tag-link-position-3" title="3 topics" style="font-size: 8pt;">audio</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/avconv/" class="tag-link-133 tag-link-position-4" title="3 topics" style="font-size: 8pt;">avconv</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/battery/" class="tag-link-110 tag-link-position-5" title="9 topics" style="font-size: 13.8333pt;">battery</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/berryclip/" class="tag-link-79 tag-link-position-6" title="10 topics" style="font-size: 14.4167pt;">berryclip</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/birthday/" class="tag-link-203 tag-link-position-7" title="4 topics" style="font-size: 9.45833pt;">Birthday</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/bluetooth/" class="tag-link-100 tag-link-position-8" title="6 topics" style="font-size: 11.6458pt;">bluetooth</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/cambridge/" class="tag-link-164 tag-link-position-9" title="5 topics" style="font-size: 10.625pt;">cambridge</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/camera/" class="tag-link-119 tag-link-position-10" title="24 topics" style="font-size: 19.6667pt;">camera</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/camjam/" class="tag-link-205 tag-link-position-11" title="5 topics" style="font-size: 10.625pt;">CamJam</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/cpu/" class="tag-link-29 tag-link-position-12" title="3 topics" style="font-size: 8pt;">cpu</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/digimakers/" class="tag-link-191 tag-link-position-13" title="6 topics" style="font-size: 11.6458pt;">DigiMakers</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/display/" class="tag-link-57 tag-link-position-14" title="3 topics" style="font-size: 8pt;">display</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/gpio/" class="tag-link-14 tag-link-position-15" title="19 topics" style="font-size: 18.2083pt;">GPIO</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/i2c/" class="tag-link-159 tag-link-position-16" title="10 topics" style="font-size: 14.4167pt;">i2c</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/kickstarter/" class="tag-link-236 tag-link-position-17" title="4 topics" style="font-size: 9.45833pt;">Kickstarter</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/lcd/" class="tag-link-55 tag-link-position-18" title="7 topics" style="font-size: 12.375pt;">lcd</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/led/" class="tag-link-15 tag-link-position-19" title="10 topics" style="font-size: 14.4167pt;">LED</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/li-on/" class="tag-link-156 tag-link-position-20" title="3 topics" style="font-size: 8pt;">Li-on</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/linux/" class="tag-link-76 tag-link-position-21" title="5 topics" style="font-size: 10.625pt;">Linux</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/minecraft/" class="tag-link-261 tag-link-position-22" title="9 topics" style="font-size: 13.8333pt;">Minecraft</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/model-a/" class="tag-link-106 tag-link-position-23" title="3 topics" style="font-size: 8pt;">Model A</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/model-b/" class="tag-link-183 tag-link-position-24" title="7 topics" style="font-size: 12.375pt;">Model B</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/mp4/" class="tag-link-129 tag-link-position-25" title="3 topics" style="font-size: 8pt;">mp4</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/pcb/" class="tag-link-67 tag-link-position-26" title="5 topics" style="font-size: 10.625pt;">pcb</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/photography/" class="tag-link-127 tag-link-position-27" title="5 topics" style="font-size: 10.625pt;">photography</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/photos/" class="tag-link-12 tag-link-position-28" title="4 topics" style="font-size: 9.45833pt;">photos</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/pi-lite/" class="tag-link-166 tag-link-position-29" title="5 topics" style="font-size: 10.625pt;">Pi-Lite</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/portable/" class="tag-link-147 tag-link-position-30" title="4 topics" style="font-size: 9.45833pt;">portable</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/power/" class="tag-link-108 tag-link-position-31" title="10 topics" style="font-size: 14.4167pt;">power</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/python-2/" class="tag-link-13 tag-link-position-32" title="35 topics" style="font-size: 22pt;">python</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/raspberry-pi-bootcamp/" class="tag-link-192 tag-link-position-33" title="5 topics" style="font-size: 10.625pt;">Raspberry Pi Bootcamp</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/raspbian-2/" class="tag-link-53 tag-link-position-34" title="8 topics" style="font-size: 13.1042pt;">raspbian</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/ravpower/" class="tag-link-154 tag-link-position-35" title="3 topics" style="font-size: 8pt;">ravpower</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/revision/" class="tag-link-68 tag-link-position-36" title="3 topics" style="font-size: 8pt;">revision</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/sd-card/" class="tag-link-93 tag-link-position-37" title="5 topics" style="font-size: 10.625pt;">sd card</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/security/" class="tag-link-75 tag-link-position-38" title="6 topics" style="font-size: 11.6458pt;">security</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/sensor/" class="tag-link-59 tag-link-position-39" title="7 topics" style="font-size: 12.375pt;">sensor</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/soldering/" class="tag-link-90 tag-link-position-40" title="3 topics" style="font-size: 8pt;">soldering</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/spi/" class="tag-link-176 tag-link-position-41" title="4 topics" style="font-size: 9.45833pt;">SPI</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/temperature/" class="tag-link-117 tag-link-position-42" title="3 topics" style="font-size: 8pt;">temperature</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/ultrasonic/" class="tag-link-91 tag-link-position-43" title="3 topics" style="font-size: 8pt;">ultrasonic</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/usb/" class="tag-link-104 tag-link-position-44" title="3 topics" style="font-size: 8pt;">usb</a>
+<a href="http://www.raspberrypi-spy.co.uk/tag/video/" class="tag-link-120 tag-link-position-45" title="5 topics" style="font-size: 10.625pt;">video</a></div>
+</li>
+<li id="linkcat-3" class="widget widget_links"><h3 class="widgettitle">Raspberry PI Related</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.averagemanvsraspberrypi.com/" target="_top">Averageman Vs Pi</a></li>
+<li><a href="http://www.mattsbits.co.uk/cat-14.html" rel="me" target="_top">MattsBits – Pi Resources</a></li>
+<li><a href="http://www.raspberrypi.org/" rel="acquaintance" target="_top">Official RaspBerry Pi Site</a></li>
+<li><a href="http://www.recantha.co.uk/blog/" title="Experiences with the Raspberry Pi micro computer" target="_top">Raspberry Pi Pod</a></li>
+<li><a href="http://raspi.tv/" rel="friend" title="Raspberry Pi Tutorials, Videos &amp; Reviews" target="_top">RasPi.tv</a></li>
+<li><a href="http://www.raspihub.com/" rel="acquaintance" title="The hottest Raspberry Pi news" target="_top">Raspihub.com</a></li>
+<li><a href="http://www.rasptut.co.uk/" title="Articles and tutorials for the Raspberry Pi" target="_top">RaspTut</a></li>
+<li><a href="http://rastrack.co.uk/" rel="acquaintance" title="Global map of Raspberry Pis. Add yours!" target="_top">Rastrack.co.uk</a></li>
+<li><a href="http://www.rpischool.org.uk/" rel="friend" title="Raspberry Pi Blog focused on using the Pi in the classroom.">RPi School</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-234" class="widget widget_links"><h3 class="widgettitle">Tech Resources</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.how2code.co.uk/" rel="me" title="Example Python scripts" target="_top">How2Code</a></li>
+<li><a href="http://www.tech-spy.co.uk/" rel="me" title="Technology, gadgets and scripts." target="_top">Technology Spy</a></li>
+
+	</ul>
+</li>
+
+<li id="archives-4" class="widget widget_archive"><h3 class="widgettitle">Archives</h3>		<label class="screen-reader-text" for="archives-dropdown-4">Archives</label>
+		<select id="archives-dropdown-4" name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
+			
+			<option value="">Select Month</option>
+				<option value="http://www.raspberrypi-spy.co.uk/2016/05/"> May 2016 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2016/04/"> April 2016 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2016/03/"> March 2016 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2016/02/"> February 2016 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2015/12/"> December 2015 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2015/11/"> November 2015 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2015/10/"> October 2015 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2015/09/"> September 2015 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2015/08/"> August 2015 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2015/07/"> July 2015 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2015/06/"> June 2015 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2015/05/"> May 2015 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2015/04/"> April 2015 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2015/03/"> March 2015 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2015/02/"> February 2015 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2015/01/"> January 2015 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2014/12/"> December 2014 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2014/11/"> November 2014 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2014/10/"> October 2014 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2014/09/"> September 2014 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2014/08/"> August 2014 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2014/07/"> July 2014 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2014/06/"> June 2014 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2014/05/"> May 2014 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2014/04/"> April 2014 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2014/03/"> March 2014 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2014/02/"> February 2014 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2014/01/"> January 2014 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2013/12/"> December 2013 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2013/11/"> November 2013 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2013/10/"> October 2013 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2013/09/"> September 2013 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2013/07/"> July 2013 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2013/06/"> June 2013 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2013/05/"> May 2013 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2013/04/"> April 2013 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2013/03/"> March 2013 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2013/02/"> February 2013 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2013/01/"> January 2013 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2012/12/"> December 2012 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2012/11/"> November 2012 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2012/10/"> October 2012 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2012/09/"> September 2012 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2012/08/"> August 2012 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2012/07/"> July 2012 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2012/06/"> June 2012 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2012/05/"> May 2012 </option>
+	<option value="http://www.raspberrypi-spy.co.uk/2012/03/"> March 2012 </option>
+
+		</select>
+		</li>
+	
+			</ul>
+		</aside>
+		
+		
+	</div> <!-- .row -->
+		
+	
+</div> <!-- .main -->
+
+
+		
+	<footer class="main-footer">
+	
+			<div class="wrap">
+		
+					<ul class="widgets row cf">
+				
+		<li class="widget col-4 bunyad-about">			<h3 class="widgettitle">About</h3>		
+			<div class="about-widget">
+			
+						
+			<p>Unofficial site devoted to the Raspberry Pi credit card sized computer offering tutorials, guides, resources,scripts and downloads. We hope to help everyone get the most out of their Pi by providing clear, simple articles on configuring, programming and operating it.</p>
+			
+			</div>
+		
+		</li>		
+					<li class="widget col-4 popular-posts">			<h3 class="widgettitle">Popular Posts</h3>			
+			<ul class="posts-list">
+							<li>
+				
+					<a href="http://www.raspberrypi-spy.co.uk/2012/07/16x2-lcd-module-control-using-python/"><img src="16x2_lcd_module_1-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="16x2_lcd_module_1" title="16×2 LCD Module Control Using Python" height="96" width="110">					
+																					
+					</a>
+					
+					<div class="content">
+					
+									<div class="cf listing-meta meta above">
+					
+				<time datetime="2012-07-27T08:48:19+01:00" itemprop="datePublished" class="meta-item">July 27, 2012</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2012/07/16x2-lcd-module-control-using-python/#comments"><i class="fa fa-comments-o"></i> 86</a></span>					
+			</div>
+							
+						<a href="http://www.raspberrypi-spy.co.uk/2012/07/16x2-lcd-module-control-using-python/" title="16×2 LCD Module Control Using Python">
+							16×2 LCD Module Control Using Python</a>
+							
+													
+																			
+					</div>
+				
+				</li>
+							<li>
+				
+					<a href="http://www.raspberrypi-spy.co.uk/2013/10/analogue-sensors-on-the-raspberry-pi-using-an-mcp3008/"><img src="mcp3008_tmp36_02-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="MCP3008 Example Circuit #2" title="Analogue Sensors On The Raspberry Pi Using An MCP3008" height="96" width="110">					
+																					
+					</a>
+					
+					<div class="content">
+					
+									<div class="cf listing-meta meta above">
+					
+				<time datetime="2013-10-20T11:26:28+01:00" itemprop="datePublished" class="meta-item">October 20, 2013</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2013/10/analogue-sensors-on-the-raspberry-pi-using-an-mcp3008/#comments"><i class="fa fa-comments-o"></i> 79</a></span>					
+			</div>
+							
+						<a href="http://www.raspberrypi-spy.co.uk/2013/10/analogue-sensors-on-the-raspberry-pi-using-an-mcp3008/" title="Analogue Sensors On The Raspberry Pi Using An MCP3008">
+							Analogue Sensors On The Raspberry Pi Using An MCP3008</a>
+							
+													
+																			
+					</div>
+				
+				</li>
+							<li>
+				
+					<a href="http://www.raspberrypi-spy.co.uk/2014/09/top-5-reasons-the-raspberry-pi-sucks/"><img src="raspberry_pi_sucks1-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="Raspberry Pi Sucks" title="Top 5 Reasons The Raspberry Pi Sucks" height="96" width="110">					
+																					
+					</a>
+					
+					<div class="content">
+					
+									<div class="cf listing-meta meta above">
+					
+				<time datetime="2014-09-19T20:06:23+01:00" itemprop="datePublished" class="meta-item">September 19, 2014</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2014/09/top-5-reasons-the-raspberry-pi-sucks/#comments"><i class="fa fa-comments-o"></i> 63</a></span>					
+			</div>
+							
+						<a href="http://www.raspberrypi-spy.co.uk/2014/09/top-5-reasons-the-raspberry-pi-sucks/" title="Top 5 Reasons The Raspberry Pi Sucks">
+							Top 5 Reasons The Raspberry Pi Sucks</a>
+							
+													
+																			
+					</div>
+				
+				</li>
+						</ul>
+			
+			</li>		
+		
+			<li class="widget col-4 latest-posts">			
+							<h3 class="widgettitle">Recent Posts</h3>						
+			<ul class="posts-list">
+			
+							<li>
+				
+					<a href="http://www.raspberrypi-spy.co.uk/2016/05/raspberry-pi-zero-now-has-a-camera-connector/"><img src="pi_zero_with_camera_connector-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="Raspberry Pi Zero with camera connector" title="Raspberry Pi Zero now has a camera connector" height="96" width="110">					
+																					
+					</a>
+					
+					<div class="content">
+					
+									<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-05-16T11:59:32+01:00" itemprop="datePublished" class="meta-item">May 16, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/05/raspberry-pi-zero-now-has-a-camera-connector/#respond"><i class="fa fa-comments-o"></i> 0</a></span>					
+			</div>
+							
+						<a href="http://www.raspberrypi-spy.co.uk/2016/05/raspberry-pi-zero-now-has-a-camera-connector/" title="Raspberry Pi Zero now has a camera connector">
+							Raspberry Pi Zero now has a camera connector</a>
+							
+													
+																																				
+					</div>
+				
+				</li>
+							<li>
+				
+					<a href="http://www.raspberrypi-spy.co.uk/2016/05/top-5-raspberry-pi-3-project-ideas/"><img src="top-5-project-ideas-from-rs-110x96.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="Top 5 Raspberry Pi 3 Project Ideas" title="Top 5 Raspberry Pi 3 Project Ideas" height="96" width="110">					
+																					
+					</a>
+					
+					<div class="content">
+					
+									<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-05-15T20:34:42+01:00" itemprop="datePublished" class="meta-item">May 15, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/05/top-5-raspberry-pi-3-project-ideas/#respond"><i class="fa fa-comments-o"></i> 0</a></span>					
+			</div>
+							
+						<a href="http://www.raspberrypi-spy.co.uk/2016/05/top-5-raspberry-pi-3-project-ideas/" title="Top 5 Raspberry Pi 3 Project Ideas">
+							Top 5 Raspberry Pi 3 Project Ideas</a>
+							
+													
+																																				
+					</div>
+				
+				</li>
+							<li>
+				
+					<a href="http://www.raspberrypi-spy.co.uk/2016/05/using-the-bbc-microbit-with-the-raspberry-pi/"><img src="microbit_and_pi_01-110x96.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image no-display" alt="BBC Microbit and Raspberry Pi" title="Using the BBC Microbit with the Raspberry Pi" height="96" width="110">					
+																					
+					</a>
+					
+					<div class="content">
+					
+									<div class="cf listing-meta meta above">
+					
+				<time datetime="2016-05-01T19:59:34+01:00" itemprop="datePublished" class="meta-item">May 1, 2016</time><span class="meta-item comments"><a href="http://www.raspberrypi-spy.co.uk/2016/05/using-the-bbc-microbit-with-the-raspberry-pi/#comments"><i class="fa fa-comments-o"></i> 1</a></span>					
+			</div>
+							
+						<a href="http://www.raspberrypi-spy.co.uk/2016/05/using-the-bbc-microbit-with-the-raspberry-pi/" title="Using the BBC Microbit with the Raspberry Pi">
+							Using the BBC Microbit with the Raspberry Pi</a>
+							
+													
+																																				
+					</div>
+				
+				</li>
+						</ul>
+			
+			</li>			</ul>
+				
+		</div>
+	
+		
+	
+			<div class="lower-foot">
+			<div class="wrap">
+		
+						
+			<div class="widgets">
+							<div class="textwidget"><div style="text-align: center; width: 100%;">
+<p><a href="http://www.raspberrypi-spy.co.uk/feed/">Entries RSS</a>&nbsp;|&nbsp;<a href="http://www.raspberrypi-spy.co.uk/comments/feed/">Comments RSS</a></p>
+<p>This site is not associated with the official Raspberrypi.org site or the Raspberry Pi Foundation. Raspberry Pi is a trademark of the Raspberry Pi Foundation.</p>
+<p>Copyright © 2015 - All Rights Reserved - Matt Hawkins</p>
+</div></div>
+					</div>
+			
+					
+			</div>
+		</div>		
+		
+	</footer>
+	
+</div> <!-- .main-wrap -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

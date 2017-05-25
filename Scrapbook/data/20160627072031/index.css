@@ -1,0 +1,181 @@
+/* ::::: https://www.migration.gov.rw/fileadmin/templates/css/style.css?1411730579 ::::: */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption { margin: 0px; padding: 0px; border: 0px none; outline: 0px none; font-family: Helvetica,Arial,Tahoma,sans-serif; }
+body { font: 12px/1.7 Helvetica,Arial,Tahoma,sans-serif; color: rgb(102, 102, 102); }
+h1, h2, h3, h4, h5, h6 { font-family: Helvetica,Arial,Tahoma,sans-serif; margin-bottom: 12px; font-weight: 600 ! important; }
+a:link, a:visited, a:hover, a:active, a:focus { text-decoration: none; outline: medium none; font-family: Helvetica,Arial,Tahoma,sans-serif; }
+a { color: rgb(217, 62, 57); font-family: Helvetica,Arial,Tahoma,sans-serif; }
+a:hover { text-decoration: underline; }
+p { color: rgb(116, 102, 91); font-size: 12px; font-family: Helvetica,Arial,Tahoma,sans-serif; line-height: 22px; }
+dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset, blockquote, article, p { margin-bottom: 20px ! important; }
+*::-moz-selection { background: rgb(46, 40, 35) none repeat scroll 0% 0%; color: rgb(255, 255, 255); }
+h3 { font-size: 18px; color: rgb(69, 60, 52); }
+ul { list-style: outside none none; margin-top: 0px; }
+input, textarea { border: 1px solid rgb(204, 204, 204); padding: 7px 10px; font-size: 11px; color: rgb(0, 0, 0); border-radius: 3px; }
+hr { background: transparent none repeat scroll 0% 0%; border: 0px none; clear: both; color: transparent; height: 1px; margin: 0px; padding: 0px; }
+hr { background: rgb(217, 217, 217) none repeat scroll 0% 0%; color: rgb(217, 217, 217); margin: 5px 0px 25px; }
+.container { width: 940px; margin: 0px auto; }
+.main-menu { margin: 5px 0px 0px; float: right; }
+.main-menu ul { margin: 0px; }
+.main-menu li ul { padding-top: 0px; left: -2px; }
+.main-menu li ul li { box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.1); }
+.main-menu li { white-space: nowrap; display: block; position: relative; margin: 0px; padding: 0px; z-index: 100; }
+.main-menu a { display: block; position: relative; font-size: 14px; font-family: "Helvetica neue",Arial,sans-serif; color: rgb(0, 76, 153); font-weight: bold; }
+.main-menu a:hover { text-decoration: none; color: rgb(0, 204, 0); }
+.main-menu a:visited { text-decoration: none; color: rgb(15, 69, 204); }
+.main-menu > ul > li { float: left; margin-right: 10px; }
+.main-menu > ul > li:last-child { margin-right: 0px; }
+.main-menu li ul { display: none; position: absolute; top: 100%; z-index: 100; }
+.main-menu li:hover > ul { display: block; }
+.main-menu li ul li { border-bottom: 1px solid rgb(83, 74, 66); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.main-menu li ul li a:hover { background: rgb(245, 245, 245) none repeat scroll 0% 0%; color: rgb(0, 204, 0); }
+.main-menu li ul li:last-child { border-bottom: 1px solid rgb(46, 40, 35); }
+.main-menu li ul li a { padding: 0px 25px 0px 12px; line-height: 33px; background: rgb(228, 234, 255) none repeat scroll 0% 0%; }
+.main-menu li ul li ul { top: -1px ! important; left: 100% ! important; padding: 0px ! important; }
+.sidebar { width: 280px; margin: 10px 0px 0px; float: left; }
+.recent_works ul::after { content: ""; display: block; height: 0px; overflow: hidden; clear: both; }
+.portfolio_1_4 ul::after { content: ""; display: block; height: 0px; overflow: hidden; clear: both; }
+.portfolio_1_3 ul::after { content: ""; display: block; height: 0px; overflow: hidden; clear: both; }
+.portfolio_1_2 ul::after { content: ""; display: block; height: 0px; overflow: hidden; clear: both; }
+@media screen and (max-width: 600px) {
+}
+.clearfix::after { clear: both; content: " "; display: block; font-size: 0px; height: 0px; line-height: 0; visibility: hidden; width: 0px; }
+* html .clearfix, :first-child + html .clearfix {  }
+.pricing_table .pricing_items li:nth-child(2n+1) {  }
+.comments_form .comment_wrap:nth-child(3n) { margin-right: 0px; }
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	.logo { display: block; float: none; width: 100%; }
+	.main-menu { margin: 0px 0px 30px; float: left; }
+	.sidebar { width: 240px; }
+	.container { width: 748px; }
+}
+@media only screen and (max-width: 767px) {
+	.logo { display: block; float: none; text-align: center; width: 100%; }
+	.main-menu { margin: 0px 0px 30px; float: left; width: 100%; }
+	.main-menu ul { position: static ! important; padding: 0px ! important; }
+	.main-menu li { box-shadow: none ! important; border-width: 1px 0px 0px ! important; border-style: solid none none ! important; border-color: rgb(217, 217, 217) -moz-use-text-color -moz-use-text-color ! important; -moz-border-top-colors: none ! important; -moz-border-right-colors: none ! important; -moz-border-bottom-colors: none ! important; -moz-border-left-colors: none ! important; border-image: none ! important; display: block ! important; float: none ! important; margin: 0px ! important; }
+	.main-menu li a { padding: 0px 16px; line-height: 33px; }
+	.main-menu li ul li a { padding-left: 32px ! important; }
+	.main-menu li ul li ul li a { padding-left: 48px ! important; }
+	.main-menu li ul { display: none ! important; }
+	.main-menu li:hover > ul { display: block ! important; }
+	.sidebar { margin-top: 40px; float: none; }
+	.pricing_table .pricing_items li::before { font-size: 13px; font-weight: bold; display: inline-block; text-align: center; padding-right: 5px; content: attr(data-item) ":" ! important; }
+	.container, .col_1_2, .col_1_3, .col_1_4, .col_1_5, .col_3_4, .col_2_3 { width: 300px; }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.logo { display: block; float: none; width: 100%; }
+	.main-menu { margin: 0px 0px 30px; float: left; }
+	.sidebar { float: none; width: 420px; }
+	.container, .col_1_2, .col_1_3, .col_1_4, .col_1_5, .col_3_4, .col_2_3 { width: 420px; }
+}
+@media only screen and (max-width: 317px) {
+	.container, .col_1_2, .col_1_3, .col_1_4, .col_1_5, .col_3_4, .col_2_3 { width: 226px; }
+	.sidebar { width: 226px; float: none; }
+	.logo img { width: 100%; }
+}
+.langauagemenu { padding-top: 2px; float: left; }
+.langauagemenu a { float: left; width: 22px; }
+.langauagemenu a img.active { border: 1px solid rgb(49, 92, 153); height: 14px; width: 14px; }
+/* ::::: https://www.migration.gov.rw/fileadmin/templates/css/prettyPhoto.css?1411730579 ::::: */
+
+/* ::::: https://www.migration.gov.rw/typo3temp/stylesheet_ff5d20b1eb.css?1411730390 ::::: */
+
+/* ::::: https://www.migration.gov.rw/fileadmin/templates/css/base.css ::::: */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0px; padding: 0px; border: 0px none; font: inherit; vertical-align: baseline; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+body { line-height: 1; }
+ol, ul { list-style: outside none none; }
+blockquote::before, blockquote::after, q::before, q::after { content: none; }
+body { font: 12px/20px Arial,Helvetica,sans-serif; color: white; overflow-x: hidden; }
+html { background: rgb(247, 246, 246) none repeat scroll 0% 0%; }
+h1, h2, h3, h4, h5, h6 { color: rgb(27, 109, 224); font-family: Arial,Helvetica,sans-serif; font-weight: normal; }
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; color: rgb(109, 134, 150); }
+h3 { font-size: 14px; margin-bottom: 5px; text-transform: uppercase; }
+p { color: rgb(94, 99, 123); line-height: 1.5em; font-size: 14px; margin: 0px 0px 15px; font-family: "PT Serif",serif; }
+ul li, ul li a { font-family: "PT Serif",serif; font-size: 14px; }
+blockquote cite::before { content: "— "; }
+hr { border-style: solid; border-color: rgb(221, 221, 221); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 1px 0px 0px; clear: both; margin: 10px 0px 30px; height: 0px; }
+*::-moz-selection { background: rgb(109, 134, 150) none repeat scroll 0% 0%; color: rgb(65, 69, 88); }
+a, a:visited { color: rgb(128, 152, 166); text-decoration: none; outline: 0px none; }
+p a, p a:visited { line-height: inherit; }
+ul.tabs::before, ul.tabs::after { content: " "; display: block; overflow: hidden; visibility: hidden; width: 0px; height: 0px; }
+ul.tabs::after { clear: both; }
+form { margin-bottom: 0px; }
+/* ::::: https://www.migration.gov.rw/fileadmin/templates/css/skeleton.css ::::: */
+
+.container { position: relative; width: 960px; margin: 0px auto; }
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	.container { width: 768px; }
+}
+@media only screen and (max-width: 767px) {
+	.container { width: 300px; }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.container { width: 420px; }
+}
+.container::after { content: " "; display: block; height: 0px; clear: both; visibility: hidden; }
+.clearfix::before, .clearfix::after, .row::before, .row::after { content: " "; display: block; overflow: hidden; visibility: hidden; width: 0px; height: 0px; }
+.row::after, .clearfix::after { clear: both; }
+/* ::::: https://www.migration.gov.rw/fileadmin/templates/css/slideshow.css ::::: */
+
+/* ::::: https://www.migration.gov.rw/fileadmin/templates/css/screen.css ::::: */
+
+input[type="search"] { font-family: inherit; font-size: 100%; }
+:-moz-placeholder { color: rgb(136, 136, 136); }
+*::-moz-placeholder { color: rgb(136, 136, 136); }
+@media only screen and (max-width: 480px) {
+}
+@media only screen and (max-width: 650px) and (min-width: 481px) {
+}
+@media only screen and (max-width: 1050px) and (min-width: 651px) {
+}
+@media only screen and (max-width: 1290px) and (min-width: 1051px) {
+}
+img, embed, object, video { max-width: 100%; }
+div.blankSeparator { height: 1px; margin: 20px 0px; display: block; }
+#header { background: rgb(255, 255, 255) none repeat scroll 0% 0%; margin-top: 0px; border-bottom: 0px solid rgb(109, 134, 150); }
+#middle { background: rgb(240, 245, 247) none repeat scroll 0% 0%; }
+.middlemain { background: rgb(240, 245, 247) none repeat scroll 0% 0%; }
+.logo { float: right; margin-right: 0px; margin-top: 0px; margin-bottom: 0px; }
+.slides::after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0px; }
+.info a { color: rgb(137, 162, 178); margin-left: 0px; transition: all 0.3s ease-in-out 0s; cursor: pointer; }
+.info a:hover { margin-left: 4px; color: rgb(115, 138, 153); }
+#copyright { background: rgb(23, 106, 255) none repeat scroll 0% 0%; border-top: 1pt solid rgb(65, 69, 80); border-bottom: 1pt solid rgb(92, 97, 111); text-align: center; }
+ul.tabs::before, ul.tabs::after { content: " "; display: block; overflow: hidden; visibility: hidden; width: 0px; height: 0px; }
+ul.tabs::after { clear: both; }
+.post { margin-bottom: 40px; padding: 10px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 1px solid rgb(239, 239, 239); opacity: 1; transition: opacity 0.5s linear 0s; }
+.sidebar h3 { background: rgb(191, 214, 228) none repeat scroll 0% 0%; border: 1px solid rgb(255, 255, 255); padding: 5px; }
+ul.blogList a.about { color: rgb(12, 107, 240); transition: all 0.3s ease-in-out 0s; }
+ul.blogList a.about:hover { padding-left: 3px; }
+ul.blogList li { padding: 10px 20px; border-bottom: 1px solid rgb(255, 255, 255); background: transparent url('raster.png') no-repeat scroll left center; }
+li.activenavigationItem { font-weight: bold; color: rgb(137, 144, 163); font-style: italic; transition: all 0.3s ease-in-out 0s; }
+li.activenavigationItem:hover { color: rgb(32, 96, 214); }
+.second, .third { margin-top: 30px; float: left; }
+.second, .third { margin-top: 0px; }
+.im { width: 60%; }
+.search { width: 40%; }
+.one_third { width: 30.66%; }
+.two_third { width: 60.33%; }
+.two_thirdo { width: 100%; }
+.one_half, .one_third, .two_third, .me, .one_fourth, .one_fifth { margin-right: 4%; margin-bottom: 10px; float: left; }
+.lastcolumn { margin-right: 0px ! important; clear: right; }
+@media only screen and (max-width: 959px) {
+}
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+}
+@media only screen and (max-width: 767px) {
+	.one_half, .one_third, .two_third, .me, .two_thirdo, .one_fourth, .one_fifth, .one_sixth { width: 100%; }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+}
+@media only screen and (max-width: 479px) {
+}
+@media only screen and (max-width: 767px) {
+}
+#copyright { background: rgb(23, 106, 255) none repeat scroll 0% 0%; border-top: 1pt solid rgb(65, 69, 80); border-bottom: 1pt solid rgb(92, 97, 111); text-align: center; }
+.two_thirdo p.bodytext { font-size: 12px; color: rgb(0, 0, 0); padding-top: 0px; }
+.two_third p.bodytext { font-size: 16px; color: rgb(0, 0, 0); padding-top: 0px; }
+.two_third p.bodytext a { color: rgb(58, 133, 232); }
+.two_thirdo p.bodytext a { color: rgb(255, 255, 255); }

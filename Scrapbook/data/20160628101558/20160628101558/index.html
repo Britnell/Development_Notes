@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://happilyembedded.wordpress.com/xmlrpc.php">
+<title>File transfer between BeagleBone Black and UBUNTU PC via SSH – happily embedded</title>
+<meta name="google-site-verification" content="uPZAaAprU1f80JcuzedQMhldJhcCb-hN7jpeCeEjkqg">
+<link rel="alternate" type="application/rss+xml" title="happily embedded » Feed" href="https://happilyembedded.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="happily embedded » Comments Feed" href="https://happilyembedded.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="happily embedded » File transfer between BeagleBone Black and UBUNTU PC via&nbsp;SSH Comments Feed" href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/feed/">
+	
+	
+
+
+
+
+
+
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s1.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://happilyembedded.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Introduction to RTOS" href="https://happilyembedded.wordpress.com/2015/08/08/introduction-to-rtos/">
+<link rel="next" title="BeagleBone black : Interfacing load cell weight sensor on&nbsp;UART1" href="https://happilyembedded.wordpress.com/2015/09/16/beaglebone-black-interfacing-load-cell-weight-sensor-on-uart1/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/">
+<link rel="shortlink" href="http://wp.me/p4NDhA-7x">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=https%3A%2F%2Fhappilyembedded.wordpress.com%2F2015%2F09%2F02%2Ffile-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=https%3A%2F%2Fhappilyembedded.wordpress.com%2F2015%2F09%2F02%2Ffile-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="File transfer between BeagleBone Black and UBUNTU PC via SSH">
+<meta property="og:url" content="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/">
+<meta property="og:description" content="Do you know how to copy files between BBB(BeagleBone black) and Linux PC via SSH? Here is the solution. The secure copy(scp) command is used to copy files to and from different hosts and it uses ss…">
+<meta property="article:published_time" content="2015-09-02T06:23:29+00:00">
+<meta property="article:modified_time" content="2015-09-26T07:20:54+00:00">
+<meta property="og:site_name" content="happily embedded">
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="https://s0.wp.com/i/webclip.png">
+<link rel="openid.server" href="https://happilyembedded.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://happilyembedded.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://happilyembedded.wordpress.com/osd.xml" title="happily embedded">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+		
+				
+		<meta name="application-name" content="happily embedded"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="I am here to share my knowledge which I acquired through my job... :)"><meta name="msapplication-task" content="name=Subscribe;action-uri=https://happilyembedded.wordpress.com/feed/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Read Freshly Pressed;action-uri=http://wordpress.com/#fresh;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="title" content="File transfer between BeagleBone Black and UBUNTU PC via&nbsp;SSH | happily embedded on WordPress.com">
+<meta name="description" content="Do you know how to copy files between BBB(BeagleBone black) and Linux PC via SSH? Here is the solution. The secure copy(scp) command is used to copy files to and from different hosts and it uses ssh for data transfer. Connect BeagleBone Black to PC via mini USB cable.It will establish ssh connection between PC…">
+<link rel="amphtml" href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/amp/">
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-467 single-format-standard logged-in admin-bar no-customize-support mp6 customizer-styles-applied highlander-enabled highlander-light">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<div class="site-top">
+		<div class="content-wrapper">
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+				<button class="menu-toggle" aria-controls="menu" aria-expanded="false"><span class="screen-reader-text">Primary Menu</span></button>
+				<div class="nav-menu"><ul aria-expanded="false" id="menu-menu-3" class="menu nav-menu"><li id="menu-item-257" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-257"><a href="https://happilyembedded.wordpress.com/">Home</a></li>
+<li id="menu-item-258" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-258"><a title="Author" href="https://happilyembedded.wordpress.com/about/">About</a></li>
+<li id="menu-item-259" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-259"><a href="https://happilyembedded.wordpress.com/know-more/">Miscellaneous</a></li>
+</ul></div>			</nav><!-- #site-navigation -->
+
+			<div class="site-search">
+				<button class="search-toggle"><span class="screen-reader-text">Search</span></button>
+				<div class="search-expand">
+					<div class="search-expand-inner">
+						<form role="search" method="get" class="search-form" action="https://happilyembedded.wordpress.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input class="search-field" placeholder="Search …" value="" name="s" type="search">
+				</label>
+				<input class="search-submit" value="Search" type="submit">
+			</form>					</div>
+				</div>
+			</div><!-- .site-search -->
+    	</div>
+	</div><!-- .site-top -->
+
+	<header class="site-header" role="banner">
+			<div class="site-branding">
+								<h1 class="site-title"><a href="https://happilyembedded.wordpress.com/" rel="home">happily embedded</a></h1>
+				<h2 class="site-description">I am here to share my knowledge which I acquired through my job… :)</h2>
+			</div><!-- .site-branding -->
+	</header><!-- .site-header -->
+
+	<div id="content" class="site-content">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-467" class="post-467 post type-post status-publish format-standard hentry category-embedded-systems category-linux tag-beaglebone-black tag-c tag-embedded-linux tag-scp tag-ssh tag-ubuntu14-04">
+	<header class="entry-header">
+
+		<h2 class="entry-title"><a href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/" rel="bookmark">File transfer between BeagleBone Black and UBUNTU PC via&nbsp;SSH</a></h2>
+					<div class="entry-meta">
+				<span class="posted-on"><a href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/" rel="bookmark"><time class="entry-date published" datetime="2015-09-02T06:23:29+00:00">September 2, 2015</time><time class="updated" datetime="2015-09-26T07:20:54+00:00">September 26, 2015</time></a></span><span class="byline"><span class="author vcard"><a class="url fn n" href="https://happilyembedded.wordpress.com/author/parvathyar/">pt AR</a></span></span>			</div><!-- .entry-meta -->
+		
+	</header><!-- .entry-header -->
+
+	
+		<div class="entry-content">
+			<div align="justify">
+<p>Do you know how to copy files between BBB(BeagleBone black) and Linux PC via SSH? Here is the solution. The secure copy(scp) command is used to copy files to and from different hosts and it uses ssh for data transfer.</p>
+<p>Connect BeagleBone Black to PC via mini USB cable.It will establish ssh connection between PC and BBB. Check ipaddress assigned for ssh connection on both BBB and PC.</p>
+<pre><strong><span style="color: green;">Copying file
+</span></strong>
+<span style="color: blue;">syntax:</span>scp &lt;file-path&gt; dest_username@dest_host_IP:/home/dest_username
+<strong><span style="color: green;">copy file from UBUNTU PC to BBB</span></strong>
+sudo scp examples/example.c root@192.168.7.2:/home/root
+<strong><span style="color: green;">copy file from BBB to UBUNTU PC</span></strong>
+scp pics/pic.jpg dtsuser@192.168.7.1:/home/dtsuser
+
+<strong><span style="color: green;">Copying entire directory
+</span></strong>
+<span style="color: blue;">syntax:</span>scp -r &lt;directory&gt; dest_username@dest_host_IP:/home/dest_username
+<strong><span style="color: green;">copy entire directory from UBUNTU PC to BBB</span></strong>
+sudo scp -r examples root@192.168.7.2:/home/root
+<strong><span style="color: green;">copy entire directory from BBB to UBUNTU PC</span></strong>
+sudo scp -r pics dtsuser@192.168.7.1:/home/dtsuser
+
+</pre>
+<p>*Note: login to BBB: sudo ssh root@192.168.7.2</p>
+</div>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-press-this"><a rel="nofollow" data-shared="" class="share-press-this sd-button share-icon" href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/?share=press-this&amp;nb=1" target="_top" title="Click to Press This!"><span>Press This</span></a></li><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-467" class="share-twitter sd-button share-icon" href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/?share=twitter&amp;nb=1" target="_top" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-467" class="share-facebook sd-button share-icon" href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/?share=facebook&amp;nb=1" target="_top" title="Share on Facebook"><span>Facebook</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-467" class="share-google-plus-1 sd-button share-icon" href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/?share=google-plus-1&amp;nb=1" target="_top" title="Click to share on Google+"><span>Google</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-70934422-467-57722ca40a7b9" data-src="//widgets.wp.com/likes/#blog_id=70934422&amp;post_id=467&amp;origin=happilyembedded.wordpress.com&amp;obj_id=70934422-467-57722ca40a7b9" data-name="like-post-frame-70934422-467-57722ca40a7b9"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-70934422-467-57722ca40a7b9" src="index_1.html" frameborder="0" height="55px" width="100%"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div style="display: block;" id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal"><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="475" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="0" data-origin="467" rel="nofollow" title="How to enable gpio on Beaglebone black?
+
+I am using angstrom linux (3.8.13) on my beaglebone black rev c development board. The BBB has 2 expansion header as shown in the figure. Here I am going to enable GPIO_48, the 15th pin of P9 expansion header. export the pin echo 48 &amp;gt; /sys/class/gpio/export lists available gpios ls…" href="https://happilyembedded.wordpress.com/2015/09/20/how-to-enable-gpio-on-beaglebone-black/" class="jp-relatedposts-post-a">How to enable gpio on Beaglebone black?</a></span><span class="jp-relatedposts-post-context">In "Embedded Systems"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="233" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="1" data-origin="467" rel="nofollow" title="Error:Unknown file system.Grub in rescue mode...How to repair this error in UBUNTU?
+
+Did you face the following situation while starting the system? Error:unknown file system. grub rescue&amp;gt; Then lets see the solution for this. How to repair? The Grub has two parts. -First part : This is in MBR of the disk which has only basic functionality i.e., Only four commands -…" href="https://happilyembedded.wordpress.com/2015/06/10/errorunknown-file-system-grub-in-rescue-mode-how-to-repair-this-error-in-ubuntu/" class="jp-relatedposts-post-a">Error:Unknown file system.Grub in rescue mode...How to repair this error in UBUNTU?</a></span><span class="jp-relatedposts-post-context">In "Linux"</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="491" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="2" data-origin="467" rel="nofollow" title="BeagleBone black : Interfacing load cell weight sensor on UART1
+
+I have interfaced the load cell on UART1_RX(26 of P9 header). NOTE: Do not connect 5V logic level signals to P9,P8 header pins or the board will be damaged. Enable UART1 echo BB-UART1 &amp;gt; /sys/devices/bone_capemgr.?/slots lists the enabled uart interfces ls -l /dev/ttyO* configure baud rate to 9600 stty -F…" href="https://happilyembedded.wordpress.com/2015/09/16/beaglebone-black-interfacing-load-cell-weight-sensor-on-uart1/" class="jp-relatedposts-post-a">BeagleBone black : Interfacing load cell weight sensor on UART1</a></span><span class="jp-relatedposts-post-context">In "Embedded Systems"</span></p></div></div></div>					</div><!-- .entry-content -->
+
+	
+	<footer class="entry-meta entry-footer">
+		<span class="cat-links"><a href="https://happilyembedded.wordpress.com/category/embedded-systems/" rel="category tag">Embedded Systems</a>, <a href="https://happilyembedded.wordpress.com/category/linux/" rel="category tag">Linux</a></span><span class="tags-links"><a href="https://happilyembedded.wordpress.com/tag/beaglebone-black/" rel="tag">BeagleBone Black</a>, <a href="https://happilyembedded.wordpress.com/tag/c/" rel="tag">C</a>, <a href="https://happilyembedded.wordpress.com/tag/embedded-linux/" rel="tag">Embedded Linux</a>, <a href="https://happilyembedded.wordpress.com/tag/scp/" rel="tag">scp</a>, <a href="https://happilyembedded.wordpress.com/tag/ssh/" rel="tag">ssh</a>, <a href="https://happilyembedded.wordpress.com/tag/ubuntu14-04/" rel="tag">ubuntu14.04</a></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-467 -->
+				<nav id="nav-below" class="post-navigation clear" role="navigation">
+	
+		<div class="nav-previous"><a href="https://happilyembedded.wordpress.com/2015/08/08/introduction-to-rtos/" rel="prev"><span class="meta-nav">Previous Article</span> Introduction to RTOS</a></div>		<div class="nav-next"><a href="https://happilyembedded.wordpress.com/2015/09/16/beaglebone-black-interfacing-load-cell-weight-sensor-on-uart1/" rel="next"><span class="meta-nav">Next Article</span> BeagleBone black : Interfacing load cell weight sensor on&nbsp;UART1</a></div>
+	
+	</nav><!-- #nav-below -->
+	
+			
+<div id="comments" class="comments-area">
+
+	
+	
+					<div id="respond" class="comment-respond js">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/#respond" style="display: none;">Cancel reply</a></small></h3>				<form action="https://happilyembedded.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+					<input id="highlander_comment_nonce" name="highlander_comment_nonce" value="b708f1dcc4" type="hidden"><input name="_wp_http_referer" value="/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/" type="hidden">
+<input name="hc_post_as" id="hc_post_as" value="wordpress" type="hidden">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea class="autosizejs " tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px none; padding: 0px; box-sizing: content-box; word-wrap: break-word; height: 0px ! important; min-height: 0px ! important; overflow: hidden; transition: none 0s ease 0s ; font-family: Arial,Helvetica,Tahoma,Verdana,sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: none; word-spacing: 0px; text-indent: 0px; line-height: 14px; width: 613.6px;"></textarea><textarea style="height: 35px; overflow: hidden; word-wrap: break-word; resize: none;" placeholder="Enter your comment here..." id="comment" name="comment" title="Enter your comment here..."></textarea></div>
+</div>
+
+<div style="display: none;" id="comment-form-identity" class="comment_registration">
+
+	<div style="display: none;" id="comment-form-nascar">
+		<p>Please log in using one of these methods to post your comment:</p>
+		<ul>
+			<li class="selected">
+				<a href="#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+			<li>
+			<iframe id="googleplus-sign-in" name="googleplus-sign-in" src="index_2.html" scrolling="no" allowtransparency="true" seamless="seamless" frameborder="0" height="24" width="24"></iframe>
+			</li>
+		</ul>
+	</div>
+
+	<div style="display: none;" id="comment-form-guest" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_top">				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Gravatar" class="no-grav" width="25">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" value="" type="email"></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" value="" type="text"></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" value="" type="text"></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="846d5de9c5b8b5d9e8696f7da36bd526" alt="Gravatar" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="https://2.gravatar.com/avatar/846d5de9c5b8b5d9e8696f7da36bd526?s=25&amp;d=https%3A%2F%2Fs2.wp.com%2Fwp-content%2Fmu-plugins%2Fhighlander-comments%2Fimages%2Fwplogo.png&amp;r=G" type="hidden">
+				<input name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="106105690" type="hidden">
+				<input name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="47bf36733144cc93184b9023b978761b9ec06731" type="hidden">
+				<p class="comment-form-posting-as pa-wordpress"><strong>kinyarwandablog:</strong> You are commenting using your WordPress.com account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Twitter picture" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" type="hidden">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Facebook photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" type="hidden">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Google+ photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" type="hidden">
+				<p class="comment-form-posting-as pa-googleplus"><strong></strong> You are commenting using your Google+ account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+
+
+<div style="display: none;" id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p></div>
+
+<p style="display: none;" class="form-submit"><input name="submit" id="comment-submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="467" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="4a83f2946c" type="hidden"></p>
+<input name="genseq" value="1467100324" type="hidden">
+<p style="display: none;"></p>				<input id="ak_js" name="ak_js" value="1467100350159" type="hidden"></form>
+					</div><!-- #respond -->
+		<div style="clear: both;"></div>
+
+</div><!-- #comments -->
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+	<div id="secondary" class="widget-area" role="complementary">
+		<aside id="archives-7" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href="https://happilyembedded.wordpress.com/2016/05/">May 2016</a>&nbsp;(1)</li>
+	<li><a href="https://happilyembedded.wordpress.com/2016/02/">February 2016</a>&nbsp;(3)</li>
+	<li><a href="https://happilyembedded.wordpress.com/2015/11/">November 2015</a>&nbsp;(1)</li>
+	<li><a href="https://happilyembedded.wordpress.com/2015/10/">October 2015</a>&nbsp;(4)</li>
+	<li><a href="https://happilyembedded.wordpress.com/2015/09/">September 2015</a>&nbsp;(3)</li>
+	<li><a href="https://happilyembedded.wordpress.com/2015/08/">August 2015</a>&nbsp;(1)</li>
+	<li><a href="https://happilyembedded.wordpress.com/2015/07/">July 2015</a>&nbsp;(1)</li>
+	<li><a href="https://happilyembedded.wordpress.com/2015/06/">June 2015</a>&nbsp;(4)</li>
+	<li><a href="https://happilyembedded.wordpress.com/2015/04/">April 2015</a>&nbsp;(2)</li>
+	<li><a href="https://happilyembedded.wordpress.com/2014/12/">December 2014</a>&nbsp;(2)</li>
+	<li><a href="https://happilyembedded.wordpress.com/2014/10/">October 2014</a>&nbsp;(1)</li>
+	<li><a href="https://happilyembedded.wordpress.com/2014/09/">September 2014</a>&nbsp;(2)</li>
+	<li><a href="https://happilyembedded.wordpress.com/2014/08/">August 2014</a>&nbsp;(4)</li>
+		</ul>
+		</aside><aside id="wp_tag_cloud-5" class="widget wp_widget_tag_cloud"><h3 class="widget-title">Tags</h3><div style="overflow: hidden;"><a href="https://happilyembedded.wordpress.com/tag/android/" class="tag-link-641922 tag-link-position-1" title="1 topic" style="font-size: 8pt;">Android</a>
+<a href="https://happilyembedded.wordpress.com/tag/angstrom/" class="tag-link-801639 tag-link-position-2" title="3 topics" style="font-size: 13.6757pt;">Angstrom</a>
+<a href="https://happilyembedded.wordpress.com/tag/automotive/" class="tag-link-2024 tag-link-position-3" title="1 topic" style="font-size: 8pt;">Automotive</a>
+<a href="https://happilyembedded.wordpress.com/tag/bcm43142/" class="tag-link-196945274 tag-link-position-4" title="1 topic" style="font-size: 8pt;">BCM43142</a>
+<a href="https://happilyembedded.wordpress.com/tag/beaglebone-black/" class="tag-link-163936668 tag-link-position-5" title="4 topics" style="font-size: 15.5676pt;">BeagleBone Black</a>
+<a href="https://happilyembedded.wordpress.com/tag/bluetooth/" class="tag-link-31280 tag-link-position-6" title="1 topic" style="font-size: 8pt;">bluetooth</a>
+<a href="https://happilyembedded.wordpress.com/tag/c/" class="tag-link-2426 tag-link-position-7" title="2 topics" style="font-size: 11.4054pt;">C</a>
+<a href="https://happilyembedded.wordpress.com/tag/can/" class="tag-link-61937 tag-link-position-8" title="2 topics" style="font-size: 11.4054pt;">CAN</a>
+<a href="https://happilyembedded.wordpress.com/tag/embedded-linux/" class="tag-link-114929 tag-link-position-9" title="3 topics" style="font-size: 13.6757pt;">Embedded Linux</a>
+<a href="https://happilyembedded.wordpress.com/tag/embedded-systems/" class="tag-link-30181 tag-link-position-10" title="2 topics" style="font-size: 11.4054pt;">Embedded Systems</a>
+<a href="https://happilyembedded.wordpress.com/tag/error/" class="tag-link-11869 tag-link-position-11" title="4 topics" style="font-size: 15.5676pt;">Error</a>
+<a href="https://happilyembedded.wordpress.com/tag/flash-memory/" class="tag-link-52842 tag-link-position-12" title="1 topic" style="font-size: 8pt;">flash memory</a>
+<a href="https://happilyembedded.wordpress.com/tag/freescale/" class="tag-link-2544239 tag-link-position-13" title="8 topics" style="font-size: 20.2973pt;">freescale</a>
+<a href="https://happilyembedded.wordpress.com/tag/gpio/" class="tag-link-9634231 tag-link-position-14" title="1 topic" style="font-size: 8pt;">gpio</a>
+<a href="https://happilyembedded.wordpress.com/tag/grub/" class="tag-link-23521 tag-link-position-15" title="2 topics" style="font-size: 11.4054pt;">Grub</a>
+<a href="https://happilyembedded.wordpress.com/tag/grub-rescue/" class="tag-link-31501281 tag-link-position-16" title="2 topics" style="font-size: 11.4054pt;">Grub rescue</a>
+<a href="https://happilyembedded.wordpress.com/tag/gtk/" class="tag-link-177699 tag-link-position-17" title="1 topic" style="font-size: 8pt;">gtk</a>
+<a href="https://happilyembedded.wordpress.com/tag/gui/" class="tag-link-7168 tag-link-position-18" title="1 topic" style="font-size: 8pt;">GUI</a>
+<a href="https://happilyembedded.wordpress.com/tag/hostapd/" class="tag-link-3225866 tag-link-position-19" title="1 topic" style="font-size: 8pt;">hostapd</a>
+<a href="https://happilyembedded.wordpress.com/tag/i-mx28-2/" class="tag-link-262833898 tag-link-position-20" title="6 topics" style="font-size: 18.4054pt;">i.mx28</a>
+<a href="https://happilyembedded.wordpress.com/tag/imx28/" class="tag-link-266482264 tag-link-position-21" title="1 topic" style="font-size: 8pt;">imx28</a>
+<a href="https://happilyembedded.wordpress.com/tag/imx28-u-boot/" class="tag-link-261903827 tag-link-position-22" title="1 topic" style="font-size: 8pt;">imx28 u-boot</a>
+<a href="https://happilyembedded.wordpress.com/tag/kernel/" class="tag-link-2428 tag-link-position-23" title="2 topics" style="font-size: 11.4054pt;">kernel</a>
+<a href="https://happilyembedded.wordpress.com/tag/libnl/" class="tag-link-35396990 tag-link-position-24" title="1 topic" style="font-size: 8pt;">libnl</a>
+<a href="https://happilyembedded.wordpress.com/tag/linux/" class="tag-link-610 tag-link-position-25" title="10 topics" style="font-size: 22pt;">Linux</a>
+<a href="https://happilyembedded.wordpress.com/tag/linux-image/" class="tag-link-7942239 tag-link-position-26" title="2 topics" style="font-size: 11.4054pt;">Linux image</a>
+<a href="https://happilyembedded.wordpress.com/tag/lpc1768/" class="tag-link-33031128 tag-link-position-27" title="1 topic" style="font-size: 8pt;">LPC1768</a>
+<a href="https://happilyembedded.wordpress.com/tag/ltib-2/" class="tag-link-262833886 tag-link-position-28" title="1 topic" style="font-size: 8pt;">ltib</a>
+<a href="https://happilyembedded.wordpress.com/tag/mcimx28evk/" class="tag-link-262277729 tag-link-position-29" title="5 topics" style="font-size: 17.0811pt;">mcimx28evk</a>
+<a href="https://happilyembedded.wordpress.com/tag/mtd/" class="tag-link-490110 tag-link-position-30" title="1 topic" style="font-size: 8pt;">MTD</a>
+<a href="https://happilyembedded.wordpress.com/tag/mtdutils/" class="tag-link-308961925 tag-link-position-31" title="1 topic" style="font-size: 8pt;">mtdutils</a>
+<a href="https://happilyembedded.wordpress.com/tag/nautilus/" class="tag-link-9195 tag-link-position-32" title="1 topic" style="font-size: 8pt;">nautilus</a>
+<a href="https://happilyembedded.wordpress.com/tag/openssl/" class="tag-link-1359391 tag-link-position-33" title="2 topics" style="font-size: 11.4054pt;">openssl</a>
+<a href="https://happilyembedded.wordpress.com/tag/pic-c18/" class="tag-link-415245218 tag-link-position-34" title="1 topic" style="font-size: 8pt;">PIC C18</a>
+<a href="https://happilyembedded.wordpress.com/tag/rtos/" class="tag-link-22693 tag-link-position-35" title="3 topics" style="font-size: 13.6757pt;">RTOS</a>
+<a href="https://happilyembedded.wordpress.com/tag/sae-j1979/" class="tag-link-132089273 tag-link-position-36" title="1 topic" style="font-size: 8pt;">SAE J1979</a>
+<a href="https://happilyembedded.wordpress.com/tag/scp/" class="tag-link-254551 tag-link-position-37" title="1 topic" style="font-size: 8pt;">scp</a>
+<a href="https://happilyembedded.wordpress.com/tag/sd-card/" class="tag-link-154093 tag-link-position-38" title="1 topic" style="font-size: 8pt;">sd card</a>
+<a href="https://happilyembedded.wordpress.com/tag/serial-nor-flash/" class="tag-link-56386259 tag-link-position-39" title="1 topic" style="font-size: 8pt;">serial NOR flash</a>
+<a href="https://happilyembedded.wordpress.com/tag/sf/" class="tag-link-13866 tag-link-position-40" title="1 topic" style="font-size: 8pt;">sf</a>
+<a href="https://happilyembedded.wordpress.com/tag/sf-commands/" class="tag-link-308983960 tag-link-position-41" title="1 topic" style="font-size: 8pt;">sf commands</a>
+<a href="https://happilyembedded.wordpress.com/tag/spi/" class="tag-link-402202 tag-link-position-42" title="1 topic" style="font-size: 8pt;">SPI</a>
+<a href="https://happilyembedded.wordpress.com/tag/ssh/" class="tag-link-49320 tag-link-position-43" title="1 topic" style="font-size: 8pt;">ssh</a>
+<a href="https://happilyembedded.wordpress.com/tag/u-boot/" class="tag-link-1483373 tag-link-position-44" title="2 topics" style="font-size: 11.4054pt;">u-boot</a>
+<a href="https://happilyembedded.wordpress.com/tag/uart/" class="tag-link-4497883 tag-link-position-45" title="1 topic" style="font-size: 8pt;">UART</a>
+<a href="https://happilyembedded.wordpress.com/tag/ubuntu14-04/" class="tag-link-225649378 tag-link-position-46" title="5 topics" style="font-size: 17.0811pt;">ubuntu14.04</a>
+<a href="https://happilyembedded.wordpress.com/tag/weight-sensor/" class="tag-link-54736644 tag-link-position-47" title="1 topic" style="font-size: 8pt;">Weight sensor</a>
+<a href="https://happilyembedded.wordpress.com/tag/wpa-supplicant/" class="tag-link-2206813 tag-link-position-48" title="1 topic" style="font-size: 8pt;">WPA Supplicant</a>
+<a href="https://happilyembedded.wordpress.com/tag/yocto-2/" class="tag-link-293589842 tag-link-position-49" title="1 topic" style="font-size: 8pt;">yocto</a>
+<a href="https://happilyembedded.wordpress.com/tag/yocto-image/" class="tag-link-308984885 tag-link-position-50" title="1 topic" style="font-size: 8pt;">yocto image</a></div></aside><aside id="categories-13" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-2024"><a href="https://happilyembedded.wordpress.com/category/automotive/">Automotive</a> (2)
+</li>
+	<li class="cat-item cat-item-9545020"><a href="https://happilyembedded.wordpress.com/category/bluetooth-2/">Bluetooth</a> (1)
+</li>
+	<li class="cat-item cat-item-61937"><a href="https://happilyembedded.wordpress.com/category/automotive/can/">CAN</a> (2)
+</li>
+	<li class="cat-item cat-item-114929"><a href="https://happilyembedded.wordpress.com/category/embedded-linux/">Embedded Linux</a> (1)
+</li>
+	<li class="cat-item cat-item-30181"><a href="https://happilyembedded.wordpress.com/category/embedded-systems/">Embedded Systems</a> (19)
+</li>
+	<li class="cat-item cat-item-2544239"><a href="https://happilyembedded.wordpress.com/category/embedded-systems/freescale/">freescale</a> (6)
+</li>
+	<li class="cat-item cat-item-440294697"><a href="https://happilyembedded.wordpress.com/category/embedded-systems/iec1107/">IEC1107</a> (1)
+</li>
+	<li class="cat-item cat-item-266482264"><a href="https://happilyembedded.wordpress.com/category/imx28/">imx28</a> (5)
+</li>
+	<li class="cat-item cat-item-610"><a href="https://happilyembedded.wordpress.com/category/linux/">Linux</a> (8)
+</li>
+	<li class="cat-item cat-item-33031128"><a href="https://happilyembedded.wordpress.com/category/lpc1768/">LPC1768</a> (1)
+</li>
+	<li class="cat-item cat-item-309000032"><a href="https://happilyembedded.wordpress.com/category/ltib-3/">ltib</a> (3)
+</li>
+	<li class="cat-item cat-item-22693"><a href="https://happilyembedded.wordpress.com/category/rtos/">RTOS</a> (3)
+</li>
+	<li class="cat-item cat-item-132089273"><a href="https://happilyembedded.wordpress.com/category/automotive/sae-j1979/">SAE J1979</a> (1)
+</li>
+	<li class="cat-item cat-item-1483373"><a href="https://happilyembedded.wordpress.com/category/embedded-systems/u-boot/">u-boot</a> (1)
+</li>
+	<li class="cat-item cat-item-308984666"><a href="https://happilyembedded.wordpress.com/category/embedded-systems/yocto-embedded-systems/">Yocto</a> (1)
+</li>
+		</ul>
+</aside><aside id="jp_blogs_i_follow-3" class="widget widget_jp_blogs_i_follow"><h3 class="widget-title">Blogs I Follow</h3><ol><li><a href="http://blog.atmel.com/" class="bump-view" data-bump-view="bif">Atmel | Bits &amp; Pieces</a></li><li><a href="http://elementztechblog.wordpress.com/" class="bump-view" data-bump-view="bif">Random Codes - Elementz Tech Blog</a></li><li><a href="http://techcrunch.com/" class="bump-view" data-bump-view="bif">TechCrunch</a></li><li><a href="http://embeddedlinuz.wordpress.com/" class="bump-view" data-bump-view="bif">Embedded Linux</a></li><li><a href="http://uezings.wordpress.com/" class="bump-view" data-bump-view="bif">uEZings</a></li><li><a href="http://importgeek.wordpress.com/" class="bump-view" data-bump-view="bif">HalfaGeek</a></li></ol></aside><aside id="linkcat-1356" class="widget widget_links"><h3 class="widget-title">Blogroll</h3>
+	<ul class="xoxo blogroll">
+<li><a href="https://happilyembedded.files.wordpress.com/2015/06/thekeyword-volatile1.pdf" target="_top">The keyword – volatile</a></li>
+
+	</ul>
+</aside>
+		<aside id="recent-posts-7" class="widget widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+					<li>
+				<a href="https://happilyembedded.wordpress.com/2016/05/29/how-to-read-data-from-iec1107-energy-meter/">How to read data from IEC1107 Energy&nbsp;Meter</a>
+						</li>
+					<li>
+				<a href="https://happilyembedded.wordpress.com/2016/02/17/stm32f103-keil-freertos-error-no-space-in-execution-regions-with-any-selector-matching-heap_2-0-bss/">STM32F103 Keil FreeRTOS “Error : No space in execution regions with .ANY selector matching heap_2.0&nbsp;(.bss)</a>
+						</li>
+					<li>
+				<a href="https://happilyembedded.wordpress.com/2016/02/17/mplabx-error-harmony-location-is-not-valid/">MPLABX Error : “Harmony Location is not&nbsp;valid”</a>
+						</li>
+					<li>
+				<a href="https://happilyembedded.wordpress.com/2016/02/15/can-multiple-frame-transmission/">CAN Multiple Frame&nbsp;Transmission</a>
+						</li>
+					<li>
+				<a href="https://happilyembedded.wordpress.com/2015/11/03/error-section-udata_j1939server-o-can-not-fit-the-section-section-udata_j1939server-o-length0x00000144/">Error – section ‘.udata_J1939Server.o’ can not fit the section. Section ‘.udata_J1939Server.o’ length=0x00000144</a>
+						</li>
+				</ul>
+		</aside>		<aside id="top-posts-3" class="widget widget_top-posts"><h3 class="widget-title">Top Posts &amp; Pages</h3><ul class="widgets-list-layout no-grav">
+					<li>
+												<a href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/" title="File transfer between BeagleBone Black and UBUNTU PC via SSH" class="bump-view" data-bump-view="tp">
+							<img src="399b22d735dc8d877961fc517973578f" class="widgets-list-layout-blavatar" alt="File transfer between BeagleBone Black and UBUNTU PC via SSH" data-pin-nopin="true">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/" class="bump-view" data-bump-view="tp">
+								File transfer between BeagleBone Black and UBUNTU PC via SSH							</a>
+						</div>
+											</li>
+									<li>
+												<a href="https://happilyembedded.wordpress.com/2014/12/05/uboot-sf-commands/" title="Uboot sf commands" class="bump-view" data-bump-view="tp">
+							<img src="selection_027.png" class="widgets-list-layout-blavatar" alt="Uboot sf commands" data-pin-nopin="true">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="https://happilyembedded.wordpress.com/2014/12/05/uboot-sf-commands/" class="bump-view" data-bump-view="tp">
+								Uboot sf commands							</a>
+						</div>
+											</li>
+									<li>
+												<a href="https://happilyembedded.wordpress.com/2016/02/17/stm32f103-keil-freertos-error-no-space-in-execution-regions-with-any-selector-matching-heap_2-0-bss/" title="STM32F103 Keil FreeRTOS &quot;Error : No space in execution regions with .ANY selector matching  heap_2.0 (.bss)" class="bump-view" data-bump-view="tp">
+							<img src="heapstackproblem.jpg" class="widgets-list-layout-blavatar" alt="STM32F103 Keil FreeRTOS &quot;Error : No space in execution regions with .ANY selector matching  heap_2.0 (.bss)" data-pin-nopin="true">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="https://happilyembedded.wordpress.com/2016/02/17/stm32f103-keil-freertos-error-no-space-in-execution-regions-with-any-selector-matching-heap_2-0-bss/" class="bump-view" data-bump-view="tp">
+								STM32F103 Keil FreeRTOS "Error : No space in execution regions with .ANY selector matching  heap_2.0 (.bss)							</a>
+						</div>
+											</li>
+									<li>
+												<a href="https://happilyembedded.wordpress.com/2016/02/15/can-multiple-frame-transmission/" title="CAN Multiple Frame Transmission" class="bump-view" data-bump-view="tp">
+							<img src="multi-frame-example.jpg" class="widgets-list-layout-blavatar" alt="CAN Multiple Frame Transmission" data-pin-nopin="true">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="https://happilyembedded.wordpress.com/2016/02/15/can-multiple-frame-transmission/" class="bump-view" data-bump-view="tp">
+								CAN Multiple Frame Transmission							</a>
+						</div>
+											</li>
+				</ul>
+</aside><aside id="blog-stats-5" class="widget widget_blog-stats"><h3 class="widget-title">Blog Stats</h3>		<ul>
+			<li>4,415 hits</li>
+		</ul>
+		</aside><aside id="follow_button_widget-3" class="widget widget_follow_button_widget">
+		<iframe scrolling="no" src="index_4.html" frameborder="0" height="20" width="100%"></iframe>
+		
+
+		</aside><aside id="author_grid-3" class="widget widget_author_grid"><h3 class="widget-title">Author</h3><ul><li><a href="https://happilyembedded.wordpress.com/author/parvathyar/"> <img id="grav-399b22d735dc8d877961fc517973578f-0" alt="" src="399b22d735dc8d877961fc517973578f_001.dat" class="avatar avatar-48 grav-hashed" height="48" width="48"></a></li></ul></aside><aside id="text-6" class="widget widget_text">			<div class="textwidget"><a href="http://info.flagcounter.com/3GGv"><img src="untitled" alt="Flag Counter" border="0"></a></div>
+		</aside><aside id="gallery-3" class="widget widget-gallery">
+<div class="widget-gallery-slideshow carousel">
+<div id="widget-gallery-3-slideshow" class="slideshow-window jetpack-slideshow slideshow-black" data-trans="fade" data-autostart="1" data-gallery="[{&quot;src&quot;:&quot;https:\/\/happilyembedded.files.wordpress.com\/2014\/12\/blogimage.jpg&quot;,&quot;id&quot;:&quot;207&quot;,&quot;caption&quot;:&quot;&quot;},{&quot;src&quot;:&quot;https:\/\/happilyembedded.files.wordpress.com\/2014\/12\/cropped-img_20140916_164009390_hdr.jpg&quot;,&quot;id&quot;:&quot;192&quot;,&quot;caption&quot;:&quot;&quot;},{&quot;src&quot;:&quot;https:\/\/happilyembedded.files.wordpress.com\/2014\/12\/olimex.jpg&quot;,&quot;id&quot;:&quot;211&quot;,&quot;caption&quot;:&quot;&quot;}]"><div style="position: absolute; top: 0px; left: 0px; z-index: 4; opacity: 1; display: block; width: 281px; height: 188px;" class="slideshow-slide"><img alt="" title="" src="blogimage.jpg" align="middle"><span class="slideshow-line-height-hack">&nbsp;</span><div class="slideshow-slide-caption"></div></div><div style="position: absolute; top: 0px; left: 0px; display: none; z-index: 3; opacity: 0; width: 281px; height: 188px;" class="slideshow-slide"><img alt="" title="" src="cropped-img_20140916_164009390_hdr.jpg" align="middle"><span class="slideshow-line-height-hack">&nbsp;</span><div class="slideshow-slide-caption"></div></div><div style="position: absolute; top: 0px; left: 0px; display: none; z-index: 3; opacity: 0; width: 281px; height: 188px;" class="slideshow-slide"><img alt="" title="" src="olimex.jpg" align="middle"><span class="slideshow-line-height-hack">&nbsp;</span><div class="slideshow-slide-caption"></div></div><div class="slideshow-controls"><a href="#"></a><a href="#"></a><a href="#"></a></div></div>
+</div>
+</aside>	</div><!-- .widget-area -->
+
+		</div>
+
+	<footer class="site-footer" role="contentinfo">
+		<div class="content-wrapper">
+
+			
+
+<div id="tertiary" class="footer-widget-area" role="complementary">
+		<div id="widget-area-2" class="widget-area">
+		<div id="pd_top_rated-5" class="widget top_rated"></div><div id="top-clicks-5" class="widget widget_top-clicks"><h3 class="widget-title">Top Clicks</h3><ul><li><a href="https://en.wikipedia.org/wiki/ISO_15765-2" target="_top" rel="nofollow">en.wikipedia.org/wiki/ISO…</a></li></ul></div>	</div><!-- #widget-area-2 -->
+	
+		<div id="widget-area-3" class="widget-area">
+		<aside id="image-3" class="widget widget_image"><h3 class="widget-title">Blog Images</h3><div style="overflow: hidden;"><a href="https://happilyembedded.files.wordpress.com/2014/12/img_20140916_164009390_hdr.jpg"><img src="img_20140916_164009390_hdr.jpg" class="alignnone" height="1836" width="3264"></a></div>
+</aside>	</div><!-- #widget-area-3 -->
+	
+		<div id="widget-area-4" class="widget-area">
+		<aside id="calendar-3" class="widget widget_calendar"><h3 class="widget-title">Posted on …</h3><div id="calendar_wrap" class="calendar_wrap"><table id="wp-calendar">
+	<caption>September 2015</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Monday">M</th>
+		<th scope="col" title="Tuesday">T</th>
+		<th scope="col" title="Wednesday">W</th>
+		<th scope="col" title="Thursday">T</th>
+		<th scope="col" title="Friday">F</th>
+		<th scope="col" title="Saturday">S</th>
+		<th scope="col" title="Sunday">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="https://happilyembedded.wordpress.com/2015/08/">« Aug</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next"><a href="https://happilyembedded.wordpress.com/2015/10/">Oct »</a></td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="1" class="pad">&nbsp;</td><td>1</td><td><a href="https://happilyembedded.wordpress.com/2015/09/02/" aria-label="Posts published on September 2, 2015">2</a></td><td>3</td><td>4</td><td>5</td><td>6</td>
+	</tr>
+	<tr>
+		<td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
+	</tr>
+	<tr>
+		<td>14</td><td>15</td><td><a href="https://happilyembedded.wordpress.com/2015/09/16/" aria-label="Posts published on September 16, 2015">16</a></td><td>17</td><td>18</td><td>19</td><td><a href="https://happilyembedded.wordpress.com/2015/09/20/" aria-label="Posts published on September 20, 2015">20</a></td>
+	</tr>
+	<tr>
+		<td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+	</tr>
+	<tr>
+		<td>28</td><td>29</td><td>30</td>
+		<td class="pad" colspan="4">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></aside>	</div><!-- #widget-area-4 -->
+	
+	</div><!-- .footer-widget-area -->
+			<div class="site-credit">
+				<a href="https://wordpress.com/?ref=footer_blog">Blog at WordPress.com.</a>
+				<span class="sep"> | </span>
+				<a href="https://wordpress.com/themes/plane/" title="Learn more about this theme">The Plane Theme</a>.			</div><!-- .site-credit -->
+
+		</div>
+	</footer><!-- .site-footer -->
+
+<!-- wpcom_wp_footer -->
+	
+<div id="wpcom-follow-bubbles-jp_blogs_i_follow-3" class="wpcom-follow-bubbles"><div id="wpcom-bubble-jp_blogs_i_follow-3-1" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://blog.atmel.com/" class="bump-view" data-bump-view="bif">Atmel | Bits &amp; Pieces</a><p></p></div></div><div id="wpcom-bubble-jp_blogs_i_follow-3-2" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://elementztechblog.wordpress.com/" class="bump-view" data-bump-view="bif">Random Codes - Elementz Tech Blog</a><p><small>Tech blog based on research and development done by the Elementz team.</small></p></div></div><div id="wpcom-bubble-jp_blogs_i_follow-3-3" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://techcrunch.com/" class="bump-view" data-bump-view="bif">TechCrunch</a><p><small>Startup and Technology News</small></p></div></div><div id="wpcom-bubble-jp_blogs_i_follow-3-4" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://embeddedlinuz.wordpress.com/" class="bump-view" data-bump-view="bif">Embedded Linux</a><p><small>Embedded system in linux</small></p></div></div><div id="wpcom-bubble-jp_blogs_i_follow-3-5" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://uezings.wordpress.com/" class="bump-view" data-bump-view="bif">uEZings</a><p><small>Future Design's Official Blog about uEZ</small></p></div></div><div id="wpcom-bubble-jp_blogs_i_follow-3-6" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://importgeek.wordpress.com/" class="bump-view" data-bump-view="bif">HalfaGeek</a><p></p></div></div></div>
+
+
+
+	
+
+		<div style="display: none;">
+	<div class="grofile-hash-map-399b22d735dc8d877961fc517973578f">
+	</div>
+	</div>
+
+	<div id="ab-reblog-box">
+		<form action="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/" name="reblog">
+			<textarea id="reblog-content" name="reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="blogid" id="lblogid">Post to</label>
+
+			<select name="to_blog_id" id="reblog-to-blog-id">
+														<option value="112385674">kinyarwandablog</option>
+							</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/" class="cancel">Cancel</a></span>
+				<input name="reblog-submit" class="button-primary" id="reblog-submit" value="Reblog Post" type="submit">
+				<input id="original-blog-id" value="70934422" type="hidden">
+				<input id="original-post-id" value="467" type="hidden">
+			</div>
+
+			<input id="_wpnonce" name="_wpnonce" value="faf4a1f9e2" type="hidden"><input name="_wp_http_referer" value="/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/" type="hidden">		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+	
+<div id="report-form-window" style="display: none;"></div>
+
+
+	
+		
+				
+				
+		
+
+
+
+
+
+
+
+
+
+<div class="actnbr-pub-plane actnbr-has-follow actnbr-hidden" id="actionbar"><ul><li class="actnbr-btn actnbr-hidden"> 			    	<a class="actnbr-action actnbr-actn-follow" href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a> 			    	<div class="actnbr-popover tip tip-top-left actnbr-notice"> 			    		<div class="tip-arrow"></div> 			    		<div class="tip-inner"> 			    			New posts from this site will now appear in your <a href="https://wordpress.com/">Reader</a> 			    		</div> 			    	</div> 			    </li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename actnbr-hidden"><a href="http://happilyembedded.wordpress.com/"><img alt="" src="void.gif" class="avatar avatar-36" height="36" width="36"> happily embedded</a></li> 				   	<li class="actnbr-folded-customize actnbr-hidden"><a href="https://happilyembedded.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fhappilyembedded.wordpress.com%2F2015%2F09%2F02%2Ffile-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li> 				    <li class="actnbr-folded-follow actnbr-hidden"><a class="actnbr-action actnbr-actn-follow" href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a></li> 				    <li class="actnbr-theme actnbr-hidden"><a href="https://wordpress.com/themes/plane/">Get theme: Plane</a></li> 				    <li class="actnbr-shortlink actnbr-hidden"><a href="http://wp.me/p4NDhA-7x">Copy shortlink</a></li> 				    <li class="flb-report actnbr-hidden"><a href="http://en.wordpress.com/abuse/">Report this content</a></li> 				    <li class="actnbr-reader actnbr-hidden"><a href="https://wordpress.com/read/blogs/70934422">View Site in the Reader</a></li> 				    <li class="actnbr-subs actnbr-hidden"><a href="https://wordpress.com/following/edit">Manage Sites I Follow</a></li> 				    <li class="actnbr-fold actnbr-hidden"><a href="https://happilyembedded.wordpress.com/2015/09/02/file-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh/">Collapse this bar</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+		<iframe src="index_5.html" scrolling="no" id="likes-master" name="likes-master" style="display: none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		
+		
+
+
+		<div id="wpadminbar" class="ltr">
+							<a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1">Skip to toolbar</a>
+						<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Toolbar" tabindex="0">
+						<ul id="wp-admin-bar-root-default" class="ab-top-menu">
+			
+		<li id="wp-admin-bar-blog" class="menupop my-sites"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/stats/kinyarwandablog.wordpress.com">My Site</a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-blog-default" class="ab-submenu">
+			
+		<li id="wp-admin-bar-blog-info" class="current-site">		<div class="ab-item ab-empty-item"><div class="ab-site-icon"></div><span class="ab-site-title">kinyarwandablog</span><span class="ab-site-description">kinyarwandablog.wordpress.com</span></div>		</li>
+		<li id="wp-admin-bar-new-site"><a class="ab-item" href="https://wordpress.com/start?ref=admin-bar-logged-in">+ Add New WordPress</a>		</li>
+		<li id="wp-admin-bar-blog-stats" class="mb-icon"><a class="ab-item" href="https://wordpress.com/stats/kinyarwandablog.wordpress.com">Stats <img style="width: 95px; margin: 0px; float: right;" src="admin-bar-hours-scale-2x.php" alt="Stats" title="Showing site views per hour for the last 48 hours. Click for full Site Stats."></a>		</li>
+		<li id="wp-admin-bar-plan" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/plans/kinyarwandablog.wordpress.com" class="ab-item primary mb-icon" id="wp-admin-bar-plan">Plan</a><a href="https://wordpress.com/plans/kinyarwandablog.wordpress.com" class="secondary" id="wp-admin-bar-plan-badge">Free</a></div>		</li>		</ul>
+			<ul id="wp-admin-bar-publish" class="ab-submenu">
+			
+		<li id="wp-admin-bar-publish-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Publish</div>		</li>
+		<li id="wp-admin-bar-new-post" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/posts/kinyarwandablog.wordpress.com" class="ab-item primary mb-icon" id="wp-admin-bar-edit-post">Blog Posts</a><a href="https://wordpress.com/post/kinyarwandablog.wordpress.com" class="secondary" id="wp-admin-bar-new-post">Add</a></div>		</li>
+		<li id="wp-admin-bar-new-page" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/pages/kinyarwandablog.wordpress.com" class="ab-item primary mb-icon" id="wp-admin-bar-edit-page">Pages</a><a href="https://wordpress.com/page/kinyarwandablog.wordpress.com" class="secondary" id="wp-admin-bar-new-page">Add</a></div>		</li>		</ul>
+			<ul id="wp-admin-bar-look-and-feel" class="ab-submenu">
+			
+		<li id="wp-admin-bar-look-and-feel-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Personalize</div>		</li>
+		<li id="wp-admin-bar-themes" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/design/kinyarwandablog.wordpress.com" class="ab-item primary mb-icon" id="wp-admin-bar-themes">Themes</a><a href="https://kinyarwandablog.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fhappilyembedded.wordpress.com%2F2015%2F09%2F02%2Ffile-transfer-between-beaglebone-black-and-ubuntu-pc-via-ssh%2F" class="secondary" id="wp-admin-bar-cmz">Customize</a></div>		</li>
+		<li id="wp-admin-bar-menus" class="mb-icon"><a class="ab-item" href="https://wordpress.com/menus/kinyarwandablog.wordpress.com">Menus</a>		</li>		</ul>
+			<ul id="wp-admin-bar-configuration" class="ab-submenu">
+			
+		<li id="wp-admin-bar-configuration-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Configure</div>		</li>
+		<li id="wp-admin-bar-sharing" class="mb-icon"><a class="ab-item" href="https://wordpress.com/sharing/kinyarwandablog.wordpress.com">Sharing</a>		</li>
+		<li id="wp-admin-bar-users-toolbar" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/people/team/kinyarwandablog.wordpress.com" class="ab-item primary mb-icon" id="wp-admin-bar-people">People</a><a href="https://kinyarwandablog.wordpress.com/wp-admin/users.php?page=wpcom-invite-users" class="secondary" id="wp-admin-bar-people-add">Add</a></div>		</li>
+		<li id="wp-admin-bar-domains" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/domains/kinyarwandablog.wordpress.com" class="ab-item primary mb-icon" id="wp-admin-bar-domains">Domains</a><a href="https://wordpress.com/domains/add/kinyarwandablog.wordpress.com" class="secondary" id="wp-admin-bar-domains-add">Add</a></div>		</li>
+		<li id="wp-admin-bar-blog-settings" class="mb-icon"><a class="ab-item" href="https://wordpress.com/settings/general/kinyarwandablog.wordpress.com">Settings</a>		</li>		</ul>
+	</div>		</li>
+		<li id="wp-admin-bar-jumptotop-button-menu"><a class="ab-item" href="#"><div style="top: 0px;" id="jumptotop"><span class="noticon noticon-top"></span></div></a>		</li>
+		<li id="wp-admin-bar-newdash" class="menupop"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/">Reader</a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-newdash-default" class="ab-submenu">
+			
+		<li id="wp-admin-bar-streams-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Streams</div>		</li>
+		<li id="wp-admin-bar-following" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/" class="ab-item primary mb-icon" id="wp-admin-bar-followed-sites">Followed Sites</a><a href="https://wordpress.com/following/edit" class="secondary">Manage</a></div>		</li>
+		<li id="wp-admin-bar-discover-discover" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/discover">Discover</a>		</li>
+		<li id="wp-admin-bar-discover-recommended-blogs" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/recommendations">Recommendations</a>		</li>
+		<li id="wp-admin-bar-my-activity-my-likes" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/activities/likes">My Likes</a>		</li>		</ul>
+	</div>		</li>
+		<li style="" id="wp-admin-bar-admin-bar-likes-widget">		<div class="ab-item ab-empty-item"></div><iframe class="admin-bar-likes-widget jetpack-likes-widget" scrolling="no" name="admin-bar-likes-widget" src="index_7.html" frameborder="0"></iframe>		</li>		</ul>
+			<ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+			
+		<li id="wp-admin-bar-notes" class="menupop">		<div class="ab-item ab-empty-item"><span id="wpnt-notes-unread-count" class="wpnt-loading wpn-unread"></span><span class="noticon noticon-bell"></span><span class="ab-text">Notifications</span></div><div class="wide" id="wpnt-notes-panel2" style="display: none;" dir="ltr" lang="en"><iframe class="wide" src="index_9.html" style="" id="wpnt-notes-iframe2" allowtransparency="true" scrolling="no" frameborder="0"></iframe></div>		</li>
+		<li id="wp-admin-bar-my-account" class="menupop with-avatar no-grav"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/me/"><img alt="" src="846d5de9c5b8b5d9e8696f7da36bd526_001.dat" class="avatar avatar-32" height="32" width="32"><span class="ab-text">Me</span></a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-user-actions" class="ab-submenu">
+			
+		<li id="wp-admin-bar-user-info" class="user-info user-info-item">		<div class="ab-item ab-empty-item" tabindex="-1"><img alt="" src="846d5de9c5b8b5d9e8696f7da36bd526_002.dat" class="avatar avatar-128" height="128" width="128"><span class="display-name">kinyarwandablog</span><a class="username" href="http://gravatar.com/kinyarwandablog">@kinyarwandablog</a><form action="https://happilyembedded.wordpress.com/wp-login.php?action=logout&amp;redirect_to=https%3A%2F%2Fwordpress.com%2F%3Fapppromo&amp;_wpnonce=3e695dbb73" method="post"><button class="ab-sign-out" type="submit">Sign Out</button></form></div>		</li>
+		<li id="wp-admin-bar-profile-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Profile</div>		</li>
+		<li id="wp-admin-bar-my-profile" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me">My Profile</a>		</li>
+		<li id="wp-admin-bar-account-settings" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/account">Account Settings</a>		</li>
+		<li id="wp-admin-bar-billing" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/billing">Billing History</a>		</li>
+		<li id="wp-admin-bar-security" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/security">Security</a>		</li>
+		<li id="wp-admin-bar-notifications" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/notifications">Notifications</a>		</li>
+		<li id="wp-admin-bar-special-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Special</div>		</li>
+		<li id="wp-admin-bar-get-apps" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/get-apps">Get Apps</a>		</li>
+		<li id="wp-admin-bar-next-steps" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/next">Next Steps</a>		</li>
+		<li id="wp-admin-bar-help" class="mb-icon"><a class="ab-item" href="https://wordpress.com/help">Help</a>		</li>		</ul>
+	</div>		</li>
+		<li id="wp-admin-bar-ab-new-post"><a class="ab-item" href="https://wordpress.com/post/kinyarwandablog.wordpress.com"></a>		</li>		</ul>
+				</div>
+							<a class="screen-reader-shortcut" href="https://happilyembedded.wordpress.com/wp-login.php?action=logout&amp;_wpnonce=3e695dbb73">Log Out</a>
+					</div>
+
+	
+
+	<div class="wpcom-bubble action-bubble">
+		<div class="bubble-txt"></div>
+	</div>
+	
+		
+	
+
+<div style="display: none;" class="comment-likes-overlay"></div><img id="wpstats" alt=":)" src="g.gif"></body>
+</html>

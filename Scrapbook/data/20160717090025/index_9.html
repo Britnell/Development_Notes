@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="js no-touch localstorage sessionstorage contenteditable use-opacity-transitions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Disqus Comments</title>
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    
+    
+    
+
+<base target="_parent">
+<link rel="stylesheet" type="text/css" href="index_9.css" media="all">
+</head>
+<body>
+    
+
+    
+    <div id="error" class="alert--error">
+        <p>We were unable to load Disqus. If you are a moderator please see our <a href="https://docs.disqus.com/help/83/"> troubleshooting guide</a>. </p>
+    </div>
+
+    
+    
+
+    
+    
+
+    
+
+    <div id="fixed-content"></div>
+
+
+    
+        
+
+
+        
+    
+
+
+<div id="layout" data-tracking-area="layout">
+
+<div id="onboard" data-tracking-area="onboard"></div>
+
+<div style="display: none;" id="highlighted-post" data-tracking-area="highlighted" class="highlighted-post"></div>
+
+<div id="global-alert"></div>
+
+<header id="main-nav" data-tracking-area="main-nav">
+<nav class="nav nav-primary">
+<ul>
+<li class="tab-conversation active" data-role="post-count"><a class="publisher-nav-color">
+<span class="comment-count">
+0 comments
+</span>
+
+<span class="comment-count-placeholder">
+Comments
+</span>
+</a>
+</li>
+<li class="tab-community">
+<a href="https://disqus.com/home/forums/calligraphymasters/" class="publisher-nav-color" data-action="community-sidebar" data-forum="calligraphymasters" id="community-tab">
+<span class="community-name">
+<strong>Calligraphy Masters</strong>
+
+</span>
+
+<strong class="community-name-placeholder">Community</strong>
+</a>
+</li>
+<li class="dropdown user-menu" data-role="logout"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+<span class="dropdown-toggle-wrapper">
+
+<span>
+Login
+</span>
+
+</span> <span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+
+
+<li>
+<a href="#" data-action="auth:disqus">Disqus</a>
+</li>
+<li>
+<a href="#" data-action="auth:facebook">Facebook</a>
+</li>
+<li>
+<a href="#" data-action="auth:twitter">Twitter</a>
+</li>
+<li>
+<a href="#" data-action="auth:google">Google</a>
+</li>
+
+
+
+</ul>
+</li>
+<li class="notification-menu unread" data-role="notification-menu"><a href="https://disqus.com/home/inbox/" class="notification-container" data-action="home" data-home-path="home/inbox/">
+<span class="notification-icon icon-comment" aria-hidden=""></span>
+<span class="notification-count" data-role="notification-count">1</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+
+<section id="conversation" data-role="main" data-tracking-area="main">
+<div class="nav nav-secondary" data-tracking-area="secondary-nav">
+<ul>
+<li id="recommend-button" class="recommend dropdown">
+<div class="thread-likes"><a href="#" data-action="recommend" title="Recommend this discussion" class="dropdown-toggle ">
+<span class="icon-heart"></span>
+<span class="label label-default">Recommend</span>
+<span class="label label-recommended">Recommended</span>
+</a>
+<ul class="dropdown-menu coachmark">
+<li>
+<h2>Discussion Recommended!</h2>
+<p>Recommending means this is a discussion worth sharing. It gets shared to your followers' Disqus feeds, and gives the creator kudos!</p>
+<a href="http://disqus.com/home/?utm_source=disqus_embed&amp;utm_content=recommend_btn" class="btn btn-primary" target="_top">
+ Find More Discussions 
+</a>
+</li>
+</ul>
+</div></li>
+<li id="thread-share-menu" class="dropdown share-menu hidden-sm"><a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Share">
+<span class="icon-export"></span>
+<span class="label">Share</span>
+</a>
+<ul class="share-menu dropdown-menu">
+<li class="share">Share this discussion on
+<ul>
+<li class="twitter">
+<a data-action="share:twitter" href="#">Twitter</a>
+</li>
+<li class="facebook">
+<a data-action="share:facebook" href="#">Facebook</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-role="post-sort" class="dropdown sorting pull-right">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+Sort by Best
+
+
+<span class="caret"></span>
+</a>
+<ul class="dropdown-menu pull-right">
+<li class="selected">
+<a href="#" data-action="sort" data-sort="popular">Best<i aria-hidden="true" class="icon-checkmark"></i></a>
+</li>
+
+<li>
+<a href="#" data-action="sort" data-sort="desc">Newest<i aria-hidden="true" class="icon-checkmark"></i></a>
+</li>
+
+<li>
+<a href="#" data-action="sort" data-sort="asc">Oldest<i aria-hidden="true" class="icon-checkmark"></i></a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="posts">
+<div id="form"><form action="http://disqus.com/embed/comments/?base=default&amp;version=903c42d8cc0fc262b4dc784af26d8041&amp;f=calligraphymasters&amp;t_i=2593%20http%3A%2F%2Fcalligraphymasters.com%2F%3Fp%3D2593&amp;t_u=http%3A%2F%2Fcalligraphymasters.com%2Fhow-to-make-your-own-parallel-gothic-pens-by-wore-vms%2F&amp;t_e=How%20to%20make%20your%20own%20parallel%20%26%20Gothic%20pens%20by%20Wore%20Vms&amp;t_d=How%20to%20make%20your%20own%20parallel%20%26%20Gothic%20pens%20by%20Wore%20Vms%20-%20Inspiring%20Calligraphy%2C%20Calligraphy%20Letters%20%26%20Lettering&amp;t_t=How%20to%20make%20your%20own%20parallel%20%26%20Gothic%20pens%20by%20Wore%20Vms&amp;s_o=default&amp;l=" class="reply">
+<div class="postbox">
+<div role="alert"></div>
+<div class="avatar">
+<span class="user">
+<img data-role="user-avatar" src="noavatar92.7b2fde640943965cc88df0cdee365907.png" alt="Avatar">
+</span>
+</div>
+
+<div class="textarea-wrapper" data-role="textarea" dir="auto"><div><span class="placeholder">Start the discussion…</span><div aria-label="Start the discussion…" style="overflow: auto; max-height: 350px;" data-role="editable" aria-multiline="true" role="textbox" tabindex="0" class="textarea" contenteditable="true"><p><br></p></div><div style="display: none;"><ul class="suggestions">
+<li class="header">
+<h5>in this conversation</h5>
+</li>
+</ul>
+</div></div>
+<div data-role="drag-drop-placeholder" class="media-drag-hover" style="display: none;">
+<div class="drag-text">
+⬇ Drag and drop your images here to upload them.
+</div>
+</div>
+<div class="media-preview empty" data-role="media-preview"><ul data-role="media-legacy-list"></ul>
+<ul data-role="media-progress-list"></ul>
+<ul data-role="media-rich-list"></ul>
+<div class="media-expanded empty" data-role="media-preview-expanded">
+<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-role="media-preview-expanded-image" alt="Media preview placeholder">
+</div>
+</div>
+<div class="edit-alert" role="postbox-alert"></div>
+<div class="post-actions">
+<ul class="wysiwyg">
+<li data-role="media-uploader"><a href="#" tabindex="-1" data-action="attach" class="attach" title="Upload Images"><span>Attach</span></a>
+<input data-role="media-upload" tabindex="-1" accept="image/*" type="file">
+</li>
+</ul>
+</div>
+</div>
+
+<div data-role="login-form"><div><section class="auth-section logged-out">
+<div class="connect">
+<h6>Log in with</h6>
+<ul data-role="login-menu" class="services login-buttons">
+
+
+<li class="auth-disqus">
+<button type="button" data-action="auth:disqus" title="Disqus"><i class="icon-disqus"></i></button>
+</li>
+<li class="auth-facebook">
+<button type="button" data-action="auth:facebook" title="Facebook"><i class="icon-facebook-circle"></i></button>
+</li>
+<li class="auth-twitter">
+<button type="button" data-action="auth:twitter" title="Twitter"><i class="icon-twitter-circle"></i></button>
+</li>
+<li class="auth-google">
+<button type="button" data-action="auth:google" title="Google"><i class="icon-google-plus-circle"></i></button>
+</li>
+</ul>
+</div>
+<div class="guest">
+<h6 class="guest-form-title">
+<span class="register-text"> or sign up with Disqus </span>
+<span class="guest-text"> or pick a name </span>
+</h6>
+
+<div class="what-is-disqus help-icon">
+<div id="rules" class="tooltip show">
+<h3>Disqus is a discussion network</h3>
+<ul>
+<li><span>Disqus never moderates or censors. The rules on this community are its own.</span></li>
+<li><span>Your email is safe with us. It's only used for moderation and optional notifications.</span></li>
+<li><span>Don't be a jerk or do anything illegal. Everything is easier that way.</span></li>
+</ul>
+<p class="clearfix"><a href="https://docs.disqus.com/kb/terms-and-policies/" class="btn btn-small" target="_top">Read full terms and conditions</a></p>
+</div>
+</div>
+
+<p class="input-wrapper">
+<input value="" dir="auto" placeholder="Name" name="display_name" id="view31_display_name" maxlength="30" type="text">
+</p>
+
+<div class="guest-details " data-role="guest-details">
+<p class="input-wrapper">
+<input dir="auto" placeholder="Email" name="email" id="view31_email" type="email">
+</p>
+
+<p class="input-wrapper">
+<input dir="auto" class="register-text" placeholder="Password" name="password" id="view31_password" type="password">
+</p>
+
+<div class="acceptance-wrapper register-text">
+By signing up, you agree to the Disqus <a target="_top" href="https://help.disqus.com/customer/portal/articles/1753105-basic-rules-for-disqus-powered-profiles-and-discussions">Basic Rules</a>, <a target="_top" href="https://help.disqus.com/customer/portal/articles/466260-terms-of-service">Terms of Service</a>, and <a target="_top" href="https://help.disqus.com/customer/portal/articles/466259-privacy-policy">Privacy Policy</a>.
+</div>
+<div class="acceptance-wrapper guest-text">
+By posting, you agree to the Disqus <a target="_top" href="https://help.disqus.com/customer/portal/articles/1753105-basic-rules-for-disqus-powered-profiles-and-discussions">Basic Rules</a>, <a target="_top" href="https://help.disqus.com/customer/portal/articles/466260-terms-of-service">Terms of Service</a>, and <a target="_top" href="https://help.disqus.com/customer/portal/articles/466259-privacy-policy">Privacy Policy</a>.
+</div>
+
+<input name="author-guest" style="display: none;" type="checkbox">
+
+<div class="proceed" data-role="submit-btn-container">
+<button type="submit" class="btn submit" aria-label="Next"><span class="icon-proceed"></span><div class="spinner"></div></button>
+</div>
+</div>
+</div>
+</section>
+
+</div></div>
+</div>
+</form></div>
+
+<button class="alert realtime" style="display: none;" data-role="realtime-notification">
+</button>
+
+<div id="no-posts" style="">Be the first to comment.</div>
+
+<ul id="post-list" class="post-list"></ul>
+
+<div class="load-more" data-role="more" style="display: none;">
+<a href="#" data-action="more-posts" class="btn">Load more comments</a>
+</div>
+</div>
+
+</section>
+
+<div id="placement-bottom" data-tracking-area="discovery-south"><div style="height: auto; visibility: visible;" class="post-list"><div style="display: block; width: 100%;"><div id="discovery-main-c61" class="discovery-main">
+
+<section id="col-organic-c79" class="col-organic">
+<header class="discovery-col-header">
+<h2>Also on <strong>Calligraphy Masters</strong>
+</h2>
+</header>
+<ul class="discovery-posts" data-role="discovery-posts"><li class="discovery-post post-0" id="discovery-link-organic-4818045121">
+<a href="http://disq.us/url?url=http%3A%2F%2Fcalligraphymasters.com%2Fcalligraffiti-ambassadors-vs-stroke-artfair%2F%3AWqKxTyjuqGeUIHOHEnN87SXh4XM&amp;imp=83m3vbr3e8rpgf&amp;prev_imp=83ltho03tsvk27&amp;forum_id=2970236&amp;forum=calligraphymasters&amp;thread_id=4480134859&amp;thread=4818045121&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=4818045121" class="publisher-anchor-color">
+
+<header class="discovery-post-header">
+<h3 title="Calligraffiti Ambassadors vs STROKE Artfair">
+<span data-role="discovery-thread-title" class="title line-truncate" data-line-truncate="2">
+Calligraffiti Ambassadors vs STROKE Artfair
+</span>
+</h3>
+
+<ul class="meta">
+<li class="comments">
+1 comment
+</li>
+<li class="time">2 months ago</li>
+</ul>
+</header>
+
+</a><a href="http://disq.us/url?url=http%3A%2F%2Fcalligraphymasters.com%2Fcalligraffiti-ambassadors-vs-stroke-artfair%2F%3AWqKxTyjuqGeUIHOHEnN87SXh4XM&amp;imp=83m3vbr3e8rpgf&amp;prev_imp=83ltho03tsvk27&amp;forum_id=2970236&amp;forum=calligraphymasters&amp;thread_id=4480134859&amp;thread=4818045121&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=4818045121" class="top-comment" data-role="discovery-top-comment">
+<img data-src="//a.disquscdn.com/uploads/users/5374/5054/avatar92.jpg?1457471067" alt="Avatar" data-role="discovery-avatar">
+<p><span class="user" data-role="discovery-top-comment-author">David Grimes</span> — <span data-role="discovery-top-comment-snippet" class="line-truncate" data-line-truncate="3">Really sick stuff guys! Good job all around!</span></p>
+</a>
+
+</li>
+<li class="discovery-post post-1" id="discovery-link-organic-4563589699">
+<a href="http://disq.us/url?url=http%3A%2F%2Fcalligraphymasters.com%2Ffraktur-capitals-calligraphy-alphabet-by-igor-sturion%2F%3A-I_fQqYf1y9J34P5SFAK_MOrOOg&amp;imp=83m3vbr3e8rpgf&amp;prev_imp=83ltho03tsvk27&amp;forum_id=2970236&amp;forum=calligraphymasters&amp;thread_id=4480134859&amp;thread=4563589699&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=4563589699" class="publisher-anchor-color">
+
+<header class="discovery-post-header">
+<h3 title="Fraktur Capitals calligraphy alphabet by Igor Sturion">
+<span data-role="discovery-thread-title" class="title line-truncate" data-line-truncate="2">
+Fraktur Capitals calligraphy alphabet by Igor Sturion
+</span>
+</h3>
+
+<ul class="meta">
+<li class="comments">
+2 comments
+</li>
+<li class="time">5 months ago</li>
+</ul>
+</header>
+
+</a><a href="http://disq.us/url?url=http%3A%2F%2Fcalligraphymasters.com%2Ffraktur-capitals-calligraphy-alphabet-by-igor-sturion%2F%3A-I_fQqYf1y9J34P5SFAK_MOrOOg&amp;imp=83m3vbr3e8rpgf&amp;prev_imp=83ltho03tsvk27&amp;forum_id=2970236&amp;forum=calligraphymasters&amp;thread_id=4480134859&amp;thread=4563589699&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=4563589699" class="top-comment" data-role="discovery-top-comment">
+<img data-src="//a.disquscdn.com/uploads/users/7843/676/avatar92.jpg?1455112631" alt="Avatar" data-role="discovery-avatar">
+<p><span class="user" data-role="discovery-top-comment-author">Ian Staber</span> — <span data-role="discovery-top-comment-snippet" class="line-truncate" data-line-truncate="3"> hehe, i noticed. i love the B,F,I,U, and W. they are elegant, not too over the top, balanced, and fluid. thanks …</span></p>
+</a>
+
+</li>
+<li class="discovery-post post-2" id="discovery-link-organic-2626123582">
+<a href="http://disq.us/url?url=http%3A%2F%2Fcalligraphymasters.com%2Fguestbook%2F%3APLR1OHtRMjlILbQIk8f6ynkF61c&amp;imp=83m3vbr3e8rpgf&amp;prev_imp=83ltho03tsvk27&amp;forum_id=2970236&amp;forum=calligraphymasters&amp;thread_id=4480134859&amp;thread=2626123582&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=2626123582" class="publisher-anchor-color">
+
+<header class="discovery-post-header">
+<h3 title="Guestbook">
+<span data-role="discovery-thread-title" class="title line-truncate" data-line-truncate="2">
+Guestbook
+</span>
+</h3>
+
+<ul class="meta">
+<li class="comments">
+3 comments
+</li>
+<li class="time">2 years ago</li>
+</ul>
+</header>
+
+</a><a href="http://disq.us/url?url=http%3A%2F%2Fcalligraphymasters.com%2Fguestbook%2F%3APLR1OHtRMjlILbQIk8f6ynkF61c&amp;imp=83m3vbr3e8rpgf&amp;prev_imp=83ltho03tsvk27&amp;forum_id=2970236&amp;forum=calligraphymasters&amp;thread_id=4480134859&amp;thread=2626123582&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=2626123582" class="top-comment" data-role="discovery-top-comment">
+<img data-src="//a.disquscdn.com/1468276017/images/noavatar92.png" alt="Avatar" data-role="discovery-avatar">
+<p><span class="user" data-role="discovery-top-comment-author">jeanette</span> — <span data-role="discovery-top-comment-snippet" class="line-truncate" data-line-truncate="3">Enjoy Calligraphy Masters, I love seeing the work produced and find it inspiring. Thank you</span></p>
+</a>
+
+</li>
+<li class="discovery-post post-3" id="discovery-link-organic-4481788279">
+<a href="http://disq.us/url?url=http%3A%2F%2Fcalligraphymasters.com%2Fdenis-brown-i-think-im-always-doing-calligraphy%2F%3A-_ZLVPtdCJI2pMBpBPVwPcYy1Z8&amp;imp=83m3vbr3e8rpgf&amp;prev_imp=83ltho03tsvk27&amp;forum_id=2970236&amp;forum=calligraphymasters&amp;thread_id=4480134859&amp;thread=4481788279&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=4481788279" class="publisher-anchor-color">
+
+<header class="discovery-post-header">
+<h3 title="Denis Brown: I think I’m always “doing” calligraphy">
+<span data-role="discovery-thread-title" class="title line-truncate" data-line-truncate="2">
+Denis Brown: I think I’m always “doing” calligraphy
+</span>
+</h3>
+
+<ul class="meta">
+<li class="comments">
+1 comment
+</li>
+<li class="time">6 months ago</li>
+</ul>
+</header>
+
+</a><a href="http://disq.us/url?url=http%3A%2F%2Fcalligraphymasters.com%2Fdenis-brown-i-think-im-always-doing-calligraphy%2F%3A-_ZLVPtdCJI2pMBpBPVwPcYy1Z8&amp;imp=83m3vbr3e8rpgf&amp;prev_imp=83ltho03tsvk27&amp;forum_id=2970236&amp;forum=calligraphymasters&amp;thread_id=4480134859&amp;thread=4481788279&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=4481788279" class="top-comment" data-role="discovery-top-comment">
+<img data-src="//a.disquscdn.com/uploads/users/5374/5054/avatar92.jpg?1457471067" alt="Avatar" data-role="discovery-avatar">
+<p><span class="user" data-role="discovery-top-comment-author">David Grimes</span> — <span data-role="discovery-top-comment-snippet" class="line-truncate" data-line-truncate="3">This is absolutely fascinating. Excellent job to both the interviewer and Denis. Captivating to read!</span></p>
+</a>
+
+</li>
+</ul>
+</section>
+
+</div>
+</div></div></div>
+
+<div id="footer" data-tracking-area="footer">
+<ul class="disqus-footer">
+<li class="logo disqus-footer__item"><a href="https://disqus.com/" rel="nofollow" title="Powered by Disqus">Powered by Disqus</a></li>
+<li id="thread-subscribe-button" class="email disqus-footer__item"> 
+<div class="default">
+<a href="#" rel="nofollow" data-action="subscribe" title="Subscribe and get email updates from this discussion"><i aria-hidden="true" class="icon icon-mail"></i><span class="clip">Subscribe</span> <i aria-hidden="true" class="icon icon-checkmark"></i></a>
+</div>
+<div class="form">
+<div class="input-wrapper"><input id="thread-subscribe-email" placeholder="yourname@email.com" type="email"></div>
+</div>
+</li>
+<li class="install disqus-footer__item">
+<a href="https://publishers.disqus.com/engage?utm_source=calligraphymasters&amp;utm_medium=Disqus-Footer" rel="nofollow" target="_top">
+<i aria-hidden="true" class="icon icon-disqus"></i>
+<span class="clip hidden-sm">Add Disqus to your site</span>
+<span class="clip visible-sm hidden-xs">Add Disqus</span>
+<span class="clip visible-xs">Add</span>
+</a>
+</li>
+<li class="privacy disqus-footer__item">
+<a href="https://help.disqus.com/customer/portal/articles/1657951?utm_source=disqus&amp;utm_medium=embed-footer&amp;utm_content=privacy-btn" rel="nofollow" target="_top">
+<i aria-hidden="true" class="icon icon-lock"></i>
+<span class="clip">Privacy</span>
+</a>
+</li>
+</ul>
+</div>
+</div></body>
+</html>

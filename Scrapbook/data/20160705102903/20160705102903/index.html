@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-US" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Expanding Linux Partitions: Part 2 of 2 | armhf.com</title>
+		
+		
+		
+
+
+
+
+
+<!-- Custom CSS Styles -->
+
+	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post single-format-standard custom-background ">
+
+<div id="container" class="hfeed">
+
+	<div class="skip-container cf">
+		<a class="skip-link screen-reader-text focusable" href="#content">↓ Skip to Main Content</a>
+	</div><!-- .skip-container -->
+	<div id="header">
+			<div id="logo">
+				<a href="http://www.armhf.com/"><img src="copy-logo.png" alt="armhf.com" height="100" width="300"></a>
+			</div><!-- end of #logo -->
+				<div class="main-nav"><div id="responsive_current_menu_item">Expanding Linux Partitions: Part 2 of 2</div><ul id="menu-main-menu" class="menu"><li id="menu-item-230" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-230"><a href="http://www.armhf.com/">Home</a></li>
+<li id="menu-item-127" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-127"><a href="http://www.armhf.com/boards/">Boards</a>
+<ul class="sub-menu">
+	<li id="menu-item-129" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-129"><a href="http://www.armhf.com/boards/beaglebone/">BeagleBone</a></li>
+	<li id="menu-item-239" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-239"><a href="http://www.armhf.com/boards/beaglebone-black/">BeagleBone Black</a></li>
+	<li id="menu-item-1105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1105"><a href="http://www.armhf.com/boards/odroid-xu/">ODROID-XU</a></li>
+	<li id="menu-item-941" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-941"><a href="http://www.armhf.com/boards/wandboard/">Wandboard</a></li>
+</ul>
+</li>
+<li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="http://www.armhf.com/posts/">HOWTO</a></li>
+<li id="menu-item-130" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-130"><a href="http://www.armhf.com/download/">Downloads</a></li>
+<li id="menu-item-147" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-147"><a href="http://www.armhf.com/accessories/">Accessories</a></li>
+</ul><a id="responsive_menu_button"></a></div>		
+	</div><!-- end of #header -->
+
+<div id="wrapper" class="clearfix">
+<div id="content" class="grid col-620">
+
+	<div class="breadcrumb-list" xmlns:v="http://rdf.data-vocabulary.org/#"><span class="breadcrumb" typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="http://www.armhf.com/">Home</a></span> <span class="chevron">›</span> <span class="breadcrumb" typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="http://www.armhf.com/category/beaglebone-black/">BeagleBone Black</a></span> <span class="chevron">›</span> <span class="breadcrumb-current">Expanding Linux Partitions: Part 2 of 2</span></div>
+		
+						<div id="post-513" class="post-513 post type-post status-publish format-standard hentry category-beaglebone-black category-emmc category-howto category-partitioning">
+				
+	<h1 class="entry-title post-title">Expanding Linux Partitions: Part 2 of 2</h1>
+
+<div class="post-meta">
+	<span class="meta-prep meta-prep-author posted">Posted on </span><a href="http://www.armhf.com/expanding-linux-partitions-part-2-of-2/" title="Expanding Linux Partitions: Part 2 of 2" rel="bookmark"><time class="timestamp updated" datetime="2013-05-11T12:48:26+00:00">May 11, 2013</time></a><span class="byline"> by </span><span class="author vcard"><a class="url fn n" href="http://www.armhf.com/author/johnc/" title="View all posts by John Clark">John Clark</a></span>
+			<span class="comments-link">
+		<span class="mdash">—</span>
+			<a href="http://www.armhf.com/expanding-linux-partitions-part-2-of-2/#comments"><span class="dsq-postid" data-dsqidentifier="513 http://www.armhf.com/?p=513">18 Comments ↓</span></a>		</span>
+	</div><!-- end of .post-meta -->
+
+				<div class="post-entry">
+					<p>As shown in <a href="http://www.armhf.com/expanding-linux-partitions-part-1-of-2/" target="_top">Part 1</a> of this article, extracting Linux from a pre-made .img file can result in unused space at the end of the uSD card. Depending on the size of the uSD card, this could leave a significant amount of space left unused. This article shows how to repartition the uSD card to utilize all of the space on the uSD card. This can be done on an unmounted filesystem or even on a live filesystem. In the example below, the live filesystem of a BeagelBone Black (running the Debian Wheezy image) will be resized&nbsp;to take advantage of the full 4GB of space available on the uSD card used in this example.</p>
+<h4>Step 1: Start <code>fdisk</code></h4>
+<hr>
+<p>To get started, list the volumes available on a BeagleBone Black that is booted from a uSD card:</p>
+<pre><code>root@debian-armhf:/# ls -l /dev/mmcblk*
+<span style="color: rgb(255, 0, 0);">brw-rw---T 1 root floppy 179, 0  Jan 1 2000 /dev/mmcblk0
+brw-rw---T 1 root floppy 179, 1  Jan 1 2000 /dev/mmcblk0p1
+brw-rw---T 1 root floppy 179, 2  Jan 1 2000 /dev/mmcblk0p2</span>
+brw-rw---T 1 root floppy 179, 8  Jan 1 2000 /dev/mmcblk1
+brw-rw---T 1 root floppy 179, 16 Jan 1 2000 /dev/mmcblk1boot0
+brw-rw---T 1 root floppy 179, 24 Jan 1 2000 /dev/mmcblk1boot1
+brw-rw---T 1 root floppy 179, 9  Jan 1 2000 /dev/mmcblk1p1
+brw-rw---T 1 root floppy 179, 10 Jan 1 2000 /dev/mmcblk1p2
+</code></pre>
+<p>The listing above shows an external uSD card is currently booted as indicated by the <code>/dev/mmcblk0</code> entries and the lack of <code>/dev/mmcblk0boot</code> entries. When booted from the internal eMMC, the device with the <code>/dev/mmcblk1boot</code> entries would instead be at the device zero location as shown here:</p>
+<pre><code>root@debian-armhf:/# ls -l /dev/mmcblk*
+<span style="color: rgb(255, 0, 0);">brw-rw---T 1 root floppy 179, 0  Jan 1 2000 /dev/mmcblk0
+brw-rw---T 1 root floppy 179, 1  Jan 1 2000 /dev/mmcblk0p1
+brw-rw---T 1 root floppy 179, 16 Jan 1 2000 /dev/<strong>mmcblk0boot0</strong>
+brw-rw---T 1 root floppy 179, 24 Jan 1 2000 /dev/<strong>mmcblk0boot1</strong>
+brw-rw---T 1 root floppy 179, 2  Jan 1 2000 /dev/mmcblk0p2</span>
+brw-rw---T 1 root floppy 179, 8  Jan 1 2000 /dev/mmcblk1
+brw-rw---T 1 root floppy 179, 9  Jan 1 2000 /dev/mmcblk1p1
+brw-rw---T 1 root floppy 179, 10 Jan 1 2000 /dev/mmcblk1p2
+</code></pre>
+<p>To get started, run <code>fdisk /dev/mmcblk0</code> to examine the partitioning of the external uSD card that is currently booted:</p>
+<pre><code>root@debian-armhf:/# fdisk /dev/mmcblk0
+
+Command (m for help): p
+
+Disk /dev/mmcblk0: 3947 MB, <span style="color: rgb(255, 0, 0);">3947888640 bytes</span>
+4 heads, 16 sectors/track, 120480 cylinders, total <span style="color: rgb(255, 0, 0);">7710720 sectors</span>
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): <span style="color: rgb(255, 0, 0);">512 bytes</span> / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x80000000
+
+        Device Boot      Start         End      Blocks   Id  System
+/dev/mmcblk0p1   *        2048        4095        1024    1  FAT12
+/dev/mmcblk0p2            4096     3751935     1873920   83  Linux
+
+Command (m for help): 
+</code></pre>
+<p>Take a moment to examine what <code>fdisk</code> is reporting. The first line indicates that the uSD card is <code>3947888640 bytes</code> in size. The 4th line reports the sector size to be <code>512 bytes</code>. Some quick math shows that <code>3947888640 bytes / 512 bytes per sector = 7710720 sectors</code> as is also reported on the second line. The default “block” size is 1024 bytes, but it does not actually report this unit anywhere. The <code>Start</code> and <code>End</code> columns are reporting 512 byte sectors, and the <code>Blocks</code> column is reporting 1024 byte blocks. The way this .img is partitioned makes the relationship easy to see in this case, but it would not be immediately apparent if this were a large hard disk and the numbers were not as magic. The starting block of the partition table at position 2048 reveals that blocks 0-2047 are not being used for user data. This amounts to a full megabyte (<code>2048 * 512 bytes per block = 1048576 bytes</code>), and this is the default of <code>fdisk</code>. The first partition is 2048 sectors in size, or 1024K, which confirms the block size being 1K.</p>
+<p>To calculate the total size of the space used on the disk, &nbsp;there are 2048 sectors at the head reserved for partitioning, 2048 sectors in mmcblk0p1, and 3,751,936 sectors in mmcblk0p2 for a total of 3,756,032 sectors. With each sector using 512 bytes, this totals 1,923,088,384 bytes. The choice of 1,923,088,384 bytes was used to make this image the exact size of the BeagleBone’s available eMMC space (note that 1,923,088,384 bytes / 1024^2 = 1834 MB). It is also a good size because not all external 2 GB uSD cards are exactly 2048 * 1024^2 in size. Having it a bit under 2 GB makes it a sure fit.</p>
+<p>Repartitioning the disk is rather easy since <code>fdisk</code> will prompt with smart default choices. The steps below will begin by deleting partition 2, then recreate it as a larger size, and finally&nbsp;<strong>write the new table to the disk only at the end</strong>. Notice the emphasis on the last part: No changes are actually committed to disk along the way — only by pressing ‘w’ at the end will cause changes to be written. If you make a mistake or panic, just hit ‘q’ to quit and no changes will have been made.</p>
+<p>&nbsp;</p>
+<h4>Step 2: Delete Partition 2</h4>
+<hr>
+<p>Press ‘d’ for delete and ‘2’ for partition 2.</p>
+<pre><code>Command (m for help): p
+
+Disk /dev/mmcblk0: 3947 MB, 3947888640 bytes
+4 heads, 16 sectors/track, 120480 cylinders, total 7710720 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x80000000
+
+        Device Boot      Start         End      Blocks   Id  System
+/dev/mmcblk0p1   *        2048        4095        1024    1  FAT12
+/dev/mmcblk0p2            4096     3751935     1873920   83  Linux
+
+<span style="color: rgb(255, 0, 0);"><strong>Command (m for help): d
+Partition number (1-4): 2</strong></span>
+
+Command (m for help): p
+
+Disk /dev/mmcblk0: 3947 MB, 3947888640 bytes
+4 heads, 16 sectors/track, 120480 cylinders, total 7710720 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x80000000
+
+        Device Boot      Start         End      Blocks   Id  System
+/dev/mmcblk0p1   *        2048        4095        1024    1  FAT12
+
+Command (m for help): 
+</code></pre>
+<p>&nbsp;</p>
+<h4>Step 3: Recreate Partition 2</h4>
+<hr>
+<p>Press ‘n’ for new, ‘p’ for primary, and ‘2’ for partition 2. Specify start and end sectors for the new partition — just select the default values by pressing enter. In fact, outside of the the first ‘n’ they were all default choices and pressing enter alone to confirm the choice is all that is needed.</p>
+<pre><code><span style="color: rgb(255, 0, 0);"><strong>Command (m for help): n</strong></span>
+Partition type:
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended
+<span style="color: rgb(255, 0, 0);"><strong>Select (default p): p</strong>
+<strong>Partition number (1-4, default 2): 2
+First sector (4096-7710719, default 4096): 
+Using default value 4096</strong></span>
+Last sector, +sectors or +size{K,M,G} (4096-7710719, default 7710719): 
+<span style="color: rgb(255, 0, 0);"><strong>Using default value 7710719</strong></span>
+
+Command (m for help): p
+
+Disk /dev/mmcblk0: 3947 MB, 3947888640 bytes
+4 heads, 16 sectors/track, 120480 cylinders, total 7710720 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x80000000
+
+        Device Boot      Start         End      Blocks   Id  System
+/dev/mmcblk0p1   *        2048        4095        1024    1  FAT12
+/dev/mmcblk0p2            4096     7710719     3853312   83  Linux
+
+Command (m for help): 
+</code></pre>
+<p>That is it! &nbsp;Select ‘w’ to commit the changes to the uSD card. &nbsp;Notice that the partition table in this example was “busy” so a reboot was needed to cause the changes to be reflected. &nbsp;Even if it were not busy, it seems like it could be a good idea to reboot at this point if you want to be extra safe.</p>
+<pre><code><span style="color: rgb(255, 0, 0);"><strong>Command (m for help): w</strong></span>
+
+The partition table has been altered!
+
+Calling ioctl() to re-read partition table.
+
+WARNING: Re-reading the partition table failed with error 16: Device or resource busy.
+The kernel still uses the old table. The new table will be used at
+the next reboot or after you run partprobe(8) or kpartx(8)
+Syncing disks.
+root@debian-armhf:/# reboot
+</code></pre>
+<p>&nbsp;</p>
+<h4>Step 4: Expand the Filesystem</h4>
+<hr>
+<p>This is the last step. Now that the second partition is larger, expand the filesystem to match the larger partition using <code>resize2fs</code>.</p>
+<pre><code>
+root@debian-armhf:/# df
+Filesystem     1K-blocks   Used Available Use% Mounted on
+<span style="color: rgb(255, 0, 0);"><strong>rootfs           1811704 740184    977824  44% /</strong></span>
+/dev/root        1811704 740184    977824  44% /
+devtmpfs          253920      0    253920   0% /dev
+tmpfs              50816    216     50600   1% /run
+tmpfs               5120      0      5120   0% /run/lock
+tmpfs             101620      0    101620   0% /run/shm
+/dev/mmcblk0p1      1004    474       530  48% /boot/uboot
+root@debian-armhf:/# 
+
+root@debian-armhf:/# <span style="color: rgb(255, 0, 0);"><strong>resize2fs /dev/mmcblk0p2</strong> </span>
+resize2fs 1.42.5 (29-Jul-2012)
+Filesystem at /dev/mmcblk0p2 is mounted on /; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 1
+The filesystem on /dev/mmcblk0p2 is now 963328 blocks long.
+
+root@debian-armhf:/# df
+Filesystem     1K-blocks   Used Available Use% Mounted on
+<span style="color: rgb(255, 0, 0);"><strong>rootfs           3761680 741096   2851404  21% /</strong></span>
+/dev/root        3761680 741096   2851404  21% /
+devtmpfs          253920      0    253920   0% /dev
+tmpfs              50816    216     50600   1% /run
+tmpfs               5120      0      5120   0% /run/lock
+tmpfs             101620      0    101620   0% /run/shm
+/dev/mmcblk0p1      1004    474       530  48% /boot/uboot
+root@debian-armhf:/# 
+</code></pre>
+<p>&nbsp;</p>
+<h4>Summary</h4>
+<hr>
+<p>All of the space on the uSD card is now available for use. To recap:</p>
+<pre><code># fdisk /dev/mmcblk0
+d
+2
+n
+p
+2
+4096
+
+w
+
+# reboot
+
+# resize2fs /dev/mmcblk0p2
+</code></pre>
+<p><a href="http://www.armhf.com/expanding-linux-partitions-part-1-of-2/" target="_top">Part 1</a></p>
+					
+									</div><!-- end of .post-entry -->
+
+				<div class="navigation">
+					<div class="previous">‹ <a href="http://www.armhf.com/beaglebone-black-ga-angstrom-image/" rel="prev">BeagleBone Black GA Angstrom Image</a></div>
+					<div class="next"><a href="http://www.armhf.com/using-beaglebone-black-gpios/" rel="next">Using BeagleBone Black GPIOs</a> ›</div>
+				</div><!-- end of .navigation -->
+
+	<div class="post-data">
+		Posted in <a href="http://www.armhf.com/category/beaglebone-black/">BeagleBone Black</a>, <a href="http://www.armhf.com/category/emmc/">eMMC</a>, <a href="http://www.armhf.com/category/howto/">HowTo</a>, <a href="http://www.armhf.com/category/partitioning/">Partitioning</a>			</div><!-- end of .post-data -->
+
+<a class="anchor" id="comments"></a>
+							</div><!-- end of #post-513 -->
+
+<div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="index_1.html" style="width: 1px ! important; min-width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 4175px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" name="dsq-app2" id="dsq-app2" frameborder="0" width="100%"></iframe></div>
+
+
+
+</div><!-- end of #content -->
+
+	<div id="widgets" class="grid col-300 fit">
+		
+					<div class="widget-wrapper">
+
+				<div class="widget-title"><h3>In Archive</h3></div>
+				<ul>
+						<li><a href="http://www.armhf.com/2013/06/">June 2013</a></li>
+	<li><a href="http://www.armhf.com/2013/05/">May 2013</a></li>
+	<li><a href="http://www.armhf.com/2013/04/">April 2013</a></li>
+				</ul>
+
+			</div><!-- end of .widget-wrapper -->
+		
+			</div><!-- end of #widgets -->
+</div><!-- end of #wrapper -->
+</div><!-- end of #container -->
+
+
+<div id="footer" class="clearfix">
+	
+	<div id="footer-wrapper">
+
+		
+		<div class="grid col-940">
+
+			<div class="grid col-540">
+							</div><!-- end of col-540 -->
+
+			<div class="grid col-380 fit">
+				<ul class="social-icons"></ul><!-- .social-icons -->			</div><!-- end of col-380 fit -->
+
+		</div><!-- end of col-940 -->
+		
+		<div class="grid col-300 copyright">
+			© 2015<a href="http://www.armhf.com/" title="armhf.com">
+				armhf.com			</a>
+		</div><!-- end of .copyright -->
+
+		<div class="grid col-300 scroll-top"><a href="#scroll-top" title="scroll to top">↑</a></div>
+
+		<div class="grid col-300 fit powered">
+		</div><!-- end .powered -->
+
+	</div><!-- end #footer-wrapper -->
+
+	</div><!-- end #footer -->
+        
+		
+
+
+
+
+
+</body>
+</html>

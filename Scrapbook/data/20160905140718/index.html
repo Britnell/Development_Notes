@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>OpenTechSchool – Scripting the MP3 Library with Python</title>
+  
+  
+  
+
+  <link rel="icon" href="favicon.ico" type="image/png">
+     
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <div class="span3"><a href="http://www.opentechschool.org/"></a><h1><a href="http://www.opentechschool.org/">OpenTechSchool</a></h1></div>
+            <div class="span9"><h1><a href="http://opentechschool.github.io/">Scripting the MP3 Library with Python</a></h1></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+
+      	<div id="main-content" class="span12">
+            <h1 id="scripting_the_mp3_library_with_python">Scripting the MP3 Library with Python</h1>
+
+<p>This Workshop will introduce python as a scripting language for you. Scripting in here is referred to as small tasks, often used for system administration and filesystem organisation, which do not really require a full blown program but just some little script to automate tasks. In this particular case we’ll be working on organsing MP3-Files depending on their embedded tags. As such it is assumed you are having a small batch of mp3 files you’d like to work with. If you got not, ask a person around you to help you out with that.</p>
+
+<h2 id="install_and_setup">Install and Setup</h2>
+
+<h3 id="python">Python</h3>
+
+<p>It is assumed, that you have an installation of Python 2.7 on your system. If you have a recent Mac or Linux, you are covered. In case you are running a Winows Operation System, please refer to the Setup page of the <a href="http://docs.python.org/2/using/windows.html#excursus-setting-environment-variables">Python on Windows</a>.</p>
+
+<h3 id="eyed3">eyeD3</h3>
+
+<p>We’ll be using an eyeD3 Helper library to read and tamper with the tags. A library is just a bunch of code files, which encapsulate a group of tasks and are packaged togehter to be distributed. Python has plenty of libraries all kinds of tasks, almost all of them are listed on <a href="http://pypi.python.org/pypi">pypi</a>. The Library we’ll be using is called “eyeD3”.</p>
+
+<pre><code class="undefined">pip install eyed3</code></pre>
+
+<p>Test that the library is installed correctly</p>
+
+<pre><code class="python">$ python
+[GCC <span class="number">4.2</span><span class="number">.1</span> (Based on Apple Inc. build <span class="number">5658</span>) (LLVM build <span class="number">2335.15</span><span class="number">.00</span>)] on darwin
+Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.
+<span class="prompt">&gt;&gt;&gt; </span><span class="keyword">import</span> eyed3
+&gt;&gt;&gt;</code></pre>
+
+<p>If you don’t get an error the library is installed</p>
+
+<h2 id="first_steps">First Steps</h2>
+
+<h3 id="accessing_the_tags">Accessing the tags</h3>
+
+<p>Alright, let’s get started then. Use the Command Line from before, staying in the same directory and start a python shell by typing <code>python</code> and hit enter. Now import the library with the following command:</p>
+
+<pre><code class="python"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">import</span> eyed3</code></pre>
+
+<p>And parse a sample file found in “samples/tagged/song1.mp3”</p>
+
+<pre><code class="xml">&gt;&gt;&gt; audiofile = eyed3.load("samples/tagged/song1.mp3")
+
+&gt;&gt;&gt; print audiofile
+<span class="tag">&lt;<span class="title">eyed3.mp3.Mp3AudioFile</span> <span class="attribute">object</span> <span class="attribute">at</span> <span class="attribute">0x10c783090</span>&gt;</span></code></pre>
+
+<p>Now you have an eyed3 object. If you want an indepth view of the library you can read the full api documentation here <a href="http://eyed3.nicfit.net/api/modules.html">eyed3 api documentation</a>. To access the tag information you have to used the tag object. View the contents of the tag usign the following.</p>
+
+<pre><code class="python"><span class="prompt">&gt;&gt;&gt; </span><span class="keyword">print</span> audiofile.tag.artist
+python_teachers
+<span class="prompt">&gt;&gt;&gt; </span><span class="keyword">print</span> audiofile.tag.album
+open_tech_school_mp3_lesson
+<span class="prompt">&gt;&gt;&gt; </span><span class="keyword">print</span> audiofile.tag.title
+python_rocks_song_number_one
+<span class="prompt">&gt;&gt;&gt; </span><span class="keyword">print</span> audiofile.tag.track_num
+(<span class="number">1</span>, <span class="built_in">None</span>)
+&gt;&gt;&gt;</code></pre>
+
+<p>Not the last field “track_num” is not returning a string. That is because according to the documentation the value returned is a “2-tuple of (track-number, total-number-of-tracks)”</p>
+
+<p>You now have an object, which encapsulates the tags of that particular file for you. As such it has a bunch of properties representing the different tags in the file, as ‘artist’, ‘album’, ‘title’ and others.</p>
+
+<p><em>Excercise</em>: Print artist, album, title and genre of another file. If they are empty, try a different file until you have at least one file of which you know the tags now. Remember this one.</p>
+
+<h3 id="changing_tags">Changing Tags</h3>
+
+<p>You can’t only read but also write files via this library. Just assign a different value to the attribute and call the save method of the object. Lets clean up the values to nice proper cases and spaces instead of the underscore and lowercase:</p>
+
+<pre><code class="python"><span class="prompt">&gt;&gt;&gt; </span>audiofile.tag.artist = <span class="string">u"Python Teachers"</span>
+<span class="prompt">&gt;&gt;&gt; </span>audiofile.tag.album = <span class="string">u"Open Tech School MP3 Lesson"</span>
+<span class="prompt">&gt;&gt;&gt; </span>audiofile.tag.title = <span class="string">u"python_rocks_song_number_one"</span>
+<span class="prompt">&gt;&gt;&gt; </span>audiofile.tag.save()</code></pre>
+
+<p>Notice the u before the strings. This is because the eyed3 library expects a unicode string.</p>
+
+<p>You can re-open the file and print the value to verify it worked:</p>
+
+<pre><code class="python"><span class="prompt">&gt;&gt;&gt; </span>audiofile = eyed3.load(<span class="string">"samples/tagged/song1.mp3"</span>)
+<span class="prompt">&gt;&gt;&gt; </span><span class="keyword">print</span> audiofile.tag.artist
+Python Teachers</code></pre>
+
+<p>Congratulations, you just changed the ID3-Tags of that file. And it works the same way on all other files as well.</p>
+
+<h2 id="file_renamer">File Renamer</h2>
+
+<p>Now, let’s make ourself a little script that renames the file depending on its tags. For that we also need the build-in “os” library, which exposes a function called “rename”, with the two parameters of the current filename and the new filename. So after you <code>import os</code>, you need to compile the filename from the tags like this:</p>
+
+<pre><code class="ini"><span class="setting">new_filename = <span class="value"><span class="string">"samples/tagged/{0}-{1}.mp3"</span>.format(audiofile.tag.artist, audiofile.tag.title)</span></span></code></pre>
+
+<p>Once we have done that, we can use “os.rename” to rename the file:</p>
+
+<pre><code class="sql">os.<span class="operator">rename(<span class="string">'samples/tagged/song1.mp3'</span>, new_filename)</span></code></pre>
+
+<p>You can now see that the file has been renamed. Of course to access its tags again, you now need to use the <code>eyed3.load</code> command with that new file first.</p>
+
+<p><em>Excercise</em>: rename another file to the schema “Artist-Album-Track-Title”.</p>
+
+<h2 id="make_it_into_a_script">Make it into a Script</h2>
+
+<p>In order to have a real script, let’s put this into a file now. Open your favourite editor and paste the following in there:</p>
+
+<pre><code class="java"><span class="keyword">import</span> os
+<span class="keyword">import</span> eyed3
+
+audiofile = eyed3.load(<span class="string">"samples/tagged/song1.mp3"</span>)
+new_filename = <span class="string">"samples/tagged/{0}-{1}.mp3"</span>.format(audiofile.tag.artist, audiofile.tag.title)
+os.rename(<span class="string">'samples/tagged/song1.mp3'</span>, new_filename)</code></pre>
+
+<p>If you now save it in the same directory under the name “renamer.py” and call it via <code>python renamer.py</code>, it will rename the file. But it will only do it once because then the file has already been renamed. So let’s make it a bit more flexible by giving it a filename via the commandline. In order to do that, we’ll be using the great <a href="http://docs.python.org/2/library/argparse.html#module-argparse">argparse module</a> that gets shipped with python. Just put this at the top of your file (after the other imports):</p>
+
+<pre><code class="java"><span class="keyword">import</span> argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument(<span class="string">"filename"</span>)
+
+args = parser.parse_args()</code></pre>
+
+<p>If you now execute the file again, you’ll notice that it quits and tells you:</p>
+
+<pre><code class="css"><span class="tag">usage</span>: <span class="attr_selector">[-h]</span> <span class="tag">filename</span>
+: <span class="tag">error</span>: <span class="tag">too</span> <span class="tag">few</span> <span class="tag">arguments</span></code></pre>
+
+<p>That is the argument parser we’ve just set up, stopping execution at parse_args because the argument “filename” is missing on the commandline. Great, exactly what we want. Now we also need replace every place where we have the static filename right now with the new filename. We can access it as “filename” on the args that got passed. After that your file should look something like this:</p>
+
+<pre><code class="java"><span class="keyword">import</span> os
+<span class="keyword">import</span> eyed3
+<span class="keyword">import</span> argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument(<span class="string">"filename"</span>)
+
+args = parser.parse_args()
+
+audiofile = eyed3.load(args.filename)
+new_filename = <span class="string">"samples/tagged/{0}-{1}-{2}.mp3"</span>.format(audiofile.tag.artist, audiofile.tag.album, audiofile.tag.title)
+os.rename(args.filename, new_filename)</code></pre>
+
+<p>And if you execute it now, it should rename any given file for you depending on its tags. Try it :) .</p>
+
+<p><em>Excercise</em>: Using the files in samples/untagged do the reverse and take a file name and add tags to an mp3 with no tag information.</p>
+      	</div>
+
+      </div>
+
+      <div id="footer">© 2013 by
+        <a href="http://www.opentechschool.org/">OpenTechSchool</a>
+            &nbsp;&nbsp;||&nbsp;&nbsp;
+        <a href="http://www.opentechschool.org/imprint.html">Impressum</a>
+      </div>
+
+    </div>
+
+    
+    
+    
+    
+
+
+</body>
+</html>

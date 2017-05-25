@@ -1,0 +1,23 @@
+/* ::::: http://cdn.makeuseof.com/wp-content/themes/makeuseof2015/css/main.css?6f25c7 ::::: */
+
+.fb_reset { background: transparent none repeat scroll 0% 0%; border: 0px none; border-spacing: 0px; color: rgb(0, 0, 0); cursor: auto; direction: ltr; font-family: "lucida grande",tahoma,verdana,arial,sans-serif; font-size: 11px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 1; margin: 0px; overflow: visible; padding: 0px; text-align: left; text-decoration: none; text-indent: 0px; text-shadow: none; text-transform: none; visibility: visible; white-space: normal; word-spacing: normal; }
+.fb_reset > div { overflow: hidden; }
+#stickyfooter { position: fixed; z-index: 999; left: 0px; right: 0px; bottom: -100px; height: 65px; width: 100%; background: rgb(34, 34, 34) none repeat scroll 0% 0%; color: rgb(255, 255, 255); text-align: center; overflow: hidden; }
+#stickyfooter_content { margin-bottom: 22px; padding-top: 10px; position: relative; left: -50%; float: left; }
+.footer_subscription { position: relative; width: 300px; float: left; }
+.footer_subscription input { border: 1px solid rgb(126, 202, 226); width: 100%; }
+.footer_subscription button { bottom: 3px; right: 4px; padding: 0px 10px; }
+.promotext { font-size: 20px; float: left; padding: 11px; }
+#stickyfooter_outer { position: relative; left: 50%; float: left; }
+.close-thik::after { content: "✖"; }
+[class*="close-"] { color: rgb(207, 52, 40); font: 20px/100% arial,sans-serif; position: absolute; z-index: 1000; right: 5px; text-decoration: none; top: 5px; }
+[class*="close-"]:hover { color: rgb(207, 52, 40); text-decoration: none; }
+@media all and (max-width: 640px) {
+	.promotext { font-size: 12px; padding: 8px; }
+	#stickyfooter_content { margin: 0px; padding: 0px; position: static; }
+	#stickyfooter_outer { position: static; }
+	.footer_subscription { margin-left: 8px; }
+	.footer_subscription input { padding: 3px 90px 3px 3px; font-size: 14px; }
+	.footer_subscription button { height: 18px; font-size: 14px; }
+	[class*="close-"] { font-size: 18px; }
+}

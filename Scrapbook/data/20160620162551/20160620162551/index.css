@@ -1,0 +1,94 @@
+/* ::::: http://beagleboard.org/static/common.css ::::: */
+
+body { text-align: center; margin: 10px 0px 0px; padding: 0px; background: rgb(252, 247, 237) none repeat scroll 0% 0%; font-family: Arial,Helvetica,Verdana,sans-serif; color: rgb(82, 82, 82); font-size: 71%; }
+a:link { color: rgb(222, 114, 36); text-decoration: none; }
+a:visited { color: rgb(222, 114, 36); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1 { font-size: 2em; font-family: "Arial",Verdana,Helvetica,sans-serif; color: rgb(180, 162, 121); }
+h2 { font-size: 1.5em; font-family: Arial,Verdana,Helvetica,sans-serif; font-weight: normal; color: rgb(180, 162, 121); margin: 10px 0px 5px; }
+h2 a:link, h2 a:visited, .portal h3 a:link, .portal h3 a:visited { text-decoration: none; padding-right: 15px; color: rgb(222, 114, 36); }
+h2 a:hover, .portal h3 a:hover { text-decoration: underline; }
+h3, h4 { font-size: 1.2em; font-family: "Arial",Verdana,Helvetica,sans-serif; color: rgb(180, 162, 121); margin: 20px 0px 5px; font-weight: normal; }
+h5, h6, p { font-size: 1.1em; line-height: 1.3em; }
+p.breadcrumb { margin-top: 0px; padding-top: 0px; font-size: 1em; }
+p.breadcrumb a:link, p.breadcrumb a:visited, p.breadcrumb a:hover { color: rgb(245, 98, 3); text-decoration: none; }
+p.breadcrumb a:hover { text-decoration: underline; }
+td { font-size: 0.9em; padding: 10px; border: 0px none; background-color: rgb(241, 241, 241); color: rgb(82, 82, 82); }
+input, select, textarea { font: 1em Verdana,Helvetica,sans-serif; }
+div#wrapper { text-align: left; background: rgb(255, 255, 255) url('none') repeat-y scroll 0% 0%; width: 948px; margin: 0px auto; }
+div#contentbuffer { padding: 0px; margin: 25px; }
+.btn1 { color: rgb(255, 255, 255); font-weight: bold; font-size: 1em; font-family: Verdana,Arial,Helvetica,sans-serif; border: 1px solid; overflow: visible; padding: 1px 5px; width: auto; background-color: rgb(222, 114, 36); }
+.btn1, input.btn1:focus { background: rgb(222, 114, 36) url('beagle-btn-bg.jpg') repeat scroll left top; border-color: rgb(222, 114, 36); }
+/* ::::: http://beagleboard.org/static/login.css ::::: */
+
+div.login form input#openid { border-style: solid; border-width: 1px; background: rgb(255, 255, 255) url('openid-prompt-bg.gif') no-repeat scroll 0% 0%; padding: 1px 1px 1px 18px; color: rgb(0, 0, 0); }
+div.login * button:hover { cursor: pointer; text-decoration: underline; color: rgb(222, 114, 36); }
+div.login * button { font-weight: bold; text-decoration: none; border-style: none; background-color: transparent; color: rgb(255, 255, 255); padding: 0px; }
+div#footernav *, div.login * { display: inline; text-align: left; }
+/* ::::: http://beagleboard.org/static/beagle.css ::::: */
+
+body { font-size: 12px; background-color: rgb(252, 247, 237); margin: 0px; padding: 0px; color: rgb(82, 82, 82); }
+h2, h3 { margin-top: 5px; margin-bottom: 5px; }
+a img { border: medium none; }
+.top { background-color: white; height: 75px; text-align: center; }
+.top-header { width: 950px; padding-left: 50px; padding-top: 10px; text-align: left; margin: 0px auto; }
+.social { width: 240px; float: right; padding-top: 15px; }
+#cssmenu ul, #cssmenu li, #cssmenu span, #cssmenu a { margin: 0px; padding: 0px; position: relative; }
+#cssmenu { height: 39px; width: 950px; border-radius: 0px; background: transparent linear-gradient(to bottom, rgb(81, 81, 81) 0%, rgb(34, 34, 34) 100%) repeat scroll 0% 0%; border-bottom: 2px solid rgb(222, 114, 36); }
+#cssmenu::after, #cssmenu ul::after { content: ""; display: block; clear: both; }
+#cssmenu a { background: transparent linear-gradient(to bottom, rgb(81, 81, 81) 0%, rgb(34, 34, 34) 100%) repeat scroll 0% 0%; color: rgb(255, 255, 255); display: inline-block; font-family: Arial,Helvetica,sans-serif; font-size: 12px; line-height: 39px; padding: 0px 25px; text-decoration: none; }
+#cssmenu ul { list-style: outside none none; }
+#cssmenu > ul { float: left; }
+#cssmenu > ul > li { float: left; }
+#cssmenu > ul > li:hover::after { content: ""; display: block; width: 0px; height: 0px; position: absolute; left: 50%; bottom: 0px; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid rgb(224, 95, 15); margin-left: -10px; }
+#cssmenu > ul > li:first-child > a { border-radius: 5px 0px 0px; }
+#cssmenu > ul > li:last-child > a { border-radius: 0px 5px 0px 0px; }
+#cssmenu > ul > li:hover > a { background: transparent linear-gradient(to bottom, rgb(38, 38, 44) 0%, rgb(7, 7, 7) 100%) repeat scroll 0% 0%; box-shadow: 0px 0px 3px rgb(0, 0, 0) inset; }
+#cssmenu .has-sub { z-index: 1; }
+#cssmenu .has-sub:hover > ul { display: block; }
+#cssmenu .has-sub ul { display: none; position: absolute; width: 200px; top: 100%; left: 0px; }
+#cssmenu .has-sub ul li {  }
+#cssmenu .has-sub ul li a { background: rgb(222, 114, 36) none repeat scroll 0% 0%; border-bottom: 1px dotted rgb(236, 159, 111); filter: none; font-size: 11px; display: block; line-height: 120%; padding: 10px; }
+#cssmenu .has-sub ul li:hover a { background: rgb(176, 75, 12) none repeat scroll 0% 0%; }
+#search { padding-top: 8px; padding-right: 25px; text-align: right; }
+a:link { color: rgb(222, 114, 36); }
+a:hover { color: rgb(222, 114, 36); text-decoration: underline; }
+.ui-helper-clearfix::before, .ui-helper-clearfix::after { content: ""; display: table; }
+.ui-helper-clearfix::after { clear: both; }
+.t3_sidebar { float: left; width: 180px; background-color: rgb(241, 241, 241); padding-bottom: 10px; border-radius: 5px; border: 1px solid rgb(180, 162, 121); }
+ul.left-menu { list-style: outside none none; color: rgb(222, 114, 36); padding: 10px; margin: 10px 10px 20px; line-height: 150%; }
+ul.left-menu a { list-style: outside none none; color: rgb(222, 114, 36); }
+ul.left-menu a:hover { list-style: outside none none; color: rgb(255, 255, 255); display: block; background-color: rgb(222, 114, 36); text-decoration: none; }
+.t3_content_1 { width: 650px; float: left; padding-left: 30px; }
+.footer { background: transparent url('footer-img.jpg') repeat-x scroll 0% 0%; clear: left; font-size: 12px; height: 200px; max-height: 200px; margin: 0px auto; padding: 10px 0px; text-align: left; width: 950px; }
+#footer-col1 { list-style: outside none none; display: block; width: 280px; float: left; margin-left: 0px; padding-top: 0px; }
+#footer-col1 ul { list-style: outside none none; font-family: Arial,Helvetica,sans-serif; line-height: 2; }
+#footer-col1 ul li a { color: rgb(255, 255, 255); text-decoration: none; }
+#footer-col1 ul li a:hover { color: rgb(222, 114, 36); }
+#footer-col2 { list-style: outside none none; width: 280px; display: block; float: left; margin-left: 30px; padding-top: 0px; }
+#footer-col2 ul { list-style: outside none none; font-family: Arial,Helvetica,sans-serif; line-height: 2; }
+#footer-col2 ul li a { color: rgb(255, 255, 255); text-decoration: none; }
+#footer-col2 ul li a:hover { color: rgb(222, 114, 36); }
+#footer-col3 { list-style: outside none none; width: 280px; display: block; float: left; margin-left: 30px; padding-top: 0px; text-align: left; }
+#footer-col3 ul { list-style: outside none none; font-family: Arial,Helvetica,sans-serif; line-height: 2; }
+#footer-col3 ul li a { color: rgb(255, 255, 255); text-decoration: none; }
+#footer-col3 ul li a:hover { color: rgb(222, 114, 36); }
+#login { padding-top: 20px; padding-left: 25px; }
+#login a { color: rgb(255, 255, 255); text-decoration: none; }
+#login a:hover { color: rgb(222, 114, 36); }
+div#cc { padding: 20px 0px 0px 25px; float: left; font-size: 11px; }
+pre#code { position: relative; width: 500px; padding-left: 0px; border-radius: 4px 4px 0px 0px; margin-bottom: 0px; margin-left: 30px; margin-right: 0px; }
+/* ::::: http://beagleboard.org/static/jquery.terminal.css ::::: */
+
+@media not all {
+}
+.terminal::-moz-selection { background: rgba(170, 170, 170, 0.99) none repeat scroll 0% 0%; color: rgb(0, 0, 0); text-shadow: none; }
+@media not all {
+}
+/* ::::: http://beagleboard.org/static/jquery-ui.css ::::: */
+
+.ui-helper-clearfix::before, .ui-helper-clearfix::after { content: ""; display: table; }
+.ui-helper-clearfix::after { clear: both; }
+button.ui-button::-moz-focus-inner { border: 0px none; padding: 0px; }
+/* ::::: http://beagleboard.org/static/client.css ::::: */
+

@@ -1,0 +1,52 @@
+14: {text: '
+
+
+    #linux
+
+    #shell
+
+
+    /home/Coding/Linux/
+
+
+
+    #! bin/bash
+
+    # is fedault shell in linux system
+
+
+    #       0       stdin   the keyboard
+
+    #       1       stdout  the screen
+
+    #       2       stderr  error messages to screen
+
+
+    echo "Hello World!"
+
+
+    cat /var/log/apt/history.log
+
+
+    current_dir=pwd
+
+
+    echo $current_dir
+
+
+    echo cat text1.txt
+
+
+'}
+29: {Rpi: null, text: "#Rpi\t#raspberry\n\n\nFound Rpi installer 19. 08.  12 zip\n\nReadme
+    says\nFormat SD card with Single FAT32 (MS DOS or windows)\nand copy installer
+    files onto the top level directory\n\nis a #network installer, needs ehternet
+    & internet\n\n\nFollowing TI instructions for FAT32 formatting\n[chrome://scrapbook/content/result.xul?q=FAT32
+    \"\"chrome://scrapbook/content/result.xul?q=FAT32\"\"]\n\n1. print partition table\n\nCommand
+    (m for help): p\nDisk /dev/sdc: 7,5 GiB, **8026849280 bytes**, 15677440 sectors\nUnits:
+    sectors of 1 * 512 = 512 bytes\nSector size (logical/physical): 512 bytes / 512
+    bytes\nI/O size (minimum/optimal): 512 bytes / 512 bytes\nDisklabel type: dos\nDisk
+    identifier: 0x5816651b\n\n8026849280 bytes\n> / 255 / 63 / 512\n\n975.87 \nround
+    down to 975 cylinders\n\n#FIX\nLooks like this device is mounted. Run \n``umount
+    /dev/sdb1 ``\nand try again.\n\n\nDownloading Raspbian from here\nhttps://www.raspberrypi.org/downloads/raspbian/\n\nLinux
+    image making instructions here\nhttps://www.raspberrypi.org/documentation/installation/installing-images/linux.md\n"}

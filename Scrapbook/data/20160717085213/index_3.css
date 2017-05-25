@@ -1,0 +1,63 @@
+.iframe-controls-container.iframe-controls-container--logged-in .delete-button::before, .iframe-controls-container.iframe-controls-container--logged-in .edit-button::before, .iframe-controls-container.iframe-controls-container--logged-in .like-button::before, .iframe-controls-container.iframe-controls-container--logged-in .message-button::before, .iframe-controls-container.iframe-controls-container--logged-in .reblog-button::before, .iframe-controls-container.iframe-controls-container--logged-in .subscribe-button::before, .iframe-controls-container.iframe-controls-container--logged-in .unlike-button::before { font-family: tumblr-icons,Blank; text-rendering: optimizelegibility; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; text-transform: none; }
+.iframe-controls-container .tx-button, .tx-button { display: inline-block; -moz-user-select: none; box-sizing: border-box; cursor: pointer; padding: 5px 7px; border-radius: 2px; font-family: Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif; font-size: 14px; font-weight: 700; line-height: 1.4; text-decoration: none; background-color: rgb(157, 166, 175); border: 1px solid rgb(157, 166, 175); color: rgb(255, 255, 255); }
+.iframe-controls-container .tx-button::-moz-focus-inner, .tx-button::-moz-focus-inner { border: 0px none; padding: 0px; }
+.tx-button:focus { background-color: rgb(151, 161, 170); border-color: rgb(151, 161, 170); color: rgba(255, 255, 255, 0.9); }
+.tx-button:active { background-color: rgb(146, 156, 166); border-color: rgb(146, 156, 166); color: rgba(255, 255, 255, 0.8); }
+.tumblr-blue.tx-button { background-color: rgb(54, 70, 93); border-color: rgb(54, 70, 93); color: rgb(255, 255, 255); }
+.tumblr-blue.tx-button:focus { background-color: rgb(50, 65, 87); border-color: rgb(50, 65, 87); color: rgba(255, 255, 255, 0.9); }
+.tumblr-blue.tx-button:active { background-color: rgb(47, 60, 80); border-color: rgb(47, 60, 80); color: rgba(255, 255, 255, 0.8); }
+.blue.tx-button { background-color: rgb(82, 158, 204); border-color: rgb(82, 158, 204); color: rgb(255, 255, 255); }
+.blue.tx-button:focus { background-color: rgb(74, 154, 202); border-color: rgb(74, 154, 202); color: rgba(255, 255, 255, 0.9); }
+.blue.tx-button:active { background-color: rgb(66, 149, 199); border-color: rgb(66, 149, 199); color: rgba(255, 255, 255, 0.8); }
+.iframe-controls-container.iframe-controls-container--logged-in .customize-button::before, .iframe-controls-container.iframe-controls-container--logged-in .dashboard-button::before, .iframe-controls-container.iframe-controls-container--logged-in .fan-mail-button::before, .iframe-controls-container.iframe-controls-container--logged-in .follow-button::before, .iframe-controls-container.iframe-controls-container--logged-in .hide-admin-button::before, .iframe-controls-container.iframe-controls-container--logged-in .lookup-button::before, .iframe-controls-container.iframe-controls-container--logged-in .radar-post-button::before, .iframe-controls-container.iframe-controls-container--logged-in .root-post-button::before, .iframe-controls-container.iframe-controls-container--logged-in .show-admin-button::before, .iframe-controls-container.iframe-controls-container--logged-in .spam-button.active::before, .iframe-controls-container.iframe-controls-container--logged-in .spam-button::before, .iframe-controls-container.iframe-controls-container--logged-in .unfollow-button::before { background-image: url('iframe_sprite.png'); content: ""; display: inline-block; vertical-align: bottom; }
+@media not all, not all, only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (min-resolution: 1.3dppx), only screen and (min-resolution: 125dpi) {
+	.iframe-controls-container.iframe-controls-container--logged-in .customize-button::before, .iframe-controls-container.iframe-controls-container--logged-in .dashboard-button::before, .iframe-controls-container.iframe-controls-container--logged-in .fan-mail-button::before, .iframe-controls-container.iframe-controls-container--logged-in .follow-button::before, .iframe-controls-container.iframe-controls-container--logged-in .hide-admin-button::before, .iframe-controls-container.iframe-controls-container--logged-in .lookup-button::before, .iframe-controls-container.iframe-controls-container--logged-in .radar-post-button::before, .iframe-controls-container.iframe-controls-container--logged-in .root-post-button::before, .iframe-controls-container.iframe-controls-container--logged-in .show-admin-button::before, .iframe-controls-container.iframe-controls-container--logged-in .spam-button.active::before, .iframe-controls-container.iframe-controls-container--logged-in .spam-button::before, .iframe-controls-container.iframe-controls-container--logged-in .unfollow-button::before { background-image: url('iframe_sprite@2x.png'); background-size: 400px 60px; }
+}
+body { margin: 0px; background-color: transparent; overflow: hidden; }
+.ui_dialog_lock, .ui_dialog_pos { display: none ! important; }
+.iframe-controls-container { position: absolute; top: 0px; right: 0px; }
+.iframe-controls-container * { font-family: Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif; }
+.iframe-controls-container .buttons-container { display: flex; align-items: center; justify-content: flex-end; }
+.iframe-controls-container .buttons-container .tx-button { margin-right: 5px; }
+.iframe-controls-container .hidden { display: none; }
+.iframe-controls-container .logo { background-image: url('iframe_logo.png'); background-repeat: no-repeat; background-position: 50% center; position: relative; display: inline-block; width: 64px; height: 24px; direction: ltr; text-indent: -9999px; padding-top: 0px; }
+@media not all, not all, only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (min-resolution: 1.3dppx), only screen and (min-resolution: 125dpi) {
+	.iframe-controls-container .logo { background-image: url('iframe_logo@2x.png'); background-size: 64px 14px; }
+}
+.iframe-controls-container .tx-button { padding-top: 3px; padding-bottom: 3px; white-space: nowrap; font-size: 13px; line-height: 18px; }
+.iframe-controls-container .tx-button::before { display: inline-block; font-size: 24px; line-height: 24px; width: 24px; vertical-align: middle; text-align: center; }
+.iframe-controls-container .tumblr-button { padding-top: 0px; padding-bottom: 0px; }
+.iframe-controls-container .tumblr-button:active .logo { opacity: 0.8; }
+.iframe-controls-container .t-logo-container { flex-grow: 1; }
+.iframe-controls-container .t-logo { display: inline-block; padding: 7px 11px 0px; outline: medium none; }
+.iframe-controls-container .t-logo:active { transform: translateY(1px); }
+.iframe-controls-container .t-logo:active .large-shadow { transform: translateX(-1px) translateY(-1px); }
+.iframe-controls-container .t-logo .svg-logo { width: 24px; height: 32px; }
+.iframe-controls-container .t-logo .outer { fill: rgb(255, 255, 255); }
+.iframe-controls-container .t-logo .large-shadow { opacity: 0.25; transform: translateX(0px) translateY(0px); }
+.iframe-controls-container.iframe-controls-container--desktop { margin: 5px 0px 5px 5px; }
+.iframe-controls-container.iframe-controls-container--desktop .tx-button { margin-right: 5px; }
+.iframe-controls-container.iframe-controls-container--desktop .desktop-hidden, .iframe-controls-container.iframe-controls-container--desktop .t-logo { display: none; }
+.iframe-controls-container.iframe-controls-container--logged-in .tx-button::before { width: 16px; height: 18px; font-size: 16px; line-height: 18px; margin-right: 3px; }
+.iframe-controls-container.iframe-controls-container--logged-in .customize-button::before { width: 20px; height: 18px; background-position: -20px -21px; }
+.iframe-controls-container.iframe-controls-container--logged-in .dashboard-button::before { width: 20px; height: 18px; background-position: -160px 0px; }
+.iframe-controls-container.iframe-controls-container--logged-in .edit-button::before { content: ""; }
+.iframe-controls-container.iframe-controls-container--logged-in .delete-button::before { content: ""; }
+.iframe-controls-container.iframe-controls-container--logged-in .reblog-button::before { content: ""; transform: translateX(-0.5px); padding-left: 2px; padding-right: 1px; }
+.iframe-controls-container.iframe-controls-container--logged-in .reblog-button.reblogged::before { color: rgb(86, 188, 138); }
+.iframe-controls-container.iframe-controls-container--logged-in .like-button::before, .iframe-controls-container.iframe-controls-container--logged-in .unlike-button::before { content: ""; }
+.iframe-controls-container.iframe-controls-container--logged-in .unlike-button::before { color: rgb(217, 94, 64); }
+.iframe-controls-container.iframe-controls-container--logged-in .like-button::before, .iframe-controls-container.iframe-controls-container--logged-in .unlike-button::before { font-size: 15px; padding-left: 1px; padding-right: 1px; }
+.iframe-controls-container.iframe-controls-container--logged-in .follow-button::before { width: 20px; height: 18px; background-position: -40px 0px; }
+.iframe-controls-container.iframe-controls-container--logged-in .unfollow-button::before { width: 20px; height: 18px; background-position: -60px 0px; }
+.iframe-controls-container.iframe-controls-container--logged-in .subscribe-button::before { content: ""; }
+.iframe-controls-container.iframe-controls-container--logged-in .message-button::before { content: ""; font-size: 15px; padding-left: 3px; padding-right: 1px; }
+.iframe-controls-container.iframe-controls-container--logged-in .fan-mail-button::before { width: 20px; height: 18px; background-position: -20px 0px; }
+.iframe-controls-container.iframe-controls-container--logged-in .spam-button::before { width: 45px; height: 18px; background-position: -247px 0px; }
+.iframe-controls-container.iframe-controls-container--logged-in .spam-button.active::before { width: 45px; height: 18px; background-position: -247px -20px; }
+.iframe-controls-container.iframe-controls-container--logged-in .show-admin-button::before { width: 20px; height: 18px; background-position: -180px 0px; }
+.iframe-controls-container.iframe-controls-container--logged-in .hide-admin-button::before { width: 20px; height: 18px; background-position: -220px 0px; }
+.iframe-controls-container.iframe-controls-container--logged-in .lookup-button::before { padding-right: 3px; width: 20px; height: 18px; background-position: -200px 0px; }
+.iframe-controls-container.iframe-controls-container--logged-in .root-post-button::before { width: 20px; height: 18px; background-position: -320px 0px; }
+.iframe-controls-container.iframe-controls-container--logged-in .radar-post-button::before { width: 20px; height: 18px; background-position: -300px -20px; }
+.iframe-controls-container.iframe-controls-container--logged-in .fan-mail-button::before, .iframe-controls-container.iframe-controls-container--logged-in .hide-admin-button::before, .iframe-controls-container.iframe-controls-container--logged-in .radar-post-button::before, .iframe-controls-container.iframe-controls-container--logged-in .root-post-button::before, .iframe-controls-container.iframe-controls-container--logged-in .show-admin-button::before, .iframe-controls-container.iframe-controls-container--logged-in .spam-button::before { margin-right: 0px; }

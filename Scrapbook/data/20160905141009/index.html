@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Parsing ID3 Tags from MP3s using Python | The Mouse Vs. The Python</title>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="http://www.blog.pythonlibrary.org/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="http://www.blog.pythonlibrary.org/wp-content/themes/twentythirteen/js/html5.js"></script>
+	<![endif]-->
+	<link rel="dns-prefetch" href="http://www.blog.pythonlibrary.org/">
+<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="The Mouse Vs. The Python » Feed" href="http://www.blog.pythonlibrary.org/feed/">
+<link rel="alternate" type="application/rss+xml" title="The Mouse Vs. The Python » Comments Feed" href="http://www.blog.pythonlibrary.org/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="The Mouse Vs. The Python » Parsing ID3 Tags from MP3s using Python Comments Feed" href="http://www.blog.pythonlibrary.org/2010/04/22/parsing-id3-tags-from-mp3s-using-python/feed/">
+		
+		
+
+
+
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentythirteen-ie-css'  href='http://www.blog.pythonlibrary.org/wp-content/themes/twentythirteen/css/ie.css?ver=2013-07-18' type='text/css' media='all' />
+<![endif]-->
+
+
+
+
+<link rel="https://api.w.org/" href="http://www.blog.pythonlibrary.org/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.blog.pythonlibrary.org/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.blog.pythonlibrary.org/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="wxPython: Creating a Simple MP3 Player" href="http://www.blog.pythonlibrary.org/2010/04/20/wxpython-creating-a-simple-mp3-player/">
+<link rel="next" title="Python: How to Tell How Long Windows Has Been Idle" href="http://www.blog.pythonlibrary.org/2010/05/05/python-how-to-tell-how-long-windows-has-been-idle/">
+<meta name="generator" content="WordPress 4.6">
+<link rel="canonical" href="http://www.blog.pythonlibrary.org/2010/04/22/parsing-id3-tags-from-mp3s-using-python/">
+<link rel="shortlink" href="http://www.blog.pythonlibrary.org/?p=821">
+<link rel="alternate" type="application/json+oembed" href="http://www.blog.pythonlibrary.org/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.blog.pythonlibrary.org%2F2010%2F04%2F22%2Fparsing-id3-tags-from-mp3s-using-python%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.blog.pythonlibrary.org/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.blog.pythonlibrary.org%2F2010%2F04%2F22%2Fparsing-id3-tags-from-mp3s-using-python%2F&amp;format=xml">
+<!-- Favicon Rotator -->
+<link rel="shortcut icon" href="favicon.ico">
+<!-- End Favicon Rotator -->
+    
+           
+        
+		
+			
+	<!-- Google Analytics Tracking by Google Analyticator 6.4.9: http://www.videousermanuals.com/google-analyticator/ -->
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-821 single-format-standard sidebar">
+	<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+			<a class="home-link" href="http://www.blog.pythonlibrary.org/" title="The Mouse Vs. The Python" rel="home">
+				<h1 class="site-title">The Mouse Vs. The Python</h1>
+				<h2 class="site-description">Python Programming from the Frontlines</h2>
+			</a>
+
+			<div id="navbar" class="navbar">
+				<nav id="site-navigation" class="navigation main-navigation" role="navigation">
+					<button class="menu-toggle">Menu</button>
+					<a class="screen-reader-text skip-link" href="#content" title="Skip to content">Skip to content</a>
+					<div id="primary-menu" class="nav-menu"><ul><li class="page_item page-item-2"><a href="http://www.blog.pythonlibrary.org/about/">About</a></li><li class="page_item page-item-4012"><a href="http://www.blog.pythonlibrary.org/buy-the-book/">Buy the Book</a></li><li class="page_item page-item-376"><a href="http://www.blog.pythonlibrary.org/contact/">Contact the Author</a></li><li class="page_item page-item-1380"><a href="http://www.blog.pythonlibrary.org/follow/">Follow the Blog</a></li><li class="page_item page-item-1972"><a href="http://www.blog.pythonlibrary.org/license/">License</a></li><li class="page_item page-item-2122"><a href="http://www.blog.pythonlibrary.org/my-projects/">My Projects</a></li><li class="page_item page-item-5269"><a href="http://www.blog.pythonlibrary.org/screencasts/">Screencasts</a></li></ul></div>
+					<form role="search" method="get" class="search-form" action="http://www.blog.pythonlibrary.org/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input class="search-field" placeholder="Search …" value="" name="s" type="search">
+				</label>
+				<input class="search-submit" value="Search" type="submit">
+			</form>				</nav><!-- #site-navigation -->
+			</div><!-- #navbar -->
+		</header><!-- #masthead -->
+
+		<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+						
+				
+<article id="post-821" class="post-821 post type-post status-publish format-standard hentry category-cross-platform category-python tag-mp3 tag-python">
+	<header class="entry-header">
+		
+				<h1 class="entry-title">Parsing ID3 Tags from MP3s using Python</h1>
+		
+		<div class="entry-meta">
+			<span class="date"><a href="http://www.blog.pythonlibrary.org/2010/04/22/parsing-id3-tags-from-mp3s-using-python/" title="Permalink to Parsing ID3 Tags from MP3s using Python" rel="bookmark"><time class="entry-date" datetime="2010-04-22T19:36:05+00:00">April 22, 2010</time></a></span><span class="categories-links"><a href="http://www.blog.pythonlibrary.org/category/cross-platform/" rel="category tag">Cross-Platform</a>, <a href="http://www.blog.pythonlibrary.org/category/python/" rel="category tag">Python</a></span><span class="tags-links"><a href="http://www.blog.pythonlibrary.org/tag/mp3/" rel="tag">mp3</a>, <a href="http://www.blog.pythonlibrary.org/tag/python/" rel="tag">Python</a></span><span class="author vcard"><a class="url fn n" href="http://www.blog.pythonlibrary.org/author/admin/" title="View all posts by Mike" rel="author">Mike</a></span>					</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<div class="socialize-in-content socialize-in-content-right"><div class="socialize-in-button socialize-in-button-right"><iframe data-url="http://bit.ly/vUhRGw" src="index_1.html" title="Twitter Tweet Button" style="position: static; visibility: visible; width: 61px; height: 20px;" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe></div><div class="socialize-in-button socialize-in-button-right">
+                        <iframe src="index_2.html" scrolling="no" allowtransparency="true" frameborder="0" height="69" width="53"></iframe></div><div class="socialize-in-button socialize-in-button-right"></div><div class="socialize-in-button socialize-in-button-right"><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 70px; height: 15px;"><iframe title="+1" data-gapiattached="true" src="index_3.html" name="I0_1473077233569" id="I0_1473077233569" vspace="0" tabindex="0" style="position: static; top: 0px; width: 70px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 15px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" frameborder="0" width="100%"></iframe></div></div></div><div class="pf-content"><p>While working on my Python <a href="http://www.blog.pythonlibrary.org/2010/04/20/wxpython-creating-a-simple-mp3-player/">mp3 player</a> I realized I needed to research what Python had to offer for parsing ID3 tags. There are tons of projects out there, but most of them appear to be either dead, don’t have documentation or both. In this post, you will discover the wild world of MP3 tag parsing in Python along with me and we’ll see if we can find something that I can use to enhance my mp3 player project.<span id="more-821"></span></p>
+<p>For this exercise, we’ll try to get the following information from our parsers:</p>
+<ul>
+<li>Artist</li>
+<li>Title of Album</li>
+<li>Track Title</li>
+<li>Length of Track</li>
+<li>Album Release Date</li>
+</ul>
+<p>We’ll probably need more metadata than that, but this is the usual stuff I care about in my mp3 playing experience. We will look at the following 3rd party libraries to see how they hold up:</p>
+<ul>
+<li><a href="http://pypi.python.org/pypi/mutagen/1.12">Mutagen</a></li>
+<li><a href="http://eyed3.nicfit.net/">eyeD3</a></li>
+<li><a href="http://nedbatchelder.com/code/modules/id3reader.html">id3reader.py</a></li>
+</ul>
+<p>Let’s get started!</p>
+<h2>Can Mutagen Save the Day?</h2>
+<p>One of the reasons to include Mutagen in this round up is because it supports ASF, FLAC, M4A, Monkey’s Audio, Musepack, Ogg FLAC, Ogg Speex, Ogg Theora, Ogg Vorbis, True Audio, WavPack and OptimFROG in addition to MP3 parsing. Thus, we could potentially expand our MP3 player quite a bit. I was pretty excited when I found this package. However, while the package appears to be actively developed, the documentation is almost non-existent. If you are a new Python programmer, you will find this library difficult to just jump into and use.</p>
+<p>To install Mutagen, you’ll need to unpack it and navigate to its folder using the command line. Then execute the following:</p>
+<p><code><br>
+python setup.py install<br>
+</code></p>
+<p>You may be able to use <a href="http://pypi.python.org/pypi/setuptools">easy_install</a> or <a href="http://pypi.python.org/pypi/pip">pip</a> as well, although their website doesn’t really say one way or the other. Now comes the fun part: trying to figure out how to use the module without documentation! Fortunately, I found a <a href="http://www.mydigitallife.co.za/index.php?option=com_content&amp;task=view&amp;id=1046123&amp;Itemid=43">blog post</a> that gave me some clues. From what I gather, Mutagen follows the <a href="http://id3.org/">ID3 specification</a> pretty closely, so rather than abstracting it so that you would have functions like GetArtist, you actually end up reading ID3 text frames and use their terminology. Thus, TPE1 = Artist (or Lead Singer), TIT2 = Title, etc. Let’s look at an example:</p>
+<pre class="python"><span style="color: rgb(102, 204, 102);">&gt;&gt;&gt;</span> path = r<span style="color: rgb(72, 61, 139);">'D:<span style="color: rgb(0, 0, 153); font-weight: bold;">\m</span>p3<span style="color: rgb(0, 0, 153); font-weight: bold;">\1</span>2 Stones<span style="color: rgb(0, 0, 153); font-weight: bold;">\2</span>002 - 12 Stones<span style="color: rgb(0, 0, 153); font-weight: bold;">\0</span>1 - Crash.mp3'</span>
+<span style="color: rgb(102, 204, 102);">&gt;&gt;&gt;</span> <span style="color: rgb(255, 119, 0); font-weight: bold;">from</span> mutagen.<span style="color: black;">id3</span> <span style="color: rgb(255, 119, 0); font-weight: bold;">import</span> ID3
+<span style="color: rgb(102, 204, 102);">&gt;&gt;&gt;</span> audio = ID3<span style="color: black;">(</span>path<span style="color: black;">)</span>
+<span style="color: rgb(102, 204, 102);">&gt;&gt;&gt;</span> audio
+<span style="color: rgb(102, 204, 102);">&gt;&gt;&gt;</span> audio<span style="color: black;">[</span><span style="color: rgb(72, 61, 139);">'TPE1'</span><span style="color: black;">]</span>
+TPE1<span style="color: black;">(</span>encoding=<span style="color: rgb(255, 69, 0);">0</span>, text=<span style="color: black;">[</span>u<span style="color: rgb(72, 61, 139);">'12 Stones'</span><span style="color: black;">]</span><span style="color: black;">)</span>
+<span style="color: rgb(102, 204, 102);">&gt;&gt;&gt;</span> audio<span style="color: black;">[</span><span style="color: rgb(72, 61, 139);">'TPE1'</span><span style="color: black;">]</span>.<span style="color: black;">text</span>
+<span style="color: black;">[</span>u<span style="color: rgb(72, 61, 139);">'12 Stones'</span><span style="color: black;">]</span></pre>
+<p>Here’s a more proper example:</p>
+<pre class="python"><span style="color: rgb(255, 119, 0); font-weight: bold;">from</span> mutagen.<span style="color: black;">id3</span> <span style="color: rgb(255, 119, 0); font-weight: bold;">import</span> ID3
+&nbsp;
+<span style="color: rgb(128, 128, 128); font-style: italic;">#----------------------------------------------------------------------</span>
+<span style="color: rgb(255, 119, 0); font-weight: bold;">def</span> getMutagenTags<span style="color: black;">(</span>path<span style="color: black;">)</span>:
+    <span style="color: rgb(72, 61, 139);">""</span><span style="color: rgb(72, 61, 139);">""</span><span style="color: rgb(72, 61, 139);">""</span>
+    audio = ID3<span style="color: black;">(</span>path<span style="color: black;">)</span>
+&nbsp;
+    <span style="color: rgb(255, 119, 0); font-weight: bold;">print</span> <span style="color: rgb(72, 61, 139);">"Artist: %s"</span> <span style="color: rgb(102, 204, 102);">%</span> audio<span style="color: black;">[</span><span style="color: rgb(72, 61, 139);">'TPE1'</span><span style="color: black;">]</span>.<span style="color: black;">text</span><span style="color: black;">[</span><span style="color: rgb(255, 69, 0);">0</span><span style="color: black;">]</span>
+    <span style="color: rgb(255, 119, 0); font-weight: bold;">print</span> <span style="color: rgb(72, 61, 139);">"Track: %s"</span> <span style="color: rgb(102, 204, 102);">%</span> audio<span style="color: black;">[</span><span style="color: rgb(72, 61, 139);">"TIT2"</span><span style="color: black;">]</span>.<span style="color: black;">text</span><span style="color: black;">[</span><span style="color: rgb(255, 69, 0);">0</span><span style="color: black;">]</span>
+    <span style="color: rgb(255, 119, 0); font-weight: bold;">print</span> <span style="color: rgb(72, 61, 139);">"Release Year: %s"</span> <span style="color: rgb(102, 204, 102);">%</span> audio<span style="color: black;">[</span><span style="color: rgb(72, 61, 139);">"TDRC"</span><span style="color: black;">]</span>.<span style="color: black;">text</span><span style="color: black;">[</span><span style="color: rgb(255, 69, 0);">0</span><span style="color: black;">]</span></pre>
+<p>I personally find this to be difficult to read and use, so I won’t be using this module for my mp3 player unless I need to add additional digital file formats to it. Also note that I wasn’t able to figure out how to get the track’s play length or album title. Let’s move on to our next ID3 parser and see how it fares.</p>
+<h2>eyeD3</h2>
+<p>If you go to eyeD3’s website, you’ll notice that it doesn’t seem to support Windows. This is a problem for many users and almost caused me to drop it from this round-up. Fortunately, I found a forum that mentioned a way to make it work. The idea was to rename the “setup.py.in” file in the main folder to just “setup.py” and the “__init__.py.in” file to “__init__.py”, which you’ll find in “src\eyeD3”. Then you can install it using the usual “python setup.py install”. Once you have it installed, it’s really easy to use. Check out the following function:</p>
+<pre class="python"><span style="color: rgb(255, 119, 0); font-weight: bold;">import</span> eyeD3
+&nbsp;
+<span style="color: rgb(128, 128, 128); font-style: italic;">#----------------------------------------------------------------------</span>
+<span style="color: rgb(255, 119, 0); font-weight: bold;">def</span> getEyeD3Tags<span style="color: black;">(</span>path<span style="color: black;">)</span>:
+    <span style="color: rgb(72, 61, 139);">""</span><span style="color: rgb(72, 61, 139);">""</span><span style="color: rgb(72, 61, 139);">""</span>
+    trackInfo = eyeD3.<span style="color: black;">Mp3AudioFile</span><span style="color: black;">(</span>path<span style="color: black;">)</span>
+    tag = trackInfo.<span style="color: black;">getTag</span><span style="color: black;">(</span><span style="color: black;">)</span>
+    tag.<span style="color: black;">link</span><span style="color: black;">(</span>path<span style="color: black;">)</span>
+&nbsp;
+    <span style="color: rgb(255, 119, 0); font-weight: bold;">print</span> <span style="color: rgb(72, 61, 139);">"Artist: %s"</span> <span style="color: rgb(102, 204, 102);">%</span> tag.<span style="color: black;">getArtist</span><span style="color: black;">(</span><span style="color: black;">)</span>
+    <span style="color: rgb(255, 119, 0); font-weight: bold;">print</span> <span style="color: rgb(72, 61, 139);">"Album: %s"</span> <span style="color: rgb(102, 204, 102);">%</span> tag.<span style="color: black;">getAlbum</span><span style="color: black;">(</span><span style="color: black;">)</span>
+    <span style="color: rgb(255, 119, 0); font-weight: bold;">print</span> <span style="color: rgb(72, 61, 139);">"Track: %s"</span> <span style="color: rgb(102, 204, 102);">%</span> tag.<span style="color: black;">getTitle</span><span style="color: black;">(</span><span style="color: black;">)</span>
+    <span style="color: rgb(255, 119, 0); font-weight: bold;">print</span> <span style="color: rgb(72, 61, 139);">"Track Length: %s"</span> <span style="color: rgb(102, 204, 102);">%</span> trackInfo.<span style="color: black;">getPlayTimeString</span><span style="color: black;">(</span><span style="color: black;">)</span>
+    <span style="color: rgb(255, 119, 0); font-weight: bold;">print</span> <span style="color: rgb(72, 61, 139);">"Release Year: %s"</span> <span style="color: rgb(102, 204, 102);">%</span> tag.<span style="color: black;">getYear</span><span style="color: black;">(</span><span style="color: black;">)</span></pre>
+<p>This package does meet our arbitrary requirements. The only regrettable aspect of the package is its lack of official Windows support. We’ll reserve judgment until after we’ve tried out our third possibility though.</p>
+<h2>Ned Batchelder’s id3reader.py</h2>
+<p>This module is probably the easiest of the three to install since it’s just one file. All you need to do is download it and put the file into the site-packages or somewhere else on your Python path. The primary problem of this parser is that Batchelder no longer supports it. Let’s see if there’s an easy way to get the information that we need.</p>
+<pre class="python"><span style="color: rgb(255, 119, 0); font-weight: bold;">import</span> id3reader
+&nbsp;
+<span style="color: rgb(128, 128, 128); font-style: italic;">#----------------------------------------------------------------------</span>
+<span style="color: rgb(255, 119, 0); font-weight: bold;">def</span> getTags<span style="color: black;">(</span>path<span style="color: black;">)</span>:
+    <span style="color: rgb(72, 61, 139);">""</span><span style="color: rgb(72, 61, 139);">""</span><span style="color: rgb(72, 61, 139);">""</span>
+    id3r = id3reader.<span style="color: black;">Reader</span><span style="color: black;">(</span>path<span style="color: black;">)</span>
+&nbsp;
+    <span style="color: rgb(255, 119, 0); font-weight: bold;">print</span> <span style="color: rgb(72, 61, 139);">"Artist: %s"</span> <span style="color: rgb(102, 204, 102);">%</span> id3r.<span style="color: black;">getValue</span><span style="color: black;">(</span><span style="color: rgb(72, 61, 139);">'performer'</span><span style="color: black;">)</span>
+    <span style="color: rgb(255, 119, 0); font-weight: bold;">print</span> <span style="color: rgb(72, 61, 139);">"Album: %s"</span> <span style="color: rgb(102, 204, 102);">%</span> id3r.<span style="color: black;">getValue</span><span style="color: black;">(</span><span style="color: rgb(72, 61, 139);">'album'</span><span style="color: black;">)</span>
+    <span style="color: rgb(255, 119, 0); font-weight: bold;">print</span> <span style="color: rgb(72, 61, 139);">"Track: %s"</span> <span style="color: rgb(102, 204, 102);">%</span> id3r.<span style="color: black;">getValue</span><span style="color: black;">(</span><span style="color: rgb(72, 61, 139);">'title'</span><span style="color: black;">)</span>
+    <span style="color: rgb(255, 119, 0); font-weight: bold;">print</span> <span style="color: rgb(72, 61, 139);">"Release Year: %s"</span> <span style="color: rgb(102, 204, 102);">%</span> id3r.<span style="color: black;">getValue</span><span style="color: black;">(</span><span style="color: rgb(72, 61, 139);">'year'</span><span style="color: black;">)</span></pre>
+<p>Well, I didn’t see an obvious way to get the track length with this module without knowing the ID3 specification. Alas! While I like the simplicity and power of this module, the lack of support and a super simple API makes me reject it in favor of eyeD3. For now, that will be my library of choice for my mp3 player. If you know of a great ID3 parsing script, feel free to drop me a line in the comments. I saw others listed on Google as well, but quite a few of them were just as dead as Batchelder’s was.</p>
+<div class="printfriendly pf-alignleft"><a href="#" rel="nofollow" onclick="window.print(); return false;" class="noslimstat"><img style="border: medium none; box-shadow: none;" src="pf-button.gif" alt="Print Friendly"></a></div></div>	</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+		
+			</footer><!-- .entry-meta -->
+</article><!-- #post -->
+					<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Post navigation</h1>
+		<div class="nav-links">
+
+			<a href="http://www.blog.pythonlibrary.org/2010/04/20/wxpython-creating-a-simple-mp3-player/" rel="prev"><span class="meta-nav">←</span> wxPython: Creating a Simple MP3 Player</a>			<a href="http://www.blog.pythonlibrary.org/2010/05/05/python-how-to-tell-how-long-windows-has-been-idle/" rel="next">Python: How to Tell How Long Windows Has Been Idle <span class="meta-nav">→</span></a>
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+					
+<div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="index_4.html" style="width: 1px ! important; min-width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 1232px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" name="dsq-app1" id="dsq-app1" frameborder="0" width="100%"></iframe></div>
+
+
+
+
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+	<div id="tertiary" class="sidebar-container" role="complementary">
+		<div class="sidebar-inner">
+			<div class="widget-area">
+				<aside id="text-13" class="widget widget_text"><h3 class="widget-title">wxPython Cookbook</h3>			<div class="textwidget"><a href="https://www.kickstarter.com/projects/34257246/wxpython-cookbook/"><img src="wxcookbook_small.png" alt="wxcookbook_small" class="aligncenter size-medium wp-image-3844"></a>
+
+<center><h3>Get it on<a href="https://www.kickstarter.com/projects/34257246/wxpython-cookbook/"> Kickstarter</a></h3></center></div>
+		</aside><aside id="text-11" class="widget widget_text"><h3 class="widget-title">Python 201</h3>			<div class="textwidget"><a target="_top" href="https://gum.co/py201"><img src="python201_cover20160330_sm-237x300.jpg" alt="python201_sm" class="aligncenter size-medium wp-image-3844" height="228" width="180"></a>
+
+<center><h3>Get Early Access on <a target="_top" href="https://gum.co/py201">Gumroad</a> or <a href="https://leanpub.com/python201">Leanpub</a></h3>
+ </center>
+
+<center><h3>Pre-Order <a target="_top" href="https://gumroad.com/l/NclYB">Signed Paperback</a> (limit 100)</h3></center></div>
+		</aside><aside id="text-9" class="widget widget_text"><h3 class="widget-title">Python 101</h3>			<div class="textwidget"><a target="_top" href="https://gum.co/bppWr"><img src="mousecovertitlejpg_sm2-237x300.jpg" alt="mousecovertitlejpg_sm2" class="aligncenter size-medium wp-image-3844" height="228" width="180"></a>
+
+<center><h3>Order the eBook on <a target="_top" href="https://gum.co/bppWr">Gumroad</a> or <a href="https://leanpub.com/python_101">Leanpub</a></h3>
+ </center>
+
+<center><h3>Also available in<a href="http://www.lulu.com/shop/michael-driscoll/python-101/paperback/product-21657364.html" target="_top"> Paperback!</a></h3></center></div>
+		</aside><aside id="text-10" class="widget widget_text"><h3 class="widget-title">Screencasts</h3>			<div class="textwidget"><a target="_top" href="https://gum.co/kaKNo"><img src="mousecovertitlejpg_sm_title-300x144.jpg" class="aligncenter size-medium wp-image-3844" height="72" width="150"></a>
+
+<center><h3><a href="https://gum.co/kaKNo" target="_top">Get the Screencast</a></h3></center></div>
+		</aside>			</div><!-- .widget-area -->
+		</div><!-- .sidebar-inner -->
+	</div><!-- #tertiary -->
+
+		</div><!-- #main -->
+		<footer id="colophon" class="site-footer" role="contentinfo">
+				<div id="secondary" class="sidebar-container" role="complementary">
+		<div style="position: relative; height: 1069.28px;" class="widget-area masonry">
+			<aside style="position: absolute; left: 0px; top: 0px;" id="text-4" class="widget widget_text masonry-brick"><h3 class="widget-title">Buy Python 101</h3>			<div class="textwidget"><a target="_top" href="https://gum.co/bppWr"><img src="mousecovertitlejpg_sm2-237x300.jpg" alt="mousecovertitlejpg_sm2" class="aligncenter size-medium wp-image-3844" height="228" width="180"></a>
+
+<h3><a target="_top" href="https://gum.co/bppWr">Order the eBook</a></h3>
+ 
+
+<h3><a href="http://www.lulu.com/shop/michael-driscoll/python-101/paperback/product-21657364.html" target="_top">or buy the Paperback!</a></h3></div>
+		</aside><aside style="position: absolute; left: 248px; top: 0px;" id="text-7" class="widget widget_text masonry-brick"><h3 class="widget-title">Screencasts</h3>			<div class="textwidget"><a target="_top" href="https://gum.co/bppWr"><img src="mousecovertitlejpg_sm_title-300x144.jpg" class="aligncenter size-medium wp-image-3844" height="72" width="150"></a>
+
+<h3><a href="https://gum.co/kaKNo" target="_top">Get the Screencast</a></h3></div>
+		</aside><aside style="position: absolute; left: 496px; top: 0px;" id="search-3" class="widget widget_search masonry-brick"><form role="search" method="get" class="search-form" action="http://www.blog.pythonlibrary.org/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input class="search-field" placeholder="Search …" value="" name="s" type="search">
+				</label>
+				<input class="search-submit" value="Search" type="submit">
+			</form></aside>		<aside style="position: absolute; left: 496px; top: 95px;" id="recent-posts-3" class="widget widget_recent_entries masonry-brick">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+					<li>
+				<a href="http://www.blog.pythonlibrary.org/2016/08/29/wxpython-cookbook-sample-chapters/">wxPython Cookbook Sample Chapters</a>
+						</li>
+					<li>
+				<a href="http://www.blog.pythonlibrary.org/2016/08/29/pydev-of-the-week-damien-george/">PyDev of the Week: Damien George</a>
+						</li>
+					<li>
+				<a href="http://www.blog.pythonlibrary.org/2016/08/23/python-201-releasing-in-2-weeks/">Python 201 Releasing in 2 Weeks!</a>
+						</li>
+					<li>
+				<a href="http://www.blog.pythonlibrary.org/2016/08/22/ann-the-wxpython-cookbook-kickstarter/">ANN: The wxPython Cookbook Kickstarter</a>
+						</li>
+					<li>
+				<a href="http://www.blog.pythonlibrary.org/2016/08/22/pydev-of-the-week-michele-simionato/">PyDev of the Week: Michele Simionato</a>
+						</li>
+				</ul>
+		</aside>		<aside style="position: absolute; left: 248px; top: 272px;" id="linkcat-2" class="widget widget_links masonry-brick"><h3 class="widget-title">Links</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://twitter.com/#!/mousevspython" title="Twitter account">@MouseVsPython</a></li>
+<li><a href="http://www.zazzle.com/mousevspython" title="Purchase some MouseVsPython Gear" target="_top">Buy the Shirt!</a></li>
+<li><a href="http://www.python.org/" title="A Great Programming Language!">Python</a></li>
+<li><a href="http://www.wxpython.org/" title="My Favorite GUI Wrapper for Python">wxPython</a></li>
+
+	</ul>
+</aside>
+<aside style="position: absolute; left: 496px; top: 454px;" id="archives-3" class="widget widget_archive masonry-brick"><h3 class="widget-title">Archives</h3>		<label class="screen-reader-text" for="archives-dropdown-3">Archives</label>
+		<select id="archives-dropdown-3" name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
+			
+			<option value="">Select Month</option>
+				<option value="http://www.blog.pythonlibrary.org/2016/08/"> August 2016 &nbsp;(11)</option>
+	<option value="http://www.blog.pythonlibrary.org/2016/07/"> July 2016 &nbsp;(13)</option>
+	<option value="http://www.blog.pythonlibrary.org/2016/06/"> June 2016 &nbsp;(12)</option>
+	<option value="http://www.blog.pythonlibrary.org/2016/05/"> May 2016 &nbsp;(12)</option>
+	<option value="http://www.blog.pythonlibrary.org/2016/04/"> April 2016 &nbsp;(8)</option>
+	<option value="http://www.blog.pythonlibrary.org/2016/03/"> March 2016 &nbsp;(14)</option>
+	<option value="http://www.blog.pythonlibrary.org/2016/02/"> February 2016 &nbsp;(15)</option>
+	<option value="http://www.blog.pythonlibrary.org/2016/01/"> January 2016 &nbsp;(8)</option>
+	<option value="http://www.blog.pythonlibrary.org/2015/12/"> December 2015 &nbsp;(6)</option>
+	<option value="http://www.blog.pythonlibrary.org/2015/11/"> November 2015 &nbsp;(6)</option>
+	<option value="http://www.blog.pythonlibrary.org/2015/10/"> October 2015 &nbsp;(9)</option>
+	<option value="http://www.blog.pythonlibrary.org/2015/09/"> September 2015 &nbsp;(5)</option>
+	<option value="http://www.blog.pythonlibrary.org/2015/08/"> August 2015 &nbsp;(8)</option>
+	<option value="http://www.blog.pythonlibrary.org/2015/07/"> July 2015 &nbsp;(10)</option>
+	<option value="http://www.blog.pythonlibrary.org/2015/06/"> June 2015 &nbsp;(9)</option>
+	<option value="http://www.blog.pythonlibrary.org/2015/05/"> May 2015 &nbsp;(6)</option>
+	<option value="http://www.blog.pythonlibrary.org/2015/04/"> April 2015 &nbsp;(8)</option>
+	<option value="http://www.blog.pythonlibrary.org/2015/03/"> March 2015 &nbsp;(9)</option>
+	<option value="http://www.blog.pythonlibrary.org/2015/02/"> February 2015 &nbsp;(8)</option>
+	<option value="http://www.blog.pythonlibrary.org/2015/01/"> January 2015 &nbsp;(7)</option>
+	<option value="http://www.blog.pythonlibrary.org/2014/12/"> December 2014 &nbsp;(9)</option>
+	<option value="http://www.blog.pythonlibrary.org/2014/11/"> November 2014 &nbsp;(8)</option>
+	<option value="http://www.blog.pythonlibrary.org/2014/10/"> October 2014 &nbsp;(9)</option>
+	<option value="http://www.blog.pythonlibrary.org/2014/09/"> September 2014 &nbsp;(4)</option>
+	<option value="http://www.blog.pythonlibrary.org/2014/08/"> August 2014 &nbsp;(4)</option>
+	<option value="http://www.blog.pythonlibrary.org/2014/07/"> July 2014 &nbsp;(5)</option>
+	<option value="http://www.blog.pythonlibrary.org/2014/06/"> June 2014 &nbsp;(8)</option>
+	<option value="http://www.blog.pythonlibrary.org/2014/05/"> May 2014 &nbsp;(4)</option>
+	<option value="http://www.blog.pythonlibrary.org/2014/04/"> April 2014 &nbsp;(4)</option>
+	<option value="http://www.blog.pythonlibrary.org/2014/03/"> March 2014 &nbsp;(20)</option>
+	<option value="http://www.blog.pythonlibrary.org/2014/02/"> February 2014 &nbsp;(10)</option>
+	<option value="http://www.blog.pythonlibrary.org/2014/01/"> January 2014 &nbsp;(16)</option>
+	<option value="http://www.blog.pythonlibrary.org/2013/12/"> December 2013 &nbsp;(7)</option>
+	<option value="http://www.blog.pythonlibrary.org/2013/11/"> November 2013 &nbsp;(10)</option>
+	<option value="http://www.blog.pythonlibrary.org/2013/10/"> October 2013 &nbsp;(7)</option>
+	<option value="http://www.blog.pythonlibrary.org/2013/09/"> September 2013 &nbsp;(3)</option>
+	<option value="http://www.blog.pythonlibrary.org/2013/08/"> August 2013 &nbsp;(5)</option>
+	<option value="http://www.blog.pythonlibrary.org/2013/07/"> July 2013 &nbsp;(14)</option>
+	<option value="http://www.blog.pythonlibrary.org/2013/06/"> June 2013 &nbsp;(2)</option>
+	<option value="http://www.blog.pythonlibrary.org/2013/04/"> April 2013 &nbsp;(9)</option>
+	<option value="http://www.blog.pythonlibrary.org/2013/03/"> March 2013 &nbsp;(3)</option>
+	<option value="http://www.blog.pythonlibrary.org/2013/02/"> February 2013 &nbsp;(4)</option>
+	<option value="http://www.blog.pythonlibrary.org/2013/01/"> January 2013 &nbsp;(3)</option>
+	<option value="http://www.blog.pythonlibrary.org/2012/10/"> October 2012 &nbsp;(2)</option>
+	<option value="http://www.blog.pythonlibrary.org/2012/09/"> September 2012 &nbsp;(1)</option>
+	<option value="http://www.blog.pythonlibrary.org/2012/08/"> August 2012 &nbsp;(11)</option>
+	<option value="http://www.blog.pythonlibrary.org/2012/07/"> July 2012 &nbsp;(24)</option>
+	<option value="http://www.blog.pythonlibrary.org/2012/06/"> June 2012 &nbsp;(16)</option>
+	<option value="http://www.blog.pythonlibrary.org/2012/05/"> May 2012 &nbsp;(14)</option>
+	<option value="http://www.blog.pythonlibrary.org/2012/04/"> April 2012 &nbsp;(1)</option>
+	<option value="http://www.blog.pythonlibrary.org/2012/03/"> March 2012 &nbsp;(5)</option>
+	<option value="http://www.blog.pythonlibrary.org/2012/02/"> February 2012 &nbsp;(1)</option>
+	<option value="http://www.blog.pythonlibrary.org/2012/01/"> January 2012 &nbsp;(2)</option>
+	<option value="http://www.blog.pythonlibrary.org/2011/12/"> December 2011 &nbsp;(8)</option>
+	<option value="http://www.blog.pythonlibrary.org/2011/11/"> November 2011 &nbsp;(8)</option>
+	<option value="http://www.blog.pythonlibrary.org/2011/10/"> October 2011 &nbsp;(2)</option>
+	<option value="http://www.blog.pythonlibrary.org/2011/09/"> September 2011 &nbsp;(1)</option>
+	<option value="http://www.blog.pythonlibrary.org/2011/08/"> August 2011 &nbsp;(3)</option>
+	<option value="http://www.blog.pythonlibrary.org/2011/07/"> July 2011 &nbsp;(4)</option>
+	<option value="http://www.blog.pythonlibrary.org/2011/06/"> June 2011 &nbsp;(2)</option>
+	<option value="http://www.blog.pythonlibrary.org/2011/04/"> April 2011 &nbsp;(2)</option>
+	<option value="http://www.blog.pythonlibrary.org/2011/03/"> March 2011 &nbsp;(13)</option>
+	<option value="http://www.blog.pythonlibrary.org/2011/02/"> February 2011 &nbsp;(7)</option>
+	<option value="http://www.blog.pythonlibrary.org/2011/01/"> January 2011 &nbsp;(14)</option>
+	<option value="http://www.blog.pythonlibrary.org/2010/12/"> December 2010 &nbsp;(10)</option>
+	<option value="http://www.blog.pythonlibrary.org/2010/11/"> November 2010 &nbsp;(4)</option>
+	<option value="http://www.blog.pythonlibrary.org/2010/10/"> October 2010 &nbsp;(11)</option>
+	<option value="http://www.blog.pythonlibrary.org/2010/09/"> September 2010 &nbsp;(10)</option>
+	<option value="http://www.blog.pythonlibrary.org/2010/08/"> August 2010 &nbsp;(7)</option>
+	<option value="http://www.blog.pythonlibrary.org/2010/07/"> July 2010 &nbsp;(7)</option>
+	<option value="http://www.blog.pythonlibrary.org/2010/06/"> June 2010 &nbsp;(7)</option>
+	<option value="http://www.blog.pythonlibrary.org/2010/05/"> May 2010 &nbsp;(9)</option>
+	<option value="http://www.blog.pythonlibrary.org/2010/04/"> April 2010 &nbsp;(6)</option>
+	<option value="http://www.blog.pythonlibrary.org/2010/03/"> March 2010 &nbsp;(10)</option>
+	<option value="http://www.blog.pythonlibrary.org/2010/02/"> February 2010 &nbsp;(23)</option>
+	<option value="http://www.blog.pythonlibrary.org/2010/01/"> January 2010 &nbsp;(6)</option>
+	<option value="http://www.blog.pythonlibrary.org/2009/12/"> December 2009 &nbsp;(4)</option>
+	<option value="http://www.blog.pythonlibrary.org/2009/11/"> November 2009 &nbsp;(1)</option>
+	<option value="http://www.blog.pythonlibrary.org/2009/10/"> October 2009 &nbsp;(1)</option>
+	<option value="http://www.blog.pythonlibrary.org/2009/09/"> September 2009 &nbsp;(1)</option>
+	<option value="http://www.blog.pythonlibrary.org/2009/08/"> August 2009 &nbsp;(3)</option>
+	<option value="http://www.blog.pythonlibrary.org/2009/07/"> July 2009 &nbsp;(1)</option>
+	<option value="http://www.blog.pythonlibrary.org/2009/06/"> June 2009 &nbsp;(2)</option>
+	<option value="http://www.blog.pythonlibrary.org/2009/05/"> May 2009 &nbsp;(1)</option>
+	<option value="http://www.blog.pythonlibrary.org/2009/04/"> April 2009 &nbsp;(1)</option>
+	<option value="http://www.blog.pythonlibrary.org/2009/03/"> March 2009 &nbsp;(14)</option>
+	<option value="http://www.blog.pythonlibrary.org/2009/02/"> February 2009 &nbsp;(2)</option>
+	<option value="http://www.blog.pythonlibrary.org/2009/01/"> January 2009 &nbsp;(3)</option>
+	<option value="http://www.blog.pythonlibrary.org/2008/09/"> September 2008 &nbsp;(2)</option>
+	<option value="http://www.blog.pythonlibrary.org/2008/08/"> August 2008 &nbsp;(3)</option>
+	<option value="http://www.blog.pythonlibrary.org/2008/07/"> July 2008 &nbsp;(1)</option>
+	<option value="http://www.blog.pythonlibrary.org/2008/06/"> June 2008 &nbsp;(2)</option>
+	<option value="http://www.blog.pythonlibrary.org/2008/05/"> May 2008 &nbsp;(9)</option>
+	<option value="http://www.blog.pythonlibrary.org/2008/04/"> April 2008 &nbsp;(4)</option>
+	<option value="http://www.blog.pythonlibrary.org/2008/03/"> March 2008 &nbsp;(7)</option>
+
+		</select>
+		</aside><aside style="position: absolute; left: 0px; top: 478px;" id="recent-comments-3" class="widget widget_recent_comments masonry-brick"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">vidya moorthy</span> on <a href="http://www.blog.pythonlibrary.org/2013/04/30/python-101-intro-to-xml-parsing-with-elementtree/#comment-217184">Python 101 – Intro to XML Parsing with ElementTree</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.pwavrobot.com/index.php/2016/08/24/manipuler-les-bases-de-donnees-sql-dans-pepper/" rel="external nofollow" class="url">Manipuler les bases de données SQL dans Pepper – PwavRobot – Formation à Pepper</a></span> on <a href="http://www.blog.pythonlibrary.org/2012/07/18/python-a-simple-step-by-step-sqlite-tutorial/#comment-217183">Python: A Simple Step-by-Step SQLite Tutorial</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.blog.pythonlibrary.org/" rel="external nofollow" class="url">Mike Driscoll</a></span> on <a href="http://www.blog.pythonlibrary.org/2012/08/06/python-using-turtles-for-drawing/#comment-217178">Python: Using Turtles for Drawing Circles</a></li><li class="recentcomments"><span class="comment-author-link">Nithyananda T S</span> on <a href="http://www.blog.pythonlibrary.org/2013/06/26/python-102-how-to-send-an-email-using-smtplib-email/#comment-217177">Python 102: How to Send an Email Using smtplib + email</a></li><li class="recentcomments"><span class="comment-author-link">scott</span> on <a href="http://www.blog.pythonlibrary.org/2012/08/06/python-using-turtles-for-drawing/#comment-217176">Python: Using Turtles for Drawing Circles</a></li></ul></aside><aside style="position: absolute; left: 248px; top: 495px;" id="tag_cloud-3" class="widget widget_tag_cloud masonry-brick"><h3 class="widget-title">Tags</h3><div class="tagcloud"><a href="http://www.blog.pythonlibrary.org/tag/binaries/" class="tag-link-65 tag-link-position-1" title="5 topics" style="font-size: 9.2233pt;">binaries</a>
+<a href="http://www.blog.pythonlibrary.org/tag/book-preview/" class="tag-link-45 tag-link-position-2" title="3 topics" style="font-size: 8pt;">Book Preview</a>
+<a href="http://www.blog.pythonlibrary.org/tag/book-review/" class="tag-link-19 tag-link-position-3" title="33 topics" style="font-size: 14.3204pt;">Book Review</a>
+<a href="http://www.blog.pythonlibrary.org/tag/books/" class="tag-link-188 tag-link-position-4" title="34 topics" style="font-size: 14.3883pt;">Books</a>
+<a href="http://www.blog.pythonlibrary.org/tag/concurrency/" class="tag-link-32 tag-link-position-5" title="6 topics" style="font-size: 9.69903pt;">concurrency</a>
+<a href="http://www.blog.pythonlibrary.org/tag/configobj/" class="tag-link-26 tag-link-position-6" title="3 topics" style="font-size: 8pt;">ConfigObj</a>
+<a href="http://www.blog.pythonlibrary.org/tag/cross-platform/" class="tag-link-180 tag-link-position-7" title="4 topics" style="font-size: 8.67961pt;">Cross-Platform</a>
+<a href="http://www.blog.pythonlibrary.org/tag/distribution/" class="tag-link-14 tag-link-position-8" title="5 topics" style="font-size: 9.2233pt;">Distribution</a>
+<a href="http://www.blog.pythonlibrary.org/tag/django/" class="tag-link-18 tag-link-position-9" title="6 topics" style="font-size: 9.69903pt;">Django</a>
+<a href="http://www.blog.pythonlibrary.org/tag/education/" class="tag-link-189 tag-link-position-10" title="4 topics" style="font-size: 8.67961pt;">Education</a>
+<a href="http://www.blog.pythonlibrary.org/tag/gui/" class="tag-link-48 tag-link-position-11" title="5 topics" style="font-size: 9.2233pt;">GUI</a>
+<a href="http://www.blog.pythonlibrary.org/tag/kivy/" class="tag-link-163 tag-link-position-12" title="6 topics" style="font-size: 9.69903pt;">kivy</a>
+<a href="http://www.blog.pythonlibrary.org/tag/logging/" class="tag-link-169 tag-link-position-13" title="3 topics" style="font-size: 8pt;">logging</a>
+<a href="http://www.blog.pythonlibrary.org/tag/packaging/" class="tag-link-183 tag-link-position-14" title="7 topics" style="font-size: 10.0388pt;">Packaging</a>
+<a href="http://www.blog.pythonlibrary.org/tag/pycon/" class="tag-link-176 tag-link-position-15" title="27 topics" style="font-size: 13.7767pt;">PyCon</a>
+<a href="http://www.blog.pythonlibrary.org/tag/pycon-2010/" class="tag-link-31 tag-link-position-16" title="13 topics" style="font-size: 11.7379pt;">PyCon 2010</a>
+<a href="http://www.blog.pythonlibrary.org/tag/pycon-2011/" class="tag-link-85 tag-link-position-17" title="22 topics" style="font-size: 13.165pt;">PyCon 2011</a>
+<a href="http://www.blog.pythonlibrary.org/tag/pycon-2012/" class="tag-link-153 tag-link-position-18" title="3 topics" style="font-size: 8pt;">PyCon 2012</a>
+<a href="http://www.blog.pythonlibrary.org/tag/pyowa/" class="tag-link-185 tag-link-position-19" title="9 topics" style="font-size: 10.7184pt;">Pyowa</a>
+<a href="http://www.blog.pythonlibrary.org/tag/pypdf/" class="tag-link-125 tag-link-position-20" title="3 topics" style="font-size: 8pt;">PyPDF</a>
+<a href="http://www.blog.pythonlibrary.org/tag/pyqt/" class="tag-link-143 tag-link-position-21" title="5 topics" style="font-size: 9.2233pt;">PyQT</a>
+<a href="http://www.blog.pythonlibrary.org/tag/pyside/" class="tag-link-162 tag-link-position-22" title="3 topics" style="font-size: 8pt;">PySide</a>
+<a href="http://www.blog.pythonlibrary.org/tag/python/" class="tag-link-177 tag-link-position-23" title="454 topics" style="font-size: 22pt;">Python</a>
+<a href="http://www.blog.pythonlibrary.org/tag/python-3/" class="tag-link-141 tag-link-position-24" title="8 topics" style="font-size: 10.3786pt;">Python 3</a>
+<a href="http://www.blog.pythonlibrary.org/tag/python-101/" class="tag-link-76 tag-link-position-25" title="40 topics" style="font-size: 14.8641pt;">Python 101</a>
+<a href="http://www.blog.pythonlibrary.org/tag/python-201/" class="tag-link-191 tag-link-position-26" title="4 topics" style="font-size: 8.67961pt;">Python 201</a>
+<a href="http://www.blog.pythonlibrary.org/tag/python-advocacy/" class="tag-link-152 tag-link-position-27" title="7 topics" style="font-size: 10.0388pt;">Python Advocacy</a>
+<a href="http://www.blog.pythonlibrary.org/tag/python-pdf-series/" class="tag-link-38 tag-link-position-28" title="11 topics" style="font-size: 11.2621pt;">Python PDF Series</a>
+<a href="http://www.blog.pythonlibrary.org/tag/python-web-frameworks/" class="tag-link-126 tag-link-position-29" title="6 topics" style="font-size: 9.69903pt;">Python Web Frameworks</a>
+<a href="http://www.blog.pythonlibrary.org/tag/pywin32/" class="tag-link-181 tag-link-position-30" title="12 topics" style="font-size: 11.466pt;">PyWin32</a>
+<a href="http://www.blog.pythonlibrary.org/tag/reportlab/" class="tag-link-36 tag-link-position-31" title="13 topics" style="font-size: 11.7379pt;">Reportlab</a>
+<a href="http://www.blog.pythonlibrary.org/tag/sizer/" class="tag-link-29 tag-link-position-32" title="4 topics" style="font-size: 8.67961pt;">sizer</a>
+<a href="http://www.blog.pythonlibrary.org/tag/sql/" class="tag-link-115 tag-link-position-33" title="6 topics" style="font-size: 9.69903pt;">SQL</a>
+<a href="http://www.blog.pythonlibrary.org/tag/sqlalchemy/" class="tag-link-186 tag-link-position-34" title="11 topics" style="font-size: 11.2621pt;">SqlAlchemy</a>
+<a href="http://www.blog.pythonlibrary.org/tag/sqlite/" class="tag-link-80 tag-link-position-35" title="4 topics" style="font-size: 8.67961pt;">sqlite</a>
+<a href="http://www.blog.pythonlibrary.org/tag/system-admin/" class="tag-link-30 tag-link-position-36" title="14 topics" style="font-size: 11.9417pt;">System Admin</a>
+<a href="http://www.blog.pythonlibrary.org/tag/testing/" class="tag-link-187 tag-link-position-37" title="9 topics" style="font-size: 10.7184pt;">Testing</a>
+<a href="http://www.blog.pythonlibrary.org/tag/threading/" class="tag-link-34 tag-link-position-38" title="4 topics" style="font-size: 8.67961pt;">threading</a>
+<a href="http://www.blog.pythonlibrary.org/tag/threads/" class="tag-link-47 tag-link-position-39" title="3 topics" style="font-size: 8pt;">Threads</a>
+<a href="http://www.blog.pythonlibrary.org/tag/tkinter/" class="tag-link-160 tag-link-position-40" title="3 topics" style="font-size: 8pt;">Tkinter</a>
+<a href="http://www.blog.pythonlibrary.org/tag/turbogears/" class="tag-link-184 tag-link-position-41" title="5 topics" style="font-size: 9.2233pt;">TurboGears</a>
+<a href="http://www.blog.pythonlibrary.org/tag/windows/" class="tag-link-178 tag-link-position-42" title="20 topics" style="font-size: 12.8932pt;">Windows</a>
+<a href="http://www.blog.pythonlibrary.org/tag/wxpython/" class="tag-link-182 tag-link-position-43" title="117 topics" style="font-size: 17.9903pt;">wxPython</a>
+<a href="http://www.blog.pythonlibrary.org/tag/xml/" class="tag-link-111 tag-link-position-44" title="3 topics" style="font-size: 8pt;">XML</a>
+<a href="http://www.blog.pythonlibrary.org/tag/xml-parsing-series/" class="tag-link-110 tag-link-position-45" title="6 topics" style="font-size: 9.69903pt;">XML Parsing Series</a></div>
+</aside><aside style="position: absolute; left: 496px; top: 574px;" id="meta-3" class="widget widget_meta masonry-brick"><h3 class="widget-title">Members</h3>			<ul>
+						<li><a href="http://www.blog.pythonlibrary.org/wp-login.php">Log in</a></li>
+			<li><a href="http://www.blog.pythonlibrary.org/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.blog.pythonlibrary.org/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+			</aside>		</div><!-- .widget-area -->
+	</div><!-- #secondary -->
+
+			<div class="site-info">
+								<a href="https://wordpress.org/">Proudly powered by WordPress</a>
+			</div><!-- .site-info -->
+		</footer><!-- #colophon -->
+	</div><!-- #page -->
+
+	        
+        
+
+      
+
+
+
+
+
+
+<iframe src="index_5.html" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" allowfullscreen="true" allowtransparency="true" scrolling="no" id="rufous-sandbox" frameborder="0"></iframe><iframe src="index_6.html" style="display: none;"></iframe><iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="index_7.html" id="oauth2relay492737318" name="oauth2relay492737318"></iframe><div class="gumroad-loading-indicator"><i></i></div><iframe src="index_8.html" class="gumroad-overlay-iframe"></iframe></body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="client-js" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<title>USB 3G Modem - ArchWiki</title>
+
+
+
+<!--[if IE 6]><link rel="stylesheet" href="/skins/ArchLinux/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/skins/ArchLinux/IE70Fixes.css?303" media="screen" /><![endif]-->
+<meta name="ResourceLoaderDynamicStyles" content="">
+
+
+
+<meta name="generator" content="MediaWiki 1.26.3">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://wiki.archlinux.org/opensearch_desc.php" title="ArchWiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="https://wiki.archlinux.org/api.php?action=rsd">
+<link rel="copyright" href="http://www.gnu.org/copyleft/fdl.html">
+<link rel="alternate" type="application/atom+xml" title="ArchWiki Atom feed" href="https://wiki.archlinux.org/index.php?title=Special:RecentChanges&amp;feed=atom">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-USB_3G_Modem skin-archlinux action-view">
+
+		<div id="archnavbar"><!-- Arch Linux global navigation bar -->
+			<div id="archnavbarlogo">
+				<p><a id="logo" href="https://www.archlinux.org/"></a></p>
+			</div>
+			<div id="archnavbarmenu">
+				<ul id="archnavbarlist">
+					<li id="anb-home"><a href="https://www.archlinux.org/">Home</a></li><li id="anb-packages"><a href="https://www.archlinux.org/packages/">Packages</a></li><li id="anb-forums"><a href="https://bbs.archlinux.org/">Forums</a></li><li id="anb-wiki" class="anb-selected"><a href="https://wiki.archlinux.org/">Wiki</a></li><li id="anb-bugs"><a href="https://bugs.archlinux.org/">Bugs</a></li><li id="anb-aur"><a href="https://aur.archlinux.org/">AUR</a></li><li id="anb-download"><a href="https://www.archlinux.org/download/">Download</a></li>				</ul>
+			</div>
+		</div><!-- #archnavbar -->
+
+		<div id="globalWrapper">
+		<div id="column-content">
+			<div id="content" class="mw-body" role="main">
+				<a id="top"></a>
+				
+				<div class="mw-indicators">
+</div>
+				<h1 id="firstHeading" class="firstHeading" lang="en">USB 3G Modem</h1>
+				
+				<div id="bodyContent" class="mw-body-content">
+					<div id="siteSub">From ArchWiki</div>
+					<div id="contentSub"></div>
+										<div id="jump-to-nav" class="mw-jump">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>
+
+					<!-- start content -->
+					<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><div style="float: right; clear: right; width: 25%; margin: 0px 0px 0.5em 0.5em;"><p style="background: rgb(51, 51, 51) none repeat scroll 0% 0%; color: white; padding: 0.2em; border-bottom: 5px solid rgb(0, 136, 204); margin: 0px; text-align: center; font-weight: bold;">Related articles</p><ul style="list-style-type: none; margin: 0px; padding: 0.3em;">
+<li style="padding: 0.4em 0px; line-height: 1;"><a href="https://wiki.archlinux.org/index.php/Wvdial" title="Wvdial">wvdial</a></li>
+<li style="padding: 0.4em 0px; line-height: 1;"><a href="https://wiki.archlinux.org/index.php/Direct_Modem_Connection" title="Direct Modem Connection" class="mw-redirect">Direct Modem Connection</a></li>
+<li style="padding: 0.4em 0px; line-height: 1;"><a href="https://wiki.archlinux.org/index.php/3G_and_GPRS_modems_with_pppd" title="3G and GPRS modems with pppd">3G and GPRS modems with pppd</a></li>
+<li style="padding: 0.4em 0px; line-height: 1;"><a href="https://wiki.archlinux.org/index.php/Category:Modems" title="Category:Modems">Category:Modems</a></li>
+</ul></div>
+<div class="noprint archwiki-template-message">
+<p><a href="https://wiki.archlinux.org/index.php/File:Tango-edit-clear.png" class="image"><img alt="Tango-edit-clear.png" src="tango-edit-clear.png" height="48" width="48"></a><b>This article or section needs language, wiki syntax or style improvements.</b><a href="https://wiki.archlinux.org/index.php/File:Tango-edit-clear.png" class="image"><img alt="Tango-edit-clear.png" src="tango-edit-clear.png" height="48" width="48"></a></p>
+<div><b>Reason:</b> does not conform to <a href="https://wiki.archlinux.org/index.php/Help:Style" title="Help:Style">Help:Style</a> (Discuss in <a rel="nofollow" class="external text" href="https://wiki.archlinux.org/index.php/Talk:USB_3G_Modem">Talk:USB 3G Modem#</a>)</div>
+</div>
+<p>A number of mobile telephone networks around the world offer mobile internet connections over UMTS (or EDGE or GSM) using a portable USB modem device.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="#" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Remove_the_PIN"><span class="tocnumber">1</span> <span class="toctext">Remove the PIN</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Device_identification"><span class="tocnumber">2</span> <span class="toctext">Device identification</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Mode_switching"><span class="tocnumber">3</span> <span class="toctext">Mode switching</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Connection"><span class="tocnumber">4</span> <span class="toctext">Connection</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#Network_Manager"><span class="tocnumber">4.1</span> <span class="toctext">Network Manager</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#wvdial"><span class="tocnumber">4.2</span> <span class="toctext">wvdial</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#netctl"><span class="tocnumber">4.3</span> <span class="toctext">netctl</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#sakis3g"><span class="tocnumber">4.4</span> <span class="toctext">sakis3g</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Low_connection_speed"><span class="tocnumber">4.5</span> <span class="toctext">Low connection speed</span></a>
+<ul>
+<li class="toclevel-3 tocsection-10"><a href="#QoS_parameter"><span class="tocnumber">4.5.1</span> <span class="toctext">QoS parameter</span></a></li>
+<li class="toclevel-3 tocsection-11"><a href="#Baud_parameter"><span class="tocnumber">4.5.2</span> <span class="toctext">Baud parameter</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-12"><a href="#Monitor_used_bandwith"><span class="tocnumber">4.6</span> <span class="toctext">Monitor used bandwith</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="#Reading_SMS"><span class="tocnumber">5</span> <span class="toctext">Reading SMS</span></a>
+<ul>
+<li class="toclevel-2 tocsection-14"><a href="#command_line_script"><span class="tocnumber">5.1</span> <span class="toctext">command line script</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-15"><a href="#Fix_image_quality"><span class="tocnumber">6</span> <span class="toctext">Fix image quality</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Remove_the_PIN">Remove the PIN</span></h2>
+<p>First of all use your SIM card in a normal phone and disable the PIN request if present. If the SIM card asks the PIN wvdial will not work.
+</p><p>Failing that, you can also use <i>mmcli</i> to unlock the SIM card:
+</p>
+<pre># mmcli -i <i>SIMNUMBER</i> --pin=XXXX
+</pre>
+<p>where <i>SIMNUMBER</i> can be found using <code>mmcli -L</code> and <code>mmcli -m X</code>.
+</p>
+<h2><span class="mw-headline" id="Device_identification">Device identification</span></h2>
+<p>Examine the output of
+</p>
+<pre>$ lsusb
+</pre>
+<p>which will show the vendor and product IDs of the device. Note that some devices will show <i>two</i> different product IDs at different times as explained below.
+</p>
+<h2><span class="mw-headline" id="Mode_switching">Mode switching</span></h2>
+<p>Often these devices will have two modes (1) USB flash memory storage (2) USB Modem. The first mode, sometimes known as ZeroCD, is often used to deliver an internet communications program for another operating system and is generally of no interest to Linux users. Additionally some have a slot into which the user can insert an additional flash memory card.
+</p><p>A useful utility for switching these devices into modem mode is <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=usb_modeswitch">usb_modeswitch</a></span>, available in the <a href="https://wiki.archlinux.org/index.php/Official_repositories" title="Official repositories">official repositories</a>.
+</p><p>Udev rules are supplied with the package in <code>/lib/udev/rules.d/40-usb_modeswitch.rules</code>. This contains entries for many devices, which it will switch to modem mode upon insertion.
+</p><p>When a device is switched, its product ID may change to a different value. The vendor ID will remain unchanged. This can be seen in the output of <code>lsusb</code>.
+</p><p>Some devices are supported in the USB serial kernel module called "option" (after the Option devices, but not limited to just those) and may be used without usb_modeswitch.
+</p><p>Udev itself included a utility called <code>/lib/udev/modem-modeswitch</code>. In udev 157 this was renamed to <code>/lib/udev/mobile-action-modeswitch</code> and morphed into a tool that only switches Mobile Action cables. For other devices use <code>usb_modeswitch</code>.
+</p>
+<div style="padding: 5px; margin: 0.5em 0px; background-color: rgb(221, 221, 255); border: thin solid rgb(187, 187, 221); overflow: hidden;"><strong> Note: </strong>You can find an alternative way to do this base on eject command <a href="https://wiki.archlinux.org/index.php/ZTE_MF110/MF190#Switch_from_CD_mode_to_modem_mode_on_the_device" title="ZTE MF110/MF190">here</a>.</div>
+<h2><span class="mw-headline" id="Connection">Connection</span></h2>
+<h3><span class="mw-headline" id="Network_Manager">Network Manager</span></h3>
+<p>After installing <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=usbutils">usbutils</a></span> and <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=usb_modeswitch">usb_modeswitch</a></span>, you just need to install <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=modemmanager">modemmanager</a></span> to make the modem work with <a href="https://wiki.archlinux.org/index.php/NetworkManager" title="NetworkManager">NetworkManager</a>.
+</p><p>Make sure both NetworkManager and ModemManager services are running, see <a href="https://wiki.archlinux.org/index.php/Systemd#Using_units" title="Systemd">systemd#Using units</a> for details.
+</p><p>Make sure <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=mobile-broadband-provider-info">mobile-broadband-provider-info</a></span> and <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=nm-connection-editor">nm-connection-editor</a></span> are installed.
+</p><p>A system restart might be necessary for ModemManager to detect the USB modem. After you restart the NetworkManager-applet and plug the modem in again NetworkManager should recognize the modem in the menu without further configuration. Setting up the modem in NetworkManager is self-explanatory, you should only need the login-information provided by your network provider.
+</p><p>Whilst running ModemManager gammu will not work. SMS and Ussd codes can be still used with <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=modem-manager-gui">modem-manager-gui</a></span>.
+</p>
+<h3><span class="mw-headline" id="wvdial">wvdial</span></h3>
+<p>See main article: <a href="https://wiki.archlinux.org/index.php/Wvdial" title="Wvdial">wvdial</a>
+</p>
+<h3><span class="mw-headline" id="netctl">netctl</span></h3>
+<p>Netctl can be used to establish a connection using a USB modem. An example configuration file provided by <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=netctl">netctl</a></span> is located at <code>/etc/netctl/examples/mobile_ppp</code>.
+</p><p>See the <a href="https://wiki.archlinux.org/index.php/Netctl" title="Netctl">netctl</a> article for more information.
+</p>
+<h3><span class="mw-headline" id="sakis3g">sakis3g</span></h3>
+<p>There may be the chance that the modem stick is supported by <a rel="nofollow" class="external text" href="http://www.sakis3g.com/">sakis3g</a> which is an all in one command line script and automates all the steps above. Install <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://aur.archlinux.org/packages/sakis3g/">sakis3g</a></span><sup><small>AUR</small></sup> from the <a href="https://wiki.archlinux.org/index.php/AUR" title="AUR" class="mw-redirect">AUR</a>.
+</p>
+<h3><span class="mw-headline" id="Low_connection_speed">Low connection speed</span></h3>
+<p>Someone claims that the connection speed under Linux is lower than Windows: <a rel="nofollow" class="external autonumber" href="https://bbs.archlinux.org/viewtopic.php?id=111513">[1]</a>
+</p><p>A short summary for possible solutions which are not fully verified.
+In most of conditions, the low speed is caused by bad receiver signals and too many people in cell. But you still could use the following method to try to improve the connection speed.
+</p>
+<h4><span class="mw-headline" id="QoS_parameter">QoS parameter</span></h4>
+<p>The <code>AT+CGEQMIN</code> and <code>AT+CGEQREQ</code> commands can be used to set the QoS. It is also possible to decrease and limit the connect speed. 
+Add the following <code>Init</code> command in <code>/etc/wvdial.conf</code>:
+</p>
+<pre>Init6 = AT+CGEQMIN=1,4,64,640,64,640
+Init7 = AT+CGEQREQ=1,4,64,640,64,640
+</pre>
+<h4><span class="mw-headline" id="Baud_parameter">Baud parameter</span></h4>
+<p>Baud parameter in wvdial.conf could be used to increase the connection speed.
+</p>
+<pre>Baud = 460800
+</pre>
+<p>But the official Huawei E261 windows application set the Baud=9600 under Windows Vista.
+More verifications are needed to double check this point.
+</p>
+<h3><span class="mw-headline" id="Monitor_used_bandwith">Monitor used bandwith</span></h3>
+<p>Frequently a 3G connection obtained via a mobile phone operator comes with restricted bandwidth, so that you are only allowed to use a certain bandwidth per time (e.g. 1GB per month). While it is quite straight-forward to know which type of network applications are pretty bandwidth extensive (e.g. video streaming, gaming, torrent, etc.), it may be difficult to keep an overview about overall consumed bandwidth. 
+</p><p>A number of tools are available to help with that. Two console tools are <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=vnstat">vnstat</a></span>, which allows to keep track of bandwith over time, and <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=iftop">iftop</a></span> to monitor bandwidth of individual sessions. If you are a <a href="https://wiki.archlinux.org/index.php/KDE" title="KDE">KDE</a> user, <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=knemo">knemo</a></span> might help. All are available in the <a href="https://wiki.archlinux.org/index.php/Official_repositories" title="Official repositories">official repositories</a>.
+</p>
+<h2><span class="mw-headline" id="Reading_SMS">Reading SMS</span></h2>
+<p>This was tested on a Huawei EM770W (GTM382E) 3g card integrated into an Acer Aspire AS3810TG laptop.
+</p>
+<pre>$ pacman -S gnokii
+$ mkdir -p $XDG_CONFIG_HOME/gnokii
+</pre>
+<p>Usually the configuration directory is <code>~/.config/gnokii</code>. 
+</p>
+<pre>$ cp /etc/gnokiirc ~/.config/gnokii/config
+</pre>
+<p>edit <code>~/.config/gnokii/config</code> as follows:
+</p>
+<pre>port = /dev/ttyUSB0</pre>
+<p>You may have to use a different port depending on your configuration, for example <code>/dev/ttyUSB1</code> or something else:
+</p>
+<pre>model = AT
+connection = serial</pre>
+<p>You need to be part of the <code>uucp</code> group to use <code>/dev/ttyUSB0</code>, for example if your user is called "x": 
+</p>
+<pre># gpasswd -a x uucp
+$ newgrp uucp
+</pre>
+<p>The <i>newgrp</i> command allows you to take advantage of the new group assignment immediately without having to logout/login.
+</p><p>Then launch gnokii:
+</p>
+<pre>$ xgnokii
+</pre>
+<p>Click on the "SMS" icon button, a window opens up. Then click: "messages-&gt;activate sms reading". Your messages will show up in the window.
+</p>
+<h3><span class="mw-headline" id="command_line_script">command line script</span></h3>
+<p>A small command line script using gnokii to read SMS on your SIM card (not phone memory) without having to start a GUI:
+</p>
+<pre>$  gnokii --getsms SM 0 end 2&gt;&amp;1|grep Text -A1 -B3|grep -v Text
+</pre>
+<p>What it does:
+</p>
+<pre>gnokii # invoke gnokii
+--getsms SM 0 end # read SMS from SM-memory location (=SIM card) starting at 0 and reading all occupied memory locations ("end")
+2&gt;&amp;1 # connect STDERR to STDOUT to make sure the output from the --getsms command can be piped to grep
+|grep Text # pipe output from gnokii to grep, anchoring at output containing "Text"
+-A1 -B3 # print one line after the matched pattern and three lines before the matched pattern
+|grep -v Text # grep result to another grep to exclude the "Text" line (-v for inverting the pattern)
+</pre>
+<p>Granted this does not work very well if your SMS contains the word "Text", but you may adapt the script to your liking.
+</p>
+<h2><span class="mw-headline" id="Fix_image_quality">Fix image quality</span></h2>
+<p>If you are getting low quality images while browsing the web over a mobile broadband connection with the hints "shift+r improves the quality of this image" and "shift+a improves the quality of all images on this page", follow these instructions:
+</p><p><a href="https://wiki.archlinux.org/index.php/Install" title="Install" class="mw-redirect">Install</a> <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://www.archlinux.org/packages/?name=tinyproxy">tinyproxy</a></span>, available in the <a href="https://wiki.archlinux.org/index.php/Official_repositories" title="Official repositories">official repositories</a>.
+</p><p>Edit /etc/tinyproxy/tinyproxy.conf and insert the following two lines:
+</p>
+<pre>AddHeader "Pragma" "No-Cache"
+AddHeader "Cache-Control" "No-Cache"
+</pre>
+<p>Start tinyproxy:
+</p>
+<pre>systemctl start tinyproxy
+</pre>
+<p>Configure your browser to use localhost:8888 as a proxy server and you are all done. This is especially useful if you are using, for example, Google Chrome which, unlike Firefox, does not allow you to modify the Pragma and Cache-Control headers.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20160620065512
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.020 seconds
+Real time usage: 0.026 seconds
+Preprocessor visited node count: 446/1000000
+Preprocessor generated node count: 1319/1000000
+Post‐expand include size: 5135/2097152 bytes
+Template argument size: 1642/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   17.025      1 - -total
+ 14.82%    2.523      1 - Template:Poor_writing
+ 12.78%    2.176      1 - Template:Related_articles_start
+ 11.47%    1.953      1 - Template:Note
+ 10.47%    1.783     17 - Template:Ic
+  9.87%    1.680     12 - Template:Pkg
+  8.31%    1.414      7 - Template:Bc
+  7.82%    1.332      1 - Template:META_Box_Blue
+  6.97%    1.187      1 - Template:META_Message
+  6.85%    1.165      4 - Template:Related
+-->
+
+<!-- Saved in parser cache with key archwiki:pcache:idhash:7781-0!*!0!!en!5!* and timestamp 20160620065512 and revision id 426038
+ -->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="https://wiki.archlinux.org/index.php?title=USB_3G_Modem&amp;oldid=426038">https://wiki.archlinux.org/index.php?title=USB_3G_Modem&amp;oldid=426038</a>"</div>
+					<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="https://wiki.archlinux.org/index.php/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="https://wiki.archlinux.org/index.php/Category:Modems" title="Category:Modems">Modems</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="https://wiki.archlinux.org/index.php/Category:Pages_or_sections_flagged_with_Template:Style" title="Category:Pages or sections flagged with Template:Style">Pages or sections flagged with Template:Style</a></li></ul></div></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+			</div>
+		</div>
+		<div id="column-one">
+			<h2>Navigation menu</h2>
+					<div id="p-cactions" class="portlet" role="navigation">
+			<h3>Views</h3>
+
+			<div class="pBody">
+				<ul>
+				<li id="ca-nstab-main" class="selected"><a href="https://wiki.archlinux.org/index.php/USB_3G_Modem" title="View the content page [Alt+Shift+c]" accesskey="c">Page</a></li>
+				<li id="ca-talk"><a href="https://wiki.archlinux.org/index.php/Talk:USB_3G_Modem" rel="discussion" title="Discussion about the content page [Alt+Shift+t]" accesskey="t">Discussion</a></li>
+				<li id="ca-viewsource"><a href="https://wiki.archlinux.org/index.php?title=USB_3G_Modem&amp;action=edit" title="This page is protected.
+You can view its source [Alt+Shift+e]" accesskey="e">View source</a></li>
+				<li id="ca-history"><a href="https://wiki.archlinux.org/index.php?title=USB_3G_Modem&amp;action=history" title="Past revisions of this page [Alt+Shift+h]" accesskey="h">History</a></li>
+				</ul>
+							</div>
+		</div>
+				<div class="portlet" id="p-personal" role="navigation">
+				<h3>Personal tools</h3>
+
+				<div class="pBody">
+					<ul>
+													<li id="pt-login"><a href="https://wiki.archlinux.org/index.php?title=Special:UserLogin&amp;returnto=USB+3G+Modem" title="You are encouraged to log in; however, it is not mandatory [Alt+Shift+o]" accesskey="o">Log in</a></li>
+											</ul>
+				</div>
+			</div>
+			<div class="portlet" id="p-logo" role="banner">
+				<a href="https://wiki.archlinux.org/index.php/Main_page" class="mw-wiki-logo" title="Visit the main page"></a>
+			</div>
+				<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class="pBody">
+							<ul>
+											<li id="n-mainpage-description"><a href="https://wiki.archlinux.org/index.php/Main_page" title="Visit the main page [Alt+Shift+z]" accesskey="z">Main page</a></li>
+											<li id="n-categories"><a href="https://wiki.archlinux.org/index.php/Table_of_contents">Categories</a></li>
+											<li id="n-portal"><a href="https://wiki.archlinux.org/index.php/Getting_involved" title="Various ways Archers can contribute to the community">Getting involved</a></li>
+											<li id="n-currentevents"><a href="https://wiki.archlinux.org/index.php/ArchWiki:News" title="The latest lowdown on the wiki">Wiki news</a></li>
+											<li id="n-randompage"><a href="https://wiki.archlinux.org/index.php/Special:Random" title="Load a random page [Alt+Shift+x]" accesskey="x">Random page</a></li>
+									</ul>
+					</div>
+		</div>
+			<div id="p-search" class="portlet" role="search">
+			<h3><label for="searchInput">Search</label></h3>
+
+			<div id="searchBody" class="pBody">
+				<form action="https://wiki.archlinux.org/index.php" id="searchform">
+					<input name="title" value="Special:Search" type="hidden">
+					<input autocomplete="off" name="search" placeholder="Search" title="Search ArchWiki [Alt+Shift+f]" accesskey="f" id="searchInput" type="search">
+					<input name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchGoButton" class="searchButton" type="submit">&nbsp;
+						<input name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton" type="submit">
+				</form>
+
+							</div>
+		</div>
+		<div class="generated-sidebar portlet" id="p-interaction" role="navigation">
+		<h3>interaction</h3>
+		<div class="pBody">
+							<ul>
+											<li id="n-help"><a href="https://wiki.archlinux.org/index.php/Category:Help" title="Wiki navigation, reading, and editing help">Help</a></li>
+											<li id="n-Contributing"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Contributing">Contributing</a></li>
+											<li id="n-recentchanges"><a href="https://wiki.archlinux.org/index.php/Special:RecentChanges" title="A list of recent changes in the wiki [Alt+Shift+r]" accesskey="r">Recent changes</a></li>
+											<li id="n-Recent-talks"><a href="https://wiki.archlinux.org/index.php/Special:RecentChanges?namespace=0&amp;invert=1" rel="nofollow">Recent talks</a></li>
+											<li id="n-newpages"><a href="https://wiki.archlinux.org/index.php/Special:NewPages">New pages</a></li>
+											<li id="n-Statistics"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Statistics">Statistics</a></li>
+											<li id="n-Reports"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Reports">Reports</a></li>
+											<li id="n-Requests"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Requests">Requests</a></li>
+									</ul>
+					</div>
+		</div>
+			<div class="portlet" id="p-tb" role="navigation">
+			<h3>Tools</h3>
+
+			<div class="pBody">
+				<ul>
+											<li id="t-whatlinkshere"><a href="https://wiki.archlinux.org/index.php/Special:WhatLinksHere/USB_3G_Modem" title="A list of all wiki pages that link here [Alt+Shift+j]" accesskey="j">What links here</a></li>
+											<li id="t-recentchangeslinked"><a href="https://wiki.archlinux.org/index.php/Special:RecentChangesLinked/USB_3G_Modem" title="Recent changes in pages linked from this page [Alt+Shift+k]" accesskey="k">Related changes</a></li>
+											<li id="t-specialpages"><a href="https://wiki.archlinux.org/index.php/Special:SpecialPages" title="A list of all special pages [Alt+Shift+q]" accesskey="q">Special pages</a></li>
+											<li id="t-print"><a href="https://wiki.archlinux.org/index.php?title=USB_3G_Modem&amp;printable=yes" rel="alternate" title="Printable version of this page [Alt+Shift+p]" accesskey="p">Printable version</a></li>
+											<li id="t-permalink"><a href="https://wiki.archlinux.org/index.php?title=USB_3G_Modem&amp;oldid=426038" title="Permanent link to this revision of the page">Permanent link</a></li>
+											<li id="t-info"><a href="https://wiki.archlinux.org/index.php?title=USB_3G_Modem&amp;action=info" title="More information about this page">Page information</a></li>
+									</ul>
+							</div>
+		</div>
+				<div id="p-lang" class="portlet" role="navigation">
+				<h3>In other languages</h3>
+
+				<div class="pBody">
+					<ul>
+													<li class="interlanguage-link interwiki-ja"><a href="https://wiki.archlinuxjp.org/index.php/USB_3G_%E3%83%A2%E3%83%87%E3%83%A0" title="USB 3G モデム – 日本語" hreflang="ja" lang="ja">日本語</a></li>
+													<li class="interlanguage-link interwiki-ru"><a href="https://wiki.archlinux.org/index.php/USB_3G_Modem_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)" title="USB 3G Modem – русский" hreflang="ru" lang="ru">Русский</a></li>
+											</ul>
+
+									</div>
+			</div>
+				</div><!-- end of the left (by default at least) column -->
+		<div class="visualClear"></div>
+					<div id="footer" role="contentinfo">
+						<ul id="f-list">
+									<li id="lastmod"> This page was last modified on 16 March 2016, at 12:46.</li>
+									<li id="copyright">Content is available under <a class="external" rel="nofollow" href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License 1.3 or later</a> unless otherwise noted.</li>
+									<li id="privacy"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Privacy_policy" title="ArchWiki:Privacy policy">Privacy policy</a></li>
+									<li id="about"><a href="https://wiki.archlinux.org/index.php/ArchWiki:About" title="ArchWiki:About">About ArchWiki</a></li>
+									<li id="disclaimer"><a href="https://wiki.archlinux.org/index.php/ArchWiki:General_disclaimer" title="ArchWiki:General disclaimer">Disclaimers</a></li>
+							</ul>
+		</div>
+		</div>
+		
+
+<div class="suggestions" style="display: none; font-size: 11.4667px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body>
+</html>

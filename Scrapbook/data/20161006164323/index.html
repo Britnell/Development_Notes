@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html class="js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths js-ready" lang="en-US">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<meta charset="utf-8">
+<link rel="mask-icon" href="https://learn.adafruit.com/assets/adafruit_favicon-d77f206e6cc65b40101b6e5b8987f7c35cb6a283ea73c0adad50c37f7347c61a.svg" color="#000000">
+<link rel="shortcut icon" type="image/x-icon" href="favicon-0c79bd4bc582e6d4cf3afe417bd1e28120527c09d92c08a6464690c5bf6b85f4.ico">
+<title>Overview | Eagle Tutorial - How to add a new package to a component | Adafruit Learning System</title>
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="Mc5zjcPx+bbCIIpjR3f6Pum7QGP2VAbXs2siEy/yY3uMUQCykWbkfZ+15wIhQiVUmesxlVVxsco/Xm3ml7w0SQ==">
+<link rel="alternate" type="application/atom+xml" title="ATOM" href="https://learn.adafruit.com/feed">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://learn.adafruit.com/feed.rss">
+
+
+<!--[if lt IE 9]>
+    <script src="/assets/ie.html5.js"></script>
+    <script src="/assets/ie.respond.js"></script>
+  <![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@adafruit">
+<meta name="twitter:title" content="Eagle Tutorial - How to add a new package to a component">
+<meta name="twitter:description" content="Save time by re-using existing packages and symbols">
+<meta name="twitter:image:src" content="https://learn.adafruit.comhttps://cdn-learn.adafruit.com/guides/images/000/000/241/medium800/4093dt.png">
+<meta name="twitter:domain" content="https://learn.adafruit.com">
+<link rel="canonical" href="https://learn.adafruit.com/eagle-tutorial-how-to-add-a-new-package-to-a-component/overview">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+
+<!--[if lte IE 9]>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <![endif]-->
+
+<link media="all" href="index.css" type="text/css" rel="stylesheet">
+</head>
+<body class="application pages show">
+<div id="outer-wrapper">
+<div id="inner-wrapper">
+<div id="messaging-alert" class="messaging-container">
+<div class="msg-container container">
+<div class="message" data-message-id="79">There is no USPS pickup on Monday October 10th, 2016 because of <a href="https://blog.adafruit.com/2016/10/06/columbus-day-adafruit-not-shipping-usps-orders-monday-october-10/" rel="nofollow">Columbus Day</a>. USPS orders placed after 11am EST Fri October 7th will go out Tuesday October 11. UPS orders will ship as normal.</div>
+<a class="message-close" href="#"><i class="fa fa-times"></i></a>
+</div>
+</div>
+<div class="clear" <="" div="">
+
+      <header id="adafruit-header">
+    <div id="small-header-content" class="container visible-xs">
+    <a id="small-header-menu-button" class="menu-link" href="#small-header-nav">
+      <i class="fa fa-bars"> </i>
+    </a>
+    <div class="small-header-logo">
+      <a href="https://www.adafruit.com/">
+        <img id="small-logo" alt="Adafruit Logo" title="Breast Cancer Awareness Month" src="adafruit_logo_small.png" width="50" height="50">
+</a>    </div>
+    <a class="small-header-cart" href="https://www.adafruit.com/shopping_cart">
+      <span class="small-cart-count">0</span>
+      <i class="fa fa-shopping-cart"></i>
+</a>  </div>
+    <nav id="small-header-nav" role="navigation" class="visible-xs">
+      <div class="block">
+        <ul>
+          <li>
+            <div id="small-search-wrapper">
+              <div id="small-search-inner-wrapper">
+                <form action="https://learn.adafruit.com/search" method="get">
+                  <label for="mobile-search" style="display: none;">Search</label>
+                  <input id="mobile-search" name="q" placeholder="Search Adafruit" value="" type="text">
+                  <i class="fa fa-search"></i>
+                </form>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="https://www.adafruit.com/categories">SHOP</a>
+          </li>
+          <li>
+            <a href="https://blog.adafruit.com/">BLOG</a>
+          </li>
+          <li>
+            <a href="https://learn.adafruit.com/">LEARN</a>
+          </li>
+          <li>
+            <a href="https://forums.adafruit.com/">FORUMS</a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/adafruit">VIDEOS</a>
+          </li>
+            <li>
+              <a href="https://learn.adafruit.com/users/sign_in">SIGN IN</a>
+            </li>
+          <li>
+            <a class="close-btn" id="small-nav-close-button" href="#top">CLOSE MENU</a>
+          </li>
+        </ul>
+
+    </div>
+  </nav>
+
+  <div id="header-content" class="container hidden-xs">
+    <div id="header-profile">
+      <a id="header-cart" href="https://www.adafruit.com/shopping_cart">
+        0 Items <i class="fa fa-shopping-cart"></i>
+</a>      <div id="account">
+          <a href="https://learn.adafruit.com/users/sign_in">Sign In</a>
+      </div>
+      <div id="search-wrapper">
+        <form action="https://learn.adafruit.com/search" method="get">
+          <label for="search" style="display: none;">Search</label>
+          <input id="search" name="q" autocomplete="off" data-page="" ,="" data-app-id="W9DMM4OTH0" data-app-key="e613bcda3453b9ef887e2724362f9e57" value="" type="text">
+          <i class="fa fa-search"></i>
+          <input style="visibility: hidden; position: fixed;" type="submit">
+        </form>
+      </div>
+    </div>
+    <div id="navigation">
+      <a href="https://www.adafruit.com/">
+        <img id="logo" alt="Adafruit Logo" title="Breast Cancer Awareness Month" src="logo_2x.png" width="172" height="60">
+</a>      <nav class="hover-menu">
+  <ul>
+    <li id="nav-shop" data-load="https://www.adafruit.com/api/flyouts/shop.html"><a href="https://www.adafruit.com/">SHOP</a>
+    </li>
+    <li id="nav-blog" data-load="https://blog.adafruit.com/adafruit-blog-flyouts"><a href="https://blog.adafruit.com/">BLOG</a>
+    </li>
+    <li id="nav-learn" data-load="https://learn.adafruit.com/api/hover-menu/flyouts/learn.html"><a href="https://learn.adafruit.com/">LEARN</a>
+    </li>
+    <li id="nav-forums"><a href="https://forums.adafruit.com/">FORUMS</a>
+    </li>
+    <li id="nav-forums"><a href="https://www.youtube.com/adafruit">VIDEOS</a>
+    </li>
+  </ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+      <div id="main-content">
+        <div id="page-wrapper">
+		<div id="content-wrapper" class="container" data-page-id="1459" data-guide-id="241">
+			<div class="row">
+				<div class="sidebar-left-wrapper hidden-phone hidden-tablet col-lg-two-and-half col-md-3 col-sm-4 col-xs-12">
+					<div class="sidebar-left-content" data-clampedwidth=".sidebar-left-wrapper" style="width: 230px;">
+							<nav class="sidebar-left">
+		<div class="title-bar">
+				  <img src="4093dt.png" class="img img-responsive">
+
+		    <div class="title">
+			    <h1><a href="https://learn.adafruit.com/eagle-tutorial-how-to-add-a-new-package-to-a-component/overview">Eagle Tutorial - How to add a new package to a component</a></h1>
+			    <span class="tagline"><a href="https://learn.adafruit.com/eagle-tutorial-how-to-add-a-new-package-to-a-component/overview">Save time by re-using existing packages and symbols</a></span>
+			  </div>
+	  </div>
+	  <ul class="page-parent nav">
+			  <li class="">
+      <a href="#overview" class="sidebar-parent">Overview</a>
+      <span class="page-draft-status">
+      </span>
+</li>
+  <li class="">
+      <a href="#lets-look" class="sidebar-parent">Lets Look</a>
+      <span class="page-draft-status">
+      </span>
+</li>
+  <li class="active">
+      <a href="#new-library" class="sidebar-parent">New Library</a>
+      <span class="page-draft-status">
+      </span>
+</li>
+  <li class="">
+      <a href="#new-package" class="sidebar-parent">New Package</a>
+      <span class="page-draft-status">
+      </span>
+</li>
+  <li class="">
+      <a href="#package-adjustments" class="sidebar-parent">Package Adjustments</a>
+      <span class="page-draft-status">
+      </span>
+</li>
+  <li class="">
+      <a href="#connection" class="sidebar-parent">Connection</a>
+      <span class="page-draft-status">
+      </span>
+</li>
+  <li class="">
+      <a href="#verify-and-use" class="sidebar-parent">Verify and Use</a>
+      <span class="page-draft-status">
+      </span>
+</li>
+
+			<li class="single-page-spacer"></li>
+					<li class="single-page-link"><a href="https://learn.adafruit.com/eagle-tutorial-how-to-add-a-new-package-to-a-component">Multiple Pages</a></li>
+			<li><a href="https://cdn-learn.adafruit.com/downloads/pdf/eagle-tutorial-how-to-add-a-new-package-to-a-component.pdf">Download PDF</a></li>
+	  </ul>
+	</nav>
+	  <header class="sidebar-meta hidden-xs">
+    <h4>Contributors</h4>
+      <div><a href="https://learn.adafruit.com/users/adafruit2">lady ada</a></div>
+  </header>
+
+	  <header class="sidebar-meta hidden-xs">
+    <a class="feedback-link" title="Feedback? Corrections?" rel="nofollow" data-remote="true" data-method="get" href="https://learn.adafruit.com/pages/1459/settings_modal">
+          Feedback?  Corrections?
+</a>  </header>
+
+
+					</div>
+				</div>
+					<article class="col-lg-nine-and-half col-md-9 col-sm-8 col-xs-12">
+					<div id="categories">
+    <span class="category ">
+    <a href="https://learn.adafruit.com/category/maker-business">MAKER BUSINESS</a>
+  </span>
+
+  
+  <span id="guide-favorite">
+  <a class="favorites-link category right red" title="" data-toggle="tooltip" data-placement="left" data-remote="true" rel="nofollow" data-method="post" href="https://learn.adafruit.com/guides/241/favorites.js" data-original-title="Favorite this guide?">
+    <i class="fa fa-heart-o"></i>
+</a></span>
+</div>
+
+					<div class="content">
+									<div class="page-title-wrapper">
+										<h1 class="headline">
+											<span id="overview">Overview</span>
+										</h1>
+		                    <div class="author">by
+      <a href="https://learn.adafruit.com/users/adafruit2">
+          <span class="name">lady ada</span>
+</a>    </div>
+
+		              </div>
+									<div class="page-content all-page-view-content">
+											      <div class="row-fluid build-text">
+        There are thousands of devices in the 'default' library that comes with EagleCAD but whaddyaknow, the exact package/device you need isn't always going to be one of those thousands. However, instead of making a brand new device from scratch every time you can often 'merge' two existing devices, or at least reuse the SMD package. Not only will you save time, but it can minimize mistakes. (Note I say it <i>can</i> - be sure to always always triple check pinouts, package sizes, dimensions and more!)<br><br>This little tutorial will show you how to create a new package for an 
+existing device. It's not a beginner tutorial so you'll have to learn 
+how to use Eagle first, but its one of those skills that can save you tons of time.<br><br>The chip I'll be looking to add today is this fine quad 2-input NAND Schmitt trigger. Specifically, I want to add the TSSOP package<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5930">
+              <img class="5930-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/930/medium260/maker_business_mc14093b.png?1396829963 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/930/medium640/maker_business_mc14093b.png?1396829963 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/930/medium800/maker_business_mc14093b.png?1396829963 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/930/large1024/maker_business_mc14093b.png?1396829963 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_mc14093b.png" alt="maker_business_mc14093b.png">
+
+            <span class="image-expand" style="display: none;"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+
+									</div>
+									<div class="page-title-wrapper">
+										<h1 class="headline">
+											<span id="lets-look">Lets Look</span>
+										</h1>
+		                    <div class="author">by
+      <a href="https://learn.adafruit.com/users/adafruit2">
+          <span class="name">lady ada</span>
+</a>    </div>
+
+		              </div>
+									<div class="page-content all-page-view-content">
+											      <div class="row-fluid build-text">
+        We'll start by doing a basic search for this part. I've already made a new schematic in Eagle and using the <b>Add</b> button and searching for <b>*4093* </b>(that should pop up any existing devices if they exist)<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5931">
+              <img class="5931-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/931/medium260/maker_business_4093.png?1396829998 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/931/medium640/maker_business_4093.png?1396829998 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/931/medium800/maker_business_4093.png?1396829998 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/931/large1024/maker_business_4093.png?1396829998 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_4093.png" alt="maker_business_4093.png">
+
+            <span class="image-expand" style="display: none;"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        The good news is this basic device is in the <b>40xx</b> library, but its only there in the SO14 (SOIC 14) and DIL14 (DIP 14) packages. The package we want is <b>TSSOP</b> and it ain't there!<br><br>Instead of starting completely from scratch, though, I can at least use this device/symbol which will save me some time.<br>
+      </div>
+
+									</div>
+									<div class="page-title-wrapper">
+										<h1 class="headline">
+											<span id="new-library">New Library</span>
+										</h1>
+		                    <div class="author">by
+      <a href="https://learn.adafruit.com/users/adafruit2">
+          <span class="name">lady ada</span>
+</a>    </div>
+
+		              </div>
+									<div class="page-content all-page-view-content">
+											      <div class="row-fluid build-text">
+        To keep my parts organized, I'll start a new library. If you have your own parts library, open that one up instead. The reason for doing this rather than editing the default libraries is that if you update Eagle, you wont forget that you have to go back to the old library and copy it over. Better to just keep all custom stuff separated!<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5932">
+              <img class="5932-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/932/medium260/maker_business_newlib.png?1396830020 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/932/medium640/maker_business_newlib.png?1396830020 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/932/medium800/maker_business_newlib.png?1396830020 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/932/large1024/maker_business_newlib.png?1396830020 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_newlib.png" alt="maker_business_newlib.png">
+
+            <span class="image-expand" style="display: none;"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Save it somewhere in your Documents folder or wherever you keep your files...<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5933">
+              <img class="5933-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/933/medium260/maker_business_mylib.png?1396830042 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/933/medium640/maker_business_mylib.png?1396830042 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/933/medium800/maker_business_mylib.png?1396830042 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/933/large1024/maker_business_mylib.png?1396830042 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_mylib.png" alt="maker_business_mylib.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        OK now keep this new library open but go back to the main Eagle window (not schematic/board/library) and browse in the folder hierarchy until you find where you found that close-but-not-quite device. In this case, it was in <b>40xx</b><br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5934">
+              <img class="5934-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/934/medium260/maker_business_40xx.png?1396830067 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/934/medium640/maker_business_40xx.png?1396830067 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/934/medium800/maker_business_40xx.png?1396830067 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/934/large1024/maker_business_40xx.png?1396830067 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_40xx.png" alt="maker_business_40xx.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Then find the <b>device</b> that you want and copy it to the library (the new one, you just made!)<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5935">
+              <img class="5935-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/935/medium260/maker_business_addtolib.png?1396830097 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/935/medium640/maker_business_addtolib.png?1396830097 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/935/medium800/maker_business_addtolib.png?1396830097 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/935/large1024/maker_business_addtolib.png?1396830097 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_addtolib.png" alt="maker_business_addtolib.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        OK now you have a copy of the <b>4093</b> device in your own library - again it has SOIC and DIP packages already<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5936">
+              <img class="5936-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/936/medium260/maker_business_copied.png?1396830128 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/936/medium640/maker_business_copied.png?1396830128 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/936/medium800/maker_business_copied.png?1396830128 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/936/large1024/maker_business_copied.png?1396830128 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_copied.png" alt="maker_business_copied.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+
+									</div>
+									<div class="page-title-wrapper">
+										<h1 class="headline">
+											<span id="new-package">New Package</span>
+										</h1>
+		                    <div class="author">by
+      <a href="https://learn.adafruit.com/users/adafruit2">
+          <span class="name">lady ada</span>
+</a>    </div>
+
+		              </div>
+									<div class="page-content all-page-view-content">
+											      <div class="row-fluid build-text">
+        Now we have to make a TSSOP package for it. Again, I'm lazy, so lets do what we can to 'reuse' an existing package. This will save us a bunch of time!<br><br>Go to your <b>board</b> editor (create the board layout if you haven't yet) and click on the <b>ADD</b> button. This is a bit of a hack, the easiest way I've found to browse packages.<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5937">
+              <img class="5937-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/937/medium260/maker_business_brdadd.png?1396830155 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/937/medium640/maker_business_brdadd.png?1396830155 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/937/medium800/maker_business_brdadd.png?1396830155 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/937/large1024/maker_business_brdadd.png?1396830155 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_brdadd.png" alt="maker_business_brdadd.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Search for<b> *TSSOP14*</b> - this will pull up all matching packages<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5938">
+              <img class="5938-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/938/medium260/maker_business_tssopbody.png?1396830195 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/938/medium640/maker_business_tssopbody.png?1396830195 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/938/medium800/maker_business_tssopbody.png?1396830195 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/938/large1024/maker_business_tssopbody.png?1396830195 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_tssopbody.png" alt="maker_business_tssopbody.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        The first package looks pretty good, its from the <b>74xx-eu</b> library...Now go back to the main Eagle window and find that package by browsing to the <b>74xx-eu</b> library and right-click <b>Copy to Library</b><br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5939">
+              <img class="5939-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/939/medium260/maker_business_tssopadd.png?1396830232 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/939/medium640/maker_business_tssopadd.png?1396830232 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/939/medium800/maker_business_tssopadd.png?1396830232 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/939/large1024/maker_business_tssopadd.png?1396830232 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_tssopadd.png" alt="maker_business_tssopadd.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+
+									</div>
+									<div class="page-title-wrapper">
+										<h1 class="headline">
+											<span id="package-adjustments">Package Adjustments</span>
+										</h1>
+		                    <div class="author">by
+      <a href="https://learn.adafruit.com/users/adafruit2">
+          <span class="name">lady ada</span>
+</a>    </div>
+
+		              </div>
+									<div class="page-content all-page-view-content">
+											      <div class="row-fluid build-text">
+        Before we continue, its good to check the package and layout. I find its best to go with whatever the datasheet suggests. If you scroll down usually at the end are package/layout diagrams like this one<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5940">
+              <img class="5940-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/940/medium260/maker_business_footprint.png?1396830245 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/940/medium640/maker_business_footprint.png?1396830245 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/940/medium800/maker_business_footprint.png?1396830245 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/940/large1024/maker_business_footprint.png?1396830245 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_footprint.png" alt="maker_business_footprint.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        In the device layout editor, change over to millimeters since you can see this diagram has <b>DIMENSIONS: MILLIMETERS</b> in the bottom right corner. I find 0.1mm is a good choice for gridding so you can get a feel for the dimensions but its not necessary<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5941">
+              <img class="5941-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/941/medium260/maker_business_mmgrid.png?1396830270 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/941/medium640/maker_business_mmgrid.png?1396830270 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/941/medium800/maker_business_mmgrid.png?1396830270 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/941/large1024/maker_business_mmgrid.png?1396830270 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_mmgrid.png" alt="maker_business_mmgrid.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        To make it easier to select the red SMD pads, hide <b>tDocu </b>and <b>tPlace</b> (this doesn't disable or delete them, just hides them)<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5942">
+              <img class="5942-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/942/medium260/maker_business_hidetdocu.png?1396830301 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/942/medium640/maker_business_hidetdocu.png?1396830301 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/942/medium800/maker_business_hidetdocu.png?1396830301 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/942/large1024/maker_business_hidetdocu.png?1396830301 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_hidetdocu.png" alt="maker_business_hidetdocu.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Next we can select the pads. This will give us the size and center location of each pad. I selected the first pad to the left of the center line. As you can tell from the <b>Position</b> line, these pads are on a <b>0.65mm</b> pitch and are spaced <b>2.925mm</b> apart. From the<b> Smd Size</b> line, these pads are <b>0.35 by 0.9mm</b><br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5944">
+              <img class="5944-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/944/medium260/maker_business_originalpads.png?1396830346 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/944/medium640/maker_business_originalpads.png?1396830346 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/944/medium800/maker_business_originalpads.png?1396830346 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/944/large1024/maker_business_originalpads.png?1396830346 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_originalpads.png" alt="maker_business_originalpads.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Lets look again at the suggested layout<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5945">
+              <img class="5945-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/945/medium260/maker_business_footprint.png?1396830360 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/945/medium640/maker_business_footprint.png?1396830360 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/945/medium800/maker_business_footprint.png?1396830360 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/945/large1024/maker_business_footprint.png?1396830360 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_footprint_001.png" alt="maker_business_footprint.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Looks like what we want are pads that are <b>0.36 by 1.26</b> and have <b>0.65mm pitch</b>. So the pitch is right. Lets also check the spacing of the pads. Annoyingly enough, the diagram does not indicate the middle-to-middle spacing. We'll have to do a bit of math...<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5946">
+              <img class="5946-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/946/medium260/maker_business_pinspace.png?1396830387 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/946/medium640/maker_business_pinspace.png?1396830387 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/946/medium800/maker_business_pinspace.png?1396830387 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/946/large1024/maker_business_pinspace.png?1396830387 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_pinspace.png" alt="maker_business_pinspace.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        OK so 2.9mm apart as well. Lets edit that pad to change the center location and SMD size to match:<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5943">
+              <img class="5943-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/943/medium260/maker_business_smdchange.png?1396830324 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/943/medium640/maker_business_smdchange.png?1396830324 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/943/medium800/maker_business_smdchange.png?1396830324 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/943/large1024/maker_business_smdchange.png?1396830324 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_smdchange.png" alt="maker_business_smdchange.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Repeat for all other pads, changing the size and the spacing but <b>not</b> the pitch. If you want to change a bunch of pads at once, you can use the <b>change smd</b> command<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5947">
+              <img class="5947-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/947/medium260/maker_business_changesmd.png?1396830402 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/947/medium640/maker_business_changesmd.png?1396830402 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/947/medium800/maker_business_changesmd.png?1396830402 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/947/large1024/maker_business_changesmd.png?1396830402 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_changesmd.png" alt="maker_business_changesmd.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Anyways, once done, lets save and rename this package since its been modified. I used the command line but you can also use the <b>Rename </b>menu command<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5948">
+              <img class="5948-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/948/medium260/maker_business_renametssop.png?1396830415 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/948/medium640/maker_business_renametssop.png?1396830415 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/948/medium800/maker_business_renametssop.png?1396830415 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/948/large1024/maker_business_renametssop.png?1396830415 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_renametssop.png" alt="maker_business_renametssop.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Finally, edit the description at the bottom by clicking on the <b></b>blue <b>Description</b> link to open up the mini window<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5949">
+              <img class="5949-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/949/medium260/maker_business_description.png?1396830444 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/949/medium640/maker_business_description.png?1396830444 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/949/medium800/maker_business_description.png?1396830444 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/949/large1024/maker_business_description.png?1396830444 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_description.png" alt="maker_business_description.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+
+									</div>
+									<div class="page-title-wrapper">
+										<h1 class="headline">
+											<span id="connection">Connection</span>
+										</h1>
+		                    <div class="author">by
+      <a href="https://learn.adafruit.com/users/adafruit2">
+          <span class="name">lady ada</span>
+</a>    </div>
+
+		              </div>
+									<div class="page-content all-page-view-content">
+											      <div class="row-fluid build-text">
+        OK we have our symbol and our package, lets merge them! Open up the <b>device</b> in the library<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5950">
+              <img class="5950-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/950/medium260/maker_business_device.png?1396830469 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/950/medium640/maker_business_device.png?1396830469 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/950/medium800/maker_business_device.png?1396830469 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/950/large1024/maker_business_device.png?1396830469 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_device.png" alt="maker_business_device.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Once its open, click on <b>New</b> in the bottom right to create a new package variant. Select the new TSSOP14 we made<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5951">
+              <img class="5951-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/951/medium260/maker_business_addvariant.png?1396830497 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/951/medium640/maker_business_addvariant.png?1396830497 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/951/medium800/maker_business_addvariant.png?1396830497 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/951/large1024/maker_business_addvariant.png?1396830497 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_addvariant.png" alt="maker_business_addvariant.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Under <b>Variant name</b> I like always matching the datasheet, in this case it says that the TSSOP variant is called <b>DT</b><br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5952">
+              <img class="5952-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/952/medium260/maker_business_dt.png?1396830516 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/952/medium640/maker_business_dt.png?1396830516 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/952/medium800/maker_business_dt.png?1396830516 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/952/large1024/maker_business_dt.png?1396830516 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_dt.png" alt="maker_business_dt.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Now we can connect the pins and pads up. Right click and select <b>Connect</b><br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5953">
+              <img class="5953-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/953/medium260/maker_business_connect.png?1396830532 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/953/medium640/maker_business_connect.png?1396830532 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/953/medium800/maker_business_connect.png?1396830532 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/953/large1024/maker_business_connect.png?1396830532 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_connect.png" alt="maker_business_connect.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Here's another trick I use to save time and avoid mistakes, if you're creating a package <i>and</i> the package has the same number of pins as an existing package <i>and<b></b></i><b></b> the pinout is the same for both you can use <b>Copy from</b> to duplicate the pin connections<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5954">
+              <img class="5954-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/954/medium260/maker_business_copyfrom.png?1396830558 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/954/medium640/maker_business_copyfrom.png?1396830558 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/954/medium800/maker_business_copyfrom.png?1396830558 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/954/large1024/maker_business_copyfrom.png?1396830558 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_copyfrom.png" alt="maker_business_copyfrom.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5955">
+              <img class="5955-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/955/medium260/maker_business_copiedfrom.png?1396830583 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/955/medium640/maker_business_copiedfrom.png?1396830583 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/955/medium800/maker_business_copiedfrom.png?1396830583 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/955/large1024/maker_business_copiedfrom.png?1396830583 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_copiedfrom.png" alt="maker_business_copiedfrom.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        That's it! You're done! Now there is a new device package for TSSOP-14<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5956">
+              <img class="5956-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/956/medium260/maker_business_done.png?1396830619 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/956/medium640/maker_business_done.png?1396830619 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/956/medium800/maker_business_done.png?1396830619 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/956/large1024/maker_business_done.png?1396830619 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_done.png" alt="maker_business_done.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+
+									</div>
+									<div class="page-title-wrapper">
+										<h1 class="headline">
+											<span id="verify-and-use">Verify and Use</span>
+										</h1>
+		                    <div class="author">by
+      <a href="https://learn.adafruit.com/users/adafruit2">
+          <span class="name">lady ada</span>
+</a>    </div>
+
+		              </div>
+									<div class="page-content all-page-view-content">
+											      <div class="row-fluid build-text">
+        Now you can add your new library to the project you are working on. Select <b>Library -&gt; Use...</b> and find the library you made and saved<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5957">
+              <img class="5957-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/957/medium260/maker_business_libraryuse.png?1396830636 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/957/medium640/maker_business_libraryuse.png?1396830636 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/957/medium800/maker_business_libraryuse.png?1396830636 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/957/large1024/maker_business_libraryuse.png?1396830636 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_libraryuse.png" alt="maker_business_libraryuse.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        You can now search for the device and it will pop up in your new library with the TSSOP package<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5958">
+              <img class="5958-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/958/medium260/maker_business_letsadd.png?1396830667 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/958/medium640/maker_business_letsadd.png?1396830667 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/958/medium800/maker_business_letsadd.png?1396830667 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/958/large1024/maker_business_letsadd.png?1396830667 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_letsadd.png" alt="maker_business_letsadd.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        Don't forget, for many of the Logic device, you have to <b><i></i>Invoke</b> to get the power pins<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5959">
+              <img class="5959-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/959/medium260/maker_business_invoke.png?1396830688 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/959/medium640/maker_business_invoke.png?1396830688 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/959/medium800/maker_business_invoke.png?1396830688 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/959/large1024/maker_business_invoke.png?1396830688 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_invoke.png" alt="maker_business_invoke.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5960">
+              <img class="5960-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/960/medium260/maker_business_invoked.png?1396830708 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/960/medium640/maker_business_invoked.png?1396830708 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/960/medium800/maker_business_invoked.png?1396830708 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/960/large1024/maker_business_invoked.png?1396830708 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_invoked.png" alt="maker_business_invoked.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        You can go to the board layout and see your nice new package<br>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/5961">
+              <img class="5961-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/005/961/medium260/maker_business_4093dt.png?1396830723 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/961/medium640/maker_business_4093dt.png?1396830723 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/961/medium800/maker_business_4093dt.png?1396830723 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/005/961/large1024/maker_business_4093dt.png?1396830723 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="maker_business_4093dt.png" alt="maker_business_4093dt.png">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+
+									</div>
+					</div>
+				</article>
+				<div class="col-lg-two-and-half col-md-3 hidden-sm hidden-xs">
+  <header class="sidebar-right">
+    <div class="sidebar-right-content">
+      
+      
+      <div class="clear"></div>
+    </div>
+  </header>
+</div>
+
+			</div>
+		</div>
+		<div class="footer-spacer"></div>
+</div>
+
+
+
+  <div class="modal fade" id="notify-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">  
+        <div class="modal-header">
+          <a href="#" class="close" data-dismiss="modal">×</a>
+          <h5>OUT OF STOCK NOTIFICATION</h5>
+        </div>
+        <div class="modal-body">
+          <p class="notify-modal-form-header"></p>
+          <div class="notify-modal-products"></div>
+          <form id="notify-modal-form" name="back_in_stock_notification" action="https://learn.adafruit.com/eagle-tutorial-how-to-add-a-new-package-to-a-component?view=all">
+            <p class="notify-modal-form-notice"></p>
+            <div class="notify-modal-break"></div>
+            <div class="form-group">
+              <label class="inputLabel" for="name">YOUR NAME</label>
+              <input size="25" maxlength="64" name="name" value="" type="text">
+            </div>
+
+            <div class="form-group">
+              <label class="inputLabel" for="email">YOUR EMAIL</label>
+              <input size="25" maxlength="96" name="email" value="" type="email">
+            </div>
+          
+            <input name="daigo" style="display: none;" value="" type="text">
+            <input name="notify_me" value="true" type="hidden">
+          </form>
+          <div id="notify-modal-success" style="display: none;">
+            <p>You have been successfully subscribed to the Notification List for this product and will therefore receive an e-mail from us when it is back in stock!</p>
+            <p>For security reasons, an e-mail has been sent to you acknowledging your subscription. Please remember that this subscription will not result in you receiving any e-mail from us about anything other than the restocking of this item.</p>
+            <p>If, for any reason, you would like to unsubscribe from the Notification List for this product you will find details of how to do so in the e-mail that has just been sent to you!</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" id="close-notify" style="display: none" data-dismiss="modal" data-target="#notify-modal">CLOSE</a>
+          <a href="#" id="submit-notify" rel="nofollow" class="blue-button">NOTIFY ME</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+      </div>
+        <footer id="adafruit-footer">
+    <div id="footer-content" class="container">
+      <div class="row">
+        <div class=" col-lg-6 col-md-6 col-sm-4 col-xs-12">
+          <nav>
+            <ul>
+              <li><a href="https://www.adafruit.com/contact_us">CONTACT</a></li>
+              <li><a href="https://www.adafruit.com/support">SUPPORT</a>
+              </li><li><a href="https://www.adafruit.com/distributors">DISTRIBUTORS</a></li>
+              <li><a href="https://www.adafruit.com/educators">EDUCATORS</a></li>
+              <li><a href="https://www.adafruit.com/jobs">JOBS</a></li>
+              <li><a href="https://www.adafruit.com/faq">FAQ</a></li>
+              <li><a href="https://www.adafruit.com/shippinginfo/">SHIPPING &amp; RETURNS</a></li>
+              <li><a href="https://www.adafruit.com/terms_of_service/">TERMS OF SERVICE</a></li>
+              <li><a href="https://www.adafruit.com/privacy">PRIVACY &amp; LEGAL</a></li>
+              <li><a href="https://www.adafruit.com/about">ABOUT US</a></li>
+            </ul>
+          </nav>
+          <div id="footer-copyright">
+            <a href="http://nytm.org/made-in-nyc/">ENGINEERED IN NYC</a> <span>Adafruit&nbsp;®</span>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-8 hidden-xs">
+          <div id="footer-quote" class="">
+            
+"We are the music makers, And we are the dreamers of dreams"
+            <span class="quote-author">- <a href="http://en.wikipedia.org/wiki/Arthur_O'Shaughnessy">Arthur O'Shaughnessy</a>
+</span>
+          </div>
+
+        </div>
+        <div id="footer-seals">
+          <img class="img-responsive" src="seals_2x.jpg" alt="Seals 2x">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    </div>
+  </div>
+
+  
+
+      <!-- Google Analytics -->
+    
+    <!-- End Google Analytics -->
+
+      <!-- Google Code for Remarketing Tag -->
+      <!--------------------------------------------------
+      Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+      --------------------------------------------------->
+      
+      
+      
+  
+  
+
+
+</div></body>
+</html>

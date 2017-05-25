@@ -1,0 +1,767 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>BEAGLEBONE BLACK: ACCESSING uSD AND USB STORAGE | H  i  F  i  D  U  I  N  O</title>
+
+
+
+
+
+
+<link rel="pingback" href="https://hifiduino.wordpress.com/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="H  i  F  i  D  U  I  N  O » Feed" href="https://hifiduino.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="H  i  F  i  D  U  I  N  O » Comments Feed" href="https://hifiduino.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="H  i  F  i  D  U  I  N  O » BEAGLEBONE BLACK: ACCESSING uSD AND USB&nbsp;STORAGE Comments Feed" href="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/feed/">
+	
+	
+
+
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s1.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://hifiduino.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="BEAGLEBONE BLACK: NETWORK AND&nbsp;WIFI" href="https://hifiduino.wordpress.com/2014/03/18/beaglebone-black-network-and-wifi/">
+<link rel="next" title="BEAGLEBONE BLACK: ACCESSING NETWORK&nbsp;SHARE" href="https://hifiduino.wordpress.com/2014/03/21/beaglebone-black-accessing-network-share/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/">
+<link rel="shortlink" href="http://wp.me/pRZso-2b7">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=https%3A%2F%2Fhifiduino.wordpress.com%2F2014%2F03%2F19%2Fbeaglebone-black-accessing-usd-and-usb-storage%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=https%3A%2F%2Fhifiduino.wordpress.com%2F2014%2F03%2F19%2Fbeaglebone-black-accessing-usd-and-usb-storage%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="BEAGLEBONE BLACK: ACCESSING uSD AND USB STORAGE">
+<meta property="og:url" content="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/">
+<meta property="og:description" content="ACCESSING THE uSD CARD Once the operating system is flashed to the internal eMMC, the uSD card can be used as storage and it is a convenient means to store music tracks. The command “fdisk -l…">
+<meta property="article:published_time" content="2014-03-19T18:05:42+00:00">
+<meta property="article:modified_time" content="2015-03-30T00:58:04+00:00">
+<meta property="og:site_name" content="H  i  F  i  D  U  I  N  O">
+<meta property="og:image" content="https://hifiduino.files.wordpress.com/2014/03/fstab-card.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@DSDeando">
+<meta name="twitter:image" content="https://hifiduino.files.wordpress.com/2014/03/fdisk-l-nosd.jpg?w=240">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@DSDeando">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="https://s0.wp.com/i/webclip.png">
+<link rel="openid.server" href="https://hifiduino.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://hifiduino.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://hifiduino.wordpress.com/osd.xml" title="H  i  F  i  D  U  I  N  O">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+<meta name="theme-color" content="#dbdbdb">
+		
+				
+			
+				
+		<meta name="application-name" content="H  i  F  i  D  U  I  N  O"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Lot of Value, Little Money"><meta name="msapplication-task" content="name=Subscribe;action-uri=https://hifiduino.wordpress.com/feed/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="title" content="BEAGLEBONE BLACK: ACCESSING uSD AND USB&nbsp;STORAGE | H  i  F  i  D  U  I  N  O on WordPress.com">
+<meta name="description" content="ACCESSING THE uSD CARD Once the operating system is flashed to the internal eMMC, the uSD card can be used as storage and it is a convenient means to store music tracks. The command &quot;fdisk -l&quot; will list all the storage devices seen by the operating system: Here is without any devices in the uSD…">
+
+<link rel="amphtml" href="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/amp/">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-8377 single-format-standard custom-background mp6 customizer-styles-applied highlander-enabled highlander-light">
+<!-- wrap START -->
+<div id="wrap">
+
+<!-- container START -->
+<div id="container">
+
+<!-- header START -->
+<div id="header">
+
+	<!-- banner START -->
+		<!-- banner END -->
+
+	<div id="caption">
+		<h1 id="title"><a href="https://hifiduino.wordpress.com/">H  i  F  i  D  U  I  N  O</a></h1>
+		<div id="tagline">Lot of Value, Little Money</div>
+	</div>
+
+	<div class="fixed"></div>
+</div>
+<!-- header END -->
+
+<!-- navigation START -->
+<div id="navigation">
+	<!-- menus START -->
+	<ul id="menus">
+	<li class="page_item"><a class="home" title="Home" href="https://hifiduino.wordpress.com/">Home</a></li>
+	<li class="page_item page-item-1612"><a href="https://hifiduino.wordpress.com/musiland-usb/">Musiland USB</a></li>
+<li class="page_item page-item-1523"><a href="https://hifiduino.wordpress.com/introduction-and-guide-to-hifiduino/">INTRO</a></li>
+<li class="page_item page-item-1525"><a href="https://hifiduino.wordpress.com/free-hi-res-music/">Free High-Res</a></li>
+<li class="page_item page-item-1739"><a href="https://hifiduino.wordpress.com/code/">CODE</a></li>
+<li class="page_item page-item-1765"><a href="https://hifiduino.wordpress.com/apple-aluminum-remote/">Apple Remote</a></li>
+<li class="page_item page-item-2301"><a href="https://hifiduino.wordpress.com/sabre32/">Sabre32</a></li>
+<li class="page_item page-item-3896"><a href="https://hifiduino.wordpress.com/other/">OTHER</a></li>
+<li class="page_item page-item-5488"><a href="https://hifiduino.wordpress.com/b-ii/">B-II</a></li>
+	<li><a class="lastmenu" href="javascript:void(0);"></a></li>
+</ul>
+
+	<!-- menus END -->
+
+	<!-- searchbox START -->
+	<div id="searchbox">
+		<form action="https://hifiduino.wordpress.com/" method="get">
+			<div class="content">
+				<input class="textfield searchtip" name="s" size="24" value="Type text to search here..." type="text">
+				<input class="button" value="" type="submit">
+			</div>
+		</form>
+	</div>
+
+	<!-- searchbox END -->
+
+	<div class="fixed"></div>
+</div>
+<!-- navigation END -->
+
+<!-- content START -->
+<div id="content">
+
+	<!-- main START -->
+	<div id="main">
+
+
+	<div id="postpath">
+		<a title="Go to homepage" href="https://hifiduino.wordpress.com/">Home</a>
+		 &gt; <a href="https://hifiduino.wordpress.com/category/embedded-computing/" rel="category tag">Embedded Computing</a>		 &gt; BEAGLEBONE BLACK: ACCESSING uSD AND USB&nbsp;STORAGE	</div>
+
+	<div id="post-8377" class="post-8377 post type-post status-publish format-standard hentry category-embedded-computing">
+		<h2>BEAGLEBONE BLACK: ACCESSING uSD AND USB&nbsp;STORAGE</h2>
+		<div class="info">
+			<span class="date">March 19, 2014</span>
+													<span class="addcomment"><a href="#respond">Leave a comment</a></span>
+				<span class="comments"><a href="#comments">Go to comments</a></span>
+						<div class="fixed"></div>
+		</div>
+		<div class="content">
+			<p><strong>ACCESSING THE uSD CARD</strong></p>
+<p>Once the operating system is flashed to the internal eMMC, the uSD card can be used as storage and it is a convenient means to store music tracks.</p>
+<p>The command “fdisk -l” will list all the storage devices seen by the operating system:</p>
+<p>Here is without any devices in the uSD slot. Listed is the internal eMMC storage device (listing only relevant parts):</p>
+<p><a href="https://hifiduino.files.wordpress.com/2014/03/fdisk-l-nosd.jpg"><img class="alignnone  wp-image-8278" alt="fdisk-l-noSD" src="fdisk-l-nosd.jpg" height="63" width="595"></a></p>
+<p>After inserting a 32MB uSD card we see this additional device:</p>
+<p><a href="https://hifiduino.files.wordpress.com/2014/03/fdisk-l-32msd.jpg"><img class="alignnone size-full wp-image-8279" alt="fdisk-l-32MSD" src="fdisk-l-32msd.jpg" height="51" width="595"></a></p>
+<p>After inserting a 2 GB uSD card we see this device instead:</p>
+<p><a href="https://hifiduino.files.wordpress.com/2014/03/fdisk-l-2gsd.jpg"><img class="alignnone size-full wp-image-8280" alt="fdisk-l-2GSD" src="fdisk-l-2gsd.jpg" height="47" width="595"></a></p>
+<p>We realize that the any card inserted in the uSD slot is characterized by “/dev/mmcblk1p1”. “mmc” stands for “multimedia card” -both SD cards and eMMC devices conform to the “multimedia card” specification. “blk1” I think represents “block device 1” and “p1” is “partition 1”</p>
+<p>However, if the uSD card is already inserted during, we see the following:</p>
+<p><a href="https://hifiduino.files.wordpress.com/2014/03/fdisk-l-beforeboot.jpg"><img class="alignnone size-full wp-image-8407" alt="fdisk-l-beforeboot" src="fdisk-l-beforeboot.jpg" height="48" width="595"></a></p>
+<p>The device is assigned /dev/mmcblk0p1. It appears the the order the device numbers are assigned at boot time is uSD card first, then internal eMMC.</p>
+<p><span style="text-decoration: underline;">Mounting the uSD card</span></p>
+<p>In order to access the contents on the uSD card, the device must be first mounted. First create a “mount point” (a folder). Here I use the directory /media which is already present. Under /media create a directory to mount the uSD card.&nbsp; I created /media/card, /media/usb and /media/nas to represent the 3 different places where music tracks can be stored.</p>
+<p>Use the command “mount”</p>
+<p><a href="https://hifiduino.files.wordpress.com/2014/03/mount-card.jpg"><img class="alignnone size-full wp-image-8403" alt="mount.card" src="mount-card.jpg" height="132" width="595"></a></p>
+<p>The “-v” flag in “mount” is optional. Means “verbose”. Notice that after mounting the uSD card, I can see the “smallmusic” directory and 1 mp3 track.</p>
+<p>Keep in mind that if the uSD card is already inserted at boot time, it is assigned “mmcblk0p1” instead of “mmcblk1p1”</p>
+<p><strong>ACCESSING USB MEMORY STICK</strong></p>
+<p>If digital audio is transmitted through the I2S interface, then the USB host can also be used for a USB memory device.</p>
+<p>The same procedure can be used to mount a usb memory stick:</p>
+<ol>
+<li>Insert a USB storage to the USB host connector</li>
+<li>Type “fdisk -l” to identify the device. Notice that it is /dev/sda1</li>
+<li>Type mount /dev/sda1 /”mount point” in my case, mount /dev/sda1 /media/usb</li>
+</ol>
+<p>Inserting a USB storage device will show up as:</p>
+<p><a href="https://hifiduino.files.wordpress.com/2014/03/fdiskusb.jpg"><img class="alignnone size-full wp-image-8401" alt="fdiskUSB" src="fdiskusb.jpg" height="55" width="595"></a></p>
+<p>Since there is only one usb host port, a USB memory device will always appear as /dev/sda1 whether it is present during boot or not.</p>
+<p><strong>AUTOMATING THE MOUNT PROCESS</strong></p>
+<p>It becomes cumbersome to have to access the board through the command line in order to mount a storage device. For a music device, the ideal is to have these storage devices mounted automatically.</p>
+<p>I tried different ways to auto-mount the devices when they are inserted:</p>
+<ul>
+<li>Autofs: looks like the most promising but did not work in my installation while following this excellent guide [<a href="http://www.greenfly.org/tips/autofs.html">link</a>]</li>
+<li>usbmount: works well with uSD cards and USB storage at any time after boot, but when deleting the X11 package, it wound fail to mount uSD cards. usbmount was last updated in 2007 and is currently unmaintained.</li>
+<li>Add mount instructions in /etc/fstab which is invoked only during boot time.</li>
+</ul>
+<p>For now the “best” option in my environment seems using /etc/fstab and ensuring the storage devices are present during boot. This seems a reasonable configuration for an audio player: Insert the storage devices and turn-on the device. Even if switching to another storage device requiring a reboot, the booting process is very short.</p>
+<p>usbmount has better functionality because it works after boot. I didn’t like the fact that it stopped working for SD cards after I removed the X11 package (which I do not need). I’ll wait for more help on autofs and then I think I’ll switch to autofs.</p>
+<p>For USB I added the following line to the /etc/fstab file.</p>
+<p><a href="https://hifiduino.files.wordpress.com/2014/03/usbfstab.jpg"><img class="alignnone size-full wp-image-8400" alt="usbFstab" src="usbfstab.jpg" height="34" width="595"></a></p>
+<p>Note the following:</p>
+<ul>
+<li>Add the “nofail” option. Without it the board will not be able to boot if no USB memory is present in the USB port.</li>
+<li>Ensure that the USB memory has a single partition since we are assuming it is always /dev/sda1. A newly formatted USB memory device will have a single partition</li>
+</ul>
+<p>For the uSD Card and assuming that the card is inserted prior to boot, I added the following line:</p>
+<p><a href="https://hifiduino.files.wordpress.com/2014/03/fstab-card.jpg"><img class="alignnone size-full wp-image-8409" alt="fstab-card" src="fstab-card.jpg" height="31" width="595"></a></p>
+<p>Insert a uSD card and a USB memory device, boot the board and they will be mounted under /media/card and /media/usb (or whatever directory you had specified in /etc/fstab.</p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-print"><a rel="nofollow" data-shared="" class="share-print sd-button share-icon" href="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/#print" target="_top" title="Click to print"><span>Print</span></a></li><li class="share-pinterest"><a rel="nofollow" data-shared="sharing-pinterest-8377" class="share-pinterest sd-button share-icon" href="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/?share=pinterest" target="_top" title="Click to share on Pinterest"><span>Pinterest</span></a></li><li class="share-end"></li></ul></div></div></div>
+<div id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div></div>						<div class="fixed"></div>
+		</div>
+		<div class="under">
+			<span></span>
+			<span></span>
+		</div>
+		<div class="fixed"></div>
+	</div>
+
+	
+
+
+
+<div id="comments">
+
+	
+		<div id="cmtswitcher">
+										<a id="commenttab" class="curtab" href="javascript:void(0);" onclick="MGJS.switchTab('thecomments,commentnavi', 'thetrackbacks', 'commenttab', 'curtab', 'trackbacktab', 'tab');">
+					Comments (5)				</a>
+				<a id="trackbacktab" class="tab" href="javascript:void(0);" onclick="MGJS.switchTab('thetrackbacks', 'thecomments,commentnavi', 'trackbacktab', 'curtab', 'commenttab', 'tab');">
+					Trackbacks (0)				</a>
+			
+							<span class="addcomment"><a href="#respond">Leave a comment</a></span>
+			
+							<span class="addtrackback"><a href="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/trackback/">Trackback</a></span>
+					</div><!-- #cmtswitcher -->
+
+		<div id="commentlist">
+
+			<!-- Comments -->
+			<ol id="thecomments">
+								<li id="comment-14814" class="comment even thread-even depth-1 highlander-comment">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="6cfc5b1e07bd5c692a39aac0dd212ff1" class="avatar avatar-32" height="32" width="32">			</div><!-- .pic -->
+			<div class="name">
+				Salvo			</div><!-- .name -->
+		</div>
+
+		<div class="info">
+			<div class="date">
+				March 19, 2014 at 18:28			</div><!-- .date -->
+			<div class="act">
+				<a rel="nofollow" class="comment-reply-link" href="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/?replytocom=14814#respond" onclick="return addComment.moveForm( &quot;comment-14814&quot;, &quot;14814&quot;, &quot;respond&quot;, &quot;8377&quot; )" aria-label="Reply to Salvo">Reply</a>							</div><!-- .act -->
+			<div class="content">
+				
+				<div id="commentbody-14814">
+					<p>Just to know, in the hope to be not useless, each time you would need to mount agn a unmounted data disk that wasn’t there at the boot time do it with:<br>
+root# mount -a<br>
+The same will work if you have exchanged any data unmountable disk, doing at first, i.e.<br>
+root#umount /media/usb<br>
+Then the next command after you have inserted a new one media card/key (even the same you had umounted BTW) will be easy and clever:<br>
+root# mount -a<br>
+Maybe it is like mount automate, reads the /etc/fstab and mount any valid entry found<br>
+Almost the same as at the boot time. This would mean that on each bout /etc/fstab will be read and all the disk partitions – mount points are to be mounted exactly in the same order and in the same places for the OS at the specified boot level.</p>
+<p>Maybe also the ‘df’ command, with all its switches …, will work.<br>
+That’s much easy than using ‘fdisk -l’ … on my poor mind.</p>
+<p>That’s since BSD, mount, the first. I don’t remember about ‘df’. Several UNIX flavours have had changes for that last.</p>
+<p>      Ciao.</p>
+<p>          Salvo  </p>
+<p>PS TU for all UR work, that’s really interesting from several points of view.</p>
+				</div><!-- #commentbody-ID -->
+			</div><!-- .comment -->
+			<div class="fixed"></div>
+		</div><!-- .info -->
+		<div class="fixed"></div>
+<ul class="children">
+	<li id="comment-14816" class="comment byuser comment-author-downloadcode bypostauthor odd alt depth-2 highlander-comment">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="57acf63cf39e584527bf19b1b242413d" class="avatar avatar-32" height="32" width="32">			</div><!-- .pic -->
+			<div class="name">
+				BlgGear			</div><!-- .name -->
+		</div>
+
+		<div class="info">
+			<div class="date">
+				March 19, 2014 at 19:25			</div><!-- .date -->
+			<div class="act">
+				<a rel="nofollow" class="comment-reply-link" href="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/?replytocom=14816#respond" onclick="return addComment.moveForm( &quot;comment-14816&quot;, &quot;14816&quot;, &quot;respond&quot;, &quot;8377&quot; )" aria-label="Reply to BlgGear">Reply</a>							</div><!-- .act -->
+			<div class="content">
+				
+				<div id="commentbody-14816">
+					<p>Thanks for sharing.<br>
+My concern is that as a music player, I would set it up totally headless. (of course in order to play a track, I would have to use the command line, but I have not thought of this part yet :-)). I did try autofs but couldn’t figure out why it would not work, so I gave up…</p>
+				</div><!-- #commentbody-ID -->
+			</div><!-- .comment -->
+			<div class="fixed"></div>
+		</div><!-- .info -->
+		<div class="fixed"></div>
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li id="comment-14894" class="comment even thread-odd thread-alt depth-1 highlander-comment">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="f987c76700f4c8e5772de32a3af46197" class="avatar avatar-32" height="32" width="32">			</div><!-- .pic -->
+			<div class="name">
+				<a href="http://www.foundatron.com/" rel="external nofollow" class="url">Foundatron</a>			</div><!-- .name -->
+		</div>
+
+		<div class="info">
+			<div class="date">
+				March 22, 2014 at 15:33			</div><!-- .date -->
+			<div class="act">
+				<a rel="nofollow" class="comment-reply-link" href="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/?replytocom=14894#respond" onclick="return addComment.moveForm( &quot;comment-14894&quot;, &quot;14894&quot;, &quot;respond&quot;, &quot;8377&quot; )" aria-label="Reply to Foundatron">Reply</a>							</div><!-- .act -->
+			<div class="content">
+				
+				<div id="commentbody-14894">
+					<p>Another great post! you mentioned “low noise power supplies”. Can you prove some links?</p>
+				</div><!-- #commentbody-ID -->
+			</div><!-- .comment -->
+			<div class="fixed"></div>
+		</div><!-- .info -->
+		<div class="fixed"></div>
+<ul class="children">
+	<li id="comment-14895" class="comment odd alt depth-2 highlander-comment">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="f987c76700f4c8e5772de32a3af46197" class="avatar avatar-32" height="32" width="32">			</div><!-- .pic -->
+			<div class="name">
+				<a href="http://www.foundatron.com/" rel="external nofollow" class="url">Foundatron</a>			</div><!-- .name -->
+		</div>
+
+		<div class="info">
+			<div class="date">
+				March 22, 2014 at 15:34			</div><!-- .date -->
+			<div class="act">
+				<a rel="nofollow" class="comment-reply-link" href="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/?replytocom=14895#respond" onclick="return addComment.moveForm( &quot;comment-14895&quot;, &quot;14895&quot;, &quot;respond&quot;, &quot;8377&quot; )" aria-label="Reply to Foundatron">Reply</a>							</div><!-- .act -->
+			<div class="content">
+				
+				<div id="commentbody-14895">
+					<p>errr….provide some links<img class="wp-smiley emoji" draggable="false" alt=":)" src="simple-smile.svg" style="height: 1em; max-height: 1em;" height="16" width="16"></p>
+				</div><!-- #commentbody-ID -->
+			</div><!-- .comment -->
+			<div class="fixed"></div>
+		</div><!-- .info -->
+		<div class="fixed"></div>
+</li><!-- #comment-## -->
+	<li id="comment-14903" class="comment byuser comment-author-downloadcode bypostauthor even depth-2 highlander-comment">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="57acf63cf39e584527bf19b1b242413d" class="avatar avatar-32" height="32" width="32">			</div><!-- .pic -->
+			<div class="name">
+				BlgGear			</div><!-- .name -->
+		</div>
+
+		<div class="info">
+			<div class="date">
+				March 22, 2014 at 22:14			</div><!-- .date -->
+			<div class="act">
+				<a rel="nofollow" class="comment-reply-link" href="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/?replytocom=14903#respond" onclick="return addComment.moveForm( &quot;comment-14903&quot;, &quot;14903&quot;, &quot;respond&quot;, &quot;8377&quot; )" aria-label="Reply to BlgGear">Reply</a>							</div><!-- .act -->
+			<div class="content">
+				
+				<div id="commentbody-14903">
+					<p>For the moment I am using a linear 5V, 1A supply that came with an old ZIP drive. A linear supply (those bigger and heavier transformer-based) are lower noise than the newer switching types.</p>
+				</div><!-- #commentbody-ID -->
+			</div><!-- .comment -->
+			<div class="fixed"></div>
+		</div><!-- .info -->
+		<div class="fixed"></div>
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+						</ol><!-- #thecomments -->
+
+			
+			<!-- Trackbacks and Pingbacks -->
+			<ol id="thetrackbacks">
+									<li class="messagebox">
+						No trackbacks yet.					</li>
+							</ol><!-- #thetrackbacks -->
+
+		</div><!-- #commentlist -->
+	
+
+				<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/#respond" style="display: none;">Cancel reply</a></small></h3>				<form action="https://hifiduino.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<input id="highlander_comment_nonce" name="highlander_comment_nonce" value="1820c33026" type="hidden"><input name="_wp_http_referer" value="/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/" type="hidden">
+<input name="hc_post_as" id="hc_post_as" value="guest" type="hidden">
+
+<div class="comment-form-field comment-textarea">
+	<label for="comment">Enter your comment here...</label>
+	<div id="comment-form-comment"><textarea id="comment" name="comment" title="Enter your comment here..."></textarea></div>
+</div>
+
+<div id="comment-form-identity">
+
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display: none;">
+				<a href="#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+			<li>
+			<iframe id="googleplus-sign-in" name="googleplus-sign-in" src="index_1.html" scrolling="no" allowtransparency="true" seamless="seamless" frameborder="0" height="24" width="24"></iframe>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_top">				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Gravatar" class="no-grav" width="25">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" value="" type="email"></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name</label>
+					<div class="comment-form-input"><input id="author" name="author" value="" type="text"></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" value="" type="text"></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="WordPress.com Logo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="" type="hidden">
+				<input name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="" type="hidden">
+				<input name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="" type="hidden">
+				<p class="comment-form-posting-as pa-wordpress"><strong></strong> You are commenting using your <span class="skimlinks-unlinked">WordPress.com</span> account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Twitter picture" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" type="hidden">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Facebook photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" type="hidden">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Google+ photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" type="hidden">
+				<p class="comment-form-posting-as pa-googleplus"><strong></strong> You are commenting using your Google+ account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+
+
+<div id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p><p class="post-subscription-form"><input name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;" type="checkbox"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog" style="display: inline;">Notify me of new posts via email.</label></p></div>
+
+
+
+
+<p class="form-submit"><input name="submit" id="comment-submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="8377" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="3cbef44ffa" type="hidden"></p>
+<input name="genseq" value="1466690670" type="hidden">
+<p style="display: none;"></p>				<input id="ak_js" name="ak_js" value="1466690792642" type="hidden"></form>
+					</div><!-- #respond -->
+		<div style="clear: both;"></div>
+</div><!-- #comments -->
+
+	<div id="postnavi">
+		<span class="prev"><a href="https://hifiduino.wordpress.com/2014/03/21/beaglebone-black-accessing-network-share/" rel="next">BEAGLEBONE BLACK: ACCESSING NETWORK&nbsp;SHARE</a></span>
+		<span class="next"><a href="https://hifiduino.wordpress.com/2014/03/18/beaglebone-black-network-and-wifi/" rel="prev">BEAGLEBONE BLACK: NETWORK AND&nbsp;WIFI</a></span>
+		<div class="fixed"></div>
+	</div>
+
+
+	</div>
+	<!-- main END -->
+
+	
+<!-- sidebar START -->
+<div id="sidebar">
+
+<!-- sidebar north START -->
+<div id="northsidebar" class="sidebar">
+
+	<!-- feeds -->
+	<div class="widget widget_feeds">
+		<div class="content">
+			<div id="subscribe-feeds"><a rel="external nofollow" id="feedrss" title="Subscribe to this blog..." href="https://hifiduino.wordpress.com/feed/"><abbr title="Really Simple Syndication">RSS</abbr> feed</a></div>
+
+			<!-- twitter -->
+			
+			<div class="fixed"></div>
+		</div>
+	</div>
+
+	<!-- showcase -->
+	
+		<div id="recent-posts-2" class="widget widget_recent_entries">		<h3>Recent Posts</h3>		<ul>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2015/08/30/firmware-v-0-99/">Firmware v 0.99</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2015/07/12/soekris-dac-modding-vref/">Soekris DAC: Modding&nbsp;VRef</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2015/06/27/r2r-dac-benchmark-filters-for-now/">R2R DAC Benchmark Filters (for&nbsp;now)</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2015/06/14/dam-1021-r2r-more-mods/">dam 1021 R2R More&nbsp;Mods…</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2015/04/19/digital-filters-for-soekris-r-2r-dac/">Digital Filters for Soekris R-2R&nbsp;DAC</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2015/03/16/soekris-dam-1021-r-2r-dac-users-guide/">Soekris dam 1021 R-2R DAC ILLUSTRATED&nbsp;GUIDE</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2015/03/02/bbb-dac-developments/">BBB DAC DEVELOPMENTS</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2015/02/22/dam1021-r-2r-dac-mods/">dam1021 R-2R DAC&nbsp;MODs</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2015/02/10/soekris-dam1021-build/">Soekris dam1021 Build</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2015/02/04/raspberry-pi-2/">Raspberry Pi 2</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2015/01/30/building-soekris-r-2r-dac/">The Soekris R-2R DAC: Technical&nbsp;Details</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2015/01/06/inside-marantz-av-receiver/">INSIDE MARANTZ AV&nbsp;RECEIVER</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2014/12/07/akm-verita-4490-dac/">AKM Verita 4490EQ&nbsp;DAC</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2014/11/13/raspberry-pi-b-digital-audio/">Raspberry Pi B+ Digital&nbsp;Audio</a>
+						</li>
+					<li>
+				<a href="https://hifiduino.wordpress.com/2014/11/12/raspberry-pi-version-b/">Raspberry Pi version&nbsp;B+</a>
+						</li>
+				</ul>
+		</div>		<div id="recent-comments-2" class="widget widget_recent_comments"><h3>Latest Comments</h3>				<table class="recentcommentsavatar" border="0" cellpadding="0" cellspacing="0">
+					<tbody><tr><td title="tamer" class="recentcommentsavatartop" style="height: 16px; width: 16px;"><img alt="" src="25baee3933fc57b7276c86c22a395def" class="avatar avatar-16" height="16" width="16"></td><td class="recentcommentstexttop" style="">tamer on <a href="https://hifiduino.wordpress.com/2010/11/04/improved-large-font-for-lcd/#comment-32459">Improved Large Font for&nbsp;L…</a></td></tr><tr><td title="Dwight Chizen" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><img alt="" src="696251fe4c1a1a7a4f1387dded418ba1" class="avatar avatar-16" height="16" width="16"></td><td class="recentcommentstextend" style="">Dwight Chizen on <a href="https://hifiduino.wordpress.com/2013/02/02/markaudio-alpair-speaker-drivers/#comment-32428">MarkAudio Alpair Speaker&nbsp;…</a></td></tr><tr><td title="amix" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><img alt="" src="5d095e3db3308e56519e6580e2dd7ce9" class="avatar avatar-16" height="16" width="16"></td><td class="recentcommentstextend" style="">amix on <a href="https://hifiduino.wordpress.com/2015/03/02/bbb-dac-developments/#comment-32318">BBB DAC DEVELOPMENTS</a></td></tr><tr><td title="themystical" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><img alt="" src="7e20ffe7cfc5b5ebdd060e6fadd738c9" class="avatar avatar-16" height="16" width="16"></td><td class="recentcommentstextend" style="">themystical on <a href="https://hifiduino.wordpress.com/2014/12/07/akm-verita-4490-dac/#comment-32290">AKM Verita 4490EQ&nbsp;DAC</a></td></tr><tr><td title="Derek" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><img alt="" src="b2e70f50b61b6bce69a1d3a95cd42eb3" class="avatar avatar-16" height="16" width="16"></td><td class="recentcommentstextend" style="">Derek on <a href="https://hifiduino.wordpress.com/code/#comment-32265">CODE</a></td></tr><tr><td title="a good writing about raspberry pi + digital audio | My Word Press" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><a href="http://likira.com/mywp/?p=614" rel="nofollow"></a></td><td class="recentcommentstextend" style=""><a href="http://likira.com/mywp/?p=614" rel="nofollow">a good writing about…</a> on <a href="https://hifiduino.wordpress.com/2014/11/13/raspberry-pi-b-digital-audio/#comment-32247">Raspberry Pi B+ Digital&nbsp;A…</a></td></tr><tr><td title="Łukasz L" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><a href="https://plus.google.com/115484259910277586958" rel="nofollow"><img alt="" src="photo.jpg" class="avatar avatar-16" height="16" width="16"></a></td><td class="recentcommentstextend" style=""><a href="https://plus.google.com/115484259910277586958" rel="nofollow">Łukasz L</a> on <a href="https://hifiduino.wordpress.com/2014/11/13/raspberry-pi-b-digital-audio/#comment-32201">Raspberry Pi B+ Digital&nbsp;A…</a></td></tr><tr><td title="Mykhailo" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><img alt="" src="d4abe82756cbeade63ec81497b0787dc" class="avatar avatar-16" height="16" width="16"></td><td class="recentcommentstextend" style="">Mykhailo on <a href="https://hifiduino.wordpress.com/2014/07/01/building-the-diyinhk-es9018k2m/#comment-32191">BUILDING THE DIYINHK&nbsp;ES90…</a></td></tr><tr><td title="Audrey Ramirez" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><a href="https://dstate1979.wordpress.com/?p=122" rel="nofollow"><img alt="" src="89ea8c2fed59fcb33e209e5dfe357ad9" class="avatar avatar-16" height="16" width="16"></a></td><td class="recentcommentstextend" style=""><a href="https://dstate1979.wordpress.com/?p=122" rel="nofollow">Audrey Ramirez</a> on <a href="https://hifiduino.wordpress.com/2013/02/17/jds-labs-headphone-amp-with-arduino-control/#comment-32166">JDS Labs Headphone Amp with Ar…</a></td></tr><tr><td title="soundcheck" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><img alt="" src="9fc189eb93df60200fa1308ffa9a808f" class="avatar avatar-16" height="16" width="16"></td><td class="recentcommentstextend" style="">soundcheck on <a href="https://hifiduino.wordpress.com/2014/11/13/raspberry-pi-b-digital-audio/#comment-32149">Raspberry Pi B+ Digital&nbsp;A…</a></td></tr><tr><td title="themystical" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><img alt="" src="7e20ffe7cfc5b5ebdd060e6fadd738c9" class="avatar avatar-16" height="16" width="16"></td><td class="recentcommentstextend" style="">themystical on <a href="https://hifiduino.wordpress.com/2014/12/07/akm-verita-4490-dac/#comment-32132">AKM Verita 4490EQ&nbsp;DAC</a></td></tr><tr><td title="landroni" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><a href="http://landroni.wordpress.com/" rel="nofollow"><img alt="" src="2f8a35f7797b6345e75cd6426308b81f" class="avatar avatar-16" height="16" width="16"></a></td><td class="recentcommentstextend" style=""><a href="http://landroni.wordpress.com/" rel="nofollow">landroni</a> on <a href="https://hifiduino.wordpress.com/2015/01/30/building-soekris-r-2r-dac/#comment-32121">The Soekris R-2R DAC: Technica…</a></td></tr><tr><td title="museguy" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><a href="http://www.walhimer.com/" rel="nofollow"><img alt="" src="6f193c7eac15238781b22b004ed5a962" class="avatar avatar-16" height="16" width="16"></a></td><td class="recentcommentstextend" style=""><a href="http://www.walhimer.com/" rel="nofollow">museguy</a> on <a href="https://hifiduino.wordpress.com/2012/09/18/amanero-usb-i2s-interface/#comment-32112">AMANERO USB – I2S&nbsp;I…</a></td></tr><tr><td title="museguy" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><a href="http://www.walhimer.com/" rel="nofollow"><img alt="" src="6f193c7eac15238781b22b004ed5a962" class="avatar avatar-16" height="16" width="16"></a></td><td class="recentcommentstextend" style=""><a href="http://www.walhimer.com/" rel="nofollow">museguy</a> on <a href="https://hifiduino.wordpress.com/2014/12/07/akm-verita-4490-dac/#comment-32111">AKM Verita 4490EQ&nbsp;DAC</a></td></tr><tr><td title="ddimitr" class="recentcommentsavatarend" style="height: 16px; width: 16px;"><img alt="" src="839403ae3bfd8c5b693a284c69a3f53b" class="avatar avatar-16" height="16" width="16"></td><td class="recentcommentstextend" style="">ddimitr on <a href="https://hifiduino.wordpress.com/2015/03/16/soekris-dam-1021-r-2r-dac-users-guide/#comment-32075">Soekris dam 1021 R-2R DAC ILLU…</a></td></tr>				</tbody></table>
+				</div><div id="linkcat-134289" class="widget widget_links"><h3>Arduino</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://tronixstuff.wordpress.com/tutorials/">Arduino Tutorials</a></li>
+<li><a href="http://www.arduinoos.com/" title="Arduino for adicts">ARDUINOOS</a></li>
+<li><a href="http://codeandlife.com/" title="Various tutorials and coding on AVR microcontrollers">Code and Life</a></li>
+<li><a href="http://www.electronics-lab.com/blog/" title="Projects with Arduino, etc">Electronics Lab Blog</a></li>
+<li><a href="http://www.arcfn.com/" title="Power supplies, Arduino, Arc, and whatever">Ken Shirriff's blog</a></li>
+<li><a href="http://www.kerrywong.com/">Kerry Wong -Arduino, etc</a></li>
+
+	</ul>
+</div>
+<div id="linkcat-3549" class="widget widget_links"><h3>Theory</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.intersil.com/content/dam/Intersil/documents/an13/an1325.pdf">Choosing and Using Bypass Caps</a></li>
+<li><a href="http://www.linear.com/designtools/app_notes.php">Complete List of Linear Tech Application Notes</a></li>
+<li><a href="http://www.sitime.com/support2/documents/AN10006-Clock-Decoupling-Layout-Recommendations_2v1.pdf">Decoupling, Bypassing, Layout</a></li>
+<li><a href="http://www.fourier-series.com/fourierseries2/FIR-filter.html" title="A graphical tutorial on FIR filter design">FIR Filter Tutorial</a></li>
+<li><a href="http://www.analog.com/static/imported-files/tutorials/MT-031.pdf">Grounding Data Converters</a></li>
+<li><a href="http://www.netrino.com/Embedded-Systems/How-To/Digital-Filters-FIR-IIR" title="A brief intro to FIR filters">Intro to FIR Digital Filters</a></li>
+<li><a href="http://www.complextoreal.com/" title="Tutorials on PLL, Eye Diagram, etc, etc.">Intuitive Guide to Principles of Communications</a></li>
+<li><a href="http://www.rakon.com/component/docman/doc_download/223-ic-crystal-oscillator-circuits?Itemid=" title="Easy to understand paper on jitter and phase noise">Rakon Jitter Whitepaper</a></li>
+<li><a href="http://www.analog.com/static/imported-files/tutorials/MT-095.pdf">Reduce EMI, RFI</a></li>
+<li><a href="http://www.maximintegrated.com/app-notes/index.mvp/id/5450">Successful PCB grounding with mixed-signal chips</a></li>
+<li><a href="http://www.dspguide.com/pdfbook.htm" title="640 pages on-line book">The Scientist and Engineer's Guide to Digital Signal Processing</a></li>
+<li><a href="http://www.radio-electronics.com/">Tutorials and other Resources</a></li>
+<li><a href="http://www.ti.com/lit/an/slyt118/slyt118.pdf" title="Powering electronics from the USB port">USB Power</a></li>
+
+	</ul>
+</div>
+<div id="linkcat-1981" class="widget widget_links"><h3>Tools for DIYaudio</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.sengpielaudio.com/calculator-thd.htm" title="e.g. 0.01% is -80 dB">% to dB Calculator</a></li>
+<li><a href="http://audio-database.com/">Audio Equipment Database</a></li>
+<li><a href="http://www.mouser.com/Search/ProductDetail.aspx?R=13368virtualkey64710000virtualkey738-13368" title="Are recommended here: http://www.diyaudio.com/forums/class-d/219730-tpa3118d2-2.html#post3391290">Best Solder</a></li>
+<li><a href="http://sim.okawa-denshi.jp/en/" title="Online mini circuit simulation tools">Circuit simulation</a></li>
+<li><a href="http://www.diyaudio.com/forums/vendors-bazaar/216474-usb-i2s-384khz-dsd-converter-46.html#post3414774">Generate DSD128 and DSD256</a></li>
+<li><a href="http://www.mathsisfun.com/binary-decimal-hexadecimal-converter.html" title="Enter number in one base and see the equivalent in the other bases">Hex&lt;-&gt;Binary&lt;-&gt;Decimal Converter</a></li>
+<li><a href="http://www.advanced-tech.com/ic_logos/ic_logos.htm" title="Helpful for identifiying chips">IC Manufacturer's LOGOs</a></li>
+<li><a href="http://how-to.wikia.com/wiki/How_to_identify_inductor_markings" title="How to identify inductor markings">Inductor markings</a></li>
+<li><a href="http://www.avx.hu/forum/index.php?/topic/6244-k%C3%A9sz%C3%BCl%C3%A9kbels%C5%91k/" title="Large collection of photos showing the internals of audio equipment">Inside Audio Equipment</a></li>
+<li><a href="http://www.jittertime.com/resources/pncalc.shtml" title="Calculates RMS jitter from phase-noise data">Jitter Calculator</a></li>
+<li><a href="http://www.mh-audio.nl/spk_calc.asp" title="Calculators for Speakers, crossover, acoustic, impedance, etc, etc.">LOTs of Calculators</a></li>
+<li><a href="http://www.audio-circuit.dk/" title="Schematics and service manuals">Schematics</a></li>
+<li><a href="https://hifiduino.wordpress.com/2010/03/02/service-manuals-for-hifi-equipment/" title="Service manuals for audio equipment">Service Manuals</a></li>
+<li><a href="http://www.marsport.org.uk/smd/mainframe.htm" title="Code description for surface mount devices">SMD Codebook</a></li>
+<li><a href="http://www.ecadata.de/searchnew/">SMD Marking Code Search</a></li>
+<li><a href="http://www.s-manuals.com/smd">SMD Markings</a></li>
+<li><a href="http://alasir.com/reference/kemet_tantalum_capacitors/">Tantalum Capacitor Markings</a></li>
+
+	</ul>
+</div>
+<div id="linkcat-59930686" class="widget widget_links"><h3>Understanding Audio &amp; Reviews</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.ethanwiner.com/audibility.html">Artifact Audibility</a></li>
+<li><a href="http://seanolive.blogspot.com/" title="A blog by Sean Olive who is Director of Acoustic Research for Harman International">Audio Musings</a></li>
+<li><a href="http://bitperfectsound.blogspot.com/">BitPerfect</a></li>
+<li><a href="http://cynicalaudio.blogspot.com/" title="A chinese DIY blog. Nice projects">牙尖嘴利音響頻道</a></li>
+<li><a href="http://www.head-fi.org/forum/thread/541204/concise-multi-iem-comparison-shure-se215-added-june-28th-2011">In Ear Headphone Comparison</a></li>
+<li><a href="http://www.head-fi.org/forum/thread/493152/low-jitter-usb-dan-lavry-michael-goodman-adaptive-asynchronous">Low-Jitter USB</a></li>
+<li><a href="http://www.sg-acoustics.ch/analogue_audio/ic_opamps/pdf/opamp_distortion.pdf" title="Measuring ad comparing distortion in the audio frequency range" target="_top">OpAmp Comparisons</a></li>
+<li><a href="http://redspade-audio.blogspot.com/" title="Speaker design, contruction, measurement">Red Spade Audio Blog</a></li>
+<li><a href="http://www.tcelectronic.com/techlibrary.asp">TC Electronics</a></li>
+<li><a href="http://theslowdiyer.wordpress.com/">The Slow Diyer</a></li>
+<li><a href="http://tweakheadz.com/guide.htm" title="You can learn audio from the recording perspectivve">Tweak's Guide to Recording Success</a></li>
+<li><a href="http://www.computeraudiophile.com/f6-dac-digital-analog-conversion/15-usb-spdif-converters-shootout-15327/">USB-SPDIF shootout</a></li>
+
+	</ul>
+</div>
+<div id="blog_subscription-3" class="widget widget_blog_subscription"><h3><label for="subscribe-field">Follow HifiDuino via Email</label></h3>
+				<form action="https://subscribe.wordpress.com/" method="post" accept-charset="utf-8" id="subscribe-blog">
+											<p>Join 293 other followers</p>
+						<p><input name="email" style="width: 95%; padding: 1px 2px;" placeholder="Enter your email address" value="" id="subscribe-field" type="text"></p>
+					
+					<p>
+						<input name="action" value="subscribe" type="hidden">
+						<input name="blog_id" value="12867628" type="hidden">
+						<input name="source" value="https://hifiduino.wordpress.com/2014/03/19/beaglebone-black-accessing-usd-and-usb-storage/" type="hidden">
+						<input name="sub-type" value="widget" type="hidden">
+						<input name="redirect_fragment" value="blog_subscription-3" type="hidden">
+						<input id="_wpnonce" name="_wpnonce" value="e09c6f4857" type="hidden">						<input value="Follow" type="submit">
+					</p>
+				</form>
+			
+</div>	</div>
+</div>
+<!-- sidebar END -->
+	<div class="fixed"></div>
+</div>
+<!-- content END -->
+
+<!-- footer START -->
+<div id="footer">
+	<a id="gotop" href="#" onclick="MGJS.goTop();return false;">Top</a>
+	<div id="themeinfo">
+		<a href="https://wordpress.com/?ref=footer_website">Create a free website or blog at WordPress.com.</a> <a href="https://wordpress.com/themes/inove/" title="Learn more about this theme">The INove Theme</a>.	</div>
+</div>
+<!-- footer END -->
+
+</div>
+<!-- container END -->
+</div>
+<!-- wrap END -->
+
+<!-- wpcom_wp_footer -->
+
+
+
+
+	
+
+		<div style="display: none;">
+	<div class="grofile-hash-map-6cfc5b1e07bd5c692a39aac0dd212ff1">
+	</div>
+	<div class="grofile-hash-map-57acf63cf39e584527bf19b1b242413d">
+	</div>
+	<div class="grofile-hash-map-f987c76700f4c8e5772de32a3af46197">
+	</div>
+	<div class="grofile-hash-map-25baee3933fc57b7276c86c22a395def">
+	</div>
+	<div class="grofile-hash-map-696251fe4c1a1a7a4f1387dded418ba1">
+	</div>
+	<div class="grofile-hash-map-5d095e3db3308e56519e6580e2dd7ce9">
+	</div>
+	<div class="grofile-hash-map-7e20ffe7cfc5b5ebdd060e6fadd738c9">
+	</div>
+	<div class="grofile-hash-map-b2e70f50b61b6bce69a1d3a95cd42eb3">
+	</div>
+	<div class="grofile-hash-map-364731c9ea9edc885048a58928836390">
+	</div>
+	<div class="grofile-hash-map-d4abe82756cbeade63ec81497b0787dc">
+	</div>
+	<div class="grofile-hash-map-89ea8c2fed59fcb33e209e5dfe357ad9">
+	</div>
+	<div class="grofile-hash-map-9fc189eb93df60200fa1308ffa9a808f">
+	</div>
+	<div class="grofile-hash-map-7e20ffe7cfc5b5ebdd060e6fadd738c9">
+	</div>
+	<div class="grofile-hash-map-2f8a35f7797b6345e75cd6426308b81f">
+	</div>
+	<div class="grofile-hash-map-6f193c7eac15238781b22b004ed5a962">
+	</div>
+	<div class="grofile-hash-map-839403ae3bfd8c5b693a284c69a3f53b">
+	</div>
+	</div>
+
+
+
+	
+					
+		
+
+
+
+	
+			
+		
+
+
+
+
+<img id="wpstats" alt=":)" src="g.gif"></body>
+</html>

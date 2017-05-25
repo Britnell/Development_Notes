@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en" class="client-nojs" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>SW startup guide for Vayu 3G - Yantrr Wiki</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.19.11">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.yantrr.com/w/opensearch_desc.php" title="Yantrr Wiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://www.yantrr.com/w/api.php?action=rsd">
+<link rel="copyright" href="http://creativecommons.org/licenses/by-sa/4.0/">
+<link rel="alternate" type="application/atom+xml" title="Yantrr Wiki Atom feed" href="http://www.yantrr.com/w/index.php?title=Special:RecentChanges&amp;feed=atom">
+
+<meta name="ResourceLoaderDynamicStyles" content="">
+
+
+
+
+
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/skins/vector/csshover.min.htc")}</style><![endif]-->
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-SW_startup_guide_for_Vayu_3G skin-vector action-view">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" class="mw-body">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display: none;"></div>
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading">
+				<span dir="auto">SW startup guide for Vayu 3G</span>
+			</h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+								<!-- tagline -->
+				<div id="siteSub">From Yantrr Wiki</div>
+				<!-- /tagline -->
+								<!-- subtitle -->
+				<div id="contentSub"></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav" class="mw-jump">
+					Jump to: <a href="#mw-head">navigation</a>,
+					<a href="#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodycontent -->
+				<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><p><br>
+For a quick guide to starting with the Vayu 3G cape's HW, see <a href="http://www.yantrr.com/w/images/0/06/Leaflet_for_Vayu_3GHP_Cape.pdf" class="internal" title="Leaflet for Vayu 3GHP Cape.pdf"> Leaflet for 3G cape</a>. 
+</p><p>Below, we describe how to set up the 3G capes and the associated software. 
+</p><p><br>
+</p>
+<table id="toc" class="toc"><tbody><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Hardware_Configurations"><span class="tocnumber">2</span> <span class="toctext">Hardware Configurations</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Getting_started"><span class="tocnumber">3</span> <span class="toctext">Getting started</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Seting_up_the_system"><span class="tocnumber">3.1</span> <span class="toctext">Seting up the system</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Power_On_Modem"><span class="tocnumber">3.2</span> <span class="toctext">Power On Modem</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Understanding_the_TTYUSB_ports_on_BBB_capes"><span class="tocnumber">3.3</span> <span class="toctext">Understanding the TTYUSB ports on BBB capes</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Power_Off_Modem"><span class="tocnumber">3.4</span> <span class="toctext">Power Off Modem</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Soft_Resetting_the_Modem"><span class="tocnumber">3.5</span> <span class="toctext">Soft Resetting the Modem</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Hard_resetting_the_modem"><span class="tocnumber">3.6</span> <span class="toctext">Hard resetting the modem</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#VAYU_3GHx-D.28ZTE_Modem.29"><span class="tocnumber">3.7</span> <span class="toctext">VAYU 3GHx-D(ZTE Modem)</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#AT_Commands_Manual"><span class="tocnumber">3.8</span> <span class="toctext">AT Commands Manual</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#FAQ"><span class="tocnumber">3.9</span> <span class="toctext">FAQ</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="#Data_connection_procedure_using_PPP"><span class="tocnumber">4</span> <span class="toctext">Data connection procedure using PPP</span></a>
+<ul>
+<li class="toclevel-2 tocsection-14"><a href="#Wvdial_Configuration_for_Debian_Wheezy"><span class="tocnumber">4.1</span> <span class="toctext">Wvdial Configuration for Debian Wheezy</span></a>
+<ul>
+<li class="toclevel-3 tocsection-15"><a href="#System_Status"><span class="tocnumber">4.1.1</span> <span class="toctext">System Status</span></a></li>
+<li class="toclevel-3 tocsection-16"><a href="#FAQ_2"><span class="tocnumber">4.1.2</span> <span class="toctext">FAQ</span></a></li>
+<li class="toclevel-3 tocsection-17"><a href="#Adding_a_DNS"><span class="tocnumber">4.1.3</span> <span class="toctext">Adding a DNS</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-18"><a href="#Using_GPS_module_with_Debian_Wheezy"><span class="tocnumber">5</span> <span class="toctext">Using GPS module with Debian Wheezy</span></a></li>
+<li class="toclevel-1 tocsection-19"><a href="#FAQ_3"><span class="tocnumber">6</span> <span class="toctext">FAQ</span></a>
+<ul>
+<li class="toclevel-2 tocsection-20"><a href="#FAQ_1:_Modem_.2F_TTYUSB_of_modem_not_detected"><span class="tocnumber">6.1</span> <span class="toctext">FAQ 1: Modem / TTYUSB of modem not detected</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></tbody></table>
+<h1> <span class="mw-headline" id="Overview"> Overview  </span></h1>
+<p>Data connection is established based on PPP protocols. Wvdial is mainly used to configure the dialup settings.
+For setting up various settings for PPP connection and establishing a data connection on these capes follow the link to the wiki
+</p>
+<ul><li> Way to setup the Vayu 2G Capes
+</li><li> How to read location and coarse time  as NMEA-0183 message from the serial UART ttyO4 port  
+</li><li> How to write wvdial conf files for any network
+</li><li> Sample wvdial.conf file for <a href="http://www.yantrr.com/wiki/Sample_wvdial.conf_file#Sample_Wvdial_conf_file_for_AT.26T_3G" title="Sample wvdial.conf file"> <big><b>AT&amp;T</b></big></a> and <a rel="nofollow" class="external text" href="http://www.yantrr.com/wiki/Sample_wvdial.conf_file#Sample_Wvdial_conf_file_for_TMOBILE_2G"><big><b>T-Mobile USA</b></big></a>
+</li></ul>
+<p>For using the Vayu-3G-A/Vayu-3GP-A Cape, please ensure that you have the following&nbsp;:
+</p>
+<ol><li> USB drivers for the modem (21f5:2012) installed in kernel 
+</li><li> PPS drivers enabled in kernel, required if GPS module is present. 
+</li><li> VAYU Device tree overlay file is properly configured. 
+</li></ol>
+<p>You can either download kernel patches containing the same to use with your existing images or you can download our prebuilt MicroSD card image or EMMC flasher image.
+</p><p>All the images and files and extra support on software can be found here:
+<b><big><a href="http://www.yantrr.com/wiki/Vayu_Cape_SW_images_and_drivers" title="Vayu Cape SW images and drivers">Vayu_Cape_SW_images_and_drivers</a></big></b>
+</p><p><br>
+</p>
+<dl><dd><dl><dd><ul><li><b>Note&nbsp;: On most beaglebones, there is a known bug with USB hotplug for using USB HUB with Beaglebone black host port. So to efficiently be able to use the modem, follow the <a href="#Power_On_Modem"> Power on Modem</a> section properly. An alternative easier approach is to keep the second host port on cape populated with a usb device.</b>
+</li></ul>
+</dd></dl>
+</dd></dl>
+<h1> <span class="mw-headline" id="Hardware_Configurations"> Hardware Configurations </span></h1>
+<p>The 3G/WCDMA modem has following interfaces available on the Cape: <a rel="nofollow" class="external text" href="http://www.yantrr.com/w/images/0/06/Leaflet_for_Vayu_3GHP_Cape.pdf"><b><big>Leaflet_3G modem</big></b></a>
+</p>
+<ol><li> Mini USB B Device port on Cape (P9): It has to be connected to USB host port on Beaglebone Black. 
+</li><li> SMA connector for GSM/WCDMA antenna(P7): Antenna is connected here.
+</li><li> LED D2 (5V Power LED of Cape)&nbsp;: This LED indicates that the Cape is powered on with 5V and GSM/WCDMA modem is also powered. 
+</li><li> LED D4 (SIGNAL LED)&nbsp;: This LED is the SIGNAL LED for the GSM/WCDMA modem whose various blinking states denote the different states of the WCDMA Modem.
+</li><li> GPIO45  (ON/OFF PIN)&nbsp;: It is the GPIO connected to Power ON/OFF pin of GSM/WCDMA Modem.
+</li><li> GPIO60  (Hard Reset Pin)&nbsp;: It is the GPIO connected to Reset pin of GSM/WCDMA Modem.
+</li><li> S1 (ON/OFF switch)&nbsp;: This push button switch is connected to Power ON/OFF pin of GSM/WCDMA modem.
+</li><li> S2 (RESET switch)&nbsp;: This push button switch is connected to Hard Reset pin of GSM/WCDMA modem.
+</li></ol>
+<p><br>
+</p>
+<dl><dd><dl><dd><ul><li><b>GPIO45 and GPIO60 should be set high at all instances for the GSM/WCDMA modem to be available for use.</b>
+</li></ul>
+</dd></dl>
+</dd></dl>
+<dl><dd><dl><dd><ul><li><b> USB drivers for the modem (21f5:2012, 21f5:2009) should be included in the kernel. We provide pre-compiled images with USB drivers included in the kernel. </b>
+</li></ul>
+</dd></dl>
+</dd></dl>
+<h1> <span class="mw-headline" id="Getting_started"> Getting started </span></h1>
+<h3> <span class="mw-headline" id="Seting_up_the_system">Seting up the system</span></h3>
+<div class="thumb tright"><div class="thumbinner" style="width: 202px;"><a href="http://www.yantrr.com/wiki/File:Sim.jpg" class="image"><img alt="" src="200px-sim.jpg" class="thumbimage" height="267" width="200"></a>  <div class="thumbcaption"><div class="magnify"><a href="http://www.yantrr.com/wiki/File:Sim.jpg" class="internal" title="Enlarge"><img src="magnify-clip.png" alt="" height="11" width="15"></a></div>Sim Card and Antennae</div></div></div>
+<p>1. Place a mini sim in the sim card slot and connect a GSM antenna to the SMA connector.
+</p><p>2. Mount the cape on BBB carefully.
+</p><p>3. Connect the extra usb cable provided with the cape between Host port on Beaglebone Black and miniUSB device port on Cape.
+</p><p>4. To avoid the bug on Beaglebone black with external USB hubs, please connect a USB device (pendrive etc) to extra host port on the cape.
+</p><p>5. Ensuring that the power jumper on the cape is in its place, power up the setup using a 5V DC adapter(min 2.5A) to barrel jack. D2 LED on the cape will glow alongwith LEDs on the Beaglebone black.
+</p>
+<dl><dd><dl><dd><ul><li><b> Note&nbsp;: Before proceeding further ensure D2 LED is glowing properly. Make sure that the adapter being used is of proper rating and has been connected properly. Further check for the presence of the power jumper(#12 on </b><a rel="nofollow" class="external text" href="http://www.yantrr.com/w/images/0/06/Leaflet_for_Vayu_3GHP_Cape.pdf">leaflet</a><b>).</b>
+</li></ul>
+</dd></dl>
+</dd></dl>
+<dl><dd><dl><dd><ul><li><b>Note&nbsp;: Do not try to power up using USB cable alone. Always power up system with a DC adapter. Also while disconnecting power, USB cable should be removed before the DC adapter.</b>
+</li></ul>
+</dd></dl>
+</dd></dl>
+<p><br>
+</p>
+<table style="text-align: center; width: auto; background: white none repeat scroll 0% 0%; border: 0px solid dimgray; color: white;" border="0" cellpadding="20px" cellspacing="5px">
+
+<caption style="background: white none repeat scroll 0% 0%; color: black;"><i><b>Hardware setup</b></i>
+
+</caption>
+  
+<tbody><tr style="text-align: center;">
+<td><div class="floatnone"><a href="http://www.yantrr.com/wiki/File:Check.jpg" class="image"><img alt="Check.jpg" src="224px-check.jpg" class="thumbborder" height="350" width="224"></a></div>
+</td>
+<td><div class="floatnone"><a href="http://www.yantrr.com/wiki/File:Usb.jpg" class="image"><img alt="Usb.jpg" src="219px-usb.jpg" class="thumbborder" height="350" width="219"></a></div>
+</td>
+<td><div class="floatnone"><a href="http://www.yantrr.com/wiki/File:Final.jpg" class="image"><img alt="Final.jpg" src="200px-final.jpg" class="thumbborder" height="350" width="200"></a></div>
+</td></tr>
+
+<tr style="text-align: center;" valign="top">
+<td style="width: 100px; background: white none repeat scroll 0% 0%; color: black;"><b>USB ports and power jumper on the cape</b>
+</td>
+<td style="width: 100px; background: white none repeat scroll 0% 0%; color: black;"><b>USB connections on cape and beaglebone black</b>
+</td>
+<td style="width: 100px; background: white none repeat scroll 0% 0%; color: black;"><b>Final setup before login</b>
+</td></tr></tbody></table>
+<p><br>
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width: 272px;"><a href="http://www.yantrr.com/wiki/File:Login_method.jpg" class="image"><img alt="" src="270px-login_method.jpg" class="thumbimage" height="134" width="270"></a>  <div class="thumbcaption"><div class="magnify"><a href="http://www.yantrr.com/wiki/File:Login_method.jpg" class="internal" title="Enlarge"><img src="magnify-clip.png" alt="" height="11" width="15"></a></div>Ways to log into the cape</div></div></div>
+<p>After establishing that the power on the cape is proper, log in to the BBB plus cape setup using any of the following method&nbsp;:
+</p><p><i>1. Through USB client.</i>
+</p><p><i>2. Through Ethernet cable.</i>
+</p><p><br>
+</p><p><br>
+Now login by using the SSH command. Make sure to login as root only so that all the special priviledges are available.
+</p><p><i>1. Through USB client</i>.
+Use the command&nbsp;:
+</p>
+<pre>ssh -l root 192.168.7.2
+</pre>
+<p>to login onto the system. <i>Default password is root.</i>
+</p><p><i>2. Through ethernet cable.</i>
+</p><p>The ip address of the ethernet cable should be known. Use that with the ssh command to esatblish a connection&nbsp;:
+</p>
+<pre>ssh -l root $address
+</pre>
+<p><i>Default Username and password is root.</i>
+</p><p><i>In Yantrr Precompiled images, IP address is 192.168.1.150</i>
+</p><p>After logging into the BBB plus cape system, export and set the GPIO45 and GPIO60 high by using:
+</p>
+<pre>cd /sys/class/gpio/
+echo 45 &gt; export
+echo 60 &gt; export
+cd gpio45
+echo “high” &gt; direction
+cd ..
+cd gpio60 
+echo “high” &gt; direction
+</pre>
+<dl><dd><dl><dd><ul><li><b>NOTE&nbsp;: In precompiled image, for ease of use these regular commands for use with the GPIOs have been created as functions&nbsp;: <i>pinexp, setout, setin, pinread.</i></b>
+</li></ul>
+</dd></dl>
+</dd></dl>
+<pre>pinexp 45
+pinexp 60
+setout 45 high
+setout 60 high
+</pre>
+<h3> <span class="mw-headline" id="Power_On_Modem">Power On Modem</span></h3>
+<p>The Modem can be powered on by providing a low level pulse at ON/OFF Pin for 3-4s when the module is off. It can be achieved by either using the push button switch S1 or GPIO45.
+</p>
+<pre>cd /sys/class/gpio/
+echo 45 &gt; export
+cd gpio45
+echo "high" &gt; direction
+sleep 4
+echo "low" &gt; direction
+sleep 4
+echo "high" &gt; direction
+</pre>
+<dl><dd><dl><dd><ul><li> After some time, LED D4 should start blinking as to indicate modem has turned on. (<b>Note&nbsp;: In some of 3G modules LED functionality is not enabled by the manufacturer, so the LED D4 might not blink</b>)
+</li></ul>
+</dd></dl>
+</dd></dl>
+<dl><dd><dl><dd><ul><li><b>Note&nbsp;: In cases where a usb device was not connected to extra host port on cape, please connect the provided USB cable after turning on the modem.</b>
+</li></ul>
+</dd></dl>
+</dd></dl>
+<p><br>
+</p>
+<ul><li> <big>Check that modem is visible on the USB bus by:</big>
+</li></ul>
+<pre>lsusb
+Bus 001 Device 002: ID 0424:2412 Standard Microsystems Corp.
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 034: ID 21f5:2012 
+Bus 001 Device 007: ID 046d:0825 Logitech, Inc. Webcam C270
+</pre>
+<dl><dd><ul><li> <b>Assigning driver on the USB modem (Not needed if using pre-built images)</b>
+</li></ul>
+</dd></dl>
+<pre>modprobe usbserial vendor=0x21f5 product=0x2012
+lsusb
+Bus 001 Device 002: ID 0424:2412 Standard Microsystems Corp.
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 034: ID 21f5:2012 
+Bus 001 Device 007: ID 046d:0825 Logitech, Inc. Webcam C270
+</pre>
+<dl><dd><dl><dd><ul><li> <i>System messages (logs) show what happened when modem was turned on and its drivers were assigned after applying modprobe usbserial. For pre-compiled image, log messages are similar.</i> 
+</li></ul>
+</dd></dl>
+</dd></dl>
+<pre>dmesg | grep -i usb
+
+usb 1-1.1: New USB device found, idVendor=21f5, idProduct=2012
+usb 1-1.1: New USB device strings: Mfr=3, Product=2, SerialNumber=4
+usb 1-1.1: Product: StrongRising Technologies
+usb 1-1.1: Manufacturer: Modem
+usb 1-1.1: SerialNumber: 000000000002
+usb 1-1.1: usb_probe_device
+usb 1-1.1: configuration #1 chosen from 1 choice
+usb 1-1.1: adding 1-1.1:1.0 (config #1, interface 0)
+usbserial_generic 1-1.1:1.0: usb_probe_interface
+usbserial_generic 1-1.1:1.0: usb_probe_interface - got id
+usbserial_generic 1-1.1:1.0: The "generic" usb-serial driver is only for testing and one-off prototypes.
+usbserial_generic 1-1.1:1.0: Tell linux-usb@vger.kernel.org to add your device to a proper driver.
+usbserial_generic 1-1.1:1.0: generic converter detected
+usb 1-1.1: generic converter now attached to ttyUSB0
+usb 1-1.1: adding 1-1.1:1.1 (config #1, interface 1)
+usbserial_generic 1-1.1:1.1: usb_probe_interface
+usbserial_generic 1-1.1:1.1: usb_probe_interface - got id
+usbserial_generic 1-1.1:1.1: The "generic" usb-serial driver is only for testing and one-off prototypes.
+usbserial_generic 1-1.1:1.1: Tell linux-usb@vger.kernel.org to add your device to a proper driver.
+usbserial_generic 1-1.1:1.1: generic converter detected
+usb 1-1.1: g'''eneric converter now attached to ttyUSB1'''
+usb 1-1.1: adding 1-1.1:1.2 (config #1, interface 2)
+usbserial_generic 1-1.1:1.2: usb_probe_interface
+usbserial_generic 1-1.1:1.2: usb_probe_interface - got id
+usbserial_generic 1-1.1:1.2: The "generic" usb-serial driver is only for testing and one-off prototypes.
+usbserial_generic 1-1.1:1.2: Tell linux-usb@vger.kernel.org to add your device to a proper driver.
+usbserial_generic 1-1.1:1.2: generic converter detected
+usb 1-1.1: '''generic converter now attached to ttyUSB2'''
+</pre>
+<dl><dd><dl><dd><ul><li> <b>It is recommended to add a proper driver for the modem in kernel. The generic driver is not reliable.</b>
+</li><li><b>Note&nbsp;: If the modem is not visible after these steps or any issues are faced while initializing the modem please contact Yantrr Support (support@yantrr.com) with the above log messages (dmesg | grep –I usb or /var/log/syslog).</b>
+</li></ul>
+</dd></dl>
+</dd></dl>
+<h3> <span class="mw-headline" id="Understanding_the_TTYUSB_ports_on_BBB_capes">Understanding the TTYUSB ports on BBB capes </span></h3>
+<p>Vayu 3G cape enumerate 3 different usb ports 
+</p>
+<pre>/dev/ttyUSB0  /dev/ttyUSB1  /dev/ttyUSB2
+</pre>
+<ul><li> ttyUSB0 is data port &amp; command for modem, <b><big>use this for the WVDIAL conf or PPP</big></b>
+</li><li> ttyUSB1 is the diag port for the Firmware upgrade 
+</li><li> ttyUSB2 is the AT CMD port only.
+</li></ul>
+<dl><dd><dl><dd><ul><li><b>Note&nbsp;: These ttyUSB ports are only created if proper drivers are present or when “modprobe usbserial” command is issued. Pre compiled images with drivers are available on the Yantrr wiki page. </b> 
+</li></ul>
+</dd></dl>
+</dd></dl>
+<dl><dd><dl><dd><ul><li><b>Note&nbsp;: Both ttyUSB0 and ttyUSB2 take the AT commands, but ttyUSB0 port is also a Data communications port so for all intended purposes of issuing AT commands use ttyUSB2 port(PCUI port).</b>
+</li></ul>
+</dd></dl>
+</dd></dl>
+<h3> <span class="mw-headline" id="Power_Off_Modem">Power Off Modem</span></h3>
+<p>The modem can be powered off by providing a low level pulse at ON/OFF pin for 3-4s when the module is On. It can be achieved by either using the 
+</p><p>push button switch S1 or GPIO45.
+</p>
+<pre>cd /sys/class/gpio/
+echo 45 &gt; export
+cd gpio45
+echo "high" &gt; direction
+sleep 4
+echo "low" &gt; direction
+sleep 4
+echo "high" &gt; direction
+</pre>
+<p>Modem can also be turned off by issuing following AT commands on port /dev/ttyUSB2
+</p>
+<pre>AT+ZPWROFF
+</pre>
+<h3> <span class="mw-headline" id="Soft_Resetting_the_Modem">Soft Resetting the Modem</span></h3>
+<p>Steps - 
+</p>
+<ol><li> Power Off the Modem. 
+</li><li> Wait for 1-2s atleast.
+</li><li> Power on the modem.
+</li></ol>
+<p><br>
+</p>
+<h3> <span class="mw-headline" id="Hard_resetting_the_modem">Hard resetting the modem</span></h3>
+<p>There might arise situations where modem does not seem to be responding to any commands issued on AT commands port or it cannot be turned on/off. In such scenarios, issue hard reset to the modem. It can be done by either toggling Switch S2 for atleast 100ms or pulling GPIO60 low for 1s and then setting it high again. 
+</p>
+<pre>cd /sys/class/gpio/
+cd gpio60
+echo "low" &gt; direction
+sleep 1
+echo "high" &gt; direction
+</pre>
+<dl><dd><dl><dd><ul><li><b>Note&nbsp;: Please use hard reset conservatively. Soft reset should be preferred under most conditions.</b>
+</li></ul>
+</dd></dl>
+</dd></dl>
+<h3> <span class="mw-headline" id="VAYU_3GHx-D.28ZTE_Modem.29">VAYU 3GHx-D(ZTE Modem)</span></h3>
+<p>VAYU 3GHx-D capes have ZTE MG3732 modem. Their functionality is essentially the same with some minor changes. For more information on ZTE MG3732 modem and a quick reference guide  <a href="http://www.yantrr.com/wiki/ZTE_modem" title="ZTE modem"> click here</a>
+</p>
+<h3> <span class="mw-headline" id="AT_Commands_Manual">AT Commands Manual</span></h3>
+<p>The AT Command for the 3G Module can be downloaded from here&nbsp;: <a rel="nofollow" class="external text" href="https://www.dropbox.com/s/g6dz78scv5s6638/SCV_WCDMA%20Module%20AT%20Command.pdf">WCDMA AT Commands Manual</a>
+</p>
+<h3> <span class="mw-headline" id="FAQ">FAQ</span></h3>
+<p>FAQ for this section <a href="http://www.yantrr.com/wiki/FAQ_3G_Power_On_Modem" title="FAQ 3G Power On Modem"> click here</a>
+</p>
+<h1> <span class="mw-headline" id="Data_connection_procedure_using_PPP"> Data connection procedure using PPP  </span></h1>
+<p><b>Notes </b> 
+</p>
+<ul><li> All commands are recommended to executed as root user.
+</li><li> USB drivers need to be installed in the kernel for the WCDMA modem to work.
+</li><li> Modem port for Vayu cape is <b>ttyUSB0</b>, use this port for PPPd or Wvdial
+</li><li> AT Commands port for Vayu cape is <b>ttyUSB2</b>
+</li></ul>
+<h2> <span class="mw-headline" id="Wvdial_Configuration_for_Debian_Wheezy"> Wvdial Configuration for Debian Wheezy  </span></h2>
+<p>Download and install Wvdial
+</p>
+<pre>apt-get install wvdial
+</pre>
+<p>Executing the following command usually sets the wvdial.conf file which is used for dialing to GPRS communication, but since here our modem port is on a UART(/dev/ttyO1) and not on /dev/ttyS* or /dev/ttyUSB* ports, we will have to <b>manually configure </b> it.
+</p><p>So, open the wvdial.conf file 
+</p>
+<pre>$ nano /etc/wvdial.conf
+</pre>
+<p>Assuming that you have the USERNAME, PASSWORD and APN available for the service provider of the sim card being used, edit and make wvdial.conf file like this.
+Sample wvdial.conf file for <a href="http://www.yantrr.com/wiki/Sample_wvdial.conf_file#Sample_Wvdial_conf_file_for_AT.26T_3G" title="Sample wvdial.conf file"> <b>AT&amp;T</b></a> and <a rel="nofollow" class="external text" href="http://www.yantrr.com/wiki/Sample_wvdial.conf_file#Sample_Wvdial_conf_file_for_TMOBILE_2G"><b>T-Mobile USA</b></a>
+</p>
+<pre>[Dialer Defaults]
+Modem Type = Analog
+ModemPhone = *99#
+ISDN = 0
+Baud = 115200
+Username = USERNAME
+Password = PASSWORD
+Modem = /dev/ttyUSB0
+Init1 = ATZ
+Init2 = ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0
+Init3 = at+cgdcont=1,"ip","APN"
+Stupid Mode = 1
+</pre>
+<p>Usually for GSM Networks, <i>Modemphone</i> is *99# or *99***1#. Consult your network provider for exact details in case you are facing difficulties. After editing, save and exit, now run wvdial for establishing communication.
+</p>
+<pre>$ wvdial
+</pre>
+<p>If all parameters are correct and everything is working, you should see a success message from wvdial. Once PPP connection has been established, you will see a ppp0 IP.
+</p><p>To check the status of wvdial and find out its IP open a new shell and use either of following:
+</p>
+<ul><li> Run ifconfig and find ppp0 in the list of network connections.
+</li></ul>
+<pre>$ ifconfig
+or
+$ ifconfig ppp0
+</pre>
+<ul><li> Check the network statistics for IP and their gateways and check the Iface column for ppp0
+</li></ul>
+<pre>$ netstat -arn
+* Kernel IP routing table 
+
+Destination Gateway Genmask Flags MSS Window irtt Iface
+0.0.0.0 192.168.1.1 0.0.0.0 UG 0 0 0 eth0
+192.168.1.0 0.0.0.0 255.255.255.0 U 0 0 0 eth0
+192.168.7.0 0.0.0.0 255.255.255.252 U 0 0 0 usb0
+192.200.1.21 0.0.0.0 255.255.255.255 UH 0 0 0 ppp0
+</pre>
+<ul><li> Read the system messages as
+</li></ul>
+<pre>$ cat /var/log/messages
+</pre>
+<p>It lists all the attempts at establishing ppp communication using the modem and IPs for the successful attempt.
+</p><p>Now all that is left is to route the network traffic over the gateway of ppp0 instead of eth0 so that GPRS communication is fully completed.
+</p><p><b>PPP connection has been established over GPRS using 2G/3G module and wvdial.</b>
+</p>
+<h3> <span class="mw-headline" id="System_Status">System Status</span></h3>
+<p>After PPP has been established, the following is the status of the LEDs and GPIOs (For verification)
+</p>
+<ol><li> STATUS LED D3 – It is continuously glowing, once the Modem was turned on.
+</li><li> SIGNAL LED D4 – It is now blinking at 64ms ON/300ms OFF . Earlier when PPP was not established but SIMcard was detected by modem, then it was blinking at 64ms ON/3000ms OFF.
+</li><li> ON/OFF GPIO45 – Its value should be 1. 
+</li><li> RESET GPIO60 – Its value should always be 1.
+</li></ol>
+<h3> <span class="mw-headline" id="FAQ_2">FAQ</span></h3>
+<p>FAQ for this section <a href="http://www.yantrr.com/wiki/FAQ_3G_ppp" title="FAQ 3G ppp" class="mw-redirect"> click here</a>
+</p><p><br>
+</p>
+<h3> <span class="mw-headline" id="Adding_a_DNS"> Adding a DNS  </span></h3>
+<p>nano /etc/resolv.conf add following
+</p>
+<pre>nameserver 8.8.8.8
+nameserver 208.67.222.222
+</pre>
+<p>These are public nameservers, and you are free to use any other if they do not work.
+</p>
+<h1> <span class="mw-headline" id="Using_GPS_module_with_Debian_Wheezy">Using GPS module with Debian Wheezy</span></h1>
+<p>Please refer to <a href="http://www.yantrr.com/wiki/SW_startup_guide_for_Vayu_GPS" title="SW startup guide for Vayu GPS"> Software startup Guide for VAYU GPS</a>
+</p><p><br>
+</p>
+<h1> <span class="mw-headline" id="FAQ_3">FAQ</span></h1>
+<h3> <span class="mw-headline" id="FAQ_1:_Modem_.2F_TTYUSB_of_modem_not_detected"> FAQ 1: Modem / TTYUSB of modem not detected </span></h3>
+<p><b>Solution 1.</b> Remove the power cord from the board and reconnect it while the USB cable is not connected to the cape. Then you should follow the procedure to turn on the 3G module as follows 
+</p>
+<ul><li> set GPIO 45 to high in output mode
+</li><li> Then after 3-4s , either press the switch S1 for 4s and then release it or instead of switch you can also recycle the value of GPIO 45 to low then high at intervals of 4s
+</li><li> and now connect the USB cable.
+</li></ul>
+<pre>
+** Always make sure GPIO 45 is in HIGH state **
+cd /sys/class/gpio/
+echo 45 &gt; export
+cd gpio45
+echo "high" &gt; direction
+sleep 4
+
+**Now enable the modem by toggling GPIO 45 ***
+echo "low" &gt; direction
+sleep 4
+echo "high" &gt; direction
+sleep 4
+
+** To disable the Modem, again toggle GPIO45 **
+
+echo "low" &gt; direction
+sleep 4
+echo "high" &gt; direction
+sleep 4
+</pre>
+<ul><li><b>Solution 2</b>. Due to hotplug issue in AM335x we can do a workaround, connect a usb device like a pendrive on second host port on cape and then just press the switch S1 for 4s after setting GPIO45 high.
+</li></ul>
+<p>This will most certainly work.
+</p>
+<ul><li><b>Solution 3</b>. This solution resets the usbcore of the AM335x and reinitialize it. This has been identified as a last resort workaround, NOTE, this will reset all peripheral on that USB CORE
+</li></ul>
+<p>If the Device is disconnecting as soon as you try to establish connection even when you are sure that 3G module is on, then following should be followed&nbsp;: 
+reset the USB1
+</p>
+<pre>echo 0 &gt; /sys/bus/usb/devices/usb1/bConfigurationValue
+echo 1 &gt; /sys/bus/usb/devices/usb1/bConfigurationValue
+</pre>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 281/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key ideastwo_yantrrwiki-wiki:pcache:idhash:37-0!*!0!!en!2!* and timestamp 20160620030734 -->
+</div>				<!-- /bodycontent -->
+								<!-- printfooter -->
+				<div class="printfooter">
+				Retrieved from "<a href="http://www.yantrr.com/w/index.php?title=SW_startup_guide_for_Vayu_3G&amp;oldid=669">http://www.yantrr.com/w/index.php?title=SW_startup_guide_for_Vayu_3G&amp;oldid=669</a>"				</div>
+				<!-- /printfooter -->
+												<!-- catlinks -->
+				<div id="catlinks" class="catlinks catlinks-allhidden"></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+				<!-- debughtml -->
+								<!-- /debughtml -->
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+		<li id="pt-login"><a href="http://www.yantrr.com/w/index.php?title=Special:UserLogin&amp;returnto=SW+startup+guide+for+Vayu+3G" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>
+	</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li id="ca-nstab-main" class="selected"><span><a href="http://www.yantrr.com/wiki/SW_startup_guide_for_Vayu_3G" title="View the content page [c]" accesskey="c">Page</a></span></li>
+					<li id="ca-talk" class="new"><span><a href="http://www.yantrr.com/w/index.php?title=Talk:SW_startup_guide_for_Vayu_3G&amp;action=edit&amp;redlink=1" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h4>
+		</h4>
+	<h5><span>Variants</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="http://www.yantrr.com/wiki/SW_startup_guide_for_Vayu_3G">Read</a></span></li>
+					<li id="ca-viewsource"><span><a href="http://www.yantrr.com/w/index.php?title=SW_startup_guide_for_Vayu_3G&amp;action=edit" title="This page is protected.
+You can view its source [e]" accesskey="e">View source</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="http://www.yantrr.com/w/index.php?title=SW_startup_guide_for_Vayu_3G&amp;action=history" title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="http://www.yantrr.com/w/index.php" id="searchform">
+				<div>
+			<input name="search" title="Search Yantrr Wiki [f]" accesskey="f" id="searchInput" type="search">			<input name="go" value="Go" title="Go to a page with this exact name if exists" id="searchGoButton" class="searchButton" type="submit">			<input name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton" type="submit">					<input name="title" value="Special:Search" type="hidden">
+		</div>
+	</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url('yantrr.jpg');" href="http://www.yantrr.com/wiki/Main_Page" title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id="p-navigation">
+	<h5>Navigation</h5>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="http://www.yantrr.com/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+			<li id="n-recentchanges"><a href="http://www.yantrr.com/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+			<li id="n-randompage"><a href="http://www.yantrr.com/wiki/Special:Random" title="Load a random page [x]" accesskey="x">Random page</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- Yantrr Links -->
+<div class="portal" id="p-Yantrr_Links">
+	<h5>Yantrr Links</h5>
+	<div class="body">
+		<ul>
+			<li id="n-BeagleBone-M2M-Cape"><a href="http://www.yantrr.com/products/m2m-cape-for-beaglebone/" rel="nofollow">BeagleBone M2M Cape</a></li>
+			<li id="n-Order-Capes"><a href="http://www.yantrr.com/catalogue/" rel="nofollow">Order Capes</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /Yantrr Links -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id="p-tb">
+	<h5>Tools</h5>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="http://www.yantrr.com/wiki/Special:WhatLinksHere/SW_startup_guide_for_Vayu_3G" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+			<li id="t-recentchangeslinked"><a href="http://www.yantrr.com/wiki/Special:RecentChangesLinked/SW_startup_guide_for_Vayu_3G" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+			<li id="t-specialpages"><a href="http://www.yantrr.com/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+			<li><a href="http://www.yantrr.com/w/index.php?title=SW_startup_guide_for_Vayu_3G&amp;printable=yes" rel="alternate">Printable version</a></li>
+			<li id="t-permalink"><a href="http://www.yantrr.com/w/index.php?title=SW_startup_guide_for_Vayu_3G&amp;oldid=669" title="Permanent link to this revision of the page">Permanent link</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 21 July 2015, at 11:17.</li>
+											<li id="footer-info-viewcount">This page has been accessed 13,926 times.</li>
+											<li id="footer-info-copyright">Content is available under <a class="external" href="http://creativecommons.org/licenses/by-sa/4.0/">Attribution-ShareAlike 4.0 International</a> unless otherwise noted.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://www.yantrr.com/wiki/Project:Privacy_policy" title="Project:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://www.yantrr.com/wiki/Project:About" title="Project:About">About Yantrr Wiki</a></li>
+											<li id="footer-places-disclaimer"><a href="http://www.yantrr.com/wiki/Project:General_disclaimer" title="Project:General disclaimer">Disclaimers</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="88x31.png" alt="Attribution-ShareAlike 4.0 International" height="31" width="88"></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="http://www.mediawiki.org/"><img src="poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" height="31" width="88"></a>
+					</li>
+				</ul>
+						<div style="clear: both;"></div>
+		</div>
+		<!-- /footer -->
+		
+
+<!-- Served in 1.630 secs. -->
+	
+
+</body>
+</html>

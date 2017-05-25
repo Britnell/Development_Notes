@@ -1,0 +1,124 @@
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>
+How to make PCBs with the Modela (cad.py)
+</title>
+</head>
+<body>
+<h1>
+How to make circuits on the Modela milling machine (cad.py)
+</h1>
+
+<h2>Starting out</h2>
+<p>
+The modela is a nice little milling machine that cranks out most of the circuits you will need for HTMAA.  To be able to mill on it, you need to have FR1 which is a paper based copper plate.  You cannot mill the fiberglass copper plates on the modela as it will break your bit and the dust it will create is irritant.  The FR1 is more tan than the fiberglass, which is more green, and the FR1 is in stock in 016 in 2x3 inch and 4x6 inch pieces.
+</p>
+
+<h2>Where do you get the circuit</h2>
+<p>
+You can either use a b/w .png with 500 resolution, which can be output by eagle, or a .cad file written for cad.py.  If you are using a .png, the traces should be white and the background should be black.  Do not make the edges of your board too wide, as it will just be more work for the modela to mill those out.  If you need help designing the board, check out <a href="http://fab.cba.mit.edu/content/tools/circuits/pcb_design/pcb_design.html">the PCB design page</a>.
+</p>
+<p>
+<img src="modela0.png">
+</p>
+<p>
+This tutorial is mainly for using your own .pngs.  The .cad files for the hello boards will already have z min and max specified, you do not need to do that.
+</p>
+
+<h2>Fixing your board to the Modela</h2>
+<p>
+First make sure you have a sacrificial board underneath the board that you are milling.  When you drill out the PCB you are making, you might go further than the actual thickness of the board.  Attach the sacrificial board and the board you are milling out to the modela with double sided tape.  Make sure the tape is not overlapping in any way as to not make the base for your board uneven.
+</p>
+<p>
+<img src="modela1.jpg"><br>
+<img src="modela2.jpg">
+</p>
+<h2>Settings</h2>
+<p>
+The z min is how far down the bit is going to travel.  When milling out the traces, this should be set to -0.005.  The z max is how high the bit will go up when traversing between the drilling parts.  This should be set to 0.05, or even 0.1 if you think that your piece might be more curved than usual.  When you are actually milling out the whole board you can set the z min to -0.065.
+</p>
+<p>
+The x and y min you can set depending on where you have placed the board you want to be milling on.  The units are in inches measured from the front left corner of the modela when you are facing it.
+</p>
+
+<h2>Bits</h2>
+<p>
+<b>Picking a bit</b><br>
+To mill out the traces of a circuit board you will generally want to use a 1/64th n-mill, but if you have a particularly rough circuit you might be able to get away with 1/32nd.  Contour your board once with the tool diameter set to either 1/64 or 1/32 and check if all the pieces are milled correctly.  If 1/32 is ok, contour as many times as you want with that, otherwise contour with 1/64th.
+</p>
+<p>
+<b>Putting the bit in</b><br>
+When you put the bit into the modela, you don't have to tighten the set screws all that much.  Snug is fine.  Then lower the bit as close as you can get to your copper plate but without touching it by keeping the down button pressed.  If you only press the button once, the head will move the bit down exactly 7 mills.
+</p>
+<p>
+<img src="modela3.jpg">
+</p>
+<p>
+<img src="modela4.jpg">
+</p>
+<p>
+Once you have the bit as close to the copper, loosen the set screws again and push the bit all the way onto the copper.  You should hear a small tick.  Then tighten the screws again.  You have now set the z origin.
+</p>
+
+<h2>Sending the job for the traces</h2>
+<p>
+<img src="modela5.png">
+</p>
+<p>
+Now that your z origin is set and your path is calculated, you can send the job to the modela.  If for some reason cad.py hung after calculating the toolpath, you can still send the .rml file that cad.py outputted by means of the following shell command: <b>cat /out.rml/ &gt; /dev/ttyS0/</b> where out.rml is the path to your file and /dev/ttyS0 is the port that the modela is hooked up to.
+</p>
+
+<h2>Sending the job to cut out the board</h2>
+<p>
+This is the same as sending a job for the traces, only you have to use the 1/32 bit, contour once and set the z-min to -0.065.
+</p>
+
+<h2>Frequently Asked Questions</h2>
+    <p>
+    <em>From:</em> <a href="http://fab.cba.mit.edu/classes/MIT/863.08/people/agnes/00.html">Agnes Chang's general guides</a>
+    </p>
+
+    <h3>How do I delete a job?</h3>
+
+    <p>
+    First, pause the modela immediately: hit the <i>View</i> button on the machine to send the head back to its resting position.  Hold down the <i>Up</i> and <i>Down</i> buttons simultaneously until the view light is blinking.  This indicates that the modela still has an unfinished job in queue; if you try to shut off the modela now and turn it back on, it will resume the job from where it left off.<br>
+    Then stop the computer from sending the rest of the job: fire up the Terminal and type in the command
+    	</p><pre>ps -aux | grep cat</pre>
+        this will show you the process IDs of all currently-running processes that have "cat" in the name (you can find out more about any Unix command by googling, or through Wikipedia, such as the <font class="code">ps</font> command page <a href="http://en.wikipedia.org/wiki/Ps_(Unix)">here</a>.)  In our case, <font class="code">cat</font> is the process that sends print jobs to the modela.  Look for its process ID, and terminate the modela job by entering
+        <pre>kill xxxx</pre>
+        where xxxx is the process number.  If you are successful in killing the job (which might take a second), the View light on the modela should stop blinking, thereby indicating that the machine is once again ready to receive a job.  If you cannot kill the <font class="code">cat</font> process, just restart the computer.
+    <p></p>
+    <h3>How do I send an .rml file?</h3>
+    <p>
+Vectorizing in cad.py can sometimes take a while, and if you need to restart your job because of mechanical errors such as your piece getting loose or because the power was reset mid-job, you'll want to save time by avoiding setting up twice in cad.py and simply sending the .rml file directly to the modela.  You can do this by firing up the Terminal and using the following to establish the connection to the modela:
+	</p><pre>stty 9600 raw -echo crtscts -F /dev/ttyS0</pre>
+    Use the following to move the bit head so you can set the z-depth (the modela should be in View mode):
+    <pre>move [xpos] [ypos]</pre>
+    and finally use the following command to send your file
+    <pre>cat [filname].rml &gt; /dev/ttyS0</pre>
+    <p></p>
+    <h3>How do I secure my piece?</h3>
+    There are tricks to making sure that the material you are milling into never comes loose during the job:
+    <ol>
+    <li>make sure all surfaces are clean of dust and residue (vacuum it, wipe it down, etc.)</li>
+    <li>double tape as much surface area as possible</li>
+    <li>avoid putting too many finger prints in the tape</li>
+    <li>for extra heavy pieces, such as wax, I found it helpful to tape both the modela board and the bottom of the wax.  Because tape-to-tape bond is obviously stronger, you can really press the tape into the surfaces and not worry as much about fingerprints.
+    </li><li>when cutting wax or other thick material, make sure that you aren't asking the modela to cut deeper than the bit head can go, otherwise your bit will get so deeply embedded that the head will attempt to move your whole piece along with the bit.  Your bit is only a certain length, and depending on how you secured your bit, the modela might not be able to cut deeper than 1/2".
+    </li><li>to save time trying to pry off your now well-secured piece, leaving a piece of the tape extending out beyond your piece will enable you to use that extended tape end as a hand-hold to pull the piece up after the job.</li>
+    </ol>
+    <p></p>
+    <h3>The modela is not responding!?</h3>
+    <p>
+    In our class we had two instances of this and the problem+solutions were:
+    </p><ol>
+    <li>shim for the cover interlock switch: normally the modela has a clear safety cover over the entire cutting bed, and the modela won't run without the cover in place.  For accessibility the FabLab modelas all don't have a cover, we trick the modela into thinking that it is there by wedging a shim into the switch that the modela uses to detect whether or not the safety cover is in place.  Sometimes this comes loose and the modela will refuse to do what it's told until the shim is properly in place. </li>
+    <li>invalid file name: make sure your file name obeys <a href="http://communication.ucsd.edu/bjones/Unix.docs/unix_filenames.html">unix filename conventions and constraints.</a></li>
+    </ol>
+    <p></p>
+
+
+</body>
+</html>

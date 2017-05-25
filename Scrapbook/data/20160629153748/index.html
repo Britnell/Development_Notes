@@ -1,0 +1,465 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en-us" xml:lang="en-us" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+ <title>  Manual &lt; DULG &lt; DENX</title>
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="http://www.denx.de/wiki/view/DULG/WebRss?skin=rss&amp;contenttype=text/xml">
+ 
+ 
+
+
+
+ 
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+    <!-- For non-visual user agents: -->
+      <div id="top"><a href="#main-copy" class="doNotDisplay doNotPrint">Skip to main content.</a></div>
+<a name="PageTop"></a>
+<!--
+  TODO:  
+-->
+    <div id="header">
+      <div class="superHeader">
+        <div class="left">
+     <span class="doNotDisplay">Navigation:</span>
+<a class="twikiLink" href="http://www.denx.de/wiki/Main/WebHome">DENX</a>
+&gt; <a class="twikiLink" href="http://www.denx.de/wiki/DULG/WebHome">DULG</a>
+&gt; <span class="highlight"><a class="twikiLink" href="http://www.denx.de/wiki/DULG/Manual">Manual</a></span>   
+        </div>
+        <div class="right">
+            <span class="doNotDisplay">Translations:</span> 
+  <a href="http://www.denx.de/wiki/edit/DULG/Manual?t=1467194623"><b>Edit</b></a>
+   |  <a href="http://www.denx.de/wiki/attach/DULG/Manual">Attach</a>
+   |  <a href="http://www.denx.de/wiki/view/DULG/Manual?raw=on">Raw</a>
+   |  <a href="http://www.denx.de/wiki/search/DULG/SearchResult?scope=text&amp;regex=on&amp;excludetopic=Manual&amp;search=Manual%5B%5EA-Za-z0-9%5D">Ref-By</a>
+   |  <a href="http://www.denx.de/wiki/view/DULG/Manual?skin=print">Printable</a>
+   |  <a href="http://www.denx.de/wiki/oops/DULG/Manual?template=oopsmore&amp;param1=1.3&amp;param2=1.3">More</a> 
+        </div>
+      </div>
+      <div class="midHeader">
+        <img class="logoImage" alt="Denx.de" src="denx-full-header.gif">
+        <h1>DULG</h1>
+      </div>
+      <div class="subHeader">
+   <span class="doNotDisplay">Sections of this site:</span> <a href="http://www.denx.de/en/News/WebHome" target="_top">DENX Home</a>  |  <a class="twikiLink" href="http://www.denx.de/wiki/DULG/WebHome">DULG</a>  |  <a class="twikiLink" href="http://www.denx.de/wiki/ELDK-5/WebHome">ELDK-5</a>  |  <a class="twikiLink" href="http://www.denx.de/wiki/Know/WebHome">Know</a>  |  <a class="twikiLink" href="http://www.denx.de/wiki/Training2/WebHome">Training</a>  |  <a class="twikiLink" href="http://www.denx.de/wiki/U-Boot/WebHome">U-Boot</a>  |  <a class="twikiLink" href="http://www.denx.de/wiki/U-Bootdoc/WebHome">U-Bootdoc</a>
+      </div>
+    </div>
+          <div id="side-bar">
+      <div id="side-nav">
+        <p><a href="http://endsoftpatents.org/innovating-without-patents"><img style="border-width: 0px;" src="esp_chicklet.png"></a></p>
+        <p class="sideBarTitle">Topics</p>
+        <a class="twikiLink" href="http://www.denx.de/wiki/DULG/WebHome">DULG Home</a> <a class="twikiLink" href="http://www.denx.de/wiki/DULG/BoardSelect">BoardSelect</a>  <a class="twikiLink" href="http://www.denx.de/wiki/DULG/Manual">Manual</a>  <a class="twikiLink" href="http://www.denx.de/wiki/DULG/Faq">FAQ</a>   <a class="twikiLink" href="http://www.denx.de/wiki/DULG/AppNotes">Application Notes</a>  <a class="twikiLink" href="http://www.denx.de/wiki/DULG/WebChanges">Changes</a>  <a class="twikiLink" href="http://www.denx.de/wiki/DULG/WebIndex">Index</a>
+   <form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input name="cmd" value="_s-xclick" type="hidden"><input name="hosted_button_id" value="4457048" type="hidden"><input src="btn_donatecc_lg.gif" name="submit" alt="PayPal - The safer, easier way to pay online!" border="0" type="image"><img alt="" src="pixel.gif" border="0" height="1" width="1"></form>
+      </div><div>
+        <a class="twikiLink" href="http://www.denx.de/wiki/DULG/WebTopicList">List of pages in DULG</a>
+        <a class="twikiLink" href="http://www.denx.de/wiki/DULG/WebSearch">Search</a>
+      </div>
+<!-- buggy      &gt;div&amp;
+        <font size="-1" class="twikiAlert" color="#FF0000">TOC: No TOC in "DULG.Manual"</font>
+        <DIV>
+<UL><LI><A href="Manual">1.  Abstract</A></LI>
+</UL></DIV>
+      </div> -->
+     <div style="text-align: center;">
+  <img src="linux-logo.gif" alt="">
+</div>
+    </div>
+  <hr class="doNotDisplay">
+<p>
+  </p><div id="main-copy"><h1><a name="The_DENX_U_Boot_and_Linux_Guide"> </a><a name="The_DENX_U_Boot_and_Linux_Guide_"> </a> The DENX U-Boot and Linux Guide (DULG) for canyonlands </h1>
+<p>
+</p><hr>
+<strong>Table of contents</strong>:
+<div>
+<ul><li><a href="http://www.denx.de/wiki/view/DULG/Manual">1.  Abstract</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/Introduction">2. Introduction</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/Introduction#Section_2.1.">2.1. Copyright</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/Introduction#Section_2.2.">2.2. Disclaimer</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/Introduction#Section_2.3.">2.3. Availability</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/Introduction#Section_2.4.">2.4. Credits</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/Introduction#Section_2.5.">2.5. Translations</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/Introduction#Section_2.6.">2.6. Feedback</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/Introduction#Section_2.7.">2.7. Conventions</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDK">3. Embedded Linux Development Kit</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKAvailability">3.1. ELDK Availability</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKGettingHelp">3.2. ELDK Getting Help</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKSupportedHostSystems">3.3. Supported Host Systems</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKSupportedTargetArchitectures">3.4. Supported Target Architectures</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKInstallation">3.5. Installation</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKProductPackaging">3.5.1. Product Packaging</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKDownload">3.5.2. Downloading the ELDK</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKInitialInstallation">3.5.3. Initial Installation</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKIndividualPackages">3.5.4. Installation and Removal of Individual Packages</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKRemoval">3.5.5. Removal of the Entire Installation</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKUsage">3.6. Working with ELDK</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKUsage#Section_3.6.1.">3.6.1. Switching Between Multiple Installations</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKMountingTargetComponentsViaNFS">3.7. Mounting Target Components via NFS</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKRebuildingComponents">3.8. Rebuilding ELDK Components</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKRebuildingComponents#Section_3.8.1.">3.8.1. ELDK Source Distribution</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKRebuildingComponents#Section_3.8.2.">3.8.2. Rebuilding Target Packages</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKRebuildingComponents#Section_3.8.3.">3.8.3. Rebuilding ELDT Packages</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKPackages">3.9. ELDK Packages</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKPackages#Section_3.9.1.">3.9.1. List of ELDT Packages</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKPackages#Section_3.9.2.">3.9.2. List of Target Packages</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKRebuilding">3.10. Rebuilding the ELDK from Scratch</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKRebuilding#Section_3.10.1.">3.10.1. ELDK Build Process Overview</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKRebuilding#Section_3.10.2.">3.10.2. Setting Up ELDK Build Environment</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKRebuilding#Section_3.10.3.">3.10.3. build.sh Usage</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKRebuilding#Section_3.10.4.">3.10.4. Format of the cpkgs.lst and  tpkgs.lst Files</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKSolarisNotes">3.11. Notes for Solaris 2.x Host Environment</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/SystemSetup">4. System Setup</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/SystemSetup#Section_4.1.">4.1. Serial Console Access</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/SystemSetup#Section_4.2.">4.2. Configuring the "cu" command</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/SystemSetup#Section_4.3.">4.3. Configuring the "kermit" command</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/SystemSetup#Section_4.4.">4.4. Using the "minicom" program</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/SystemSetup#Section_4.5.">4.5. Permission Denied Problems</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/SystemSetup#Section_4.6.">4.6. Configuration of a TFTP Server</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/SystemSetup#Section_4.7.">4.7. Configuration of a BOOTP / DHCP Server</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/SystemSetup#Section_4.8.">4.8. Configuring a NFS Server</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBoot">5. Das U-Boot</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootVersions">5.1. Current Versions</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootSources">5.2. Unpacking the Source Code</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootConfiguration">5.3. Configuration</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootInstall">5.4. Installation</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootInstallBefore">5.4.1. Before You Begin</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootInstallBefore#Section_5.4.1.1.">5.4.1.1. Installation Requirements</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootInstallBefore#Section_5.4.1.2.">5.4.1.2. Board Identification Data</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootInstallUsingBDM">5.4.2. Installation Using a BDM/JTAG Debugger</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootInstallUsingUBoot">5.4.3. Installation using U-Boot</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootInstallTools">5.5. Tool Installation</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootInit">5.6. Initialization</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootFirstSteps">5.7. Initial Steps</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootPowerOn">5.8. The First Power-On</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCommandLineInterface">5.9. U-Boot Command Line Interface</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupInfo">5.9.1. Information Commands</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupInfo#Section_5.9.1.1.">5.9.1.1. bdinfo  - print Board Info structure</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupInfo#Section_5.9.1.2.">5.9.1.2. coninfo - print console devices and informations</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupInfo#Section_5.9.1.3.">5.9.1.3. flinfo  - print FLASH memory information</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupInfo#Section_5.9.1.4.">5.9.1.4. iminfo  - print header information for application image</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupInfo#Section_5.9.1.5.">5.9.1.5. help	 - print online help</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMemory">5.9.2. Memory Commands</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMemory#Section_5.9.2.1.">5.9.2.1. base	 - print or set address offset</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMemory#Section_5.9.2.2.">5.9.2.2. crc32	- checksum calculation</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMemory#Section_5.9.2.3.">5.9.2.3. cmp	  - memory compare</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMemory#Section_5.9.2.4.">5.9.2.4. cp		- memory copy</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMemory#Section_5.9.2.5.">5.9.2.5. md		- memory display</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMemory#Section_5.9.2.6.">5.9.2.6. mm		- memory modify (auto-incrementing)</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMemory#Section_5.9.2.7.">5.9.2.7. mtest	- simple RAM test</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMemory#Section_5.9.2.8.">5.9.2.8. mw		- memory write (fill)</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMemory#Section_5.9.2.9.">5.9.2.9. nm		- memory modify (constant address)</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMemory#Section_5.9.2.10.">5.9.2.10. loop	 - infinite loop on address range</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupFlash">5.9.3. Flash Memory Commands</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupFlash#Section_5.9.3.1.">5.9.3.1. cp		- memory copy</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupFlash#Section_5.9.3.2.">5.9.3.2. flinfo  - print FLASH memory information</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupFlash#Section_5.9.3.3.">5.9.3.3. erase	- erase FLASH memory</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupFlash#Section_5.9.3.4.">5.9.3.4. protect - enable or disable FLASH write protection</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupFlash#Section_5.9.3.5.">5.9.3.5. mtdparts - define a Linux compatible MTD partition scheme</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupExec">5.9.4. Execution Control Commands</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupExec#Section_5.9.4.1.">5.9.4.1. source - run script from memory</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupExec#Section_5.9.4.2.">5.9.4.2. bootm	- boot application image from memory</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupExec#Section_5.9.4.3.">5.9.4.3. go		- start application at address 'addr'</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupDownload">5.9.5. Download Commands</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupDownload#Section_5.9.5.1.">5.9.5.1. bootp	- boot image via network using BOOTP/TFTP protocol</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupDownload#Section_5.9.5.2.">5.9.5.2. dhcp	 - invoke DHCP client to obtain IP/boot params</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupDownload#Section_5.9.5.3.">5.9.5.3. loadb	- load binary file over serial line (kermit mode)</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupDownload#Section_5.9.5.4.">5.9.5.4. loads	- load S-Record file over serial line</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupDownload#Section_5.9.5.5.">5.9.5.5. rarpboot- boot image via network using RARP/TFTP protocol</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupDownload#Section_5.9.5.6.">5.9.5.6. tftpboot- boot image via network using TFTP protocol</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupEnvironment">5.9.6. Environment Variables Commands</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupEnvironment#Section_5.9.6.1.">5.9.6.1. printenv- print environment variables</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupEnvironment#Section_5.9.6.2.">5.9.6.2. saveenv - save environment variables to persistent storage</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupEnvironment#Section_5.9.6.3.">5.9.6.3. setenv  - set environment variables</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupEnvironment#Section_5.9.6.4.">5.9.6.4. run	  - run commands in an environment variable</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupEnvironment#Section_5.9.6.5.">5.9.6.5. bootd	- boot default, i.e., run 'bootcmd'</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdFDT">5.9.7. Flattened Device Tree support</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdFDT#Section_5.9.7.1.">5.9.7.1. fdt addr - select FDT to work on</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdFDT#Section_5.9.7.2.">5.9.7.2. fdt list - print one level</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdFDT#Section_5.9.7.3.">5.9.7.3. fdt print - recursive print</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdFDT#Section_5.9.7.4.">5.9.7.4. fdt mknode - create new nodes</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdFDT#Section_5.9.7.5.">5.9.7.5. fdt set - set node properties</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdFDT#Section_5.9.7.6.">5.9.7.6. fdt rm - remove nodes or properties</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdFDT#Section_5.9.7.7.">5.9.7.7. fdt move - move FDT blob to new address</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdFDT#Section_5.9.7.8.">5.9.7.8. fdt chosen - fixup dynamic info</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupSpecial">5.9.8. Special Commands</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupSpecial#Section_5.9.8.1.">5.9.8.1. i2c	  - I2C sub-system</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootStorageDevices">5.9.9. Storage devices</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMisc">5.9.10. Miscellaneous Commands</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMisc#Section_5.9.10.1.">5.9.10.1. echo	 - echo args to console</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMisc#Section_5.9.10.2.">5.9.10.2. reset	- Perform RESET of the CPU</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMisc#Section_5.9.10.3.">5.9.10.3. sleep	- delay execution for some time</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMisc#Section_5.9.10.4.">5.9.10.4. version - print monitor version</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCmdGroupMisc#Section_5.9.10.5.">5.9.10.5. ? - alias for 'help'</a></li>
+</ul></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootEnvVariables">5.10. U-Boot Environment Variables</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootScripts">5.11. U-Boot Scripting Capabilities</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootStandalone">5.12. U-Boot Standalone Applications</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootStandalone#Section_5.12.1.">5.12.1. "Hello World" Demo</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootStandalone#Section_5.12.2.">5.12.2. Timer Demo</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootStandalone#Section_5.12.3.">5.12.3. Processor cache considerations</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootStandalone#Section_5.12.4.">5.12.4. Running on core other than core 0</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootImages">5.13. U-Boot Image Formats</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootAdvancedFeatures">5.14. U-Boot Advanced Features</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootBootCountLimit">5.14.1. Boot Count Limit</a></li>
+</ul></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxConfiguration">6. Embedded Linux Configuration</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxConfiguration#Section_6.1.">6.1. Download and Unpack the Linux Kernel Sources</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxConfiguration#Section_6.2.">6.2. Kernel Configuration and Compilation</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxConfiguration#Section_6.3.">6.3. Installation</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/BootingEmbeddedLinux">7. Booting Embedded Linux</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxBootIntro">7.1. Introduction</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxFDTBlob">7.2. Flattened Device Tree Blob</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxKernelArgs">7.3. Passing Kernel Arguments</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxBootArgs">7.4. Boot Arguments Unleashed</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxNfsRoot">7.5. Networked Operation with Root Filesystem over NFS</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxNfsRoot#Section_7.5.1.">7.5.1. Bootlog of tftp'd Linux kernel with Root Filesystem over NFS</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxInFlash">7.6. Boot from Flash Memory</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxRamdiskRoot">7.7. Standalone Operation with Ramdisk Image</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/BuildingAndUsingModules">8. Building and Using Modules</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/AdvancedTopics">9. Advanced Topics</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/FlashFilesystems">9.1. Flash Filesystems</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/FlashFilesystemsMTD">9.1.1. Memory Technology Devices</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/FlashFilesystemsJFFS">9.1.2. Journalling Flash File System</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/FlashFilesystemsJFFS2">9.1.3. Second Version of JFFS</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/FlashFilesystemsCRAMFS">9.1.4. Compressed ROM Filesystem</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/FilesystemTMPFS">9.2. The TMPFS Virtual Memory Filesystem</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/FilesystemTMPFS#Section_9.2.1.">9.2.1. Mount Parameters</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/FilesystemTMPFS#Section_9.2.2.">9.2.2. Kernel Support for tmpfs</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/FilesystemTMPFS#Section_9.2.3.">9.2.3. Usage of tmpfs in Embedded Systems</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/AddingSwap">9.3. Adding Swap Space</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxSplashScreen">9.4. Splash Screen Support in Linux</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/RootFileSystemDesignAndBuilding">9.5. Root File System: Design and Building</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/RootFileSystemOnARamdisk">9.5.1. Root File System on a Ramdisk</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/RootFileSystemOnAJFFS2FileSystem">9.5.2. Root File System on a JFFS2 File System</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/RootFileSystemOnACramfsFileSystem">9.5.3. Root File System on a cramfs File System</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/RootFileSystemOnAReadOnlyExt2FileSystem">9.5.4. Root File System on a Read-Only ext2 File System</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/RootFileSystemOnAFlashCard">9.5.5. Root File System on a Flash Card</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/RootFileSystemInAReadOnlyFile">9.5.6. Root File System in a Read-Only File in a FAT File System</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/RootFileSystemSelection">9.6. Root File System Selection</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/OverlayFileSystems">9.7. Overlay File Systems</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/PersistentRAMFileSystem">9.8. The Persistent RAM File system (PRAMFS)</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/PersistentRAMFileSystem#Section_9.8.1.">9.8.1. Mount Parameters</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/PersistentRAMFileSystem#Section_9.8.2.">9.8.2. Example</a></li>
+</ul></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/Debugging">10. Debugging</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/DebuggingUBoot">10.1. Debugging of U-Boot</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/DebuggingUBoot#Section_10.1.1.">10.1.1. Debugging of U-Boot Before Relocation</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/DebuggingUBoot#Section_10.1.2.">10.1.2. Debugging of U-Boot After Relocation</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/DebuggingLinuxKernel">10.2. Linux Kernel Debugging</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/DebuggingLinuxKernel#Section_10.2.1.">10.2.1. Linux Kernel and Statically Linked Device Drivers</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/DebuggingLinuxKernel#Section_10.2.2.">10.2.2. Dynamically Loaded Device Drivers (Modules)</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/DebuggingLinuxKernel#Section_10.2.3.">10.2.3. GDB Macros to Simplify Module Loading</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/GDBScripts">10.3. GDB Startup File and Utility Scripts</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/DebuggingTricks">10.4. Tips and Tricks</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/DebuggingApplication">10.5. Application Debugging</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/DebuggingApplication#Section_10.5.1.">10.5.1. Local Debugging</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/DebuggingApplication#Section_10.5.2.">10.5.2. Remote Debugging</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/DebuggingGUI">10.6. Debugging with Graphical User Interfaces</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/DENXSELF">11. Simple Embedded Linux Framework</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformation">12. Books, Mailing Lists, Links, etc.</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationApplicationNotes">12.1. Application Notes</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationFurtherReading">12.2. Further Reading</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationFurtherReading#Section_12.2.1.">12.2.1. Upstreaming</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationFurtherReading#Section_12.2.2.">12.2.2. License Issues</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationFurtherReading#Section_12.2.3.">12.2.3. Linux kernel</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationFurtherReading#Section_12.2.4.">12.2.4. General Linux / Unix programming</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationFurtherReading#Section_12.2.5.">12.2.5. Network Programming</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationFurtherReading#Section_12.2.6.">12.2.6. C++ programming</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationFurtherReading#Section_12.2.7.">12.2.7. Java programming</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationFurtherReading#Section_12.2.8.">12.2.8. Internationalization And Character Sets</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationFurtherReading#Section_12.2.9.">12.2.9. ARM Architecture Programming</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationFurtherReading#Section_12.2.10.">12.2.10. Power Architecture® Programming</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationFurtherReading#Section_12.2.11.">12.2.11. Embedded Topics</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationMailingLists">12.3. Mailing Lists</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationLinks">12.4. Links</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MoreInformationTools">12.5. Tools</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/Appendix">13. Appendix</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/Appendix#Section_13.1.">13.1. Flat Device Tree</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/Appendix#Section_13.2.">13.2. Flat Device Tree</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/Appendix#Section_13.3.">13.3. BDI2000 Configuration file</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/Faq">14. FAQ - Frequently Asked Questions</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/FaqELDK">14.1. ELDK</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKInstallationUnderFreeBSD">14.1.1. ELDK Installation under FreeBSD</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKInstallationHangs">14.1.2. ELDK Installation Hangs</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKGvfsPermissionDenied">14.1.3. .gvfs: Permission Denied</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKInstallationOnLocalHarddisk">14.1.4. Installation on Local Harddisk</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKSystemIncludeFilesMissing">14.1.5. System Include Files Missing</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKPatchCommandNotFound">14.1.6. patch: command not found</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKIncludeFilesMissing">14.1.7. ELDK Include Files Missing</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKUsageIn64BitEnvironment">14.1.8. Using the ELDK on a 64 bit platform</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKGDBProblemsOnE500">14.1.9. GDB Problems with BDI2000/BDI3000 on e500 Cores</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKCheckFloatingPointSupport">14.1.10. How can I check if Floating Point support is working?</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKInstallationAborts">14.1.11. ELDK 2.x Installation Aborts</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ELDKEnableSSHAccess">14.1.12. Enable SSH Access</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/FaqUBoot">14.2. U-Boot</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/CanUBootBeConfiguredSuchThatItCanBeStartedInRAM">14.2.1. Can U-Boot be configured such that it can be started in RAM?</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/RelocationCannotBeDoneWhenUsingMrelocatable">14.2.2. Relocation cannot be done when using -mrelocatable</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/SourceObjectHasEABIVersion4ButTargetHasEABIVersion0">14.2.3. Source object has EABI version 4, but target has EABI version 0</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootCrashAfterRelocation">14.2.4. U-Boot crashes after relocation to RAM</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/WarningBadCRCUsingDefaultEnvironment">14.2.5. Warning - bad CRC, using default environment</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/NetNoEthernetFound">14.2.6. Net: No ethernet found</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/WrongDebugSymbolsAfterRelocation">14.2.7. Wrong debug symbols after relocation</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/DecodingUBootCrashDumps">14.2.8. Decoding U-Boot Crash Dumps</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/PortingProblemCannotMoveLocationCounterBackwards">14.2.9. Porting Problem: cannot move location counter backwards</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UBootDoesntRunAfterUpgradingMyCompiler">14.2.10. U-Boot Doesn't Run after Upgrading my Compiler</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/HowCanIReduceTheImageSize">14.2.11. How Can I Reduce The Image Size?</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ErasingFlashFromUBootFails">14.2.12. Erasing Flash Fails</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/EthernetDoesNotWork">14.2.13. Ethernet Does Not Work</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/WhereCanIGetAValidMACAddress">14.2.14. Where Can I Get a Valid MAC Address from?</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/TFTPTimeout">14.2.15. Why do I get TFTP timeouts?</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/EthernetIsUnreliable">14.2.16. Why is my Ethernet operation not reliable?</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/CommandLineParsing">14.2.17. How the Command Line Parsing Works</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/CommandLineParsing#Section_14.2.17.1.">14.2.17.1. Old, simple command line parser</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/CommandLineParsing#Section_14.2.17.2.">14.2.17.2. Hush shell</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/CommandLineParsing#Section_14.2.17.3.">14.2.17.3. Hush shell scripts</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/CommandLineParsing#Section_14.2.17.4.">14.2.17.4. General rules</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/HowCanILoadAndUncompressACompressedImage">14.2.18. How can I load and uncompress a compressed image</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/HowCanICreateAnUImageFromAELFFile">14.2.19. How can I create an uImage from a ELF file</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MyStandaloneProgramDoesNotWork">14.2.20. My standalone program does not work</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxHangsAfterUncompressingKernel">14.2.21. Linux hangs after uncompressing the kernel</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/HowCanIImplementAutomaticSoftwareUpdates">14.2.22. How can I implement automatic software updates?</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/FaqLinux">14.3. Linux</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxCrashesRandomly">14.3.1. Linux crashes randomly</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxUncompressingError">14.3.2. Linux crashes when uncompressing the kernel</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxPostMortemAnalysis">14.3.3. Linux Post Mortem Analysis</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxKernelRegisterUsage">14.3.4. Linux kernel register usage</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxKernelIgnoresMyBootargs">14.3.5. Linux Kernel Ignores my bootargs</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/CannotConfigureRootFilesystemOverNFS">14.3.6. Cannot configure Root Filesystem over NFS</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxKernelPanicsBecauseInitProessDies">14.3.7. Linux Kernel Panics because "init" process dies</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UnableToOpenAnInitialConsole">14.3.8. Unable to open an initial console</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/SystemHangsWhenEnteringUserSpace">14.3.9. System hangs when entering User Space (ARM)</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/MountingAFilesystemOverNFSHangsForever">14.3.10. Mounting a Filesystem over NFS hangs forever</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/EthernetDoesNotWorkInLinux">14.3.11. Ethernet does not work in Linux</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LoopbackInterfaceDoesNotWork">14.3.12. Loopback interface does not work</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/NoConsoleOutput">14.3.13. Linux kernel messages are not printed on the console</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/NoInputUsingFramebuffer">14.3.14. Linux ignores input when using the framebuffer driver</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/SwitchOffScreenSaverAndBlinkingCursor">14.3.15. How to switch off the screen saver and the blinking cursor?</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/BogoMIPSValueTooLow">14.3.16. BogoMIPS Value too low</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/KernelCrashesWithRamdisk">14.3.17. Linux Kernel crashes when using a ramdisk image</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/RamdiskGreaterThan4MBCausesProblems">14.3.18. Ramdisk Greater than 4 MB Causes Problems</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/CombiningKernelAndRamdisk">14.3.19. Combining a Kernel and a Ramdisk into a Multi-File Image</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/AddingFilesToRamdiskIsNonPersistent">14.3.20. Adding Files to Ramdisk is Non Persistent</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/KernelConfigurationForPCMCIA">14.3.21. Kernel Configuration for PCMCIA</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ConfigureLinuxForPCMCIACardsUsingTheCardServicesPackage">14.3.22. Configure Linux for PCMCIA Cards using the Card Services package</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ConfigureLinuxForPCMCIACardsWithoutTheCardServicesPackage">14.3.23. Configure Linux for PCMCIA Cards without the Card Services package</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/ConfigureLinuxForPCMCIACardsWithoutTheCardServicesPackage#Section_14.3.23.1.">14.3.23.1. Using a MacOS Partition Table</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ConfigureLinuxForPCMCIACardsWithoutTheCardServicesPackage#Section_14.3.23.2.">14.3.23.2. Using a MS-DOS Partition Table</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/BootTimeConfigurationOfMTDPartitions">14.3.24. Boot-Time Configuration of MTD Partitions</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UseNTPToSynchronizeSystemTimeAgainstRTC">14.3.25. Use NTP to synchronize system time against RTC</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ConfigureLinuxForXIP">14.3.26. Configure Linux for XIP (Execution In Place)</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/ConfigureLinuxForXIP#Section_14.3.26.1.">14.3.26.1. XIP Kernel</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ConfigureLinuxForXIP#Section_14.3.26.2.">14.3.26.2. Cramfs Filesystem</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ConfigureLinuxForXIP#Section_14.3.26.3.">14.3.26.3. Hints and Notes</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/ConfigureLinuxForXIP#Section_14.3.26.4.">14.3.26.4. Space requirements and RAM saving, an example</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UseSCCUARTWithHardwareHandshake">14.3.27. Use SCC UART with Hardware Handshake</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/HowCanIAccessUBootEnvironmentVariablesInLinux">14.3.28. How can I access U-Boot environment variables in Linux?</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/TheAppWebServerHangsORDevRandomHangs">14.3.29. The =appWeb= server hangs *OR* /dev/random hangs</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/SwappingOverNFS">14.3.30. Swapping over NFS</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LinuxRootFilesystemUsingNFSVersion3">14.3.31. Using NFSv3 for NFS Root Filesystem</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/UsingAndConfiguringTheSocketCANDriver">14.3.32. Using and Configuring the SocketCAN Driver</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/TelnetServerNotWorking">14.3.33. Telnet / SSH (dropbear) server not working</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/FaqSELF">14.4. Self</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/HowToAddFiles">14.4.1. How to Add Files to a SELF Ramdisk</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/HowToIncreaseSizeOfRamdisk">14.4.2. How to Increase the Size of the Ramdisk</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/FaqRTAI">14.5. RTAI</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/ConflictsWithAsmClobberList">14.5.1. Conflicts with asm clobber list</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/FaqBDI2000">14.6. BDI2000</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/WhereCanIFindBDI2000ConfigurationFiles">14.6.1. Where can I find BDI2000 Configuration Files?</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/HowToDebugLinuxExceptions">14.6.2. How to Debug Linux Exceptions</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/HowToSingleStepThroughRFIInstruction">14.6.3. How to single step through "RFI" instruction</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/SettingABreakpointDoesNotWork">14.6.4. Setting a breakpoint doesn't work</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/RemoteGPacketReplyIsTooLong">14.6.5. Remote 'g' packet reply is too long</a></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/FaqLITE5200">14.7. Motorola LITE5200 Board</a><ul>
+<li><a href="http://www.denx.de/wiki/view/DULG/LITE5200InstallationHowto">14.7.1. LITE5200 Installation Howto</a></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/LITE5200USBDoesNotWork">14.7.2. USB does not work on Lite5200 board</a></li>
+</ul></li>
+</ul></li>
+<li><a href="http://www.denx.de/wiki/view/DULG/Glossary">15. Glossary</a></li>
+</ul></div>
+<p>
+</p><h1><a name="Section_1.">1.  Abstract</a></h1>
+<p>
+This is the DENX U-Boot and Linux Guide to Embedded <a class="twikiLink" href="http://www.denx.de/wiki/DULG/PowerPC">PowerPC</a>, ARM and MIPS
+Systems.
+</p><p>
+The document describes how to configure, build and use the
+firmware <strong>Das U-Boot</strong> (typically abbreviated as just "U-Boot") and the operating system
+<strong>Linux</strong> for Embedded <a class="twikiLink" href="http://www.denx.de/wiki/DULG/PowerPC">PowerPC</a>, ARM and MIPS Systems.
+</p><p>
+The focus of this version of the document is on canyonlands boards.
+</p><p>
+This document was generated at 29 Jun 2016 - 10:03. </p><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td align="left" valign="top" width="33%"></td><td>
+</td><td align="center" valign="top" width="33%"><a href="http://www.denx.de/wiki/view/DULG/Manual">1.  Abstract</a></td><td>
+</td><td align="right" valign="top" width="33%"><a href="http://www.denx.de/wiki/view/DULG/Introduction">2. Introduction</a></td><td></td></tr><tr>
+</tr><tr><td align="left" valign="top" width="33%"></td><td>
+</td><td align="center" valign="top" width="33%">Home</td><td>
+</td><td align="right" valign="top" width="33%">Next</td><td></td></tr><tr></tr></tbody></table></div>
+  <hr class="doNotDisplay">
+<p>
+</p><p>
+    </p><div id="footer">
+      <div class="left">
+        <div class="TWikiFooterNote">
+   Revision r1.3 - 30 Nov 2005 - 17:08 - Main.www-data 
+ <br>
+  <a href="http://www.denx.de/wiki/rdiff/DULG/Manual">Diffs</a>  | r1.3 | <a href="http://www.denx.de/wiki/rdiff/DULG/Manual?rev1=1.3&amp;rev2=1.2">&gt;</a> | <a href="http://www.denx.de/wiki/view/DULG/Manual?rev=1.2">r1.2</a> | <a href="http://www.denx.de/wiki/rdiff/DULG/Manual?rev1=1.2&amp;rev2=1.1">&gt;</a> | <a href="http://www.denx.de/wiki/view/DULG/Manual?rev=1.1">r1.1</a>
+ </div> 
+      </div>
+      <br class="doNotDisplay doNotPrint">
+      <div class="right">
+        <div class="TWikiCopyright">
+Copyright © 2002-2016 by <strong>DENX</strong> Software Engineering
+</div>
+      </div>
+    </div>
+<a name="PageBottom"></a>
+
+</body>
+</html>

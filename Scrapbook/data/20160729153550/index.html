@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en-US" class="js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths js-ready">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="utf-8">
+<link rel="mask-icon" href="https://learn.adafruit.com/assets/adafruit_favicon-d77f206e6cc65b40101b6e5b8987f7c35cb6a283ea73c0adad50c37f7347c61a.svg" color="#000000">
+<link rel="shortcut icon" type="image/x-icon" href="favicon-0c79bd4bc582e6d4cf3afe417bd1e28120527c09d92c08a6464690c5bf6b85f4.ico">
+<title>Setting up your SD card | Introducing the Raspberry Pi Zero | Adafruit Learning System</title>
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="B2mO4KndkaYEHDipVWuLosRK9g95beCAaH2q3cj4LmZNJYjY8DvCywxvX5sF6kUPSNx8NsHty4U5+kmGUwMfnA==">
+<link rel="alternate" type="application/atom+xml" title="ATOM" href="https://learn.adafruit.com/feed">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://learn.adafruit.com/feed.rss">
+
+
+<!--[if lt IE 9]>
+    <script src="/assets/ie.html5.js"></script>
+    <script src="/assets/ie.respond.js"></script>
+  <![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@adafruit">
+<meta name="twitter:title" content="Introducing the Raspberry Pi Zero">
+<meta name="twitter:description" content="65mm x 30mm x 5mm of Pi Power">
+<meta name="twitter:image:src" content="https://learn.adafruit.comhttps://cdn-learn.adafruit.com/guides/images/000/001/173/medium800/thumb.jpg">
+<meta name="twitter:domain" content="https://learn.adafruit.com">
+<link rel="canonical" href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/setting-up-your-sd-card">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+
+<!--[if lte IE 9]>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <![endif]-->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="application pages show">
+<div id="outer-wrapper">
+<div id="inner-wrapper">
+<header id="adafruit-header">
+<div id="small-header-content" class="container visible-xs">
+<a id="small-header-menu-button" class="menu-link" href="#small-header-nav">
+<i class="fa fa-bars"> </i>
+</a>
+<div class="small-header-logo">
+<a href="https://www.adafruit.com/">
+<img id="small-logo" alt="Adafruit Logo" title="Adafruit" src="adafruit_logo_small.png" height="50" width="50">
+</a> </div>
+<a class="small-header-cart" href="https://www.adafruit.com/shopping_cart">
+<span class="small-cart-count">0</span>
+<i class="fa fa-shopping-cart"></i>
+</a> </div>
+<nav id="small-header-nav" role="navigation" class="visible-xs">
+<div class="block">
+<ul>
+<li>
+<div id="small-search-wrapper">
+<div id="small-search-inner-wrapper">
+<form action="https://learn.adafruit.com/search" method="get">
+<label for="mobile-search" style="display: none;">Search</label>
+<input value="" id="mobile-search" name="q" placeholder="Search Adafruit" type="text">
+<i class="fa fa-search"></i>
+</form>
+</div>
+</div>
+</li>
+<li>
+<a href="https://www.adafruit.com/categories">SHOP</a>
+</li>
+<li>
+<a href="https://blog.adafruit.com/">BLOG</a>
+</li>
+<li>
+<a href="https://learn.adafruit.com/">LEARN</a>
+</li>
+<li>
+<a href="https://forums.adafruit.com/">FORUMS</a>
+</li>
+<li>
+<a href="https://www.youtube.com/adafruit">VIDEOS</a>
+</li>
+<li>
+<a href="https://learn.adafruit.com/users/sign_in">SIGN IN</a>
+</li>
+<li>
+<a class="close-btn" id="small-nav-close-button" href="#top">CLOSE MENU</a>
+</li>
+</ul>
+</div>
+</nav>
+<div id="header-content" class="container hidden-xs">
+<div id="header-profile">
+<a id="header-cart" href="https://www.adafruit.com/shopping_cart">
+0 Items <i class="fa fa-shopping-cart"></i>
+</a> <div id="account">
+<a href="https://learn.adafruit.com/users/sign_in">Sign In</a>
+</div>
+<div id="search-wrapper">
+<form action="https://learn.adafruit.com/search" method="get">
+<label for="search" style="display: none;">Search</label>
+<input value="" id="search" name="q" autocomplete="off" data-page="" ,="" data-app-id="W9DMM4OTH0" data-app-key="e613bcda3453b9ef887e2724362f9e57" type="text">
+          <i class="fa fa-search"></i>
+          <input style="visibility: hidden; position: fixed;" type="submit">
+        </form>
+      </div>
+    </div>
+    <div id="navigation">
+      <a href="https://www.adafruit.com/">
+        <img id="logo" alt="Adafruit Logo" title="Adafruit" src="logo_2x.png" height="60" width="172">
+</a>      <nav class="hover-menu">
+  <ul>
+    <li id="nav-shop" data-load="https://www.adafruit.com/api/flyouts/shop.html"><a href="https://www.adafruit.com/">SHOP</a>
+    </li>
+    <li id="nav-blog" data-load="https://blog.adafruit.com/adafruit-blog-flyouts"><a href="https://blog.adafruit.com/">BLOG</a>
+    </li>
+    <li id="nav-learn" data-load="https://learn.adafruit.com/api/hover-menu/flyouts/learn.html"><a href="https://learn.adafruit.com/">LEARN</a>
+    </li>
+    <li id="nav-forums"><a href="https://forums.adafruit.com/">FORUMS</a>
+    </li>
+    <li id="nav-forums"><a href="https://www.youtube.com/adafruit">VIDEOS</a>
+    </li>
+  </ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+      <div id="main-content">
+        <div id="page-wrapper">
+		<div id="content-wrapper" class="container" data-page-id="6531" data-guide-id="1173">
+			<div class="row">
+				<div class="sidebar-left-wrapper hidden-phone hidden-tablet col-lg-two-and-half col-md-3 col-sm-4 col-xs-12">
+					<div style="width: 230px;" class="sidebar-left-content" data-clampedwidth=".sidebar-left-wrapper">
+							<nav class="sidebar-left">
+		<div class="title-bar">
+				  <img src="thumb.jpg" class="img img-responsive">
+
+		    <div class="title">
+			    <h1><a href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/a-tour-of-the-pi-zero">Introducing the Raspberry Pi Zero</a></h1>
+			    <span class="tagline"><a href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/a-tour-of-the-pi-zero">65mm x 30mm x 5mm of Pi Power</a></span>
+			  </div>
+	  </div>
+	  <ul class="page-parent nav">
+			  <li class="">
+      <a class="sidebar-parent" href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/a-tour-of-the-pi-zero">A Tour of the Pi Zero</a>
+      <span class="page-draft-status">
+      </span>
+</li>
+  <li class="active">
+      <a class="sidebar-parent" href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/setting-up-your-sd-card">Setting up your SD card</a>
+      <span class="page-draft-status">
+      </span>
+        <ul class="page-child nav">
+          		<li class="">
+
+	      <a class="sidebar-child" href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/making-an-sd-card-using-a-windows-vista-slash-7">Making an SD Card – Using a Windows Vista / 7</a>
+      <span class="page-draft-status">
+      </span>
+	</li>
+		<li class="">
+
+	      <a class="sidebar-child" href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/making-an-sd-card-using-a-mac">Making an SD Card – Using a Mac</a>
+      <span class="page-draft-status">
+      </span>
+	</li>
+
+        </ul>
+</li>
+  <li class="">
+      <a class="sidebar-parent" href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/video-outputs">Video Outputs</a>
+      <span class="page-draft-status">
+      </span>
+</li>
+  <li class="">
+      <a class="sidebar-parent" href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/audio-outputs">Audio Outputs</a>
+      <span class="page-draft-status">
+      </span>
+</li>
+  <li class="">
+      <a class="sidebar-parent" href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/gpio-header-options">GPIO header options</a>
+      <span class="page-draft-status">
+      </span>
+</li>
+
+			<li class="single-page-spacer"></li>
+	      <li class="single-page-link"><a href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero?view=all">Single Page</a></li>
+			<li><a href="https://cdn-learn.adafruit.com/downloads/pdf/introducing-the-raspberry-pi-zero.pdf">Download PDF</a></li>
+	  </ul>
+	</nav>
+	  <header class="sidebar-meta hidden-xs">
+    <h4>Contributors</h4>
+      <div><a href="https://learn.adafruit.com/users/adafruit2">lady ada</a></div>
+  </header>
+
+	  <header class="sidebar-meta hidden-xs">
+    <a class="feedback-link" title="Feedback? Corrections?" rel="nofollow" data-remote="true" data-method="get" href="https://learn.adafruit.com/pages/6531/settings_modal">
+          Feedback?  Corrections?
+</a>  </header>
+
+
+					</div>
+				</div>
+					<article class="col-lg-7 col-md-6 col-sm-8 col-xs-12">
+					<div id="categories">
+    <span class="category ">
+    <a href="https://learn.adafruit.com/category/raspberry-pi">RASPBERRY PI</a>
+  </span>
+
+  
+  <span id="guide-favorite">
+  <a data-original-title="Favorite this guide?" class="favorites-link category right red" title="" data-toggle="tooltip" data-placement="left" data-remote="true" rel="nofollow" data-method="post" href="https://learn.adafruit.com/guides/1173/favorites.js">
+    <i class="fa fa-heart-o"></i>
+</a></span>
+</div>
+
+					<div class="content">
+							<div class="page-title-wrapper">
+								<h1 class="headline">
+									<span id="setting-up-your-sd-card">Setting up your SD card</span>
+								</h1>
+								    <div class="author">by
+      <a href="https://learn.adafruit.com/users/adafruit2">
+          <span class="name">lady ada</span>
+</a>    </div>
+
+							</div>
+							<div class="page-content">
+									        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/28707">
+              <img class="28707-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/028/707/medium260/raspberry_pi_1537-02.jpg?1448471840 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/028/707/medium640/raspberry_pi_1537-02.jpg?1448471840 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/028/707/medium800/raspberry_pi_1537-02.jpg?1448471840 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/028/707/large1024/raspberry_pi_1537-02.jpg?1448471840 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="raspberry_pi_1537-02.jpg" alt="raspberry_pi_1537-02.jpg">
+
+            <span style="display: none;" class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        
+      
+<p>Before you can power up your Pi Zero, you will need to program in the SD card with an <strong>Operating System</strong> </p>
+<p>Much like your computer has Windows, Mac OS X or Linux on it to make it run, the Raspberry Pi needs something to help it boot and run software. That software is <strong>Raspbian Linux</strong> (a <em>flavor</em> of Debian Linux). <a href="https://learn.adafruit.com/what-is-linux">You can check out our tutorial on What Is Linux if you're curious to learn more</a></p>
+
+    
+      </div>
+      <div class="row-fluid build-text">
+        
+      
+<p>If you just want to get rockin, grab the <a href="https://www.raspberrypi.org/downloads/raspbian/">latest</a> <strong>Raspbian Jessie</strong> operating system <a href="https://www.raspberrypi.org/downloads/">from the Raspberry Pi downloads page</a></p>
+<p>Just click the button below!</p>
+
+    
+      </div>
+      <div class="button-element">
+        <a href="https://downloads.raspberrypi.org/raspbian_latest" class="btn btn-large btn-block btn-primary" target="_self" type="button">Download Latest Raspbian</a>
+      </div>
+      <div class="row-fluid build-alert alert-warning">
+        <div class="alert">
+          <i class="fa fa-exclamation-circle"></i>
+          
+        
+        Raspbian Wheezy 5-15 or earlier do not support the Zero! Try Jessie instead
+      
+        </div>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/28740">
+              <img class="28740-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/028/740/medium260/raspberry_pi_jessie.png?1448512532 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/028/740/medium640/raspberry_pi_jessie.png?1448512532 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/028/740/medium800/raspberry_pi_jessie.png?1448512532 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/028/740/large1024/raspberry_pi_jessie.png?1448512532 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="raspberry_pi_jessie.png" alt="raspberry_pi_jessie.png">
+
+            <span style="display: none;" class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        
+      
+<p>Once downloaded, unzip the zip file, the full image is about 4.5 Gigabytes.</p>
+<p>Next up grab your SD or micro SD card reader and plug it into your computer</p>
+
+    
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/28709">
+              <img class="28709-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/028/709/medium260/raspberry_pi_939-02.jpg?1448472274 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/028/709/medium640/raspberry_pi_939-02.jpg?1448472274 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/028/709/medium800/raspberry_pi_939-02.jpg?1448472274 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/028/709/large1024/raspberry_pi_939-02.jpg?1448472274 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="raspberry_pi_939-02.jpg" alt="raspberry_pi_939-02.jpg">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        <p>Now follow our guide for&nbsp;<a href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/making-an-sd-card-using-a-windows-vista-slash-7">Windows</a> or&nbsp;<a href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/making-an-sd-card-using-a-mac">Mac OS X</a> to burn the image</p>
+      </div>
+        <div class="row-fluid build-image">
+          <a href="https://learn.adafruit.com/assets/28743">
+              <img class="28743-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/028/743/medium260/raspberry_pi_microsd.jpg?1448513437 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/028/743/medium640/raspberry_pi_microsd.jpg?1448513437 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/028/743/medium800/raspberry_pi_microsd.jpg?1448513437 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/028/743/large1024/raspberry_pi_microsd.jpg?1448513437 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="raspberry_pi_microsd.jpg" alt="raspberry_pi_microsd.jpg">
+
+            <span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a>        </div>
+      <div class="row-fluid build-text">
+        <p>Once you're done, plug the micro SD card into the slot indicated. It will fit snugly in place but you won't hear or feel a 'click'</p>
+      </div>
+
+								<div class="page-navigation">
+										<a class="previous-page" href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/a-tour-of-the-pi-zero">
+											<i class="fa fa-chevron-left"></i>A TOUR OF THE PI ZERO
+</a>										<a class="next-page" href="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/making-an-sd-card-using-a-windows-vista-slash-7">
+											MAKING AN SD CARD – USING A WINDOWS VISTA / 7<i class="fa fa-chevron-right"></i>
+</a>									<div class="clear"></div>
+								</div>
+								<span class="page-last-updated">Last updated on 2015-11-25 at 11.52.06 PM</span>
+									<span class="page-last-updated">Published on 2015-11-26 at 02.00.24 AM</span>
+							</div>
+					</div>
+				</article>
+				<div class="col-lg-two-and-half col-md-3 hidden-sm hidden-xs">
+  <header class="sidebar-right">
+    <div class="sidebar-right-content">
+      
+        <div class="product-wrapper">
+    <div class="product-image">
+      <a href="https://www.adafruit.com/product/2816">
+            <img src="2816-08.jpg" alt="2816-08.jpg" class="img-responsive" height="233">
+</a>    </div>
+    <div class="product-details">
+      <div class="product-title">Raspberry Pi Zero Starter Pack - Includes Pi Zero v1.3</div>
+      <span class="product-price">$54.95</span>
+        <a id="2816-product" class="product-buy" data-pid="2816" data-qty="1" href="https://www.adafruit.com/product/2816">
+          Add To Cart
+</a>    </div>
+  </div>
+  <div class="product-wrapper">
+    <div class="product-image">
+      <a href="https://www.adafruit.com/product/2817">
+            <img src="2817-03.jpg" alt="2817-03.jpg" class="img-responsive" height="233">
+</a>    </div>
+    <div class="product-details">
+      <div class="product-title">Raspberry Pi Zero Budget Pack - Includes Pi Zero v1.3</div>
+      <span class="product-price">$24.95</span>
+        <a id="2817-product" class="product-buy" data-pid="2817" data-qty="1" href="https://www.adafruit.com/product/2817">
+          Add To Cart
+</a>    </div>
+  </div>
+  <div class="product-wrapper">
+    <div class="product-image">
+      <a href="https://www.adafruit.com/product/2820">
+            <img src="2820-00.jpg" alt="2820-00.jpg" class="img-responsive" height="233">
+</a>    </div>
+    <div class="product-details">
+      <div class="product-title">4GB SD Card w/ Jessie Lite</div>
+      <span class="product-price">$9.95</span>
+        <a id="2820-product" class="product-buy" data-pid="2820" data-qty="1" href="https://www.adafruit.com/product/2820">
+          Add To Cart
+</a>    </div>
+  </div>
+  <div class="product-wrapper">
+    <div class="product-image">
+      <a href="https://www.adafruit.com/product/2767">
+            <img src="2767-00.jpg" alt="2767-00.jpg" class="img-responsive" height="233">
+</a>    </div>
+    <div class="product-details">
+      <div class="product-title">8GB SD Card with Raspbian Jessie Operating System</div>
+      <span class="product-price">$11.95</span>
+        <a id="2767-product" class="product-buy" data-pid="2767" data-qty="1" href="https://www.adafruit.com/product/2767">
+          Add To Cart
+</a>    </div>
+  </div>
+  <div class="product-wrapper">
+    <div class="product-image">
+      <a href="https://www.adafruit.com/product/501">
+            <img src="501-05.jpg" alt="501-05.jpg" class="img-responsive" height="233">
+</a>    </div>
+    <div class="product-details">
+      <div class="product-title">5V 1A (1000mA) USB port power supply - UL Listed</div>
+      <span class="product-price">$5.95</span>
+        <a id="501-product" class="product-buy" data-pid="501" data-qty="1" href="https://www.adafruit.com/product/501">
+          Add To Cart
+</a>    </div>
+  </div>
+  <div class="product-wrapper">
+    <div class="product-image">
+      <a href="https://www.adafruit.com/product/1995">
+            <img src="1995-02.jpg" alt="1995-02.jpg" class="img-responsive" height="233">
+</a>    </div>
+    <div class="product-details">
+      <div class="product-title">5V 2.4A Switching Power Supply w/ 20AWG 6' MicroUSB Cable</div>
+      <span class="product-price">$7.95</span>
+        <a id="1995-product" class="product-buy" data-pid="1995" data-qty="1" href="https://www.adafruit.com/product/1995">
+          Add To Cart
+</a>    </div>
+  </div>
+  <div class="product-wrapper">
+    <div class="product-image">
+      <a href="https://www.adafruit.com/product/2819">
+            <img src="2819-00.jpg" alt="2819-00.jpg" class="img-responsive" height="233">
+</a>    </div>
+    <div class="product-details">
+      <div class="product-title">Mini HDMI Plug to Standard HDMI Jack Adapter</div>
+      <span class="product-price">$2.95</span>
+        <a id="2819-product" class="product-buy" data-pid="2819" data-qty="1" href="https://www.adafruit.com/product/2819">
+          Add To Cart
+</a>    </div>
+  </div>
+  <div class="product-wrapper">
+    <div class="product-image">
+      <a href="https://www.adafruit.com/product/1099">
+            <img src="1099-00.jpg" alt="1099-00.jpg" class="img-responsive" height="233">
+</a>    </div>
+    <div class="product-details">
+      <div class="product-title">USB OTG Host Cable - MicroB OTG male to A female</div>
+      <span class="product-price">$2.50</span>
+        <a id="1099-product" class="product-buy" data-pid="1099" data-qty="1" href="https://www.adafruit.com/product/1099">
+          Add To Cart
+</a>    </div>
+  </div>
+  <div class="product-wrapper">
+    <div class="product-image">
+      <a href="https://www.adafruit.com/product/2822">
+            <img src="2822-00.jpg" alt="2822-00.jpg" class="img-responsive" height="233">
+</a>    </div>
+    <div class="product-details">
+      <div class="product-title">Break-away 0.1" 2x20-pin Strip Dual Male Header</div>
+      <span class="product-price">$0.95</span>
+        <a id="2822-product" class="product-buy" data-pid="2822" data-qty="1" href="https://www.adafruit.com/product/2822">
+          Add To Cart
+</a>    </div>
+  </div>
+  <div class="product-wrapper">
+    <div class="product-image">
+      <a href="https://www.adafruit.com/product/2222">
+            <img src="2222-00.jpg" alt="2222-00.jpg" class="img-responsive" height="233">
+</a>    </div>
+    <div class="product-details">
+      <div class="product-title">GPIO Header for Raspberry Pi A+/B+/Pi 2/Pi 3</div>
+      <span class="product-price">$1.50</span>
+        <a id="2222-product" class="product-buy" data-pid="2222" data-qty="1" href="https://www.adafruit.com/product/2222">
+          Add To Cart
+</a>    </div>
+  </div>
+  <div class="product-wrapper">
+    <div class="product-image">
+      <a href="https://www.adafruit.com/product/2823">
+            <img src="2823-00.jpg" alt="2823-00.jpg" class="img-responsive" height="233">
+</a>    </div>
+    <div class="product-details">
+      <div class="product-title">0.1" 2x20-pin Strip Right Angle Female Header</div>
+      <span class="product-price">$1.50</span>
+        <a id="2823-product" class="product-buy" data-pid="2823" data-qty="1" href="https://www.adafruit.com/product/2823">
+          Add To Cart
+</a>    </div>
+  </div>
+  <div class="product-wrapper">
+    <div class="product-image">
+      <a href="https://www.adafruit.com/product/961">
+            <img src="961-07.jpg" alt="961-07.jpg" class="img-responsive" height="233">
+</a>    </div>
+    <div class="product-details">
+      <div class="product-title">USB 2.0 Powered Hub - 7 Ports with 5V 2A Power Supply</div>
+      <span class="product-price">$21.95</span>
+        <a id="961-product" class="product-buy" data-pid="961" data-qty="1" href="https://www.adafruit.com/product/961">
+          Add To Cart
+</a>    </div>
+  </div>
+  <div class="product-wrapper">
+    <div class="product-image">
+      <a href="https://www.adafruit.com/product/2297">
+            <img src="2297-06.jpg" alt="2297-06.jpg" class="img-responsive" height="233">
+</a>    </div>
+    <div class="product-details">
+      <div class="product-title">5V 2A Power Supply w/ 20AWG 6' MicroUSB Cable - International</div>
+      <span class="product-price">$14.95</span>
+        <a id="2297-product" class="product-buy" data-pid="2297" data-qty="1" href="https://www.adafruit.com/product/2297">
+          Add To Cart
+</a>    </div>
+  </div>
+
+        <div class="add-all-to-cart-container">
+          <a class="add-all-to-cart" href="#">ADD ALL TO CART</a>
+          <div class="add-all-to-cart-progress"></div>
+        </div>
+      <div class="clear"></div>
+    </div>
+  </header>
+</div>
+
+			</div>
+		</div>
+			<div class="related-guides-wrapper container">
+  <div class="row">
+    <div class="related-guides-title col-lg-12">
+      <h2>
+        RELATED GUIDES
+      </h2>
+    </div>
+  </div>
+  <div class="related-guides-content row">
+    	<div class="1335-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12">
+        <div class="guide-block">
+            <div class="title-bar">
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/raspberry-pi-zero-npr-one-radio">
+                          Raspberry Pi Zero NPR One Radio<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/raspberry-pi-zero-npr-one-radio">
+                    If you are a NPR nerd, this project is for you.
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/uniontownlabs">
+          <span class="name">Todd Treece</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/raspberry-pi-zero-npr-one-radio">
+								<video class="img img-responsive guide-video" preload="auto" muted="muted" loop="loop" autoplay="autoplay" poster="https://cdn-learn.adafruit.com/guides/images/000/001/335/medium640thumb/16_launch.gif?1465391203">
+									<source src="https://cdn-learn.adafruit.com/guides/images/000/001/335/medium640mp4/16_launch.mp4?1465391203">
+									<source src="https://cdn-learn.adafruit.com/guides/images/000/001/335/medium640webm/16_launch.webm?1465391203" type="video/webm; codecs=vp8,vorbis">
+									Your browser does not support the video tag.
+								</video>
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/raspberry-pi-zero-npr-one-radio">
+                        Fill your house with your favorite NPR shows and stories by building your own NPR radio.
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+	<div class="652-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12">
+        <div class="guide-block">
+            <div class="title-bar">
+                    <div class="guide-type featured-guide">
+                        <a href="https://learn.adafruit.com/guides/featured">FEATURED</a>
+                    </div>
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/introducing-the-raspberry-pi-model-b-plus-plus-differences-vs-model-b">
+                          Introducing the Raspberry Pi Model B+<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/introducing-the-raspberry-pi-model-b-plus-plus-differences-vs-model-b">
+                    Its the freshest new Raspberry Pi, let's check it out!
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/adafruit2">
+          <span class="name">lady ada</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/introducing-the-raspberry-pi-model-b-plus-plus-differences-vs-model-b">
+								<img src="top.jpg" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/652/medium310/top.jpg?1448301874" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/652/medium800/top.jpg?1448301874">
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/introducing-the-raspberry-pi-model-b-plus-plus-differences-vs-model-b">
+                        This tutorial will give you a tour around the latest Raspberry Pi computer, detailing all changes and updates!
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+	<div class="361-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12">
+        <div class="guide-block">
+            <div class="title-bar">
+                    <div class="guide-type featured-guide">
+                        <a href="https://learn.adafruit.com/guides/featured">FEATURED</a>
+                    </div>
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/raspberry-pi-as-an-ad-blocking-access-point">
+                          Raspberry Pi as an Ad Blocking Access Point<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/raspberry-pi-as-an-ad-blocking-access-point">
+                    Ads? What Ads?
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/jwcooper">
+          <span class="name">Justin Cooper</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/raspberry-pi-as-an-ad-blocking-access-point">
+								<img src="pi_block_main.jpg" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/361/medium310/pi_block_main.jpg?1448301406" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/361/medium800/pi_block_main.jpg?1448301406">
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/raspberry-pi-as-an-ad-blocking-access-point">
+                        Advertising is prevalent on the web.  It's a necessary evil at times, but can also be greatly overused by companies slowing down your page loads, and bringing your connected devices to a crawl.  Learn how to block these ads using your Raspberry Pi.
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+	<div class="239-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12">
+        <div class="guide-block">
+            <div class="title-bar">
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/raspberry-pi-as-a-media-center">
+                          Raspberry Pi as a Media Center<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/raspberry-pi-as-a-media-center">
+                    Turn your Raspberry Pi into a media center
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/simonmonk">
+          <span class="name">Simon Monk</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/raspberry-pi-as-a-media-center">
+								<img src="xbmc_playing_music.jpg" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/239/medium310/xbmc_playing_music.jpg?1448301214" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/239/medium800/xbmc_playing_music.jpg?1448301214">
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/raspberry-pi-as-a-media-center">
+                        he low cost and full HD video playing capabilities of the Raspberry Pi make it ideal for building your own media center. This will allow you to play music and videos through your Raspberry Pi onto a TV.
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+
+  </div>
+</div>
+
+		<div class="footer-spacer"></div>
+</div>
+
+
+
+  <div class="modal fade" id="notify-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">  
+        <div class="modal-header">
+          <a href="#" class="close" data-dismiss="modal">×</a>
+          <h5>OUT OF STOCK NOTIFICATION</h5>
+        </div>
+        <div class="modal-body">
+          <p class="notify-modal-form-header"></p>
+          <div class="notify-modal-products"></div>
+          <form action="https://learn.adafruit.com/introducing-the-raspberry-pi-zero/setting-up-your-sd-card" id="notify-modal-form" name="back_in_stock_notification">
+            <p class="notify-modal-form-notice"></p>
+            <div class="notify-modal-break"></div>
+            <div class="form-group">
+              <label class="inputLabel" for="name">YOUR NAME</label>
+              <input size="25" maxlength="64" name="name" value="" type="text">
+            </div>
+
+            <div class="form-group">
+              <label class="inputLabel" for="email">YOUR EMAIL</label>
+              <input size="25" maxlength="96" name="email" value="" type="email">
+            </div>
+          
+            <input value="" name="daigo" style="display: none;" type="text">
+            <input name="notify_me" value="true" type="hidden">
+          </form>
+          <div id="notify-modal-success" style="display: none;">
+            <p>You have been successfully subscribed to the Notification List for this product and will therefore receive an e-mail from us when it is back in stock!</p>
+            <p>For security reasons, an e-mail has been sent to you acknowledging your subscription. Please remember that this subscription will not result in you receiving any e-mail from us about anything other than the restocking of this item.</p>
+            <p>If, for any reason, you would like to unsubscribe from the Notification List for this product you will find details of how to do so in the e-mail that has just been sent to you!</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" id="close-notify" style="display: none" data-dismiss="modal" data-target="#notify-modal">CLOSE</a>
+          <a href="#" id="submit-notify" rel="nofollow" class="blue-button">NOTIFY ME</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+      </div>
+        <footer id="adafruit-footer">
+    <div id="footer-content" class="container">
+      <div class="row">
+        <div class=" col-lg-6 col-md-6 col-sm-4 col-xs-12">
+          <nav>
+            <ul>
+              <li><a href="https://www.adafruit.com/contact_us">CONTACT</a></li>
+              <li><a href="https://www.adafruit.com/support">SUPPORT</a>
+              </li><li><a href="https://www.adafruit.com/distributors">DISTRIBUTORS</a></li>
+              <li><a href="https://www.adafruit.com/educators">EDUCATORS</a></li>
+              <li><a href="https://www.adafruit.com/jobs">JOBS</a></li>
+              <li><a href="https://www.adafruit.com/faq">FAQ</a></li>
+              <li><a href="https://www.adafruit.com/shippinginfo/">SHIPPING &amp; RETURNS</a></li>
+              <li><a href="https://www.adafruit.com/terms_of_service/">TERMS OF SERVICE</a></li>
+              <li><a href="https://www.adafruit.com/privacy">PRIVACY &amp; LEGAL</a></li>
+              <li><a href="https://www.adafruit.com/about">ABOUT US</a></li>
+            </ul>
+          </nav>
+          <div id="footer-copyright">
+            <a href="http://nytm.org/made-in-nyc/">ENGINEERED IN NYC</a> <span>Adafruit&nbsp;®</span>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-8 hidden-xs">
+          <div id="footer-quote" class="">
+            
+"Confusion and clutter are the failure of design, not the attributes of information"
+            <span class="quote-author">- <a href="http://en.wikipedia.org/wiki/Edward_Tufte">Edward Tufte</a>
+</span>
+          </div>
+
+        </div>
+        <div id="footer-seals">
+          <img class="img-responsive" src="seals_2x.jpg" alt="Seals 2x">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    </div>
+  </div>
+
+      <!-- Google Analytics -->
+    
+    <!-- End Google Analytics -->
+
+      <!-- Google Code for Remarketing Tag -->
+      <!--------------------------------------------------
+      Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+      --------------------------------------------------->
+      
+      <iframe name="google_conversion_frame" title="Google conversion frame" src="index_1.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300"></iframe>
+      
+  
+  
+
+
+</body>
+</html>

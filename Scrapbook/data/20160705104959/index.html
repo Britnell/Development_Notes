@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#" class=" js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>How prepare a bootable SD card / eMMC using Linux fdisk tool ? - EmbeddedForU</title>
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="shortcut icon" href="efu.gif" type="image/gif">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://www.embeddedforu.com/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="http://www.embeddedforu.com/wp-content/themes/iconic-one/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v2.1.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="http://www.embeddedforu.com/embedded-linux/how-prepare-a-bootable-sd-card-emmc-using-linux-commands/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How prepare a bootable SD card / eMMC using Linux fdisk tool ? - EmbeddedForU">
+<meta property="og:description" content="In the Previous post, we have discussed about the procedure to create a bootable SD card using disks GUI. This tool may not be available every time. Some times, we may need to format the SD card or eMMC from the embedded Linux target it self. In such cases, we need to use Linux commands/tools… Read More »">
+<meta property="og:url" content="http://www.embeddedforu.com/embedded-linux/how-prepare-a-bootable-sd-card-emmc-using-linux-commands/">
+<meta property="og:site_name" content="EmbeddedForU">
+<meta property="article:publisher" content="https://www.facebook.com/EmbeddedForU">
+<meta property="article:section" content="Embedded linux">
+<meta property="article:published_time" content="2016-05-15T13:33:46+00:00">
+<meta property="article:modified_time" content="2016-05-17T02:55:45+00:00">
+<meta property="og:updated_time" content="2016-05-17T02:55:45+00:00">
+<meta property="og:image" content="http://www.embeddedforu.com/wp-content/uploads/2016/05/EmbeddedForu-SD-partition.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="In the Previous post, we have discussed about the procedure to create a bootable SD card using disks GUI. This tool may not be available every time. Some times, we may need to format the SD card or eMMC from the embedded Linux target it self. In such cases, we need to use Linux commands/tools… Read More »">
+<meta name="twitter:title" content="How prepare a bootable SD card / eMMC using Linux fdisk tool ? - EmbeddedForU">
+<meta name="twitter:site" content="@swamy_bv">
+<meta name="twitter:domain" content="EmbeddedForU">
+<meta name="twitter:image:src" content="http://www.embeddedforu.com/wp-content/uploads/2016/05/EmbeddedForu-SD-partition.jpg">
+<meta name="twitter:creator" content="@swamy_bv">
+
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="EmbeddedForU » Feed" href="http://www.embeddedforu.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="EmbeddedForU » Comments Feed" href="http://www.embeddedforu.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="EmbeddedForU » How prepare a bootable SD card / eMMC using Linux fdisk tool ? Comments Feed" href="http://www.embeddedforu.com/embedded-linux/how-prepare-a-bootable-sd-card-emmc-using-linux-commands/feed/">
+		
+		
+
+
+
+
+
+
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='themonic-ie-css'  href='http://www.embeddedforu.com/wp-content/themes/iconic-one/css/ie.css?ver=20130305' type='text/css' media='all' />
+<![endif]-->
+<!-- This site uses the Google Analytics by Yoast plugin v5.4.2 - Universal enabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+
+<!-- / Google Analytics by Yoast -->
+
+
+
+<link rel="https://api.w.org/" href="http://www.embeddedforu.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.embeddedforu.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.embeddedforu.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.5.2">
+<link rel="shortlink" href="http://www.embeddedforu.com/?p=774">
+<link rel="alternate" type="application/json+oembed" href="http://www.embeddedforu.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.embeddedforu.com%2Fembedded-linux%2Fhow-prepare-a-bootable-sd-card-emmc-using-linux-commands%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.embeddedforu.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.embeddedforu.com%2Fembedded-linux%2Fhow-prepare-a-bootable-sd-card-emmc-using-linux-commands%2F&amp;format=xml">
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-774 single-format-standard custom-font-enabled single-author">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+					
+		<div class="themonic-logo">
+        <a href="http://www.embeddedforu.com/" title="EmbeddedForU" rel="home"><img src="efy_modified_09_03_2.png" alt="EmbeddedForU"></a>
+		</div>
+		
+		<div class="socialmedia">
+							<a href="https://twitter.com/swamy_bv" target="_top"><img src="twitter.png" alt="Follow us on Twitter"></a> 
+											<a href="https://www.facebook.com/EmbeddedForU" target="_top"><img src="facebook.png" alt="Follow us on Facebook"></a>
+											<a href="https://plus.google.com/u/0/111777072666555450414" rel="author" target="_top"><img src="gplus.png" alt="Follow us on Google Plus"></a>
+									<a class="rss" href="https://www.youtube.com/channel/UCaK5G9rQ8TDKyv23Cj9XATA" target="_top"><img src="you-tube.png" alt="Follow us on youtube"></a>			
+					</div>
+		
+
+		
+		<nav id="site-navigation" class="themonic-nav" role="navigation">
+			<a class="assistive-text" href="#content" title="Skip to content">Skip to content</a>
+			<div class="menu-main-menu-container"><ul id="menu-top" class="nav-menu"><li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-11"><a href="http://www.embeddedforu.com/">Home</a></li>
+<li id="menu-item-17" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-17"><a href="http://www.embeddedforu.com/microcontrollers/">Microcontrollers</a>
+<ul class="sub-menu">
+	<li id="menu-item-18" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-18"><a href="http://www.embeddedforu.com/microcontrollers/8051/">8051</a></li>
+	<li id="menu-item-19" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-19"><a href="http://www.embeddedforu.com/microcontrollers/arduino/">Arduino</a></li>
+	<li id="menu-item-20" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20"><a href="http://www.embeddedforu.com/microcontrollers/arm/">ARM</a></li>
+	<li id="menu-item-21" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-21"><a href="http://www.embeddedforu.com/microcontrollers/avr/">AVR</a></li>
+	<li id="menu-item-22" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22"><a href="http://www.embeddedforu.com/microcontrollers/pic/">PIC</a></li>
+</ul>
+</li>
+<li id="menu-item-16" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-16"><a href="http://www.embeddedforu.com/embedded-linux/">Embedded linux</a>
+<ul class="sub-menu">
+	<li id="menu-item-750" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-750"><a href="http://www.embeddedforu.com/embedded-linux/raspberry-pi/">Raspberry Pi</a></li>
+	<li id="menu-item-753" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-753"><a href="http://www.embeddedforu.com/embedded-linux/beaglebone/">BeagleBone</a></li>
+	<li id="menu-item-751" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-751"><a href="http://www.embeddedforu.com/embedded-linux/atmel/">Atmel</a></li>
+</ul>
+</li>
+<li id="menu-item-23" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-23"><a href="http://www.embeddedforu.com/tutorials/">Tutorials</a></li>
+<li id="menu-item-232" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-232"><a href="http://www.embeddedforu.com/forums/">Forums</a></li>
+<li id="menu-item-14" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"><a title="About EmbeddedForU" href="http://www.embeddedforu.com/about-us/">About</a></li>
+<li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15"><a title="Contact EmbeddedForU" href="http://www.embeddedforu.com/contact-us/">Contact</a></li>
+</ul><select class="selectnav" id="selectnav1"><option value="">Menu</option><option value="http://www.embeddedforu.com/">HOME</option><option value="http://www.embeddedforu.com/microcontrollers/">MICROCONTROLLERS</option><option value="http://www.embeddedforu.com/microcontrollers/8051/">- 8051</option><option value="http://www.embeddedforu.com/microcontrollers/arduino/">- Arduino</option><option value="http://www.embeddedforu.com/microcontrollers/arm/">- ARM</option><option value="http://www.embeddedforu.com/microcontrollers/avr/">- AVR</option><option value="http://www.embeddedforu.com/microcontrollers/pic/">- PIC</option><option value="http://www.embeddedforu.com/embedded-linux/">EMBEDDED LINUX</option><option value="http://www.embeddedforu.com/embedded-linux/raspberry-pi/">- Raspberry Pi</option><option value="http://www.embeddedforu.com/embedded-linux/beaglebone/">- BeagleBone</option><option value="http://www.embeddedforu.com/embedded-linux/atmel/">- Atmel</option><option value="http://www.embeddedforu.com/tutorials/">TUTORIALS</option><option value="http://www.embeddedforu.com/forums/">FORUMS</option><option value="http://www.embeddedforu.com/about-us/">ABOUT</option><option value="http://www.embeddedforu.com/contact-us/">CONTACT</option></select></div>		</nav><!-- #site-navigation -->
+		<div class="clear"></div>
+	</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-774" class="post-774 post type-post status-publish format-standard has-post-thumbnail hentry category-embedded-linux">
+				<header class="entry-header">
+						<h1 class="entry-title">How prepare a bootable SD card / eMMC using Linux fdisk tool ?</h1>
+									
+	<div class="below-title-meta">
+		<div class="adt">
+		By        <span class="author">
+         <a href="http://www.embeddedforu.com/author/swami/" title="Posts by Minion" rel="author">Minion</a>        </span>
+         <span class="meta-sep">|</span> 
+         May 15, 2016 
+         </div>
+		 <div class="adt-comment">
+		 <a class="link-comments" href="http://www.embeddedforu.com/embedded-linux/how-prepare-a-bootable-sd-card-emmc-using-linux-commands/#respond">0 Comment</a> 
+         </div>       
+     </div><!-- below title meta end -->
+			
+						
+			</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p><a href="http://www.embeddedforu.com/embedded-linux/how-to-create-a-bootlable-sd-card-for-raspberry-pi-beaglebone-using-disk-utility/" target="_top">In the Previous post</a>, we have discussed about the procedure to create a bootable SD card using disks GUI. This tool may not be available every time. Some times, we may need to format the SD card or eMMC from the embedded Linux target it self. <span id="more-774"></span></p>
+<p>In such cases, we need to use Linux commands/tools to format the SD card. In this post, we will use “fdisk” command line tool and other filesystem tools to prepare a bootable SD card.</p>
+<h2>Prerequisite :</h2>
+<p>I would you recommend you to check the <a href="http://www.embeddedforu.com/embedded-linux/how-to-create-a-bootlable-sd-card-for-raspberry-pi-beaglebone-using-disk-utilities/" target="_top">Previous post</a> , section “SD card enumeration in Linux” to identify the proper SD card device node / name. Unless you know the proper device name, don’t proceed further. Because wrong usage of commands, can wipe your entire hard disk and lead to huge data loose.</p>
+<h2>How many partitions required ?</h2>
+<p>A primary/boot partition, formatted to FAT file format. This partition will&nbsp;have several components such as bootloaders, kernel, etc ..</p>
+<p>A secondary partition for root filesystem.</p>
+<h2>Using ‘fdisk’ :</h2>
+<p>step 1 : List your partition table and identify SD card / eMMC card. use below command</p>
+<pre>$ sudo fdisk -l</pre>
+<p>You will also get a similar log as below.</p>
+<pre>minion@ubuntu:~$ sudo fdisk -l
+
+Disk /dev/sda: 214.7 GB, 214748364800 bytes
+255 heads, 63 sectors/track, 26108 cylinders, total 419430400 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x000e3358
+
+Device Boot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blocks&nbsp;&nbsp; Id&nbsp; System
+/dev/sda1&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2048&nbsp;&nbsp; 417333247&nbsp;&nbsp; 208665600&nbsp;&nbsp; 83&nbsp; Linux
+/dev/sda2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 417335294&nbsp;&nbsp; 419428351&nbsp;&nbsp;&nbsp;&nbsp; 1046529&nbsp;&nbsp;&nbsp; 5&nbsp; Extended
+/dev/sda5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 417335296&nbsp;&nbsp; 419428351&nbsp;&nbsp;&nbsp;&nbsp; 1046528&nbsp;&nbsp; 82&nbsp; Linux swap / Solaris
+
+Disk /dev/sdb: 15.9 GB, 15931539456 bytes
+255 heads, 63 sectors/track, 1936 cylinders, total 31116288 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x000d24fd
+
+Device Boot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blocks&nbsp;&nbsp; Id&nbsp; System
+/dev/sdb1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 63&nbsp;&nbsp;&nbsp; 31116287&nbsp;&nbsp;&nbsp; 15558112+&nbsp;&nbsp; c&nbsp; W95 FAT32 (LBA)</pre>
+<p>In my case, SD card device file name is /dev/sdb. Linux&nbsp;detected as a SCSI device (/dev/sdb1) as i’m using a external card reader.&nbsp; If you are using SD/MMC card slot, device node will be “mmcblkX”</p>
+<p>Step 2 : Erase Master Boot Record table as well as the partition table using ‘dd’ command.</p>
+<pre>sudo dd if=/dev/zero of=/dev/sdX bs=1M count=1</pre>
+<p>Log is as shown below</p>
+<pre>minion@ubuntu:~$ sudo dd if=/dev/zero of=/dev/sdb bs=1M count=1
+[sudo] password for minion: 
+1+0 records in
+1+0 records out
+1048576 bytes (1.0 MB) copied, 0.103481 s, 10.1 MB/s</pre>
+<p>Step 3 : Create partitions</p>
+<ul>
+<li>Open SD device node with fdisk command. You will get a fdisk command prompt “Command (m for help):” .</li>
+</ul>
+<pre>$ sudo fdisk /dev/sdX</pre>
+<ul>
+<li>In the fdisk command prompt, type ‘m’ and press enter for help.</li>
+<li>To print partition table: type ‘p’ and press enter. You will see empty partition table as it is&nbsp;erased earlier.</li>
+</ul>
+<pre>Command (m for help): p
+
+Disk /dev/sdb: 15.9 GB, 15931539456 bytes
+64 heads, 32 sectors/track, 15193 cylinders, total 31116288 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0xedddc4f4
+
+&nbsp;&nbsp; Device Boot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blocks&nbsp;&nbsp; Id&nbsp; System
+
+Command (m for help):
+
+</pre>
+<p><span style="color: rgb(255, 0, 0);">Note</span> : Treat “<span style="color: rgb(255, 0, 0);">–&gt;</span>” symbol as enter in the upcoming steps</p>
+<ul>
+<li>Create a 256 MB first partition: In the fdisk prompt follow this sequence, &nbsp;“n –&gt; p –&gt; 1 –&gt; enter –&gt; +256M –&gt;”. At last type ‘p’ to see the partition table.</li>
+</ul>
+<pre>Command (m for help): n
+Partition type:
+&nbsp;&nbsp; p&nbsp;&nbsp; primary (0 primary, 0 extended, 4 free)
+&nbsp;&nbsp; e&nbsp;&nbsp; extended
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-31116287, default 2048): 
+Using default value 2048
+Last sector, +sectors or +size{K,M,G} (2048-31116287, default 31116287): +256M
+
+Command (m for help): p
+
+Disk /dev/sdb: 15.9 GB, 15931539456 bytes
+64 heads, 32 sectors/track, 15193 cylinders, total 31116288 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x9d29a9b7
+
+&nbsp;&nbsp; Device Boot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blocks&nbsp;&nbsp; Id&nbsp; System
+/dev/sdb1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 526335&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 262144&nbsp;&nbsp; 83&nbsp; Linux
+
+Command (m for help):</pre>
+<ul>
+<li>Create second partition for root filesystem. In the fdisk command prompt “n –&gt; p –&gt; 2 –&gt; enter –&gt; +2G –&gt;”</li>
+</ul>
+<pre>Command (m for help): n
+Partition type:
+&nbsp;&nbsp; p&nbsp;&nbsp; primary (1 primary, 0 extended, 3 free)
+&nbsp;&nbsp; e&nbsp;&nbsp; extended
+Select (default p): p
+Partition number (1-4, default 2): 2
+First sector (526336-31116287, default 526336): 
+Using default value 526336
+Last sector, +sectors or +size{K,M,G} (526336-31116287, default 31116287): +2G
+
+Command (m for help): p
+
+Disk /dev/sdb: 15.9 GB, 15931539456 bytes
+64 heads, 32 sectors/track, 15193 cylinders, total 31116288 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x9d29a9b7
+
+&nbsp;&nbsp; Device Boot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blocks&nbsp;&nbsp; Id&nbsp; System
+/dev/sdb1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 526335&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 262144&nbsp;&nbsp; 83&nbsp; Linux
+/dev/sdb2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 526336&nbsp;&nbsp;&nbsp;&nbsp; 4720639&nbsp;&nbsp;&nbsp;&nbsp; 2097152&nbsp;&nbsp; 83&nbsp; Linux
+
+Command (m for help):</pre>
+<ul>
+<li>Change the first partition to FAT. In the fdisk command prompt : “t –&gt; 1 –&gt; c –&gt; p–&gt;”. Code ‘c’ is for FAT 32 (LBA).</li>
+</ul>
+<pre>Command (m for help): t
+Partition number (1-4): 1
+Hex code (type L to list codes): c
+Command (m for help): p
+
+Disk /dev/sdb: 15.9 GB, 15931539456 bytes
+64 heads, 32 sectors/track, 15193 cylinders, total 31116288 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x9d29a9b7
+
+&nbsp;&nbsp; Device Boot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blocks&nbsp;&nbsp; Id&nbsp; System
+/dev/sdb1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 526335&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 262144&nbsp;&nbsp;&nbsp; c&nbsp; W95 FAT32 (LBA)
+/dev/sdb2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 526336&nbsp;&nbsp;&nbsp;&nbsp; 4720639&nbsp;&nbsp;&nbsp;&nbsp; 2097152&nbsp;&nbsp; 83&nbsp; Linux</pre>
+<ul>
+<li>Now write the partition table to SD card and exit using ‘w’ command.</li>
+</ul>
+<pre>Command (m for help): w
+The partition table has been altered!
+Calling ioctl() to re-read partition table.
+Syncing disks.</pre>
+<p>Step 4 : Final step, format SD card partitions. first partition to FAT, second partition to EXT4.</p>
+<pre>sudo mkfs.vfat /dev/sdX1
+sudo mkfs.ext4 /dev/sdX2</pre>
+<p>X can be a , b, c …</p>
+<p>In case of SD/MMC card slot, commands changes as shown below.</p>
+<pre>sudo mkfs.vfat /dev/mmcblkXp1
+sudo mkfs.ext4 /dev/mmcblkXp2</pre>
+<p>X can be 0, 1, 2, 3 …</p>
+<p>&nbsp;</p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+		<span>Category: <a href="http://www.embeddedforu.com/embedded-linux/" rel="category tag">Embedded linux</a></span> <span></span> 
+           						</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+				<nav class="nav-single">
+					<div class="assistive-text">Post navigation</div>
+					<span class="nav-previous"><a href="http://www.embeddedforu.com/embedded-linux/how-to-create-a-bootlable-sd-card-for-raspberry-pi-beaglebone-using-disk-utility/" rel="prev"><span class="meta-nav">←</span> How to create a bootlable SD card for Raspberry pi BeagleBone using Disk Utility</a></span>
+					<span class="nav-next"><a href="http://www.embeddedforu.com/embedded-linux/beaglebone/how-to-cross-compile-kernel-for-beaglebone-black/" rel="next">How to Cross compile kernel for BeagleBone Black ? <span class="meta-nav">→</span></a></span>
+				</nav><!-- .nav-single -->
+
+				
+<div id="comments" class="comments-area">
+
+	
+	
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.embeddedforu.com/embedded-linux/how-prepare-a-bootable-sd-card-emmc-using-linux-commands/#respond" style="display: none;">Cancel reply</a></small></h3>				<form action="http://www.embeddedforu.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" value="" size="30" maxlength="245" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" value="" size="30" maxlength="200" type="text"></p>
+<p class="form-submit"><input name="submit" id="submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="774" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p>				</form>
+					</div><!-- #respond -->
+		
+</div><!-- #comments .comments-area -->
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="email-subscribers-3" class="widget widget_text elp-widget">			
+					
+		<div>
+						<div class="es_msg"><span id="es_msg"></span></div>
+						<div class="es_lablebox">Email *</div>
+			<div class="es_textbox">
+				<input class="es_textbox_class" name="es_txt_email" id="es_txt_email" onkeypress="if(event.keyCode==13) es_submit_page('http://www.embeddedforu.com')" value="" maxlength="225" type="text">
+			</div>
+			<div class="es_button">
+				<input class="es_textbox_button" name="es_txt_button" id="es_txt_button" onclick="return es_submit_page('http://www.embeddedforu.com')" value="Subscribe" type="button">
+			</div>
+							<input name="es_txt_name" id="es_txt_name" value="" type="hidden">
+						<input name="es_txt_group" id="es_txt_group" value="" type="hidden">
+		</div>
+		</aside><aside id="search-4" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.embeddedforu.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input value="" name="s" id="s" type="text">
+					<input id="searchsubmit" value="Search" type="submit">
+				</div>
+			</form></aside><aside id="bbp_login_widget-2" class="widget bbp_widget_login"><p class="widget-title">Login</p>
+			<form method="post" action="http://www.embeddedforu.com/wp-login.php" class="bbp-login-form">
+				<fieldset>
+					<legend>Log In</legend>
+
+					<div class="bbp-username">
+						<label for="user_login">Username: </label>
+						<input name="log" value="" size="20" id="user_login" tabindex="101" type="text">
+					</div>
+
+					<div class="bbp-password">
+						<label for="user_pass">Password: </label>
+						<input name="pwd" value="" size="20" id="user_pass" tabindex="102" type="password">
+					</div>
+
+					<div class="bbp-remember-me">
+						<input name="rememberme" value="forever" id="rememberme" tabindex="103" type="checkbox">
+						<label for="rememberme">Remember Me</label>
+					</div>
+
+					<div class="bbp-submit-wrapper">
+
+						
+						<button type="submit" name="user-submit" id="user-submit" tabindex="104" class="button submit user-submit">Log In</button>
+
+						
+		<input name="user-cookie" value="1" type="hidden">
+
+		<input id="bbp_redirect_to" name="redirect_to" value="http://www.embeddedforu.com/embedded-linux/how-prepare-a-bootable-sd-card-emmc-using-linux-commands/" type="hidden"><input id="_wpnonce" name="_wpnonce" value="63c95c383a" type="hidden"><input name="_wp_http_referer" value="/embedded-linux/how-prepare-a-bootable-sd-card-emmc-using-linux-commands/" type="hidden">
+					</div>
+
+					
+						<div class="bbp-login-links">
+
+							
+								<a href="http://www.embeddedforu.com/register/" title="Register" class="bbp-register-link">Register</a>
+
+							
+							
+								<a href="http://www.embeddedforu.com/lost-password/" title="Lost Password" class="bbp-lostpass-link">Lost Password</a>
+
+							
+						</div>
+
+					
+				</fieldset>
+			</form>
+
+		</aside>		<aside id="recent-posts-4" class="widget widget_recent_entries">		<p class="widget-title">Recent Posts</p>		<ul>
+					<li>
+				<a href="http://www.embeddedforu.com/embedded-linux/raspberry-pi/how-to-compile-mainline-u-boot-for-raspberry-pi/">How to compile mainline u-boot for Raspberry Pi ?</a>
+						</li>
+					<li>
+				<a href="http://www.embeddedforu.com/embedded-linux/raspberry-pi/embedded-linux-development-on-raspberry-pi-using-buildroot-part2-2/">Embedded Linux Development on Raspberry PI using Buildroot – part2</a>
+						</li>
+					<li>
+				<a href="http://www.embeddedforu.com/embedded-linux/beaglebone/beaglebone-black-embedded-linux-development-with-buildroot/">Beaglebone Black Embedded Linux Development with Buildroot : part-1</a>
+						</li>
+					<li>
+				<a href="http://www.embeddedforu.com/embedded-linux/raspberry-pi/embedded-linux-development-on-raspberry-pi-using-buildroot-part1/">Embedded Linux Development on Raspberry PI using Buildroot – part1</a>
+						</li>
+					<li>
+				<a href="http://www.embeddedforu.com/tutorials/how-to-write-a-raw-disk-image-to-removable-storage-medium-using-win32diskimager/">win32diskimager: How to write raw disk image to removable storage device</a>
+						</li>
+				</ul>
+		</aside>				</div><!-- #secondary -->
+		</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+		<div class="footercopy"></div>
+		<div class="footercredit">©2015 <a href="http://www.embeddedforu.com/">www.embeddedforu.com</a> All Rights Reserved </div>
+		<div class="clear"></div>
+		</div><!-- .site-info -->
+		</footer><!-- #colophon -->
+		<div class="site-wordpress">
+				<!-- &copy;2015 <a href="http://www.embeddedforu.com">www.embeddedforu.com</a> All Rights Reserved -->
+				</div><!-- .site-info -->
+				<div class="clear"></div>
+</div><!-- #page -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

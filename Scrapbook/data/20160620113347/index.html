@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# og: http://ogp.me/ns# article: http://ogp.me/ns/article# og: http://ogp.me/ns# book: http://ogp.me/ns/book# og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# og: http://ogp.me/ns# video: http://ogp.me/ns/video# og: http://ogp.me/ns# product: http://ogp.me/ns/product# og: http://ogp.me/ns# content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ rdfs: http://www.w3.org/2000/01/rdf-schema# og: http://ogp.me/ns# sioc: http://rdfs.org/sioc/ns# og: http://ogp.me/ns# sioct: http://rdfs.org/sioc/types# og: http://ogp.me/ns# skos: http://www.w3.org/2004/02/skos/core# og: http://ogp.me/ns# xsd: http://www.w3.org/2001/XMLSchema# og: http://ogp.me/ns#" dir="ltr" class="js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta charset="utf-8">
+
+<link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+<meta name="description" content="The BeagleBone Black (BBB) provides a 1GHz ARM Cortex-A8 with 512Mb of RAM and 2Gb of eMMC flash from which you can run a GNU/Linux system around a 3.8 Linux Kernel. Throw ethernet, HDMI, and a load of IO pins into the mix and you have a little machine that straddles the border between embedded Linux and the Arduino world. The Black is the latest addition to the Beagle series of ARM-based, single-board computers and is based on the BeagleBone before it. The package I got with the BBB contained the board and a single USB cable.">
+<meta name="generator" content="Drupal 7 (http://drupal.org)">
+<link rel="canonical" href="https://www.linux.com/learn/getting-started-beaglebone-black-1ghz-arm-linux-machine-45">
+<link rel="shortlink" href="https://www.linux.com/learn/getting-started-beaglebone-black-1ghz-arm-linux-machine-45">
+<meta property="og:site_name" content="Linux.com | The source for Linux information">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.linux.com/learn/getting-started-beaglebone-black-1ghz-arm-linux-machine-45">
+<meta property="og:title" content="Getting Started With the BeagleBone Black: A 1GHz ARM Linux Machine for $45">
+<meta property="og:description" content="The BeagleBone Black (BBB) provides a 1GHz ARM Cortex-A8 with 512Mb of RAM and 2Gb of eMMC flash from which you can run a GNU/Linux system around a 3.8 Linux Kernel. Throw ethernet, HDMI, and a load of IO pins into the mix and you have a little machine that straddles the border between embedded Linux and the Arduino world. The Black is the latest addition to the Beagle series of ARM-based, single-board computers and is based on the BeagleBone before it. The package I got with the BBB contained the board and a single USB cable.">
+<meta property="og:updated_time" content="2013-06-24T16:56:02+00:00">
+<meta name="twitter:site" content="@linuxfoundation">
+<meta name="twitter:url" content="https://www.linux.com/learn/getting-started-beaglebone-black-1ghz-arm-linux-machine-45">
+<meta name="twitter:title" content="Getting Started With the BeagleBone Black: A 1GHz ARM Linux Machine for $45">
+<meta name="twitter:description" content="The BeagleBone Black (BBB) provides a 1GHz ARM Cortex-A8 with 512Mb of RAM and 2Gb of eMMC flash from which you can run a GNU/Linux system around a 3.8 Linux Kernel. Throw ethernet, HDMI, and a load of IO pins into the mix and you have a little machine that straddles the border between embedded Linux and the Arduino world. The Black is the latest addition to the Beagle series of ARM-based, single-board computers and is based on the BeagleBone before it. The package I got with the BBB contained the board and a single USB cable.">
+<meta property="article:published_time" content="2013-06-24T16:30:12+00:00">
+<meta property="article:modified_time" content="2013-06-24T16:56:02+00:00">
+<meta itemprop="name" content="Getting Started With the BeagleBone Black: A 1GHz ARM Linux Machine for $45">
+<meta itemprop="description" content="The BeagleBone Black (BBB) provides a 1GHz ARM Cortex-A8 with 512Mb of RAM and 2Gb of eMMC flash from which you can run a GNU/Linux system around a 3.8 Linux Kernel. Throw ethernet, HDMI, and a load of IO pins into the mix and you have a little machine that straddles the border between embedded Linux and the Arduino world. The Black is the latest addition to the Beagle series of ARM-based, single-board computers and is based on the BeagleBone before it. The package I got with the BBB contained the board and a single USB cable.">
+  <title>Getting Started With the BeagleBone Black: A 1GHz ARM Linux Machine for $45 | Linux.com | The source for Linux information</title>
+
+      <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width">
+    <!--[if IEMobile]><meta http-equiv="cleartype" content="on"><![endif]-->
+
+  
+
+
+
+
+
+  
+
+
+
+<link href="https://tpc.googlesyndication.com/safeframe/1-0-4/html/container.html" rel="prefetch">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="html not-front not-logged-in one-sidebar sidebar-second page-node page-node- page-node-81647 node-type-tutorial section-learn page-panels">
+<!-- Google Tag Manager -->
+
+
+<!-- End Google Tag Manager -->
+      <p id="skip-link">
+      <a href="#main-menu" class="element-invisible element-focusable">Jump to navigation</a>
+    </p>
+      
+<div id="page">
+
+    <div class="region region-header-top">
+    <div class="container">
+      
+<div id="block-dfp-leaderboard1" class="block block-dfp first last odd lf_header_leaderboard_ad">
+
+    
+	<div class="block__content">
+	  <div id="dfp-ad-leaderboard1-wrapper" class="dfp-tag-wrapper">
+<div id="dfp-ad-leaderboard1" class="dfp-tag-wrapper">
+  <div class="slug">Advertisement</div>  <div style="border: 0pt none;" id="google_ads_iframe_/2972204/LF_ROS_728x90_468x60_300x250_0__container__"><iframe src="index_1.html" style="border: 0px none; vertical-align: bottom;" marginheight="0" marginwidth="0" scrolling="no" name="google_ads_iframe_/2972204/LF_ROS_728x90_468x60_300x250_0" title="3rd party ad content" id="google_ads_iframe_/2972204/LF_ROS_728x90_468x60_300x250_0" frameborder="0" height="90" width="728"></iframe></div><iframe src="index_3.html" style="border: 0px none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" scrolling="no" name="google_ads_iframe_/2972204/LF_ROS_728x90_468x60_300x250_0__hidden__" title="" id="google_ads_iframe_/2972204/LF_ROS_728x90_468x60_300x250_0__hidden__" frameborder="0" height="0" width="0"></iframe>
+</div>
+</div>	</div>
+
+</div>
+    </div>
+  </div>
+
+  <header class="header" id="header" role="banner">
+
+    <!-- Toggles -->
+    <div class="header__toggles">
+      <a id="nav__toggle" href="#"><span></span></a>
+      <a id="search__toggle" href="#"><span></span></a>
+    </div>
+
+    <div class="header__inner">
+      <div class="container header__container">
+
+                  <div class="header__site-info" id="name-and-slogan">
+
+                          <a href="https://www.linux.com/" title="Home" rel="home" class="header__logo" id="logo"><img src="logo.png" alt="Home" class="header__logo-image"></a>
+            
+            
+                          <div class="header__site-slogan" id="site-slogan">News for the Open Source Professional</div>
+                      </div>
+        
+        
+          <div class="header__region region region-header">
+    
+<div id="block-linux-user-login-logout-links" class="block block-linux-user first odd ">
+
+    
+	<div class="block__content">
+	  <a href="https://www.linux.com/cas?destination=node/81647" rel="noindex, nofollow">Login / Create Account</a>	</div>
+
+</div>
+
+<div id="block-menu-menu-join-us" class="block block-menu even join-us" role="navigation">
+
+    
+	<div class="block__content">
+	  <ul class="menu"><li class="menu__item is-leaf first leaf"><a href="https://www.facebook.com/TheLinuxFoundation" class="menu__link addthis-facebook" target="_top">Facebook</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://twitter.com/linuxfoundation" class="menu__link addthis-twitter" target="_top">Twitter</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://plus.google.com/105083814157272466314" class="menu__link addthis-googleplus" target="_top">Google Plus</a></li>
+<li class="menu__item is-leaf leaf"><a href="http://www.linkedin.com/groups?gid=48682" class="menu__link addthis-linkedin" target="_top">LinkedIn</a></li>
+<li class="menu__item is-leaf last leaf"><a href="https://www.linux.com/feeds" class="menu__link addthis-rss">Feeds</a></li>
+</ul>	</div>
+
+</div>
+
+<div id="block-boxes-brought-lf" class="block block-boxes block-boxes-simple last odd lf-brought">
+
+    
+	<div class="block__content">
+	  <div id="boxes-box-brought_lf" class="boxes-box"><div class="boxes-box-content">
+      <p><span>Brought to you by</span> <a target="_top" href="http://www.linuxfoundation.org/"><img alt="Linux Foundation" src="logo-header.png"></a></p></div></div>	</div>
+
+</div>
+  </div>
+
+      </div>
+
+        
+<nav class="main-menu" role="navigation">
+  <div class="container">
+
+    
+    
+    <ul class="menu"><li class="menu__item is-expanded first expanded"><a href="https://www.linux.com/news" class="menu__link">News</a><ul class="menu"><li class="menu__item is-leaf first leaf"><a href="https://www.linux.com/news/category/enterprise" class="menu__link">Enterprise</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/news/category/desktop" class="menu__link">Desktop</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/news/category/embeddedmobile" class="menu__link">Mobile &amp; Embedded</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/news/category/open-source-practices" class="menu__link">Open Source</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/news/category/linux-kernel" class="menu__link">Linux Kernel</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/devops" class="menu__link">DevOps</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/networking" class="menu__link">Networking</a></li>
+<li class="menu__item is-leaf last leaf"><a href="https://www.linux.com/cloud" class="menu__link">Cloud Computing</a></li>
+</ul></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/tutorials" class="menu__link">Tutorials</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/blogs/linux-foundation" class="menu__link expanded">Open Source Pro</a></li>
+<li class="menu__item is-expanded expanded"><span class="menu__link nolink">Learn</span><ul class="menu"><li class="menu__item is-leaf first leaf"><a href="https://www.linux.com/what-is-linux" class="menu__link">What is Linux?</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/learn/training" class="menu__link">Training</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/certification" class="menu__link">Certification</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/events" class="menu__link">Events</a></li>
+<li class="menu__item is-leaf last leaf"><a href="https://www.linux.com/blog/upcoming-free-webinars-linux-foundation" class="menu__link">Webinars</a></li>
+</ul></li>
+<li class="menu__item is-expanded expanded"><a href="https://www.linux.com/community" class="menu__link">Community</a><ul class="menu"><li class="menu__item is-leaf first leaf"><a href="https://www.linux.com/community/participate" class="menu__link">Participate</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/answers" class="menu__link">Q&amp;A</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/forum" class="menu__link">Forums</a></li>
+<li class="menu__item is-leaf last leaf"><a href="https://www.linux.com/community/blogs" class="menu__link">Blogs</a></li>
+</ul></li>
+<li class="menu__item is-expanded last expanded"><span class="menu__link nolink">Resources</span><ul class="menu"><li class="menu__item is-leaf first leaf"><a href="https://www.linux.com/resources/newsletter" class="menu__link">Newsletter</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/distributions" class="menu__link">Distributions</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/resources/publications" class="menu__link">Publications</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/resources/infographics" class="menu__link">Infographics</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/photos" class="menu__link">Photos</a></li>
+<li class="menu__item is-leaf last leaf"><a href="https://www.linux.com/videos" class="menu__link">Videos</a></li>
+</ul></li>
+</ul>
+  </div>
+</nav><!-- /#navigation -->
+
+<div id="block-views-ed07b1def74a71b1f939ef53b3d18ead" class="block block-views last even search-block">
+
+  <div class="container">
+        
+    <a id="search__toggle_desktop" href="#"><span></span></a>
+
+    <div class="block__content">
+      <form action="https://www.linux.com/search" method="get" id="views-exposed-form-linux-search-node-panel-pane-1" accept-charset="UTF-8"><div><div class="views-exposed-form">
+  <div class="views-exposed-widgets clearfix">
+          <div id="edit-keyword-wrapper" class="views-exposed-widget views-widget-filter-search_api_views_fulltext">
+                        <div class="views-widget">
+          <div class="form-item form-type-textfield form-item-keyword">
+ <input id="edit-keyword" name="keyword" value="" size="30" maxlength="128" class="form-text required error" type="text">
+</div>
+        </div>
+              </div>
+                    <div class="views-exposed-widget views-submit-button">
+      <input id="edit-submit-linux-search-node" name="" value="Search" class="form-submit" type="submit">    </div>
+      </div>
+</div>
+</div></form>    </div>
+  </div>
+
+</div>
+
+    </div>
+  </header>
+
+  
+  <div id="main">
+    <div class="container">
+      <div id="content" class="column" role="main">
+                        <a id="main-content"></a>
+                                                                
+
+
+<div class="lcom-stacked__header"><div class="panel-pane pane-views-panes pane-real-author-name-linked-panel-pane-1 node-author">
+  
+      
+  
+  <div id="view-id-real_author_name_linked-panel_pane_1" class="view view-real-author-name-linked view-id-real_author_name_linked view-display-id-panel_pane_1 view-dom-id-6cf7146670eb41e6a91fffe87eee07ab">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-field-linux-name">        <div class="field-content"><a href="https://www.linux.com/users/monkeyiq">Ben Martin</a></div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>
+  
+  </div>
+<div class="panel-pane pane-node-created node-date">
+  
+      
+  
+  June 24, 2013
+  
+  </div>
+</div><div class="lcom-stacked__main"><div class="panel-pane pane-node-title">
+  
+      
+  
+  <h1>Getting Started With the BeagleBone Black: A 1GHz ARM Linux Machine for $45</h1>
+
+  
+  </div>
+<div class="panel-pane pane-entity-field pane-node-body">
+  
+      
+  
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><div class="article-content">
+<p>The BeagleBone Black (BBB) provides a 1GHz ARM Cortex-A8 with 512Mb of RAM and 2Gb of eMMC flash from which you can run a GNU/Linux system around a 3.8 Linux Kernel. Throw ethernet, HDMI, and a load of IO pins into the mix and you have a little machine that straddles the border between embedded Linux and the Arduino world. The Black is the latest addition to the Beagle series of ARM-based, single-board computers and is based on the BeagleBone before it. The package I got with the BBB contained the board and a single USB cable. You can power the BBB over the USB cable from a HUB so a dedicated power brick is not a necessity.</p>
+<p><img src="beaglebone-black-led-pin.jpg" alt="BeagleBone Black, with LED lighted." title="To get the LED to shine on the BeagleBone Black, map the GPIO_7 pin into the filesystem." class="caption" height="260" width="300">Looking at the rows of 46 pins on each side of the BBB indicates that the board is very useful for many hardware projects. Depending on how you configure your BBB you can have up to 65 general-purpose, digital IO pins, 8 PWMs, 4 timers, 7 1.8V analog inputs, some serial UARTs, 2 I2C, and 2 SPI along with access to 3.3V and 5V. Some of the pins can be used for multiple purposes. For example, pin 17 on one header serves as a digital IO pin, an I2C, and an SPI pin, so you have to choose for which purpose you want to use it. The two header blocks on the BBB are referred to as the P8 and P9.</p>
+<p>The HDMI output on the BBB is implemented by bringing a "cape" onto the main board. Capes are what the Beagle community calls the cards, which can be attached to the pin headers, similar to what are called Shields in the Arduino world. The HDMI output on the BBB uses a collection of the general-purpose output pins from the two headers on the BBB. Specifically, it wants 3 SPI pins on header P9 and 30 pins on the P8 header. So if you have an HDMI display then you lose about 2/3 of the pins on the P9 header. More disturbing, if you are planning to output to a 1080 display you can only get a 24Hz output at that resolution (Page 68 of the&nbsp;<a target="_top" href="https://github.com/CircuitCo/BeagleBone-Black/blob/master/BBB_SRM.pdf?raw=true">System Reference Manual</a>). Though that limitation has changed over software revisions.</p>
+<h3>Getting Started with the BeagleBone Black</h3>
+<p>When I first booted the BBB I got a graphical display over its HDMI but I couldn't get any mouse or keyboard to work on any USB port with either a passive or powered hub. That was when I decided I needed to update to the latest software before proceeding. The first step in updating the Linux distribution on the eMMC of the BBB is to download the Angstrom Distribution eMMC flasher from the&nbsp;<a target="_top" href="http://beagleboard.org/latest-images">Latest Images</a>. Use unxz to uncompress the downloaded image and dd to write it to a microSD card. Many of the directions, including those that came on my BBB itself are very Windows-centric.</p>
+<p>Once you have written the roughly 4GB image to a microSD card, turn off the BBB, insert the card into the BBB, and apply power while holding the "boot" button which is on the opposite side of the BBB from where the microSD card plugs in. During flashing, the LEDs will flash and when done all the LEDs will remain on. For me, the flashing procedure took around an hour to complete.</p>
+<p>After updating the eMMC I found that if I booted the BBB with a network cable plugged in, I never got HDMI output. To get a display I had to boot without the network cable and then plug in the network cable to gain network access.</p>
+<p>Power wise, the BBB drew 2.7 Watts sitting idle at a 720p desktop with a passive hub, keyboard and mouse connected but without a network connection. Plugging in an ethernet cable boosted the draw to 3.2 W. Running the CPU at 100 percent moved to 3.9 W total. Disconnecting the hub (and thus keyboard and mouse) dropped the power draw by 0.8 W.</p>
+<h3>How to Use the GPIO Pins</h3>
+<p>Access to the various pins in the headers on the left and right side of the BBB is done through the Linux kernel using its&nbsp;<a target="_top" href="https://www.kernel.org/doc/Documentation/gpio.txt">GPIO Interfaces</a>. To demonstrate how to give this a spin I attached an LED from pin 42 (GPIO_7) to the ground pin 44 next to it. That is the red LED shown in the photo, above. The BBB booted up without the LED lit.</p>
+<p>To get the LED to shine you have to map the GPIO_7 pin into the filesystem. This is done by echoing the GPIO pin into the export file. As you can see, below, I created the new gpio7 link using the export file in order to control that pin. The value is initially zero but when I echo high into the direction the LED lit up!</p>
+<pre><a href="#">root@bbb:/sys/class/gpio#</a> echo 7 &gt; /sys/class/gpio/export
+<a href="#">root@bbb:/sys/class/gpio#</a> ls -lh
+total 0
+--w------- 1 root root 4.0K Jun  1 10:54 export
+lrwxrwxrwx 1 root root    0 Jun  1 10:54 gpio7 -&gt; ../../devices/virtual/gpio/gpio7
+lrwxrwxrwx 1 root root    0 Jan  1  2000 gpiochip0 -&gt; ../../devices/virtual/gpio/gpiochip0
+lrwxrwxrwx 1 root root    0 Jan  1  2000 gpiochip32 -&gt; ../../devices/virtual/gpio/gpiochip32
+lrwxrwxrwx 1 root root    0 Jan  1  2000 gpiochip64 -&gt; ../../devices/virtual/gpio/gpiochip64
+lrwxrwxrwx 1 root root    0 Jan  1  2000 gpiochip96 -&gt; ../../devices/virtual/gpio/gpiochip96
+--w------- 1 root root 4.0K Jan  1  2000 unexport
+<a href="#">root@bbb:/sys/class/gpio#</a> cd gpio7
+<a href="#">root@bbb:/sys/class/gpio/gpio7#</a> cat value 
+0
+<a href="#">root@bbb:/sys/class/gpio/gpio7#</a> echo low  &gt; direction 
+<a href="#">root@bbb:/sys/class/gpio/gpio7#</a> echo high &gt; direction 
+</pre><p>To use GPIO pins that are not connected to the first gpio controller chip (which controls 32 pins), you should refer to the Expansion Header Pinout table in the&nbsp;<a target="_top" href="https://github.com/CircuitCo/BeagleBone-Black/blob/master/BBB_SRM.pdf?raw=true">System Reference Manual</a>&nbsp;to calculate the correct number to echo into the exports file. For example GPIO_51 on pin 16 of the P9 header is gpio1[19]. This makes it the 19th pin on the second gpio controller so you would echo 32+19=51 into the exports file to access GPIO_51.</p>
+<p>One issue I encountered with the hardware design is that the large USB port on the BBB is very close to the microHDMI port which is attached to the other side of the board. The common combination of plugging in cables to both ports left the cable sleaves pushing each other slightly.</p>
+<p>In my next article on the BBB I'll show benchmarks for its CPU, along with performance figures for the eMMC flash that comes on the board.</p>
+</div></div></div></div>
+  
+  </div>
+<div class="panel-pane pane-node-links">
+  
+      
+  
+  <ul class="links inline"><li class="addtoany first"><span><span class="a2a_kit a2a_target addtoany_list" id="">
+      
+      <a target="_top" class="a2a_dd addtoany_share_save" href="https://www.addtoany.com/share#url=https%3A%2F%2Fwww.linux.com%2Flearn%2Fgetting-started-beaglebone-black-1ghz-arm-linux-machine-45&amp;title=Getting%20Started%20With%20the%20BeagleBone%20Black%3A%20A%201GHz%20ARM%20Linux%20Machine%20for%20%2445&amp;description=The%20BeagleBone%20Black%20(BBB)%20provides%20a%201GHz%20ARM%20Cortex-A8%20with%20512Mb%20of%20RAM%20and%202Gb%20of%20eMMC%20flash%20from%20which%20you%20can%20run%20a%20GNU%2FLinux%20system%20around%20a%203.8%20Linux%20Kernel.%20Throw%20ethernet%2C%20HDMI%2C%20and%20a%20load%20of%20IO%20pins%20into%20the%20mix%20and%20you%20have%20a%20little%20machine%20that%20straddles%20the%20border%20between%20embedded%20Linux%20and%20the%20Arduino%20world.%20The%20Black%20is%20the%20latest%20addition%20to%20the%20Beagle%20series%20of%20ARM-based%2C%20single-board%20computers%20and%20is%20based%20on%20the%20BeagleBone%20before%20it.%20The%20package%20I%20got%20with%20the%20BBB%20contained%20the%20board%20and%20a%20single%20USB%20cable."><span class="a2a_img a2a_i_a2a"></span><span class="a2a_label">Share</span></a>
+      <a rel="nofollow" href="https://www.linux.com/#email" target="_top" class="a2a_button_email"><span class="a2a_img a2a_i_email"></span><span class="a2a_label">Email</span></a>
+    <a rel="nofollow" href="https://www.linux.com/#facebook" target="_top" class="a2a_button_facebook"><span class="a2a_img a2a_i_facebook"></span><span class="a2a_label">Facebook</span></a>
+    <a rel="nofollow" href="https://www.linux.com/#twitter" target="_top" class="a2a_button_twitter"><span class="a2a_img a2a_i_twitter"></span><span class="a2a_label">Twitter</span></a>
+    <a rel="nofollow" href="https://www.linux.com/#linkedin" target="_top" class="a2a_button_linkedin"><span class="a2a_img a2a_i_linkedin"></span><span class="a2a_label">LinkedIn</span></a>
+    <a rel="nofollow" href="https://www.linux.com/#pinterest" target="_top" class="a2a_button_pinterest"><span class="a2a_img a2a_i_pinterest"></span><span class="a2a_label">Pinterest</span></a>
+    <a rel="nofollow" href="https://www.linux.com/#google_plus" target="_top" class="a2a_button_google_plus"><span class="a2a_img a2a_i_google_plus"></span><span class="a2a_label">Google+</span></a>
+    </span>
+    </span></li>
+<li class="print_html"><a href="https://www.linux.com/print/81647" title="Display a printer-friendly version of this page." class="print-page" rel="nofollow">Print This</a></li>
+<li class="flag-imagex_node_like last"><span><span class="flag-wrapper flag-imagex-node-like flag-imagex-node-like-81647">
+      <a href="https://www.linux.com/flag/flag/imagex_node_like/81647?destination=node/81647&amp;token=291166f0185b9d57af8cd56a79c4ca1d&amp;has_js=1" title="" class="flag flag-action flag-link-toggle flag-anonymous-processed flag-processed" rel="nofollow">Like</a><span class="flag-throbber">&nbsp;</span>
+          (<span class="flag-counter">0 likes</span>)
+  </span>
+</span></li>
+</ul>
+  
+  </div>
+</div><div class="lcom-stacked__footer"><div class="panel-pane pane-panels-mini pane-comment-minipanel">
+  
+      
+  
+  <div class="panel-display parrot-panels minipanels minipanel-one-column clearfix" id="mini-panel-comment_minipanel">
+  <div class="minipanel-one-wrapper fullwidth">
+    <div class="region region-minipanel-one-main">
+      <div class="region-inner clearfix">
+              </div>
+    </div>
+  </div>
+</div>
+
+  
+  </div>
+</div>      </div>
+
+      
+              <aside class="sidebars">
+                      <section class="region region-sidebar-second column sidebar">
+    
+<div id="block-dfp-box1" class="block block-dfp first odd ">
+
+    
+	<div class="block__content">
+	  <div id="dfp-ad-box1-wrapper" class="dfp-tag-wrapper">
+<div id="dfp-ad-box1" class="dfp-tag-wrapper">
+  <div class="slug">Advertisement</div>  <div style="border: 0pt none;" id="google_ads_iframe_/2972204/LF_ROS_300x250_200x200_0__container__"><iframe src="index_4.html" style="border: 0px none; vertical-align: bottom;" marginheight="0" marginwidth="0" scrolling="no" name="google_ads_iframe_/2972204/LF_ROS_300x250_200x200_0" title="3rd party ad content" id="google_ads_iframe_/2972204/LF_ROS_300x250_200x200_0" frameborder="0" height="250" width="300"></iframe></div>
+</div>
+</div>	</div>
+
+</div>
+
+<section id="block-views-training-block-1" class="block block-views even lf-training-block">
+
+    	<header>
+	    <h2 class="block__title block-title">Training</h2>
+		</header>
+	  
+	<div class="block__content">
+	  <div id="view-id-training-block_1" class="view view-training view-id-training view-display-id-block_1 view-dom-id-35e8eac7e2b785a331ed0d39e838ab42">
+            <div class="view-header">
+      <div class="see_all_button"><a href="https://www.linux.com/learn/training">See all</a></div>    </div>
+  
+  
+  
+      <div class="view-content">
+          <ul>          <li class="views-row views-row-1 views-row-odd views-row-first">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.linux.com/training/lfd401-developing-applications-linux-enea">LFD401 Developing Applications For Linux - ENEA</a></span>  </div>  
+          <div class="field-content meta"><span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2016-08-29T00:00:00+00:00">August 29, 2016</span></div>    
+  <div class="links">        <div class="learn-more"><a target="_top" href="https://training.linuxfoundation.org/linux-courses/development-training/developing-applications-for-linux">Learn more</a></div>  </div></li>
+          <li class="views-row views-row-2 views-row-even">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.linux.com/training/lfd420-linux-kernel-internals-and-development-enea">LFD420 Linux Kernel Internals and Development - ENEA</a></span>  </div>  
+          <div class="field-content meta"><span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2016-09-05T00:00:00+00:00">September 5, 2016</span></div>    
+  <div class="links">        <div class="learn-more"><a target="_top" href="https://training.linuxfoundation.org/linux-courses/development-training/linux-kernel-internals-and-development">Learn more</a></div>  </div></li>
+          <li class="views-row views-row-3 views-row-odd views-row-last">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.linux.com/training/lfs462-linux-kvm-virtualization-enea">LFS462 Linux KVM Virtualization ENEA</a></span>  </div>  
+          <div class="field-content meta"><span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2016-09-19T00:00:00+00:00">September 19, 2016</span></div>    
+  <div class="links">        <div class="learn-more"><a target="_top" href="https://training.linuxfoundation.org/linux-courses/system-administration-training/open-source-virtualization">Learn more</a></div>  </div></li>
+      </ul>    </div>
+  
+  
+  
+  
+  
+  
+</div>	</div>
+
+</section>
+
+<section id="block-linux-blocks-pardot-newsletter-signup-form" class="block block-linux-blocks last odd ">
+
+    	<header>
+	    <h2 class="block__title block-title">Newsletter</h2>
+		</header>
+	  
+	<div class="block__content">
+	  <iframe src="index_6.html" type="text/html" allowtransparency="true" style="border: 0px none;" frameborder="0" height="420px" width="100%"></iframe>	</div>
+
+</section>
+  </section>
+        </aside>
+      
+    </div>
+  </div>
+
+  
+    <footer id="footer" class="region region-footer">
+  	<div class="container">
+    	
+<div id="block-menu-block-1" class="block block-menu-block first odd lf-footer-primary-menu footer-menu" role="navigation">
+
+    
+	<div class="block__content">
+	  <div class="menu-block-wrapper menu-block-1 menu-name-main-menu parent-mlid-0 menu-level-1">
+  <ul class="menu"><li class="menu__item is-expanded first expanded menu-mlid-1275"><a href="https://www.linux.com/news" class="menu__link">News</a><ul class="menu"><li class="menu__item is-leaf first leaf menu-mlid-1281"><a href="https://www.linux.com/news/category/enterprise" class="menu__link">Enterprise</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1282"><a href="https://www.linux.com/news/category/desktop" class="menu__link">Desktop</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1283"><a href="https://www.linux.com/news/category/embeddedmobile" class="menu__link">Mobile &amp; Embedded</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1284"><a href="https://www.linux.com/news/category/open-source-practices" class="menu__link">Open Source</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1285"><a href="https://www.linux.com/news/category/linux-kernel" class="menu__link">Linux Kernel</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-5595"><a href="https://www.linux.com/devops" class="menu__link">DevOps</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-5596"><a href="https://www.linux.com/networking" class="menu__link">Networking</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-5597"><a href="https://www.linux.com/cloud" class="menu__link">Cloud Computing</a></li>
+</ul></li>
+<li class="menu__item is-leaf leaf menu-mlid-1276"><a href="https://www.linux.com/tutorials" class="menu__link">Tutorials</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1277"><a href="https://www.linux.com/blogs/linux-foundation" class="menu__link expanded">Open Source Pro</a></li>
+<li class="menu__item is-expanded expanded menu-mlid-1278"><span class="menu__link nolink">Learn</span><ul class="menu"><li class="menu__item is-leaf first leaf menu-mlid-1292"><a href="https://www.linux.com/what-is-linux" class="menu__link">What is Linux?</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1293"><a href="https://www.linux.com/learn/training" class="menu__link">Training</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1294"><a href="https://www.linux.com/certification" class="menu__link">Certification</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1295"><a href="https://www.linux.com/events" class="menu__link">Events</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-1296"><a href="https://www.linux.com/blog/upcoming-free-webinars-linux-foundation" class="menu__link">Webinars</a></li>
+</ul></li>
+<li class="menu__item is-expanded expanded menu-mlid-1279"><a href="https://www.linux.com/community" class="menu__link">Community</a><ul class="menu"><li class="menu__item is-leaf first leaf menu-mlid-1297"><a href="https://www.linux.com/community/participate" class="menu__link">Participate</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1298"><a href="https://www.linux.com/answers" class="menu__link">Q&amp;A</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1299"><a href="https://www.linux.com/forum" class="menu__link">Forums</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-1300"><a href="https://www.linux.com/community/blogs" class="menu__link">Blogs</a></li>
+</ul></li>
+<li class="menu__item is-expanded last expanded menu-mlid-1280"><span class="menu__link nolink">Resources</span><ul class="menu"><li class="menu__item is-leaf first leaf menu-mlid-1301"><a href="https://www.linux.com/resources/newsletter" class="menu__link">Newsletter</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1303"><a href="https://www.linux.com/distributions" class="menu__link">Distributions</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-3808"><a href="https://www.linux.com/resources/publications" class="menu__link">Publications</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-3809"><a href="https://www.linux.com/resources/infographics" class="menu__link">Infographics</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1286"><a href="https://www.linux.com/photos" class="menu__link">Photos</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-1287"><a href="https://www.linux.com/videos" class="menu__link">Videos</a></li>
+</ul></li>
+</ul></div>
+	</div>
+
+</div>
+
+<div id="block-menu-menu-footer" class="block block-menu even lf-footer-about-menu footer-menu" role="navigation">
+
+    
+	<div class="block__content">
+	  <ul class="menu"><li class="menu__item is-expanded first last expanded"><a href="https://www.linux.com/about" class="menu__link">About Linux.com</a><ul class="menu"><li class="menu__item is-leaf first leaf"><a href="https://www.linux.com/advertise/contact" class="menu__link">Advertise</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/terms-of-use" class="menu__link">Terms of Use</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/privacy-policy" class="menu__link">Privacy Policy</a></li>
+<li class="menu__item is-leaf leaf"><a href="https://www.linux.com/editorial-policy" class="menu__link">Editorial Policy</a></li>
+<li class="menu__item is-leaf last leaf"><a href="https://www.linux.com/contact" class="menu__link">Contact</a></li>
+</ul></li>
+</ul>	</div>
+
+</div>
+
+<div id="block-boxes-about-lf" class="block block-boxes block-boxes-simple odd lf-about">
+
+    
+	<div class="block__content">
+	  <div id="boxes-box-about_lf" class="boxes-box"><div class="boxes-box-content">
+        <p><a target="_top" href="http://www.linuxfoundation.org/"><img alt="Linux Foundation" src="logo-footer.png"></a></p>
+        <p>The Linux Foundation is a non-profit consortium enabling collaboration and innovation through an open source development model.</p>
+        <p><a target="_top" href="http://www.linuxfoundation.org/" class="more">Learn More</a></p></div></div>	</div>
+
+</div>
+
+<div id="block-linux-blocks-linux-fastly" class="block block-linux-blocks even ">
+
+    
+	<div class="block__content">
+	  <a target="_top" href="http://www.fastly.com/"><img typeof="foaf:Image" src="fastly-logo.png" alt="Fastly" title="Fastly"></a>	</div>
+
+</div>
+
+<div id="block-boxes-copyright-infos" class="block block-boxes block-boxes-simple last odd lf-copyright">
+
+    
+	<div class="block__content">
+	  <div id="boxes-box-copyright_infos" class="boxes-box"><div class="boxes-box-content"><p>© 2016 The Linux Foundation</p></div></div>	</div>
+
+</div>
+  	</div>
+  </footer>
+
+</div>
+
+
+  <div style="position: static;"><div class="a2a_overlay" id="a2apage_overlay"></div><div class="a2a_menu a2a_full" id="a2apage_full" role="dialog" tabindex="-1" aria-label="Share"><div class="a2a_full_header"><div id="a2apage_find_container" class="a2a_menu_find_container"><input value="" id="a2apage_find" class="a2a_menu_find" onclick="a2a.focus_find()" onkeyup="a2a.do_find()" autocomplete="off" title="Find any service" type="text"><span id="a2apage_find_icon" class="a2a_svg a2a_s_find" onclick="a2a.focus_find()"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="24" height="24" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"><path fill="#CCCCCC" d="M19.7 18.2l-4.5-4.5c0.7-1.1 1.2-2.3 1.2-3.6 0-3.5-2.8-6.3-6.3-6.3 -3.5 0-6.3 2.8-6.3 6.3 0 3.5 2.8 6.3 6.3 6.3 1.4 0 2.6-0.4 3.6-1.2l4.5 4.5c0.6 0.6 1.3 0.7 1.7 0.2C20.4 19.5 20.3 18.8 19.7 18.2zM10.1 14.6c-2.5 0-4.5-2.1-4.5-4.5 0-2.5 2.1-4.5 4.5-4.5 2.5 0 4.5 2.1 4.5 4.5C14.6 12.5 12.6 14.6 10.1 14.6z"></path></svg></span></div></div><div class="a2a_full_services" id="a2apage_full_services" role="presentation"><a target="_top" href="https://www.linux.com/#email" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_email"></span>Email </a><a target="_top" href="https://www.linux.com/#facebook" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_facebook"></span>Facebook </a><a target="_top" href="https://www.linux.com/#twitter" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_twitter"></span>Twitter </a><a target="_top" href="https://www.linux.com/#linkedin" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_linkedin"></span>LinkedIn </a><a target="_top" href="https://www.linux.com/#pinterest" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_pinterest"></span>Pinterest </a><a target="_top" href="https://www.linux.com/#google_plus" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_google_plus"></span>Google+ </a><a target="_top" href="https://www.linux.com/#reddit" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_reddit"></span>Reddit </a><a target="_top" href="https://www.linux.com/#tumblr" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_tumblr"></span>Tumblr </a><a target="_top" href="https://www.linux.com/#wordpress" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_wordpress"></span>WordPress </a><a target="_top" href="https://www.linux.com/#google_gmail" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_gmail"></span>Google Gmail </a><a target="_top" href="https://www.linux.com/#whatsapp" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_whatsapp"></span>WhatsApp </a><a target="_top" href="https://www.linux.com/#stumbleupon" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_stumbleupon"></span>StumbleUpon </a><a target="_top" href="https://www.linux.com/#aim" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_aim"></span>AIM </a><a target="_top" href="https://www.linux.com/#amazon_wish_list" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_amazon"></span>Amazon Wish List </a><a target="_top" href="https://www.linux.com/#aol_mail" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_aol"></span>AOL Mail </a><a target="_top" href="https://www.linux.com/#app_net" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_app_net"></span>App.net </a><a target="_top" href="https://www.linux.com/#baidu" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_baidu"></span>Baidu </a><a target="_top" href="https://www.linux.com/#balatarin" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_balatarin"></span>Balatarin </a><a target="_top" href="https://www.linux.com/#bibsonomy" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_bibsonomy"></span>BibSonomy </a><a target="_top" href="https://www.linux.com/#bitty_browser" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_bitty"></span>Bitty Browser </a><a target="_top" href="https://www.linux.com/#blinklist" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_blinklist"></span>Blinklist </a><a target="_top" href="https://www.linux.com/#blogger_post" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_blogger"></span>Blogger Post </a><a target="_top" href="https://www.linux.com/#blogmarks" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_blogmarks"></span>BlogMarks </a><a target="_top" href="https://www.linux.com/#bookmarks_fr" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_bookmarks_fr"></span>Bookmarks.fr </a><a target="_top" href="https://www.linux.com/#box_net" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_box"></span>Box.net </a><a target="_top" href="https://www.linux.com/#buddymarks" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_buddymarks"></span>BuddyMarks </a><a target="_top" href="https://www.linux.com/#buffer" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_buffer"></span>Buffer </a><a target="_top" href="https://www.linux.com/#care2_news" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_care2"></span>Care2 News </a><a target="_top" href="https://www.linux.com/#citeulike" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_citeulike"></span>CiteULike </a><a target="_top" href="https://www.linux.com/#delicious" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_delicious"></span>Delicious </a><a target="_top" href="https://www.linux.com/#design_float" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_designfloat"></span>Design Float </a><a target="_top" href="https://www.linux.com/#diary_ru" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_diary_ru"></span>Diary.Ru </a><a target="_top" href="https://www.linux.com/#diaspora" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_diaspora"></span>Diaspora </a><a target="_top" href="https://www.linux.com/#digg" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_digg"></span>Digg </a><a target="_top" href="https://www.linux.com/#dihitt" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_dihitt"></span>diHITT </a><a target="_top" href="https://www.linux.com/#diigo" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_diigo"></span>Diigo </a><a target="_top" href="https://www.linux.com/#dzone" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_dzone"></span>DZone </a><a target="_top" href="https://www.linux.com/#evernote" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_evernote"></span>Evernote </a><a target="_top" href="https://www.linux.com/#fark" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_fark"></span>Fark </a><a target="_top" href="https://www.linux.com/#flipboard" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_flipboard"></span>Flipboard </a><a target="_top" href="https://www.linux.com/#folkd" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_folkd"></span>Folkd </a><a target="_top" href="https://www.linux.com/#google_bookmarks" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_google"></span>Google Bookmarks </a><a target="_top" href="https://www.linux.com/#google_classroom" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_google_classroom"></span>Google Classroom </a><a target="_top" href="https://www.linux.com/#hacker_news" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_y18"></span>Hacker News </a><a target="_top" href="https://www.linux.com/#hatena" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_hatena"></span>Hatena </a><a target="_top" href="https://www.linux.com/#instapaper" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_instapaper"></span>Instapaper </a><a target="_top" href="https://www.linux.com/#jamespot" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_jamespot"></span>Jamespot </a><a target="_top" href="https://www.linux.com/#kakao" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_kakao"></span>Kakao </a><a target="_top" href="https://www.linux.com/#kik" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_kik"></span>Kik </a><a target="_top" href="https://www.linux.com/#kindle_it" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_kindle"></span>Kindle It </a><a target="_top" href="https://www.linux.com/#known" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_known"></span>Known </a><a target="_top" href="https://www.linux.com/#line" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_line"></span>Line </a><a target="_top" href="https://www.linux.com/#livejournal" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_livejournal"></span>LiveJournal </a><a target="_top" href="https://www.linux.com/#mail_ru" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_mail_ru"></span>Mail.Ru </a><a target="_top" href="https://www.linux.com/#mendeley" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_mendeley"></span>Mendeley </a><a target="_top" href="https://www.linux.com/#meneame" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_meneame"></span>Meneame </a><a target="_top" href="https://www.linux.com/#mixi" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_mixi"></span>Mixi </a><a target="_top" href="https://www.linux.com/#myspace" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_myspace"></span>MySpace </a><a target="_top" href="https://www.linux.com/#netlog" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_netlog"></span>Netlog </a><a target="_top" href="https://www.linux.com/#netvouz" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_netvouz"></span>Netvouz </a><a target="_top" href="https://www.linux.com/#newsvine" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_newsvine"></span>NewsVine </a><a target="_top" href="https://www.linux.com/#nujij" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_nujij"></span>NUjij </a><a target="_top" href="https://www.linux.com/#odnoklassniki" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_odnoklassniki"></span>Odnoklassniki </a><a target="_top" href="https://www.linux.com/#oknotizie" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_oknotizie"></span>Oknotizie </a><a target="_top" href="https://www.linux.com/#outlook_com" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_outlook_com"></span>Outlook.com </a><a target="_top" href="https://www.linux.com/#pinboard" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_pinboard"></span>Pinboard </a><a target="_top" href="https://www.linux.com/#plurk" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_plurk"></span>Plurk </a><a target="_top" href="https://www.linux.com/#pocket" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_pocket"></span>Pocket </a><a target="_top" href="https://www.linux.com/#print" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_print"></span>Print </a><a target="_top" href="https://www.linux.com/#printfriendly" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_printfriendly"></span>PrintFriendly </a><a target="_top" href="https://www.linux.com/#protopage_bookmarks" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_protopage"></span>Protopage Bookmarks </a><a target="_top" href="https://www.linux.com/#pusha" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_pusha"></span>Pusha </a><a target="_top" href="https://www.linux.com/#qzone" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_qzone"></span>Qzone </a><a target="_top" href="https://www.linux.com/#rediff" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_rediff"></span>Rediff MyPage </a><a target="_top" href="https://www.linux.com/#renren" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_renren"></span>Renren </a><a target="_top" href="https://www.linux.com/#segnalo" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_segnalo"></span>Segnalo </a><a target="_top" href="https://www.linux.com/#sina_weibo" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_sina_weibo"></span>Sina Weibo </a><a target="_top" href="https://www.linux.com/#sitejot" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_sitejot"></span>SiteJot </a><a target="_top" href="https://www.linux.com/#skype" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_skype"></span>Skype </a><a target="_top" href="https://www.linux.com/#slashdot" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_slashdot"></span>Slashdot </a><a target="_top" href="https://www.linux.com/#sms" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_sms"></span>SMS </a><a target="_top" href="https://www.linux.com/#stumpedia" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_stumpedia"></span>Stumpedia </a><a target="_top" href="https://www.linux.com/#svejo" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_svejo"></span>Svejo </a><a target="_top" href="https://www.linux.com/#symbaloo_feeds" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_symbaloo"></span>Symbaloo Feeds </a><a target="_top" href="https://www.linux.com/#telegram" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_telegram"></span>Telegram </a><a target="_top" href="https://www.linux.com/#tuenti" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_tuenti"></span>Tuenti </a><a target="_top" href="https://www.linux.com/#twiddla" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_twiddla"></span>Twiddla </a><a target="_top" href="https://www.linux.com/#typepad_post" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_typepad"></span>TypePad Post </a><a target="_top" href="https://www.linux.com/#viadeo" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_viadeo"></span>Viadeo </a><a target="_top" href="https://www.linux.com/#viber" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_viber"></span>Viber </a><a target="_top" href="https://www.linux.com/#vk" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_vk"></span>VK </a><a target="_top" href="https://www.linux.com/#wanelo" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_wanelo"></span>Wanelo </a><a target="_top" href="https://www.linux.com/#webnews" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_webnews"></span>Webnews </a><a target="_top" href="https://www.linux.com/#wechat" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_wechat"></span>WeChat </a><a target="_top" href="https://www.linux.com/#wykop" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_wykop"></span>Wykop </a><a target="_top" href="https://www.linux.com/#xing" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_xing"></span>XING </a><a target="_top" href="https://www.linux.com/#yahoo_bookmarks" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_yahoo"></span>Yahoo Bookmarks </a><a target="_top" href="https://www.linux.com/#yahoo_mail" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_yahoo"></span>Yahoo Mail </a><a target="_top" href="https://www.linux.com/#yahoo_messenger" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_yim"></span>Yahoo Messenger </a><a target="_top" href="https://www.linux.com/#yoolink" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_yoolink"></span>Yoolink </a><a target="_top" href="https://www.linux.com/#youmob" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_youmob"></span>YouMob </a><a target="_top" href="https://www.linux.com/#yummly" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_yummly"></span>Yummly </a><i class="a2a_i"></i><i class="a2a_i"></i></div><div class="a2a_full_footer"><a href="https://www.addtoany.com/" title="Share Buttons" target="_top"><span class="a2a_svg a2a_s__default a2a_s_a2a"></span>AddToAny</a></div></div><div id="a2apage_dropdown" class="a2a_menu a2a_mini" tabindex="-1" aria-label="Share" style="display: none;"><div id="a2apage_title_container" class="a2a_menu_title_container" style="display: none;"><input value="" id="a2apage_title" class="a2a_menu_title"></div><div class="a2a_mini_services" id="a2apage_mini_services"><a target="_top" href="https://www.linux.com/#email" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_email"></span>Email </a><a target="_top" href="https://www.linux.com/#facebook" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_facebook"></span>Facebook </a><a target="_top" href="https://www.linux.com/#twitter" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_twitter"></span>Twitter </a><a target="_top" href="https://www.linux.com/#linkedin" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_linkedin"></span>LinkedIn </a><a target="_top" href="https://www.linux.com/#pinterest" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_pinterest"></span>Pinterest </a></div><div id="a2apage_cols_container" class="a2a_cols_container"><div class="a2a_col1" id="a2apage_col1"></div><div id="a2apage_2_col1" style="display: none;"><a target="_top" href="https://www.linux.com/#google_gmail" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_gmail"></span>Google Gmail </a><a target="_top" href="https://www.linux.com/#aol_mail" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_aol"></span>AOL Mail </a><a target="_top" href="https://www.linux.com/#outlook_com" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_outlook_com"></span>Outlook.com </a><a target="_top" href="https://www.linux.com/#yahoo_mail" class="a2a_i" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_yahoo"></span>Yahoo Mail </a><a id="a2apage_any_email" target="_top" href="https://www.linux.com/#email_form" class="a2a_i a2a_emailer" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_email"></span>Any email </a><a id="a2apage_email_client" target="" href="https://www.linux.com/#email_form" class="a2a_i a2a_emailer a2a_email_client" rel="nofollow"><span class="a2a_svg a2a_s__default a2a_s_email"></span>Email app</a></div><div class="a2a_clear"></div></div><div class="a2apage_wide a2a_wide"><a href="https://www.linux.com/learn/getting-started-beaglebone-black-1ghz-arm-linux-machine-45" id="a2apage_show_more_less" class="a2a_menu_show_more_less a2a_more" title="Show all"><span class="a2a_svg a2a_s__default a2a_s_a2a"></span>More…</a></div></div><div style="height: 1px; width: 1px; position: absolute; z-index: 100000; top: 0px; visibility: hidden;"><iframe src="index_7.html" allowtransparency="true" transparency="true" title="AddToAny Utility Frame" style="height: 1px; width: 1px; border: 0px none; left: 0px; top: 0px; position: absolute; z-index: 100000; display: none;" id="a2apage_sm_ifr" frameborder="0" height="1" width="1"></iframe></div></div>
+
+
+<div id="ads"></div><iframe src="index_8.html" style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_9474649450508"></iframe></body>
+</html>

@@ -1,0 +1,2000 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="loading ready js" slick-uniqueid="1" lang="en">
+<head id="masterHead">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+
+    <!-- [01/18/2013]Added empty title tag with visibility false.This is to remove the duplicate Title tag in all pages. Dotnet looks for title tag; if it doesn't find, it will add title tag by default.-->
+    
+    
+    
+    <title>ATmega16U2</title>
+    
+    
+    
+
+    
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <link rel="shortcut icon" href="favicon.ico" type="/image/vnd.microsoft.icon">
+    
+
+      
+
+
+
+    
+    
+    
+    
+
+<link media="all" href="index.css" type="text/css" rel="stylesheet">
+</head>
+<body class="page">
+    <div id="container">
+        <div id="header">
+            <!--googleoff: all-->
+                <a id="pagetop"></a>
+                
+                    
+                        <div id="logo">
+     <a href="http://www.atmel.com/default.aspx">
+          <img src="atmel_and_microchip_logo.png" alt="" border="0">
+     </a>
+</div>
+<div id="utility-nav" data-filter="primary-nav"><!-- header right, world locations and search bar -->
+    <ul id="tpnv">
+        <li>
+            <a href="#">Worldwide</a>
+            <ul class="cl">
+                <li><a href="http://www.atmel.com/">English</a></li>
+                <li><a href="http://www.atmel.com/zh/cn/">简体中文 - Chinese (Simplified)</a></li>
+                <li><a href="http://www.atmel.com/ja/jp/">日本語 - Japanese</a></li>
+                <li><a href="http://www.atmel.com/ru/ru/">русский - Russian</a></li>
+                <li><a href="http://www.atmel.com/pt/br/">Português (Brasil)- Portuguese (Brazil)</a></li>
+            </ul>
+        </li>
+        
+        <li id="liHeaderLink0"><a href="http://www.atmel.com/design-support/community/community.aspx">Communities</a></li>
+        
+        <li id="liHeaderLinkManageProfile" style="display: none;">
+            <a href="#">myAtmel</a>
+            <ul class="cl">
+                <li><a href="http://www.atmel.com/myAtmel" onclick="TrackLink('myAtmel','My Account','Top Navigation - myAtmel Home');">myAtmel Home</a></li>
+                <li><a href="http://www.atmel.com/myAtmel/my_favorites.aspx" onclick="TrackLink('myAtmel','My Account','Top Navigation - My Favorites');">My Favorites</a></li>
+                <li><a href="http://www.atmel.com/myAtmel/my_whats_changed.aspx" onclick="TrackLink('myAtmel','My Account','Top Navigation - What\'s Changed');">What's Changed</a></li>
+                <li><a href="http://www.atmel.com/myAtmel/my_updated_documents_software.aspx" onclick="TrackLink('myAtmel','My Account','Top Navigation - My Updated Downloads');">My Updated Downloads</a></li>
+                <li><a href="http://www.atmel.com/forms/Secure/update-profile.aspx" onclick="TrackLink('myAtmel','My Account','Top Navigation - Manage');">Update Profile</a></li>
+                <li><a href="http://www.atmel.com/forms/Secure/changepassword.aspx" onclick="TrackLink('myAtmel','My Account','Top Navigation - Change Password');">Change Password</a></li>  
+                <li><a href="http://www.atmel.com/myAtmel/overview.aspx">Benefits of myAtmel</a></li>              
+            </ul>
+        </li>
+        <li id="liHeaderLinkLogOut" style="display: none;">
+            <a href="http://www.atmel.com/forms/Secure/SignOn/Logout.ashx" onclick="TrackLink('myAtmel','My Account','Top Navigation - Logout');">Log Out</a>
+        </li>
+        <li id="liHeaderMyAtmel" style="">            
+            <a href="#">myAtmel</a>
+            <ul class="cl">
+                <li><a href="http://www.atmel.com/forms/Secure/verifylogin.aspx?target_url=EN" onclick="TrackLink('myAtmel','My Account','Top Navigation - Login');">Log In</a></li>
+                <li><a href="http://www.atmel.com/forms/Secure/user-registration.aspx?target_url=EN" onclick="TrackLink('myAtmel','My Account','Top Navigation - Register');">Create Account</a></li>
+                <li><a href="http://www.atmel.com/forms/Secure/benefits.aspx">Benefits of myAtmel</a></li>
+                <li><a href="http://www.atmel.com/forms/Secure/myAtmel-faqs.aspx">FAQs</a></li>
+            </ul>
+        </li>
+        <li id="liHeaderLinkLogIn" style="">            
+            <a href="http://www.atmel.com/forms/Secure/verifylogin.aspx?target_url=EN" onclick="TrackLink('myAtmel','My Account','Top Navigation - Login');">Log In</a>
+         </li>
+         <li id="liHeaderLinkCart" class="cart"><a onclick="TrackLink('Store','Navigation','Cart');" href="https://buy.atmel.com/Cart">Cart</a></li>
+    </ul>
+</div>
+
+                    
+                
+                    
+                
+            <!--googleon: all-->
+        </div><!-- header -->
+        <div id="primary">
+            <!--googleoff: all-->
+            <div id="search-form" class="search-form">
+	            <form action="http://www.atmel.com/search.aspx" name="AtmelSearch" class="search-form2" onsubmit="return isSearchFormCompleted(this);">
+	                <input value="0" name="filter" type="hidden">
+	                <input value="xml_no_dtd" name="output" type="hidden">
+	                <input value="UTF-8" name="ie" type="hidden">
+	                <input value="UTF-8" name="oe" type="hidden">
+	                <input value="date:D:L:d1" name="sort" type="hidden">
+	                <input value="1" name="ud" type="hidden">
+	                <input value="*" name="getfields" type="hidden">
+	                <input value="1" name="exclude_apps" type="hidden">
+	                <input name="q" title="Use wildcards (*) to search for partial matches (e.g. &quot;*mega16&quot;, &quot;atmega16*&quot;, or &quot;at*16&quot;)" maxlength="255" id="searchQuery" class="search-query2" value="" onfocus="resetSearchField(this);" onblur="resetSearchField(this);" type="text" align="absbottom">
+	                <span id="searchDropdown" class="search-dropdown"></span>
+	                <span id="searchButton" class="search-button"></span>
+	                <ul id="collectionMenu" class="collection-menu2" style="display: none;">
+	                    <font>Search for:</font><br>
+                            <li style="color: rgb(0, 102, 203);"><a href="http://www.atmel.com/devices/atmega16u2.aspx?tab=parameters" onclick="return goSearch2('products');">Devices and Tools</a></li>
+	                    <li style="color: rgb(51, 51, 51);"><a href="http://www.atmel.com/devices/atmega16u2.aspx?tab=parameters" onclick="return goSearch2('datasheets');">Datasheets</a></li>
+	                    <li style="color: rgb(51, 51, 51);"><a href="http://www.atmel.com/devices/atmega16u2.aspx?tab=parameters" onclick="return goSearch2('appNotes');">Application Notes</a></li>
+	                    <li style="color: rgb(51, 51, 51);"><a href="http://www.atmel.com/devices/atmega16u2.aspx?tab=parameters" onclick="return goSearch2('UserGuides');">User Guides</a></li>
+                            <li style="color: rgb(51, 51, 51);"><a href="http://www.atmel.com/devices/atmega16u2.aspx?tab=parameters" onclick="return goSearch2('kdb');">Knowledge Base Articles</a></li>
+	                </ul>
+	                <input name="site" value="en_collection" type="hidden">
+	            </form>
+            </div><!-- search-form -->
+            <div id="primarynav" data-filter="primary-nav">
+                <ul>
+                    <!--
+			[current_page_url==/devices/atmega16u2.aspx]
+			[current_page_raw_url:/devices/atmega16u2.aspx]
+			[current_site_url:/]
+			[current_refering_product:030 megaAVR]
+			[current_refering_application:]-->
+<li>
+  <a data-filter="corners" href="http://www.atmel.com/products/microcontrollers/default.aspx?src=parent" class="active-en" style="position: relative;">Products<i class="corner top-left"></i><i class="corner top-right"></i></a>
+  <div class="content" id="products-menu-en">
+    <div class="group">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/products/microcontrollers/default.aspx">Microcontrollers</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/products/microcontrollers/avr/default.aspx">AVR 8- and 32-bit MCUs</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/microcontrollers/arm/default.aspx">SMART ARM-based MCUs</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/microcontrollers/8051architecture/default.aspx">8051 Architecture</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/products/touchsolutions/default.aspx">Touch Solutions</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/products/touchsolutions/touchscreens/default.aspx">Touchscreen Controllers</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/touchsolutions/bsw/default.aspx">Buttons, Sliders and Wheels</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/products/automotive/default.aspx">Automotive</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/products/automotive/automotive_microcontrollers/default.aspx">Automotive Microcontrollers</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/automotive/serial_eeprom/default.aspx">Automotive Serial EEPROMs</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/automotive/automotive_touch/default.aspx">Automotive Touch</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/automotive/audio/default.aspx">Broadcast Radio</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/automotive/canvan/default.aspx">CAN/VAN Networking</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/automotive/car-access/default.aspx">Car Access</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/automotive/drivers/default.aspx">Drivers/High-Temperature ICs</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/automotive/lin/default.aspx">LIN Networking</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/products/wireless/default.aspx">Wireless Connectivity</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/products/wireless/bluetooth/default.aspx">Bluetooth</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/wireless/802154/default.aspx">802.15.4</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/wireless/wifi/default.aspx">Wi-Fi </a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/wireless/smartrf/default.aspx">Smart RF</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/wireless/sigfox/default.aspx">SigFox</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/wireless/rfid/default.aspx">RF Identification</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/wireless/ir-control/default.aspx">IR Control</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/wireless/cloud-partners/default.aspx">Cloud Partners</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/products/smart-energy/default.aspx">Smart Energy</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/products/smart-energy/power-metering/default.aspx">Metering</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/smart-energy/power-line-communications/default.aspx">Power Line Communications</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/smart-energy/wireless-communications/default.aspx">Wireless Communications</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/products/memories/default.aspx">Memory</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/products/memories/serial/default.aspx">Serial EEPROM</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/memories/parallel/default.aspx">Parallel EEPROM</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/memories/eprom/default.aspx">OTP EPROM</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/products/drivers-and-sensors/default.aspx">Drivers and Sensors</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/products/drivers-and-sensors/led-drivers/default.aspx">LED Drivers</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/drivers-and-sensors/digital-temperature-sensors/default.aspx">Digital Temperature Sensors</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/drivers-and-sensors/sensor-hub/default.aspx">Sensor Hub</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/products/security-ics/default.aspx">Security ICs </a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/products/security-ics/cryptoauthentication/default.aspx">Atmel CryptoAuthentication</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/security-ics/embedded/default.aspx">Trusted Platform Module</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/security-ics/secure-rf/default.aspx">Atmel CryptoRF</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/security-ics/secure-memory/default.aspx">Atmel CryptoMemory</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/products/programmable-logic/default.aspx">Programmable Logic</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/products/programmable-logic/fpga-conversion-ulc/default.aspx">FPGA Conversion ULC</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/programmable-logic/spld-cpld/default.aspx">SPLD/CPLD</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/programmable-logic/field-programmable-gate-array/default.aspx">Field Programmable Gate Array</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/programmable-logic/fpga-configuration-memory/default.aspx">FPGA Configuration Memory</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/products/analog/default.aspx">Analog</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/products/analog/analog-companions-pmaac/default.aspx">Analog Companions (PMAAC)</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft-4">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/products/rad-hard/default.aspx">Rad Hard</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/products/rad-hard/rad-hard-asics/default.aspx">Rad Hard ASICs</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/rad-hard/rad-hard-communication/default.aspx">Rad Hard Communication ICs</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/rad-hard/rad-hard-fpgas/default.aspx">Rad Hard FPGAs</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/rad-hard/rad-hard-memories/default.aspx">Rad Hard Memories</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/rad-hard/rad-hard-processors/default.aspx">Rad Hard Processors</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/rad-hard/rad-tolerant-devices/default.aspx">Rad Tolerant Devices</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/products/digital-broadcast/default.aspx">Digital Broadcast</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/products/digital-broadcast/mobile_tv/default.aspx">Mobile TV</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/products/digital-broadcast/fixed_tv/default.aspx">Fixed TV</a>
+        </li>
+      </ul>
+    </div>
+    <div style="clear: both; left: -20px; top: 0px; position: relative; width: 310px; float: right;">
+      <a href="http://www.atmel.com/products/selector_overview.aspx">» Parametric Product Selector</a>
+    </div>
+  </div>
+</li>
+<li>
+  <a data-filter="corners" href="http://www.atmel.com/applications/automotive/default.aspx?src=parent" class="applications-en" style="position: relative;">Applications<i class="corner top-left"></i><i class="corner top-right"></i></a>
+  <div class="content" id="applications-menu-en">
+    <div class="group">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/applications/automotive/default.aspx">Automotive</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/applications/automotive/body-and-convenience/default.aspx">Body and Convenience</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/automotive/car_access/default.aspx">Car Access</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/automotive/infotainment-hmi-connectivity/default.aspx">Infotainment / HMI / Connectivity</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/automotive/under-the-hood/default.aspx">Under the Hood</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/applications/buildingautomation/default.aspx">Building Automation</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/applications/buildingautomation/fireandsecurity/default.aspx">Fire and Security</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/buildingautomation/comfort_control/default.aspx">Comfort and Control</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/buildingautomation/telecare/default.aspx">Telecare</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/applications/homeappliances/default.aspx">Home Appliances</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/applications/homeappliances/refrigeration/default.aspx">Refrigeration</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/homeappliances/cooking_applicances/default.aspx">Cooking</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/homeappliances/washing_appliances/default.aspx">Washing</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/homeappliances/motor_control/default.aspx">Motor Control</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/homeappliances/safety-critical-touch-interfaces/default.aspx">Safety Critical Touch Interfaces</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/applications/homeentertainment/default.aspx">Home Entertainment</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/applications/homeentertainment/he_video/default.aspx">Video</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/homeentertainment/remote_controls/default.aspx">Remote Controls</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/applications/industrialautomation/default.aspx">Industrial Automation</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/applications/industrialautomation/human_machine_interface/default.aspx">Human Machine Interface</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/industrialautomation/sensors/default.aspx">Sensors</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/industrialautomation/instruments/default.aspx">Instruments</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/industrialautomation/industrial_communications/default.aspx">Industrial Communications</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/applications/lighting/default.aspx">Lighting</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/applications/lighting/flourescent_ballasts/default.aspx">Fluorescent Ballasts</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/lighting/hid_ballasts/default.aspx">HID Ballasts</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/lighting/led_ballasts/default.aspx">LED Ballasts</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/lighting/lighting_control/default.aspx">Lighting Control</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/lighting/industrial/default.aspx">Industrial</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/lighting/tv_direct_backlight/default.aspx">Television Direct Backlight</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/lighting/tv_high-voltage_edge-lit/default.aspx">TV High Voltage Edge-Lit</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/lighting/solid-state_lighting/default.aspx">Solid-State Lighting</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/applications/iot/default.aspx">Internet of Things (IoT)</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/applications/iot/apple-homekit/default.aspx">HomeKit</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/iot/aws-zero-touch-secure-provisioning-platform/default.aspx">AWS Secure Provisioning</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/applications/smart_energy/default.aspx">Smart Energy</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/applications/smart_energy/electricity_meters/default.aspx">Electricity Meters</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/smart_energy/gas_water_meters/default.aspx">Gas and Water Meters</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/smart_energy/data_concentrators/default.aspx">Data Concentrators</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/smart_energy/in-home-display-units/default.aspx">In-Home Display Units</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/applications/mobile_electronics/default.aspx">Mobile Electronics</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/applications/mobile_electronics/mobile_phones_internet_devices/default.aspx">Mobile Phones</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/mobile_electronics/netbooks/default.aspx">Tablets and Notebooks</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/mobile_electronics/portable_game_consoles/default.aspx">Portable Game Consoles</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/mobile_electronics/cameras/default.aspx">Cameras</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/mobile_electronics/portable_audio_players/default.aspx">Portable Audio Players</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/mobile_electronics/gps_tracking/default.aspx">GPS Asset Tracking</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft-4">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/applications/pc_peripherals/default.aspx">PC Peripherals</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/applications/pc_peripherals/small_io_devices/default.aspx">Small I/O Devices</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/pc_peripherals/mass_storage_devices/default.aspx">Mass Storage Devices</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/applications/pc_peripherals/pc_accessories/default.aspx">PC Accessories</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/applications/wearables/default.aspx">Wearables</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/applications/wearables/smart-badge/default.aspx">Smart Badge</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</li>
+<li>
+  <a data-filter="corners" href="http://www.atmel.com/technologies/hubpage.aspx" class="technologies-en" style="position: relative;">Technologies<i class="corner top-left"></i><i class="corner top-right"></i></a>
+  <div class="content" id="technologies-menu-en">
+    <div class="group">
+      <div class="groupheader">
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/technologies/lowpower/default.aspx">Low Power</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/technologies/high_performance/default.aspx">High Performance</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/technologies/touch/default.aspx">Touch</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/technologies/wireless/default.aspx">Wireless</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/technologies/cpu_core/default.aspx">CPU Core</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/technologies/secure_technology/default.aspx">Secure Technology</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft">
+    </div>
+    <div class="groupleft">
+    </div>
+  </div>
+</li>
+<li>
+  <a data-filter="corners" href="http://www.atmel.com/design-support/" class="designsupport-en" style="position: relative;">Support<i class="corner top-left"></i><i class="corner top-right"></i></a>
+  <div class="content" id="designsupport-menu-en">
+    <div class="group">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/design-support/software-tools/default.aspx">Boards and Kits</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=p&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;num=1000&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=+inmeta:tool_type~Evaluation+Kit&amp;dnavs=inmeta:tool_type~Evaluation+Kit">Evaluation Kits</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=p&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;num=1000&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=+inmeta:tool_type~Starter+Kit&amp;dnavs=inmeta:tool_type~Starter+Kit">Starter Kits</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=p&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;num=1000&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=+inmeta:tool_type~Development+Kit&amp;dnavs=inmeta:tool_type~Development+Kit">Development Kits</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=p&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;&amp;num=1000&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=+inmeta:tool_type~Reference+Design&amp;dnavs=inmeta:tool_type~Reference+Design">Reference Designs</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=p&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;num=1000&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=+inmeta:tool_type~Add+ons&amp;dnavs=inmeta:tool_type~Add+ons">Add-ons and Accessories</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=p&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;num=1000&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=+inmeta:tool_type~ZigBit+Wireless+Modules&amp;dnavs=inmeta:tool_type~ZigBit+Wireless+Modules">Zigbit Wireless Modules</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/design-support/software-tools/default.aspx">More</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/design-support/software-tools/default.aspx">Tools and Software</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/tools/avrsoftwareframework.aspx">MCU Software Library - ASF</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/common/design_support_message.aspx">Software Libraries</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=0&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;ip=10.42.106.20&amp;num=50&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=+inmeta:tool_type~Models&amp;dnavs=inmeta:tool_type~Models">IBIS and Models</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=0&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;ip=10.42.106.20&amp;num=50&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=+inmeta:tool_type~BSDL&amp;dnavs=inmeta:tool_type~BSDL">BSDL</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/design-support/software-tools/default.aspx">More</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/design-support/software-tools/default.aspx">Development Tools</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/tools/atmelstudio.aspx?tab=overview">Atmel Studio IDE</a>
+        </li>
+        <li>
+          <a href="http://gallery.atmel.com/">Atmel Gallery (app store)</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=0&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;num=1000&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=+inmeta:tool_type%3DSoftware%2520Tools&amp;dnavs=inmeta:tool_type%3DSoftware%20Tools">Software Tools</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=0&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;num=1000&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=+inmeta:tool_type~Debugger&amp;dnavs=inmeta:tool_type~Debugger">Debugger</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=0&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;num=1000&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=+inmeta:tool_type~Programmer&amp;dnavs=inmeta:tool_type~Programmer">Programmers</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/design-support/software-tools/default.aspx">More</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/design-support/documentation/default.aspx">Document Library</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/design-support/documentation/default.aspx">Document Search</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=0&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;num=1000&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=+inmeta:asset_type~Datasheets&amp;dnavs=inmeta:asset_type~Datasheets">Datasheets</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=0&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;num=1000&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=+inmeta:asset_type~Application+Note&amp;dnavs=inmeta:asset_type~Application+Note">Application Notes</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/search.aspx?filter=0&amp;btnG=Search&amp;site=en_collection&amp;client=support_frontend&amp;proxystylesheet=support_frontend&amp;output=xml_no_dtd&amp;getfields=*&amp;oe=UTF-8&amp;ie=UTF-8&amp;ud=1&amp;exclude_apps=1&amp;num=1000&amp;access=p&amp;sort=date:D:L:d1&amp;entqr=3&amp;entqrm=0&amp;lr=lang_en&amp;q=inmeta:asset_type~User+Guides&amp;dnavs=inmeta:asset_type~User+Guides">User Guides</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/design-support/documentation/default.aspx">More</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/design-support/training/default.aspx">Training</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/design-support/training/events/default.aspx">Hands-on, Webinars, Tradeshows</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/design-support/training/events/default.aspx?type=Webinar">Webinars</a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/user/atmelcorporation">Videos</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/design-support/training/events/default.aspx?type=Tradeshow">Tradeshows</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/corporate/university/default.aspx#">University Program</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/design-support/community/community.aspx">Communities</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://blog.atmel.com/">Embedded Design Blog</a>
+        </li>
+        <li>
+          <a href="http://www.avrfreaks.net/">AVR Freaks</a>
+        </li>
+        <li>
+          <a href="http://community.atmel.com/atmel-smart-arm-based-mcus">Atmel SMART ARM MCUs</a>
+        </li>
+        <li>
+          <a href="http://community.atmel.com/internet-of-things">Internet of Things (IoT)</a>
+        </li>
+        <li>
+          <a href="http://community.atmel.com/capacitive-touch">Capacitive Touch</a>
+        </li>
+        <li>
+          <a href="http://spaces.atmel.com/">Atmel Spaces (collaboration)</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/design-support/resources/default.aspx">Support Resources</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/design-support/">Knowledge Base</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/design-support/">Request Technical Support</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/design-support/resources/default.aspx">Customer Service</a>
+        </li>
+        <li>
+          <a href="http://samples.atmel.com/scripts/samplecenter.dll?atmel">Samples Request</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/quality/default.aspx#">Quality</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/quality/obsolescence/default.aspx#">Obsolescence Information</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/design-support/third-party/default.aspx">Third-Party Tools/Support</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/about/contact/sales/default.aspx?contactType=Third%20Party%20Support%20-%20AVR#">Third-Party Support - AVR</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/contact/sales/default.aspx?contactType=Third%20Party%20Support%20-%20ARM#">Third-Party Support - ARM</a>
+        </li>
+        <li>
+          <a href="http://gallery.atmel.com/">Atmel Gallery (app store)</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/contact/sales/default.aspx?contactType=Partners%20-%20Touchscreens#">Touch Partners</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/contact/distributors/default.aspx?contactType=Sales%20Representative#">Sales Reps</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/contact/distributors/default.aspx?contactType=Distributor#">Distributors</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/design-support/third-party/default.aspx">More</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/design-support/atmel-design-consultants/default.aspx">Design Consultants</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/design-support/atmel-design-consultants/customers.aspx">Find a Design Consultant</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/design-support/atmel-design-consultants/design-consultants.aspx">Become a Design Consultant</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft-4">
+    </div>
+  </div>
+</li>
+<li>
+  <a data-filter="corners" href="http://www.atmel.com/about/corporate/default.aspx" class="about_atmel-en" style="position: relative;">About<i class="corner top-left"></i><i class="corner top-right"></i></a>
+  <div class="content" id="about_atmel-menu-en">
+    <div class="group">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/about/corporate/default.aspx">Corporate</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/about/corporate/factsheet.aspx">Fact Sheet</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/corporate/awards.aspx">Awards and Recognition</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/corporate/university/default.aspx">University Program</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/design-support/training/events/default.aspx#">Hands-on, Webinars, Tradeshows</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/atmel-makes/">Maker Community</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/about/news/default.aspx">Press Room</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/about/news/press-releases/default.aspx">Press Releases</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/news/atmel_news/default.aspx">Atmel in the News</a>
+        </li>
+        <li>
+          <a href="http://www.atmelcorporation.wordpress.com/">Embedded Design Blog</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/news/media-center/default.aspx">Media Center</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/about/contact/distributors/default.aspx?contactType=Online%20Directory">Contact Atmel</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/about/contact/design-consultants/default.aspx">Design Consultants</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/contact/sales/default.aspx">Partners</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/contact/distributors/default.aspx?contactType=Distributor">Distributors and Sales Reps</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/about/investors/default.aspx">Investors</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/about/investors/default.aspx">Investors</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/about/careers/default.aspx">Careers</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/about/careers/default.aspx">Job Openings</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/about/suppliers/purchasing_terms.aspx">Suppliers</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/about/suppliers/purchasing_terms.aspx">Purchasing Terms</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft">
+      <div class="groupheader">
+        <a href="http://www.atmel.com/about/quality/default.aspx">Quality</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/about/quality/quality_inquiry/default.aspx">Quality Inquiry</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/images/atmelqualityhandbook.pdf">Quality Handbook</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/quality/green.aspx">Green Packaging</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/quality/package.aspx">Package Material</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/quality/environmental.aspx">Environmental Information</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/quality/certificates.aspx">Quality and Environment Certificates</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/quality/rma.aspx">RMA and FA Information</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/quality/reliability.aspx">Reliability Information</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/quality/pcn-eol/pcn-eol-notifications.aspx">PCN and EOL</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/quality/faq.aspx">FAQ Response Summary</a>
+        </li>
+      </ul>
+      <div class="groupheader">
+        <a href="http://www.atmel.com/about/compliance/default.aspx">Compliance</a>
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/about/compliance/export-controls.aspx">Export Controls</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft-4">
+    </div>
+  </div>
+</li>
+<li>
+  <a data-filter="corners" href="http://www.atmel.com/buy/default.aspx" class="buy-en" style="position: relative;">Buy<i class="corner top-left"></i><i class="corner top-right"></i></a>
+  <div class="content" id="buy-menu-en">
+    <div class="group">
+      <div class="groupheader">
+      </div>
+      <ul>
+        <li>
+          <a href="http://www.atmel.com/buy/default.aspx#">Atmel Store</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/forms/secure/verifylogin.aspx?target_url=samplestore">Request Sample</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/buy/inventory/default.aspx">Check Inventory</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/contact/distributors/default.aspx?contactType=Atmel%20Sales%20Office">Sales Offices</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/contact/distributors/default.aspx?contactType=Sales%20Representative">Sales Reps</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/about/contact/distributors/default.aspx?contactType=Distributor#">Distributors</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/buy/atmel-store-faqs.aspx">Atmel Store FAQs</a>
+        </li>
+      </ul>
+    </div>
+    <div class="groupleft">
+    </div>
+    <div class="groupleft">
+    </div>
+  </div>
+</li>
+                </ul>
+            </div><!-- primarynav -->
+            <!--googleon: all-->
+        </div><!-- primary -->        
+        
+    <div id="content">
+        
+            <div id="left-column">
+                <!--googleoff: all-->
+                <!--
+      [page_url:/devices/atmega16u2.aspx == megaAVR MCUs/t-page/b-1/p-1/s-1/nt-Ends here]
+      [page_raw_url:/devices/atmega16u2.aspx == /t-/b-/p-/s-/nt-]
+      [refering_product:030 megaAVR]
+      [refering_application:]
+      [draw_root:]
+      [blnDrawRoot:false]-->
+<ul class="left_nav_ul">
+  <li class="cat" style="border: medium none; margin-top: 5px;">
+    <a class="leftnavlink" href="http://www.atmel.com/products/microcontrollers/default.aspx">Microcontrollers</a>
+  </li>
+  <li class="fam">
+    <a class="leftnavlink" href="http://www.atmel.com/products/microcontrollers/avr/default.aspx">AVR 8- and 32-bit MCUs</a>
+  </li>
+  <li class="sub">
+    <a class="leftnavlink" href="http://www.atmel.com/products/microcontrollers/avr/32-bitavruc3.aspx">32-bit AVR UC3 MCUs</a>
+  </li>
+  <li class="sub">
+    <a class="leftnavlink" href="http://www.atmel.com/products/microcontrollers/avr/avr_xmega.aspx">AVR XMEGA MCUs</a>
+  </li>
+  <li class="sub_current">
+    <a class="leftnavlink" href="http://www.atmel.com/products/microcontrollers/avr/megaavr.aspx">megaAVR MCUs</a>
+  </li>
+  <li class="sub">
+    <a class="leftnavlink" href="http://www.atmel.com/products/microcontrollers/avr/tinyavr.aspx">tinyAVR MCUs</a>
+  </li>
+  <li class="sub">
+    <a class="leftnavlink" href="http://www.atmel.com/products/microcontrollers/avr/battery_management.aspx">Battery Management MCUs</a>
+  </li>
+  <li class="sub">
+    <a class="leftnavlink" href="http://www.atmel.com/products/microcontrollers/avr/automotive_avr.aspx">Automotive AVR MCUs</a>
+  </li>
+  <li class="fam">
+    <a class="leftnavlink" href="http://www.atmel.com/products/microcontrollers/arm/default.aspx">SMART ARM-based MCUs</a>
+  </li>
+  <li class="fam">
+    <a class="leftnavlink" href="http://www.atmel.com/products/microcontrollers/8051architecture/default.aspx">8051 Architecture</a>
+  </li>
+  <li class="cat">
+    <a class="leftnavlink" href="http://www.atmel.com/products/touchsolutions/default.aspx">Touch Solutions</a>
+  </li>
+  <li class="cat">
+    <a class="leftnavlink" href="http://www.atmel.com/products/automotive/default.aspx">Automotive</a>
+  </li>
+  <li class="cat">
+    <a class="leftnavlink" href="http://www.atmel.com/products/wireless/default.aspx">Wireless Connectivity</a>
+  </li>
+  <li class="cat">
+    <a class="leftnavlink" href="http://www.atmel.com/products/smart-energy/default.aspx">Smart Energy</a>
+  </li>
+  <li class="cat">
+    <a class="leftnavlink" href="http://www.atmel.com/products/memories/default.aspx">Memory</a>
+  </li>
+  <li class="cat">
+    <a class="leftnavlink" href="http://www.atmel.com/products/drivers-and-sensors/default.aspx">Drivers and Sensors</a>
+  </li>
+  <li class="cat">
+    <a class="leftnavlink" href="http://www.atmel.com/products/security-ics/default.aspx">Security ICs </a>
+  </li>
+  <li class="cat">
+    <a class="leftnavlink" href="http://www.atmel.com/products/programmable-logic/default.aspx">Programmable Logic</a>
+  </li>
+  <li class="cat">
+    <a class="leftnavlink" href="http://www.atmel.com/products/analog/default.aspx">Analog</a>
+  </li>
+  <li class="cat">
+    <a class="leftnavlink" href="http://www.atmel.com/products/rad-hard/default.aspx">Rad Hard</a>
+  </li>
+  <li class="cat">
+    <a class="leftnavlink" href="http://www.atmel.com/products/digital-broadcast/default.aspx">Digital Broadcast</a>
+  </li>
+</ul>
+<div class="snoopy" align="center">
+  <a href="http://www.atmel.com/selector.html#(actives:!(),data:(area:%27%27,category:%2734864%27,pm:!(),view:list),sc:1)" target="_new">
+    <img src="mcu-selector-button.gif" alt="Product Finder" width="190" border="0">
+  </a>
+</div>
+                <!--googleon: all-->
+            </div>
+        
+        <div id="content-page">
+            
+            <!--googleoff: all-->
+            <!--
+      [page_or_sg==page]
+      [page_url:/devices/atmega16u2.aspx == megaAVR MCUs/t-page/b-1/p-1/s-1/nt-Ends here]
+      [page_raw_url:/devices/atmega16u2.aspx == /t-/b-/p-/s-/nt-]
+      [breadcrumb:Devices]
+      [refering_product:030 megaAVR]
+      [refering_application:]
+      [draw_root:]-->
+<div id="breadcrumb">
+  <div id="breadcrumb-nav">
+    <a href="http://www.atmel.com/">Home</a> &gt; <a href="http://www.atmel.com/products/microcontrollers/default.aspx?src=parent">Products</a> &gt; <a href="http://www.atmel.com/products/microcontrollers/default.aspx">Microcontrollers</a> &gt; <a href="http://www.atmel.com/products/microcontrollers/avr/default.aspx">AVR 8- and 32-bit MCUs</a> &gt; megaAVR MCUs</div>
+  <div id="breadcrumb-functions">
+    <div style="float: left;">
+      <div id="headerLinkMyFav" style="display: none;">
+        <a href="#" onclick="openFavoritebox('headerLinkMyFav');">
+          <img src="addfav.gif" title="Add to your myAtmel favorites" border="0">
+        </a>
+      </div>
+      <div id="headerLinkMyFavExists" style="display: none;">
+        <a href="#" onclick="openFavoritebox('headerLinkMyFavExists');">
+          <img src="existfav.png" title="Add to your myAtmel favorites" border="0">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+            <!--googleon: all-->
+            
+    <div id="page-header">
+        <h1>ATmega16U2</h1>
+    </div>
+
+            <div class="single-column article">
+                
+                
+    <!-- Start:Device -->
+    
+
+		<div id="thintabs">
+			<ul class="widetabs tabs-nav">
+				<li><a href="http://www.atmel.com/devices/atmega16u2.aspx?tab=overview">Overview</a></li>
+				<li class="active"><a href="http://www.atmel.com/devices/atmega16u2.aspx?tab=parameters">Parameters</a></li>
+				<li><a href="http://www.atmel.com/devices/atmega16u2.aspx?tab=tools">Tools</a></li>
+				<li><a href="http://www.atmel.com/devices/atmega16u2.aspx?tab=documents">Documents</a></li>
+				<li><a href="http://www.atmel.com/devices/atmega16u2.aspx?tab=applications">Applications</a></li>
+			</ul>
+			
+			<div class="fixed-height tab_container tabs-panels">
+				<div class="tab_content">
+					<!-- Start:RightRailItems -->
+
+
+
+
+<div class="floatright">
+    
+
+
+<!-- Start: Get Started DCP -->
+<!--googleoff: all-->
+<div class="getstarted">
+    
+    
+    <h2>Get Started</h2>
+    
+    
+    <p>We'll tell you all you need to know to start evaluating and working with this product.</p>
+    
+    
+    
+    <div class="gsjumplink">
+        
+        
+        <a href="http://www.atmel.com/products/microcontrollers/avr/start_now.aspx">» Start Now</a>    </div>
+    
+    <div class="gsjumplink">
+        
+        
+        <a href="http://www.atmel.com/about/contact/distributors/default.aspx?contactType=Distributor&amp;Products=010%20Atmel%20AVR%208-%20and%2032-bit%20Microcontrollers">» Contact Sales</a>
+    </div>
+    
+    <div class="gsjumplink">
+        
+        
+        <a href="http://www.atmel.com/forms/secure/verifylogin.aspx?target_url=samplestore&amp;Products=010%20Atmel%20AVR%208-%20and%2032-bit%20Microcontrollers">» Request Samples</a>
+    </div>
+    
+    <div class="gsjumplink">
+        
+        
+        <a href="http://enable.atmel.com/emailSubscription?Products=010%20Atmel%20AVR%208-%20and%2032-bit%20Microcontrollers">» Sign-up for News</a>
+    </div>
+    
+</div>
+<!--googleon: all-->
+<!-- End: Get Started DCP -->
+
+<!-- 
+[09:25:23] GetStartedUserControl::Page_Load:IN
+[09:25:23] GetStartedUserControl::Render:IN [_schemaUri==tcm:26-9420-8] [_componentTemplateUri==tcm:26-34029-32] [_productTaxonomy==030 megaAVR] [_applicationTaxonomy==030 Data Concentrators] [_checkReferingURL==True] [_referingURL==/devices/atmega16u2.aspx] [_referingComponentURI==] [_referingProductTaxonomy==] [_referingApplicationTaxonomy==] [_referingRawURL=] [_path==D:\Inetpub\Tridion\Live\System\XML] [_isSamplable==True] [_partNumber==ATmega16U2]
+[09:25:23] HierarchyHelper.GetDynamicComponent():IN - Searching [Products] on [030 megaAVR[pp[]]]
+[09:25:23] HierarchyHelper.GetDynamicComponent():Valid DCP NOT Found based on [Products] taxonomy [030 megaAVR[pp[]]] - RECURSE [True]
+[09:25:23] HierarchyHelper.GetDynamicComponent():Parent Keywords... [Products] taxonomy with keyword [030 megaAVR[pp[]]] has length of [2]
+[09:25:23] HierarchyHelper.GetDynamicComponent():Recurse [Products] hierarchy, currently [2 of 2] with keyword [010 Atmel AVR 8- and 32-bit Microcontrollers]
+[09:25:23] HierarchyHelper.GetDynamicComponent():IN - Searching [Products] on [010 Atmel AVR 8- and 32-bit Microcontrollers010 Atmel AVR 8- and 32-bit Microcontrollers[pp[]]]
+[09:25:23] HierarchyHelper.GetDynamicComponent():Search results successfull, found [1] DCPs based on CT [tcm:26-34029-32] found on relation to [Products] taxonomy - [010 Atmel AVR 8- and 32-bit Microcontrollers010 Atmel AVR 8- and 32-bit Microcontrollers[pp[]]]
+[09:25:23] HierarchyHelper.GetDynamicComponent():DCP Content Found to process [tcm:26-36214-16]
+[09:25:23] HierarchyHelper.GetDynamicComponent():DCP Content ALLOWED [tcm:26-36214-16] Renderable [[... 
+		 [dcp.IsRenderableForContact(contactTypeTaxonomy, 'n/a', portalPageType, portalPageExplicit, portalPageType) == True] 
+			 [portalPageType=] 
+			 [portalPageExplicit=True] 
+			 [dcp.TaggedForPortalPage=] 
+			 [contactTypeTaxonomy=010 Atmel AVR 8- and 32-bit Microcontrollers] 
+			 [dcp.TaggedForCATs=] 
+			  [dcp.TaggedForContacts=] 
+			 [dcp.IsTaggedForCurrentPortalPage(portalPageType)=True] 
+			 [dcp.IsTaggedForContactCATs(contactTypeTaxonomy, portalPageExplicit)=False] 
+			 [dcp.IsTaggedForVisitors=True
+[09:25:23] GetStartedUserControl::Render:Samplable part_number=ATmega16U2
+[09:25:23] GetStartedUserControl::Render:Replace link samplable...
+[09:25:23] GetStartedUserControl::Render:END - Total processing took 0 ms -->
+    
+<!-- Start: Related Items DCP -->
+<!--googleoff: all-->
+<div class="newspanel containerright"> 
+    <h2>Related Items</h2>
+    <ul>
+        
+        
+        
+        
+        
+            <li><a href="http://www.atmel.com/about/contact/sales/default.aspx?contactType=Third%20Party%20Support%20-%20AVR&amp;Products=010%20Atmel%20AVR%208-%20and%2032-bit%20Microcontrollers" class="newslink">» Third Party Support</a></li>
+        
+        
+        
+        
+        
+        
+            <li><a href="http://www.atmel.com/About/corporate/University/default.aspx" class="newslink">» University Program</a></li>
+        
+        
+        
+        
+        
+        
+            <li><a href="http://atmel.force.com/support/pkb_Home?l=en_US&amp;c=Product%3AAVR_8_and_32_bit_MCUs&amp;Products=010%20Atmel%20AVR%208-%20and%2032-bit%20Microcontrollers" target="_top" class="newslink">» AVR Knowledge Base</a></li>
+        
+        
+        
+        
+        
+        
+            <li><a href="http://www.atmel.com/design-support/?Products=010%20Atmel%20AVR%208-%20and%2032-bit%20Microcontrollers" target="_top" class="newslink">» Technical Support</a></li>
+        
+        
+        
+        
+        
+        
+            <li><a href="http://www.atmel.com/System/whats_changed.aspx?Products=010%20Atmel%20AVR%208-%20and%2032-bit%20Microcontrollers" target="_top" class="newslink">» What's Changed</a></li>
+        
+        
+        
+        
+        
+        
+            <li><a href="http://www.atmel.com/devices/mature.aspx?Products=010%20Atmel%20AVR%208-%20and%2032-bit%20Microcontrollers" class="newslink">» Mature Devices</a></li>
+        
+        
+    </ul>
+</div>
+<!--googleon: all-->
+<div style="clear: both;"></div>
+<!-- End: Related Items DCP -->
+<!-- 
+[09:25:23] RelatedItemsUserControl::Render:IN [_schemaUri==tcm:26-9421-8] [_componentTemplateUri==tcm:26-34045-32] [_productTaxonomy==030 megaAVR] [_applicationTaxonomy==030 Data Concentrators] [_checkReferingURL==True] [_referingURL==/devices/atmega16u2.aspx] [_referingComponentURI==] [_referingProductTaxonomy==] [_referingApplicationTaxonomy==] [_referingRawURL=] [_path==D:\Inetpub\Tridion\Live\System\XML]
+[09:25:23] HierarchyHelper.GetDynamicComponent():IN - Searching [Products] on [030 megaAVR[pp[]]]
+[09:25:23] HierarchyHelper.GetDynamicComponent():Valid DCP NOT Found based on [Products] taxonomy [030 megaAVR[pp[]]] - RECURSE [True]
+[09:25:23] HierarchyHelper.GetDynamicComponent():Parent Keywords... [Products] taxonomy with keyword [030 megaAVR[pp[]]] has length of [2]
+[09:25:23] HierarchyHelper.GetDynamicComponent():Recurse [Products] hierarchy, currently [2 of 2] with keyword [010 Atmel AVR 8- and 32-bit Microcontrollers]
+[09:25:23] HierarchyHelper.GetDynamicComponent():IN - Searching [Products] on [010 Atmel AVR 8- and 32-bit Microcontrollers010 Atmel AVR 8- and 32-bit Microcontrollers[pp[]]]
+[09:25:23] HierarchyHelper.GetDynamicComponent():Search results successfull, found [1] DCPs based on CT [tcm:26-34045-32] found on relation to [Products] taxonomy - [010 Atmel AVR 8- and 32-bit Microcontrollers010 Atmel AVR 8- and 32-bit Microcontrollers[pp[]]]
+[09:25:23] HierarchyHelper.GetDynamicComponent():DCP Content Found to process [tcm:26-36237-16]
+[09:25:23] HierarchyHelper.GetDynamicComponent():DCP Content ALLOWED [tcm:26-36237-16] Renderable [[... 
+		 [dcp.IsRenderableForContact(contactTypeTaxonomy, 'n/a', portalPageType, portalPageExplicit, portalPageType) == True] 
+			 [portalPageType=] 
+			 [portalPageExplicit=True] 
+			 [dcp.TaggedForPortalPage=] 
+			 [contactTypeTaxonomy=010 Atmel AVR 8- and 32-bit Microcontrollers] 
+			 [dcp.TaggedForCATs=] 
+			  [dcp.TaggedForContacts=] 
+			 [dcp.IsTaggedForCurrentPortalPage(portalPageType)=True] 
+			 [dcp.IsTaggedForContactCATs(contactTypeTaxonomy, portalPageExplicit)=False] 
+			 [dcp.IsTaggedForVisitors=True
+[09:25:23] RelatedItemsUserControl::Render:END - Total processing took 15.593 ms -->
+
+    <!-- Start Related_Items/RightRailItems -->
+    
+    
+    <!-- End Related_Items/RightRailItems -->
+    
+    
+    
+    <!-- Start Generic Touts User Control -->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+[09:25:23] GenericCollectionUserControl::Page_Load:IN [uc:GenericTouts1] [_loadThisTime=True]
+[09:25:23] GenericCollectionUserControl::Page_PreRender:IN [uc:GenericTouts1] [_loadThisTime=True]
+[09:25:23] GenericCollectionUserControl::RetreiveContent: LOADING... 
+	 _schemaURI[tcm:26-1385-8]
+	 _componentTemplateURI[tcm:26-2899-32]
+	 _componentURI[]
+	 _productTaxonomy[030 megaAVR]
+	 _applicationTaxonomy[030 Data Concentrators]
+
+	 _assetTypeTaxonomy[]
+	 _toolTypeTaxonomy[]
+	 _releaseTypeTaxonomy[]
+	 _rssFeedCategoryTaxonomy[]
+	 _portalPage[False]
+	 _portalPageType[]
+	 _portalAssetType[]
+	 _contactCAT[]
+	 _contactEmail[]
+
+	 _listType[GenericTout]
+
+	 _recurseUp[True]
+	 _recurseDown[False]
+
+	 _relatedItemsCollection[]
+
+	 _changePageHeader[False]
+	 _checkQueryStringParams[False]
+	 _checkReferingURL[False]
+	 _referingURL[/devices/atmega16u2.aspx]
+	 _referingComponentURI[]
+	 _referingProductTaxonomy[]
+	 _referingApplicationTaxonomy[]
+	 _referingRawURL[]
+
+	 _displayZeroResults[False]
+	 _endASAP[False]
+	 _globalSearch[False]
+	 _groupedBy[]
+	 _groupedByParent[False]
+	 _groupedByPrefix[]
+	 _includeItemsItemsManuallyLinked[False]
+	 _includeItemsItemsManuallyLinkedField[]
+	 _includeItemsItemsManuallyLinkedCT[]
+	 _includeItemsLinkedToMe[False]
+	 _includeItemsLinkedToMeField[]
+	 _includeMature[True]
+	 _includeObsolete[True]
+	 _includeSecondaryTaxonomy[True]
+	 _grouped[False]
+	 _listAppNotesOnly[False]
+	 _listDataSheetsOnly[False]
+	 _listDropDownEnabled[True]
+	 _listHeading[]
+	 _listOtherOnly[False]
+	 _listRecomendedOnly[False]
+	 _loadThisTime[True]
+	 _maximumItems[3]
+	 _onlyMature[False]
+	 _onlyObsolete[False]
+	 _onlyYoungAge[3650]
+	 _onlyYoungItems[False]
+	 _onlyYoungItemsField[Release_Date]
+	 _path[D:\Inetpub\Tridion\Live\System\XML]
+	 _searchKeyName[]
+	 _searchMinLength[3]
+	 _searchText[]
+	 _selectedDropDownValue[]
+	 _showCount[False]
+	 _showMaximumItemsMessage[False]
+	 _sortResults[True]
+[09:25:23] GenericCollectionUserControl::ProcessManuallyLinkedContent _relatedItemsCollection=
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults IN _listType=GenericTout / listType=GenericTout
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Query on Product Hierarchy (_includeSecondaryTaxonomy=True) [030 megaAVR]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Query max-result limited to _maximumItems [3]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults ZERO Found DCPs this time with taxonomy/query-params [[productTaxonomy=030 megaAVR]]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Going UP the product/application hiearchy list count [3] item(s)
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Going UP the product/application hiearchy with keyword value [010 Atmel AVR 8- and 32-bit Microcontrollers]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults IN _listType=GenericTout / listType=GenericTout
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Query on Product Hierarchy (_includeSecondaryTaxonomy=True) [010 Atmel AVR 8- and 32-bit Microcontrollers]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Query max-result limited to _maximumItems [3]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults ZERO Found DCPs this time with taxonomy/query-params [[productTaxonomy=010 Atmel AVR 8- and 32-bit Microcontrollers]]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Going UP the product/application hiearchy with keyword value [010 Microcontrollers]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults IN _listType=GenericTout / listType=GenericTout
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Query on Product Hierarchy (_includeSecondaryTaxonomy=True) [010 Microcontrollers]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Query max-result limited to _maximumItems [3]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults ZERO Found DCPs this time with taxonomy/query-params [[productTaxonomy=010 Microcontrollers]]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults IN _listType=GenericTout / listType=GenericTout
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Query on Application Hierarchy [030 Data Concentrators]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Query max-result limited to _maximumItems [3]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults ZERO Found DCPs this time with taxonomy/query-params [[applicationTaxonomy=030 Data Concentrators]]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Going UP the product/application hiearchy list count [2] item(s)
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Going UP the product/application hiearchy with keyword value [070 Smart Energy]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults IN _listType=GenericTout / listType=GenericTout
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Query on Application Hierarchy [070 Smart Energy]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults Query max-result limited to _maximumItems [3]
+[09:25:23] GenericCollectionUserControl::QueryAndAddResults ZERO Found DCPs this time with taxonomy/query-params [[applicationTaxonomy=070 Smart Energy]]
+[09:25:23] GenericCollectionUserControl::RetreiveContent: QueryAndAddResults END with _listDCP.Count[0. Duration up to point of sorting/writing 5 broker queries was 0 minutes, 0 seconds, 0 miliseconds.
+[09:25:23] GenericCollectionUserControl::PrepareContentForOutput: IN Write 0 generictout item(s) out.
+[09:25:23] GenericCollectionUserControl::PrepareContentForOutput: OUT Preparation compleated.
+[09:25:23] GenericCollectionUserControl::RenderContentOutput: IN Display it for list [GenericTout]...
+[09:25:23] GenericCollectionUserControl::RenderContentOutput: OUT DONE
+[09:25:23] GenericCollectionUserControl::Page_PreRender END with _listDCP.Count[0. Duration up to point of sorting/writing 5 broker queries was 0 minutes, 0 seconds, 0 miliseconds.
+ -->
+
+
+
+    <!-- End Generic Touts User Control -->
+</div>
+<!-- End:RightRailItems -->
+					<!-- Start:Banner -->
+
+
+
+
+
+
+<img src="banner_megaavr.jpg" alt="" width="496">
+
+<!-- End:Banner -->
+<!-- 
+[09:25:23] BannerUserControl::Render:IN [_schemaUri==tcm:26-1372-8] [_componentTemplateUri==tcm:26-34019-32] [_manualBannerUri==tcm:0-0-0] [_productTaxonomy==030 megaAVR] [_applicationTaxonomy==030 Data Concentrators] [_checkReferingURL==True] [_referingURL==/devices/atmega16u2.aspx] [_referingComponentURI==] [_referingProductTaxonomy==] [_referingApplicationTaxonomy==] [_referingRawURL=] [_path==D:\Inetpub\Tridion\Live\System\XML]
+[09:25:23] HierarchyHelper.GetDynamicComponent():IN - Searching [Products] on [030 megaAVR[pp[]]]
+[09:25:23] HierarchyHelper.GetDynamicComponent():Search results successfull, found [1] DCPs based on CT [tcm:26-34019-32] found on relation to [Products] taxonomy - [030 megaAVR[pp[]]]
+[09:25:23] HierarchyHelper.GetDynamicComponent():DCP Content Found to process [tcm:26-33830-16]
+[09:25:23] HierarchyHelper.GetDynamicComponent():DCP Content ALLOWED [tcm:26-33830-16] Renderable [[... 
+		 [dcp.IsRenderableForContact(contactTypeTaxonomy, 'n/a', portalPageType, portalPageExplicit, portalPageType) == True] 
+			 [portalPageType=] 
+			 [portalPageExplicit=True] 
+			 [dcp.TaggedForPortalPage=] 
+			 [contactTypeTaxonomy=] 
+			 [dcp.TaggedForCATs=] 
+			  [dcp.TaggedForContacts=] 
+			 [dcp.IsTaggedForCurrentPortalPage(portalPageType)=True] 
+			 [dcp.IsTaggedForContactCATs(contactTypeTaxonomy, portalPageExplicit)=True] 
+			 [dcp.IsTaggedForVisitors=True
+[09:25:23] BannerUserControl::Render:END - Total processing took 0 ms -->
+					<br><br>
+					
+					
+							<h2>Key parameters for ATmega16U2</h2>
+							<div class="section-header-parametric1">Parameter</div>
+							<div class="section-header-parametric2">Value</div>
+							
+							<div class="section-parametric1"><p>Flash (kBytes):</p></div>
+
+							<div class="section-parametric2"><p>16 kBytes</p></div>
+
+							
+							<div class="section-parametric1"><p>Pin Count:</p></div>
+
+							<div class="section-parametric2"><p>32 </p></div>
+
+							
+							<div class="section-parametric1"><p>Max. Operating Freq. (MHz):</p></div>
+
+							<div class="section-parametric2"><p>16 MHz</p></div>
+
+							
+							<div class="section-parametric1"><p>CPU:</p></div>
+
+							<div class="section-parametric2"><p>8-bit AVR </p></div>
+
+							
+							<div class="section-parametric1"><p># of Touch Channels:</p></div>
+
+							<div class="section-parametric2"><p>12 </p></div>
+
+							
+							<div class="section-parametric1"><p>Hardware QTouch Acquisition:</p></div>
+
+							<div class="section-parametric2"><p>No </p></div>
+
+							
+							<div class="section-parametric1"><p>Max I/O Pins:</p></div>
+
+							<div class="section-parametric2"><p>22 </p></div>
+
+							
+							<div class="section-parametric1"><p>Ext Interrupts:</p></div>
+
+							<div class="section-parametric2"><p>21 </p></div>
+
+							
+							<div class="section-parametric1"><p>USB Transceiver:</p></div>
+
+							<div class="section-parametric2"><p>1 </p></div>
+
+							
+							<div class="section-parametric1"><p>USB Speed:</p></div>
+
+							<div class="section-parametric2"><p>Full Speed </p></div>
+
+							
+							<div class="section-parametric1"><p>USB Interface:</p></div>
+
+							<div class="section-parametric2"><p>Device </p></div>
+
+							
+							<div class="section-parametric1"><p>SPI:</p></div>
+
+							<div class="section-parametric2"><p>2 </p></div>
+
+							
+							<div class="section-parametric1"><p>UART:</p></div>
+
+							<div class="section-parametric2"><p>1 </p></div>
+
+							
+							<div class="section-parametric1"><p>Graphic LCD:</p></div>
+
+							<div class="section-parametric2"><p>No </p></div>
+
+							
+							<div class="section-parametric1"><p>Video Decoder:</p></div>
+
+							<div class="section-parametric2"><p>No </p></div>
+
+							
+							<div class="section-parametric1"><p>Camera Interface:</p></div>
+
+							<div class="section-parametric2"><p>No </p></div>
+
+							
+							<div class="section-parametric1"><p>Analog Comparators:</p></div>
+
+							<div class="section-parametric2"><p>1 </p></div>
+
+							
+							<div class="section-parametric1"><p>Resistive Touch Screen:</p></div>
+
+							<div class="section-parametric2"><p>No </p></div>
+
+							
+							<div class="section-parametric1"><p>DAC Resolution (bits):</p></div>
+
+							<div class="section-parametric2"><p>0 </p></div>
+
+							
+							<div class="section-parametric1"><p>Temp. Sensor:</p></div>
+
+							<div class="section-parametric2"><p>No </p></div>
+
+							
+							<div class="section-parametric1"><p>Crypto Engine:</p></div>
+
+							<div class="section-parametric2"><p>No </p></div>
+
+							
+							<div class="section-parametric1"><p>SRAM (kBytes):</p></div>
+
+							<div class="section-parametric2"><p>0.5 </p></div>
+
+							
+							<div class="section-parametric1"><p>EEPROM (Bytes):</p></div>
+
+							<div class="section-parametric2"><p>512 </p></div>
+
+							
+							<div class="section-parametric1"><p>Self Program Memory:</p></div>
+
+							<div class="section-parametric2"><p>Yes </p></div>
+
+							
+							<div class="section-parametric1"><p>External Bus Interface:</p></div>
+
+							<div class="section-parametric2"><p>0 </p></div>
+
+							
+							<div class="section-parametric1"><p>DRAM Memory:</p></div>
+
+							<div class="section-parametric2"><p>No </p></div>
+
+							
+							<div class="section-parametric1"><p>NAND Interface:</p></div>
+
+							<div class="section-parametric2"><p>No </p></div>
+
+							
+							<div class="section-parametric1"><p>picoPower:</p></div>
+
+							<div class="section-parametric2"><p>No </p></div>
+
+							
+							<div class="section-parametric1"><p>Temp. Range (deg C):</p></div>
+
+							<div class="section-parametric2"><p>-40 to 85 </p></div>
+
+							
+							<div class="section-parametric1"><p>I/O Supply Class:</p></div>
+
+							<div class="section-parametric2"><p>2.7 to 5.5 </p></div>
+
+							
+							<div class="section-parametric1"><p>Operating Voltage (Vcc):</p></div>
+
+							<div class="section-parametric2"><p>2.7 to 5.5 </p></div>
+
+							
+							<div class="section-parametric1"><p>FPU:</p></div>
+
+							<div class="section-parametric2"><p>No </p></div>
+
+							
+							<div class="section-parametric1"><p>MPU / MMU:</p></div>
+
+							<div class="section-parametric2"><p>no / no </p></div>
+
+							
+							<div class="section-parametric1"><p>Timers:</p></div>
+
+							<div class="section-parametric2"><p>2 </p></div>
+
+							
+							<div class="section-parametric1"><p>Output Compare Channels:</p></div>
+
+							<div class="section-parametric2"><p>5 </p></div>
+
+							
+							<div class="section-parametric1"><p>Input Capture Channels:</p></div>
+
+							<div class="section-parametric2"><p>1 </p></div>
+
+							
+							<div class="section-parametric1"><p>PWM Channels:</p></div>
+
+							<div class="section-parametric2"><p>4 </p></div>
+
+							
+							<div class="section-parametric1"><p>32kHz RTC:</p></div>
+
+							<div class="section-parametric2"><p>No </p></div>
+
+							
+							<div class="section-parametric1"><p>Calibrated RC Oscillator:</p></div>
+
+							<div class="section-parametric2"><p>Yes </p></div>
+
+							
+							<div class="section-parametric1"><p>TWI (I2C):</p></div>
+
+							<div class="section-parametric2"><p>0 </p></div>
+
+							
+							<div class="section-parametric1"><p>Watchdog:</p></div>
+
+							<div class="section-parametric2"><p>Yes </p></div>
+
+							
+							<div class="section-parametric1"><p>CAN:</p></div>
+
+							<div class="section-parametric2"><p>0 </p></div>
+
+							
+							<div class="section-parametric1"><p>LIN:</p></div>
+
+							<div class="section-parametric2"><p>0 </p></div>
+
+							
+							<div class="section-parametric1"><p>Ethernet:</p></div>
+
+							<div class="section-parametric2"><p>0 </p></div>
+
+							
+							<div class="section-parametric1"><p>Debug Interface:</p></div>
+
+							<div class="section-parametric2"><p>debugWIRE </p></div>
+
+							
+							<div class="section-parametric1"><p>I2S:</p></div>
+
+							<div class="section-parametric2"><p>No </p></div>
+
+							
+							
+						
+				</div>
+			</div>
+		</div>
+
+    <!-- End:Device -->
+
+                
+            </div>
+            <div class="center-column article">
+                
+                
+            </div>
+            <div id="right-column">
+                
+                
+            </div>
+        </div>
+        <div id="video-content-page">
+            
+        </div>
+    </div>
+
+        
+        <div id="footer-sub">
+            <!--googleoff: all-->
+            
+                
+            
+                
+                    
+<div id="footer-social">
+    
+           
+                   
+                   
+                          <a href="https://www.facebook.com/AtmelCorporation" target="_top"><img src="footer_socialicons_facebook_24x24.png" alt="Facebook"></a>&nbsp;
+                   
+          
+    
+           
+                   
+                   
+                          <a href="https://plus.google.com/106109247591403112418" target="_top"><img src="footer_socialicons_googleplus_24x24.png" alt="Google+"></a>&nbsp;
+                   
+          
+    
+           
+                   
+                   
+                          <a href="https://twitter.com/Atmel" target="_top"><img src="footer_socialicons_twitter_24x24.png" alt="Twitter"></a>&nbsp;
+                   
+          
+    
+           
+                   
+                   
+                          <a href="http://www.linkedin.com/company/atmel-corporation" target="_top"><img src="footer_socialicons_linkedin_24x24.png" alt="LinkedIn"></a>&nbsp;
+                   
+          
+    
+           
+                   
+                   
+                          <a href="http://www.youtube.com/user/AtmelCorporation" target="_top"><img src="footer_socialicons_youtube_24x24.png" alt="YouTube"></a>&nbsp;
+                   
+          
+    
+           
+                   
+                   
+                          <a href="http://www.atmel.com/rss/releases.aspx" target="_top"><img src="rss.png" alt="RSS"></a>&nbsp;
+                   
+          
+    
+           
+                   
+                   
+                          <a href="http://atmelcorporation.wordpress.com/" target="_top"><img src="footer_socialicons_blog_wordpress_24x24.png" alt="WordPress"></a>&nbsp;
+                   
+          
+    
+           
+                   
+                   
+                          <a href="http://enable.atmel.com/emailSubscription" target="_top"><img src="newsletter-icon.png" alt="Newsletter"></a>&nbsp;
+                   
+          
+    
+</div>
+<div id="footer-meta">
+    <ul>
+        
+        <li><a href="http://www.atmel.com/About/contact/distributors/default.aspx?contactType=Online%20Directory">Contact</a></li>
+        
+        <li><a href="http://enable.atmel.com/emailSubscription" target="_top">Subscribe</a></li>
+        
+        <li><a href="http://careers.microchip.com/" target="_top">Jobs</a></li>
+        
+        <li><a href="http://www.atmel.com/About/legal.aspx">Site Use Terms</a></li>
+        
+        <li><a href="http://www.atmel.com/About/privacy.aspx">Privacy</a></li>
+        
+        <li><a href="http://www.atmel.com/About/cookies.aspx">Cookies</a></li>
+        
+        <li><a href="http://www.atmel.com/About/terms.aspx">Sales Terms</a></li>
+        
+        <li>© 2016 Atmel Corporation</li>
+    </ul>
+</div>
+                
+            
+            <!--googleon: all-->
+        </div><!-- fotter -->
+        <div id="footer">
+            <!--googleoff: all-->
+            <div id="footer-products">
+  <p>
+    <a href="http://www.atmel.com/products/microcontrollers/default.aspx?src=parent">Products</a>
+  </p>
+  <ul>
+    <li>
+      <a href="http://www.atmel.com/products/microcontrollers/default.aspx">Microcontrollers</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/products/touchsolutions/default.aspx">Touch Solutions</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/products/automotive/default.aspx">Automotive</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/products/wireless/default.aspx">Wireless Connectivity</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/products/smart-energy/default.aspx">Smart Energy</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/products/memories/default.aspx">Memory</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/products/drivers-and-sensors/default.aspx">Drivers and Sensors</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/products/security-ics/default.aspx">Security ICs </a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/products/programmable-logic/default.aspx">Programmable Logic</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/products/analog/default.aspx">Analog</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/products/rad-hard/default.aspx">Rad Hard</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/products/digital-broadcast/default.aspx">Digital Broadcast</a>
+    </li>
+  </ul>
+</div>
+<div id="footer-applications">
+  <p>
+    <a href="http://www.atmel.com/applications/automotive/default.aspx?src=parent">Applications</a>
+  </p>
+  <ul>
+    <li>
+      <a href="http://www.atmel.com/applications/automotive/default.aspx">Automotive</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/applications/buildingautomation/default.aspx">Building Automation</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/applications/homeappliances/default.aspx">Home Appliances</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/applications/homeentertainment/default.aspx">Home Entertainment</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/applications/industrialautomation/default.aspx">Industrial Automation</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/applications/lighting/default.aspx">Lighting</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/applications/iot/default.aspx">Internet of Things (IoT)</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/applications/smart_energy/default.aspx">Smart Energy</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/applications/mobile_electronics/default.aspx">Mobile Electronics</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/applications/pc_peripherals/default.aspx">PC Peripherals</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/applications/wearables/default.aspx">Wearables</a>
+    </li>
+  </ul>
+</div>
+<div id="footer-technology">
+  <p>
+    <a href="http://www.atmel.com/design-support/">Support</a>
+  </p>
+  <ul>
+    <li>
+      <a href="http://www.atmel.com/design-support/software-tools/default.aspx">Boards and Kits</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/design-support/software-tools/default.aspx">Tools and Software</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/design-support/software-tools/default.aspx">Development Tools</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/design-support/documentation/default.aspx">Document Library</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/design-support/training/default.aspx">Training</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/design-support/resources/default.aspx">Support Resources</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/design-support/third-party/default.aspx">Third-Party Tools/Support</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/design-support/atmel-design-consultants/default.aspx">Design Consultants</a>
+    </li>
+  </ul>
+</div>
+<div id="footer-design_support">
+  <p>
+    <a href="http://www.atmel.com/about/corporate/default.aspx">About</a>
+  </p>
+  <ul>
+    <li>
+      <a href="http://www.atmel.com/about/corporate/default.aspx">Corporate</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/about/news/default.aspx">Press Room</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/about/contact/distributors/default.aspx?contactType=Online%20Directory">Contact Atmel</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/about/investors/default.aspx">Investors</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/about/careers/default.aspx">Careers</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/about/suppliers/purchasing_terms.aspx">Suppliers</a>
+    </li>
+    <li>
+      <a href="http://www.atmelcorporation.wordpress.com/">Embedded Design Blog</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/about/quality/default.aspx">Quality</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/about/compliance/default.aspx">Compliance</a>
+    </li>
+  </ul>
+</div>
+<div id="footer-about">
+  <p>
+    <a href="http://www.atmel.com/about/contact/distributors/default.aspx?contactType=Online%20Directory">Contact Atmel</a>
+  </p>
+  <ul>
+    <li>
+      <a href="http://www.atmel.com/buy/default.aspx#">Buy</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/buy/atmel-store-faqs.aspx">Atmel Store FAQs</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/design-support/">Technical Support</a>
+    </li>
+    <li>
+      <a href="http://www.atmel.com/about/community.aspx">Communities</a>
+    </li>
+  </ul>
+</div>
+            <div class="overlay" id="overlay">
+                <div class="wrap"> </div>
+            </div>
+            <!--googleon: all-->
+        </div><!-- footer -->
+        <div id="fade"></div> 
+        <div id="overlayFavorite" style="display: none;"></div>
+    </div><!-- container -->
+    
+    
+        <!-- jQuery Library files -->
+        <!-- Table sorting -->
+        <!-- Zebra striping -->
+        <!-- Lightbox -->
+        <!-- Search -->
+        <!-- Global flyout -->
+        <!-- MooTools Library -->
+        <!-- MooTools Library -->
+        <!-- MooTools Behaviours -->
+        <!-- Product Finder Configuration -->
+
+
+        <!-- BEGIN Cross-browser code -->
+        
+        
+        <!-- END Cross-browser code -->
+     
+    
+    
+    
+<!--SITE_EDIT_INIT-->
+
+
+    
+    
+    
+
+    
+    
+
+
+    <!-- Google Code for Remarketing tag --> 
+    <!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide:      google.com/ads/remarketingsetup --> 
+     
+      
+     
+
+    
+       <img src="pixel" alt="" style="display: none;">
+       <img src="pixel_001.dat" alt="" style="display: none;">
+
+<!-- Demandbase/UA Integration -->
+<!-- Demandbase Tag code snippet. This code will allow you to deploy Demandbase on your website.  Place this script just before the closing </body> tag of your site --> 
+
+<!-- End Demandbase/UA Integration -->
+
+<!-- Start LinkedIn Tracking Code -->
+
+
+
+<!-- End LinkedIn Tracking Code -->
+
+
+
+
+<div id="modal-container" style="display: none;"></div><img src="white.png" id="modal-background" style="display: none;"><div id="modal-close" style="display: none;"></div><div id="overlay-container" style="display: none;"></div><img src="white.png" id="overlay-background" style="display: none;"><div id="overlay-close" style="display: none;"></div></body>
+</html>

@@ -1,0 +1,43 @@
+20: {text: "\n\nRaspberry Pi set up with raspbian Jessie\n\nNow\n\naddr : 192.168.188.54\npi\npw#raspberry\n\n\nhttp://elinux.org/RPi_Low-level_peripherals\n\n[\"\"file:///home/tom/Coding/pi-pinout\"\".png]\n\n**Twitter**\n\n[Twython
+    \"\"https://github.com/ryanmcgrath/twython\"\"]\n\nsudo pip install twython\n\n\"A
+    twitter bot in 20 mins with node js\"\n\nArduino und Raspberry Pi tutorial\n\nI2C
+    on a RasPi in Python\n\n#twitter #twython\nCool, twythontest.py is still working\n\nsearch
+    = twitter.search(...)   -  [Web Ref \"\"file:///home/tom/.mozilla/firefox/77i2dq3l.default/ScrapBook/data/20170521113406/index.html\"\"]\n\nsearch['statuses']
+    \nis the array of statuses returned\ndefault is 15, change using count variable\n\nsearch['statuses']
+    [x] \nis array of elements\n\n#tweet #text\nsearch['statuses'] [x] ['text']\nis
+    text of each element\n\n#tweet #user\nsearch['statuses'] [x] ['user']\nfor all
+    user data, but actually\nsearch['statuses'] [x] ['user']['name']\nsearch['statuses']
+    [x] ['user']['id']\nsearch['statuses'] [x] ['user']['screen_name']\n\ninteresting
+    :\nsearch['statuses'] [x] ['source']\n\n#tweet #hashtags\nsearch['statuses'] [x]
+    ['entities']['hashtags']\nlen(search['statuses'] [x] ['entities']['hashtags'])\nsearch['statuses']
+    [x] ['entities']['hashtags'][0]['text']\n\n**GPIO**\n\n#gpio #rpi #python\nalso
+    works!\n\njust ran old python code :\nimport RPi.GPIO as GPIO\nLED = 22\nGPIO.setmode(GPIO.BOARD)\nGPIO.setup(LED,
+    GPIO.OUT)\nGPIO.output(LED, GPIO.LOW)\n\n**Serial**\n\n* [PySerial \"\"https://pythonhosted.org/pyserial/\"\"]\n\n[Short
+    Introduction \"\"https://pythonhosted.org/pyserial/shortintro.html\"\"]\n\n\n*
+    Github - [Py thermal printer \"\"https://github.com/luopio/py-thermal-printer\"\"]\n\n*
+    tutorials\nBlog - [Rpi Thermal Printer \"\"http://natemcbean.com/2012/11/rpi-thermal-printer/\"\"]\n\nVery
+    simple tutorial. step by step\n[Geek gurl \"\"http://geekgurldiaries.blogspot.fi/2012/12/little-box-of-geek-project.html\"\"]\n\n\nRaspberry
+    Pi Serial GPIO\n[RPi GPIO and header \"\"http://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/\"\"]\nPin
+    Outs\n\n"}
+22: {text: "\n\n#printer works\n\n\n\n\n#twitter #twython\n\n[GET search/tweets \"\"file:///home/tom/.mozilla/firefox/77i2dq3l.default/ScrapBook/data/20170521113406/index.html\"\"]\n\n>>
+    becomes\ntwitter.search(q='twitter', result_type='popular')\n\nsearch = twitter.search(q='@realdonaldtrump',
+    result_type='recent')\n\n#test this gave me mainly retweets and tweets 'at' by
+    other users\n\n[GET statuses/user_timeline \"\"file:///home/tom/.mozilla/firefox/77i2dq3l.default/ScrapBook/data/20170521115012/index.html\"\"]\n\nso
+    im guessing :\nsearch = twitter.statuses(user_id='realdonaldtrump', ...\nDOESNT
+    WORK\n\n user_timeline = twitter.get_user_timeline(screen_name='ryanmcgrath')\n\n#timeline\ntimeline
+    = twitter.get_user_timeline(screen_name='realdonaldtrump')\n\nlen(timeline)\n20\n\n~print
+    life['text']\n\nRT @netanyahu: Ever Stronger\nחזקים תמיד\n\U0001F1EE\U0001F1F1\U0001F1FA\U0001F1F8
+    https://t.co/Ecf5p4HjfZ\n~print life['user']['name']\nDonald J. Trump\n\n~print
+    life['user']['screen_name']\nrealDonaldTrump\n\n~print life['entities']['hashtags']\n\n~print
+    life['created_at']\nMon May 22 13:13:48 +0000 2017\n\n~print life['entities']['user_mentions'][0]['name']\nBenjamin
+    Netanyahu\n\n>>> print life['extended_entities']['media'][0]['media_url']\nhttp://pbs.twimg.com/media/DAbPylnXsAAP4Wq.jpg\n\n>>>
+    print life['entities']['media'][0]['media_url']\nhttp://pbs.twimg.com/media/DAbPylnXsAAP4Wq.jpg\n\n>>>
+    print life['id']\n866643258390302721\n\n\n#prettyprint #pprint\n[PRettyPrint \"\"https://docs.python.org/2/library/pprint.html\"\"]\n\nimport
+    pprint\n\npp = pprint.PrettyPrinter(indent=4)\n\npp.pprint( dict )\n\n\n\n\n\n~###\n#\n"}
+23: {text: "\n**Python**\n#python\t#ref\t\t#files\t#read\t#write\n\nReading text file
+    ref\ntext_read.py    //\t\t\tkady_reader, whatsapp programm\n\n\nimport arparse,
+    os, re\n\nprint os.listdir(\"/Users/tom/Documents/Python/\")\n\nfilename = \"output.txt\"\n\nfole
+    = open(filename, 'r')\n\n r\t \t= file being read\n\n w\t= to edit and write new
+    info to file, overwrite existing\n\n a\t\t= append to end of file\n\n r+ \t= special
+    read and write mode \n\nfole.write(\"Hello world\")\t\t# auto new line\nfole.close()\n\nline
+    = fole.readline()\n\n"}

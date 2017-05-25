@@ -1,0 +1,96 @@
+/* ::::: http://paperjs.org/assets/css/style.css ::::: */
+
+form, img, ul, ol, table, td, article, figure, figcaption { margin: 0px; padding: 0px; border: 0px none; }
+a { outline: medium none; border: 0px none; }
+ul, ol { list-style: outside none none; }
+html {  }
+html, body { margin: 0px; height: 100%; }
+body { background: rgb(255, 255, 255) none repeat scroll 0% 0%; margin: 0px; width: 996px; }
+select, input, textarea { font-size: 12px; margin: 0px; color: rgb(0, 0, 0); }
+a { text-decoration: none; }
+@font-face {
+	font-family: "Superstudio";
+	font-style: normal;
+	font-weight: normal;
+	src: url('superstudio.eot') format("embedded-opentype"), url('superstudio.woff') format("woff"), url('superstudio.ttf') format("truetype"), url('superstudio.svg') format("svg");
+}
+@font-face {
+	font-family: "Akkurat-Mono";
+	font-style: normal;
+	font-weight: normal;
+	src: url('akkurat-mono.eot') format("embedded-opentype"), url('akkurat-mono.woff') format("woff"), url('akkurat-mono.ttf') format("truetype"), url('akkurat-mono.svg') format("svg");
+}
+@font-face {
+	font-family: "Executive";
+	font-style: normal;
+	font-weight: normal;
+	src: url('executive-regular.eot') format("embedded-opentype"), url('executive-regular.woff') format("woff"), url('executive-regular.ttf') format("truetype"), url('executive-regular.svg') format("svg");
+}
+@font-face {
+	font-family: "Executive";
+	font-style: italic;
+	font-weight: normal;
+	src: url('executive-italic.eot') format("embedded-opentype"), url('executive-italic.woff') format("woff"), url('executive-italic.ttf') format("truetype"), url('executive-italic.svg') format("svg");
+}
+@font-face {
+	font-family: "Executive";
+	font-style: normal;
+	font-weight: bold;
+	src: url('executive-medium.eot') format("embedded-opentype"), url('executive-medium.woff') format("woff"), url('executive-medium.ttf') format("truetype"), url('executive-medium.svg') format("svg");
+}
+body, select, input, textarea, .tutorial h2, .reference h2, .text { font-family: "Executive","Lucida Grande",Geneva,Verdana,Arial,sans-serif; }
+body, .text { font-size: 15px; line-height: 21px; text-rendering: optimizelegibility; }
+tt, pre, .CodeMirror { font-family: "Akkurat-Mono",Menlo,Consolas,"Vera Mono",monospace; font-size: 13px; line-height: 18px; }
+h1, h2 { font-family: "Superstudio"; font-weight: normal; font-size: 30px; line-height: 36px; padding-top: 32px; padding-bottom: 8px; border-bottom: 1px solid; margin: 0px 0px 20px; }
+h3, h4, h5 { font-weight: bold; font-size: 1em; }
+h4 { display: inline; }
+h1 .version { vertical-align: top; float: right; }
+.tutorial h2, .reference h2 { font-size: 15px; line-height: 21px; padding: 0px; }
+nav, article, aside { float: left; margin-left: 32px; }
+nav { width: 160px; position: fixed; overflow-x: hidden; overflow-y: auto; padding: 0px 21px 32px 0px; top: 0px; bottom: 0px; z-index: 1; }
+article { position: relative; margin: 0px 0px 32px 224px; z-index: 0; width: 540px; }
+aside, aside h1, aside .fixed { width: 200px; }
+nav ul, aside ul { padding: 0px; list-style: outside none none; margin: 0px; }
+nav ul li, aside ul li { padding: 0px; margin: 0px 0px 0px 1em; text-indent: -1em; }
+nav ul li.spacer, aside ul li.spacer { margin-top: 10px; }
+nav, nav a { color: rgb(0, 157, 236); border-bottom-color: rgb(0, 157, 236); }
+nav ul a:hover, nav ul .active > a { background: rgb(227, 244, 252) none repeat scroll 0% 0%; }
+aside, aside a { color: rgb(228, 20, 27); border-bottom-color: rgb(228, 20, 27); }
+aside a:hover, aside .active > * { background: rgb(252, 230, 230) none repeat scroll 0% 0%; }
+article {  }
+article, article a { color: rgb(51, 51, 51); }
+article a { border-bottom: 1px solid; }
+article a:hover, article a:hover em { background: rgb(229, 229, 229) none repeat scroll 0% 0%; }
+article p, article ul, article ol { margin: 0px 10px 20px 0px; }
+article ul, article ol { padding: 0px; list-style: outside none none; }
+article ul > li { margin-left: 1em; position: relative; }
+article ul > li::before { content: "–"; position: absolute; left: -1em; }
+article ol > li::before { position: absolute; left: -1.5em; content: counter(item, upper-latin) ") "; counter-increment: item; }
+.note > :last-child { margin-bottom: -21px; }
+.block::before, .block::after { content: " "; display: table; }
+.block::after { clear: both; }
+.reference h1, .reference h2, .reference h3, .reference h4 { font-size: 15px; font-weight: normal; margin: 0px; }
+.reference h1, .reference h2, .reference h3 { height: 19px; border-bottom: 1px solid; margin-bottom: 20px; }
+.reference h3 { margin-top: 20px; border-bottom-style: dotted; }
+.reference h4 { font-weight: bold; }
+.reference h4 .description::before { content: " — "; }
+.reference a tt { line-height: 18px; }
+.reference ul, .reference p { margin-bottom: 20px; }
+.reference hr { border-width: medium medium 1px; border-style: none none dotted; border-color: -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; }
+.reference ul.reference-classes { padding-bottom: 4px; }
+.reference ul.reference-classes li { margin: 0px; text-indent: 0px; }
+.reference ul.reference-classes ul { margin: 0px 0px 10px 10px; }
+.reference ul.reference-classes h2, .reference ul.reference-classes h3, .reference ul.reference-classes hr { margin: 10px 0px; }
+.reference ul.member-list li { margin-left: 2em; margin-bottom: 16px; text-indent: -2em; }
+.reference ul.member-list li::before { display: none; }
+.reference .reference-members { margin-bottom: 20px; }
+.reference .member-description { border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(153, 153, 153) rgb(153, 153, 153); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; margin: 20px 0px; }
+.reference .member-header { border-top: 1px solid rgb(153, 153, 153); padding: 10px; }
+.reference .member-header .member-link { float: left; }
+.reference .member-header .member-close { float: right; }
+.reference .member-header::before, .reference .member-header::after { content: " "; display: table; }
+.reference .member-header::after { clear: both; }
+.reference .member-text { border-top: 1px dashed rgb(153, 153, 153); padding: 10px 10px 0px; margin-bottom: -6px; }
+.reference .member-link { text-indent: -30px; padding-left: 30px; }
+ul.tutorial-index > li::before { display: none; }
+.hidden { display: none ! important; }

@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+	
+	
+	
+	
+	<meta name="description" content="Moteino Wife Detector">
+	<meta name="keywords" content="Moteino,RFM69,LoRa,Arduino,Wireless,IoT,internet of things,home automation,LowPowerLab,RaspberryPi">
+	<title>Moteino Wife Detector</title>
+	<meta name="robots" content="noindex">
+	<link rel="canonical" href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/">
+	<link rel="help" href="https://lowpowerlab.com/forum/help/">
+	<link rel="search" href="https://lowpowerlab.com/forum/search/">
+	<link rel="contents" href="https://lowpowerlab.com/forum/index.php">
+	<link rel="alternate" type="application/rss+xml" title="LowPowerLab community forum - RSS" href="https://lowpowerlab.com/forum/.xml/?type=rss">
+	<link rel="prev" href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/?prev_next=prev">
+	<link rel="next" href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/?prev_next=next">
+	<link rel="index" href="https://lowpowerlab.com/forum/projects/">
+	
+	
+		
+	
+	
+	
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div id="wrapper" style="width: 90%;">
+	<div id="header"><div class="frame">
+		<div id="top_section">
+			<h1 class="forumtitle">
+				<a href="https://lowpowerlab.com/forum/index.php">LowPowerLab community forum</a>
+			</h1>
+			<img id="upshrink" src="upshrink.png" alt="*" title="Shrink or expand the header." style="cursor: pointer;">
+			<img id="smflogo" src="smflogo.png" alt="Simple Machines Forum" title="Simple Machines Forum">
+		</div>
+		<div id="upper_section" class="middletext">
+			<div class="user">
+				
+				<form id="guest_form" action="https://lowpowerlab.com/forum/login2/" method="post" accept-charset="ISO-8859-1" onsubmit="hashLoginPassword(this, '1097c011e17dcd891c435a5ebe0be71a');">
+					<div class="info">Welcome, <strong>Guest</strong>. Please <a href="https://lowpowerlab.com/forum/login/">login</a> or <a href="https://lowpowerlab.com/forum/register/">register</a>.<br>Did you miss your <a href="https://lowpowerlab.com/forum/activate/">activation email</a>?</div>
+					<input value="" name="user" size="10" class="input_text" type="text">
+					<input name="passwrd" size="10" class="input_password" type="password">
+					<select name="cookielength">
+						<option value="60">1 Hour</option>
+						<option value="1440">1 Day</option>
+						<option value="10080">1 Week</option>
+						<option value="43200">1 Month</option>
+						<option value="-1" selected="selected">Forever</option>
+					</select>
+					<input value="Login" class="button_submit" type="submit"><br>
+					<div class="info">Login with username, password and session length</div>
+					<br><input value="" name="openid_identifier" id="openid_url" size="25" class="input_text openid_login" type="text">
+					<input name="hash_passwrd" value="" type="hidden">
+				</form>
+			</div>
+			<div class="news normaltext">
+				<form id="search_form" action="https://lowpowerlab.com/forum/search2/" method="post" accept-charset="ISO-8859-1">
+					<input name="search" value="" class="input_text" type="text">&nbsp;
+					<input name="submit" value="Search" class="button_submit" type="submit">
+					<input name="advanced" value="0" type="hidden">
+					<input name="topic" value="200" type="hidden"></form>
+				<h2>News: </h2>
+				<p>SMF just installed</p>
+			</div>
+		</div>
+		<br class="clear">
+		
+		<div id="main_menu">
+			<ul class="dropmenu" id="menu_nav">
+				<li id="button_home">
+					<a class="active firstlevel" href="https://lowpowerlab.com/forum/index.php">
+						<span class="last firstlevel">Home</span>
+					</a>
+				</li>
+				<li id="button_blog">
+					<a class="firstlevel" href="http://lowpowerlab.com/">
+						<span class="last firstlevel">Blog</span>
+					</a>
+				</li>
+				<li id="button_shop">
+					<a class="firstlevel" href="http://lowpowerlab.com/shop">
+						<span class="last firstlevel">Shop</span>
+					</a>
+				</li>
+				<li id="button_help">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/help/">
+						<span class="firstlevel">Help</span>
+					</a>
+				</li>
+				<li id="button_search">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/search/">
+						<span class="firstlevel">Search</span>
+					</a>
+				</li>
+				<li id="button_login">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/login/">
+						<span class="firstlevel">Login</span>
+					</a>
+				</li>
+				<li id="button_register">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/register/">
+						<span class="last firstlevel">Register</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<br class="clear">
+	</div></div>
+	<div id="content_section"><div class="frame">
+		<div id="main_content_section">
+	<div class="navigate_section">
+		<ul>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php"><span>LowPowerLab community forum</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php#c1"><span>Support &amp; discussion forums</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/projects/"><span>Projects</span></a> »
+			</li>
+			<li class="last">
+				<a href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/"><span>Moteino Wife Detector</span></a>
+			</li>
+		</ul>
+	</div>
+			<a id="top"></a>
+			<a id="msg829"></a><a id="new"></a>
+			<div class="pagesection">
+				<div class="nextlinks"><a href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/?prev_next=prev#new">« previous</a> <a href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/?prev_next=next#new">next »</a></div>
+		<div class="buttonlist floatright">
+			<ul>
+				<li><a class="button_strip_print" href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/?action=printpage" rel="new_win nofollow"><span class="last">Print</span></a></li>
+			</ul>
+		</div>
+				<div class="pagelinks floatleft">Pages: [<strong>1</strong>] </div>
+			</div>
+			<div id="forumposts">
+				<div class="cat_bar">
+					<h3 class="catbg">
+						<img src="normal_post_sticky.gif" alt="" align="bottom">
+						<span id="author">Author</span>
+						Topic: Moteino Wife Detector &nbsp;(Read 5514 times)
+					</h3>
+				</div>
+				<form action="https://lowpowerlab.com/forum/projects/moteino-wife-detector/?action=quickmod2" method="post" accept-charset="ISO-8859-1" name="quickModForm" id="quickModForm" style="margin: 0px;" onsubmit="return oQuickModify.bInEditMode ? oQuickModify.modifySave('1097c011e17dcd891c435a5ebe0be71a', 'ee07bf4f045') : false">
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=172" title="View the profile of kolumkilli">kolumkilli</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_829_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 24</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=172"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_829">
+										<a href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/msg829/#msg829" rel="nofollow">Moteino Wife Detector</a>
+									</h5>
+									<div class="smalltext">« <strong> on:</strong> November 12, 2013, 10:42:14 PM »</div>
+									<div id="msg_829_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_829">One system I have at my office is responsible for marshaling my attention appropriately.<br><br>There are two parts to that: <br>1) Having attention at all to marshal, and<br>2) putting it where it belongs, on demand.<br><br>What I mean by the first item is simply that I really need a cup of coffee to start thinking right in the morning.&nbsp; The problem is that without the coffee, I am highly prone to distraction, and I start to work on things before I can go make the coffee.&nbsp; Then I do bad things like make mistakes soldering, etc.&nbsp; When that happens, I am reminded of the rule, "have coffee before you do anything".&nbsp; So I get up and go to turn the coffee maker on.&nbsp; I have a Keurig B60.&nbsp; It takes a minute or so to heat the water up to coffee-making temperature.&nbsp; In the meantime, I go back, now trying to recover from the earlier mistakes, but ... I still haven't had coffee.&nbsp; When mistake number two happens, I am reminded that I never got up to hit the brew button and actually get coffee.&nbsp; The water by now has been hot for a while, and maybe it's not even morning anymore.&nbsp; But I eventually have the coffee.<br><br>The solution to this problem came out of the second item, which can be stated a different way: whatever my wife wants takes precedence.&nbsp; Now I don't mean that in a mean way at all - she is amazing, and does not do silly things like make mistakes while forgetting to have coffee.&nbsp; Left to my own devices, half the things would never get done.&nbsp; Chaos would ensue.&nbsp; It's a very good symbiosis.<br><br>Sometimes my wife comes to the office with our little daughter, a toddler.&nbsp; If you have a little one, and a car, you know the hassle it is to deal with the car seat, the diaper bag, bottles, and miscellaneous toys that keep the child from exploding into a teary mess at the slightest provocation.&nbsp; Getting in and out of the car can be involved, and a second person really makes it a lot easier.&nbsp; My wife said to me, "I need a way for you to know to come out and help when I arrive."&nbsp; No problem.&nbsp; "Just call me".&nbsp; Except it was a problem.&nbsp; My phone was off.&nbsp; Or I didn't hear it over some machinery I was running.&nbsp; Or I was in the back of the office, out of earshot.&nbsp; Or I left my ringer on silent.&nbsp; I needed a different solution.<br><br>I bought one of those key finder devices, which amounts to a little fob remote with a button to press, and a unit with a loud buzzer that you are supposed to attach to your cell phone or keys or dog or other item you are trying to locate.&nbsp; <br><br><a href="http://www.flickr.com/photos/15304611@N03/10830216183/" class="bbc_link" target="_top"><img src="10830216183_ee7916b3a3_z.jpg" alt="" class="bbc_img"></a><br><br>I gave her the button fob and she could press it from inside the car, and I would hear the buzzer and come on out.&nbsp; Problem solved, except...<br><br>It never worked, not one time.&nbsp; The reason was the limited signal penetration through the building's outer wall.&nbsp; Worked great when I tested it inside... incorrect test conditions - must have been in the morning, before coffee.&nbsp; The product itself was great and worked quite well.<br><br>So then, I decided, I just needed to locate the receiver very close to the entrance, so that the unit would work (since I was not ready to give up on the idea yet, see lack of coffee problem).&nbsp; But then I needed something that would make a loud enough sound from the front area.&nbsp; The tiny piezo buzzers were loud, but not that loud.&nbsp; And I also thought, since this unit would be right by the entrance, why not get a thing that would make a noise when someone crossed the threshold too, so I would know when I had a visitor?&nbsp; Because a simple bell that hangs on the door is too old school, and prone to working reliably.<br><br>What I found to do the job was utterly ridiculous, but I indulged anyway.&nbsp; The Star Trek door chime from Thinkgeek: <a href="http://www.thinkgeek.com/product/e9b8/" class="bbc_link" target="_top">http://www.thinkgeek.com/product/e9b8/</a><br><br>This little unit has two PIR sensors, and will play three distinct sounds under various conditions.&nbsp; The "red alert" klaxon, the "swoosh" sound of the turbolift doors, and the boatswain's whistle.&nbsp; It's so silly but makes me laugh, and was relatively inexpensive.<br><br>The idea was to let it work normally, as it would detect someone crossing the threshold and play the "swoosh" sound.&nbsp; I wired in the remote receiver of the key finder, detected that signal via an ATMega chip, and then had it trigger the boatswain's whistle sound.&nbsp; <br><br><a href="http://www.flickr.com/photos/15304611@N03/10829947376/" class="bbc_link" target="_top"><img src="10829947376_c9db59719e_z.jpg" alt="" class="bbc_img"></a><br><br>This was before I found Moteino, and in this case, being a prototype and all, but being space constrained, I elected to hand-solder to a TQFP packaged ATMega328P.&nbsp; <strong>Never do this. </strong> <br><br>You can see the bell-shaped circuit board at the top, that was the guts of the blue key finder receiver in the first picture.&nbsp; I pulled the signal off the transistor that fed the piezo buzzer (removed), and it worked quite well.&nbsp; The ATMega then triggered two relays.&nbsp; One that increased the volume by shorting a resistor out of the speaker circuit (this is the way they originally controlled the volume between two settings - with or without a resistor in series, low and high volume) and then by "pressing" the button that triggered the boatswain's whistle sound.<br><br>So that sound would mean, my wife has arrived.&nbsp; Problem solved, except...<br><br>It wasn't.&nbsp; The fob was small and easily left at home.&nbsp; The range was still pretty short through the building wall, so it only worked from the really close parking spots, which were sometimes already occupied when she arrived.&nbsp; <br><br>Time to abandon the fob idea.&nbsp; Needed something else.&nbsp; So I found the "GE 19209 Wireless Door Chime with Two Push Buttons", which claimed a 150-foot range, and was meant to transmit through a certain number of walls.&nbsp; It also had a larger number of distinct sounds, though with only two buttons, I really only could use two.&nbsp; Well, most of those sounds were all pretty irritating to me anyway, which I realize is a total matter of opinion.&nbsp; Swoosh!<br><br>So the obvious answer was to replace the fob situation with the new doorbell. (Of course the <strong><em>real</em></strong> obvious answer was to just use the doorbell as-is, and just use the PIR door detector by itself, as it was designed.&nbsp; But what fun is that?)&nbsp; Since the doorbell came with two buttons, I could mount one on the outside of the door, and actually have a real doorbell, which I did not have before.&nbsp; The other button would just live in the car.&nbsp; But the new doorbell receiver was large and would not fit in the door chime case.&nbsp; Solution?&nbsp; Another ATmega with RFM12B, and a matching RFM12B in the door chime to receive that signal.&nbsp; <br><br><a href="http://www.flickr.com/photos/15304611@N03/10830055874/" class="bbc_link" target="_top"><img src="10830055874_2fe8b40e4b_z.jpg" alt="" class="bbc_img"></a><br><br>This is a shot of the interior of the doorbell receiver.&nbsp; It has a cheap Arduino clone board, an "Iduino".&nbsp; The RFM12B is directly attached, and there is a pair of resistors to create a voltage divider to monitor the battery level, as well as a voltage regulator for the Iduino and RFM12B.&nbsp; In the door chime of the previous picture, the RFM12B is not visible, as it is under the prototyping board, but you can see the coiled black wire going up the side, that is the antenna wire.<br><br>The theory was to set the two doorbell buttons to different sounds, and detect the speaker signal with the ATMega when either button was pressed.&nbsp; The two sounds were of markedly different durations, so no need to analyze the waveform to distinguish them - just go by the duration of the signal.&nbsp; Then send the info to the door chime, which would then play a different but appropriate sound.&nbsp; This actually worked.&nbsp; Problem solved, except...<br><br>It wasn't.&nbsp; This configuration worked well a few times, the range was adequate and it was fun.&nbsp; But the battery life of the button unit in the car was very, very short.&nbsp; Probably due to temperature cycling.&nbsp; Also, parking lot conditions prevented this from working all the time.&nbsp; A passing panel van in line of sight would just block the signal.&nbsp; Rainy weather seemed to shorten the range quite a bit as well.&nbsp; Not good enough yet.&nbsp; I mean, I especially needed it to work on the rainy days!<br><br>To solve the problem, enter <strong>Moteino</strong>.<br><br>Those first two ATMega-based nodes were just built ad-hoc from stuff I had lying around.&nbsp; All that was patently awful, just done for prototyping one-off units like these.&nbsp; But I saw that this system was expanding (as well as incorporating other less-ridiculous node systems I have in place), and I had just found Moteino.&nbsp; So I ordered a bunch of those, thank you Felix!<br><br>The first one I put into a PVC capsule, watertight.&nbsp; I cannibalized a USB car charger and fed the Moteino 5 volts with that.&nbsp; That charger board was fed through an epoxy potted through hole in the PVC capsule, wired back to the 12 volts of the car.&nbsp; It is mounted in the front grille, which is pointed at the office entrance when you drive in.&nbsp; It broadcasts a few bytes every 10 seconds until it gets an ack from my doorbell unit, after which it dials back to once every ten minutes. (These values are configurable, but they've worked for me so far.)&nbsp; This unit removed the need to press a button, and implemented a retry-until-success paradigm.&nbsp; The doorbell unit will send a message to the door chime to play the right sound, when this signal is detected.&nbsp; Once "rung" the chime is reset by the doorbell not receiving the car's signal for more than twenty-one minutes (also configurable - but it means it misses two of the 10 minute pulses).&nbsp; The car node is similarly reset by not receiving an ack (it goes back to the 10 second interval on missed ack).<br><br>Some shots of the sender Moteino module:<br><br><a href="http://www.flickr.com/photos/15304611@N03/10829947546/" class="bbc_link" target="_top"><img src="10829947546_cbe5e657f9.jpg" alt="" class="bbc_img"></a> <a href="http://www.flickr.com/photos/15304611@N03/10830056814/" class="bbc_link" target="_top"><img src="10830056814_3c42356a8a.jpg" alt="" class="bbc_img"></a><br><a href="http://www.flickr.com/photos/15304611@N03/10829947326/" class="bbc_link" target="_top"><img src="10829947326_dacebbcf89_c.jpg" alt="" class="bbc_img"></a><br><br><br>The electronic components are electrically insulated from each other, and immobilized and cushioned from shock by the pink foam.&nbsp; The antenna wire wraps in a coil around the maximum diameter of the inside of the capsule.&nbsp; It's all pretty small, so I elected to not put a header on the FTDI connections, but thankfully Felix made the plated through holes just the right size to accommodate micrograbbers, so I just use those to reflash when I have an update.&nbsp; I hadn't gotten the wireless update working on that one yet, but looking forward to that!&nbsp; (Removal from the car, fitting the micrograbbers, wiring up to a 12V source, all not complicated or difficult, but time consuming and unnecessary with Moteino.)<br><br><a href="http://www.flickr.com/photos/15304611@N03/10829946826/" class="bbc_link" target="_top"><img src="10829946826_e4e2407e01_z.jpg" alt="" class="bbc_img"></a><br><br>So, problem solved... except for one thing.&nbsp; The chime unit was not really loud enough where I could hear it from the back of the office, particularly if machinery was running.&nbsp; Enter Moteino number two, in a second Star Trek chime mounted in the back of the office.&nbsp; It behaves as the first, responds to the doorbell signal.&nbsp; Easy, and this time I did not need to hand solder a TQFP ATMega.&nbsp; (!)<br><br>But - I needed a little bit more.&nbsp; Fact is, I already had three things I wanted to be alerted to:<br><br>1)&nbsp; My wife's arrival<br>2)&nbsp; Someone ringing the physical doorbell<br>3)&nbsp; Someone entering the office by crossing the threshold.<br><br>But now that I wasn't using the other doorbell button in the car, I could mount that at the back door to the office, and I'd want a different sound for that, because I would not want to rush to the front door, only to have to then cross the entire office to get to the back.&nbsp; Unfortunately, the Star Trek chime had only three sounds built in, and frankly, the "red alert" sound was too long, loud, and annoying to be of much use.&nbsp; So really I had four conditions and two usable sounds.&nbsp; Well, I already had a Moteino in the second chime unit - maybe I could make some tones or something...<br><br>Ultimately, the sounds I could generate with the PWM signals were not sufficient.&nbsp; I was already using some tones for other systems in the office, and they were hard to tell apart - particularly before coffee.&nbsp; So the solution was to rip out the guts of the Star Trek chime, and replace it entirely with the Moteino, controlling a WTV020-SD-16P module, which can play 512 different sound files of my choosing.&nbsp; I had to make the Moteino take the inputs from the PIR detectors, and react to them.&nbsp; It had to also play appropriate sounds when receiving signals that originated from the car or either of the doorbell buttons.&nbsp; No problem.&nbsp; That module was still a little bit too low in volume so I added a PAM8803 amplifier.&nbsp; Done.&nbsp; Moteino was easy to connect and just worked.&nbsp; Now I can play as many sound files as I need for every condition I am monitoring in my office.&nbsp; My once-simple door chime has become a general-purpose annunciator system.<br><br>Here is a shot of the newer chime unit.&nbsp; <br><br><a href="http://www.flickr.com/photos/15304611@N03/10829946386/" class="bbc_link" target="_top"><img src="10829946386_1a8a3777fe_z.jpg" alt="" class="bbc_img"></a><br><br>So much cleaner with Moteino.&nbsp; No relays, plenty of space for components.&nbsp; And with far increased function.&nbsp; The small unit at the bottom with the microSD card is the WTV020-SD-16P module.&nbsp; The SD card holds the sound files.&nbsp; The one drawback with this is that I do not have direct access to the SD card, so I have to open this unit up and get the SD card out to load new files on it, if I want to add sounds.&nbsp; But, I can live with that (until the day I can't, then we'll see).&nbsp; The module with the two micro push buttons is the amplifier.&nbsp; The Moteino is visible and has the coiled antenna coming out of the RFM12B on the reverse.&nbsp; The PIR sensors and switches, LEDs and speaker, are all original.&nbsp; The hardest part of this was to position that one large switch on the prototyping board so that it lined up correctly with the hole in the housing.<br><br>Just compare the two side-by-side.&nbsp; One, complex, crammed, inefficient on power, and difficult to assemble.&nbsp; The one with Moteino, clean, easy, and with far more utility.<br><br><a href="http://www.flickr.com/photos/15304611@N03/10829947376/" class="bbc_link" target="_top"><img src="10829947376_c9db59719e.jpg" alt="" class="bbc_img"></a> <a href="http://www.flickr.com/photos/15304611@N03/10829946386/" class="bbc_link" target="_top"><img src="10829946386_1a8a3777fe.jpg" alt="" class="bbc_img"></a><br><br>So far I have just converted over the rear door chime to Moteino, which is the one I am closest to most of the time.&nbsp; I've waited to convert the front one, because I am going to use Moteino R4 with RFM69W, and use the RFM69HW in the car, for increased range.&nbsp; I will have to convert the rear chime to use RFM69W as well, but since I used Moteino R2, with the same footprint and pinouts, it will just be easy.<br><br>Enter Moteino number three.&nbsp; Another identical PVC-encapsulated node with a periodic transmit beacon.&nbsp; It is mounted in my own car.&nbsp; And although it works well, I am looking forward to the RFM69HW conversion, because it will mean my annunciator system will detect the car a little bit earlier.&nbsp; If my wife borrows my car on a given day, I will still get the signal that she has arrived.&nbsp; If it is me driving the car, the sound associated with my car's arrival will not be heard by me, since I am in the car - but here is the important part:<br><br>Enter Moteino number four.&nbsp; It lives in my Keurig B60, detailed in this post:&nbsp; <a href="http://lowpowerlab.com/forum/index.php/topic,196.0.html" class="bbc_link" target="_top">http://lowpowerlab.com/forum/index.php/topic,196.0.html</a><br><br>It gets the signal relayed from the doorbell receiver, and turns on as either car arrives.&nbsp; The water is typically hot enough just as I get to the machine, which is in the rear of the office, farthest from the entrance.&nbsp; It is ready for me to have a cup of coffee, by the time I get out of the car, into the office, and over to where the coffee maker is located.&nbsp; No more fuzzy thinking in the morning, ever again.&nbsp; This was the real reason for the Keurig conversion.&nbsp; I don't get to the office at any particular time, it can be anytime during the day, or not at all on a given day, depending on what I have going on.&nbsp; (There is the toddler effect - not the only effect, but a major one of them.)&nbsp; Use of a normal scheduler was not going to work in my situation.<br><br>I was considering having the coffee maker Moteino detect the presence of the coffee charge and actually brew the coffee, but as it is a single-cup brewer, I would have to remember to put the charge in the day before.&nbsp; That's probably not going to happen with any kind of reliability.<br><br>But now, the coffee maker can be turned on and shut off, and I can monitor how many cups of coffee I have each day.&nbsp; That's so I can correlate it with coding productivity, and be mindful of the too much coffee fall-off knee, which is a real effect.&nbsp; But also avoid too much time elapsing since the last cup of coffee.&nbsp; <em>Sailing "in the groove"...</em><br><br>Also, the coffee maker used to sit there and keep the water heated all day long, just waiting for someone to hit that brew button.&nbsp; Now, I have it shut off after 5 minutes of inactivity.&nbsp; So, some energy saved too.&nbsp; I may add a scheduler (on a PC) to start the coffee machine up remotely in the afternoon, and have the door chime/office annunciator play a sound when the water is hot (and then another sound when I fail to act on the first one because I am unhealthily focused on a computer screen).&nbsp; Maybe a "five more minutes" button served from the office webserver?&nbsp; For now though, if I leave for lunch, it will turn on when I return, so that works.<br><br>I added to the system some IP cameras, which are triggered when the PIR sensors are tripped at either door.&nbsp; I also get an email when that occurs.&nbsp; A sound will play when I get an email, so it is a comforting sequence of sounds each morning.&nbsp; Swoosh, then the sound of the coffee brewing, then a moment later a soft sound indicating that the IP cams have uploaded some images to my FTP site and emailed them to me as well.<br><br>There are many other things I am looking forward to adding to this system.&nbsp; Moteino five and six will replace the original prototype nodes in the doorbell receiver and the front door chime.&nbsp; There will be the Moteino R4 with RFM69HW conversions for the two car nodes.&nbsp; My water-distiller, mentioned in a different post (<a href="http://lowpowerlab.com/forum/index.php/topic,188.0.html" class="bbc_link" target="_top">http://lowpowerlab.com/forum/index.php/topic,188.0.html</a>), already triggers alarms at key points in its process.&nbsp; I am slowly converting all of its sensor nodes to Moteino (right now it is all ATMega, but home-grown prototypes, probably around ten of them, no two the same.&nbsp; But, I will leave those for future posts.&nbsp; Moteino is just excellent, it is a great facilitator of <em>just about anything you can think of</em>.<br><br>And that is how my wife caused a very useful attention marshaling system to come into existence.&nbsp; As always, I am very grateful to her.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_829">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg836"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=147" title="View the profile of jbeale">jbeale</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_836_extra_info">
+								<li class="postgroup">Jr. Member</li>
+								<li class="stars"><img src="star.gif" alt="*"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 62</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=147"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_836">
+										<a href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/msg836/#msg836" rel="nofollow">Re: Moteino Wife Detector</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #1 on:</strong> November 13, 2013, 04:00:21 PM »</div>
+									<div id="msg_836_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_836">This is a remarkable writeup... truly impressive, I am in awe.&nbsp; I am also planning to show it to my wife, because I believe she sometimes suspects that she is married to the most widget-preoccupied geek around, and this article is clear proof that is not the case.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_836">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg837"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=172" title="View the profile of kolumkilli">kolumkilli</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_837_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 24</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=172"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_837">
+										<a href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/msg837/#msg837" rel="nofollow">Re: Moteino Wife Detector</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #2 on:</strong> November 13, 2013, 08:01:54 PM »</div>
+									<div id="msg_837_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_837">Thank you, and glad to be of service!<br></div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_837">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				</form>
+			</div>
+			<a id="lastPost"></a>
+			<div class="pagesection">
+				
+		<div class="buttonlist floatright">
+			<ul>
+				<li><a class="button_strip_print" href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/?action=printpage" rel="new_win nofollow"><span class="last">Print</span></a></li>
+			</ul>
+		</div>
+				<div class="pagelinks floatleft">Pages: [<strong>1</strong>] </div>
+				<div class="nextlinks_bottom"><a href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/?prev_next=prev#new">« previous</a> <a href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/?prev_next=next#new">next »</a></div>
+			</div>
+	<div class="navigate_section">
+		<ul>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php"><span>LowPowerLab community forum</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php#c1"><span>Support &amp; discussion forums</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/projects/"><span>Projects</span></a> »
+			</li>
+			<li class="last">
+				<a href="https://lowpowerlab.com/forum/projects/moteino-wife-detector/"><span>Moteino Wife Detector</span></a>
+			</li>
+		</ul>
+	</div>
+			<div id="moderationbuttons"></div>
+			<div class="plainbox" id="display_jump_to"><label class="smalltext" for="display_jump_to_select">Jump to:</label> <select name="display_jump_to_select" id="display_jump_to_select" onfocus="grabJumpToContent();"><option value="?board=4.0">=&gt; Projects</option></select>&nbsp;<input value="go" onclick="window.location.href = 'https://lowpowerlab.com/forum/index.php?board=4.0';" type="button"></div>
+		<br class="clear">
+				
+				
+		
+		
+			
+		</div>
+	</div></div>
+	<div id="footer_section"><div class="frame">
+		<ul class="reset">
+			<li class="copyright">
+			<span class="smalltext" style="display: inline; visibility: visible; font-family: Verdana,Arial,sans-serif;"><a href="https://lowpowerlab.com/forum/credits/" title="Simple Machines Forum" target="_top" class="new_win">SMF 2.0.11</a> |
+ <a href="http://www.simplemachines.org/about/smf/license.php" title="License" target="_top" class="new_win">SMF © 2015</a>, <a href="http://www.simplemachines.org/" title="Simple Machines" target="_top" class="new_win">Simple Machines</a>
+			</span></li>
+			<li><a id="button_xhtml" href="http://validator.w3.org/check?uri=referer" target="_top" class="new_win" title="Valid XHTML 1.0!"><span>XHTML</span></a></li>
+			<li><a id="button_rss" href="https://lowpowerlab.com/forum/.xml/?type=rss" class="new_win"><span>RSS</span></a></li>
+			<li class="last"><a id="button_wap2" href="https://lowpowerlab.com/forum/index.php?wap2" class="new_win"><span>WAP2</span></a></li>
+		</ul>
+	</div></div>
+</div>
+</body>
+</html>

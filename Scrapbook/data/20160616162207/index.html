@@ -1,0 +1,627 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    
+    <title>Requests: HTTP for Humans — Requests 2.10.0 documentation</title>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="top" title="Requests 2.10.0 documentation" href="http://docs.python-requests.org/en/latest/#">
+    <link rel="next" title="Introduction" href="http://docs.python-requests.org/en/latest/user/intro/">
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://docs.python-requests.org/en/master/">
+
+
+
+
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+
+
+
+
+<!-- end RTD <extrahead> -->
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="requests-http-for-humans">
+<h1>Requests: HTTP for Humans<a class="headerlink" href="#requests-http-for-humans" title="Permalink to this headline">¶</a></h1>
+<p>Release v2.10.0. (<a class="reference internal" href="http://docs.python-requests.org/en/latest/user/install/#install"><span>Installation</span></a>)</p>
+<p>Requests is the only <em>Non-GMO</em> HTTP library for Python, safe for human
+consumption.</p>
+<p><strong>Warning:</strong> Recreational use of other HTTP libraries may result in dangerous side-effects,
+including: security vulnerabilities, verbose code, reinventing the wheel,
+constantly reading documentation, depression, headaches, or even death.</p>
+<p>Behold, the power of Requests:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'https://api.github.com/user'</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="s1">'user'</span><span class="p">,</span> <span class="s1">'pass'</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span>
+<span class="go">200</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">'content-type'</span><span class="p">]</span>
+<span class="go">'application/json; charset=utf8'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">encoding</span>
+<span class="go">'utf-8'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">text</span>
+<span class="go">u'{"type":"User"...'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="go">{u'private_gists': 419, u'total_private_repos': 77, ...}</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://gist.github.com/973705">similar code, sans Requests</a>.</p>
+<p>Requests allows you to send <em>organic, grass-fed</em> HTTP/1.1 requests, without the
+need for manual labor. There's no need to manually add query strings to your
+URLs, or to form-encode your POST data. Keep-alive and HTTP connection pooling
+are 100% automatic, powered by <a class="reference external" href="https://github.com/shazow/urllib3">urllib3</a>,
+which is embedded within Requests.</p>
+<div class="section" id="user-testimonials">
+<h2>User Testimonials<a class="headerlink" href="#user-testimonials" title="Permalink to this headline">¶</a></h2>
+<p>Her Majesty's Government, Amazon, Google, Twilio, Runscope, Mozilla, Heroku,
+PayPal, NPR, Obama for America, Transifex, Native Instruments, The Washington
+Post, Twitter, SoundCloud, Kippt, Readability, Sony, and Federal U.S.
+Institutions that prefer to be unnamed claim to use Requests internally.</p>
+<dl class="docutils">
+<dt><strong>Armin Ronacher</strong></dt>
+<dd>Requests is the perfect example how beautiful an API can be with the
+right level of abstraction.</dd>
+<dt><strong>Matt DeBoard</strong></dt>
+<dd>I'm going to get @kennethreitz's Python requests module tattooed
+on my body, somehow. The whole thing.</dd>
+<dt><strong>Daniel Greenfeld</strong></dt>
+<dd>Nuked a 1200 LOC spaghetti code library with 10 lines of code thanks to
+@kennethreitz's request library. Today has been AWESOME.</dd>
+<dt><strong>Kenny Meyers</strong></dt>
+<dd>Python HTTP: When in doubt, or when not in doubt, use Requests. Beautiful,
+simple, Pythonic.</dd>
+</dl>
+<p>Requests is one of the most downloaded Python packages of all time, pulling in
+over 7,000,000 downloads every month. All the cool kids are doing it!</p>
+</div>
+<div class="section" id="supported-features">
+<h2>Supported Features<a class="headerlink" href="#supported-features" title="Permalink to this headline">¶</a></h2>
+<p>Requests is ready for today's web.</p>
+<ul class="simple">
+<li>International Domains and URLs</li>
+<li>Keep-Alive &amp; Connection Pooling</li>
+<li>Sessions with Cookie Persistence</li>
+<li>Browser-style SSL Verification</li>
+<li>Basic/Digest Authentication</li>
+<li>Elegant Key/Value Cookies</li>
+<li>Automatic Decompression</li>
+<li>Automatic Content Decoding</li>
+<li>Unicode Response Bodies</li>
+<li>Multipart File Uploads</li>
+<li>HTTP(S) Proxy Support</li>
+<li>Connection Timeouts</li>
+<li>Streaming Downloads</li>
+<li><code class="docutils literal"><span class="pre">.netrc</span></code> Support</li>
+<li>Chunked Requests</li>
+<li>Thread-safety</li>
+</ul>
+<p>Requests supports Python 2.6 — 3.5, and runs great on PyPy.</p>
+</div>
+<div class="section" id="the-user-guide">
+<h2>The User Guide<a class="headerlink" href="#the-user-guide" title="Permalink to this headline">¶</a></h2>
+<p>This part of the documentation, which is mostly prose, begins with some
+background information about Requests, then focuses on step-by-step
+instructions for getting the most out of Requests.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/intro/">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/intro/#philosophy">Philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/intro/#apache2-license">Apache2 License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/intro/#requests-license">Requests License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/install/">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/install/#pip-install-requests">Pip Install Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/install/#get-the-source-code">Get the Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#make-a-request">Make a Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#passing-parameters-in-urls">Passing Parameters In URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#response-content">Response Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#binary-response-content">Binary Response Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#json-response-content">JSON Response Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#raw-response-content">Raw Response Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#custom-headers">Custom Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#more-complicated-post-requests">More complicated POST requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#post-a-multipart-encoded-file">POST a Multipart-Encoded File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#response-status-codes">Response Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#response-headers">Response Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#cookies">Cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#redirection-and-history">Redirection and History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#timeouts">Timeouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/quickstart/#errors-and-exceptions">Errors and Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/">Advanced Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#session-objects">Session Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#request-and-response-objects">Request and Response Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#prepared-requests">Prepared Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#ssl-cert-verification">SSL Cert Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#ca-certificates">CA Certificates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#body-content-workflow">Body Content Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#keep-alive">Keep-Alive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#streaming-uploads">Streaming Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#chunk-encoded-requests">Chunk-Encoded Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#post-multiple-multipart-encoded-files">POST Multiple Multipart-Encoded Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#event-hooks">Event Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#custom-authentication">Custom Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#streaming-requests">Streaming Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#proxies">Proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#compliance">Compliance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#http-verbs">HTTP Verbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#link-headers">Link Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#transport-adapters">Transport Adapters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#blocking-or-non-blocking">Blocking Or Non-Blocking?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#header-ordering">Header Ordering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/advanced/#timeouts">Timeouts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/authentication/">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/authentication/#basic-authentication">Basic Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/authentication/#digest-authentication">Digest Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/authentication/#oauth-1-authentication">OAuth 1 Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/authentication/#other-authentication">Other Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/user/authentication/#new-forms-of-authentication">New Forms of Authentication</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-community-guide">
+<h2>The Community Guide<a class="headerlink" href="#the-community-guide" title="Permalink to this headline">¶</a></h2>
+<p>This part of the documentation, which is mostly prose, details the
+Requests ecosystem and community.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/community/faq/">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/community/recommended/">Recommended Packages and Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/community/out-there/">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/community/out-there/#articles-talks">Articles &amp; Talks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/community/support/">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/community/vulnerabilities/">Vulnerability Disclosure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/community/updates/">Community Updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/community/updates/#release-and-version-history">Release and Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/community/release-process/">Release Process and Rules</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-api-documentation-guide">
+<h2>The API Documentation / Guide<a class="headerlink" href="#the-api-documentation-guide" title="Permalink to this headline">¶</a></h2>
+<p>If you are looking for information on a specific function, class, or method,
+this part of the documentation is for you.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/api/">Developer Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/api/#main-interface">Main Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/api/#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/api/#request-sessions">Request Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/api/#lower-level-classes">Lower-Level Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/api/#lower-lower-level-classes">Lower-Lower-Level Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/api/#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/api/#encodings">Encodings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/api/#cookies">Cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/api/#status-code-lookup">Status Code Lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/api/#migrating-to-1-x">Migrating to 1.x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/api/#migrating-to-2-x">Migrating to 2.x</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-contributor-guide">
+<h2>The Contributor Guide<a class="headerlink" href="#the-contributor-guide" title="Permalink to this headline">¶</a></h2>
+<p>If you want to contribute to the project, this part of the documentation is for
+you.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/contributing/">Contributor's Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/contributing/#be-cordial">Be Cordial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/contributing/#get-early-feedback">Get Early Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/contributing/#contribution-suitability">Contribution Suitability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/contributing/#code-contributions">Code Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/contributing/#steps-for-submitting-code">Steps for Submitting Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/contributing/#code-review">Code Review</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/contributing/#new-contributors">New Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/contributing/#kenneth-reitz-s-code-style">Kenneth Reitz's Code Style™</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/contributing/#documentation-contributions">Documentation Contributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/contributing/#bug-reports">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/contributing/#feature-requests">Feature Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/philosophy/">Development Philosophy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/philosophy/#management-style">Management Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/philosophy/#values">Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/philosophy/#semantic-versioning">Semantic Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/philosophy/#standard-library">Standard Library?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/philosophy/#linux-distro-packages">Linux Distro Packages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/todo/">How to Help</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/todo/#feature-freeze">Feature Freeze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/todo/#development-dependencies">Development Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/todo/#runtime-environments">Runtime Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/todo/#are-you-crazy">Are you crazy?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/todo/#downstream-repackaging">Downstream Repackaging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/authors/">Authors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/authors/#keepers-of-the-three-crystals">Keepers of the Three Crystals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/authors/#urllib3">Urllib3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.python-requests.org/en/latest/dev/authors/#patches-and-suggestions">Patches and Suggestions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>There are no more guides. You are now guideless.
+Good luck.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="#">
+    <img class="logo" src="requests-sidebar.png" title="Rezzy the Requests Sea Turtle">
+  </a>
+</p>
+
+<p>
+  <iframe src="index_1.html" allowtransparency="true" scrolling="0" frameborder="0" height="35px" width="200px"></iframe>
+</p>
+
+<p>
+  Requests is an elegant and simple HTTP library for Python, built for
+  human beings.
+</p>
+
+<h3>Stay Informed</h3>
+<p>Receive updates on new releases and upcoming projects.</p>
+
+<p><iframe src="index_2.html" allowtransparency="true" scrolling="0" frameborder="0" height="20" width="200"></iframe></p>
+
+<p><iframe data-screen-name="kennethreitz" src="index_3.html" title="Twitter Follow Button" style="position: static; visibility: visible; width: 136px; height: 20px;" class="twitter-follow-button twitter-follow-button-rendered" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe> </p>
+
+<p><a href="http://tinyletter.com/kennethreitz">Join Mailing List</a>.</p>
+
+<h3>Other Projects</h3>
+
+<p>More <a href="http://kennethreitz.org/">Kenneth Reitz</a> projects:</p>
+<ul>
+    <li><a href="http://pep8.org/">pep8.org</a></li>
+    <li><a href="http://httpbin.org/">httpbin.org</a></li>
+    <li><a href="http://python-guide.org/">The Python Guide</a></li>
+    <li><a href="https://github.com/kennethreitz/records">Records: SQL for Humans</a></li>
+    <li><a href="http://www.git-legit.org/">Legit: Git for Humans</a></li>
+    <li><a href="http://docs.python-tablib.org/en/latest/">Tablib: Tabular Datasets</a></li>
+    <li><a href="http://markdownplease.com/">Markdown, Please!</a></li>
+</ul>
+
+
+<h3>Useful Links</h3>
+<ul>
+  <li><a href="http://docs.python-requests.org/en/latest/community/recommended/">Recommended Packages and Extensions</a></li>
+
+  <p></p>
+
+  <li><a href="http://github.com/kennethreitz/requests">Requests @ GitHub</a></li>
+  <li><a href="http://pypi.python.org/pypi/requests">Requests @ PyPI</a></li>
+  <li><a href="http://github.com/kennethreitz/requests/issues">Issue Tracker</a></li>
+  <li><a href="http://docs.python-requests.org/en/latest/community/updates/#software-updates">Release History</a></li>
+</ul>
+
+
+<h3>Translations</h3>
+
+<ul>
+  <li><a href="http://docs.python-requests.org/">English</a></li>
+  <li><a href="http://fr.python-requests.org/">French</a></li>
+  <li><a href="http://de.python-requests.org/">German</a></li>
+  <li><a href="http://jp.python-requests.org/">Japanese</a></li>
+  <li><a href="http://cn.python-requests.org/">Chinese</a></li>
+  <li><a href="http://pt.python-requests.org/">Portuguese</a></li>
+  <li><a href="http://it.python-requests.org/">Italian</a></li>
+  <li><a href="http://es.python-requests.org/">Spanish</a></li>
+</ul>
+
+<div id="searchbox" style="" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="http://docs.python-requests.org/en/latest/search/" method="get">
+      <input value="" name="q" type="text">
+      <input value="Go" type="submit">
+      <input name="check_keywords" value="yes" type="hidden">
+      <input name="area" value="default" type="hidden">
+    </form>
+    <p class="searchtip" style="font-size: 90%;">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<!-- Alabaster (krTheme++) Hacks -->
+
+<!-- CSS Adjustments (I'm very picky.) -->
+
+
+<!-- Analytics tracking for Kenneth. -->
+
+
+<!-- There are no more hacks. -->
+<!--         இڿڰۣ-ڰۣ—         -->
+<!--   Love, Kenneth Reitz    -->
+
+
+
+
+<!-- That was not a hack. That was art. -->
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      ©2016. A <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> Project.
+      
+    </div>
+
+    
+    <a href="https://github.com/kennethreitz/requests" class="github">
+        <img style="position: absolute; top: 0px; right: 0px; border: 0px none;" src="forkme_right_darkblue_121621.png" alt="Fork me on GitHub" class="github">
+    </a>
+    
+
+    
+  
+<!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+  <div class="rst-versions rst-badge" data-toggle="rst-versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book">&nbsp;</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+
+      
+      
+      <dl>
+        <dt>Languages</dt>
+
+        
+         <strong> 
+        <dd><a href="http://docs.python-requests.org/en/master/">en</a></dd>
+         </strong> 
+
+        
+        
+        
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/zh_CN/latest/">zh_CN</a></dd>
+        
+        
+        
+        
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/de/latest/">de</a></dd>
+        
+        
+        
+        
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/es/latest/">es</a></dd>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/pl/latest/">pl</a></dd>
+        
+        
+        
+        
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/pt_BR/latest/">pt_BR</a></dd>
+        
+        
+        
+        
+
+      </dl>
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="http://docs.python-requests.org/en/latest/">latest</a></dd>
+         </strong> 
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/stable/">stable</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/master/">master</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v3.0.0/">v3.0.0</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v2.9.1/">v2.9.1</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v2.8.1/">v2.8.1</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v2.7.0/">v2.7.0</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v2.6.2/">v2.6.2</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v2.5.3/">v2.5.3</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v2.4.3/">v2.4.3</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v2.3.0/">v2.3.0</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v2.2.1/">v2.2.1</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v2.1.0/">v2.1.0</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v2.0.0/">v2.0.0</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v1.2.3/">v1.2.3</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v1.1.0/">v1.1.0</a></dd>
+        
+        
+        
+        <dd><a href="http://docs.python-requests.org/en/v1.0.4/">v1.0.4</a></dd>
+        
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="http://readthedocs.org/projects/requests/downloads/pdf/latest/">PDF</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/requests/downloads/htmlzip/latest/">HTML</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/requests/downloads/epub/latest/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="http://readthedocs.org/projects/requests/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/requests/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/requests/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/kennethreitz/requests/blob/master/docs/index.rst">View</a>
+        </dd>
+        <dd>
+          <a href="https://github.com/kennethreitz/requests/edit/master/docs/index.rst">Edit</a>
+        </dd>
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/requests/search/" method="get">
+              <input value="" name="q" placeholder="Search docs" type="text">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+
+
+      <hr>
+      
+      Free document hosting provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+      
+
+      
+    </div>
+  </div>
+  
+
+</div>
+<iframe src="index_4.html" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" allowfullscreen="true" allowtransparency="true" scrolling="no" id="rufous-sandbox" frameborder="0"></iframe></body>
+</html>

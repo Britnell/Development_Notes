@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Installing operating system images on Linux - Raspberry Pi Documentation</title>
+    <meta name="description" content="This section includes some simple guides to setting up the software on your Raspberry Pi. We recommend that beginners start by downloading and installing NOOBS.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="publisher" href="https://plus.google.com/+RaspberryPi">
+    <!--[if lt IE 9]>
+    <script src="/wp-content/themes/mind-control/js/html5.js"></script>
+    <![endif]-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+    <link rel="canonical" href="https://www.raspberrypi.org/">
+    <link rel="shortlink" href="https://www.raspberrypi.org/">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="documentation">
+    <div class="container">
+        <header id="header">
+            <nav id="nav">
+                <ul id="menu-nav-bar" class="menu"><li id="menu-item-6901" class="home mobile menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-5372 current_page_item menu-item-6901"><a href="https://www.raspberrypi.org/">Home</a></li>
+                    <li id="menu-item-8279" class="close-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-8279"><a href="#">Close Menu</a></li>
+                    <li id="menu-item-6902" class="yellow menu-item menu-item-type-post_type menu-item-object-page menu-item-6902"><a href="https://www.raspberrypi.org/blog/">Blog</a></li>
+                    <li id="menu-item-6903" class="red menu-item menu-item-type-post_type menu-item-object-page menu-item-6903"><a href="https://www.raspberrypi.org/downloads/">Downloads</a></li>
+                    <li id="menu-item-6904" class="purple menu-item menu-item-type-post_type menu-item-object-page menu-item-6904"><a href="https://www.raspberrypi.org/community/">Community</a></li>
+                    <li id="menu-item-6905" class="green menu-item menu-item-type-post_type menu-item-object-page menu-item-6905"><a href="https://www.raspberrypi.org/help/">Help</a></li>
+                    <li id="menu-item-6907" class="pink menu-item menu-item-type-custom menu-item-object-custom menu-item-6907"><a href="https://www.raspberrypi.org/forums/">Forums</a></li>
+                    <li id="menu-item-18868" class="blue menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-18868"><a href="https://www.raspberrypi.org/education/">Education</a>
+                        <ul class="sub-menu">
+                            <li id="menu-item-6908" class="blue2 menu-item menu-item-type-post_type menu-item-object-page menu-item-6908"><a href="https://www.raspberrypi.org/resources/">Resources</a></li>
+                            <li id="menu-item-18869" class="blue3 menu-item menu-item-type-post_type menu-item-object-page menu-item-18869"><a href="https://www.raspberrypi.org/picademy/">Training</a></li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-7165" class="menu mobile menu-item menu-item-type-custom menu-item-object-custom menu-item-7165"><a href="#">Menu</a></li>
+                    <li id="menu-item-6912" class="search mobile menu-item menu-item-type-custom menu-item-object-custom menu-item-6912"><a href="#">Search</a></li>
+                    <li id="menu-item-7154" class="shop menu-item menu-item-type-post_type menu-item-object-page menu-item-7154"><a href="https://www.raspberrypi.org/buy/">Buy</a></li>
+                </ul>
+            </nav>
+            <form class="search" action="https://www.raspberrypi.org/">
+                <input name="s" class="search" value="">
+                <input class="submit" value="Search" type="submit">
+            </form>
+        </header>
+
+        <div class="main">
+
+<nav class="breadcrumbs">
+    <a href="https://www.raspberrypi.org/documentation">documentation</a> &gt; <a href="https://www.raspberrypi.org/documentation/installation">installation</a> &gt; <a href="https://www.raspberrypi.org/documentation/installation/installing-images">installing-images</a> &gt; linux</nav>
+
+<article class="entry-content">
+    <h1>Installing operating system images on Linux</h1>
+<p>Please note that the use of the <code>dd</code> tool can overwrite any partition of your machine. If you specify the wrong device in the instructions below, you could delete your primary Linux partition. Please be careful.</p>
+<ul>
+<li>
+<p>Run <code>df -h</code> to see what devices are currently mounted.</p>
+</li>
+<li>
+<p>If your computer has a slot for SD cards, insert the card. If not, insert the card into an SD card reader, then connect the reader to your computer.</p>
+</li>
+<li>
+<p>Run <code>df -h</code> again. The new device that has appeared is your SD card. The left column gives the device name of your SD card; it will be listed as something like <code>/dev/mmcblk0p1</code> or <code>/dev/sdd1</code>. The last part (<code>p1</code> or <code>1</code> respectively) is the partition number but you want to write to the whole SD card, not just one partition. You therefore need to remove that part from the name, getting, for example, <code>/dev/mmcblk0</code> or <code>/dev/sdd</code> as the device name for the whole SD card. Note that the SD card can show up more than once in the output of <code>df</code>; it will do this if you have previously written a Raspberry Pi image to this SD card, because the Raspberry Pi SD images have more than one partition.</p>
+</li>
+<li>
+<p>Now that you've noted what the device name is, you need to unmount it so that files can't be read or written to the SD card while you are copying over the SD image.</p>
+</li>
+<li>
+<p>Run <code>umount /dev/sdd1</code>, replacing <code>sdd1</code> with whatever your SD card's device name is (including the partition number).</p>
+</li>
+<li>
+<p>If your SD card shows up more than once in the output of <code>df</code> due to having multiple partitions on the SD card, you should unmount all of these partitions.</p>
+</li>
+<li>
+<p>In the terminal, write the image to the card with the command below, making sure you replace the input file <code>if=</code> argument with the path to your <code>.img</code> file, and the <code>/dev/sdd</code> in the output file <code>of=</code> argument with the right device name. This is very important, as you will lose all data on the hard drive if you provide the wrong device name. Make sure the device name is the name of the whole SD card as described above, not just a partition of it; for example, <code>sdd</code>, not <code>sdds1</code> or <code>sddp1</code>, and <code>mmcblk0</code>, not <code>mmcblk0p1</code>.</p>
+<pre class=" language-bash"><code class=" language-bash">dd bs<span class="token operator">=</span>4M <span class="token keyword">if</span><span class="token operator">=</span><span class="token number">2016</span><span class="token operator">-</span><span class="token number">05</span><span class="token operator">-</span><span class="token number">27</span><span class="token operator">-</span>raspbian<span class="token operator">-</span>jessie<span class="token punctuation">.</span>img of<span class="token operator">=</span><span class="token operator">/</span>dev<span class="token operator">/</span>sdd</code></pre>
+</li>
+<li>
+<p>Please note that block size set to <code>4M</code> will work most of the time; if not, please try <code>1M</code>, although this will take considerably longer.</p>
+</li>
+<li>
+<p>Also note that if you are not logged in as root you will need to prefix this with <code>sudo</code>.</p>
+</li>
+<li>
+<p>The <code>dd</code> command does not give any information of its progress and so may appear to have frozen; it could take more than five minutes to finish writing to the card. If your card reader has an LED it may blink during the write process. To see the progress of the copy operation you can run <code>pkill -USR1 -n -x dd</code> in another terminal, prefixed with <code>sudo</code> if you are not logged in as root. The progress will be displayed in the original window and not the window with the <code>pkill</code> command; it may not display immediately, due to buffering.</p>
+</li>
+<li>
+<p>Instead of <code>dd</code> you can use <code>dcfldd</code>; it will give a progress report about how much has been written.</p>
+</li>
+<li>
+<p>You can check what's written to the SD card by <code>dd</code>-ing from the card back to another image on your hard disk, truncating the new image to the same size as the original, and then running <code>diff</code> (or <code>md5sum</code>) on those two images.</p>
+</li>
+<li>
+<p>The SD card might be bigger than the original image, and <code>dd</code> will make a copy of the whole card. We must therefore truncate the new image to the size of the original image. Make sure you replace the input file <code>if=</code> argument with the right device name. <code>diff</code> should report that the files are identical.</p>
+<pre class=" language-bash"><code class=" language-bash">dd bs<span class="token operator">=</span>4M <span class="token keyword">if</span><span class="token operator">=</span><span class="token operator">/</span>dev<span class="token operator">/</span>sdd of<span class="token operator">=</span>from<span class="token operator">-</span>sd<span class="token operator">-</span>card<span class="token punctuation">.</span>img
+truncate <span class="token operator">--</span>reference <span class="token number">2016</span><span class="token operator">-</span><span class="token number">05</span><span class="token operator">-</span><span class="token number">27</span><span class="token operator">-</span>raspbian<span class="token operator">-</span>jessie<span class="token punctuation">.</span>img from<span class="token operator">-</span>sd<span class="token operator">-</span>card<span class="token punctuation">.</span>img
+diff <span class="token operator">-</span>s from<span class="token operator">-</span>sd<span class="token operator">-</span>card<span class="token punctuation">.</span>img <span class="token number">2016</span><span class="token operator">-</span><span class="token number">05</span><span class="token operator">-</span><span class="token number">27</span><span class="token operator">-</span>raspbian<span class="token operator">-</span>jessie<span class="token punctuation">.</span>img</code></pre>
+</li>
+<li>
+<p>Run <code>sync</code>; this will ensure the write cache is flushed and that it is safe to unmount your SD card.</p>
+</li>
+<li>Remove the SD card from the card reader.</li>
+</ul>
+<hr>
+<p><em>This article uses content from the eLinux wiki page <a href="http://elinux.org/RPi_Easy_SD_Card_Setup">RPi_Easy_SD_Card_Setup</a>, which is shared under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported license</a></em></p></article>
+
+                <footer class="licence">
+                    <aside class="octocat">
+                        <a href="https://github.com/raspberrypi/documentation/blob/master/installation/installing-images/linux.md"><img src="octocat.jpg"></a>
+                    </aside>
+                    <aside class="links">
+                        <a href="https://github.com/raspberrypi/documentation/blob/master/installation/installing-images/linux.md" class="github">View/Edit this page on GitHub</a><br>
+                        <a href="https://www.raspberrypi.org/creative-commons/">Read our usage and contributions policy</a><br>
+                        <a href="https://www.raspberrypi.org/creative-commons/" class="cc"><img src="88x31.png" alt="Creative Commons Licence"></a>
+                    </aside>
+                </footer>
+
+                <div style="clear: both;"></div>
+
+            </div>
+
+            <div style="clear: both;"></div>
+        <footer id="footer">
+            <div class="footer-contents">
+                <ul class="about-us menu">
+                    <li>
+                        <h2>About</h2>
+                        <ul>
+                            <li><a href="https://www.raspberrypi.org/about/">About us</a></li>
+                            <li><a href="https://www.raspberrypi.org/about/team/">Team</a></li>
+                            <li><a href="https://www.raspberrypi.org/about/governance/">Governance</a></li>
+                            <li><a href="https://www.raspberrypi.org/about/partners/">Partners</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2>Support</h2>
+                        <ul>
+                            <li><a href="https://www.raspberrypi.org/help/">Help</a></li>
+                            <li><a href="https://www.raspberrypi.org/documentation/">Documentation</a></li>
+                            <li><a href="https://www.raspberrypi.org/resources/">Learning resources</a></li>
+                            <li><a href="https://www.raspberrypi.org/picademy/">Training</a></li>
+                            <li><a href="https://www.raspberrypi.org/downloads/">Downloads</a></li>
+                            <li><a href="https://www.raspberrypi.org/help/faqs/">FAQs</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2>Contact</h2>
+                        <ul>
+                            <li><a href="https://www.raspberrypi.org/contact/">Contact us</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2>Social</h2>
+                        <ul>
+                            <li><a href="https://twitter.com/Raspberry_Pi">Twitter</a></li>
+                            <li><a href="https://www.facebook.com/raspberrypi">Facebook</a></li>
+                            <li><a href="https://plus.google.com/+RaspberryPi">Google+</a></li>
+                            <li><a href="http://raspberrypi.github.io/">GitHub</a></li>
+                            <li><a href="https://vimeo.com/raspberrypi">Vimeo</a></li>
+                            <li><a href="https://www.youtube.com/channel/UCFIjVWFZ__KhtTXHDJ7vgng">YouTube</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <footer>
+                    <div class="info">Raspberry Pi Foundation<br>UK registered charity 1129409</div>
+
+                    <ul class="site-links menu">
+                        <li><a href="https://www.raspberrypi.org/cookies/">Cookies</a></li>
+                        <li><a href="https://www.raspberrypi.org/trademark-rules/">Trademark rules and brand guidelines</a></li>
+                    </ul>
+                </footer>
+            </div>
+        </footer>
+    </div>
+
+
+</body>
+</html>

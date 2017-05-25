@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" class="" lang="en-US">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<!-- This site is optimized with the Yoast SEO plugin v3.5 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Microcontroller Tutorial 3/5: How To Design the Circuit</title>
+<meta name="description" content="This is the third part of the microcontroller tutorial. Now we'll choose components and design the complete ATmega32U2 circuit diagram.">
+<meta name="robots" content="noodp">
+<link rel="canonical" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Microcontroller Tutorial 3/5: How To Design the Circuit">
+<meta property="og:description" content="This is the third part of the microcontroller tutorial. Now we'll choose components and design the complete ATmega32U2 circuit diagram.">
+<meta property="og:url" content="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/">
+<meta property="og:site_name" content="Build Electronic Circuits">
+<meta property="article:section" content="Uncategorized">
+<meta property="article:published_time" content="2014-11-11T09:49:56+02:00">
+<meta property="article:modified_time" content="2015-10-09T21:11:10+02:00">
+<meta property="og:updated_time" content="2015-10-09T21:11:10+02:00">
+<meta property="og:image" content="http://www.build-electronic-circuits.com/wp-content/uploads/2014/03/digital-stopwatch-circuit-1.jpg">
+<meta property="og:image:width" content="4176">
+<meta property="og:image:height" content="2784">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="This is the third part of the microcontroller tutorial. Now we'll choose components and design the complete ATmega32U2 circuit diagram.">
+<meta name="twitter:title" content="Microcontroller Tutorial 3/5: How To Design the Circuit">
+<meta name="twitter:site" content="@oyvdahl">
+<meta name="twitter:image" content="http://www.build-electronic-circuits.com/wp-content/uploads/2014/03/digital-stopwatch-circuit-1.jpg">
+<meta name="twitter:creator" content="@oyvdahl">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://s.gravatar.com/">
+<link rel="dns-prefetch" href="http://a.optnmnstr.com/">
+<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Build Electronic Circuits » Feed" href="http://www.build-electronic-circuits.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Build Electronic Circuits » Comments Feed" href="http://www.build-electronic-circuits.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Build Electronic Circuits » Microcontroller Tutorial 3/5: How To Design a Microcontroller Circuit Comments Feed" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/feed/">
+		
+		
+
+
+
+
+
+
+
+
+
+
+<!--[if lt IE 9]>
+<script type='text/javascript' src='http://www.build-electronic-circuits.com/wp-content/themes/genesis/lib/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+
+<link rel="https://api.w.org/" href="http://www.build-electronic-circuits.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.build-electronic-circuits.com/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 4.6.1">
+<link rel="shortlink" href="http://www.build-electronic-circuits.com/?p=5006">
+
+<link rel="dns-prefetch" href="http://v0.wordpress.com/">
+<link rel="pingback" href="http://www.build-electronic-circuits.com/xmlrpc.php">
+
+
+
+
+
+        <!--[if (gte IE 6)&(lte IE 8)]>
+            <script type="text/javascript" src="http://www.build-electronic-circuits.com/wp-content/plugins/optimizePressPlugin/lib/js/selectivizr-1.0.2-min.js?ver=1.0.2"></script>
+        <![endif]-->
+        <!--[if lt IE 9]>
+            <script src="http://www.build-electronic-circuits.com/wp-content/plugins/optimizePressPlugin/lib/js//html5shiv.min.js"></script>
+        <![endif]-->
+    
+
+
+
+
+
+
+<link rel="icon" href="logo-400x400-150x150.png" sizes="32x32">
+<link rel="icon" href="logo-400x400-300x300.png" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="http://www.build-electronic-circuits.com/wp-content/uploads/2015/08/Logo-400x400-300x300.png">
+<meta name="msapplication-TileImage" content="http://www.build-electronic-circuits.com/wp-content/uploads/2015/08/Logo-400x400-300x300.png">
+
+<link media="all" href="index.css" type="text/css" rel="stylesheet">
+</head>
+<body class="single single-post postid-5006 single-format-standard custom-background dwpb-push-page dwpb-allow-close op-plugin header-image content-sidebar" itemscope="" itemtype="http://schema.org/WebPage"><div class="site-container"><header class="site-header" itemscope="" itemtype="http://schema.org/WPHeader"><div class="wrap"><div class="title-area"><p class="site-title" itemprop="headline"><a href="http://www.build-electronic-circuits.com/">Build Electronic Circuits</a></p><p class="site-description" itemprop="description">Electronics explained in a simple way</p></div><div class="widget-area header-middle-widget-area"><section id="nav_menu-5" class="widget widget_nav_menu"><div class="widget-wrap"><nav class="nav-header" itemscope="" itemtype="http://schema.org/SiteNavigationElement"><ul id="menu-top-menu" class="menu genesis-nav-menu"><li id="menu-item-4145" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4145"><a href="http://build-electronic-circuits.com/" itemprop="url"><span itemprop="name">Home</span></a></li>
+<li id="menu-item-4146" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4146"><a href="http://www.build-electronic-circuits.com/about/" itemprop="url"><span itemprop="name">About</span></a></li>
+<li id="menu-item-7388" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7388"><a href="http://www.build-electronic-circuits.com/products/ebook-2nd-edition" itemprop="url"><span itemprop="name">eBook</span></a></li>
+<li id="menu-item-4170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4170"><a href="http://www.build-electronic-circuits.com/resources/" itemprop="url"><span itemprop="name">Resources</span></a></li>
+<li id="menu-item-4167" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4167"><a href="http://www.build-electronic-circuits.com/contact/" itemprop="url"><span itemprop="name">Contact Me</span></a></li>
+<li id="menu-item-4147" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-4147"><a href="http://www.build-electronic-circuits.com/blog/" itemprop="url"><span itemprop="name">Blog</span></a></li>
+</ul></nav></div></section>
+</div><div class="widget-area header-widget-area"><section id="search-2" class="widget widget_search"><div class="widget-wrap"><form class="search-form" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction" method="get" action="http://www.build-electronic-circuits.com/" role="search"><meta itemprop="target" content="http://www.build-electronic-circuits.com/?s={s}"><input itemprop="query-input" name="s" placeholder="Search this website …" type="search"><input value="Search" type="submit"></form></div></section>
+</div></div></header><div class="after-header widget-area"><section id="text-15" class="widget widget_text"><div class="widget-wrap">			<div class="textwidget"><img src="check.png" style="float: left; height: 60px; margin-right: 20px;"><a style="margin-left: 25px; float: right; background-color: rgb(247, 104, 44);" class="button" href="http://www.build-electronic-circuits.com/learn-electronics-checklist/" onclick="ga('send', 'event', 'optin-button', 'click', 'top-bar');" target="_top">Download Checklist</a>
+<span style="font-size: 18pt; font-weight: bold; color: rgb(255, 255, 255);">FREE CHECKLIST: 10 Steps To Learn To Build Electronics</span><br>
+You’ll also get my newsletter with daily tips and tricks into your inbox.</div>
+		</div></section>
+</div><div class="site-inner"><div class="content-sidebar-wrap"><main class="content"><article class="post-5006 post type-post status-publish format-standard has-post-thumbnail category-uncategorized entry" itemscope="" itemtype="http://schema.org/CreativeWork"><header class="entry-header"><h1 class="entry-title" itemprop="headline">Microcontroller Tutorial 3/5: How To Design a Microcontroller Circuit</h1> 
+<p class="entry-meta"><time class="entry-time" itemprop="datePublished" datetime="2014-11-11T09:49:56+00:00">November 11, 2014</time> by <span class="entry-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><a href="http://www.build-electronic-circuits.com/author/oyvind/" class="entry-author-link" itemprop="url" rel="author"><span class="entry-author-name" itemprop="name">Øyvind Nydal Dahl</span></a></span> <span class="entry-comments-link"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comments">23 Comments</a></span> </p></header><div class="entry-content" itemprop="text"><p>In this tutorial I will teach you how to build your own microcontroller circuit. This way, you can easily add microcontrollers to your own projects. We are now at part three of this tutorial.</p>
+<p>In <a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part1/" title="Microcontroller Tutorial (1/5): What is a Microcontroller?">part one of the microcontroller tutorial</a>, we looked at what a microcontroller is. We saw that a microcontroller is like a small computer, and that you can use it to build amazing things like cell phones or even your own handheld game-console.</p>
+<p>Then <a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part2/" title="Microcontroller Tutorial 2/5: How To Choose a Microcontroller">in part two</a>, we looked at different types of microcontrollers, and we chose one for our purpose. We chose the <a href="http://www.atmel.com/devices/ATMEGA32U2.aspx">ATmega32U2</a> because we can program it through USB and it is reasonably easy to solder at home.</p>
+<p>In this third part of the microcontroller tutorial, we are going to design our circuit from scratch. So we need to design a schematic diagram with all the components and connections necessary to make our circuit work.</p>
+<p>Let’s build this thing!</p>
+<p><span id="more-5006"></span></p>
+<h2>What Do We Need?</h2>
+<p>How do we decide which components to connect to our microcontroller?</p>
+<p>Let’s think about it. We need power for the chip, otherwise it won’t work. And we need a USB connection, since we are going to program it through USB. And we need some physical pins where we can easily connect things to our circuit and test it.</p>
+<p>So, we need:</p>
+<ul>
+<li>Power</li>
+<li>USB Connection</li>
+<li>Pin Connections</li>
+</ul>
+<h3>The Datasheet</h3>
+<p><a href="http://www.atmel.com/Images/doc7799.pdf"><img src="datasheet-frontpage-233x300.png" alt="ATmega32U2 Datasheet Frontpage" class="alignright size-medium wp-image-5022" srcset="http://www.build-electronic-circuits.com/wp-content/uploads/2014/11/datasheet-frontpage-233x300.png 233w, http://www.build-electronic-circuits.com/wp-content/uploads/2014/11/datasheet-frontpage.png 613w" sizes="(max-width: 233px) 100vw, 233px" width="233" height="300"></a>To figure out exactly which components we need, and how to connect them, we look in the <a href="http://www.atmel.com/Images/doc7799.pdf">datasheet of the chip</a>.</p>
+<p>The datasheet is a comprehensive document with a lot of technical data on how the microcontroller works and how you can control different parts of it.</p>
+<p>If you are not used to reading a datasheet, it might feel a bit overwhelming. But after looking at a few datasheets, you will sooner or later start to understand how it is laid out. </p>
+<p>It is not necessary to read the datasheet from start to the end. You only need to read the parts that are interesting for what you want to make.</p>
+<p>So if you want to make a timer with your microcontroller, you read the timer section. If you want to use the UART, you look up the UART section.</p>
+<p>One thing to notice – in the datasheet of the ATmega32U2, the table of contents is placed at the end.</p>
+<h2>Power and USB</h2>
+<p>We can choose if we want the circuit to be powered by the USB cable or with an extra power cable.</p>
+<p>To keep things simple and with less components, let’s make this a USB powered device. This means it will only work when it is connected to the USB. </p>
+<p>So, what does this mean? Which components do we need?</p>
+<p>To find out, let’s look in the USB-section of the datasheet, and see what we find.</p>
+<h3>USB Module Powering Options</h3>
+<p>From the table of contents at the end of the datasheet, we find a section called <em>USB Module Powering Options</em> at page 186. Here we can find the following figure that show us how to connect the USB section of the chip to make it powered by USB.</p>
+<div id="attachment_5011" style="width: 762px;" class="wp-caption aligncenter"><img src="atmega-usb-powered-diagramsource-atmel.com_.png" alt="USB powered microcontroller" class="size-full wp-image-5011" srcset="http://www.build-electronic-circuits.com/wp-content/uploads/2014/11/atmega-usb-powered-diagramsource-Atmel.com_.png 752w, http://www.build-electronic-circuits.com/wp-content/uploads/2014/11/atmega-usb-powered-diagramsource-Atmel.com_-300x268.png 300w" sizes="(max-width: 752px) 100vw, 752px" width="752" height="672"><p class="wp-caption-text">How to connect the ATmega32U2 as a USB powered 5V device. (Source: Atmel.com)</p></div>
+<p>From <em>Design guidelines</em> on page 189 we learn that the resistors should be 22 Ohm resistors, and that it is also highly recommended to have a 10 µF capacitor on the VBUS line. So let’s add the 10µF capacitor too.</p>
+<h3>Crystal</h3>
+<p><a title="By Mataresephotos [CC-BY-3.0 (http://creativecommons.org/licenses/by/3.0)], via Wikimedia Commons" href="http://commons.wikimedia.org/wiki/File%3AOlder_crystal_oscillator.jpg"><img class="alignright" alt="Older crystal oscillator" src="256px-older_crystal_oscillator.jpg" width="256"></a>In the image above, we can see that there is also a crystal and two capacitors connected to the XTAL1 and XTAL2 pins. Why is this?</p>
+<p>A microcontroller needs a clock to work. Most microcontrollers have an internal RC-oscillator that creates a clock signal. And so do the ATmega32U2. </p>
+<p>But the thing is that the USB part of the microcontroller is not able to run from that internal clock. So to make USB work, we need an external crystal.</p>
+<p>Exactly what kind of crystal we need, we can find at page 30 in the datasheet. Here, the capacitor values are also listed.</p>
+<h2>Pin Connections and LED</h2>
+<p><img src="light-emitting-diode-187x300.jpg" alt="light-emitting-diode" class="alignleft size-medium wp-image-3690" width="187" height="300">We want to be able to connect stuff to our microcontroller circuit. So, we’ll add 16 physical pins that are connected to the I/O pins PB0-PB7 and PD0-PD7. This makes it easy to connect something to our circuit.</p>
+<p>Another thing we should add, is an LED. This way, we can easily check if the circuit and our code works. To control the current through the LED, we also add a <a href="http://www.build-electronic-circuits.com/current-limiting-resistor/" title="Current Limiting Resistor">current limiting resistor</a> in series with it.</p>
+<h2>Push-Button for Reset</h2>
+<p>It is very common to have a reset button on a microcontroller circuit. This makes it easy to reset the microcontroller without having to unplug the USB cable.</p>
+<p>From page 47 of the datasheet we can read:<br>
+<em>«The MCU is reset when a low level is present on the RESET pin for longer than the minimum pulse length.»</em></p>
+<p>So we need to make sure the reset pin is normally pulled high, and only pull it low when the reset button is pushed.</p>
+<p>To do this, we use something called a <em>pull-up resistor</em>. This is a resistor connected between the reset pin and VCC (5 volt) – which “pulls” the reset pin high.</p>
+<p>We connect the reset button in a way so that the reset pin is connected to ground (0 volt) if the button is pushed.</p>
+<p>Which value should this resistor have? A good value is around 10k Ohm. Sparkfun has a good <a href="https://learn.sparkfun.com/tutorials/pull-up-resistors">article on how to choose a value for the pull-up resistor</a>.</p>
+<h2>The Complete Microcontroller Circuit Diagram</h2>
+<p>If we combine all the parts that we’ve discussed above, we’ll end up with the following circuit diagram. You’ll notice that some parts seems to not be connected to the rest. But, when there is a name on a wire, it means this wire is connected to all the other wires with the same name.</p>
+<p><a href="http://www.build-electronic-circuits.com/wp-content/uploads/2014/11/microcontroller-tutorial-atmega32u2-circuitwith-values.png"><img src="microcontroller-tutorial-atmega32u2-circuitwith-values-1024x512.png" alt="Microcontroller Tutorial ATmega32U2 circuit with values" class="alignnone size-large wp-image-5030" srcset="http://www.build-electronic-circuits.com/wp-content/uploads/2014/11/microcontroller-tutorial-atmega32u2-circuitwith-values-1024x512.png 1024w, http://www.build-electronic-circuits.com/wp-content/uploads/2014/11/microcontroller-tutorial-atmega32u2-circuitwith-values-300x150.png 300w" sizes="(max-width: 1024px) 100vw, 1024px" width="1024" height="512"></a></p>
+<h2>Designing a Circuit Board and Getting it Made</h2>
+<p>Wow, it’s all coming together now. All we have to do now is to create a circuit board. So, that’s exactly what we’ll do in the next part of the tutorial.</p>
+<p>Next up, we need to create this circuit and have it made.</p>
+<p><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part4/">Click here to continue to part 4 in the microcontroller tutorial &gt;&gt;</a></p>
+<p>
+<em>Make sure you sign up for my newsletter below and get notified when new tutorials are out.</em></p>
+<strong>Share on social media:</strong><br><a class="synved-social-button synved-social-button-share synved-social-size-48 synved-social-resolution-single synved-social-provider-facebook nolightbox" data-provider="facebook" target="_top" rel="nofollow" title="Share on Facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.build-electronic-circuits.com%2Fmicrocontroller-tutorial-part3%2F&amp;t=Microcontroller%20Tutorial%203%2F5%3A%20How%20To%20Design%20a%20Microcontroller%20Circuit&amp;s=100&amp;p[url]=http%3A%2F%2Fwww.build-electronic-circuits.com%2Fmicrocontroller-tutorial-part3%2F&amp;p[images][0]=http%3A%2F%2Fwww.build-electronic-circuits.com%2Fwp-content%2Fuploads%2F2014%2F03%2Fdigital-stopwatch-circuit-1.jpg&amp;p[title]=Microcontroller%20Tutorial%203%2F5%3A%20How%20To%20Design%20a%20Microcontroller%20Circuit" style="font-size: 0px; width: 48px; height: 48px; margin: 0px 5px 5px 0px;"><img alt="Facebook" title="Share on Facebook" class="synved-share-image synved-social-image synved-social-image-share" style="display: inline; width: 48px; height: 48px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="facebook.png" width="48" height="48"></a><a class="synved-social-button synved-social-button-share synved-social-size-48 synved-social-resolution-single synved-social-provider-twitter nolightbox" data-provider="twitter" target="_top" rel="nofollow" title="Share on Twitter" href="http://twitter.com/share?url=http%3A%2F%2Fwww.build-electronic-circuits.com%2Fmicrocontroller-tutorial-part3%2F&amp;text=Hey%20check%20this%20out" style="font-size: 0px; width: 48px; height: 48px; margin: 0px 5px 5px 0px;"><img alt="twitter" title="Share on Twitter" class="synved-share-image synved-social-image synved-social-image-share" style="display: inline; width: 48px; height: 48px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="twitter.png" width="48" height="48"></a><a class="synved-social-button synved-social-button-share synved-social-size-48 synved-social-resolution-single synved-social-provider-google_plus nolightbox" data-provider="google_plus" target="_top" rel="nofollow" title="Share on Google+" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.build-electronic-circuits.com%2Fmicrocontroller-tutorial-part3%2F" style="font-size: 0px; width: 48px; height: 48px; margin: 0px 5px 5px 0px;"><img alt="google_plus" title="Share on Google+" class="synved-share-image synved-social-image synved-social-image-share" style="display: inline; width: 48px; height: 48px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="google_plus.png" width="48" height="48"></a><a class="synved-social-button synved-social-button-share synved-social-size-48 synved-social-resolution-single synved-social-provider-reddit nolightbox" data-provider="reddit" target="_top" rel="nofollow" title="Share on Reddit" href="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.build-electronic-circuits.com%2Fmicrocontroller-tutorial-part3%2F&amp;title=Microcontroller%20Tutorial%203%2F5%3A%20How%20To%20Design%20a%20Microcontroller%20Circuit" style="font-size: 0px; width: 48px; height: 48px; margin: 0px 5px 5px 0px;"><img alt="reddit" title="Share on Reddit" class="synved-share-image synved-social-image synved-social-image-share" style="display: inline; width: 48px; height: 48px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="reddit.png" width="48" height="48"></a><a class="synved-social-button synved-social-button-share synved-social-size-48 synved-social-resolution-single synved-social-provider-pinterest nolightbox" data-provider="pinterest" target="_top" rel="nofollow" title="Pin it with Pinterest" href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.build-electronic-circuits.com%2Fmicrocontroller-tutorial-part3%2F&amp;media=http%3A%2F%2Fwww.build-electronic-circuits.com%2Fwp-content%2Fuploads%2F2014%2F03%2Fdigital-stopwatch-circuit-1.jpg&amp;description=Microcontroller%20Tutorial%203%2F5%3A%20How%20To%20Design%20a%20Microcontroller%20Circuit" style="font-size: 0px; width: 48px; height: 48px; margin: 0px 0px 5px;"><img alt="pinterest" title="Pin it with Pinterest" class="synved-share-image synved-social-image synved-social-image-share" style="display: inline; width: 48px; height: 48px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="pinterest.png" width="48" height="48"></a><br><br><!-- This site is converting visitors into subscribers and customers with OptinMonster - http://optinmonster.com --><div id="om-jqmdkznxig0v5gwu-holder"></div><!-- / OptinMonster --><!--<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/"
+    dc:identifier="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/"
+    dc:title="Microcontroller Tutorial 3/5: How To Design a Microcontroller Circuit"
+    trackback:ping="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/trackback/" />
+</rdf:RDF>-->
+</div><footer class="entry-footer"><p class="entry-meta"><span class="entry-categories">Filed Under: <a href="http://www.build-electronic-circuits.com/category/uncategorized/" rel="category tag">Uncategorized</a></span> </p></footer></article><div class="entry-comments" id="comments"><h3>Comments</h3><ol class="comment-list">
+	<li class="comment even thread-even depth-1" id="comment-33456">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="dab670a7843d3f47327aea91890bd962" srcset="http://1.gravatar.com/avatar/dab670a7843d3f47327aea91890bd962?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-dab670a7843d3f47327aea91890bd962-0" width="48" height="48"><span itemprop="name">clinton</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-12T19:32:51+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-33456" class="comment-time-link" itemprop="url">November 12, 2014 at 7:32 pm</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>nice tutorial,,,,is there  any way we can use this  component  for temperature controller for an    electric heater to switch ON/OFF automatically</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=33456#respond" onclick="return addComment.moveForm( &quot;comment-33456&quot;, &quot;33456&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to clinton">Reply</a></div>
+		
+	</article>
+	<ul class="children">
+
+	<li class="comment byuser comment-author-admin odd alt depth-2" id="comment-34049">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="bec3ab048d4f7ee7beaa636a1cbd570d" srcset="http://2.gravatar.com/avatar/bec3ab048d4f7ee7beaa636a1cbd570d?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-bec3ab048d4f7ee7beaa636a1cbd570d-0" width="48" height="48"><span itemprop="name">admin</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-13T16:02:20+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-34049" class="comment-time-link" itemprop="url">November 13, 2014 at 4:02 pm</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>Absolutely =) But how to do it depends on how you control the heater.<br>
+Oyvind</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=34049#respond" onclick="return addComment.moveForm( &quot;comment-34049&quot;, &quot;34049&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to admin">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+	<li class="comment even thread-odd thread-alt depth-1" id="comment-33653">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="d33dce2e8fcdb9412796621a70c79278" srcset="http://1.gravatar.com/avatar/d33dce2e8fcdb9412796621a70c79278?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-d33dce2e8fcdb9412796621a70c79278-0" width="48" height="48"><span itemprop="name">Alfredo</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-13T00:40:11+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-33653" class="comment-time-link" itemprop="url">November 13, 2014 at 12:40 am</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>Thus a nice tutorial. Is there a way to use the micro-controller to control a light switching system?</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=33653#respond" onclick="return addComment.moveForm( &quot;comment-33653&quot;, &quot;33653&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to Alfredo">Reply</a></div>
+		
+	</article>
+	<ul class="children">
+
+	<li class="comment byuser comment-author-admin odd alt depth-2" id="comment-34050">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="bec3ab048d4f7ee7beaa636a1cbd570d" srcset="http://2.gravatar.com/avatar/bec3ab048d4f7ee7beaa636a1cbd570d?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-bec3ab048d4f7ee7beaa636a1cbd570d-1" width="48" height="48"><span itemprop="name">admin</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-13T16:03:00+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-34050" class="comment-time-link" itemprop="url">November 13, 2014 at 4:03 pm</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>Absolutely =) But also here, how to do it depends on how you control your light system.<br>
+Oyvind</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=34050#respond" onclick="return addComment.moveForm( &quot;comment-34050&quot;, &quot;34050&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to admin">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+	<li class="comment even thread-even depth-1" id="comment-34116">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="dce6d4548e53f4a0a5a9c0265360ae72" srcset="http://1.gravatar.com/avatar/dce6d4548e53f4a0a5a9c0265360ae72?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-dce6d4548e53f4a0a5a9c0265360ae72-0" width="48" height="48"><span itemprop="name"><a href="http://pro-cpu.blogspot.com/" class="comment-author-link" rel="external nofollow" itemprop="url">Matthew</a></span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-13T18:04:53+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-34116" class="comment-time-link" itemprop="url">November 13, 2014 at 6:04 pm</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>Would you mind if I put a link to your website on my website?</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=34116#respond" onclick="return addComment.moveForm( &quot;comment-34116&quot;, &quot;34116&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to Matthew">Reply</a></div>
+		
+	</article>
+	<ul class="children">
+
+	<li class="comment byuser comment-author-admin odd alt depth-2" id="comment-34535">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="bec3ab048d4f7ee7beaa636a1cbd570d" srcset="http://2.gravatar.com/avatar/bec3ab048d4f7ee7beaa636a1cbd570d?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-bec3ab048d4f7ee7beaa636a1cbd570d-2" width="48" height="48"><span itemprop="name">admin</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-14T07:19:24+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-34535" class="comment-time-link" itemprop="url">November 14, 2014 at 7:19 am</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>Go ahead =)</p>
+<p>Oyvind</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=34535#respond" onclick="return addComment.moveForm( &quot;comment-34535&quot;, &quot;34535&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to admin">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+	<li class="comment even thread-odd thread-alt depth-1" id="comment-34426">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="dce6d4548e53f4a0a5a9c0265360ae72" srcset="http://1.gravatar.com/avatar/dce6d4548e53f4a0a5a9c0265360ae72?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-dce6d4548e53f4a0a5a9c0265360ae72-1" width="48" height="48"><span itemprop="name"><a href="http://pro-cpu.blogspot.com/" class="comment-author-link" rel="external nofollow" itemprop="url">Matthew</a></span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-14T03:22:02+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-34426" class="comment-time-link" itemprop="url">November 14, 2014 at 3:22 am</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>Can you give us a list of all the components you are using to build this?</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=34426#respond" onclick="return addComment.moveForm( &quot;comment-34426&quot;, &quot;34426&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to Matthew">Reply</a></div>
+		
+	</article>
+	<ul class="children">
+
+	<li class="comment byuser comment-author-admin odd alt depth-2" id="comment-34538">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="bec3ab048d4f7ee7beaa636a1cbd570d" srcset="http://2.gravatar.com/avatar/bec3ab048d4f7ee7beaa636a1cbd570d?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-bec3ab048d4f7ee7beaa636a1cbd570d-3" width="48" height="48"><span itemprop="name">admin</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-14T07:20:52+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-34538" class="comment-time-link" itemprop="url">November 14, 2014 at 7:20 am</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>You can see all the components in the schematic diagram.<br>
+Maybe I’ll list them in the next part.</p>
+<p>Oyvind</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=34538#respond" onclick="return addComment.moveForm( &quot;comment-34538&quot;, &quot;34538&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to admin">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+	<li class="comment even thread-even depth-1" id="comment-34486">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="43eb37a29e2e70fcb66067930ed8bb6f" srcset="http://1.gravatar.com/avatar/43eb37a29e2e70fcb66067930ed8bb6f?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-43eb37a29e2e70fcb66067930ed8bb6f-0" width="48" height="48"><span itemprop="name">sibusiso</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-14T05:06:00+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-34486" class="comment-time-link" itemprop="url">November 14, 2014 at 5:06 am</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>Thank you, I believe its the best thing you contributed.</p>
+<p>How to make a simple radio control for a toy car.</p>
+<p>I really enjoyed the tutorial, it is eye- opener to me as a beginner in this field.</p>
+<p>Yakudala</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=34486#respond" onclick="return addComment.moveForm( &quot;comment-34486&quot;, &quot;34486&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to sibusiso">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-34702">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="793270d17ce9222f5e3ab09a5f2d0dc5" srcset="http://1.gravatar.com/avatar/793270d17ce9222f5e3ab09a5f2d0dc5?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-793270d17ce9222f5e3ab09a5f2d0dc5-0" width="48" height="48"><span itemprop="name">Chibuike Bright</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-14T14:26:02+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-34702" class="comment-time-link" itemprop="url">November 14, 2014 at 2:26 pm</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>Please can i have your book ordered in Nigeria, please to be totally and<br>
+richly blessed with it</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=34702#respond" onclick="return addComment.moveForm( &quot;comment-34702&quot;, &quot;34702&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to Chibuike Bright">Reply</a></div>
+		
+	</article>
+	<ul class="children">
+
+	<li class="comment byuser comment-author-admin even depth-2" id="comment-37576">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="bec3ab048d4f7ee7beaa636a1cbd570d" srcset="http://2.gravatar.com/avatar/bec3ab048d4f7ee7beaa636a1cbd570d?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-bec3ab048d4f7ee7beaa636a1cbd570d-4" width="48" height="48"><span itemprop="name">admin</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-21T17:28:23+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-37576" class="comment-time-link" itemprop="url">November 21, 2014 at 5:28 pm</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>Yes, it’s an ebook, so you can download it anywhere in the world. You can buy it here: <a href="http://www.build-electronic-circuits.com/products/getting-started-with-electronics" rel="nofollow">http://www.build-electronic-circuits.com/products/getting-started-with-electronics</a></p>
+<p>Cheers!<br>
+Oyvind</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=37576#respond" onclick="return addComment.moveForm( &quot;comment-37576&quot;, &quot;37576&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to admin">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+	<li class="comment odd alt thread-even depth-1" id="comment-35308">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="e8573c3928755ece13dc56be72bd0c3d" srcset="http://2.gravatar.com/avatar/e8573c3928755ece13dc56be72bd0c3d?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-e8573c3928755ece13dc56be72bd0c3d-0" width="48" height="48"><span itemprop="name">Jayr</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-15T10:52:21+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-35308" class="comment-time-link" itemprop="url">November 15, 2014 at 10:52 am</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>Hi<br>
+This is an smd micro, i’ve noticed.<br>
+How am i going to solder it to the board. Why not choose a through hole device.<br>
+Regards.</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=35308#respond" onclick="return addComment.moveForm( &quot;comment-35308&quot;, &quot;35308&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to Jayr">Reply</a></div>
+		
+	</article>
+	<ul class="children">
+
+	<li class="comment even depth-2" id="comment-35564">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="dce6d4548e53f4a0a5a9c0265360ae72" srcset="http://1.gravatar.com/avatar/dce6d4548e53f4a0a5a9c0265360ae72?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-dce6d4548e53f4a0a5a9c0265360ae72-2" width="48" height="48"><span itemprop="name">Matthew</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-16T03:07:12+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-35564" class="comment-time-link" itemprop="url">November 16, 2014 at 3:07 am</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>I know I’m not Oyvind but here is a link on “How to smd solder with a soldering iron”</p>
+<p><a href="http://www.build-electronic-circuits.com/smd-soldering/#more-911" title="How to smd solder" rel="nofollow"></a></p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=35564#respond" onclick="return addComment.moveForm( &quot;comment-35564&quot;, &quot;35564&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to Matthew">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+
+	<li class="comment odd alt depth-2" id="comment-35568">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="dce6d4548e53f4a0a5a9c0265360ae72" srcset="http://1.gravatar.com/avatar/dce6d4548e53f4a0a5a9c0265360ae72?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-dce6d4548e53f4a0a5a9c0265360ae72-3" width="48" height="48"><span itemprop="name">Matthew</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-16T03:10:26+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-35568" class="comment-time-link" itemprop="url">November 16, 2014 at 3:10 am</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>sorry last comment did not work this is the link<br>
+<a href="http://www.build-electronic-circuits.com/smd-soldering/#more-911" title="How to smd solder" rel="nofollow"></a></p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=35568#respond" onclick="return addComment.moveForm( &quot;comment-35568&quot;, &quot;35568&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to Matthew">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+
+	<li class="comment even depth-2" id="comment-35597">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="dce6d4548e53f4a0a5a9c0265360ae72" srcset="http://1.gravatar.com/avatar/dce6d4548e53f4a0a5a9c0265360ae72?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-dce6d4548e53f4a0a5a9c0265360ae72-4" width="48" height="48"><span itemprop="name"><a href="http://pro-cpu.blogspot.com/" class="comment-author-link" rel="external nofollow" itemprop="url">Matthew</a></span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-16T04:38:16+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-35597" class="comment-time-link" itemprop="url">November 16, 2014 at 4:38 am</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>I am so so sorry I’m not good with HTML this is the link you need to learn how to Smd solder with just a soldering iron</p>
+<p>            Hope it helps</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=35597#respond" onclick="return addComment.moveForm( &quot;comment-35597&quot;, &quot;35597&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to Matthew">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+
+	<li class="comment odd alt depth-2" id="comment-35604">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="dce6d4548e53f4a0a5a9c0265360ae72" srcset="http://1.gravatar.com/avatar/dce6d4548e53f4a0a5a9c0265360ae72?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-dce6d4548e53f4a0a5a9c0265360ae72-5" width="48" height="48"><span itemprop="name"><a href="http://pro-cpu.blogspot.com/" class="comment-author-link" rel="external nofollow" itemprop="url">Matthew</a></span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-16T04:43:20+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-35604" class="comment-time-link" itemprop="url">November 16, 2014 at 4:43 am</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p><a href="http://www.build-electronic-circuits.com/?s=Smd" title="How to Smd solder" rel="nofollow">How to Smd solder</a></p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=35604#respond" onclick="return addComment.moveForm( &quot;comment-35604&quot;, &quot;35604&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to Matthew">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+
+	<li class="comment byuser comment-author-admin even depth-2" id="comment-35692">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="bec3ab048d4f7ee7beaa636a1cbd570d" srcset="http://2.gravatar.com/avatar/bec3ab048d4f7ee7beaa636a1cbd570d?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-bec3ab048d4f7ee7beaa636a1cbd570d-5" width="48" height="48"><span itemprop="name">admin</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-16T12:34:47+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-35692" class="comment-time-link" itemprop="url">November 16, 2014 at 12:34 pm</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>I think the link Matthew is trying to post is this one: <a href="http://www.build-electronic-circuits.com/smd-soldering/" rel="nofollow">http://www.build-electronic-circuits.com/smd-soldering/</a></p>
+<p>Thanks for trying Matthew <img draggable="false" class="emoji" alt="🙂" src="1f642.svg"></p>
+<p>The reason I chose an SMD chip was because there are no through-hole AVR chips with USB. It’s really not that hard to solder. And a lot of chips come only in SMD packages, so I recommend learning it sooner than later.</p>
+<p>Oyvind</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=35692#respond" onclick="return addComment.moveForm( &quot;comment-35692&quot;, &quot;35692&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to admin">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-37071">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="117a6489a0c6e9b319c9d267778e1bdc" srcset="http://1.gravatar.com/avatar/117a6489a0c6e9b319c9d267778e1bdc?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-117a6489a0c6e9b319c9d267778e1bdc-0" width="48" height="48"><span itemprop="name">jc villa</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-20T04:28:44+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-37071" class="comment-time-link" itemprop="url">November 20, 2014 at 4:28 am</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>looking forward for the next part on mcu tutorials. TY.</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=37071#respond" onclick="return addComment.moveForm( &quot;comment-37071&quot;, &quot;37071&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to jc villa">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+
+	<li class="comment even thread-even depth-1" id="comment-37093">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="739718a368e5cd8849e21e0bfc8de2ae" srcset="http://1.gravatar.com/avatar/739718a368e5cd8849e21e0bfc8de2ae?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-739718a368e5cd8849e21e0bfc8de2ae-0" width="48" height="48"><span itemprop="name">peter ayodeji</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-20T05:40:35+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-37093" class="comment-time-link" itemprop="url">November 20, 2014 at 5:40 am</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>thanks<br>
+pls, will you tutor us on programing micro-controllers?</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=37093#respond" onclick="return addComment.moveForm( &quot;comment-37093&quot;, &quot;37093&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to peter ayodeji">Reply</a></div>
+		
+	</article>
+	<ul class="children">
+
+	<li class="comment byuser comment-author-admin odd alt depth-2" id="comment-37575">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="bec3ab048d4f7ee7beaa636a1cbd570d" srcset="http://2.gravatar.com/avatar/bec3ab048d4f7ee7beaa636a1cbd570d?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-bec3ab048d4f7ee7beaa636a1cbd570d-6" width="48" height="48"><span itemprop="name">admin</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-21T17:27:21+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-37575" class="comment-time-link" itemprop="url">November 21, 2014 at 5:27 pm</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>That will come in part 5.</p>
+<p>Cheers!<br>
+Oyvind</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=37575#respond" onclick="return addComment.moveForm( &quot;comment-37575&quot;, &quot;37575&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to admin">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+	<li class="comment even thread-odd thread-alt depth-1" id="comment-39600">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="9298bf02f56b5853783d5e9201c016af" srcset="http://0.gravatar.com/avatar/9298bf02f56b5853783d5e9201c016af?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-9298bf02f56b5853783d5e9201c016af-0" width="48" height="48"><span itemprop="name">shan</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2014-11-28T16:25:47+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-39600" class="comment-time-link" itemprop="url">November 28, 2014 at 4:25 pm</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>nice</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=39600#respond" onclick="return addComment.moveForm( &quot;comment-39600&quot;, &quot;39600&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to shan">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+
+	<li class="comment odd alt thread-even depth-1" id="comment-64162">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="a56be4ca62a7bbf856c0eeb484eddbf7" srcset="http://1.gravatar.com/avatar/a56be4ca62a7bbf856c0eeb484eddbf7?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-a56be4ca62a7bbf856c0eeb484eddbf7-0" width="48" height="48"><span itemprop="name">Markus</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2015-09-25T16:42:13+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-64162" class="comment-time-link" itemprop="url">September 25, 2015 at 4:42 pm</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>I cannot find the capacitor values on page 36 of the datasheet. Page 186 in the datasheet suggests a crystall of 16MHz if the power supply exceeds 4.5V. Since we have a USB connection with a 5V signal voltage, should we not use the 16MHz crystal?</p>
+<p>I was also wondering about the maximum power of the 22 Ohm resistors that we use for the USB D+,D- connections. USB 2.0 has a maximum current of 0.5A, thus a maximum power of P=U*I=R*I*I=(22*0.5*0.5)W=5.5W. This current would never be demanded by the circuitry, but is there any hint about the current or power that the resistors has to withstand?</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=64162#respond" onclick="return addComment.moveForm( &quot;comment-64162&quot;, &quot;64162&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to Markus">Reply</a></div>
+		
+	</article>
+	<ul class="children">
+
+	<li class="comment byuser comment-author-admin even depth-2" id="comment-64222">
+	<article itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+
+		
+		<header class="comment-header">
+			<p class="comment-author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+				<img alt="" src="bec3ab048d4f7ee7beaa636a1cbd570d" srcset="http://2.gravatar.com/avatar/bec3ab048d4f7ee7beaa636a1cbd570d?s=96&amp;d=mm&amp;r=g 2x" class="avatar avatar-48 photo grav-hashed grav-hijack" id="grav-bec3ab048d4f7ee7beaa636a1cbd570d-7" width="48" height="48"><span itemprop="name">admin</span> <span class="says">says</span>			</p>
+
+			<p class="comment-meta"><time class="comment-time" datetime="2015-09-26T23:46:33+00:00" itemprop="datePublished"><a href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#comment-64222" class="comment-time-link" itemprop="url">September 26, 2015 at 11:46 pm</a></time></p>		</header>
+
+		<div class="comment-content" itemprop="text">
+			
+			<p>Hey Markus,</p>
+<p>Great questions. I like that you are diving into it properly.</p>
+<p>Looks like crystal and capacitor values are on page 30 now. </p>
+<p>Page 186 suggest a crystal of MAX 16 MHz for 5V. But less is also ok.</p>
+<p>About the max power of the 22 ohm resistors: The resistors are on the data lines.  The 0.5 A is the max power from the VBUS line. I’m not sure how much power the resistors need to be able to handle, but since I’ve never seen it specified I assume 1/4W resistors are good enough.</p>
+<p>Cheers!<br>
+Oyvind</p>
+		</div>
+
+		<div class="comment-reply"><a rel="nofollow" class="comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/?replytocom=64222#respond" onclick="return addComment.moveForm( &quot;comment-64222&quot;, &quot;64222&quot;, &quot;respond&quot;, &quot;5006&quot; )" aria-label="Reply to admin">Reply</a></div>
+		
+	</article>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ol></div>				<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.build-electronic-circuits.com/microcontroller-tutorial-part3/#respond" style="display: none;">Cancel reply</a></small></h3>				<form action="http://www.build-electronic-circuits.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+					<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" value="" size="30" maxlength="245" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required" type="email"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" value="" size="30" maxlength="200" type="url"></p>
+<p class="form-submit"><input name="submit" id="submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="5006" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><input id="ct_checkjs_3cf166c6b73f030b4f67eeaeba301103" name="ct_checkjs" value="327455259" type="hidden">				</form>
+					</div><!-- #respond -->
+		</main><aside class="sidebar sidebar-primary widget-area" role="complementary" aria-label="Primary Sidebar" itemscope="" itemtype="http://schema.org/WPSideBar"><section id="text-11" class="widget widget_text"><div class="widget-wrap"><h4 class="widget-title widgettitle">Hey, let’s build circuits!</h4>
+			<div class="textwidget"><p>
+<a href="http://www.build-electronic-circuits.com/about/"><img style="float: left; width: 100px; margin-right: 10px;" src="oyvind-lhmr-profile-1.png"></a>
+
+</p><div style="margin-top: 10px; font-size: 10pt; color: black; line-height: 1.5;">
+I'm <a href="http://www.build-electronic-circuits.com/about/">Øyvind</a> and my website is full of tutorials to help you build your own hardware gadgets – even if you have never built anything before!</div><p></p>
+
+<p>
+</p><div style="text-align: center;">
+<a style="padding: 5px 10px;" class="button" href="http://www.build-electronic-circuits.com/how-to-learn-electronics/" onclick="ga('send', 'event', 'start-here-button', 'click', 'sidebar');">Start Learning!</a>
+</div>
+<p></p></div>
+		</div></section>
+<section id="text-16" class="widget widget_text"><div class="widget-wrap"><h4 class="widget-title widgettitle">I’m also the author of:</h4>
+			<div class="textwidget"><div style="text-align: center;">
+<a href="http://amzn.to/1p51sld" onclick="ga('send', 'event', 'electronics-for-kids', 'click', 'sidebar');">
+<img src="electronics_for_kids-front-cover-227x300.png">
+</a>
+
+<br>
+<br>
+
+<a class="button" style="width: 250px;" href="http://amzn.to/1p51sld" onclick="ga('send', 'event', 'electronics-for-kids', 'click', 'sidebar');">
+Learn More &gt;&gt;</a>
+</div></div>
+		</div></section>
+<section id="enhancedtextwidget-6" class="no-padding widget widget_text enhanced-text-widget"><div class="no-padding widget-wrap"><div class="textwidget widget-text"><div style="text-align: center;">
+<a href="http://ohmify.com/">
+<img src="ohmify-banner-1.png">
+</a>
+</div></div></div></section>
+<section id="text-9" class="widget widget_text"><div class="widget-wrap"><h4 class="widget-title widgettitle">eBook: Get Started With Electronics</h4>
+			<div class="textwidget"><div style="text-align: center;">
+<a href="http://build-electronic-circuits.com/products/ebook-2nd-edition/" onclick="ga('send', 'event', 'getting-started-ebook', 'click', 'sidebar');">
+<img src="3d-cover-small-267x300.png">
+</a>
+
+<br>
+<br>
+
+<a class="button" style="width: 250px;" href="http://www.build-electronic-circuits.com/products/ebook-2nd-edition/" onclick="ga('send', 'event', 'getting-started-ebook', 'click', 'sidebar');">
+Learn More &gt;&gt;</a>
+</div></div>
+		</div></section>
+<section id="synved_social_follow-2" class="widget widget_synved_social_follow"><div class="widget-wrap"><div><a class="synved-social-button synved-social-button-follow synved-social-size-48 synved-social-resolution-single synved-social-provider-facebook nolightbox" data-provider="facebook" target="_top" rel="nofollow" title="Follow us on Facebook" href="http://facebook.com/BuildElectronicCircuits" style="font-size: 0px; width: 48px; height: 48px; margin: 0px 5px 5px 0px;"><img alt="Facebook" title="Follow us on Facebook" class="synved-share-image synved-social-image synved-social-image-follow" style="display: inline; width: 48px; height: 48px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="facebook.png" width="48" height="48"></a><a class="synved-social-button synved-social-button-follow synved-social-size-48 synved-social-resolution-single synved-social-provider-twitter nolightbox" data-provider="twitter" target="_top" rel="nofollow" title="Follow us on Twitter" href="http://twitter.com/oyvdahl" style="font-size: 0px; width: 48px; height: 48px; margin: 0px 5px 5px 0px;"><img alt="twitter" title="Follow us on Twitter" class="synved-share-image synved-social-image synved-social-image-follow" style="display: inline; width: 48px; height: 48px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="twitter.png" width="48" height="48"></a><a class="synved-social-button synved-social-button-follow synved-social-size-48 synved-social-resolution-single synved-social-provider-google_plus nolightbox" data-provider="google_plus" target="_top" rel="nofollow" title="Follow us on Google+" href="http://plus.google.com/+Build-electronic-circuits/" style="font-size: 0px; width: 48px; height: 48px; margin: 0px 5px 5px 0px;"><img alt="google_plus" title="Follow us on Google+" class="synved-share-image synved-social-image synved-social-image-follow" style="display: inline; width: 48px; height: 48px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="google_plus.png" width="48" height="48"></a><a class="synved-social-button synved-social-button-follow synved-social-size-48 synved-social-resolution-single synved-social-provider-rss nolightbox" data-provider="rss" target="_top" rel="nofollow" title="Subscribe to our RSS Feed" href="http://www.build-electronic-circuits.com/feed/" style="font-size: 0px; width: 48px; height: 48px; margin: 0px 5px 5px 0px;"><img alt="rss" title="Subscribe to our RSS Feed" class="synved-share-image synved-social-image synved-social-image-follow" style="display: inline; width: 48px; height: 48px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="rss.png" width="48" height="48"></a><a class="synved-social-button synved-social-button-follow synved-social-size-48 synved-social-resolution-single synved-social-provider-youtube nolightbox" data-provider="youtube" target="_top" rel="nofollow" title="Find us on YouTube" href="http://youtube.com/BuildElecCircuits" style="font-size: 0px; width: 48px; height: 48px; margin: 0px 0px 5px;"><img alt="youtube" title="Find us on YouTube" class="synved-share-image synved-social-image synved-social-image-follow" style="display: inline; width: 48px; height: 48px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="youtube.png" width="48" height="48"></a></div></div></section>
+<section id="top-posts-2" class="widget widget_top-posts"><div class="widget-wrap"><h4 class="widget-title widgettitle">Most Popular</h4>
+<ul>				<li>
+										<a href="http://www.build-electronic-circuits.com/basic-electronic-components/" class="bump-view" data-bump-view="tp">
+						Basic Electronic Components Used in Circuits					</a>
+									</li>
+							<li>
+										<a href="http://www.build-electronic-circuits.com/pcb-design/" class="bump-view" data-bump-view="tp">
+						PCB Design - How To Create Circuit Boards					</a>
+									</li>
+							<li>
+										<a href="http://www.build-electronic-circuits.com/learn-electronics-checklist/" class="bump-view" data-bump-view="tp">
+						Learn Electronics Checklist					</a>
+									</li>
+							<li>
+										<a href="http://www.build-electronic-circuits.com/ldr-circuit-diagram/" class="bump-view" data-bump-view="tp">
+						LDR Circuit Diagram					</a>
+									</li>
+							<li>
+										<a href="http://www.build-electronic-circuits.com/buy-electronic-components/" class="bump-view" data-bump-view="tp">
+						Where To Buy Electronic Components?					</a>
+									</li>
+			</ul></div></section>
+<section id="nav_menu-2" class="widget widget_nav_menu"><div class="widget-wrap"><h4 class="widget-title widgettitle">Categories</h4>
+<div class="menu-tier2-container"><ul id="menu-tier2" class="menu"><li id="menu-item-1295" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1295"><a href="http://www.build-electronic-circuits.com/circuit-ideas/" itemprop="url">Circuit Ideas</a></li>
+<li id="menu-item-1296" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1296"><a href="http://www.build-electronic-circuits.com/electronic-schematics/" itemprop="url">Electronic Schematics</a></li>
+<li id="menu-item-1298" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1298"><a href="http://www.build-electronic-circuits.com/pcb-design/" itemprop="url">PCB Design</a></li>
+<li id="menu-item-1299" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1299"><a href="http://www.build-electronic-circuits.com/how-to-solder/" itemprop="url">How To Solder</a></li>
+<li id="menu-item-1560" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1560"><a href="http://www.build-electronic-circuits.com/electronic-components-online/" itemprop="url">Electronic Components Online</a></li>
+</ul></div></div></section>
+</aside></div></div><div class="footer-widgets"><div class="wrap"><div class="footer-widgets-1 widget-area"><section id="nav_menu-4" class="widget widget_nav_menu"><div class="widget-wrap"><h4 class="widget-title widgettitle">Categories</h4>
+<div class="menu-tier2-container"><ul id="menu-tier2-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1295"><a href="http://www.build-electronic-circuits.com/circuit-ideas/" itemprop="url">Circuit Ideas</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1296"><a href="http://www.build-electronic-circuits.com/electronic-schematics/" itemprop="url">Electronic Schematics</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1298"><a href="http://www.build-electronic-circuits.com/pcb-design/" itemprop="url">PCB Design</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1299"><a href="http://www.build-electronic-circuits.com/how-to-solder/" itemprop="url">How To Solder</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1560"><a href="http://www.build-electronic-circuits.com/electronic-components-online/" itemprop="url">Electronic Components Online</a></li>
+</ul></div></div></section>
+</div></div></div><footer class="site-footer" itemscope="" itemtype="http://schema.org/WPFooter"><div class="wrap"><p>Copyright © · <a href="http://www.build-electronic-circuits.com/">Dahl Technology</a>  · <a href="http://www.build-electronic-circuits.com/terms-conditions/">Terms and Conditions</a></p></div></footer></div>
+	<div style="display: none;">
+	<div class="grofile-hash-map-dab670a7843d3f47327aea91890bd962">
+	</div>
+	<div class="grofile-hash-map-bec3ab048d4f7ee7beaa636a1cbd570d">
+	</div>
+	<div class="grofile-hash-map-d33dce2e8fcdb9412796621a70c79278">
+	</div>
+	<div class="grofile-hash-map-dce6d4548e53f4a0a5a9c0265360ae72">
+	</div>
+	<div class="grofile-hash-map-43eb37a29e2e70fcb66067930ed8bb6f">
+	</div>
+	<div class="grofile-hash-map-793270d17ce9222f5e3ab09a5f2d0dc5">
+	</div>
+	<div class="grofile-hash-map-e8573c3928755ece13dc56be72bd0c3d">
+	</div>
+	<div class="grofile-hash-map-117a6489a0c6e9b319c9d267778e1bdc">
+	</div>
+	<div class="grofile-hash-map-739718a368e5cd8849e21e0bfc8de2ae">
+	</div>
+	<div class="grofile-hash-map-9298bf02f56b5853783d5e9201c016af">
+	</div>
+	<div class="grofile-hash-map-a56be4ca62a7bbf856c0eeb484eddbf7">
+	</div>
+	</div>
+<!-- This site is converting visitors into subscribers and customers with OptinMonster - http://optinmonster.com --><div id="om-fgudvnomi5upzd2q-holder"></div><!-- / OptinMonster --><!-- This site is converting visitors into subscribers and customers with OptinMonster - http://optinmonster.com --><div id="om-tog33jszds-lightbox-holder"></div><!-- / OptinMonster --><!-- This site is converting visitors into subscribers and customers with OptinMonster - http://optinmonster.com --><div id="om-dgeefwvusv-lightbox-holder"></div><!-- / OptinMonster -->
+
+
+
+
+
+
+	    
+	    
+
+
+
+
+
+
+<img src="g.gif" alt=":)" id="wpstats" width="6" height="5"></body>
+</html>

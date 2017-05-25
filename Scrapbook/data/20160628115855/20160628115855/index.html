@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>How-to create a custom microSD card image for the BeagleBone Black | Embedded Reflections</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://blog.logikonlabs.com/xmlrpc.php">
+<link rel="shortcut icon" href="favicon.ico">
+<!--[if lt IE 9]>
+<script src="http://blog.logikonlabs.com/wp-content/themes/llabs/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+
+
+<!-- BEGIN Metadata added by Add-Meta-Tags WordPress plugin -->
+<meta name="description" content="This article serves as a guide on how to create a custom microSD card image for the BeagleBone Black. The steps described in this guide are pretty much platform agnostic. One could also adjust them to other systems, besides the BeagleBone Black.">
+<meta name="keywords" content="arm, embedded, linux, open hardware, open source, beagle, beaglebone black, howto, image, microsd">
+<!-- END Metadata added by Add-Meta-Tags WordPress plugin -->
+
+<link rel="alternate" type="application/rss+xml" title="Embedded Reflections » Feed" href="http://blog.logikonlabs.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Embedded Reflections » Comments Feed" href="http://blog.logikonlabs.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Embedded Reflections » How-to create a custom microSD card image for the BeagleBone Black Comments Feed" href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/feed/">
+		
+		
+
+
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='http://blog.logikonlabs.com/wp-content/themes/llabs/css/ie.css?ver=20121010' type='text/css' media='all' />
+<![endif]-->
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.logikonlabs.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.logikonlabs.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Tinkering for the masses" href="http://blog.logikonlabs.com/tinkering-for-the-masses/">
+<link rel="next" title="Come hear us talk about our vision of Free Software!" href="http://blog.logikonlabs.com/come-see-us-talk-about-our-vision-of-free-software/">
+<meta name="generator" content="WordPress 4.2.9">
+<link rel="canonical" href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/">
+<link rel="shortlink" href="http://blog.logikonlabs.com/?p=141">
+
+
+
+
+	
+	
+<!-- OWA Helper Tag Tags -->
+
+<!-- Start Open Web Analytics Tracker -->
+
+<!-- End Open Web Analytics Code -->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-141 single-format-standard custom-background custom-font-enabled">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner" style="overflow: auto;">
+		<a href="http://blog.logikonlabs.com/"><img class="site-logo" src="site-logo.png" alt="site logo"></a>
+		<hgroup>
+				<h1 class="site-title"><a href="http://blog.logikonlabs.com/" title="Embedded Reflections" rel="home">Embedded Reflections</a></h1>
+				<h2 class="site-description">Logikon Labs Blog</h2>
+		</hgroup>
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<h3 style="display: none;" class="menu-toggle">Menu</h3>
+			<a class="assistive-text" href="#content" title="Skip to content">Skip to content</a>
+					</nav><!-- #site-navigation -->
+
+			</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">
+	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-141" class="post-141 post type-post status-publish format-standard hentry category-arm category-embedded category-linux category-openhardware category-open-source tag-beagle tag-beaglebone-black tag-howto tag-image tag-microsd">
+				<header class="entry-header">
+									<h1 class="entry-title">How-to create a custom microSD card image for the BeagleBone Black</h1>
+										<div class="comments-link">
+					<a href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/#comments">8 Replies</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p><a href="http://blog.logikonlabs.com/wp-content/uploads/2014/02/beagle_logo_dog.jpg"><img class="alignleft  wp-image-188" alt="beagle logo" src="beagle_logo_dog-300x300.jpg" height="108" width="108"></a>This article serves as a guide on how to create a custom microSD card image for the BeagleBone Black. The steps described in this guide are pretty much platform agnostic. One could also adjust them to other systems, besides the BeagleBone Black.</p>
+<p>The BeagleBone Black is an open hardware ARM single-board computer, very popular for its attractive price and rich set of features.</p>
+<p>The system ships with an <a href="http://www.angstrom-distribution.org/">Ångström Linux distribution</a> installed in its internal 2GB flash, while a microSD card slot allows running other operating systems as well (or replacing the contents of the internal flash).</p>
+<p>Various pre-made microSD card images are <a href="http://beagleboard.org/Getting%20Started#distros">available</a>, and <a href="http://eewiki.net/display/linuxonarm/BeagleBone+Black">eewiki.net</a> has very detailed steps on creating a microSD with your own contents.</p>
+<p>However, what we could not find (and decided to write about it) was a guide on how to generate our own <em>image</em> of a microSD for the BeagleBone Black. This can come in handy in several situations, such as when you want to:</p>
+<ul>
+<li>prepare all the work without having the actual microSD card at hand.</li>
+<li>use the card image in a virtual machine.</li>
+<li>maintain different versions of your installation.</li>
+<li>automate the process via scripts, without being forced to write the result to a microSD card every time.</li>
+<li>speed up the creation of multiple microSD cards from the same image.</li>
+</ul>
+<p>The following links were used as input while writing this guide.</p>
+<ul>
+<li><a href="http://eewiki.net/display/linuxonarm/BeagleBone+Black">http://eewiki.net/display/linuxonarm/BeagleBone+Black</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Creating_Arch_Linux_disk_image">https://wiki.archlinux.org/index.php/Creating_Arch_Linux_disk_image</a></li>
+</ul>
+<h2>Prerequisites</h2>
+<p>In order to perform the tasks described in this guide, you will need the following.</p>
+<ul>
+<li>A standard GNU/linux distribution. We use <a title="Debian GNU/Linux" href="http://www.debian.org/">Debian.</a></li>
+<li>Root access via <code>sudo</code>. If you prefer <code>su</code>, adjust the steps accordingly.</li>
+<li>The <code>sfdisk</code> tool. In Debian-based distributions, install the package “util-linux”.</li>
+<li>The <code>kpartx</code> tool. In Debian-based distributions, install the package “kpartx”.</li>
+<li>The <code>mkfs.vfat</code> and <code>mkfs.ext4</code> tools. In Debian-based distributions, install the packages “dosfstools” and “e2fsprogs”.</li>
+</ul>
+<p>Optionally, you might also want to use the following.</p>
+<ul>
+<li>The <code>ddrescue</code> tool. In Debian-based distributions, install the package “gddrescue”.</li>
+<li>The <code>qemu-img</code> tool. In Debian-based distributions, install the package “qemu-utils”.</li>
+</ul>
+<p>If you use a Debian-based distribution and you want to install all of the above tools at once, you can issue the following command.</p>
+
+<div class="wp-shkshell"><span class="wp-shkshell-prompt">$</span> <span class="wp-shkshell-command">sudo</span> apt-get install util-linux kpartx dosfstools e2fsprogs gddrescue qemu-utils<br></div>
+
+<h2>Image preparation</h2>
+<h3>Create an empty image</h3>
+<p>The first step is to create an empty image file of an appropriate size. For our example, we will be creating a 500MiB image file (with a MiB being defined by IEC as 1024×1024 bytes, also known as a <a title="Mebibyte" href="https://en.wikipedia.org/wiki/Mebibyte" target="_top">Mebibyte</a>).</p>
+<p>This task can be accomplished in many ways. The most standard way is to use the <code>dd</code> command, which is available and installed in all GNU/Linux distributions, as part of the GNU coreutils software package.</p>
+
+<div class="wp-shkshell"><span class="wp-shkshell-prompt">$</span> <span class="wp-shkshell-command">dd</span> if=/dev/zero of=bbb.img bs=1M count=500<br></div>
+
+<p>In the above command, we create a file named <code>bbb.img</code>, filled with zeroes, using 500 blocks of 1MiB each.</p>
+<p>Another way is to make use of a little utility from <a title="QEMU" href="http://wiki.qemu.org/Main_Page" target="_top">QEMU</a>.</p>
+
+<div class="wp-shkshell"><span class="wp-shkshell-prompt">$</span> <span class="wp-shkshell-command">qemu-img</span> create bbb.img 500M<br></div>
+
+<h3>Partition the image</h3>
+<p>The next step is to create partitions inside the empty image file, as if it were a physical storage media. We use <code>sfdisk</code> for this task and we provide all the necessary parameters via standard input.</p>
+
+<div class="wp-shkshell"><span class="wp-shkshell-prompt">$</span> <span class="wp-shkshell-command">sudo</span> sfdisk --in-order --Linux --unit M bbb.img <span class="wp-shkshell-special">&lt;</span><span class="wp-shkshell-special">&lt;</span> EOF<br>1,48,0xE,*<br>,,,-<br>EOF<br></div>
+
+<p>In the above example, we create two partitions inside our image file. The first one will be the boot partition, starting at an offset of 1MiB, with a size of 48MiB and partition id “W95 FAT16 (LBA)”. The second one will consume all remaining space (451MiB in our example) and will have the default partition id (“Linux”).</p>
+<h3>Format and mount the partitions</h3>
+<p>As with any newly-partitioned media, we also have to create filesystems inside our partitions.</p>
+<p>However, before we do that, we will use the excellent <code>kpartx</code> command from <a title="multipath-tools" href="http://christophe.varoqui.free.fr/">multipath-tools</a>, to make the handling of the partitions inside our image easier.</p>
+
+<div class="wp-shkshell"><span class="wp-shkshell-prompt">$</span> <span class="wp-shkshell-command">sudo</span> kpartx -av bbb.img<br></div>
+
+<p>Keep note of the output of the above command, in our example it was:</p>
+<pre><code>add map loop0p1 (253:0): 0 98304 linear /dev/loop0 2048
+add map loop0p2 (253:1): 0 923648 linear /dev/loop0 100352</code></pre>
+<p>We are mainly interested in the loop device name (in our case loop0).</p>
+<p>The above command makes use of the <a title="device mapper" href="https://en.wikipedia.org/wiki/Device_mapper">device mapper</a> mechanism of the linux kernel to create virtual block devices for the two partitions inside our image. Assuming that kpartx reported <code>loop0</code> as the loop device name, our two partitions will now be available as <code>/dev/mapper/loop0p1</code> and <code>/dev/mapper/loop0p2</code>.</p>
+<p>We can now format our partitions and mount them in temporary folders. We use FAT16 for the boot partition and assign the label “boot” to it, and EXT4 for the root partition and assign the label “rootfs” to it.</p>
+
+<div class="wp-shkshell"><span class="wp-shkshell-prompt">$</span> <span class="wp-shkshell-command">sudo</span> mkfs.vfat -F 16 <span class="wp-shkshell-path">/dev/mapper/loop0p1</span> -n boot<br>sudo mkfs.ext4 <span class="wp-shkshell-path">/dev/mapper/loop0p2</span> -L rootfs<br>mkdir -p tmpmnt/boot<br>mkdir -p tmpmnt/rootfs<br>sudo mount <span class="wp-shkshell-path">/dev/mapper/loop0p1</span> tmpmnt/boot/<br>sudo mount <span class="wp-shkshell-path">/dev/mapper/loop0p2</span> tmpmnt/rootfs/<br></div>
+
+<p>Make sure that you replace the loop device names with whatever was reported when you executed the <code>kpartx</code> command.</p>
+<p>We are now ready to add files to our image.</p>
+<h2>Adding files to image</h2>
+<p>With both our partitions mounted as virtual block devices, we can copy any files we like into them, using any standard file copying method, be it command-line or graphical.</p>
+<p>For a typical BeagleBone Black installation, we will be copying the bootloader (u-boot), the linux kernel image (zImage) and the compiled device tree structures (.dtb files) to the boot partition, while the actual root filesystem and any linux kernel modules will be copied to the root partition.</p>
+<p>You can refer to the <a title="beaglebone black eewiki" href="http://eewiki.net/display/linuxonarm/BeagleBone+Black">BeagleBone Black page on eewiki.net</a> for more information on how to obtain these files and where exactly to copy them inside your image file.</p>
+<p>You can also check out the <a title="Debian Live Build" href="http://live.debian.net/">Debian Live</a> project if you are looking for a way to generate your own root file system from scratch.</p>
+<p>Assuming that you have the bootloader, kernel and filesystem, <strong>make sure that you first copy the MLO file, followed by the u-boot.img file of the bootloader into an empty, freshly formatted FAT16 boot partition</strong>. The remaining files can be copied in any order.</p>
+<h2>Finish image creation</h2>
+<p>When we are done with adding files to the image, we must make sure that all files have finished being copied to the image, unmount the virtual block devices and release them.</p>
+
+<div class="wp-shkshell"><span class="wp-shkshell-prompt">$</span> <span class="wp-shkshell-command">sync</span><br>sudo umount tmpmnt/boot/<br>sudo umount tmpmnt/rootfs/<br>sudo kpartx -dv bbb.img<br></div>
+
+<p>That’s all. The image is now ready and you can use it as it is, or copy it to a microSD card.</p>
+<h2>Copy image to microSD card (optional)</h2>
+<p>To copy the image file to a microSD card, you can use the standard <code>dd</code> command.</p>
+
+<div class="wp-shkshell"><span class="wp-shkshell-prompt">$</span> <span class="wp-shkshell-command">sudo</span> dd if=bbb.img of=[<span class="wp-shkshell-command">block_device</span>]<br></div>
+
+<p>Alternatively, we suggest using <code>ddrescue</code>, which has a more verbose output.</p>
+
+<div class="wp-shkshell"><span class="wp-shkshell-prompt">$</span> <span class="wp-shkshell-command">sudo</span> ddrescue -f bbb.img [<span class="wp-shkshell-command">block_device</span>]<br></div>
+
+<p>In the above commands, replace <code>[block_device]</code> with the block device name of your microSD card (such as <code>/dev/sdx</code>).</p>
+<a class="synved-social-button synved-social-button-share synved-social-size-24 synved-social-resolution-single synved-social-provider-facebook nolightbox" data-provider="facebook" target="_top" rel="nofollow" title="Share on Facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fblog.logikonlabs.com%2Fhow-to-create-a-custom-microsd-card-image-for-the-beaglebone-black%2F&amp;t=How-to%20create%20a%20custom%20microSD%20card%20image%20for%20the%20BeagleBone%20Black&amp;s=100&amp;p[url]=http%3A%2F%2Fblog.logikonlabs.com%2Fhow-to-create-a-custom-microsd-card-image-for-the-beaglebone-black%2F&amp;p[images][0]=http%3A%2F%2Fblog.logikonlabs.com%2Fwp-content%2Fuploads%2F2014%2F02%2Fbeagle_logo_dog-300x300.jpg&amp;p[title]=How-to%20create%20a%20custom%20microSD%20card%20image%20for%20the%20BeagleBone%20Black" style="font-size: 0px; width: 24px; height: 24px; margin: 0px 5px 5px 0px;"><img alt="facebook" title="Share on Facebook" class="synved-share-image synved-social-image synved-social-image-share" style="display: inline; width: 24px; height: 24px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="facebook.png" height="24" width="24"></a><a class="synved-social-button synved-social-button-share synved-social-size-24 synved-social-resolution-single synved-social-provider-twitter nolightbox" data-provider="twitter" target="_top" rel="nofollow" title="Share on Twitter" href="http://twitter.com/share?url=http%3A%2F%2Fblog.logikonlabs.com%2Fhow-to-create-a-custom-microsd-card-image-for-the-beaglebone-black%2F&amp;text=Interesting%20post%20from%20the%20Logikon%20Labs%20Blog%2C%20check%20it%20out" style="font-size: 0px; width: 24px; height: 24px; margin: 0px 5px 5px 0px;"><img alt="twitter" title="Share on Twitter" class="synved-share-image synved-social-image synved-social-image-share" style="display: inline; width: 24px; height: 24px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="twitter.png" height="24" width="24"></a><a class="synved-social-button synved-social-button-share synved-social-size-24 synved-social-resolution-single synved-social-provider-google_plus nolightbox" data-provider="google_plus" target="_top" rel="nofollow" title="Share on Google+" href="https://plus.google.com/share?url=http%3A%2F%2Fblog.logikonlabs.com%2Fhow-to-create-a-custom-microsd-card-image-for-the-beaglebone-black%2F" style="font-size: 0px; width: 24px; height: 24px; margin: 0px 5px 5px 0px;"><img alt="google_plus" title="Share on Google+" class="synved-share-image synved-social-image synved-social-image-share" style="display: inline; width: 24px; height: 24px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="google_plus.png" height="24" width="24"></a><a class="synved-social-button synved-social-button-share synved-social-size-24 synved-social-resolution-single synved-social-provider-reddit nolightbox" data-provider="reddit" target="_top" rel="nofollow" title="Share on Reddit" href="http://www.reddit.com/submit?url=http%3A%2F%2Fblog.logikonlabs.com%2Fhow-to-create-a-custom-microsd-card-image-for-the-beaglebone-black%2F&amp;title=How-to%20create%20a%20custom%20microSD%20card%20image%20for%20the%20BeagleBone%20Black" style="font-size: 0px; width: 24px; height: 24px; margin: 0px 5px 5px 0px;"><img alt="reddit" title="Share on Reddit" class="synved-share-image synved-social-image synved-social-image-share" style="display: inline; width: 24px; height: 24px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="reddit.png" height="24" width="24"></a><a class="synved-social-button synved-social-button-share synved-social-size-24 synved-social-resolution-single synved-social-provider-linkedin nolightbox" data-provider="linkedin" target="_top" rel="nofollow" title="Share on Linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fblog.logikonlabs.com%2Fhow-to-create-a-custom-microsd-card-image-for-the-beaglebone-black%2F&amp;title=How-to%20create%20a%20custom%20microSD%20card%20image%20for%20the%20BeagleBone%20Black" style="font-size: 0px; width: 24px; height: 24px; margin: 0px 5px 5px 0px;"><img alt="linkedin" title="Share on Linkedin" class="synved-share-image synved-social-image synved-social-image-share" style="display: inline; width: 24px; height: 24px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="linkedin.png" height="24" width="24"></a><a class="synved-social-button synved-social-button-share synved-social-size-24 synved-social-resolution-single synved-social-provider-mail nolightbox" data-provider="mail" rel="nofollow" title="Share by email" href="mailto:?subject=How-to%20create%20a%20custom%20microSD%20card%20image%20for%20the%20BeagleBone%20Black&amp;body=Interesting%20post%20from%20the%20Logikon%20Labs%20Blog%2C%20check%20it%20out:%20http%3A%2F%2Fblog.logikonlabs.com%2Fhow-to-create-a-custom-microsd-card-image-for-the-beaglebone-black%2F" style="font-size: 0px; width: 24px; height: 24px; margin: 0px 0px 5px;"><img alt="mail" title="Share by email" class="synved-share-image synved-social-image synved-social-image-share" style="display: inline; width: 24px; height: 24px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="mail.png" height="24" width="24"></a>					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="http://blog.logikonlabs.com/category/arm/" rel="category tag">ARM</a>, <a href="http://blog.logikonlabs.com/category/embedded/" rel="category tag">Embedded</a>, <a href="http://blog.logikonlabs.com/category/linux/" rel="category tag">Linux</a>, <a href="http://blog.logikonlabs.com/category/openhardware/" rel="category tag">Open Hardware</a>, <a href="http://blog.logikonlabs.com/category/open-source/" rel="category tag">Open Source</a> and tagged <a href="http://blog.logikonlabs.com/tag/beagle/" rel="tag">beagle</a>, <a href="http://blog.logikonlabs.com/tag/beaglebone-black/" rel="tag">beaglebone black</a>, <a href="http://blog.logikonlabs.com/tag/howto/" rel="tag">howto</a>, <a href="http://blog.logikonlabs.com/tag/image/" rel="tag">image</a>, <a href="http://blog.logikonlabs.com/tag/microsd/" rel="tag">microsd</a> on <a href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/" title="13:52" rel="bookmark"><time class="entry-date" datetime="2014-02-27T13:52:19+02:00">February 27, 2014</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="http://blog.logikonlabs.com/author/dlampridis/" title="View all posts by Dimitris Lampridis" rel="author">Dimitris Lampridis</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+				<nav class="nav-single">
+					<h3 class="assistive-text">Post navigation</h3>
+					<span class="nav-previous"><a href="http://blog.logikonlabs.com/tinkering-for-the-masses/" rel="prev"><span class="meta-nav">←</span> Tinkering for the masses</a></span>
+					<span class="nav-next"><a href="http://blog.logikonlabs.com/come-see-us-talk-about-our-vision-of-free-software/" rel="next">Come hear us talk about our vision of Free Software! <span class="meta-nav">→</span></a></span>
+				</nav><!-- .nav-single -->
+
+				
+<div id="comments" class="comments-area">
+
+	
+			<h2 class="comments-title">
+			8 thoughts on “<span>How-to create a custom microSD card image for the BeagleBone Black</span>”		</h2>
+
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="li-comment-20">
+		<article id="comment-20" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img src="9587ead7ec1a6431bc4c6ec31e66a123" alt="" class="avatar avatar-44wp-user-avatar wp-user-avatar-44 alignnone photo avatar-default" height="44" width="44"><cite class="fn">Vishwa Shanika </cite><a href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/#comment-20"><time datetime="2015-02-17T06:17:44+02:00">February 17, 2015 at 06:17</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Seems great work.</p>
+<p>But I am encountered a error while entering</p>
+<p>sudo sfdisk –in-order –Linux –unit M bbb.img &lt;&lt; EOF<br>
+1,48,0xE,*<br>
+,,,-<br>
+EOF</p>
+<p>I could not find out what is the meaning of &amp;lt. Cou you please eleborate little bit.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/?replytocom=20#respond" onclick="return addComment.moveForm( &quot;comment-20&quot;, &quot;20&quot;, &quot;respond&quot;, &quot;141&quot; )" aria-label="Reply to Vishwa Shanika">Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-dlampridis bypostauthor odd alt depth-2" id="li-comment-21">
+		<article id="comment-21" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img src="1ec5807_sq.jpg" alt="Dimitris Lampridis" class="avatar avatar-44 wp-user-avatar wp-user-avatar-44 alignnone photo" height="44" width="44"><cite class="fn">Dimitris Lampridis <span> Post author</span></cite><a href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/#comment-21"><time datetime="2015-02-17T11:56:56+02:00">February 17, 2015 at 11:56</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>oops, that was obviously not meant to be “&amp;lt&amp;lt” but “&lt; &lt;", which is of course a redirection[1].
+
+Thanks for spotting that!
+
+[1]: <a href="http://www.tldp.org/LDP/abs/html/io-redirection.html" rel="nofollow">http://www.tldp.org/LDP/abs/html/io-redirection.html</a></p><a href="http://www.tldp.org/LDP/abs/html/io-redirection.html" rel="nofollow">
+							</a></section><!-- .comment-content --><a href="http://www.tldp.org/LDP/abs/html/io-redirection.html" rel="nofollow">
+
+			</a><div class="reply"><a href="http://www.tldp.org/LDP/abs/html/io-redirection.html" rel="nofollow">
+				</a><a class="comment-reply-link" href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/?replytocom=21#respond" onclick="return addComment.moveForm( &quot;comment-21&quot;, &quot;21&quot;, &quot;respond&quot;, &quot;141&quot; )" aria-label="Reply to Dimitris Lampridis">Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-22">
+		<article id="comment-22" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img src="1247aa06907c00fde628e48052b320a5" alt="" class="avatar avatar-44wp-user-avatar wp-user-avatar-44 alignnone photo avatar-default" height="44" width="44"><cite class="fn">Gerb </cite><a href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/#comment-22"><time datetime="2015-11-15T18:07:20+02:00">November 15, 2015 at 18:07</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>With the latest version of util-linux 2.27.+  some of the sfdisk options got removed and the sfdisk command you have listed doesn’t work anymore.  Or atleast in Fedora 23.  I had to change it to this to:</p>
+<p>sudo sfdisk /dev/sdX &lt;&lt; EOF<br>
+1M,48M,0xE,*<br>
+,,,-<br>
+EOF</p>
+<p>This gives me a boot partition of 48MiB FAT16 LBA (offset by 1 MiB) and a Linux (rootfs) partition for the rest of the sdcard.  Does that seem like the correct way to prepare the sdcard for the beaglebone?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/?replytocom=22#respond" onclick="return addComment.moveForm( &quot;comment-22&quot;, &quot;22&quot;, &quot;respond&quot;, &quot;141&quot; )" aria-label="Reply to Gerb">Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-dlampridis bypostauthor odd alt depth-2" id="li-comment-23">
+		<article id="comment-23" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img src="1ec5807_sq.jpg" alt="Dimitris Lampridis" class="avatar avatar-44 wp-user-avatar wp-user-avatar-44 alignnone photo" height="44" width="44"><cite class="fn">Dimitris Lampridis <span> Post author</span></cite><a href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/#comment-23"><time datetime="2015-11-16T10:34:37+02:00">November 16, 2015 at 10:34</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Unfortunately, I don’t have a system with util-linux 2.27+ to test this, but if you get two partitions with the first being 48MiB FAT16 LBA, offset by 1 MiB, and the second one being Linux with all the remaining space, then I don’t see a problem.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/?replytocom=23#respond" onclick="return addComment.moveForm( &quot;comment-23&quot;, &quot;23&quot;, &quot;respond&quot;, &quot;141&quot; )" aria-label="Reply to Dimitris Lampridis">Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-24">
+		<article id="comment-24" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img src="ad856b67a5691e03cd899d50114a5206" alt="" class="avatar avatar-44wp-user-avatar wp-user-avatar-44 alignnone photo avatar-default" height="44" width="44"><cite class="fn">Srujan Sriram </cite><a href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/#comment-24"><time datetime="2015-12-04T19:40:15+02:00">December 4, 2015 at 19:40</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Based on these steps, can I directly boot from the Micro-SD after completing step – “Copy image to microSD card (optional)”?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/?replytocom=24#respond" onclick="return addComment.moveForm( &quot;comment-24&quot;, &quot;24&quot;, &quot;respond&quot;, &quot;141&quot; )" aria-label="Reply to Srujan Sriram">Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-dlampridis bypostauthor odd alt depth-2" id="li-comment-25">
+		<article id="comment-25" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img src="1ec5807_sq.jpg" alt="Dimitris Lampridis" class="avatar avatar-44 wp-user-avatar wp-user-avatar-44 alignnone photo" height="44" width="44"><cite class="fn">Dimitris Lampridis <span> Post author</span></cite><a href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/#comment-25"><time datetime="2015-12-07T10:59:52+02:00">December 7, 2015 at 10:59</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Yes, you will be able to boot from the microSD, assuming that you have copied the correct files (bootloader, kernel, device tree blob, root filesystem) and in the correct order (step “Adding files to image”).</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/?replytocom=25#respond" onclick="return addComment.moveForm( &quot;comment-25&quot;, &quot;25&quot;, &quot;respond&quot;, &quot;141&quot; )" aria-label="Reply to Dimitris Lampridis">Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-26">
+		<article id="comment-26" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img src="a94d6385cd553ef9d9b68910bb84e0e9" alt="" class="avatar avatar-44wp-user-avatar wp-user-avatar-44 alignnone photo avatar-default" height="44" width="44"><cite class="fn">Sam </cite><a href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/#comment-26"><time datetime="2016-04-03T06:45:06+03:00">April 3, 2016 at 06:45</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Forgive me if im being foolish here:</p>
+<p>“make sure that you first copy the MLO file, followed by the u-boot.img file of the bootloader into an empty, freshly formatted FAT16 boot partition.”</p>
+<p>say ive followed along the eewiki article and build myself u-boot and a kernel. im drawing a blank as to how exactly to “copy” [read install] MLO, u-boot.img etc into the boot partition we have mounted at ~/tmpmnt/boot. </p>
+<p>is cp used or a dd block copy. </p>
+<p>doing this for learning purposes to make a minimal debian SD Image from scratch, and all the niceties that go with it.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/?replytocom=26#respond" onclick="return addComment.moveForm( &quot;comment-26&quot;, &quot;26&quot;, &quot;respond&quot;, &quot;141&quot; )" aria-label="Reply to Sam">Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-dlampridis bypostauthor odd alt depth-2" id="li-comment-27">
+		<article id="comment-27" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img src="1ec5807_sq.jpg" alt="Dimitris Lampridis" class="avatar avatar-44 wp-user-avatar wp-user-avatar-44 alignnone photo" height="44" width="44"><cite class="fn">Dimitris Lampridis <span> Post author</span></cite><a href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/#comment-27"><time datetime="2016-04-04T00:22:52+03:00">April 4, 2016 at 00:22</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Just a standard “cp”. But, it is important to respect the order. On a freshly-formatted FAT16 partition, copy first the MLO, followed by u-boot.img.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/?replytocom=27#respond" onclick="return addComment.moveForm( &quot;comment-27&quot;, &quot;27&quot;, &quot;respond&quot;, &quot;141&quot; )" aria-label="Reply to Dimitris Lampridis">Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .commentlist -->
+
+		
+		
+	
+							<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/#respond" style="display: none;">Cancel reply</a></small></h3>
+									<form action="http://blog.logikonlabs.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" value="" size="30" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" value="" size="30" aria-describedby="email-notes" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" value="" size="30" type="text"></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true" required="required"></textarea></p>						<p class="form-allowed-tags" id="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre prompt="" escaped=""&gt; </code></p>
+						<p class="form-submit"><input name="submit" id="submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="141" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p>		<p class="antispam-group antispam-group-q" style="clear: both; display: none;">
+			<label>Current ye@r <span class="required">*</span></label>
+			<input name="antspm-a" class="antispam-control antispam-control-a" value="2016" type="hidden">
+			<input name="antspm-q" class="antispam-control antispam-control-q" value="2016" type="text">
+		</p>
+		<p class="antispam-group antispam-group-e" style="display: none;">
+			<label>Leave this field empty</label>
+			<input name="antspm-e-email-url-website" class="antispam-control antispam-control-e" value="" type="text">
+		</p>
+					</form>
+							</div><!-- #respond -->
+			
+</div><!-- #comments .comments-area -->
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://blog.logikonlabs.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input value="" name="s" id="s" type="text">
+					<input id="searchsubmit" value="Search" type="submit">
+				</div>
+			</form></aside><aside id="nav_menu-2" class="widget widget_nav_menu"><h3 class="widget-title">Links</h3><div class="menu-custommenu-container"><ul id="menu-custommenu" class="menu"><li id="menu-item-69" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-69"><a href="http://blog.logikonlabs.com/">Home</a></li>
+<li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57"><a href="http://blog.logikonlabs.com/about-us/">About Us</a></li>
+<li id="menu-item-20" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20"><a href="http://www.logikonlabs.com/">Logikon Labs Website</a></li>
+</ul></div></aside><aside id="synved_social_follow-2" class="widget widget_synved_social_follow"><h3 class="widget-title">Follow Us</h3><div><a class="synved-social-button synved-social-button-follow synved-social-size-24 synved-social-resolution-single synved-social-provider-linkedin nolightbox" data-provider="linkedin" target="_top" rel="nofollow" title="Find us on Linkedin" href="http://www.linkedin.com/company/logikon-labs" style="font-size: 0px; width: 24px; height: 24px; margin: 0px 5px 5px 0px;"><img alt="linkedin" title="Find us on Linkedin" class="synved-share-image synved-social-image synved-social-image-follow" style="display: inline; width: 24px; height: 24px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="linkedin.png" height="24" width="24"></a><a class="synved-social-button synved-social-button-follow synved-social-size-24 synved-social-resolution-single synved-social-provider-rss nolightbox" data-provider="rss" target="_top" rel="nofollow" title="Subscribe to our RSS Feed" href="http://blog.logikonlabs.com/feed/" style="font-size: 0px; width: 24px; height: 24px; margin: 0px 5px 5px 0px;"><img alt="rss" title="Subscribe to our RSS Feed" class="synved-share-image synved-social-image synved-social-image-follow" style="display: inline; width: 24px; height: 24px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="rss.png" height="24" width="24"></a><a class="synved-social-button synved-social-button-follow synved-social-size-24 synved-social-resolution-single synved-social-provider-mail nolightbox" data-provider="mail" rel="nofollow" title="Subscribe to our newsletter" href="http://www.logikonlabs.com/index.php?aid=2210" style="font-size: 0px; width: 24px; height: 24px; margin: 0px 0px 5px;"><img alt="mail" title="Subscribe to our newsletter" class="synved-share-image synved-social-image synved-social-image-follow" style="display: inline; width: 24px; height: 24px; margin: 0px; padding: 0px; border: medium none; box-shadow: none;" src="mail.png" height="24" width="24"></a></div></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+					<li>
+				<a href="http://blog.logikonlabs.com/come-see-us-talk-about-our-vision-of-free-software/">Come hear us talk about our vision of Free Software!</a>
+						</li>
+					<li>
+				<a href="http://blog.logikonlabs.com/how-to-create-a-custom-microsd-card-image-for-the-beaglebone-black/">How-to create a custom microSD card image for the BeagleBone Black</a>
+						</li>
+					<li>
+				<a href="http://blog.logikonlabs.com/tinkering-for-the-masses/">Tinkering for the masses</a>
+						</li>
+					<li>
+				<a href="http://blog.logikonlabs.com/advances-of-open-hardware-in-the-scientific-community/">Advances of open hardware in the scientific community</a>
+						</li>
+					<li>
+				<a href="http://blog.logikonlabs.com/the-state-of-open-source-linux-drivers-for-arm-soc-gpus/">The state of open source Linux drivers for ARM SoC GPUs</a>
+						</li>
+				</ul>
+		</aside><aside id="archives-2" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+	<li><a href="http://blog.logikonlabs.com/2014/05/">May 2014</a></li>
+	<li><a href="http://blog.logikonlabs.com/2014/02/">February 2014</a></li>
+	<li><a href="http://blog.logikonlabs.com/2013/07/">July 2013</a></li>
+	<li><a href="http://blog.logikonlabs.com/2013/05/">May 2013</a></li>
+		</ul>
+</aside><aside id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-11"><a href="http://blog.logikonlabs.com/category/3d-printing/">3D printing</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="http://blog.logikonlabs.com/category/arm/">ARM</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://blog.logikonlabs.com/category/drivers/">Drivers</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://blog.logikonlabs.com/category/embedded/">Embedded</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://blog.logikonlabs.com/category/fpga/">FPGA</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://blog.logikonlabs.com/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://blog.logikonlabs.com/category/openhardware/">Open Hardware</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://blog.logikonlabs.com/category/open-source/">Open Source</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://blog.logikonlabs.com/category/soc/">SoC</a>
+</li>
+		</ul>
+</aside>		</div><!-- #secondary -->
+		</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+			Copyright © 2012-2013 Logikon Labs. All rights reserved.	All logos and trademarks are the property of respective owners.
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+
+
+
+
+
+
+<div id="owa-tracker-post-container"><iframe style="border: medium none;" class="owa-tracker-post-iframe" src="index_1.html" name="owa-tracker-post-iframe" height="1" width="1"></iframe></div></body>
+</html>

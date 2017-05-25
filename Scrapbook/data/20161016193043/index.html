@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+
+<meta name="distribution" content="global">
+<meta name="robots" content="follow, all">
+<meta name="language" content="en, sv">
+
+
+<title>High-Low Tech  –  Programming an ATtiny w/ Arduino 1.6 (or 1.0)</title>
+
+<meta name="distribution" content="global">
+<meta name="robots" content="follow, all">
+<meta name="language" content="en, sv">
+<meta name="generator" content="WordPress 4.3.6">
+
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://highlowtech.org/?feed=rss2">
+<link rel="alternate" type="text/xml" title="RSS .92" href="http://highlowtech.org/?feed=rss">
+<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://highlowtech.org/?feed=atom">
+<link rel="pingback" href="http://highlowtech.org/xmlrpc.php">
+	<link rel="archives" title="October 2014" href="http://highlowtech.org/?m=201410">
+	<link rel="archives" title="July 2014" href="http://highlowtech.org/?m=201407">
+	<link rel="archives" title="April 2014" href="http://highlowtech.org/?m=201404">
+	<link rel="archives" title="December 2013" href="http://highlowtech.org/?m=201312">
+	<link rel="archives" title="August 2013" href="http://highlowtech.org/?m=201308">
+	<link rel="archives" title="June 2013" href="http://highlowtech.org/?m=201306">
+	<link rel="archives" title="May 2013" href="http://highlowtech.org/?m=201305">
+	<link rel="archives" title="April 2013" href="http://highlowtech.org/?m=201304">
+	<link rel="archives" title="February 2013" href="http://highlowtech.org/?m=201302">
+	<link rel="archives" title="January 2013" href="http://highlowtech.org/?m=201301">
+	<link rel="archives" title="December 2012" href="http://highlowtech.org/?m=201212">
+	<link rel="archives" title="November 2012" href="http://highlowtech.org/?m=201211">
+	<link rel="archives" title="October 2012" href="http://highlowtech.org/?m=201210">
+	<link rel="archives" title="September 2012" href="http://highlowtech.org/?m=201209">
+	<link rel="archives" title="August 2012" href="http://highlowtech.org/?m=201208">
+	<link rel="archives" title="July 2012" href="http://highlowtech.org/?m=201207">
+	<link rel="archives" title="June 2012" href="http://highlowtech.org/?m=201206">
+	<link rel="archives" title="May 2012" href="http://highlowtech.org/?m=201205">
+	<link rel="archives" title="April 2012" href="http://highlowtech.org/?m=201204">
+	<link rel="archives" title="March 2012" href="http://highlowtech.org/?m=201203">
+	<link rel="archives" title="February 2012" href="http://highlowtech.org/?m=201202">
+	<link rel="archives" title="January 2012" href="http://highlowtech.org/?m=201201">
+	<link rel="archives" title="December 2011" href="http://highlowtech.org/?m=201112">
+	<link rel="archives" title="November 2011" href="http://highlowtech.org/?m=201111">
+	<link rel="archives" title="October 2011" href="http://highlowtech.org/?m=201110">
+	<link rel="archives" title="September 2011" href="http://highlowtech.org/?m=201109">
+	<link rel="archives" title="August 2011" href="http://highlowtech.org/?m=201108">
+	<link rel="archives" title="July 2011" href="http://highlowtech.org/?m=201107">
+	<link rel="archives" title="June 2011" href="http://highlowtech.org/?m=201106">
+	<link rel="archives" title="May 2011" href="http://highlowtech.org/?m=201105">
+	<link rel="archives" title="April 2011" href="http://highlowtech.org/?m=201104">
+	<link rel="archives" title="March 2011" href="http://highlowtech.org/?m=201103">
+	<link rel="archives" title="February 2011" href="http://highlowtech.org/?m=201102">
+	<link rel="archives" title="January 2011" href="http://highlowtech.org/?m=201101">
+	<link rel="archives" title="December 2010" href="http://highlowtech.org/?m=201012">
+	<link rel="archives" title="November 2010" href="http://highlowtech.org/?m=201011">
+	<link rel="archives" title="October 2010" href="http://highlowtech.org/?m=201010">
+	<link rel="archives" title="September 2010" href="http://highlowtech.org/?m=201009">
+	<link rel="archives" title="August 2010" href="http://highlowtech.org/?m=201008">
+	<link rel="archives" title="July 2010" href="http://highlowtech.org/?m=201007">
+	<link rel="archives" title="June 2010" href="http://highlowtech.org/?m=201006">
+	<link rel="archives" title="May 2010" href="http://highlowtech.org/?m=201005">
+	<link rel="archives" title="April 2010" href="http://highlowtech.org/?m=201004">
+	<link rel="archives" title="March 2010" href="http://highlowtech.org/?m=201003">
+	<link rel="archives" title="February 2010" href="http://highlowtech.org/?m=201002">
+	<link rel="archives" title="January 2010" href="http://highlowtech.org/?m=201001">
+	<link rel="archives" title="December 2009" href="http://highlowtech.org/?m=200912">
+	<link rel="archives" title="November 2009" href="http://highlowtech.org/?m=200911">
+	<link rel="archives" title="September 2009" href="http://highlowtech.org/?m=200909">
+	<link rel="archives" title="February 2008" href="http://highlowtech.org/?m=200802">
+	<link rel="archives" title="October 2007" href="http://highlowtech.org/?m=200710">
+	<link rel="archives" title="September 2007" href="http://highlowtech.org/?m=200709">
+	<link rel="archives" title="August 2007" href="http://highlowtech.org/?m=200708">
+	<link rel="archives" title="March 2006" href="http://highlowtech.org/?m=200603">
+	<link rel="archives" title="November 2005" href="http://highlowtech.org/?m=200511">
+	<link rel="archives" title="August 2005" href="http://highlowtech.org/?m=200508">
+	<link rel="archives" title="January 2004" href="http://highlowtech.org/?m=200401">
+
+
+
+
+<link rel="alternate" type="application/rss+xml" title="High-Low Tech » Programming an ATtiny w/ Arduino 1.6 (or 1.0) Comments Feed" href="http://highlowtech.org/?feed=rss2&amp;p=1695">
+		
+		
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://highlowtech.org/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://highlowtech.org/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Papermaking and Programming" href="http://highlowtech.org/?p=2038">
+<link rel="next" title="Arduino board as ATtiny programmer" href="http://highlowtech.org/?p=1706">
+<meta name="generator" content="WordPress 4.3.6">
+<link rel="canonical" href="http://highlowtech.org/?p=1695">
+<link rel="shortlink" href="http://wp.me/p4fjZW-rl">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programming an ATtiny w/ Arduino 1.6 (or 1.0)">
+<meta property="og:url" content="http://highlowtech.org/?p=1695">
+<meta property="og:description" content="This tutorial shows you how to program an ATtiny45, ATtiny85, ATtiny44 or ATtiny84 microcontroller using the Arduino software. These are small, cheap ($2-3) microcontrollers that are convenient for...">
+<meta property="og:site_name" content="High-Low Tech">
+<meta property="og:image" content="http://highlowtech.org/wp-content/uploads/2011/10/boards-manager.png">
+<meta property="og:image" content="http://highlowtech.org/wp-content/uploads/2011/10/boards-manager-installed.png">
+<meta property="og:image" content="http://highlowtech.org/wp-content/uploads/2011/10/boards-manager-install.png">
+<meta property="og:image" content="http://highlowtech.org/wp-content/uploads/2011/10/boards-manager-menu.png">
+<meta name="twitter:site" content="@jetpack">
+<meta name="twitter:image" content="http://highlowtech.org/wp-content/uploads/2011/10/ATtiny-Board-Menus.png?w=240">
+<meta name="twitter:card" content="summary">
+
+<!-- Favorite Icon -->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+
+<link media="all" href="index.css" type="text/css" rel="stylesheet">
+</head>
+<body id="home" class="log">
+
+
+
+<div id="container">
+<div id="logo">
+<a href="http://highlowtech.org/index.php">
+<img src="high-low_tech_txt.jpg">
+</a>
+</div>
+
+<div id="content-container">
+<div id="sidebar">
+<!-- categories:
+   ABOUT = 3
+   NEWS = 10
+   PEOPLE = 4
+   PROJECTS =5
+   PUBLICATIONS = 9
+   TUTORIALS = 20
+   SUPPLIES = 21
+   WORKSHOPS = 6
+   MIT CLASSES = 15
+   ADMISSIONS = 16
+  UROP OPENINGS = 25
+!-->
+
+	<li class="cat-item cat-item-5"><a href="http://highlowtech.org/?cat=5">PROJECTS</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://highlowtech.org/?cat=4">PEOPLE</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://highlowtech.org/?cat=9">PUBLICATIONS</a>
+</li>
+<br>	<li class="cat-item cat-item-20"><a href="http://highlowtech.org/?cat=20">TUTORIALS</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://highlowtech.org/?cat=21">MATERIALS</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://highlowtech.org/?cat=10">NEWS &amp; EVENTS</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://highlowtech.org/?cat=6">WORKSHOPS</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://highlowtech.org/?cat=15" title="15">MIT CLASSES</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://highlowtech.org/?cat=16" title="16">ADMISSIONS</a>
+</li>
+<a href="http://highlowtech.org/?page_id=550">NEWSLETTER</a><br></div>
+</div>
+
+
+<div id="content">
+
+<div class="entrytitle">
+<a href="http://highlowtech.org/?p=1695" rel="bookmark"><h1>Programming an ATtiny w/ Arduino 1.6 (or 1.0)</h1></a>
+</div>
+
+<div class="entrybody">
+<p><img class="alignnone size-full wp-image-1747" style="display: none;" title="ATtiny Board Menus" src="attiny-board-menus.png" alt="" width="400" height="300"></p>
+<p>This tutorial shows you how to program an ATtiny45, ATtiny85, ATtiny44 or ATtiny84 microcontroller using the Arduino software. These are small, cheap ($2-3) microcontrollers that are convenient for running simple programs. <span id="more-1695"></span> The ATtiny45 and ATtiny85 have eight legs and are almost identical, except that the ATtiny85 has twice the memory of the ATtiny45 and can therefore hold more complex programs. The ATtiny44 and ATtiny84 have 14-legs and more inputs and outputs. <em>Thanks to Mark Sproul for his work on making the Arduino core portable across processors.</em></p>
+<h2>ATtiny45/85 vs. an Arduino Board</h2>
+<p>The ATtiny45 or 85 is a great option for running simple Arduino programs: it’s small, cheap and relatively easy to use. It does, however, have some limitations relative to the ATmega328P on an Arduino Uno. There are fewer pins, meaning you can’t connect as many components. There’s less flash memory (4KB or 8KB instead of 32KB), meaning your programs can’t be as big. There’s less RAM (256 or 512 bytes instead of 2KB), meaning you can’t store as much data. And there’s no hardware serial port or I2C port (Wire library), making communication trickier. (There are workarounds, like the SoftwareSerial library or the TinyWire library, but they’re not as robust and flexible.)</p>
+<p>In short, then, if your project requires only a few simple inputs and/or outputs, you’re probably fine using an ATtiny. If you’re trying to hook up more components or do more complex communication or data processing, though, you’re probably better off with something like the ATmega328P on an Arduino Uno. If you want something smaller and cheaper than a full Arduino board, you might try using an <a href="http://arduino.cc/en/Tutorial/ArduinoToBreadboard">ATmega328P on a breadboard</a> instead.</p>
+<h2>Materials and Tools</h2>
+<p>For this tutorial, you’ll need:</p>
+<ul>
+<li>An in-system programmer (ISP), a piece of hardware used to load programs onto the ATtiny. Options include:
+<ul>
+<li>The <a href="https://www.sparkfun.com/products/11460">Tiny AVR Programmer</a>, a board we developed with SparkFun specifically for programming ATtiny45/85s.</li>
+<li>Another commercial programmer like the <a href="http://www.atmel.com/dyn/products/tools_card.asp?category_id=163&amp;family_id=607&amp;subfamily_id=760&amp;tool_id=3808">AVRISP mkII</a> or <a href="http://www.ladyada.net/make/usbtinyisp/">USBtinyISP</a>.</li>
+<li>a Arduino Uno or Duemilanove (w/ an ATmega328, not an older board with an ATmega168). See this tutorial <a href="http://highlowtech.org/?p=1706">for using an Arduino board as a programmer</a></li>
+</ul>
+</li>
+<li><a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=ATTINY45-20PU-ND" rel="nofollow">ATtiny45</a> or <a href="http://search.digikey.com/scripts/DkSearch/dksus.dll?Detail&amp;name=ATTINY85-20PU-ND" rel="nofollow">ATtiny85</a> (8-pin DIP package) or an ATtiny44 or ATtiny84.</li>
+<li>a solderless breadboard and jumper wires (unless you’re using the TinyProgrammer w/ the ATtiny45 or 85)</li>
+</ul>
+<p class="vspace">For more information, see our <a href="http://highlowtech.org/wiki/pmwiki.php?n=Main.Links">list of materials and parts</a> and our <a href="http://highlowtech.org/wiki/pmwiki.php?n=Main.PrototypingSupplies">list of prototyping supplies</a>.</p>
+<h2>Installing ATtiny support in Arduino 1.6.4</h2>
+<p>In Arduino 1.6.4, you can install the ATtiny support using the built-in boards manager.</p>
+<ul>
+<li>Open the preferences dialog in the Arduino software.</li>
+<li>Find the “Additional Boards Manager URLs” field near the bottom of the dialog.<br><a href="http://highlowtech.org/wp-content/uploads/2011/10/additional-boards-manager-urls-blank.png"><img src="additional-boards-manager-urls-blank.png" alt="additional-boards-manager-urls-blank" class="alignnone size-full wp-image-3216" width="684" height="119"></a></li>
+<li>Paste the following URL into the field (use a comma to separate it from any URLs you’ve already added):<br><tt>https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json</tt></li>
+<li>Click the OK button to save your updated preferences.</li>
+<li>Open the boards manager in the “Tools &gt; Board” menu.<br><a href="http://highlowtech.org/wp-content/uploads/2011/10/boards-manager-menu.png"><img src="boards-manager-menu.png" alt="boards-manager-menu" class="alignnone size-full wp-image-3215" width="508" height="218"></a></li>
+<li>Scroll to the bottom of the list; you should see an entry for “ATtiny”.<br><a href="http://highlowtech.org/wp-content/uploads/2011/10/boards-manager.png"><img src="boards-manager.png" alt="boards-manager" class="alignnone size-full wp-image-3221" width="600"></a></li>
+<li>Click on the ATtiny entry. An install button should appear. Click the install button.<br><a href="http://highlowtech.org/wp-content/uploads/2011/10/boards-manager-install.png"><img src="boards-manager-install.png" alt="boards-manager-install" lass="alignnone size-full wp-image-3219" width="600"></a></li>
+<li>The word “installed” should now appear next to the title of the ATtiny entry.<br><a href="http://highlowtech.org/wp-content/uploads/2011/10/boards-manager-installed.png"><img src="boards-manager-installed.png" alt="boards-manager-installed" class="alignnone size-full wp-image-3220" width="600"></a></li>
+<li>Close the boards manager. You should now see an entry for ATtiny in the “Tools &gt; Board” menu.<br><img class="alignnone size-full wp-image-3209" src="attiny-arduino-1.6.png" alt="ATtiny Arduino 1.6" width="496" height="277">
+</li>
+</ul>
+<h2>Installing ATtiny support in older versions of Arduino</h2>
+<p>If you’re using an older (1.0.x) version of the Arduino software (e.g. 1.0.6), you’ll need to download and install the ATtiny files manually. <em>Note that the ATtiny’s work best with the newer, 1.6.x, versions of the Arduino software. You can use the older, 1.0.x, versions of the software, but there may be some bugs. (For example, there’s one that prevents the use of programs greater than 4 KB.)</em> </p>
+<ul>
+<li>If you haven’t already, <a href="https://www.arduino.cc/en/Main/OldSoftwareReleases">download the Arduino software</a>, version 1.0.6.&nbsp;Install the Arduino software, following the instructions <a href="http://arduino.cc/en/Guide/Windows" rel="nofollow">for Windows</a> or <a href="http://arduino.cc/en/Guide/MacOSX" rel="nofollow">for Mac OS X</a>.</li>
+<li>Download the ATtiny files for Arduino 1.0.x:&nbsp;<a href="https://github.com/damellis/attiny/archive/ide-1.0.x.zip">ide-1.0.x.zip</a></li>
+<li>Unzip the attiny zip file. It should contain an “attiny-ide.1.0.x” folder that contains an “attiny” folder.</li>
+<li>Locate your Arduino sketchbook folder (you can find its location in the preferences dialog in the Arduino software)</li>
+<li>Create a new sub-folder called “hardware” in the sketchbook folder, if it doesn’t exist already.</li>
+<li>Copy the “attiny” folder (not the containing attiny-1.0.x folder) from the unzipped ATtiny.zip to the “hardware” folder. You should end up with folder structure like <strong>Documents &gt; Arduino &gt; hardware &gt; attiny</strong>&nbsp;that contains the file <strong>boards.txt</strong> and another folder called <strong>variants</strong>.</li>
+<li>Restart the Arduino development environment.</li>
+<li>You should see&nbsp;ATtiny entries in the Tools &gt; Board menu.</li>
+</ul>
+<p><img class="alignnone size-full wp-image-2913" title="ATtiny Boards Menu" src="attiny-boards-menu1.png" alt="" width="701" height="391"></p>
+<p><em>ATtiny board menu (Arduino 1.0.x)</em></p>
+<h2>Connecting the ATtiny</h2>
+<p>You’ll need to provide power to the ATtiny and connect it to your programmer. That is, connecting MISO, MOSI, SCK, RESET, VCC, and GND of the programmer to the corresponding pins on the ATtiny. (Or, if you’re using an circuit w/ an ATtiny, simply connect the programmer to the ISP header on the board – you may also need to power the board separately.)</p>
+<p>Instructions and diagrams are available for:</p>
+<div style="float: left; width: 200px;">
+<p><a href="http://highlowtech.org/?p=1706"><img src="screen-shot-2011-06-06-at-1.46.39-pm.png" alt="" width="200"><br>
+connecting an Arduino (as ISP) to an ATtiny.</a></p>
+</div>
+<div style="margin-left: 220px;">
+<p><a href="http://highlowtech.org/?p=1801"><img src="6121376853_e8355afe33.jpg" alt="" width="200"><br>
+using the TinyProgrammer</a></p>
+</div>
+<h2 style="clear: both;">Programming the ATtiny</h2>
+<p>Next, we can use the ISP to upload a program to the ATtiny:</p>
+<ul>
+<li>Open the Blink sketch from the examples menu.</li>
+<li>Change the pin numbers from 13 to 0.</li>
+<li>Select “ATtiny”&nbsp;from the Tools &gt; Board menu and the particular ATtiny you’re using from the Tools &gt; Processor menu. (In Arduino 1.0.x, these options are combined in just the Tools &gt; Board menu.)</li>
+<li>Select the appropriate item from the Tools &gt; Programmer menu (e.g. “Arduino as ISP” if you’re using an Arduino board as the programmer, USBtinyISP for the USBtinyISP, FabISP, or TinyProgrammer, etc).</li>
+<li>Upload the sketch.</li>
+</ul>
+<p>You should see “Done uploading.” in the Arduino software and no error messages. If you then connect an LED between pin 0 and ground, you should see it blink on and off. Note that you may need to disconnect the LED before uploading a new program.</p>
+<h2>Configuring the ATtiny to run at 8 MHz</h2>
+<p>By default, the ATtiny’s run at 1 MHz. You can configure them to run at 8 MHz instead, which is useful for faster baud rates with the SoftwareSerial library or for faster computation in general. To do so, once you have the microcontroller connected, select “8 MHz (Internal)” from the Tools &gt; Clock menu. (In Arduino 1.0.x, select the appropriate 8 MHz clock option from the main Tools &gt; Board menu.)&nbsp;<strong>Warning: make sure you select “internal” not “external” or your microcontroller will stop working (until you connect an external clock to it).</strong>&nbsp;Then, run the “Burn Bootloader” command from the Tools menu. This configures the fuse bits of the microcontroller so it runs at 8 MHz. Note that the fuse bits keep their value until you explicitly change them, so you’ll only need to do this step once for each microcontroller. (Note this doesn’t actually burn a bootloader onto the board; you’ll still need to upload new programs using an external programmer.)</p>
+<h2>ATtiny Microcontroller Pin-Outs</h2>
+<p><img class="alignnone size-full wp-image-1712" style="margin-left: 95px;" title="ATtiny45-85" src="attiny45-85.png" alt="" width="458" height="164"></p>
+<p><img class="alignnone size-full wp-image-1711" title="ATtiny44-84" src="attiny44-84.png" alt="" width="602" height="220"></p>
+<h2>Reference</h2>
+<p>The following Arduino commands should be supported:</p>
+<ul>
+<li><a href="http://arduino.cc/en/Reference/PinMode" rel="nofollow">pinMode()</a></li>
+<li><a href="http://arduino.cc/en/Reference/DigitalWrite" rel="nofollow">digitalWrite()</a></li>
+<li><a href="http://arduino.cc/en/Reference/DigitalRead" rel="nofollow">digitalRead()</a></li>
+<li><a href="http://arduino.cc/en/Reference/AnalogRead" rel="nofollow">analogRead()</a></li>
+<li><a href="http://arduino.cc/en/Reference/AnalogWrite" rel="nofollow">analogWrite()</a></li>
+<li><a href="http://arduino.cc/en/Reference/ShiftOut" rel="nofollow">shiftOut()</a></li>
+<li><a href="http://arduino.cc/en/Reference/PulseIn" rel="nofollow">pulseIn()</a></li>
+<li><a href="http://arduino.cc/en/Reference/Millis" rel="nofollow">millis()</a></li>
+<li><a href="http://arduino.cc/en/Reference/Micros" rel="nofollow">micros()</a></li>
+<li><a href="http://arduino.cc/en/Reference/Delay" rel="nofollow">delay()</a></li>
+<li><a href="http://arduino.cc/en/Reference/DelayMicroseconds" rel="nofollow">delayMicroseconds()</a></li>
+<li><a href="http://arduino.cc/en/Reference/SoftwareSerial">SoftwareSerial</a> (has been updated in Arduino 1.0)</li>
+</ul>
+<h2>Suggestions and Bug Reports</h2>
+<p>To report problems or suggest changes to the ATtiny support, please use the <a href="https://github.com/damellis/attiny/issues">issues list on GitHub</a>.</p>
+<h2>References</h2>
+<ul>
+<li><a href="http://code.google.com/p/arduino-tiny/">arduino-tiny</a>: alternative approach to ATtiny support for Arduino</li>
+<li><a href="http://arduino.cc/playground/Code/USIi2c">TinyWireM &amp; TinyWireS</a>: Wire (I2C / TWI) library for the ATtiny85 (using USI)</li>
+<li><a href="https://github.com/fri000/Servo8Bit">Servo8Bit</a>: Servo library for the ATtiny45/85.</li>
+</ul>
+<h2>Alternative: ATmega328P on a Breadboard</h2>
+<p>If the ATtiny isn’t quite powerful enough but you still want to use a bare microcontroller instead of a full Arduino board, see this tutorial on <a href="http://arduino.cc/en/Tutorial/ArduinoToBreadboard">using an ATmega328P on a breadboard</a>. It allows you to use all the same functions and libraries as the Arduino Uno, but with just a microcontroller and a few small components.</p>
+</div>
+
+
+
+</div>
+
+<div id="footer">
+<a href="http://highlowtech.org/">High-Low Tech Group</a> :: <a href="http://www.media.mit.edu/">MIT Media Lab</a>
+</div>
+
+
+	<div style="display: none;">
+	</div>
+
+
+
+
+
+	
+	
+</div><img src="g.gif" alt=":)" id="wpstats" width="6" height="5"></body>
+</html>

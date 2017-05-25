@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en-US" class="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Array of Structure in C, Array within Structure in C</title>
+    <meta name="keywords" content="Array of Structure in C, Array within Structure in C, Array structure in C">
+	<meta name="description" content="We can use structure and array as:Array of Structure,Array within Structure.Structure is collection of different data type. An object of structure represents a single record in memory,
+					if we want more than one record of structure type, we have to create an array of structure or object.">
+    <meta name="author" content="templatemo">
+    <!--
+	
+	
+    -->
+
+	<!-- Google Fonts -->
+	
+	
+	
+
+
+	<!-- Stylesheets -->
+	
+	
+	
+
+	<!-- JavaScripts -->
+	
+	
+
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+
+	<div class="responsive_menu">
+        <ul class="main_menu">
+								<li class="active"><a href="http://www.tutorialdost.com/index.html">Home</a></li>
+					            <li><a href="http://www.tutorialdost.com/About-Us.aspx">About Us</a></li>
+					            <li><a href="#">Tutorials</a>
+					            	<ul>
+					            		<li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/C-Tutorial.aspx">C Programming</a></li>
+					            		<li><a href="http://www.tutorialdost.com/Cpp-Programming-Tutorial/01-Cpp-Programming-Tutorial-Introduction.aspx">C++ Tutorials</a></li>
+					            		<li><a href="http://www.tutorialdost.com/Java-Programming-Tutorial/01-Java-Programming-Tutorial-Introduction.aspx">Core Java</a></li>
+					            		<li><a href="http://www.tutorialdost.com/VB-Net-Programming-Tutorial/01-VB-Net-Programming-Tutorial-Introduction.aspx">VB.NET</a></li>
+					            		<li><a href="http://www.tutorialdost.com/C-Sharp-Net-Programming-Tutorial/01-C-Sharp-Net-Programming-Tutorial-Introduction.aspx">C#.NET</a></li>
+					            		<li><a href="http://www.tutorialdost.com/ASP-Net-Programming-Tutorial/ASP-Net-Programming-Tutorial-Introduction.aspx">ASP.NET</a></li>
+					            	</ul>
+					            </li>
+					            <li><a href="http://www.tutorialdost.com/Blog.aspx">Blog</a></li>
+					            <li><a href="http://www.tutorialdost.com/Author.aspx">Author</a></li>
+					            <li><a href="http://www.tutorialdost.com/Feedback.aspx">Feedback</a></li>
+					            <li><a href="http://www.tutorialdost.com/Contact-Us.aspx">Contact</a></li>
+        </ul> <!-- /.main_menu -->
+    </div> <!-- /.responsive_menu -->
+
+	<header class="site-header clearfix site-header-shrink">
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-12">
+
+					<div class="pull-left logo">
+						<a href="http://www.tutorialdost.com/index.html">
+							<img src="logo.png" alt="Medigo by templatemo" width="250px"></a>
+
+					</div>	<!-- /.logo -->
+
+					<div class="main-navigation pull-right">
+
+						<nav class="main-nav visible-md visible-lg">
+							<ul class="sf-menu sf-js-enabled sf-arrows">
+								<li class="active"><a href="http://www.tutorialdost.com/index.html">Home</a></li>
+					            <li><a href="http://www.tutorialdost.com/About-Us.aspx">About Us</a></li>
+					            <li class=""><a class="sf-with-ul" href="#">Tutorials<i class="fa fa-angle-down"></i></a>
+					            	<ul style="display: none;">
+					            		<li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/C-Tutorial.aspx">C Programming</a></li>
+					            		<li><a href="http://www.tutorialdost.com/Cpp-Programming-Tutorial/01-Cpp-Programming-Tutorial-Introduction.aspx">C++ Tutorials</a></li>
+					            		<li><a href="http://www.tutorialdost.com/Java-Programming-Tutorial/01-Java-Programming-Tutorial-Introduction.aspx">Core Java</a></li>
+					            		<li><a href="http://www.tutorialdost.com/VB-Net-Programming-Tutorial/01-VB-Net-Programming-Tutorial-Introduction.aspx">VB.NET</a></li>
+					            		<li><a href="http://www.tutorialdost.com/C-Sharp-Net-Programming-Tutorial/01-C-Sharp-Net-Programming-Tutorial-Introduction.aspx">C#.NET</a></li>
+					            		<li><a href="http://www.tutorialdost.com/ASP-Net-Programming-Tutorial/ASP-Net-Programming-Tutorial-Introduction.aspx">ASP.NET</a></li>
+					            	</ul>
+					            </li>
+					            <li><a href="http://www.tutorialdost.com/Blog.aspx">Blog</a></li>
+					            <li><a href="http://www.tutorialdost.com/Author.aspx">Author</a></li>
+					            <li><a href="http://www.tutorialdost.com/Feedback.aspx">Feedback</a></li>
+					            <li><a href="http://www.tutorialdost.com/Contact-Us.aspx">Contact</a></li>
+							</ul> <!-- /.sf-menu -->
+						</nav> <!-- /.main-nav -->
+
+						<!-- This one in here is responsive menu for tablet and mobiles -->
+					    <div class="responsive-navigation visible-sm visible-xs">
+					        <a href="#nogo" class="menu-toggle-btn">
+					            <i class="fa fa-bars"></i>
+					        </a>
+					    </div> <!-- /responsive_navigation -->
+
+					</div> <!-- /.main-navigation -->
+
+				</div> <!-- /.col-md-12 -->
+
+			</div> <!-- /.row -->
+
+		</div> <!-- /.container -->
+	</header> <!-- /.site-header -->
+
+
+
+	<div class="first-widget parallax" id="blog">
+		<div class="parallax-overlay">
+			<div style="background-position: 50% -17px;" class="container pageTitle">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h1 class="page-title">C Array of Structure, C Array within Structure</h1>
+
+					</div> <!-- /.col-md-6 -->
+					<div class="col-md-6 col-sm-6 text-right">
+						<a href="http://www.tutorialdost.com/ShowProgram.aspx" class="large-button white-color">Programs<!--<i class="icon-button fa fa-download"></i>--></a>
+					</div> <!-- /.col-md-6 -->
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.parallax-overlay -->
+	</div> <!-- /.pageTitle -->
+
+    <!--------------------------Content------------------------------------->
+
+	<div class="container">
+		<div class="row">
+
+
+        			<div class="col-md-04">
+
+						<a id="toggle" href="#"><i class="fa fa-bars"></i></a>
+						<div id="overlay"></div>
+						<nav id="menu">
+
+						<h5 class="widget-title1">Learn C Programming</h5>
+
+						  <ul>
+	                            <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/C-Tutorial.aspx"> C - Home </a></li>
+<li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/01-C-Programming-Tutorial-Introduction.aspx"> C - Introduction </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/02-C-Program-Structure.aspx"> C - Program Structure </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/03-C-Character-Set.aspx"> C - Character Set </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/04-C-Tokens.aspx"> C - Tokens </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/05-C-Keywords.aspx"> C - Keywords </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/06-C-Identifiers.aspx"> C - Identifiers </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/07-C-Data-Types.aspx"> C - Data Types </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/08-C-Variables.aspx"> C - Variables </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/09-C-Operators.aspx"> C - Operators </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/10-C-If-Else.aspx"> C - Flow Control </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/11-C-Loops.aspx"> C - Loops </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/12-C-Jump-Statements.aspx"> C - Jump Statements </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/13-C-Functions.aspx"> C - Function </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/14-C-Storage-Classes.aspx"> C - Storage Classes </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/15-C-Recursion.aspx"> C - Recursion </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/16-C-Array.aspx"> C - Array </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/17-C-Pointers.aspx"> C - Pointers </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/18-C-Pointer-Array.aspx"> C - Pointer &amp; Array </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/19-C-Pointer-Function.aspx"> C - Pointer &amp; Function </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/20-C-String.aspx"> C - String </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/21-C-Structure.aspx"> C - Structure </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/22-C-Structure-Function.aspx"> C - Structure &amp; Function </a></li>
+                                    <li><a class="active" href="http://www.tutorialdost.com/C-Programming-Tutorial/23-C-Structure-Array.aspx"> C - Structure &amp; Array </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/24-C-Nested-Structure.aspx"> C - Nested Structure </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/25-C-Bit-Field.aspx"> C- Bit Field </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/26-C-Union.aspx"> C - Union </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/27-C-File-IO-Handling.aspx"> C - File I/O </a></li>
+                                    <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/28-C-Perprocessors.aspx"> C - Preprocessor </a></li>
+							  </ul>
+							</nav>
+
+			</div> <!-- /.col-md-4 -->
+
+
+			<div class="col-md-08">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="archive-wrapper">
+
+
+			             <p class="Advt">Advertisements</p>
+							<div class="BannerAd">
+								
+<!-- Responsive_Banner -->
+
+							</div>
+
+
+
+
+                            <div class="heading-background"><h2 class="archive-title-h2">Array and Structure in C</h2></div>
+
+					<p>We can use structure and array as : </p>
+                            <ul class="features">
+                                <li>Array of Structure</li>
+                                <li>Array within Structure</li>
+                            </ul>
+                            <br>
+                    <div class="heading-background"><h2 class="archive-title-h2">Array of Structure</h2></div>
+
+					<p>Structure is collection of different data type. An object of structure represents a single record in memory,
+					if we want more than one record of structure type, we have to create an array of structure or object.
+					As we know, an array is a collection of similar type, therefore an array can be of structure type.</p>
+
+				<h3 class="archive-title-h3">Syntax for declaring structure array</h3>
+<pre>
+              struct struct-name
+              {
+                     datatype var1;
+                     datatype var2;
+                     - - - - - - - - - -
+                     - - - - - - - - - -
+                     datatype varN;
+              };
+
+              struct struct-name obj [ size ];
+
+</pre>
+
+
+
+				<h3 class="archive-title-h3">Example for declaring structure array</h3>
+<pre>
+       #include&lt;stdio.h&gt;
+
+       struct Employee
+       {
+              int Id;
+              char Name[25];
+              int Age;
+              long Salary;
+       };
+
+       void main()
+       {
+              int i;
+              struct Employee Emp[ 3 ];         //Statement   1
+
+              for(i=0;i&lt;3;i++)
+              {
+
+              printf("\nEnter details of %d Employee",i+1);
+
+                    printf("\n\tEnter Employee Id : ");
+                    scanf("%d",&amp;Emp[i].Id);
+
+                    printf("\n\tEnter Employee Name : ");
+                    scanf("%s",&amp;Emp[i].Name);
+
+                    printf("\n\tEnter Employee Age : ");
+                    scanf("%d",&amp;Emp[i].Age);
+
+                    printf("\n\tEnter Employee Salary : ");
+                    scanf("%ld",&amp;Emp[i].Salary);
+              }
+
+              printf("\nDetails of Employees");
+              for(i=0;i&lt;3;i++)
+              printf("\n%d\t%s\t%d\t%ld",Emp[i].Id,Emp[i].Name,Emp[i].Age,Emp[i].Salary);
+
+       }
+
+
+   Output :
+
+              Enter details of 1 Employee
+                        Enter Employee Id : 101
+                        Enter Employee Name : Suresh
+                        Enter Employee Age : 29
+                        Enter Employee Salary : 45000
+
+              Enter details of 2 Employee
+                        Enter Employee Id : 102
+                        Enter Employee Name : Mukesh
+                        Enter Employee Age : 31
+                        Enter Employee Salary : 51000
+
+              Enter details of 3 Employee
+                        Enter Employee Id : 103
+                        Enter Employee Name : Ramesh
+                        Enter Employee Age : 28
+                        Enter Employee Salary : 47000
+
+              Details of Employees
+                        101       Suresh      29      45000
+                        102       Mukesh     31      51000
+                        103       Ramesh    28      47000
+
+				</pre>
+
+       <p>In the above example, we are getting and displaying the data of 3 employee using array of object.
+       Statement 1 is creating an array of Employee Emp to store the records of 3 employees.</p>
+
+
+                <div class="heading-background"><h2 class="archive-title-h2">Array within Structure</h2></div>
+
+                 <p>As we know, structure is collection of different data type. Like normal data type, It can also store an array as well.</p>
+
+			<h3 class="archive-title-h3">Syntax for array within structure</h3>
+
+
+<pre>
+              struct struct-name
+              {
+                     datatype var1;                    // normal variable
+                     datatype array [size];          // array variable
+                     - - - - - - - - - -
+                     - - - - - - - - - -
+                     datatype varN;
+              };
+
+              struct struct-name obj;
+
+</pre>
+
+				<h3 class="archive-title-h3">Example for array within structure</h3>
+
+<pre>
+       struct Student
+       {
+              int Roll;
+              char Name[25];
+              int Marks[3];              //Statement 1 : array of marks
+              int Total;
+              float Avg;
+       };
+
+       void main()
+       {
+              int i;
+              struct Student S;
+
+              printf("\n\nEnter Student Roll : ");
+              scanf("%d",&amp;S.Roll);
+
+              printf("\n\nEnter Student Name : ");
+              scanf("%s",&amp;S.Name);
+
+              S.Total = 0;
+
+              for(i=0;i&lt;3;i++)
+              {
+                     printf("\n\nEnter Marks %d : ",i+1);
+                     scanf("%d",&amp;S.Marks[i]);
+
+                     S.Total = S.Total + S.Marks[i];
+              }
+
+              S.Avg = S.Total / 3;
+
+              printf("\nRoll : %d",S.Roll);
+              printf("\nName : %s",S.Name);
+              printf("\nTotal : %d",S.Total);
+              printf("\nAverage : %f",S.Avg);
+       }
+
+   Output :
+
+              Enter Student Roll : 10
+              Enter Student Name : Kumar
+              Enter Marks 1 : 78
+              Enter Marks 2 : 89
+              Enter Marks 3 : 56
+
+              Roll : 10
+              Name : Kumar
+              Total : 223
+              Average : 74.00000
+
+				</pre>
+
+       <p>In the above example, we have
+       created an array Marks[ ] inside structure representing
+       3 marks of a single student. Marks[ ] is now a member of structure student
+       and to access Marks[ ] we have used dot operator(.) along with object S.</p>
+
+
+                            <h3 class="archive-title-h3">Related topics </h3>
+                            <ul class="archive-list">
+                                <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/12-C-Jump-Statements.aspx">Jump statements - break, continue, goto</a></li>
+                                <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/14-C-Storage-Classes.aspx">C storage classes, Local variable, Global variable, External variable, Register variable.</a></li>
+                                <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/22-C-Structure-Function.aspx">Passing &amp; Returning Structure from Function?</a></li>
+								<li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/25-C-Bit-Field.aspx">Explain bit field in c with example?</a></li>
+                                <li><a href="http://www.tutorialdost.com/C-Programming-Tutorial/26-C-Preprocrssors.aspx">C Preprocrssors - #if, #else, #elif, #endif</a></li>
+                            </ul>
+
+
+
+			<div class="FooterAd">
+				<p class="Advt">Advertisement</p>
+					
+<!-- Responsive_Banner -->
+
+				<hr>
+			</div>
+
+<!--FaceBook-->
+
+						</div>
+					</div> <!-- /.col-md-12 -->
+				</div> <!-- /.row -->
+			</div> <!-- /.col-md-8 -->
+
+
+              <div class="col-md-004">
+				<div class="sidebar">
+                    <div class="sidebar-widget">
+                                <h5 class="widget-title">Follow us</h5>
+                                            <div style="margin-top: -15px; margin-bottom: 15px; text-align: center;">
+							                           <a href="http://www.tutorialdost.com/C-Programming-Tutorial/C-Programming-Introduction.aspx" class="social-network-icons"><i class="fa fa-facebook-square fa-2x"></i></a>
+							                           <a href="http://www.tutorialdost.com/C-Programming-Tutorial/C-Programming-Introduction.aspx" class="social-network-icons"><i class="fa fa-google-plus-square fa-2x"></i></a>
+							                           <a href="http://www.tutorialdost.com/C-Programming-Tutorial/C-Programming-Introduction.aspx" class="social-network-icons"><i class="fa fa-twitter-square fa-2x"></i></a>
+							                           <a href="http://www.tutorialdost.com/C-Programming-Tutorial/C-Programming-Introduction.aspx" class="social-network-icons"><i class="fa fa-linkedin-square fa-2x"></i></a>
+                                            </div>
+                       </div> <!-- /.sidebar-widget -->
+
+					<div class="sidebar-widget">
+
+						<p class="Advt">Advertisements</p>
+
+						<div style="margin-bottom: 20px;">
+<!-- 300X200 -->
+
+</div>
+						<div style="margin-bottom: 20px;">
+<!-- 300X600 -->
+
+</div>
+
+
+					</div> <!-- /.sidebar-widget -->
+
+									<!--Add-sidebar-widget-->
+
+
+				</div> <!-- /.sidebar -->
+			</div> <!-- /.col-md-4 -->
+
+
+
+		</div> <!-- /.row -->
+	</div> <!-- /.container -->
+
+
+
+	<div class="container">
+
+	</div> <!-- /.container -->
+
+    	<!--<h2 class="section-title">Recent from our blog</h2>-->
+
+
+    <!--------------------------------------------------------------------------------------------------------------------
+    Archi-Staff-Blog
+    -------------------------------------------------------------------------------------------------------------------->
+
+    <footer class="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<nav class="footer-nav clearfix">
+
+				<h3>Site Map</h3>
+                        <a>Learn C Programming</a><br>
+                        <a>Learn C++ Programming</a><br>
+                        <a>Learn Core Java</a><br>
+                        <a>Learn VB.NET</a><br>
+                        <a>Learn C Sharp.net</a>
+
+					</nav> <!-- /.footer-nav -->
+				</div> <!-- /.col-md-12 -->
+
+				<div class="col-md-4">
+					<nav class="footer-nav clearfix">
+				<h3>Examples</h3>
+                            <a>C Examples</a><br>
+                            <a>C++  Examples</a><br>
+                            <a>Core Java  Examples</a><br>
+                            <a>Visual Basic.NET  Examples</a><br>
+                            <a>C Sharp.net  Examples</a>
+					</nav> <!-- /.footer-nav -->
+				</div> <!-- /.col-md-12 -->
+
+				<div class="col-md-4">
+					<nav class="footer-nav clearfix">
+                            <h3>About Us</h3>
+                            <p style="text-align: justify; color: rgb(68, 68, 68);">This website is designed for readers who have less or no programming experience. Even the experienced programmers will find this website equally useful. We have covered all the basic of C, C++, C#, JAVA, VB.NET, ASP.NET, etc..., programming language with easy examples and their descriptions.</p>
+					</nav> <!-- /.footer-nav -->
+				</div> <!-- /.col-md-12 -->
+
+
+			</div> <!-- /.row -->
+			<div class="row">
+				<div class="col-md-12">
+					<p class="copyright-text">Copyright © 2084 Company Name</p>
+				</div> <!-- /.col-md-12 -->
+			</div> <!-- /.row -->
+		</div> <!-- /.container -->
+	</footer> <!-- /.site-footer -->
+
+	<!-- Scripts -->
+	
+	
+
+
+
+
+
+
+<!-- GoogleAnalytics -->
+
+
+
+</body>
+</html>

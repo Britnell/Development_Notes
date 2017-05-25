@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html class="chrometwo legacyfalse">
+<head>	
+	<meta charset="utf-8" />
+	<title>Page Not Found - Red Hat Customer Portal</title>
+
+	<link type="text/css" href="/chrome_themes/chrometwo/chrometwo.css" rel="stylesheet" />
+	<script type="text/javascript" src="/webassets/avalon/j/lib/require.js"></script>
+	<script type="text/javascript">
+		var siteMapState="";
+	</script>
+</head>
+<body class="page-404" dir="ltr">
+	<div id="chrometwo">  
+		<div id="chromed-app-content">
+			<noscript>
+				<div class="container">
+					<div id="noJavaScript" class="alert alert-warning">Note: Our personalized web services require that your browser be enabled for JavaScript and cookies</div>
+				</div>
+			</noscript>
+			<div class="band">
+				<div class="container">
+					<h1 class="sr-only">Not Found</h1>
+
+<pre class="console">
+    d8888   .d8888b.      d8888  
+   d8P888  d88P  Y88b    d8P888  
+  d8P 888  888    888   d8P 888  
+ d8P  888  888    888  d8P  888  
+d88   888  888    888 d88   888  
+8888888888 888    888 8888888888 
+      888  Y88b  d88P       888  
+      888   "Y8888P"        888  
+
+
+<span class="console-error">Not Found</span>
+
+<p>The page you are looking for is not here. It might have been moved, removed, or had its name and address changed. It might otherwise be temporarily unavailable for technical reasons.</p><p>The good news is that you can probably find what you are looking for by <a href="/knowledge/search">searching the site</a>.</p>
+</pre>
+
+				</div>	
+			</div>
+		<script type="text/javascript">
+			omniturePageType = "errorPage";
+
+			chrometwo_require(['analytics/attributes'], function (attrs) {
+				var errorUrl = "" || window.location.href;
+				attrs.set('ErrorPageName', [404, errorUrl]);
+				attrs.set('ErrorPageType', 'errorPage');
+				//attrs.set('ErrorReferringChannel', ''); // no way to know this yet
+				attrs.set('ErrorChannel', siteMapState);
+				attrs.set('ErrorType', 404);
+			});
+		</script>
+		</div>
+	</div>
+</body>
+</html>

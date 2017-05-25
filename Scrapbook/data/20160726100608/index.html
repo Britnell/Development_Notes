@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema# schema: http://schema.org/" dir="ltr" class="js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths js boxshadow">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="utf-8">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AVR Freaks">
+<meta property="og:url" content="http://community.atmel.com/projects/universal-io-c-classes-should-work-all-8bit-avrs">
+<link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="canonical" href="http://community.atmel.com/projects/universal-io-c-classes-should-work-all-8bit-avrs">
+<link rel="shortlink" href="http://community.atmel.com/node/251551">
+<meta name="generator" content="Drupal 7 (http://drupal.org)">
+<meta content="" about="/projects/universal-io-c-classes-should-work-all-8bit-avrs" property="dc:title">
+<meta name="description" content="I've finished these 2 classes to manage I/O pins. I wanted 3 main things with these libs: &nbsp; - Abstraction, so they work with every 8bit AVR mcu. - To manage different active levels for each pin (useful for pullup pins and such). - Faster than arduino libs. &nbsp; A sample blink.cpp program looks like this:">
+<meta about="/projects/universal-io-c-classes-should-work-all-8bit-avrs" property="sioc:num_replies" content="0" datatype="xsd:integer">
+<meta property="og:description" content="I've finished these 2 classes to manage I/O pins. I wanted 3 main things with these libs: &nbsp; - Abstraction, so they work with every 8bit AVR mcu. - To manage different active levels for each pin (useful for pullup pins and such). - Faster than arduino libs. &nbsp; A sample blink.cpp program looks like this:">
+<meta property="og:title" content="Universal I/O C++ classes that should work with all 8bit AVRs">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Universal I/O C++ classes that should work with all 8bit AVRs | AVR Freaks</title>
+
+
+
+
+
+
+
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="http://community.atmel.com/sites/default/files/css/css_-5FYXt7x7pi1LDVhNX3xqD-mTMEh3bq59MoR4cM3N8Q.css" media="screen" />
+<![endif]-->
+
+<!--[if (lt IE 9)&(!IEMobile 7)]>
+<link type="text/css" rel="stylesheet" href="http://community.atmel.com/sites/default/files/css/css_DqMa2yIJOsRmEDdvyvYEmkQ1UPvriDJ1S7BifKQzo5I.css" media="screen" />
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+<!--[if lt IE 9]>
+<script src="http://community.atmel.com/profiles/commons/themes/contrib/adaptivetheme/at_core/scripts/html5.js?o6e13p"></script>
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-251551 node-type-project fallback-page site-name-hidden atr-7.x-3.x atv-7.x-3.4 palette-active palette-blue-blue gecko firefox win">
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+    <div class="header-wrapper">
+  <div class="header-color-row-one">
+    <header id="header" class="clearfix" role="banner">
+
+              <!-- start: Branding -->
+        <div id="branding" class="branding-elements clearfix branding-mobile">
+                      <div id="logo">
+                <a class="avr-menu-toggle" href="#top"><img class="nav-mobile" typeof="foaf:Image" src="hamburger.png" alt="Menu"></a>
+              <a href="http://community.atmel.com/"><img class="site-logo" typeof="foaf:Image" src="atmel_community_logo_large_1.png" alt="AVR Freaks"></a>              <a href="http://community.atmel.com/" class="mobile-logo-link"><img class="site-logo-mobile" typeof="foaf:Image" src="mobile_logo.png" alt="AVR Freaks"></a>            </div>
+          
+                      <!-- start: Site name and Slogan hgroup -->
+            <hgroup class="element-invisible h-group" id="name-and-slogan">
+
+                              <h1 class="element-invisible" id="site-name"><a href="http://community.atmel.com/" title="Home page">AVR Freaks</a></h1>
+              
+              
+            </hgroup><!-- /end #name-and-slogan -->
+          
+        </div><!-- /end #branding -->
+           
+      <!-- Navigation elements -->
+        <div id="menu-bar" class="nav clearfix"><nav id="block-menu-menu-main-menu-mobile" class="block block-menu menu-wrapper menu-bar-wrapper clearfix odd first block-count-1 block-region-menu-bar block-menu-main-menu-mobile" role="navigation">  
+      <h3 class="element-invisible block-title">Main menu mobile</h3>
+  
+  <ul class="menu clearfix"><li class="first leaf"><a href="http://community.atmel.com/" class="thin">Home</a></li>
+<li class="leaf"><a href="http://community.atmel.com/communities">Communities</a></li>
+<li class="leaf"><a href="http://community.atmel.com/forum" class="thin">Forums</a></li>
+<li class="leaf"><a href="http://community.atmel.com/projects" class="thin">Projects</a></li>
+<li class="leaf"><a href="http://community.atmel.com/vendors" class="thin">Vendors</a></li>
+<li class="leaf"><a href="http://www.avrfreaks.net/wiki" class="thin">Wiki</a></li>
+<li class="leaf"><a href="http://community.atmel.com/search/site" class="thick">Search</a></li>
+<li class="leaf"><a href="http://community.atmel.com/user" class="thin">My summary</a></li>
+<li class="leaf"><a href="http://www.atmel.com/About/privacy.aspx" class="thin" target="_top">Privacy</a></li>
+<li class="leaf"><a href="http://www.atmel.com/About/contact/distributors/default.aspx?contactType=Online%20Directory" class="thin" target="_top">Contact</a></li>
+<li class="leaf"><a href="http://www.atmel.com/About/legal.aspx" class="thin" target="_top">Site Use Terms</a></li>
+<li class="last leaf"><a href="http://www.atmel.com/About/cookies.aspx" class="thin" target="_top">Cookies</a></li>
+</ul>
+  </nav><nav id="block-system-main-menu" class="block block-system block-menu no-title menu-wrapper menu-bar-wrapper clearfix even last block-count-2 block-region-menu-bar block-main-menu" role="navigation">  
+  
+  <ul class="menu clearfix"><li class="first leaf"><a href="http://community.atmel.com/communities">Communities</a></li>
+<li class="leaf active-trail"><a href="http://community.atmel.com/projects" class="active">Projects</a></li>
+<li class="leaf"><a href="http://community.atmel.com/vendors">Vendors</a></li>
+<li class="last leaf"><a href="http://community.atmel.com/wiki/brief-history-artificial-intelligence" title="Wiki">WIKI</a></li>
+</ul>
+  </nav></div>
+      <!-- region: Header -->
+      <div class="region region-header"><div class="region-inner clearfix"><div id="block-avrfreaks-rewrites-avr-header-logout-link" class="block block-avrfreaks-rewrites no-title odd first block-count-3 block-region-header block-avr-header-logout-link"><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><ul class="authentication-links"><li class="signup first"><a href="http://community.atmel.com/user/register">Signup</a></li>
+<li class="login last"><a href="http://community.atmel.com/user/login?destination=home-new">Login</a></li>
+</ul></div>
+  </div></div><div id="block-search-form" class="block block-search no-title even last block-count-4 block-region-header block-form" role="search"><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><form action="http://community.atmel.com/projects/universal-io-c-classes-should-work-all-8bit-avrs" method="post" id="search-block-form" accept-charset="UTF-8" class="form">
+  <div>
+        <div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." class="apachesolr-autocomplete unprocessed form-text" placeholder="What are you interested in?" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" type="search">
+</div>
+<div class="form-item form-type-select form-item-filter-by">
+ <select id="edit-filter-by" name="filter_by" class="form-select"><option value="all">Entire Site</option><option value="forum">All Communities</option><option value="9631">AVR Freaks</option><option value="9636">Atmel SMART ARM-based MCUs</option><option value="9666">Internet of Things</option><option value="9826">Capacitive Touch</option><option value="project">Projects</option><option value="vendor">Vendors</option><option value="wiki">Wiki</option></select>
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input id="edit-submit" name="op" value="Search" class="form-submit" type="submit"></div><input name="form_build_id" value="form-nxV-DCtcpGq_43Akv5GLJXBWjFpRmfpT6VEiXaBdjx8" type="hidden">
+<input name="form_id" value="search_block_form" type="hidden">
+</div>
+  </div>
+</form>
+
+</div>
+  </div></div></div></div>    </header>
+  </div>
+  <div class="header-color-row-two"></div>
+</div>
+<div id="header-second-wrapper" class="header-second">
+        <!-- Breadcrumbs -->
+    <div id="breadcrumb" class="clearfix"><nav class="breadcrumb-wrapper clearfix" role="navigation" aria-labelledby="breadcrumb-label"><h2 id="breadcrumb-label" class="element-invisible">You are here</h2><ol id="crumbs" class="clearfix"><li class="crumb crumb-first"><span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="http://community.atmel.com/">Home</a></span></li><li class="crumb"><span class="crumb-separator"> » </span><span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="http://community.atmel.com/projects">Projects</a></span></li><li class="crumb crumb-last"><span class="crumb-separator"> » </span><span typeof="v:Breadcrumb"><span property="v:title">Universal I/O C++ classes that should work with all 8bit AVRs</span></span></li></ol></nav></div>    </div>
+<div id="page" class="container page">
+
+  <div id="columns" class="columns clearfix">
+    <!-- Messages and Help -->
+    
+    <!-- region: Secondary Content -->
+    
+    <div id="page-top">
+            
+          </div>
+    <div id="content-column" class="content-column" role="main">
+      <div class="content-inner">
+        
+        <!-- region: Highlighted -->
+        
+        <div id="main-content">
+
+          <!-- region: Main Content -->
+                      <div id="content" class="region">
+                <div class="mobile-menu-bar">
+                  <div id="menu-bar" class="nav clearfix"><div id="menu-bar" class="nav clearfix"><nav id="block-menu-menu-main-menu-mobile" class="block block-menu menu-wrapper menu-bar-wrapper clearfix odd first block-count-1 block-region-menu-bar block-menu-main-menu-mobile" role="navigation">  
+      <h3 class="element-invisible block-title">Main menu mobile</h3>
+  
+  <ul class="menu clearfix"><li class="first leaf"><a href="http://community.atmel.com/" class="thin">Home</a></li>
+<li class="leaf"><a href="http://community.atmel.com/communities">Communities</a></li>
+<li class="leaf"><a href="http://community.atmel.com/forum" class="thin">Forums</a></li>
+<li class="leaf"><a href="http://community.atmel.com/projects" class="thin">Projects</a></li>
+<li class="leaf"><a href="http://community.atmel.com/vendors" class="thin">Vendors</a></li>
+<li class="leaf"><a href="http://www.avrfreaks.net/wiki" class="thin">Wiki</a></li>
+<li class="leaf"><a href="http://community.atmel.com/search/site" class="thick">Search</a></li>
+<li class="leaf"><a href="http://community.atmel.com/user" class="thin">My summary</a></li>
+<li class="leaf"><a href="http://www.atmel.com/About/privacy.aspx" class="thin" target="_top">Privacy</a></li>
+<li class="leaf"><a href="http://www.atmel.com/About/contact/distributors/default.aspx?contactType=Online%20Directory" class="thin" target="_top">Contact</a></li>
+<li class="leaf"><a href="http://www.atmel.com/About/legal.aspx" class="thin" target="_top">Site Use Terms</a></li>
+<li class="last leaf"><a href="http://www.atmel.com/About/cookies.aspx" class="thin" target="_top">Cookies</a></li>
+</ul>
+  </nav><nav id="block-system-main-menu" class="block block-system block-menu no-title menu-wrapper menu-bar-wrapper clearfix even last block-count-2 block-region-menu-bar block-main-menu" role="navigation">  
+  
+  <ul class="menu clearfix"><li class="first leaf"><a href="http://community.atmel.com/communities">Communities</a></li>
+<li class="leaf active-trail"><a href="http://community.atmel.com/projects" class="active">Projects</a></li>
+<li class="leaf"><a href="http://community.atmel.com/vendors">Vendors</a></li>
+<li class="last leaf"><a href="http://community.atmel.com/wiki/brief-history-artificial-intelligence" title="Wiki">WIKI</a></li>
+</ul>
+  </nav></div></div>                </div>
+              <div class="one-column at-panel panel-display clearfix">
+  <div class="region region-one-main">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-node-title no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h2>Universal I/O C++ classes that should work with all 8bit AVRs</h2>
+    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-content pane-commons-bw-group page-left no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <article id="node-251551" class="node node-project article odd node-full" about="/projects/universal-io-c-classes-should-work-all-8bit-avrs" typeof="sioc:Item foaf:Document" role="article">
+  
+      <footer class="submitted with-user-picture">
+        <div class="user-picture">
+    <a href="http://community.atmel.com/users/jvalencia" title="View user profile."><img typeof="foaf:Image" class="image-style-thumbnail" src="picture-default.jpg" alt="jvalencia's picture" title="jvalencia's picture"></a>  </div>
+      <p class="author-datetime">Posted by <a href="http://community.atmel.com/users/jvalencia" title="View user profile." class="username" xml:lang="" about="/users/jvalencia" typeof="sioc:UserAccount" property="foaf:name" datatype="">jvalencia</a> on Sun. Apr 24, 2016 - 11:23 AM</p>
+    </footer>
+  
+  <div class="node-content">
+    <div class="form-item form-type-item">
+  <label>Fivestar widget </label>
+ <div class="rate-widget-3 rate-widget clear-block rate-average rate-widget-fivestar rate-a166a2067b41b66efeca971c42eee2f5 rate-node-251551-3-3" id="rate-node-251551-3-3"><div class="item-list"><ul><li class="even first"><span class="rate-button rate-fivestar-btn-empty rate-fivestar-1" id="rate-button-1">1</span></li><li class="odd"><span class="rate-button rate-fivestar-btn-empty rate-fivestar-2" id="rate-button-2">2</span></li><li class="even"><span class="rate-button rate-fivestar-btn-empty rate-fivestar-3" id="rate-button-3">3</span></li><li class="odd"><span class="rate-button rate-fivestar-btn-empty rate-fivestar-4" id="rate-button-4">4</span></li><li class="even last"><span class="rate-button rate-fivestar-btn-empty rate-fivestar-5" id="rate-button-5">5</span></li></ul></div><div class="rate-info">Total votes: 0</div></div>
+</div>
+<section class="field field-name-field-project-type field-type-taxonomy-term-reference field-label-above view-mode-full"><h2 class="field-label">Type:&nbsp;</h2><ul class="field-items"><li class="field-item even"><a href="http://community.atmel.com/projects-types/complete-code" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">Complete code</a></li></ul></section><section class="field field-name-field-compiler-assembler field-type-taxonomy-term-reference field-label-above view-mode-full"><h2 class="field-label">Compiler/Assembler:&nbsp;</h2><ul class="field-items"><li class="field-item even"><a href="http://community.atmel.com/compilers/winavr-gnu-gcc" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">WinAVR (GNU GCC)</a></li></ul></section><div class="field field-name-body field-type-text-with-summary field-label-hidden view-mode-full"><div class="field-items"><div class="field-item even" property="content:encoded"><p>I've finished these 2 classes to manage I/O pins. I wanted 3 main things with these libs:</p>
+<p>&nbsp;</p>
+<p>- Abstraction, so they work with every 8bit AVR mcu.</p>
+<p>- To manage different active levels for each pin (useful for pullup pins and such).</p>
+<p>- Faster than arduino libs.</p>
+<p>&nbsp;</p>
+<p>A sample blink.cpp program looks like this:</p>
+<pre class="c_cpp " data-pbcklang="c_cpp" data-pbcktabsize="4">int main() {
+    Pin led(Port::B, 5, OUTPUT);
+    
+    while(true) {
+        led.high();
+        delay(1000);
+        led.low();
+        delay(1000);
+    }
+}</pre><p>&nbsp;</p>
+<p>If you want to invert the output of that pin, pass the active level to the constructor as this (or use the "mode()" function):</p>
+<pre class="c_cpp " data-pbcklang="c_cpp" data-pbcktabsize="4">int main() {
+    Pin led(Port::B, 5, OUTPUT, LOW);
+    
+    while(true) {
+        led.high();
+        delay(1000);
+        led.low();
+        delay(1000);
+    }
+}</pre><p>&nbsp;</p>
+<p>That way, when issuing a:</p>
+<pre class="c_cpp " data-pbcklang="c_cpp" data-pbcktabsize="4">led.high()</pre><p>the output will be 0 volts accordingly.</p>
+<p>&nbsp;</p>
+<p>Another example, reading the state of a button:</p>
+<p>&nbsp;</p>
+<pre class="c_cpp " data-pbcklang="c_cpp" data-pbcktabsize="4">int main() {
+    Pin led(Port::B, 5, OUTPUT);
+    Pin button(Port::D, 2, INPUT_PULLUP, LOW);
+    
+    while(true) {
+        if (button.active()) {
+            led.toggle();
+            delay(200);
+        }
+    }
+}
+</pre><p>&nbsp;</p>
+<p>For reading a pin we use the "active()" function. This function also understands different activation levels.</p>
+<p>&nbsp;</p>
+<p>In this case we used a internal pull up resistor for the button, so 0 volts means the button is pressed. That's why the button object has LOW in the active level parameter.</p>
+<p>&nbsp;</p>
+<p>Other functions are:</p>
+<p>&nbsp;</p>
+<p>- Pin::high() -&gt; sets that pin to a HIGH "logical" value.</p>
+<p>- Pin::low() -&gt; sets that pin to a LOW "logical" value.</p>
+<p>- Pin::toggle() -&gt; toggle the state of an output pin.</p>
+<p>- Pin::active() -&gt; returns a boolean indicating if that input pin is HIGH or LOW depending on the activation level.</p>
+<p>- Pin::mode() -&gt; change the pin mode and activation level.</p>
+<p>&nbsp;</p>
+<p>The Port class shouldn't be used directly, but you can.</p>
+<p>&nbsp;</p>
+<p>The different Port variables (A, B, C...) are automatically declared if the assosiated PORTX is defined. I've added up to PORTG (atmega256). I think this is the maximum port for any 8bit AVR device.</p>
+<p>&nbsp;</p>
+<p>These libs are GPL v2.</p>
+<p>&nbsp;</p>
+<p>Hope you find the code useful.</p>
+<p>&nbsp;</p>
+</div></div></div><section class="field field-name-field-attach field-type-file field-label-above view-mode-full"><h2 class="field-label">Attachment(s):&nbsp;</h2><div class="field-items"><div class="field-item even"><span class="file"><img class="file-icon" alt="" title="application/zip" src="package-x-generic.png"> <a href="http://community.atmel.com/sites/default/files/project_files/iolibs.zip" type="application/zip; length=3942">iolibs.zip</a></span></div></div></section><span property="foaf:name" content="jvalencia" class="rdf-meta"></span>  </div>
+  
+      <div class="node-tags post-tags">
+      <div class="view view-test-tags view-id-test_tags view-display-id-default view-dom-id-d9b347119ede505d26ab186617b01922">
+            <div class="view-header">
+      <h2 class="field-label">Tags:</h2>
+    </div>
+  
+  
+  
+      <div class="view-content">
+            <div class="views-row-floated">
+        
+  <div class="views-field views-field-name">        <span class="field-content"><a href="http://community.atmel.com/projects-types/complete-code">Complete code</a></span>  </div>              <div class="tags-comma">,&nbsp;</div>          </div>
+      <div class="views-row-floated">
+        
+  <div class="views-field views-field-name">        <span class="field-content"><a href="http://community.atmel.com/compilers/winavr-gnu-gcc">WinAVR (GNU GCC)</a></span>  </div>              <div class="tags-comma">,&nbsp;</div>          </div>
+      <div class="views-row-floated">
+        
+  <div class="views-field views-field-name">        <span class="field-content"><a href="http://community.atmel.com/devices/attiny">Attiny</a></span>  </div>              <div class="tags-comma">,&nbsp;</div>          </div>
+      <div class="views-row-floated">
+        
+  <div class="views-field views-field-name">        <span class="field-content"><a href="http://community.atmel.com/devices/atmega">atmega</a></span>  </div>              <div class="tags-comma">,&nbsp;</div>          </div>
+      <div class="views-row-floated">
+        
+  <div class="views-field views-field-name">        <span class="field-content"><a href="http://community.atmel.com/tags/io-port">I/O port</a></span>  </div>              <div class="tags-comma">,&nbsp;</div>          </div>
+      <div class="views-row-floated">
+        
+  <div class="views-field views-field-name">        <span class="field-content"><a href="http://community.atmel.com/tags/library">Library</a></span>  </div>          </div>
+      </div>
+  
+  
+  
+  
+  
+</div>    </div>
+    
+     <nav class="clearfix">
+             </nav>
+  </article>
+    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+            </div>
+          
+          
+
+          
+        </div><!-- /end #main-content -->
+
+        <!-- region: Content Aside -->
+        
+      </div><!-- /end .content-inner -->
+    </div><!-- /end #content-column -->
+
+    <!-- regions: Sidebar first and Sidebar second -->
+        
+  </div><!-- /end #columns -->
+
+  <!-- region: Tertiary Content -->
+  
+  <!-- region: Footer -->
+  
+</div>
+<div id="footer-second" class="footer-wrapper"><div class="region region-footer-second"><div class="region-inner clearfix"><div id="block-block-6" class="block block-block no-title odd first block-count-5 block-region-footer-second block-6"><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><p>©2015 Atmel Corporation</p>
+</div>
+  </div></div><nav id="block-menu-menu-footer-links" class="block block-menu no-title even last block-count-6 block-region-footer-second block-menu-footer-links" role="navigation"><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><ul class="menu clearfix"><li class="first leaf"><a href="http://www.atmel.com/About/privacy.aspx" target="_top">Privacy</a></li>
+<li class="leaf"><a href="http://www.atmel.com/About/contact/distributors/default.aspx?contactType=Online%20Directory" target="_top">Contact</a></li>
+<li class="leaf"><a href="http://www.atmel.com/About/legal.aspx" target="_top">Site Use Terms</a></li>
+<li class="last leaf"><a href="http://www.atmel.com/About/cookies.aspx" target="_top">Cookies</a></li>
+</ul></div>
+  </div></nav></div></div></div>
+  
+
+</body>
+</html>

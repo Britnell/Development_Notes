@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    
+    <title>Updating an embedded system — Embedded Software Update Documentation 2016.07 documentation</title>
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="top" title="Embedded Software Update Documentation 2016.07 documentation" href="http://sbabic.github.io/swupdate/#">
+    <link rel="next" title="Software Management on embedded systems" href="http://sbabic.github.io/swupdate/overview.html"> 
+  
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px;">
+          <a href="http://sbabic.github.io/swupdate/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="http://sbabic.github.io/swupdate/overview.html" title="Software Management on embedded systems" accesskey="N">next</a> |</li>
+        <li><a href="#">Embedded Software Update Documentation 2016.07 documentation</a> »</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="updating-an-embedded-system">
+<h1>Updating an embedded system<a class="headerlink" href="#updating-an-embedded-system" title="Permalink to this headline">¶</a></h1>
+<p>SWUpdate provides a reliable way to update
+the software on an embedded system.
+Sources are hosted at <a class="reference external" href="https://github.com/sbabic/swupdate">https://github.com/sbabic/swupdate</a></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://sbabic.github.io/swupdate/overview.html">Software Management on embedded systems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/overview.html#updating-through-the-boot-loader">Updating through the boot loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/overview.html#updating-through-a-package-manager">Updating through a package manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/overview.html#strategies-for-an-application-doing-software-upgrade">Strategies for an application doing software upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/overview.html#something-went-wrong">Something went wrong ?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="swupdate-documentation">
+<h1>SWUpdate Documentation<a class="headerlink" href="#swupdate-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://sbabic.github.io/swupdate/swupdate.html">SWUpdate: software update for embedded system</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/swupdate.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/swupdate.html#configuration-and-build">Configuration and build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/swupdate.html#running-swupdate">Running SWUpdate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/swupdate.html#changes-in-boot-loader-code">Changes in boot-loader code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/swupdate.html#building-a-single-image">Building a single image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://sbabic.github.io/swupdate/suricatta.html">Suricatta daemon mode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/suricatta.html#running-suricatta">Running suricatta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/suricatta.html#supporting-different-servers">Supporting different Servers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://sbabic.github.io/swupdate/sw-description.html">SWUpdate: syntax and tags with the default parser</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/sw-description.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/sw-description.html#hardware-compatibility">hardware-compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/sw-description.html#partitions-ubi-layout">partitions : UBI layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/sw-description.html#images">images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/sw-description.html#files">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/sw-description.html#scripts">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/sw-description.html#uboot">uboot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/sw-description.html#board-specific-settings">Board specific settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/sw-description.html#software-collections-and-operation-modes">Software collections and operation modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/sw-description.html#checking-version-of-installed-software">Checking version of installed software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/sw-description.html#attribute-reference">Attribute reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://sbabic.github.io/swupdate/signed_images.html">Update images from verified source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/signed_images.html#signing-the-compound-image">Signing the compound image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/signed_images.html#signing-the-sub-images">Signing the sub-images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/signed_images.html#combining-signing-sw-description-with-hash-verification">Combining signing sw-description with hash verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/signed_images.html#generating-private-and-public-key">Generating private and public key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/signed_images.html#signing-the-swu-image">Signing the SWU image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/signed_images.html#example-for-sw-description-with-signed-image">Example for sw-description with signed image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/signed_images.html#running-swupdate-with-signed-images">Running SWUpdate with signed images</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://sbabic.github.io/swupdate/handlers.html">Handlers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/handlers.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/handlers.html#supplied-handlers">Supplied handlers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/handlers.html#creating-own-handlers">Creating own handlers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/handlers.html#handler-for-ubi-volumes">Handler for UBI Volumes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/handlers.html#extend-swupdate-with-handlers-in-lua">Extend SWUpdate with handlers in LUA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://sbabic.github.io/swupdate/swupdate-ipc.html">SWUpdate: API for external programs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/swupdate-ipc.html#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="help-and-support">
+<h1>Help and support<a class="headerlink" href="#help-and-support" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://sbabic.github.io/swupdate/help_and_support.html">Help and support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/help_and_support.html#mailing-list">Mailing List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/help_and_support.html#presentations-slides">Presentations slides</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://sbabic.github.io/swupdate/roadmap.html">Project’s road-map</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/roadmap.html#swupdate-s-road-map">SWUpdate’s road-map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://sbabic.github.io/swupdate/roadmap.html#suricatta-road-map">Suricatta road-map</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="http://sbabic.github.io/swupdate/genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="http://sbabic.github.io/swupdate/py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="http://sbabic.github.io/swupdate/search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Updating an embedded system</a></li>
+<li><a class="reference internal" href="#swupdate-documentation">SWUpdate Documentation</a></li>
+<li><a class="reference internal" href="#help-and-support">Help and support</a><ul>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="http://sbabic.github.io/swupdate/overview.html" title="next chapter">Software Management on embedded systems</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="http://sbabic.github.io/swupdate/_sources/index.txt" rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="">
+  <h3>Quick search</h3>
+    <form class="search" action="http://sbabic.github.io/swupdate/search.html" method="get">
+      <input value="" name="q" type="text">
+      <input value="Go" type="submit">
+      <input name="check_keywords" value="yes" type="hidden">
+      <input name="area" value="default" type="hidden">
+    </form>
+    <p class="searchtip" style="font-size: 90%;">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px;">
+          <a href="http://sbabic.github.io/swupdate/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="http://sbabic.github.io/swupdate/overview.html" title="Software Management on embedded systems">next</a> |</li>
+        <li><a href="#">Embedded Software Update Documentation 2016.07 documentation</a> »</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        © Copyright 2013-2016, Stefano Babic.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  
+</body>
+</html>

@@ -1,0 +1,19 @@
+body { padding: 0px; margin: 0px; font: 700 11px/14px "Helvetica Neue",Helvetica,Arial,sans-serif; overflow: hidden; }
+.github-btn { height: 20px; overflow: hidden; }
+.gh-btn, .gh-count, .gh-ico { float: left; }
+.gh-btn, .gh-count { padding: 2px 5px 2px 4px; color: rgb(51, 51, 51); text-decoration: none; text-shadow: 0px 1px 0px rgb(255, 255, 255); white-space: nowrap; cursor: pointer; border-radius: 3px; }
+.gh-btn { background-color: rgb(238, 238, 238); background-image: linear-gradient(to bottom, rgb(252, 252, 252) 0px, rgb(238, 238, 238) 100%); background-repeat: no-repeat; border: 1px solid rgb(213, 213, 213); }
+.gh-btn:focus, .gh-btn:hover { text-decoration: none; background-color: rgb(221, 221, 221); background-image: linear-gradient(to bottom, rgb(238, 238, 238) 0px, rgb(221, 221, 221) 100%); border-color: rgb(204, 204, 204); }
+.gh-btn:active { background-image: none; background-color: rgb(220, 220, 220); border-color: rgb(181, 181, 181); box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15) inset; }
+.gh-ico { width: 14px; height: 14px; margin-right: 4px; background-image: url('undefined'); background-size: 100% 100%; background-repeat: no-repeat; }
+.gh-count { position: relative; display: none; margin-left: 4px; background-color: rgb(250, 250, 250); border: 1px solid rgb(212, 212, 212); }
+.gh-count:focus, .gh-count:hover { color: rgb(65, 131, 196); }
+.gh-count::after, .gh-count::before { content: ""; position: absolute; display: inline-block; width: 0px; height: 0px; border-color: transparent; border-style: solid; }
+.gh-count::before { top: 50%; left: -3px; margin-top: -4px; border-width: 4px 4px 4px 0px; border-right-color: rgb(250, 250, 250); }
+.gh-count::after { top: 50%; left: -4px; z-index: -1; margin-top: -5px; border-width: 5px 5px 5px 0px; border-right-color: rgb(212, 212, 212); }
+.github-btn-large { height: 30px; }
+.github-btn-large .gh-btn, .github-btn-large .gh-count { padding: 3px 10px 3px 8px; font-size: 16px; line-height: 22px; border-radius: 4px; }
+.github-btn-large .gh-ico { width: 20px; height: 20px; }
+.github-btn-large .gh-count { margin-left: 6px; }
+.github-btn-large .gh-count::before { left: -5px; margin-top: -6px; border-width: 6px 6px 6px 0px; }
+.github-btn-large .gh-count::after { left: -6px; margin-top: -7px; border-width: 7px 7px 7px 0px; }

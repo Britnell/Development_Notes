@@ -1,0 +1,773 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<meta name="keywords" content="Programming, C++, C++ tutorials, C++ programming, C programming, tutorials, C++ compilers, c compilers, source code, basic C++ tutorials, Programming in C++, tutorial, DJGPP, source code, Programming, C, tutorial, DJGPP, C++ source code, basic C++ tutorial, programming quiz, computer science, computer science quiz, C++ quiz, computer programming, programming computers, how to program computers">
+<meta name="Description" content="The C preprocessor modifies source files prior to compilation, handling include statements and macros.">
+
+<title>Tutorials - C Preprocessor Tricks - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+
+
+
+
+<!-- END ADDED DFP -->
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div>
+
+<a href="http://www.cprogramming.com/"><img class="logo noprint" src="title.png" border="0" height="83" width="324"></a> 
+
+<table class="line noprint"><tbody><tr><td></td></tr></tbody></table>
+<div class="noprint" style="padding-top: 25px; padding-right: 25px;" align="right">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" type="hidden">
+    <input name="ie" value="ISO-8859-1" type="hidden">
+    <input value="" style="border: 1px solid rgb(126, 157, 185); padding: 2px; background: rgb(255, 255, 255) url('google_custom_search_watermark.gif') no-repeat scroll left center;" name="q" size="31" type="text">
+    <input name="sa" value="Search" type="submit">
+  </div>
+<input value="www.cprogramming.com/tutorial/cpreprocessor.html" name="siteurl" type="hidden"><input value="www.google.com" name="ref" type="hidden"><input name="ss" type="hidden"></form>
+
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tbody><tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" bgcolor="#EBEBEB" valign="top" width="130"> 
+     <div class="menu" valign="top" style="font-size: 14px; width: 200px;">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="bullet.gif" height="14" width="11">    Starting out
+     </p>
+
+     <p class="navlist" style="font-size: 14px;" align="left">
+             <a href="http://www.cprogramming.com/c++book/?inl=sb">Get the Ebook</a><br>
+             <a href="http://www.cprogramming.com/begin.html">Get Started with C or C++</a><br>
+             <a href="http://www.cprogramming.com/compilers.html">Getting a Compiler</a><br>
+             <a href="http://www.cprogramming.com/books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="bullet.gif" height="14" width="11"> Tutorials
+     </p>
+
+     <p class="navlist" style="font-size: 14px;" align="left">
+            <a href="http://www.cprogramming.com/tutorial/c-tutorial.html">C Tutorial</a><br>
+            <a href="http://www.cprogramming.com/tutorial/c++-tutorial.html">C++ Tutorial</a><br>
+            <a href="http://www.cprogramming.com/java-programming.html">Java Tutorial</a><br>
+            <a href="http://www.cprogramming.com/game-programming.html">Game Programming</a><br>
+            <a href="http://www.cprogramming.com/graphics-programming.html">Graphics Programming</a><br>
+            <a href="http://www.cprogramming.com/algorithms-and-data-structures.html">Algorithms &amp; Data Structures</a><br>
+            <a href="http://www.cprogramming.com/debuggers.html">Debugging</a><br>
+            <a href="http://www.cprogramming.com/tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="bullet.gif" height="14" width="11"> Practice
+     </p>
+
+     <p class="navlist" style="font-size: 14px;" align="left">
+            <a href="http://www.cprogramming.com/challenge.html">Practice Problems</a><br>
+            <a href="http://www.cprogramming.com/quiz/">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="bullet.gif" height="14" width="11"> Resources
+     </p>
+
+     <p class="navlist" style="font-size: 14px;" align="left">
+            <a href="http://www.cprogramming.com/cgi-bin/source/source.cgi">Source Code</a><br>
+            <a href="http://www.cprogramming.com/snippets/">Source Code Snippets</a><br>
+            <a href="http://www.cprogramming.com/tips/">C and C++ Tips</a><br>
+            <a href="http://www.cprogramming.com/jobs/">Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="bullet.gif" height="14" width="11"> References
+     </p>
+
+     <p class="navlist" style="font-size: 14px;" align="left">
+            <a href="http://www.cprogramming.com/function.html">Function Reference</a><br>
+            <a href="http://www.cprogramming.com/reference/">Syntax Reference</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="bullet.gif" height="14" width="11"> Getting Help
+     </p>
+
+     <p class="navlist" style="font-size: 14px;" align="left">
+             <a href="http://www.cprogramming.com/board.html">Message Board</a><br>
+             <a href="http://www.cprogramming.com/email.html">Email</a><br>
+             <a href="http://www.cprogramming.com/about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     
+     
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>The C Preprocessor</h1>
+
+<div style="margin-right: 1em; float: left; padding: 0.4em; border-right: 1px solid rgb(187, 187, 187);"><img src="alex-50-50.jpg" style="padding: 0.25em;" border="0"><br><a href="https://plus.google.com/113987539774523532573?rel=author"> By Alex Allain</a></div>
+
+The C preprocessor modifies a source code file before handing it over to the
+compiler.  You're most likely used to using the preprocessor to include files
+directly into other files, or #define constants, but the preprocessor can also
+be used to create "inlined" code using macros expanded at compile time and
+to prevent code from being compiled twice.
+<br><br><center>
+<div class="noprint">
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+
+</div>
+
+
+</center>
+  <br><br>
+There are essentially three uses of the preprocessor--directives, constants,
+and macros.  Directives are commands that tell the preprocessor to skip part
+of a file, include another file, or define a constant or macro.  Directives
+always begin with a sharp sign (#) and for readability should be placed flush
+to the left of the page.  All other uses of the preprocessor involve
+processing #define'd constants or macros.  Typically, constants and macros are
+written in ALL CAPS to indicate they are special (as we will see).
+
+<h2>Header Files</h2>
+
+The #include directive tells the preprocessor to grab the text of a file and
+place it directly into the current file.  Typically, such statements are
+placed at the top of a program--hence the name "header file" for files thus
+included.
+
+<h2>Constants</h2>
+
+If we write
+
+<pre class="example">#define [identifier name] [value]
+</pre>
+
+whenever [identifier name] shows up in the file, it will be replaced by
+[value].  
+
+<br><br>
+If you are defining a constant in terms of a mathematical
+expression, it is wise to surround the entire value in parentheses:
+
+<pre class="example">#define PI_PLUS_ONE (3.14 + 1)
+</pre>
+
+By doing so, you avoid the possibility that an order of operations issue will
+destroy the meaning of your constant:
+
+<pre class="example">x = PI_PLUS_ONE * 5;
+</pre>
+
+Without parentheses, the above would be converted to 
+
+<pre class="example">x = 3.14 + 1 * 5;
+</pre>
+
+which would result in 1 * 5 being evaluated before the addition, not after.
+Oops!
+
+<br><br>
+It is also possible to write simply
+
+<pre class="example">#define [identifier name]
+</pre>
+
+which defines [identifier name] without giving it a value.  This can be useful
+in conjunction with another set of directives that allow conditional
+compilation.
+
+<h2>Conditional Compilation</h2>
+
+There are a whole set of options that can be used to determine whether the
+preprocessor will remove lines of code before handing the file to the
+compiler.  They include #if, #elif, #else, #ifdef, and #ifndef.  An #if or
+#if/#elif/#else block or a #ifdef or #ifndef block must be terminated with a
+closing #endif.
+<br><br>
+The #if directive takes a numerical argument that evaluates to true if it's
+non-zero.  If its argument is false, then code until the closing #else, #elif,
+of #endif will be excluded.  
+
+<h3>Commenting out Code</h3>
+Conditional compilation is a particularly useful way to comment out a block of
+code that contains multi-line comments (which cannot be nested).
+
+<pre class="example">#if 0
+/* comment ...
+*/
+
+// code
+
+/* comment */
+#endif
+</pre>
+
+<h3>Include Guards</h3>
+
+Another common problem is that a header file is required in multiple other
+header files that are later included into a source code file, with the result
+often being that variables, structs, classes or functions appear to be defined
+multiple times (once for each time the header file is included).  This can
+result in a lot of compile-time headaches.  Fortunately, the preprocessor
+provides an easy technique for ensuring that any given file is included once
+and only once.
+<br><br>
+By using the #ifndef directive, you can include a block of text only if a
+particular expression is undefined; then, within the header file, you can
+define the expression.  This ensures that the code in the #ifndef is included
+only the first time the file is loaded.
+
+<pre class="example">#ifndef _FILE_NAME_H_
+#define _FILE_NAME_H_
+
+/* code */
+
+#endif // #ifndef _FILE_NAME_H_
+</pre>
+
+Notice that it's not necessary to actually give a value to the expression
+_FILE_NAME_H_.  It's sufficient to include the line "#define _FILE_NAME_H_" to
+make it "defined".  (Note that there is an <b>n</b> in #ifndef--it stands for
+"if not defined").
+<br><br>
+A similar tactic can be used for defining specific constants, such as NULL:
+
+<pre class="example">#ifndef NULL
+#define NULL (void *)0
+#endif // #ifndef NULL
+</pre>
+
+Notice that it's useful to comment which conditional statement a particular
+#endif terminates.  This is particularly true because preprocessor directives
+are rarely indented, so it can be hard to follow the flow of execution.
+<br><br>
+On many compilers, the <a href="http://www.cprogramming.com/reference/preprocessor/pragma.html">#pragma once</a> directive can be used intead of include guards.
+
+<h2>Macros</h2>
+
+The other major use of the preprocessor is to define macros.  The advantage of
+a macro is that it can be type-neutral (this can also be a disadvantage, of
+course), and it's inlined directly into the code, so there isn't any
+function call overhead.  (Note that in C++, it's possible to get around both
+of these issues with templated functions and the inline keyword.)
+<br><br>
+A macro definition is usually of the following form:
+
+<pre class="example">#define MACRO_NAME(arg1, arg2, ...) [code to expand to]
+</pre>
+
+For instance, a simple increment macro might look like this:
+
+<pre class="example">#define INCREMENT(x) x++
+</pre>
+
+They look a lot like function calls, but they're not so simple.  There are
+actually a couple of tricky points when it comes to working with macros.
+First, remember that the exact text of the macro argument is "pasted in" to
+the macro.  For instance, if you wrote something like this:
+
+<pre class="example">#define MULT(x, y) x * y
+</pre>
+
+and then wrote
+<pre class="example">int z = MULT(3 + 2, 4 + 2);
+</pre>
+
+what value do you expect z to end up with?  The obvious answer, 30, is wrong!
+That's because what happens when the macro MULT expands is that it looks like
+this:
+
+<pre class="example">int z = 3 + 2 * 4 + 2;    // 2 * 4 will be evaluated first!
+</pre>
+
+So z would end up with the value 13!  This is almost certainly not what you
+want to happen.  The way to avoid it is to force the arguments themselves to
+be evaluated before the rest of the macro body.  You can do this by
+surrounding them by parentheses in the macro definition:
+
+<pre class="example">#define MULT(x, y) (x) * (y)
+// now MULT(3 + 2, 4 + 2) will expand to (3 + 2) * (4 + 2)
+</pre>
+
+But this isn't the only gotcha!  It is also generally a good idea to surround
+the macro's code in parentheses if you expect it to return a value.
+Otherwise, you can get similar problems as when you define a constant.  For
+instance, the following macro, which adds 5 to a given argument, has problems
+when embedded within a larger statement:
+
+<pre class="example">#define ADD_FIVE(a) (a) + 5
+
+int x = ADD_FIVE(3) * 3;
+// this expands to (3) + 5 * 3, so 5 * 3 is evaluated first
+// Now x is 18, not 24!
+</pre>
+
+To fix this, you generally want to surround the whole macro body with
+parentheses to prevent the surrounding context from affecting the macro body.
+<pre class="example">#define ADD_FIVE(a) ((a) + 5)
+
+int x = ADD_FIVE(3) * 3;
+</pre>
+
+On the other hand, if you have a multiline macro that you are using for its
+side effects, rather than to compute a value, you probably want to wrap it
+within curly braces so you don't have problems when using it following an if
+statement.
+
+<pre class="example">// We use a trick involving exclusive-or to swap two variables
+#define SWAP(a, b)  a ^= b; b ^= a; a ^= b; 
+
+int x = 10;
+int y = 5;
+
+// works OK
+SWAP(x, y);
+
+// What happens now?
+if(x &lt; 0)
+    SWAP(x, y);
+</pre>
+
+When SWAP is expanded in the second example, only the first statement, a ^= b,
+is governed by the conditional; the other two statements will always execute.
+What we really meant was that all of the statements should be grouped
+together, which we can enforce using curly braces:
+
+<pre class="example">#define SWAP(a, b)  {a ^= b; b ^= a; a ^= b;} 
+</pre>
+
+Now, there is still a bit more to our story! What if you write code like so:
+
+<pre class="example">#define SWAP(a, b)  { a ^= b; b ^= a; a ^= b; }
+
+int x = 10;
+int y = 5;
+int z = 4;
+
+// What happens now?
+if(x &lt; 0)
+    SWAP(x, y);
+else
+    SWAP(x, z); 
+</pre>
+
+Then it will not compile because semicolon after the closing curly brace will
+break the flow between if and else. The solution? Use a do-while loop:
+
+<pre class="example">#define SWAP(a, b)  do { a ^= b; b ^= a; a ^= b; } while ( 0 )
+
+int x = 10;
+int y = 5;
+int z = 4;
+
+// What happens now?
+if(x &lt; 0)
+    SWAP(x, y);
+else
+    SWAP(x, z); 
+</pre>
+
+Now the semi-colon doesn't break anything because it is part of the
+expression.
+
+(By the way, note that we didn't surround the arguments in parentheses because
+we don't expect anyone to pass an expression into swap!)
+<h3>More Gotchas</h3>
+
+By now, you've probably realized why people don't really like using macros.
+They're dangerous, they're picky, and they're just not that safe.  Perhaps the
+most irritating problem with macros is that you don't want to pass arguments
+with "side effects" to macros.  By side effects, I mean any expression that
+does something besides evaluate to a value.  For instance, ++x evaluates to
+x+1, but it also increments x.  This increment operation is a side effect.
+<br><br>
+The problem with side effects is that macros don't evaluate their arguments;
+they just paste them into the macro text when performing the substitution.  So
+something like
+
+<pre class="example">#define MAX(a, b) ((a) &lt; (b) ? (b) : (a))
+int x = 5, y = 10;
+int z = MAX(x++, y++);
+</pre>
+
+will end up looking like this:
+
+<pre class="example">int z = (x++ &lt; y++ ? y++ : x++)
+</pre>
+
+The problem here is that y++ ends up being evaluated twice!  The nasty
+consequence is that after this expression, y will have a value of 12 rather
+than the expected 11.  This can be a real pain to debug!
+
+<h2>Multiline macros</h2>
+
+Until now, we've seen only short, one line macros (possibly taking advantage
+of the semicolon to put multiple statements on one line.)  It turns out that by
+using a the "\" to indicate a line continuation, we can write our macros
+across multiple lines to make them a bit more readable.  
+<br><br>
+For instance, we could rewrite swap as
+<pre class="example">#define SWAP(a, b)  {                   \
+                        a ^= b;         \
+                        b ^= a;         \ 
+                        a ^= b;         \
+                    } 
+</pre>
+
+Notice that you <b>do not</b> need a slash at the end of the last line!  The
+slash tells the preprocessor that the macro continues to the next line, not
+that the line is a continuation from a previous line.
+<br><br>
+Aside from readability, writing multi-line macros may make it more obvious
+that you need to use curly braces to surround the body because it's more clear
+that multiple effects are happening at once.
+
+<h2>Advanced Macro Tricks</h2>
+
+In addition to simple substitution, the preprocessor can also perform a bit of
+extra work on macro arguments, such as turning them into strings or pasting
+them together.
+
+<h3>Pasting Tokens</h3>
+
+Each argument passed to a macro is a token, and sometimes it might be
+expedient to paste arguments together  to form a new token.  This could come in
+handy if you have a complicated structure and you'd like to debug your program
+by printing out different fields.  Instead of writing out the whole structure
+each time, you might use a macro to pass in the field of the structure to
+print.
+<br><br>
+To paste tokens in a macro, use ## between the two things to paste together.
+<br><br>
+For instance
+
+<pre class="example">#define BUILD_FIELD(field) my_struct.inner_struct.union_a.##field
+</pre>
+
+Now, when used with a particular field name, it will expand to something like
+
+<pre class="example">my_struct.inner_struct.union_a.field1
+</pre>
+
+The tokens are literally pasted together.
+
+<h3>String-izing Tokens</h3>
+
+Another potentially useful macro option is to turn a token into a string
+containing the literal text of the token.  This might be useful for printing
+out the token.  The syntax is simple--simply prefix the token with a pound
+sign (#).
+
+<pre class="example">#define PRINT_TOKEN(token) printf(#token " is %d", token)
+</pre>
+
+For instance, PRINT_TOKEN(foo) would expand to
+<pre class="example">printf("&lt;foo&gt;" " is %d" &lt;foo&gt;)
+</pre>
+
+(Note that in C, string literals next to each other are concatenated, so
+something like "token" " is " " this " will effectively become "token is
+this".  This can be useful for formatting printf statements.)
+<br><br>
+For instance, you might use it to print the value of an expression as well as
+the expression itself (for debugging purposes).
+
+<pre class="example">PRINT_TOKEN(x + y);
+</pre>
+
+<h2>Avoiding Macros in C++</h2>
+
+In C++, you should generally avoid macros when possible.  You won't be able to
+avoid them entirely if you need the ability to paste tokens together, but with
+<a href="http://www.cprogramming.com/tutorial/templates.html">templated
+classes</a> and type inference for <a href="http://www.cprogramming.com/tutorial/templated_functions.html">templated functions</a>, you shouldn't need to
+use macros to create type-neutral code. <a href="http://www.cprogramming.com/tutorial/lesson13.html">Inline functions</a> should
+also get rid of the need for macros for efficiency reasons.  (Though you
+aren't guaranteed that the compiler will inline your code.)
+<br><br>
+Moreover, you should use const to declare typed constants rather than #define
+to create untyped (and therefore less safe) constants.   Const should work in
+pretty much all contexts where you would want to use a #define, including
+declaring static sized arrays or as template parameters.
+
+<!-- removed chitika -->
+ 
+               <hr>
+<b>Related articles<br><br><a href="http://www.cprogramming.com/tutorial/templates.html">Introduction
+               to Templates in C++</a><br><br><a href="http://www.cprogramming.com/tutorial/templated_functions.html">Template
+               Functions in C++</a>
+               
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top: 5px; height: 23px;">
+<table>
+<tbody><tr>
+<td> 
+<div id="fb-root"></div>
+<div data-href="http://www.cprogramming.com/tutorial/cpreprocessor.html" id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<iframe src="index_1.html" title="Twitter Tweet Button" style="position: static; visibility: visible; width: 61px; height: 20px;" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe>
+</td>
+<td>
+<div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px;"><iframe title="+1" data-gapiattached="true" src="index_2.html" name="I0_1469014558303" id="I0_1469014558303" vspace="0" tabindex="0" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" frameborder="0" width="100%"></iframe></div>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+<div style="font-size: 14px; padding: 10px; margin-top: 5px; margin-bottom: 5px;">
+<div style="width: 400px; margin-top: 10px; float: left; margin-bottom: 15px;">
+    <div id="old-ad" style="display: block;">
+    <a href="http://www.cprogramming.com/c++book/?inl=ft-nhp"><img src="small_3d.jpg" align="left" border="0"></a><a href="http://www.cprogramming.com/c++book/?inl=ft-nhp">Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. Get Jumping into C++ today!</a>
+    </div>
+    <div id="new-ad" style="display: none;" onmousedown="window.location.href='http://www.cprogramming.com/c++book/?inl=ft-na'">
+    <object height="280" width="336"><param name="bottom-ad" value="http://www.cprogramming.com/c++book/336x280.swf"><param name="wmode" value="transparent"><embed class="wiyqsjvmsruwotkrjvdz" wmode="transparent" allowfullscreen="true" allowscriptaccess="always" src="336x280.swf" height="280" width="336"></object>
+    </div>
+</div>
+<div style="clear: both;"></div>
+
+
+
+
+<b>Popular pages</b>
+<ul>
+ <li><a href="http://www.cprogramming.com/begin.html">Exactly how to get started with C++ (or C) today</a> 
+</li><li><a href="http://www.cprogramming.com/tutorial/c-tutorial.html">C Tutorial</a>
+</li><li><a href="http://www.cprogramming.com/tutorial/c++-tutorial.html">C++ Tutorial</a>
+</li><li><a href="http://www.cprogramming.com/how_to_learn_to_program.html">5 ways you can learn to program faster</a> 
+</li><li><a href="http://www.cprogramming.com/beginner_programming_mistakes.html">The 5 Most Common Problems New Programmers Face</a>
+</li><li><a href="http://www.cprogramming.com/code_blocks/">How to set up a compiler</a>
+</li><li><a href="http://www.cprogramming.com/tutorial/common.html">8 Common programming Mistakes</a> 
+</li><li><a href="http://www.cprogramming.com/c++11/what-is-c++0x.html">What is C++11?</a>
+</li><li><a href="http://www.cprogramming.com/tutorial/game_programming/same_game_part1.html">How to make a game in 48 hours</a>
+</li></ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="feed-icon16x16.png" alt="subscribe to a feed" style="border: 0px none;" height="16" width="16"></a>
+<ul>
+<li><a href="http://www.cprogramming.com/tutorial/shared-libraries-linux-gcc.html">How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="http://www.cprogramming.com/c++11/c++11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="http://www.cprogramming.com/tutorial/computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="http://www.cprogramming.com/c++11/rvalue-references-and-move-semantics-in-c++11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="http://www.cprogramming.com/java/c-and-c++-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="http://www.cprogramming.com/tutorial/c++-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+</div>
+<div id="ld-6395-8166"></div>
+
+
+<div class="cse-branding-bottom" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); width: 50%; margin: auto;">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input name="cx" value="partner-pub-2560316224908115:0581759109" type="hidden">
+        <input name="ie" value="UTF-8" type="hidden">
+        <input value="" name="q" size="55" type="text">
+        <input name="sa" value="Search" type="submit">
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="poweredby_ffffff.gif" alt="Google">
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+
+<center>
+<div style="margin-top: 20px; margin-bottom: 20px;">
+ 
+ 
+</div>
+ 
+<form method="post" class="af-form-wrapper" accept-charset="UTF-8" action="https://www.aweber.com/scripts/addlead.pl"><div style="display: none;"><input name="meta_web_form_id" value="618210012" type="hidden"><input name="meta_split_id" value="" type="hidden"><input name="listname" value="cprogramming" type="hidden"><input name="redirect" value="http://www.cprogramming.com/ml_thankyou.html" id="redirect_f007f3cf6fc16a93c62f885ebbef1074" type="hidden"><input name="meta_adtracking" value="inline" type="hidden"><input name="meta_message" value="1" type="hidden"><input name="meta_required" value="email" type="hidden"><input name="meta_tooltip" value="" type="hidden"></div><div id="af-form-618210012" class="af-form"><div id="af-header-618210012" class="af-header"><div class="bodyText"><center><div><div>Join our mailing list to keep up with the latest news and updates about Cprogramming.com!</div>&nbsp;</div></center></div></div><div id="af-body-618210012" class="af-body af-standards"><div class="af-element"><label class="previewLabel" for="awf_field-28821296">Name</label><div class="af-textWrap"><input id="awf_field-28821296" name="name" class="text" value="" onfocus=" if (this.value == '') { this.value = ''; }" onblur="if (this.value == '') { this.value='';} " tabindex="500" type="text"></div><div class="af-clear"></div></div><div class="af-element"><label class="previewLabel" for="awf_field-28821297">Email</label><div class="af-textWrap"><input class="text" id="awf_field-28821297" name="email" value="" tabindex="501" onfocus=" if (this.value == '') { this.value = ''; }" onblur="if (this.value == '') { this.value='';} " type="text"></div><div class="af-clear"></div></div><div class="af-element"><div class="bodyText"><center></center></div><div class="af-clear"></div></div><div class="af-element buttonContainer"><input name="submit" id="af-submit-image-618210012" class="image" style="background: transparent none repeat scroll 0% 0%; max-width: 100%;" alt="Submit Form" src="button.png" tabindex="502" type="image"><div class="af-clear"></div></div><div class="af-element" style="text-align: center;"><img src="untitled" alt="Subscriber Counter"></div></div><div id="af-footer-618210012" class="af-footer"><div class="bodyText"><p>&nbsp;</p></div></div></div></form>
+
+<div class="footer-links" style="padding: 10px;">
+<a href="http://www.cprogramming.com/advertising.html">Advertising</a> | <a href="http://www.cprogramming.com/privacy.html">Privacy policy</a> |
+<a href="http://www.cprogramming.com/use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href="mailto:webmaster@cprogramming.com">webmaster@cprogramming.com</a>
+</div>
+</center></div>
+</b></div><b>
+</b></td>
+    	
+
+
+<td class="content noprint" rowspan="1" bgcolor="#EBEBEB" valign="top">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+
+
+
+
+</div><br>
+
+
+    <div id="side-images">
+        <div style="padding: 5px; margin-top: 5px;">
+            <div style="margin-bottom: 5px;">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class="sidebar-box">
+                    <a href="http://www.cprogramming.com/tutorial/c-tutorial.html">
+                    <img src="5620208_bff9c514e6_s.jpg" alt="C tutorial" border="0" height="75" width="75">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class="sidebar-box">
+                    <a href="http://www.cprogramming.com/begin.html">
+                    <img src="2855530649_905f7862fd_s.jpg" alt="Get started" border="0" height="75" width="75">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class="sidebar-box">
+                    <a href="http://www.cprogramming.com/how_to_learn_to_program.html">
+                    <img src="6505012533_55c83fdfa0_s.jpg" alt="Learn to program" border="0" height="75" width="75">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class="sidebar-box">
+                    <a href="http://www.cprogramming.com/tutorial/c++-tutorial.html">
+                    <img src="c++-img.png" alt="C++ tutorial" border="0" height="75" width="75">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class="sidebar-box">
+                    <a href="http://www.cprogramming.com/beginner_programming_mistakes.html">
+                    <img src="3441263816_95f132a884_s.jpg" alt="Problems new programmers face" border="0" height="75" width="75">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class="sidebar-box">
+                   <a href="http://www.cprogramming.com/tutorial/game_programming/same_game_part1.html">
+                    <img src="same_game_small.png" alt="Learn to make a game" border="0" height="42" width="42">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class="sidebar-box">
+                   <a href="http://www.cprogramming.com/tutorial/common.html">
+                    <img src="2291127824_087a497bea_s.jpg" alt="Common problems" border="0" height="75" width="75">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class="sidebar-box">
+                   <a href="http://www.cprogramming.com/c++11/what-is-c++0x.html">
+                    <img src="c++11.png" alt="C++11" border="0" height="75" width="75">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display: block;">
+            <a href="http://www.cprogramming.com/image_credits.html">Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div><iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="index_3.html" id="oauth2relay501799488" name="oauth2relay501799488"></iframe><iframe src="index_4.html" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" allowfullscreen="true" allowtransparency="true" scrolling="no" id="rufous-sandbox" frameborder="0"></iframe></body>
+</html>

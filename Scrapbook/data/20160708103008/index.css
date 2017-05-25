@@ -1,0 +1,74 @@
+/* ::::: https://wiki.python.org/wiki/europython/css/common.css ::::: */
+
+html { background-color: white; color: black; font-family: sans-serif; font-size: 1em; }
+body { margin: 0px; line-height: 1.3; }
+a:link { color: rgb(0, 0, 238); }
+a:visited { color: rgb(85, 26, 139); }
+a { color: rgb(0, 0, 238); }
+#content a { text-decoration: none; border-bottom: 1px dashed rgb(221, 221, 221); }
+a:hover, a:visited:hover { color: rgb(0, 0, 0); }
+a.nonexistent:visited, a.nonexistent, a.badinterwiki:visited, a.badinterwiki { color: gray; }
+a.www::before { content: url('moin-www.png'); margin: 0px 0.2em; }
+a.http::before { content: url('moin-www.png'); margin: 0px 0.2em; }
+a.https::before { content: url('moin-www.png'); margin: 0px 0.2em; }
+a.file::before { content: url('moin-ftp.png'); margin: 0px 0.2em; }
+a.ftp::before { content: url('moin-ftp.png'); margin: 0px 0.2em; }
+a.nntp::before { content: url('moin-news.png'); margin: 0px 0.2em; }
+a.news::before { content: url('moin-news.png'); margin: 0px 0.2em; }
+a.telnet::before, a.ssh::before { content: url('moin-telnet.png'); margin: 0px 0.2em; }
+a.irc::before, a.ircs::before { content: url('moin-telnet.png'); margin: 0px 0.2em; }
+a.mailto::before { content: url('moin-email.png'); margin: 0px 0.2em; }
+a.attachment::before { content: url('moin-attach.png'); margin: 0px 0.2em; }
+a.badinterwiki::before { content: url('moin-inter.png'); margin: 0px 0.2em; }
+a.interwiki::before { content: url('moin-inter.png'); margin: 0px 0.2em; }
+a, img, img.drawing { border: 0px none; }
+pre { border: 1pt solid rgb(174, 189, 204); background-color: rgb(243, 245, 247); padding: 5pt; font-family: courier,monospace; white-space: pre-wrap; word-wrap: break-word; }
+pre.comment::before { content: url('attention.png'); }
+.info { float: right; font-size: 0.7em; color: gray; }
+#pageinfo { margin-top: 2em; }
+#pagebottom { clear: both; }
+hr { height: 1pt; background-color: rgb(156, 156, 156); border: 0px none; }
+#message .info::before { content: url('icon-info.png'); margin: 0px 0.2em; }
+#message .warning::before { content: url('alert.png'); margin: 0px 0.2em; }
+#message .error::before { content: url('icon-error.png'); margin: 0px 0.2em; }
+h1, h2, h3, h4, h5 { font-family: serif; font-weight: normal; letter-spacing: 0.05em; }
+h1 { color: rgb(35, 71, 100); font-size: 150%; }
+h2 { color: rgb(54, 109, 156); font-size: 125%; }
+ul li { list-style: outside url('bullet.gif') disc; }
+/* ::::: https://wiki.python.org/wiki/europython/css/screen.css ::::: */
+
+html { height: 100%; font-size: 103%; font-family: Arial,Verdana,Geneva,"Bitstream Vera Sans",Helvetica,sans-serif; }
+body { position: relative; min-height: 100%; line-height: 1.4; }
+form#searchform { float: right; margin: 16px 4% 0px 0px; }
+form#searchform input#searchinput { border: 1px solid rgb(196, 204, 204); font-size: 88%; vertical-align: middle; }
+form#searchform input#fullsearch, form#searchform input#titlesearch { border-width: 1px; border-style: solid; border-color: rgb(196, 204, 204) rgb(111, 119, 119) rgb(111, 119, 119) rgb(196, 204, 204); background: rgb(248, 247, 247) url('button-on-bg.png') no-repeat scroll 0% 0%; font-weight: bold; color: rgb(34, 51, 68); font-size: 90%; text-transform: lowercase; vertical-align: middle; }
+div#header { background: rgb(247, 247, 247) url('header-bg2.png') repeat-x scroll 0% 0%; border-bottom: 1px solid rgb(153, 153, 153); height: 84px; padding: 1px 0px; position: relative; }
+div#logo { float: left; margin: 10px 0px 0px 3%; height: 71px; width: 211px; text-align: center; }
+div#logo a { outline: medium none; }
+div#sidebar { float: left; width: 13.2em; padding: 0px 0.4em 0px 1.4em; margin: 19px 0px 0px 3%; color: rgb(75, 90, 106); font-size: 75%; }
+div#sidebar h1 { font-weight: bold; font-size: 103%; color: rgb(75, 90, 106); font-family: sans-serif; margin: 0.5em; }
+div#sidebar div.sidepanel:first-child h1 { display: none; }
+div#sidebar ul#navibar { padding: 0px; margin: 0px; }
+div#sidebar ul#navibar li { margin: 0px; padding: 0px; border: medium none; list-style: outside none none; display: block; font-variant: small-caps; }
+div#sidebar ul#navibar li a { display: block; border: 1px solid rgb(218, 218, 218); margin: 4px 0px 0px; background: rgb(244, 244, 244) url('nav-off-bg.png') no-repeat scroll 100% 0px; color: rgb(75, 90, 106); font-family: Verdana,Geneva,"Bitstream Vera Sans",Helvetica,sans-serif; padding: 2px 4px; overflow: hidden; white-space: nowrap; }
+div#sidebar ul#navibar li.current a { background: rgb(244, 244, 244) url('nav-on-bg.png') no-repeat scroll 100% 0px; border-left: 3px solid rgb(255, 219, 76); color: rgb(0, 0, 0); }
+div#sidebar ul { margin: 0px; padding: 0px; }
+div#sidebar ul li { list-style: outside url('bullet.gif') disc; margin: 2px 0px 2px 2em; padding: 0px; }
+div#sidebar ul li a { color: rgb(60, 75, 123); text-decoration: none; }
+div#sidebar ul li a:hover { color: rgb(0, 0, 0); text-decoration: underline; }
+div#sidebar select { width: 100%; font-size: 12px; }
+div#content { margin: 0px 1.5em 0px 3%; padding: 12px 0px 0px 16.5em; font-size: 86%; line-height: 1.5; }
+div#footer { clear: both; margin: 1em 1.5em 0px 242px; border-top: 1px solid rgb(221, 221, 221); padding: 0.5em 0px; }
+ul#credits { margin: 0px; padding: 0px; text-align: center; font-size: 12px; color: rgb(153, 153, 153); }
+ul#credits a { color: rgb(102, 102, 102); text-decoration: none; }
+ul#credits a:hover { text-decoration: underline; }
+ul#credits li { display: inline; list-style: outside none none; margin: 1em; }
+#locationline { font-size: 86%; position: absolute; bottom: 4px; left: 3%; margin-left: 16.5em; background: transparent url('bullet.gif') no-repeat scroll 0px 50%; padding: 0px 0px 0px 12px; }
+ul#pagetrail, #locationline ul { margin: 0px; padding: 0px; }
+ul#pagetrail li, #locationline ul li { margin: 0px 1em 0px 0px; padding: 0px; display: inline; list-style: outside none none; font-size: 110%; }
+ul#pagetrail li a, #locationline ul li a { color: rgb(58, 73, 105); text-decoration: none; }
+ul#pagetrail li a:hover, #locationline ul li a:hover { text-decoration: underline; }
+#locationline ul li a.backlink { font-weight: bold; }
+ul#pagetrail { position: absolute; bottom: -1.5em; left: 3%; margin-left: 16.5em; font-size: 86%; }
+ul#pagetrail li { font-size: 90%; padding: 0px 0px 0px 12px; margin: 0px; background: transparent url('bullet.gif') no-repeat scroll 1px 50%; }
+#pageinfo { margin: 2em 2em 0.25em 0px; }

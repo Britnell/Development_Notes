@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" /> 
+    <title>Splitwise :: 404 Error</title>
+    <link href="/assets/reset.css" media="screen" rel="stylesheet" type="text/css" />
+    <style>
+      body{
+        background: #3c3c3c url(/assets/backgrounds/wild_oliva.png);
+        color: #fff;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 300;
+        text-rendering: optimizeLegibility;
+        text-shadow: 0px 1px 1px #000;
+      }
+      #container{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 700px;
+        height: 400px;
+        margin-top: -200px;
+        margin-left: -350px;
+        text-align: center;
+      }
+      h1{
+        font-size: 72px;
+        font-weight: bold;
+        text-shadow: 0px 2px 3px #000;
+      }
+      p {
+        line-height: 135%;
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      #things, #twitter{
+        display: block;
+        position: absolute;
+        text-align: left;
+        bottom: 0;
+        height: 100px;
+        padding: 15px;
+        background: #505050;
+        background: rgba(255,255,255,0.1);
+        border-radius: 6px;
+        -o-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+      }
+      #things{
+        left: 0;
+        width: 220px;
+        font-size: 16px;
+      }
+      ul {
+        font-size: 14px;
+        margin-left: 20px;
+        margin-top: 5px;
+      }
+      li{
+        padding: 5px 0 0;
+      }
+      #twitter{
+        right: 0;
+        width: 400px;
+      }
+      #follow_button{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+      }
+      #twitter_handle{
+        font-weight: bold;
+        border: none;
+      }
+      img{
+        width: 48px;
+        height: 48px;
+        margin-top: 15px;
+        margin-right: 15px;
+        float: left;
+        border-radius: 6px;
+        -o-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+      }
+      a {
+        color: #fff;
+        text-decoration: none;
+        border-bottom: 1px dashed #ddd;
+      }
+      #latest_tweet, #latest_tweet_time{
+        display: block;
+        border: none;
+        margin-left: 63px;
+      }
+      #latest_tweet{
+        margin-top: 15px;
+        font-size: 14px;
+      }
+      #latest_tweet_time{
+        font-size: 11px;
+        margin-top: 8px;
+      }
+      .twitter-timeline{
+        height: 200px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>
+        <script>
+          var choices = ["You look lost.", "File not found.", "Nothing to see here."];
+          var index = Math.floor(Math.random() * choices.length);
+          document.write(choices[index]);
+        </script>
+      </h1>
+      <p>
+        The page you&rsquo;re looking for <strong>doesn&rsquo;t exist!</strong><br>
+        Click <a href="/" onclick="history.back(); return false;">here</a> to go back, or <a href="http://feedback.splitwise.com">contact us</a> if you need further help.
+      </p>
+      <div id="things" style="bottom: auto">
+        Things you could do:
+        <ul>
+          <li><a href="/">go back</a> to the home page</li>
+          <li><a href="http://feedback.splitwise.com">contact</a> Splitwise support</li>
+          <li><a href="http://i.imgur.com/awd2k.jpg">panic</a></li>
+        </ul>
+      </div>
+      <div id="twitter" style="height: 200px; bottom: auto">
+        <a class="twitter-timeline" href="https://twitter.com/splitwise" data-widget-id="263785541852594178">Tweets by @splitwise</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+      <script type="text/javascript">
+        setInterval(function(){
+          var x = document.getElementById("twitter-widget-0");
+          if (x)
+            x.setAttribute("height", 150);
+        }, 100);
+      </script> 
+    </div>
+  </body>
+</html>

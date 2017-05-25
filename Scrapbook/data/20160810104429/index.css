@@ -1,0 +1,1142 @@
+/* ::::: https://secure.lloydsbank.co.uk/personal/assets/LloydsRetail/ress/css/styles-blessed2-min160527.css ::::: */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0px; padding: 0px; border: 0px none; font: inherit; vertical-align: baseline; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+body { line-height: 1; }
+ol, ul { list-style: outside none none; }
+blockquote::before, blockquote::after, q::before, q::after { content: none; }
+table { border-collapse: collapse; border-spacing: 0px; }
+a { text-decoration: none; }
+strong, .strong { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; }
+.f-heading1 { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 3em; line-height: 1.167; }
+@font-face {
+	font-family: "lloyds_bank_jack-lightWEB";
+	font-style: normal;
+	font-weight: normal;
+	src: url('lloyds_bank_jack-lightweb.eot') format("embedded-opentype"), url('lloyds_bank_jack-lightweb.woff') format("woff"), url('lloyds_bank_jack-lightweb.ttf') format("truetype"), url('lloyds_bank_jack-lightweb.svg') format("svg");
+}
+@media not all {
+	@font-face {
+	font-family: "lloyds_bank_jack-lightWEB";
+	src: url('lloyds_bank_jack-lightweb.eot') format("eot"), url('lloyds_bank_jack-lightweb.svg') format("svg");
+}
+}
+@font-face {
+	font-family: "lloyds_bank_jack-regularWEB";
+	font-style: normal;
+	font-weight: normal;
+	src: url('lloyds_bank_jack-regularweb.eot') format("embedded-opentype"), url('lloyds_bank_jack-regularweb.woff') format("woff"), url('lloyds_bank_jack-regularweb.ttf') format("truetype"), url('lloyds_bank_jack-regularweb.svg') format("svg");
+}
+@media not all {
+	@font-face {
+	font-family: "lloyds_bank_jack-regularWEB";
+	src: url('lloyds_bank_jack-regularweb.eot') format("eot"), url('lloyds_bank_jack-regularweb.svg') format("svg");
+}
+}
+@font-face {
+	font-family: "lloyds_bank_jack-mediumWEB";
+	font-style: normal;
+	font-weight: normal;
+	src: url('lloyds_bank_jack-mediumweb.eot') format("embedded-opentype"), url('lloyds_bank_jack-mediumweb.woff') format("woff"), url('lloyds_bank_jack-mediumweb.ttf') format("truetype"), url('lloyds_bank_jack-mediumweb.svg') format("svg");
+}
+@media not all {
+	@font-face {
+	font-family: "lloyds_bank_jack-mediumWEB";
+	src: url('lloyds_bank_jack-mediumweb.eot') format("eot"), url('lloyds_bank_jack-mediumweb.svg') format("svg");
+}
+}
+#outer, #wrapper { color: rgb(80, 80, 80); }
+a { color: rgb(0, 106, 77); }
+body { font-size: 62.5%; }
+#outer, #wrapper { min-width: 960px; line-height: 1.2; position: relative; }
+#outer a.disabled, #wrapper a.disabled { outline: 0px none; }
+#wrapper #page { position: relative; z-index: 1; }
+.module-content::before, .module-content::after { content: ""; display: table; }
+.module-content::after { clear: both; }
+.after-border::after, .after-border .after { position: absolute; bottom: 0px; left: 50%; margin-left: -20px; width: 40px; height: 2px; background: rgb(100, 156, 0) none repeat scroll 0% 0%; content: ""; display: block; }
+.regular-payment-panel-mixin .left-section dt::before, .manage-paperless-panel-mixin .left-section dt::before, .regular-payment-panel-mixin .left-section dd::before, .manage-paperless-panel-mixin .left-section dd::before, .regular-payment-panel-mixin .left-section dt::after, .manage-paperless-panel-mixin .left-section dt::after, .regular-payment-panel-mixin .left-section dd::after, .manage-paperless-panel-mixin .left-section dd::after { content: ""; display: table; }
+.regular-payment-panel-mixin .left-section dt::after, .manage-paperless-panel-mixin .left-section dt::after, .regular-payment-panel-mixin .left-section dd::after, .manage-paperless-panel-mixin .left-section dd::after { clear: both; }
+.underline { text-decoration: underline; }
+#outer .layout-default .layout-side::before, #outer .layout-right .layout-side::before, #outer .layout-default .layout-content::before, #outer .layout-right .layout-content::before, #outer .layout-default .layout-side::after, #outer .layout-right .layout-side::after, #outer .layout-default .layout-content::after, #outer .layout-right .layout-content::after { content: ""; display: table; }
+#outer .layout-default .layout-side::after, #outer .layout-right .layout-side::after, #outer .layout-default .layout-content::after, #outer .layout-right .layout-content::after { clear: both; }
+.layout-default::before, .layout-default::after { content: ""; display: table; }
+.layout-default::after { clear: both; }
+.layout-full::before, .layout-full::after { content: ""; display: table; }
+.layout-full::after { clear: both; }
+.layout-right::before, .layout-right::after { content: ""; display: table; }
+.layout-right::after { clear: both; }
+.layout-right { padding: 20px 0px 60px; background-color: rgb(238, 238, 238); }
+.layout-right::before, .layout-right::after { content: ""; display: table; }
+.layout-right::after { clear: both; }
+.layout-right .m-container { position: relative; }
+.layout-right .layout-side { width: 272px; float: right; margin-left: -310px; padding-right: 10px; }
+.layout-right .layout-content { float: left; display: block; padding-right: 320px; padding-left: 10px; width: 100%; box-sizing: border-box; }
+.cm-500-d-header::before, .cm-500-d-header::after { content: ""; display: table; }
+.cm-500-d-header::after { clear: both; }
+.cm-746-d-forecast-cbs::before, .cm-746-d-forecast-cbs::after { content: ""; display: table; }
+.cm-746-d-forecast-cbs::after { clear: both; }
+.cm-764-d-fixed-term-deposit-details dl::before, .cm-764-d-fixed-term-deposit-details dl::after { content: ""; display: table; }
+.cm-870-d-payments-and-transfers-tool .m-accordion-content::before { content: ""; display: block; width: 40px; border-top: 3px solid rgb(204, 204, 204); margin: 0px auto 15px; }
+.m-accordion-content .tile-content-wrap .tile-button-group { padding: 20px; }
+.cm-871-d-bmt-link .m-content::before { content: ""; display: block; width: 40px; border-top: 3px solid rgb(204, 204, 204); margin: 0px auto 15px; }
+.cm760d-rbb-bulk-payment-limits .limit-change-container::before, .cm760d-rbb-bulk-payment-limits .limit-change-container::after { content: ""; display: table; }
+.cm760d-rbb-bulk-payment-limits .limit-change-container::after { clear: both; }
+.cm-763-maturity-products .content-loaded::before { content: ""; display: block; border-top: 0.3em solid rgb(100, 156, 0); }
+.cm-763-maturity-products .des-m-sat-xx-account-information dl::before, .cm-763-maturity-products .des-m-sat-xx-account-information dl::after { content: ""; display: table; }
+.cm-763-maturity-products .des-m-sat-xx-account-information dl::after { clear: both; }
+.cm-871-d-bmt-link .m-content::before { content: ""; display: block; width: 40px; border-top: 3px solid rgb(204, 204, 204); margin: 0px auto 15px; }
+.js .m-account-tile-drawer { position: fixed; top: 0px; bottom: 0px; z-index: 997; background: rgb(255, 255, 255) none repeat scroll 0% 0%; width: 400px; overflow: auto; right: 0px; transform: translate3d(400px, 0px, 0px); transition: transform 400ms ease-in-out 0ms; }
+.sp-m-atd-drawer-content ul::before, .sp-m-atd-drawer-content ul::after { content: ""; display: table; }
+.sp-m-atd-drawer-content ul::after { clear: both; }
+.m-account-tile-drawer .close-button { background-image: url('cross-grey.svg'); background-size: 15px 15px; background-position: center center; background-repeat: no-repeat; display: block; text-align: left; text-indent: -9999px; height: 20px; width: 20px; position: absolute; right: 4.1%; top: 30px; }
+.m-account-tile-drawer .account-tile-wrapper { background: rgb(240, 240, 240) none repeat scroll 0% 0%; margin-bottom: 0px; }
+.m-account-tile-drawer .account-tile-wrapper .m-accordion-title { display: inline; }
+.m-account-tile-drawer .account-tile-wrapper .m-accordion-title a { display: inline; }
+.m-account-tile-drawer .account-tile-wrapper .m-accordion-title a span { display: block; padding: 14px; background: rgb(0, 106, 77) none repeat scroll 0% 0%; color: rgb(255, 255, 255); }
+.m-account-tile-drawer .account-tile-wrapper .account-information { padding: 20px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; position: relative; text-align: center; }
+.m-account-tile-drawer .account-tile-wrapper .account-information h2 { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; line-height: 1.25; font-size: 2.4em; word-wrap: break-word; padding: 0px 25px; color: rgb(0, 106, 77); }
+.m-account-tile-drawer .account-tile-wrapper .account-information h3 { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; color: rgb(102, 102, 102); }
+.m-account-tile-drawer .account-tile-wrapper .account-information .close-button { background-image: url('cross-grey.svg'); background-size: 15px 15px; background-position: center center; background-repeat: no-repeat; display: block; text-align: left; text-indent: -9999px; height: 20px; width: 20px; position: absolute; right: 4.1%; top: 30px; }
+.m-account-tile-drawer .account-tile-wrapper .tile-content-wrap { background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0.1em 0.1em 0px rgba(0, 0, 0, 0.1); padding: 20px; margin-bottom: 20px; }
+.m-account-tile-drawer .account-tile-wrapper .tile-content-wrap h1 { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 3em; line-height: 1.167; margin-bottom: 20px; padding-bottom: 24px; position: relative; }
+.m-account-tile-drawer .account-tile-wrapper .tile-content-wrap h1::after, .m-account-tile-drawer .account-tile-wrapper .tile-content-wrap h1 .after { position: absolute; bottom: 0px; left: 50%; margin-left: -20px; width: 40px; height: 2px; background: rgb(100, 156, 0) none repeat scroll 0% 0%; content: ""; display: block; }
+.m-account-tile-drawer .account-tile-wrapper .tile-content-wrap h3 { font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; text-transform: uppercase; margin-bottom: 20px; }
+.m-account-tile-drawer .account-tile-wrapper .tile-content-wrap h3.overdraft { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; line-height: 1.25; font-size: 1.6em; text-transform: capitalize; margin-bottom: 10px; }
+.m-account-tile-drawer .account-tile-wrapper .tile-content-wrap p { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; margin-bottom: 10px; }
+.m-account-tile-drawer .account-tile-wrapper .tile-content-wrap a.m-action-button-on-white { display: block; margin-bottom: 10px; border: 1px solid rgb(204, 204, 204); text-align: left; }
+.m-account-tile-drawer .account-tile-wrapper .tile-content-wrap a.m-action-button-on-white:last-child { margin-bottom: 0px; }
+.m-account-tile-drawer .account-tile-wrapper .tile-content-wrap:last-child { margin-bottom: 0px; }
+.m-account-tile-drawer .account-tile-wrapper.accordion-dark .m-accordion-title a span { font-size: 2em; font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; border-bottom: 1px solid rgb(0, 95, 69); border-top: 1px solid rgb(26, 121, 95); text-align: center; padding: 20px 40px; background-image: url('plus-secondaryondark.png'); background-position: 95% center; background-repeat: no-repeat; }
+.m-account-tile-drawer .account-tile-wrapper.accordion-dark .m-accordion-content { background: rgb(240, 240, 240) none repeat scroll 0% 0%; position: relative; color: rgb(51, 51, 51); padding: 20px; }
+.m-account-tile-drawer .dl-list { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; }
+.m-account-tile-drawer .dl-list .dt { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; }
+.m-account-tile-drawer .dl-list li { border-bottom-color: rgb(240, 240, 240); }
+.des-m-sat-xx-account-tile { margin: 0px 0px 2em; }
+.des-m-sat-xx-account-tile:last-child { margin-bottom: 0px; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-panel { box-shadow: 0.1em 0.1em 0px rgba(0, 0, 0, 0.1); }
+.des-m-sat-xx-account-tile .content-loaded::before { content: ""; display: block; border-top: 0.3em solid rgb(100, 156, 0); }
+.js .des-m-sat-xx-account-tile .view-statement-button { opacity: 0; visibility: hidden; transition: opacity 400ms ease-in-out 0ms; }
+.des-m-sat-xx-account-tile .account-values { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; width: 100%; vertical-align: middle; }
+.des-m-sat-xx-account-tile .account-values th { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; text-align: left; padding: 2px 0px; width: 60px; }
+.des-m-sat-xx-account-tile .account-values td { padding: 2px 0px 2px 15px; }
+.des-m-sat-xx-account-tile .atdmorebtn { font-size: 1.8em; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information { position: relative; padding: 2em 35% 17px 2em; background-color: rgb(255, 255, 255); border-top: 5px solid rgb(0, 106, 77); min-height: 218px; }
+.js .des-m-sat-xx-account-tile .des-m-sat-xx-account-information { min-height: 0px; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information .section { border-top: 1px solid rgb(204, 204, 204); margin-top: 1em; padding-top: 1em; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information .section:first-child { border-top: 0px none; margin-top: 0px; padding-top: 0px; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information .section.lead { padding-top: 13px; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information .section.lead p { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information dl { float: left; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information dl::before, .des-m-sat-xx-account-tile .des-m-sat-xx-account-information dl::after { content: ""; display: table; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information dl::after { clear: both; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information dl dt { display: none; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information dl dd { float: left; margin-right: 10px; font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information dl dd.account-name { color: rgb(0, 106, 77); font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; text-transform: uppercase; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information dl dd.iban-bic { margin-right: 0px; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information p { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; margin-bottom: 0.5em; clear: both; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information p:last-child { margin-bottom: 0px; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information .balance { font-size: 1.6em; line-height: 1.25; font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information .balance span { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; line-height: 1; font-size: 35px; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information .des-m-sat-xx-actions { position: absolute; right: 0px; bottom: 0px; width: 33%; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information .des-m-sat-xx-actions a { display: block; margin-top: 1px; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information .des-m-sat-xx-actions a.MoreActionsNudgeAnchor { font-size: 1.6em; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-actions a span { display: block; }
+.des-m-sat-xx-account-tile .des-m-atd-01-back { display: none; }
+.statements-wrap .data-table th { color: rgb(11, 106, 78); }
+.des-m-atd-01-panel { background: rgb(255, 255, 255) none repeat scroll 0% 0%; position: relative; overflow: hidden; }
+.js .des-m-atd-01-panel { display: none; }
+.des-m-atd-01-panel.loading::before { content: ""; background: transparent url('spinner-outer.png') no-repeat scroll center center / 54px auto; border: 0px none; position: absolute; left: 50%; top: 95px; width: 54px; height: 54px; margin-left: -27px; margin-top: -27px; animation: 1.2s linear 0s normal none infinite running spin; }
+.des-m-atd-01-panel.loading::after { content: ""; background: transparent url('spinner-inner-secure.png') no-repeat scroll center center / 50px auto; position: absolute; left: 50%; top: 95px; width: 50px; height: 50px; margin-left: -25px; margin-top: -25px; animation: 0s ease 0s normal none 1 running none; }
+.des-m-sat-xx-account-tile .des-m-sat-xx-account-information .des-m-sat-xx-actions a.cont-managed-btn span { display: block; }
+.cm-706-dm-calendar-picker.m-overlay .ui-datepicker-header .ui-datepicker-title::after, .m-385-reinvestment-term-calendar .ui-datepicker-header .ui-datepicker-title::after { background: transparent none repeat scroll 0px center; }
+@media not all {
+}
+.m-504-d-upgrade-invite::before, .m-504-d-upgrade-invite::after { content: ""; display: table; }
+.m-504-d-upgrade-invite::after { clear: both; }
+.m-505-d-newly-upgraded-user-header .user-header::before, .m-505-d-newly-upgraded-user-header .user-header::after { content: ""; display: table; }
+.m-505-d-newly-upgraded-user-header .user-header::after { clear: both; }
+.m-505-d-newly-upgraded-user-header .feedback-popout::before, .m-505-d-newly-upgraded-user-header .feedback-popout::after { content: ""; display: table; }
+.m-505-d-newly-upgraded-user-header .feedback-popout::after { clear: both; }
+.m-505-d-newly-upgraded-user-header .feedback-popout::before, .m-505-d-newly-upgraded-user-header .feedback-popout .before { border-width: 0px 10px 10px; border-style: none solid solid; border-color: -moz-use-text-color transparent rgb(255, 255, 255); width: 0px; height: 0px; display: block; content: ""; position: absolute; top: -10px; right: 60px; }
+.m-506-dm-swipey-swipey-tour .controls::before, .m-506-dm-swipey-swipey-tour .controls::after { content: ""; display: table; }
+.m-506-dm-swipey-swipey-tour .controls::after { clear: both; }
+.js .m-506-dm-swipey-swipey-tour ol.slides::before, .js .m-506-dm-swipey-swipey-tour ol.slides::after { content: ""; display: table; }
+.js .m-506-dm-swipey-swipey-tour ol.slides::after { clear: both; }
+.m-506-dm-swipey-swipey-tour .buttons::before, .m-506-dm-swipey-swipey-tour .buttons::after { content: ""; display: table; }
+.m-506-dm-swipey-swipey-tour .buttons::after { clear: both; }
+.m-506-dm-swipey-swipey-tour ol.slides li .item::before, .m-506-dm-swipey-swipey-tour ol.slides li .item::after { content: ""; display: table; }
+.m-506-dm-swipey-swipey-tour ol.slides li .item::after { clear: both; }
+.m-506-dm-swipey-swipey-tour ol.slides li .caption::before, .m-506-dm-swipey-swipey-tour ol.slides li .caption::after { content: ""; display: table; }
+.m-506-dm-swipey-swipey-tour ol.slides li .caption::after { clear: both; }
+@media not all, not all {
+}
+.m-513-colleague-header .ajax-error-text::after { content: ""; display: block; width: 2em; border-bottom: 2px solid rgb(220, 42, 77); margin: 1em auto 0px; }
+.m-513-colleague-header .clg-top-header::before, .m-513-colleague-header .clg-top-header::after { content: ""; display: table; }
+.m-513-colleague-header .clg-top-header::after { clear: both; }
+.m-513-colleague-header .m-container-colleague::before, .m-513-colleague-header .m-container-colleague::after { content: ""; display: table; }
+.m-513-colleague-header .m-container-colleague::after { clear: both; }
+.mca-ssg-2a1-clear::before, .mca-ssg-2a1-clear::after { content: ""; display: table; }
+.mca-ssg-2a1-clear::after { clear: both; }
+.overlay-panel-cust-notes .ajax-error-msg::after { content: ""; display: block; width: 2em; border-bottom: 2px solid rgb(220, 42, 77); margin: 1em auto 0px; }
+.m-640-investments-pensions-panel .content-loaded::before { content: ""; display: block; border-top: 0.3em solid rgb(100, 156, 0); }
+.m-640-investments-pensions-panel .des-m-sat-xx-account-information dl::before, .m-640-investments-pensions-panel .des-m-sat-xx-account-information dl::after { content: ""; display: table; }
+.m-640-investments-pensions-panel .des-m-sat-xx-account-information dl::after { clear: both; }
+.m-681-d-authentication-panel .panel::before, .m-681-d-authentication-panel .panel::after { content: ""; display: table; }
+.m-681-d-authentication-panel .panel::after { clear: both; }
+.m-681-d-authentication-panel .telephone-incorrect-container::before, .m-681-d-authentication-panel .telephone-incorrect-container::after { content: ""; display: table; }
+.m-681-d-authentication-panel .telephone-incorrect-container::after { clear: both; }
+.m-681-d-authentication-panel .formField::before, .m-681-d-authentication-panel .formField::after { content: ""; display: table; }
+.m-681-d-authentication-panel .formField::after { clear: both; }
+.statements-wrap { margin-bottom: 20px; }
+.data-table .pending-transactions > td { padding: 16px 0px; font-size: 1em; }
+.js .data-table .pending-transactions .pending-transactions-container { display: none; }
+.data-table .pending-transactions .m-action-button { float: left; padding: 0px 0px 0px 1em; position: static; }
+.data-table .pending-transactions .panel::before, .data-table .pending-transactions .panel::after { content: ""; display: table; }
+.data-table .pending-transactions .panel::after { clear: both; }
+.data-table .pending-transactions .show-all-container::before, .data-table .pending-transactions .show-all-container::after { content: ""; display: table; }
+.data-table .pending-transactions .show-all-container::after { clear: both; }
+.data-table .pending-transactions .pending-transactions-toggle { padding-left: 20px; background-image: url('chevron-down-primary1.svg'); background-size: 12px 8px; background-position: left center; background-repeat: no-repeat; }
+.data-table .pending-transactions .pending-transactions-toggle:hover { background-image: url('chevron-down-secondaryonlight.svg'); background-size: 12px 8px; background-position: left center; background-repeat: no-repeat; }
+.data-table .pending-transactions .pending-transactions-container { padding-top: 16px; clear: both; overflow: hidden; }
+.data-table .pending-transactions .pending-transactions-container .transactions::before, .data-table .pending-transactions .pending-transactions-container .transactions::after { content: ""; display: table; }
+.data-table .pending-transactions .pending-transactions-container .transactions::after { clear: both; }
+.data-table .pending-transactions .pending-transactions-container .pending-total-header::before, .data-table .pending-transactions .pending-transactions-container .pending-total-header::after { content: ""; display: table; }
+.data-table .pending-transactions .pending-transactions-container .pending-total-header::after { clear: both; }
+.data-table .pending-transactions .pending-transactions-container .expandable-table-container::before, .data-table .pending-transactions .pending-transactions-container .expandable-table-container::after { content: ""; display: table; }
+.data-table .pending-transactions .pending-transactions-container .expandable-table-container::after { clear: both; }
+.data-table .transaction-details .nooutline { outline: 0px none; }
+.data-table .transaction-details td.first.transaction-detail-toggle { min-width: 80px; }
+.js .data-table .transaction-details td.first.transaction-detail-toggle.down { cursor: pointer; background-image: url('chevron-down-primary1.svg'); background-size: 12px 8px; background-repeat: no-repeat; background-position: 20px 1.5em; }
+.data-table .transaction-details td.first { padding-left: 25px; }
+.data-table .transaction-details .closeWin { background: transparent url('cross-grey.png') no-repeat scroll 15px 0px; display: none; cursor: pointer; }
+.data-table .transaction-details .transQuery { text-align: right; border-bottom: 0px none; padding-right: 20px; padding-bottom: 0px; font-weight: bold; }
+.data-table .transaction-details .transQuery a { background-image: url('chevron-right-primary1.svg'); background-size: 8px 12px; background-position: left center; background-repeat: no-repeat; padding-left: 15px; color: rgb(0, 106, 77); }
+.data-table .transaction-details .errMsg { width: 92%; padding-left: 45px; color: red; }
+.data-table .transaction-details .transaction-detail-container > td:first-child { padding: 0px; }
+.data-table .transaction-details .transaction-detail-container .animediv { padding-top: 0px; padding-bottom: 17px; }
+.data-table .transaction-details .transaction-detail-container .animediv td { padding-top: 0px; border-bottom: 0px none; }
+div.m-701-d-search-module form > .m-accordion { margin-bottom: 0px; padding: 20px 20px 10px; }
+div.m-701-d-search-module .m-accordion-title { background-color: rgb(232, 232, 232); text-align: left; font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; padding: 18px 20px; background-image: url('minus-primary1.png'); background-position: 96% center; background-repeat: no-repeat; }
+.js div.m-701-d-search-module .m-accordion-title { background-image: url('plus-primary1.png'); }
+div.m-701-d-search-module .m-accordion { margin-bottom: 0px; }
+div.m-701-d-search-module .content { background: rgb(240, 240, 240) none repeat scroll 0% 0%; margin: 1px 0px; padding: 20px 20px 0px; text-align: left; }
+div.m-701-d-search-module .content::before, div.m-701-d-search-module .content::after { content: ""; display: table; }
+div.m-701-d-search-module .content::after { clear: both; }
+div.m-701-d-search-module .m-calendar-range input.between-calendar { width: 184px ! important; }
+div.m-701-d-search-module .m-calendar-range fieldset.radio legend { margin-bottom: 16px; font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; }
+div.m-701-d-search-module .m-calendar-range fieldset.radio legend strong { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; }
+div.m-701-d-search-module div.input.submit-right { margin-bottom: 20px; }
+div.m-701-d-search-module fieldset.radio label.clear { clear: both; }
+div.m-701-d-search-module fieldset.radio .exact-amount-wrap { margin-bottom: 20px; }
+div.m-701-d-search-module .clear { clear: both; }
+.m-702-dm-instatement-offer-row::after, .m-702-dm-instatement-offer-row .after { top: -10px; left: 90px; position: absolute; border-width: 0px 10px 10px 0px; border-style: none solid solid none; border-color: -moz-use-text-color transparent rgb(240, 240, 240) -moz-use-text-color; width: 0px; height: 0px; display: block; content: ""; }
+.m-702-dm-instatement-offer-row .m-702-dm-trigger::before, .m-702-dm-instatement-offer-row .m-702-dm-trigger::after { content: ""; display: table; }
+.m-702-dm-instatement-offer-row .m-702-dm-trigger::after { clear: both; }
+.m-702-dm-instatement-offer-row .m-702-dm-trigger .trigger-message::before, .m-702-dm-instatement-offer-row .m-702-dm-trigger .trigger-message::after { content: ""; display: block; width: 1px; height: 100%; position: absolute; top: 0px; }
+.m-702-dm-instatement-offer-row .m-702-dm-trigger .trigger-message::before { background: rgb(216, 216, 216) none repeat scroll 0% 0%; right: 0px; }
+.m-702-dm-instatement-offer-row .m-702-dm-trigger .trigger-message::after { background: rgb(246, 246, 246) none repeat scroll 0% 0%; left: 0px; }
+.m-702-dm-instatement-offer-row .m-702-dm-offer-content::before, .m-702-dm-instatement-offer-row .m-702-dm-offer-content::after { content: ""; display: table; }
+.m-702-dm-instatement-offer-row .m-702-dm-offer-content::after { clear: both; }
+.m-702-dm-instatement-offer-row .m-702-dm-offer-content::before { content: ""; height: 1px; width: 100%; background: rgb(246, 246, 246) none repeat scroll 0% 0%; }
+.m-702-dm-instatement-offer-row .m-702-dm-offer-content .m-702-dm-content .offer-info::before, .m-702-dm-instatement-offer-row .m-702-dm-offer-content .m-702-dm-content .offer-info::after { content: ""; display: table; }
+.m-702-dm-instatement-offer-row .m-702-dm-offer-content .m-702-dm-content .offer-info::after { clear: both; }
+.m-703-d-export-overlay h1 { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 3em; line-height: 1.167; margin-bottom: 20px; }
+.m-703-d-export-overlay h4 { font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; margin-bottom: 16px; text-transform: none; }
+.m-703-d-export-overlay p { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; margin-bottom: 16px; }
+.m-703-d-export-overlay select { width: 100%; }
+.m-703-d-export-overlay form { padding-top: 20px; }
+.m-703-d-export-overlay .m-calendar-range input.between-calendar { width: 203px ! important; }
+.m-705-d-search-results .refine-search-options .refine-button-group::after, .m-705-d-search-results .refine-search-options .refine-button-group::before { content: ""; display: table; }
+.m-707-d-term-deposit .term-content::before, .m-707-d-term-deposit .term-content::after { content: ""; display: table; }
+.m-707-d-term-deposit .term-content::after { clear: both; }
+.vpd-ajax-content .statements-wrap .options-floating::before { border: 0px none; margin: 0px; }
+.m-725-direct-debits-standing-orders::before, .m-725-direct-debits-standing-orders::after { content: ""; display: table; }
+.m-725-direct-debits-standing-orders::after { clear: both; }
+.m-735-d-statement-annual-summaries::before, .m-735-d-statement-annual-summaries::after { content: ""; display: table; }
+.m-735-d-statement-annual-summaries::after { clear: both; }
+.m-735-d-statement-annual-summaries::before, .m-735-d-statement-annual-summaries::after { content: ""; display: table; }
+.m-735-d-statement-annual-summaries::after { clear: both; }
+.m-735-d-statement-annual-summaries .summary-options::before, .m-735-d-statement-annual-summaries .summary-options::after { content: ""; display: table; }
+.m-735-d-statement-annual-summaries .summary-options::after { clear: both; }
+.m-735-d-statement-annual-summaries .panel::before, .m-735-d-statement-annual-summaries .panel::after { content: ""; display: table; }
+.m-735-d-statement-annual-summaries .panel::after { clear: both; }
+.m-735-d-statement-annual-summaries .show-hide-content::before, .m-735-d-statement-annual-summaries .show-hide-content::after { content: ""; display: table; }
+.m-735-d-statement-annual-summaries .show-hide-content::after { clear: both; }
+.m-736-d-statement-summary-savings::before, .m-736-d-statement-summary-savings::after { content: ""; display: table; }
+.m-736-d-statement-summary-savings::after { clear: both; }
+.m-736-d-statement-summary-savings::before, .m-736-d-statement-summary-savings::after { content: ""; display: table; }
+.m-736-d-statement-summary-savings::after { clear: both; }
+.m-736-d-statement-summary-savings .summary-options::before, .m-736-d-statement-summary-savings .summary-options::after { content: ""; display: table; }
+.m-736-d-statement-summary-savings .summary-options::after { clear: both; }
+.m-736-d-statement-summary-savings .panel::before, .m-736-d-statement-summary-savings .panel::after { content: ""; display: table; }
+.m-736-d-statement-summary-savings .panel::after { clear: both; }
+.m-736-d-statement-summary-savings .show-hide-content::before, .m-736-d-statement-summary-savings .show-hide-content::after { content: ""; display: table; }
+.m-736-d-statement-summary-savings .show-hide-content::after { clear: both; }
+.m-740-d-account-benefits ul::before, .m-740-d-account-benefits ul::after { content: ""; display: table; }
+.m-740-d-account-benefits ul::after { clear: both; }
+.m-745-d-balance-extra-component .transaction-panel-wrapper::after, .m-745-d-balance-extra-component .transaction-panel-wrapper .after { position: absolute; left: 45.8%; top: -15px; background: transparent none repeat scroll 0% 0%; border-width: 0px 15px 15px; border-style: none solid solid; border-color: -moz-use-text-color transparent rgb(204, 204, 204); width: 0px; height: 0px; display: block; content: ""; }
+.m-750-d-credit-card-statement::before, .m-750-d-credit-card-statement::after { content: ""; display: table; }
+.m-750-d-credit-card-statement::after { clear: both; }
+.m-750-d-credit-card-statement::before, .m-750-d-credit-card-statement::after { content: ""; display: table; }
+.m-750-d-credit-card-statement::after { clear: both; }
+.m-750-d-credit-card-statement .summary-options::before, .m-750-d-credit-card-statement .summary-options::after { content: ""; display: table; }
+.m-750-d-credit-card-statement .summary-options::after { clear: both; }
+.m-750-d-credit-card-statement .panel::before, .m-750-d-credit-card-statement .panel::after { content: ""; display: table; }
+.m-750-d-credit-card-statement .panel::after { clear: both; }
+.m-750-d-credit-card-statement .show-hide-content::before, .m-750-d-credit-card-statement .show-hide-content::after { content: ""; display: table; }
+.m-750-d-credit-card-statement .show-hide-content::after { clear: both; }
+.m-750-d-credit-card-statement .cc-header::before, .m-750-d-credit-card-statement .cc-header::after { content: ""; display: table; }
+.m-750-d-credit-card-statement .cc-header::after { clear: both; }
+.m-750-d-credit-card-statement .manage-paperless::before, .m-750-d-credit-card-statement .manage-paperless::after { content: ""; display: table; }
+.m-750-d-credit-card-statement .manage-paperless::after { clear: both; }
+.m-750-d-credit-card-statement .manage-paperless .left-section dt::before, .m-750-d-credit-card-statement .manage-paperless .left-section dd::before, .m-750-d-credit-card-statement .manage-paperless .left-section dt::after, .m-750-d-credit-card-statement .manage-paperless .left-section dd::after { content: ""; display: table; }
+.m-750-d-credit-card-statement .manage-paperless .left-section dt::after, .m-750-d-credit-card-statement .manage-paperless .left-section dd::after { clear: both; }
+.m-752-d-manage-your-direct-debit .content::before, .m-752-d-manage-your-direct-debit .content::after { content: ""; display: table; }
+.m-752-d-manage-your-direct-debit .content::after { clear: both; }
+.m-752-d-manage-your-direct-debit .panel::before, .m-752-d-manage-your-direct-debit .panel::after { content: ""; display: table; }
+.m-752-d-manage-your-direct-debit .panel::after { clear: both; }
+.m-753-d-credit-card-rewards .content::before, .m-753-d-credit-card-rewards .content::after { content: ""; display: table; }
+.m-753-d-credit-card-rewards .content::after { clear: both; }
+.m-753-d-credit-card-rewards .content::before, .m-753-d-credit-card-rewards .content::after { content: ""; display: table; }
+.m-753-d-credit-card-rewards .content::after { clear: both; }
+.m-753-d-credit-card-rewards .panel::before, .m-753-d-credit-card-rewards .panel::after { content: ""; display: table; }
+.m-753-d-credit-card-rewards .panel::after { clear: both; }
+.m-760-d-mortgage-detail::before, .m-763-d-mortgage-detail::before, .m-760-d-mortgage-detail::after, .m-763-d-mortgage-detail::after { content: ""; display: table; }
+.m-760-d-mortgage-detail::after, .m-763-d-mortgage-detail::after { clear: both; }
+.m-760-d-mortgage-detail .regular-payment::before, .m-763-d-mortgage-detail .regular-payment::before, .m-760-d-mortgage-detail .regular-payment::after, .m-763-d-mortgage-detail .regular-payment::after { content: ""; display: table; }
+.m-760-d-mortgage-detail .regular-payment::after, .m-763-d-mortgage-detail .regular-payment::after { clear: both; }
+.m-760-d-mortgage-detail .regular-payment .left-section dt::before, .m-763-d-mortgage-detail .regular-payment .left-section dt::before, .m-760-d-mortgage-detail .regular-payment .left-section dd::before, .m-763-d-mortgage-detail .regular-payment .left-section dd::before, .m-760-d-mortgage-detail .regular-payment .left-section dt::after, .m-763-d-mortgage-detail .regular-payment .left-section dt::after, .m-760-d-mortgage-detail .regular-payment .left-section dd::after, .m-763-d-mortgage-detail .regular-payment .left-section dd::after { content: ""; display: table; }
+.m-760-d-mortgage-detail .regular-payment .left-section dt::after, .m-763-d-mortgage-detail .regular-payment .left-section dt::after, .m-760-d-mortgage-detail .regular-payment .left-section dd::after, .m-763-d-mortgage-detail .regular-payment .left-section dd::after { clear: both; }
+.m-760-d-mortgage-statement::before, .m-760-d-mortgage-statement::after { content: ""; display: table; }
+.m-760-d-mortgage-statement::after { clear: both; }
+.m-760-d-mortgage-statement::before, .m-760-d-mortgage-statement::after { content: ""; display: table; }
+.m-760-d-mortgage-statement::after { clear: both; }
+.m-760-d-mortgage-statement .summary-options::before, .m-760-d-mortgage-statement .summary-options::after { content: ""; display: table; }
+.m-760-d-mortgage-statement .summary-options::after { clear: both; }
+.m-760-d-mortgage-statement .panel::before, .m-760-d-mortgage-statement .panel::after { content: ""; display: table; }
+.m-760-d-mortgage-statement .panel::after { clear: both; }
+.m-760-d-mortgage-statement .show-hide-content::before, .m-760-d-mortgage-statement .show-hide-content::after { content: ""; display: table; }
+.m-760-d-mortgage-statement .show-hide-content::after { clear: both; }
+.m-760-d-mortgage-statement .m-button-group-wrap.button-group-border-top::before { border-top-width: 0px; }
+.m-763-d-mortgage-detail .mortgage-content::before, .m-763-d-mortgage-detail .mortgage-content::after { content: ""; display: table; }
+.m-763-d-mortgage-detail .mortgage-content::after { clear: both; }
+.m-764-d-loans-non-service .content::before, .m-764-d-loans-non-service .content::after { content: ""; display: table; }
+.m-764-d-loans-non-service .content::after { clear: both; }
+.m-764-d-loans-non-service .content::before, .m-764-d-loans-non-service .content::after { content: ""; display: table; }
+.m-764-d-loans-non-service .content::after { clear: both; }
+.m-764-d-loans-non-service .panel::before, .m-764-d-loans-non-service .panel::after { content: ""; display: table; }
+.m-764-d-loans-non-service .panel::after { clear: both; }
+.m-770-loan-detail-statement .floater-wrapper::before, .m-770-loan-detail-statement .floater-wrapper::after { content: ""; display: table; }
+.m-770-loan-detail-statement .floater-wrapper::after { clear: both; }
+.m-780-p4l-account-statement .m-780-p4l-detail::before, .m-780-p4l-account-statement .m-780-p4l-detail::after { content: ""; display: table; }
+.m-780-p4l-account-statement .m-780-p4l-detail::after { clear: both; }
+.m-780-p4l-account-statement .m-780-p4l-statement::before, .m-780-p4l-account-statement .m-780-p4l-statement::after { content: ""; display: table; }
+.m-780-p4l-account-statement .m-780-p4l-statement::after { clear: both; }
+.m-780-p4l-account-statement .m-780-p4l-statement dl::before, .m-780-p4l-account-statement .m-780-p4l-statement dl::after { content: ""; display: table; }
+.m-780-p4l-account-statement .m-780-p4l-statement dl::after { clear: both; }
+.m-780-p4l-account-statement .m-780-p4l-statement dl::before, .m-780-p4l-account-statement .m-780-p4l-statement dl::after { content: ""; display: table; }
+.m-780-p4l-account-statement .m-780-p4l-statement dl::after { clear: both; }
+.m-781-d-isa-investor-account-statement .fund-breakdown::before, .m-781-d-isa-investor-account-statement .fund-breakdown::after { content: ""; display: table; }
+.m-781-d-isa-investor-account-statement .fund-breakdown::after { clear: both; }
+.m-781-d-isa-investor-account-statement .regular-payment::before, .m-781-d-isa-investor-account-statement .regular-payment::after { content: ""; display: table; }
+.m-781-d-isa-investor-account-statement .regular-payment::after { clear: both; }
+.m-781-d-isa-investor-account-statement .regular-payment .left-section dt::before, .m-781-d-isa-investor-account-statement .regular-payment .left-section dd::before, .m-781-d-isa-investor-account-statement .regular-payment .left-section dt::after, .m-781-d-isa-investor-account-statement .regular-payment .left-section dd::after { content: ""; display: table; }
+.m-781-d-isa-investor-account-statement .regular-payment .left-section dt::after, .m-781-d-isa-investor-account-statement .regular-payment .left-section dd::after { clear: both; }
+.m-781-d-isa-investor-account-statement .transaction-history::before, .m-781-d-isa-investor-account-statement .transaction-history::after { content: ""; display: table; }
+.m-781-d-isa-investor-account-statement .transaction-history::after { clear: both; }
+.m-782-d-cpas-pip-product .fund-breakdown::before, .m-782-d-cpas-pip-product .fund-breakdown::after { content: ""; display: table; }
+.m-782-d-cpas-pip-product .fund-breakdown::after { clear: both; }
+.m-782-d-cpas-pip-product .regular-payment::before, .m-782-d-cpas-pip-product .regular-payment::after { content: ""; display: table; }
+.m-782-d-cpas-pip-product .regular-payment::after { clear: both; }
+.m-782-d-cpas-pip-product .regular-payment .left-section dt::before, .m-782-d-cpas-pip-product .regular-payment .left-section dd::before, .m-782-d-cpas-pip-product .regular-payment .left-section dt::after, .m-782-d-cpas-pip-product .regular-payment .left-section dd::after { content: ""; display: table; }
+.m-782-d-cpas-pip-product .regular-payment .left-section dt::after, .m-782-d-cpas-pip-product .regular-payment .left-section dd::after { clear: both; }
+.m-782-d-cpas-pip-product .transaction-history::before, .m-782-d-cpas-pip-product .transaction-history::after { content: ""; display: table; }
+.m-782-d-cpas-pip-product .transaction-history::after { clear: both; }
+.m-784-d-rufus-isa-product-details .overview::before, .m-784-d-rufus-isa-product-details .overview::after { content: ""; display: table; }
+.m-784-d-rufus-isa-product-details .overview::after { clear: both; }
+.m-784-d-rufus-isa-product-details .regular-payment::before, .m-784-d-rufus-isa-product-details .regular-payment::after { content: ""; display: table; }
+.m-784-d-rufus-isa-product-details .regular-payment::after { clear: both; }
+.m-784-d-rufus-isa-product-details .regular-payment .left-section dt::before, .m-784-d-rufus-isa-product-details .regular-payment .left-section dd::before, .m-784-d-rufus-isa-product-details .regular-payment .left-section dt::after, .m-784-d-rufus-isa-product-details .regular-payment .left-section dd::after { content: ""; display: table; }
+.m-784-d-rufus-isa-product-details .regular-payment .left-section dt::after, .m-784-d-rufus-isa-product-details .regular-payment .left-section dd::after { clear: both; }
+.m-784-d-rufus-isa-product-details .investment-totals::before, .m-784-d-rufus-isa-product-details .investment-totals::after { content: ""; display: table; }
+.m-784-d-rufus-isa-product-details .investment-totals::after { clear: both; }
+.m-785-d-rufus-non-isa-product-details .regular-payment::before, .m-785-d-rufus-non-isa-product-details .regular-payment::after { content: ""; display: table; }
+.m-785-d-rufus-non-isa-product-details .regular-payment::after { clear: both; }
+.m-785-d-rufus-non-isa-product-details .regular-payment .left-section dt::before, .m-785-d-rufus-non-isa-product-details .regular-payment .left-section dd::before, .m-785-d-rufus-non-isa-product-details .regular-payment .left-section dt::after, .m-785-d-rufus-non-isa-product-details .regular-payment .left-section dd::after { content: ""; display: table; }
+.m-785-d-rufus-non-isa-product-details .regular-payment .left-section dt::after, .m-785-d-rufus-non-isa-product-details .regular-payment .left-section dd::after { clear: both; }
+.m-785-d-rufus-non-isa-product-details .valuation::before, .m-785-d-rufus-non-isa-product-details .valuation::after { content: ""; display: table; }
+.m-785-d-rufus-non-isa-product-details .valuation::after { clear: both; }
+.m-786-d-pas-product-detail .m-786-d-pas-detail::before, .m-786-d-pas-product-detail .m-786-d-pas-detail::after { content: ""; display: table; }
+.m-786-d-pas-product-detail .m-786-d-pas-detail::after { clear: both; }
+.m-786-d-pas-product-detail .m-786-d-pas-statement .panel::before, .m-786-d-pas-product-detail .m-786-d-pas-statement .panel::after { content: ""; display: table; }
+.m-786-d-pas-product-detail .m-786-d-pas-statement .panel::after { clear: both; }
+.m-786-d-pas-product-detail .m-786-d-pas-statement dl::before, .m-786-d-pas-product-detail .m-786-d-pas-statement dl::after { content: ""; display: table; }
+.m-786-d-pas-product-detail .m-786-d-pas-statement dl::after { clear: both; }
+.m-786-d-pas-product-detail .m-786-d-pas-statement dl::before, .m-786-d-pas-product-detail .m-786-d-pas-statement dl::after { content: ""; display: table; }
+.m-786-d-pas-product-detail .m-786-d-pas-statement dl::after { clear: both; }
+.m-787-d-pas-fob-product-detail dl::before, .m-787-d-pas-fob-product-detail dl::after { content: ""; display: table; }
+.m-787-d-pas-fob-product-detail dl::after { clear: both; }
+.m-788-d-pas-gsmb-product-detail dl::before, .m-788-d-pas-gsmb-product-detail dl::after { content: ""; display: table; }
+.m-788-d-pas-gsmb-product-detail dl::after { clear: both; }
+.m-789-d-pas-other-product-detail dl::before, .m-789-d-pas-other-product-detail dl::after { content: ""; display: table; }
+.m-789-d-pas-other-product-detail dl::after { clear: both; }
+.m-784-d-cpas-shp-product-account-statement .overview::before, .m-784-d-cpas-shp-product-account-statement .overview::after { content: ""; display: table; }
+.m-784-d-cpas-shp-product-account-statement .overview::after { clear: both; }
+.m-784-d-cpas-shp-product-account-statement .regular-payment::before, .m-784-d-cpas-shp-product-account-statement .regular-payment::after { content: ""; display: table; }
+.m-784-d-cpas-shp-product-account-statement .regular-payment::after { clear: both; }
+.m-784-d-cpas-shp-product-account-statement .regular-payment .left-section dt::before, .m-784-d-cpas-shp-product-account-statement .regular-payment .left-section dd::before, .m-784-d-cpas-shp-product-account-statement .regular-payment .left-section dt::after, .m-784-d-cpas-shp-product-account-statement .regular-payment .left-section dd::after { content: ""; display: table; }
+.m-784-d-cpas-shp-product-account-statement .regular-payment .left-section dt::after, .m-784-d-cpas-shp-product-account-statement .regular-payment .left-section dd::after { clear: both; }
+.m-792-regular-payment-block .regular-payment::before, .m-792-regular-payment-block .regular-payment::after { content: ""; display: table; }
+.m-792-regular-payment-block .regular-payment::after { clear: both; }
+.m-792-regular-payment-block .regular-payment .left-section dt::before, .m-792-regular-payment-block .regular-payment .left-section dd::before, .m-792-regular-payment-block .regular-payment .left-section dt::after, .m-792-regular-payment-block .regular-payment .left-section dd::after { content: ""; display: table; }
+.m-792-regular-payment-block .regular-payment .left-section dt::after, .m-792-regular-payment-block .regular-payment .left-section dd::after { clear: both; }
+.m-795-home-insurance .content::before, .m-795-home-insurance .content::after { content: ""; display: table; }
+.m-795-home-insurance .content::after { clear: both; }
+.m-795-home-insurance dl.insurance-dl::before, .m-795-home-insurance dl.insurance-dl::after { content: ""; display: table; }
+.m-795-home-insurance dl.insurance-dl::after { clear: both; }
+.m-795-home-insurance dl.insurance-dl::before, .m-795-home-insurance dl.insurance-dl::after { content: ""; display: table; }
+.m-795-home-insurance dl.insurance-dl::after { clear: both; }
+.m-795-home-insurance .row-sub .first::before, .m-795-home-insurance .row-sub .first .before { content: ""; position: absolute; top: -2px; left: 0px; width: 15px; height: 4px; background: rgb(240, 240, 240) none repeat scroll 0% 0%; display: block; }
+.m-795-home-insurance .section::before, .m-795-home-insurance .section::after { content: ""; display: table; }
+.m-795-home-insurance .section::after { clear: both; }
+.m-795-home-insurance .administered-by::before, .m-795-home-insurance .administered-by::after { content: ""; display: table; }
+.m-795-home-insurance .administered-by::after { clear: both; }
+.m-800-d-money-manager .m-accordion-content::before, .m-800-d-money-manager .m-accordion-content::after { content: ""; display: table; }
+.m-800-d-money-manager .m-accordion-content::after { clear: both; }
+.m-800-d-money-manager .m-accordion-content::before { content: ""; display: block; width: 40px; border-top: 3px solid rgb(204, 204, 204); margin: 0px auto 15px; }
+.m-805-dm-spending-rewards-mini-hub::before, .m-805-dm-spending-rewards-mini-hub::after { content: ""; display: table; }
+.m-805-dm-spending-rewards-mini-hub::after { clear: both; }
+.m-805-dm-spending-rewards-mini-hub .m-accordion-content::before, .m-805-dm-spending-rewards-mini-hub .m-accordion-content::after { content: ""; display: table; }
+.m-805-dm-spending-rewards-mini-hub .m-accordion-content::after { clear: both; }
+.m-805-dm-spending-rewards-mini-hub .m-accordion-content.ajax-error::before { border-color: rgb(204, 204, 204); }
+.m-805-dm-spending-rewards-mini-hub .m-accordion-content::before { content: ""; display: block; width: 40px; border-top: 2px solid rgb(204, 204, 204); margin: 0px auto 10px; }
+.m-805-dm-spending-rewards-mini-hub ul.offers::before, .m-805-dm-spending-rewards-mini-hub ul.offers::after { content: ""; display: table; }
+.m-805-dm-spending-rewards-mini-hub ul.offers::after { clear: both; }
+.m-805-dm-spending-rewards-mini-hub.opted-out .m-accordion-content::before { display: none; }
+.m-805-dm-spending-rewards-mini-hub.opted-out .m-805-opted-out::before, .m-805-dm-spending-rewards-mini-hub.opted-out .m-805-opted-out::after { content: ""; display: table; }
+.m-805-dm-spending-rewards-mini-hub.opted-out .m-805-opted-out::after { clear: both; }
+.m-805-dm-spending-rewards-mini-hub.opted-out .m-805-opted-out::before { content: ""; display: block; width: 40px; border-top: 2px solid rgb(204, 204, 204); margin: 0px auto 20px; }
+.sp-820-dm-whats-new-in-internet-banking .m-accordion-content::before, .sp-820-dm-whats-new-in-internet-banking .m-accordion-content::after { content: ""; display: table; }
+.sp-820-dm-whats-new-in-internet-banking .m-accordion-content::after { clear: both; }
+.sp-820-dm-whats-new-in-internet-banking .m-accordion-content::before { content: ""; display: block; width: 40px; border-top: 3px solid rgb(204, 204, 204); margin: 0px auto 15px; }
+.sp-825-d-products-and-services .m-accordion-content { padding: 20px; }
+.sp-825-d-products-and-services .m-accordion-content ul li { display: block; padding: 5px 0px; list-style-type: none; }
+.sp-825-d-products-and-services .m-accordion-content ul li a { color: rgb(255, 255, 255); font-size: 1.6em; line-height: 1.25; font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; text-decoration: none; position: relative; }
+.sp-825-d-products-and-services .m-accordion-content ul li a:hover { text-decoration: underline; }
+.sp-825-d-products-and-services .m-accordion-content ul li a .new::after, .sp-825-d-products-and-services .m-accordion-content ul li a .new .after { border-width: 9px 9px 9px medium; border-style: solid solid solid none; border-color: transparent rgb(255, 255, 255) transparent -moz-use-text-color; width: 0px; height: 0px; display: block; content: ""; position: absolute; top: 0px; left: -9px; }
+.sp-825-d-products-and-services .m-accordion-content ul li a .new::after, .sp-825-d-products-and-services .m-accordion-content ul li a .new .after { border-width: 9px 0px 9px 9px; border-style: solid none solid solid; border-color: transparent -moz-use-text-color transparent rgb(255, 255, 255); width: 0px; height: 0px; display: block; content: ""; position: absolute; top: 0px; left: auto; right: -9px; }
+.sp-825-d-products-and-services .main-accordion-title { cursor: default; text-align: center; font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; text-transform: uppercase; padding: 19px; }
+.sp-825-d-products-and-services .main-accordion-title span { color: rgb(255, 255, 255); }
+.sp-825-d-products-and-services .main-accordion-title span.micro-border::before, .sp-825-d-products-and-services .main-accordion-title span.micro-border.before { content: ""; display: block; margin: 20px auto 0px; width: 40px; border-top: 3px solid rgb(119, 186, 0); }
+.sp-825-d-products-and-services .accordion-dark h3.m-accordion-title { border-bottom: 0px none; border-top: 1px solid rgb(0, 85, 62); }
+.sp-825-d-products-and-services .accordion-dark h3.m-accordion-title span { display: inline-block; }
+.sp-825-d-products-and-services .accordion-dark h3.m-accordion-title span a { text-transform: uppercase; }
+.sp-825-d-products-and-services h3.m-accordion-title { margin-bottom: 0px; }
+.sp-825-d-products-and-services .sp-pat-wrapper, .ts-825-d-products-and-services .sp-pat-wrapper, .secondary .sp-pat-wrapper { min-width: 0px ! important; }
+.sp-830-account-helper-accordion { outline: 1px solid rgb(240, 240, 240); }
+.sp-830-account-helper-accordion div.m-accordion-content::before { border-top: 0px none; }
+.sp-830-account-helper-accordion div.m-accordion-content p { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; text-transform: initial; margin-bottom: 0px; padding: 20px; cursor: default; }
+.sp-830-account-helper-accordion div.m-accordion-content a { color: rgb(255, 255, 255); font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; }
+.sp-830-account-helper-accordion div.m-accordion-content a:hover { text-decoration: underline; }
+.sp-830-account-helper-accordion div.m-accordion-content ul, .sp-830-account-helper-accordion div.m-accordion-content ol { padding-bottom: 20px; }
+.sp-830-account-helper-accordion div.m-accordion-content li { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; list-style-type: disc; list-style-position: inside; }
+.sp-830-account-helper-accordion h3 { cursor: pointer; }
+.sp-830-account-helper-accordion h3.m-fixed-title.more-link { background-size: auto auto ! important; display: none; }
+.js .sp-830-account-helper-accordion h3.m-fixed-title.more-link { display: block; }
+.sp-830-account-helper-accordion h3.m-fixed-title.more-link span a { text-transform: none; }
+.sp-830-account-helper-accordion .main-accordion-title { cursor: default; text-align: center; font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; text-transform: uppercase; padding: 19px; }
+.sp-830-account-helper-accordion .main-accordion-title span { color: rgb(255, 255, 255); }
+.sp-830-account-helper-accordion .main-accordion-title span.micro-border::before { content: ""; display: block; margin: 20px auto 0px; width: 40px; border-top: 3px solid rgb(100, 156, 0); }
+.sp-830-account-helper-accordion .accordion-dark h3.m-accordion-title { border-bottom: 0px none; border-top: 1px solid rgb(0, 85, 62); }
+.sp-830-account-helper-accordion .accordion-dark h3.m-accordion-title span { display: inline-block; }
+.sp-830-account-helper-accordion .accordion-dark h3.m-accordion-title span a { text-transform: none; }
+.sp-830-account-helper-show-me { margin-top: -20px; margin-bottom: 20px; display: none; }
+.js .sp-830-account-helper-show-me { display: block; }
+.sp-830-account-helper-show-me h3 { cursor: pointer; font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; padding: 19px 19px 18px; text-align: center; }
+.sp-830-account-helper-show-me h3.m-fixed-title.show-me-link { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.sp-830-account-helper-show-me h3.m-fixed-title.show-me-link span a { color: rgb(0, 106, 77); text-transform: none; text-decoration: none; display: inline-block; width: auto; background: transparent url('show-me.png') no-repeat scroll 0px 0px; text-indent: 23px; }
+.m-835-d-contact-us { text-align: center; }
+.m-835-d-contact-us .m-accordion-title { cursor: pointer; border-bottom: medium none ! important; text-align: center; font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif ! important; font-size: 1.6em ! important; line-height: 1.25 ! important; text-transform: uppercase ! important; padding: 19px; }
+.m-835-d-contact-us .m-accordion-content { padding: 0px 19px 19px; background: rgb(0, 106, 77) none repeat scroll 0% 0% ! important; border-top: medium none ! important; }
+.m-835-d-contact-us .m-accordion-content::before { content: ""; display: block; width: 40px; border-top: 3px solid rgb(100, 156, 0); margin: 0px auto 15px; }
+.m-835-d-contact-us p { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; margin-bottom: 10px; }
+.m-835-d-contact-us p strong { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; }
+.m-835-d-contact-us p a { color: rgb(255, 255, 255); }
+.m-835-d-contact-us .seperator { clear: both; display: block; margin: 19px auto; border-top: 3px solid rgb(100, 156, 0); border-width: 3px; border-color: rgb(100, 156, 0); width: 40px; }
+.m-840-d-account-tools .m-accordion-content::before, .m-840-d-account-tools .m-accordion-content::after { content: ""; display: table; }
+.m-840-d-account-tools .m-accordion-content::after { clear: both; }
+.m-840-d-account-tools .m-accordion-content::before { content: ""; display: block; width: 40px; border-top: 3px solid rgb(204, 204, 204); margin: 0px auto 15px; }
+.m-840-d-account-tools .offers-icon-list::before, .m-840-d-account-tools .offers-icon-list::after { content: ""; display: table; }
+.m-840-d-account-tools .offers-icon-list::after { clear: both; }
+.sp-m-850-notification .notification-wrap .notification-content::before, .sp-m-850-notification .notification-wrap .notification-content::after { content: ""; display: table; }
+.sp-m-850-notification .notification-wrap .notification-content::after { clear: both; }
+.sp-m-850-notification .notification-wrap::after, .sp-m-850-notification .notification-wrap .after { position: absolute; left: 45.8%; top: -15px; background: transparent none repeat scroll 0% 0%; border-width: 0px 15px 15px; border-style: none solid solid; border-color: -moz-use-text-color transparent rgb(255, 255, 255); width: 0px; height: 0px; display: block; content: ""; }
+.sp-m-852-notification .notification-wrap .notification-content::before, .sp-m-852-notification .notification-wrap .notification-content::after { content: ""; display: table; }
+.sp-m-852-notification .notification-wrap .notification-content::after { clear: both; }
+.sp-m-852-notification .notification-wrap::after, .sp-m-852-notification .notification-wrap .after { position: absolute; left: 20%; top: -15px; background: transparent none repeat scroll 0% 0%; border-width: 0px 15px 15px; border-style: none solid solid; border-color: -moz-use-text-color transparent rgb(255, 255, 255); width: 0px; height: 0px; display: block; content: ""; }
+/* ::::: https://secure.lloydsbank.co.uk/personal/assets/LloydsRetail/ress/css/styles-blessed1-min160630.css ::::: */
+
+.m-action-button { background-repeat: no-repeat; background-position: 95% center; position: relative; }
+input[type="submit"], input[type="button"] { border-radius: 0px; }
+.m-action-button { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; display: inline-block; text-decoration: none; position: relative; cursor: pointer; margin: 0px; padding: 15px 20px; }
+.m-action-button.utility-button { border: 0px none; background-color: rgb(255, 255, 255); color: rgb(0, 106, 77); }
+.m-action-button.utility-button:hover { color: rgb(100, 156, 0); }
+.m-action-button.button-chevron { padding: 16px 20px 14px; background-image: url('chevron-right-primary1.svg'); background-size: 8px 12px; background-position: left center; background-repeat: no-repeat; }
+.m-action-button.button-chevron:hover { background-image: url('chevron-right-secondaryonlight.svg'); background-size: 8px 12px; background-position: left center; background-repeat: no-repeat; color: rgb(100, 156, 0); }
+.m-action-button.button-chevron.left { background-image: url('chevron-left-primary1.svg'); background-size: 8px 12px; background-position: left center; background-repeat: no-repeat; }
+.m-action-button.button-chevron.left:hover { background-image: url('chevron-left-secondaryonlight.svg'); background-size: 8px 12px; background-position: left center; background-repeat: no-repeat; }
+.m-action-button.button-export { padding: 16px 20px 14px 35px; background-image: url('export-primary1.svg'); background-size: 26px 21px; background-position: 0px center; background-repeat: no-repeat; }
+.m-action-button.button-export:hover { background-image: url('export-secondaryonlight.svg'); background-size: 26px 21px; background-position: 0px center; background-repeat: no-repeat; }
+.m-action-button.button-print { padding: 16px 20px 14px 35px; background-image: url('print-primary1.svg'); background-size: 25.8px 22.4px; background-position: 0px center; background-repeat: no-repeat; }
+.m-action-button.button-print:hover { background-image: url('print-secondaryonlight.svg'); background-size: 25.8px 22.4px; background-position: 0px center; background-repeat: no-repeat; }
+.m-action-button.highlight { text-align: center; display: block; color: rgb(255, 255, 255); font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; border: 0px none; background: transparent linear-gradient(to bottom, rgb(0, 106, 77) 0px, rgb(0, 81, 58) 100%) repeat scroll 0% 0%; }
+body .m-action-button.highlight:hover { background: transparent linear-gradient(to bottom, rgb(0, 81, 58) 0px, rgb(0, 106, 77) 100%) repeat scroll 0% 0%; }
+.m-action-button-highlight { padding: 15px 38px 15px 20px; background: transparent linear-gradient(to bottom, rgb(116, 166, 26) 0px, rgb(90, 140, 0) 100%) repeat scroll 0% 0% / 100% 100%; font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; display: inline-block; color: rgb(255, 255, 255); border: 0px none; text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5) ! important; }
+.m-action-button-highlight:hover { background: url('chevron-right-white.svg') no-repeat scroll right 20px center / 8px 12px, transparent linear-gradient(to bottom, rgb(131, 188, 29) 0px, rgb(106, 166, 0) 100%) repeat scroll 0% 0% / 100% 100%; }
+.m-action-button-highlight.m-action-button { padding: 15px 38px 15px 20px; background-color: transparent; background-image: url('chevron-right-white.svg'), linear-gradient(to bottom, rgb(116, 166, 26) 0px, rgb(90, 140, 0) 100%); background-repeat: no-repeat, repeat; background-attachment: scroll, scroll; background-clip: border-box, border-box; background-origin: padding-box, padding-box; background-position: right 20px center; background-size: 8px 12px, 100% 100%; }
+.m-action-button-highlight.m-action-button:hover { background: url('chevron-right-white.svg') no-repeat scroll right 20px center / 8px 12px, transparent linear-gradient(to bottom, rgb(131, 188, 29) 0px, rgb(106, 166, 0) 100%) repeat scroll 0% 0% / 100% 100%; }
+.m-action-button-highlight, .m-action-button-highlight.right { padding: 15px 38px 15px 20px; background-color: transparent; background-image: url('chevron-right-white.svg'), linear-gradient(to bottom, rgb(116, 166, 26) 0px, rgb(90, 140, 0) 100%); background-repeat: no-repeat, repeat; background-attachment: scroll, scroll; background-clip: border-box, border-box; background-origin: padding-box, padding-box; background-position: right 20px center; background-size: 8px 12px, 100% 100%; }
+.m-action-button-highlight:hover, .m-action-button-highlight.right:hover { background: url('chevron-right-white.svg') no-repeat scroll right 20px center / 8px 12px, transparent linear-gradient(to bottom, rgb(131, 188, 29) 0px, rgb(106, 166, 0) 100%) repeat scroll 0% 0% / 100% 100%; }
+.m-action-button-on-white { background-repeat: no-repeat; background-position: 95% center; font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; display: inline-block; text-decoration: none; position: relative; cursor: pointer; margin: 0px; padding: 15px 20px; border: 0px none; color: rgb(0, 106, 77); background-color: rgb(240, 240, 240); }
+.m-action-button-on-white.no-bg, .m-action-button-on-white.no-bg.disabled { background-image: none ! important; padding: 15px 20px; }
+.m-action-button-on-white.no-bg:hover, .m-action-button-on-white.no-bg.disabled:hover { background-image: none ! important; }
+.m-action-button-on-white.no-bg, .m-action-button-on-white.no-bg.disabled { background-image: none ! important; padding: 15px 20px; }
+.m-action-button-on-white.no-bg:hover, .m-action-button-on-white.no-bg.disabled:hover { background-image: none ! important; }
+.m-action-button-on-white:hover { color: rgb(100, 156, 0); }
+.m-action-button-on-white.disabled { color: rgb(204, 204, 204); background-image: url('chevron-right-grey.svg'); background-size: 8px 12px; background-position: right 20px center; background-repeat: no-repeat; }
+.m-action-button-on-white.disabled:hover { background-image: url('chevron-right-grey.svg') ! important; background-size: 8px 12px ! important; background-position: right 20px center ! important; background-repeat: no-repeat ! important; }
+.m-action-button-on-white, .m-action-button-on-white.right { padding: 15px 38px 15px 20px; background-image: url('chevron-right-primary1.svg'); background-size: 8px 12px; background-position: right 20px center; background-repeat: no-repeat; }
+.m-action-button-on-white:hover, .m-action-button-on-white.right:hover { background-position: right 20px center; background-image: url('chevron-right-secondaryonlight.svg'); background-size: 8px 12px; background-repeat: no-repeat; }
+.m-action-button-on-white.left-left, .m-action-button-on-white.left { padding: 15px 20px 15px 38px; background-image: url('chevron-left-primary1.svg'); background-size: 8px 12px; background-repeat: no-repeat; background-position: left 20px center; }
+.m-action-button-on-white.left-left:hover, .m-action-button-on-white.left:hover { background-image: url('chevron-left-secondaryonlight.svg') ! important; background-size: 8px 12px ! important; background-repeat: no-repeat ! important; background-position: left 20px center ! important; }
+.m-action-button-on-white.no-bg { background: rgb(240, 240, 240) none repeat scroll 0% 0%; }
+.m-action-button-on-white.no-bg:hover { background-image: none; }
+.m-button-group-wrap { background: rgb(255, 255, 255) none repeat scroll 0% 0%; padding: 10px 20px; box-shadow: 0.1em 0.1em 0px rgba(0, 0, 0, 0.1); }
+.m-button-group-wrap::before, .m-button-group-wrap::after { content: ""; display: table; }
+.m-button-group-wrap::after { clear: both; }
+.m-button-group-wrap.button-group-border-top::before { border-top: 1px solid rgb(240, 240, 240); content: ""; display: block; margin: 0px 0px 10px; }
+.m-button-group-wrap .m-button-group {  }
+.m-button-group-wrap .m-button-group::before, .m-button-group-wrap .m-button-group::after { content: ""; display: table; }
+.m-button-group-wrap .m-button-group::after { clear: both; }
+.m-button-group-wrap .m-button-group.border-group-full-width { width: 100%; }
+.m-button-group-wrap .m-button-group.button-group-left { float: left; }
+.m-button-group-wrap .m-button-group.button-group-left li { margin-right: 10px; display: inline; }
+.m-button-group-wrap .m-button-group.button-group-right { float: right; }
+.m-button-group-wrap .m-button-group.button-group-right li { margin-left: 10px; display: inline; }
+.m-button-group-wrap .m-button-group li { float: left; }
+.m-calendar-range .calendar-date-range-container { padding-top: 16px; width: 100%; }
+.m-calendar-range .calendar-date-range-container .opaque-overlay { position: fixed; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 100000; background: rgb(255, 255, 255) none repeat scroll 0% 0%; opacity: 0.6; display: none; }
+.m-calendar-range label.radio { float: left; margin-right: 15px; }
+.m-calendar-range fieldset.inline-group { clear: both; }
+.m-calendar-range .input-wrap.no-margin { position: relative; }
+.m-calendar-range .label-seperator { padding: 0px 18.5px; }
+.m-calendar-range fieldset.inline-group .input-wrap { margin-right: 0px; }
+.m-calendar::before, .m-calendar::after { content: ""; display: table; }
+.m-calendar::after { clear: both; }
+.m-calendar .calendar-input-wrap::before, .m-calendar .calendar-input-wrap::after { content: ""; display: table; }
+.m-calendar .calendar-input-wrap::after { clear: both; }
+.m-calendar .calendar-input-wrap::after, .m-calendar .calendar-input-wrap .after { width: 16px; height: 16px; display: block; position: absolute; top: 7px; right: 7px; background: transparent url('calendar.png') repeat scroll 0% 0%; }
+.datepicker-arena { clear: both; display: none; position: relative; width: 100%; }
+.ui-datepicker { border: 0px none; background: rgb(0, 106, 77) none repeat scroll 0% 0%; padding: 30px; font-size: 1em; min-width: 320px; display: none; box-shadow: 0.1em 0.1em 0px rgba(0, 0, 0, 0.1); }
+.ui-datepicker .ui-datepicker-current { background-image: url('chevron-right-white.svg'); background-size: 8px 12px; background-position: left center; background-repeat: no-repeat; color: rgb(255, 255, 255); font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; cursor: pointer; float: left; position: absolute; top: 16px; left: 20px; padding: 0px 0px 0px 1em; font-size: 1.6em; border: 0px none; background-color: transparent; text-align: left; z-index: 1; }
+.ui-datepicker .ui-datepicker-header { position: relative; z-index: 2; margin-top: 20px; }
+.ui-datepicker .ui-datepicker-title { color: rgb(255, 255, 255); font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; text-transform: uppercase; padding-bottom: 10px; margin-bottom: 10px; position: relative; z-index: 1; text-align: center; }
+.ui-datepicker .ui-datepicker-title::after, .ui-datepicker .ui-datepicker-title .after { position: absolute; bottom: 0px; left: 50%; margin-left: -20px; width: 40px; height: 2px; background: rgb(100, 156, 0) none repeat scroll 0% 0%; content: ""; display: block; }
+.ui-datepicker .ui-datepicker-title::after, .ui-datepicker .ui-datepicker-title .after { background: rgb(119, 186, 0) none repeat scroll 0% 0%; }
+.ui-datepicker .ui-datepicker-buttonpane { z-index: 2; }
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { z-index: 2; cursor: pointer; display: block; position: absolute; right: 25%; top: 3px; height: 16px; width: 16px; overflow: hidden; text-indent: -99999px; }
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span { background-image: url('chevron-right-white.svg'); background-repeat: no-repeat; background-position: right center; display: block; }
+.ui-datepicker .ui-datepicker-prev.ui-state-disabled, .ui-datepicker .ui-datepicker-next.ui-state-disabled { display: none; }
+.ui-datepicker .ui-datepicker-prev { right: auto; left: 25%; }
+.ui-datepicker .ui-datepicker-prev span { background-image: url('chevron-left-white.svg'); background-position: left center; }
+.ui-datepicker .ui-datepicker-calendar { border: 0px none; background: transparent none repeat scroll 0px center; width: 100%; text-align: center; }
+.ui-datepicker .ui-datepicker-calendar thead tr { border: 0px none; }
+.ui-datepicker .ui-datepicker-calendar thead tr th { border: 0px none; color: rgb(255, 255, 255); font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; padding: 15px 0px; }
+.ui-datepicker .ui-datepicker-calendar tbody td { background: rgb(255, 255, 255) none repeat scroll 0% 0%; color: rgb(0, 106, 77); border-right: 1px solid rgb(0, 106, 77); border-bottom: 1px solid rgb(0, 106, 77); padding: 15px 0px; width: 14.2857%; vertical-align: middle; cursor: pointer; font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; }
+.ui-datepicker .ui-datepicker-calendar tbody td:hover { background: rgb(100, 156, 0) none repeat scroll 0% 0%; }
+.ui-datepicker .ui-datepicker-calendar tbody td:hover a { color: rgb(255, 255, 255); }
+.ui-datepicker .ui-datepicker-calendar tbody td a { color: rgb(0, 106, 77); text-decoration: none; }
+.ui-datepicker .ui-datepicker-calendar tbody td a:hover { text-decoration: none; }
+.ui-datepicker .ui-datepicker-calendar tbody td.ui-datepicker-other-month { background: transparent none repeat scroll 0% 0% ! important; }
+.ui-datepicker .ui-datepicker-calendar tbody td.ui-datepicker-current-day { background: rgb(100, 156, 0) none repeat scroll 0% 0% ! important; }
+.ui-datepicker .ui-datepicker-calendar tbody td.ui-datepicker-current-day a { color: rgb(255, 255, 255); }
+.ui-datepicker .ui-datepicker-calendar tbody td.ui-datepicker-today { background: rgb(240, 240, 240) none repeat scroll 0% 0%; color: rgb(0, 106, 77); }
+.ui-datepicker .ui-datepicker-calendar tbody td.ui-datepicker-unselectable { background: rgb(0, 95, 69) none repeat scroll 0% 0%; cursor: default; color: rgb(133, 165, 154); }
+.m-credit-card-main-statement::before, .m-credit-card-main-statement::after { content: ""; display: table; }
+.m-credit-card-main-statement::after { clear: both; }
+.m-credit-card-main-statement::before, .m-credit-card-main-statement::after { content: ""; display: table; }
+.m-credit-card-main-statement::after { clear: both; }
+.m-credit-card-main-statement .summary-options::before, .m-credit-card-main-statement .summary-options::after { content: ""; display: table; }
+.m-credit-card-main-statement .summary-options::after { clear: both; }
+.m-credit-card-main-statement .panel::before, .m-credit-card-main-statement .panel::after { content: ""; display: table; }
+.m-credit-card-main-statement .panel::after { clear: both; }
+.m-credit-card-main-statement .show-hide-content::before, .m-credit-card-main-statement .show-hide-content::after { content: ""; display: table; }
+.m-credit-card-main-statement .show-hide-content::after { clear: both; }
+.data-table-wrap { padding: 10px 20px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.data-table-wrap::before, .data-table-wrap::after { content: ""; display: table; }
+.data-table-wrap::after { clear: both; }
+.data-table { width: 100%; background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.data-table.statements th { padding: 15px 10px; }
+.data-table caption { height: 0px; overflow: hidden; font-size: 0px; }
+.data-table th, .data-table td { vertical-align: top; }
+.data-table th { font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; font-size: 1.4em; line-height: 1.43; text-transform: uppercase; color: rgb(0, 106, 77); padding: 15px 10px; text-align: left; border-bottom: 2px solid rgb(240, 240, 240); }
+.data-table th a { color: rgb(0, 106, 77); text-decoration: none; }
+.data-table th.description { color: rgb(102, 102, 102); }
+.data-table td { font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; font-size: 1.5em; padding: 17px 10px; text-align: left; border-bottom: 1px solid rgb(240, 240, 240); }
+.data-table td.first, .data-table th.first { padding-left: 0px; }
+.data-table td.last, .data-table th.last { padding-right: 0px; }
+.data-table .right { text-align: right; }
+.data-table .date { width: 16%; }
+.data-table .description { width: 30%; }
+.data-table .type { width: 15%; padding-right: 0px ! important; }
+.data-table .in { width: 13%; }
+.data-table .out { width: 13%; }
+.data-table .balance { width: 17%; white-space: nowrap; }
+.data-table .no-border, .data-table.no-border { border: 0px none; }
+.data-table .primary { color: rgb(0, 106, 77); }
+.data-table a.sorter { display: inline-block; padding-right: 18px; background-image: url('triangle-up-primary1.svg'); background-size: 10px 7px; background-repeat: no-repeat; background-position: right center; }
+div.m-definition-list::before, div.m-definition-list::after { content: ""; display: table; }
+div.m-definition-list::after { clear: both; }
+div.m-definition-list dl dt::before { content: ""; clear: both; display: block; }
+.dl-bold-inline::before, .dl-normal-inline::before, .dl-bold-inline::after, .dl-normal-inline::after { content: ""; display: table; }
+.dl-bold-inline::after, .dl-normal-inline::after { clear: both; }
+.dl-list { margin-bottom: 20px; width: 100%; }
+.dl-list li { clear: both; border-bottom: 1px solid rgb(204, 204, 204); padding: 12px 0px; }
+.dl-list li::before, .dl-list li::after { content: ""; display: table; }
+.dl-list li::after { clear: both; }
+.dl-list li.last { border-bottom: 0px none; }
+.dl-list .dt { float: left; }
+.dl-list .dd { float: right; text-align: right; }
+.m-error-message::before, .m-error-message::after { content: ""; display: table; }
+.m-error-message::after { clear: both; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="number"], input[type="search"], textarea, select { font-size: 1.6em; line-height: 1.25; font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; margin: 0px; border: 1px solid rgb(204, 204, 204); height: 50px; width: 300px; color: rgb(51, 51, 51); padding: 10px; float: left; box-sizing: border-box; }
+input.medium[type="text"], input.medium[type="email"], input.medium[type="tel"], input.medium[type="password"], input.medium[type="number"], input.medium[type="search"], textarea.medium, select.medium { width: 205px; }
+input[type="number"] { -moz-appearance: textfield; }
+button:disabled, input[type="submit"]:disabled { color: rgb(240, 240, 240) ! important; background: rgb(204, 204, 204) none repeat scroll 0% 0% ! important; cursor: default ! important; }
+@media not all {
+	select { background-image: url('chevron-down-primary1.svg'); background-size: 12px 8px; background-position: right 20px center; background-repeat: no-repeat; padding-right: 35px; -moz-appearance: none; }
+}
+@media not all {
+}
+.no-margin { margin: 0px ! important; }
+.js .radio-mask { width: 28px; height: 28px; display: block; position: absolute; left: 0px; top: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 1px solid rgb(204, 204, 204); border-radius: 50%; overflow: hidden; }
+.js .radio-mask.checked { width: 10px; height: 10px; border: 10px solid rgb(100, 156, 0); }
+.js .radio-mask input { position: absolute; outline: 0px none; left: -999px; }
+.radio-mask input, .checkbox-mask input { left: 0px; top: 0px; }
+label { font-size: 1.6em; line-height: 1.25; font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; display: block; cursor: pointer; position: relative; }
+label strong, label.strong { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif ! important; }
+label.inline-height { height: 50px; line-height: 50px; margin-bottom: 0px; }
+.js label.inline-height.radio { padding: 0px 0px 0px 38px; }
+label.inline-height .radio-mask { margin-top: 10px; }
+label.inline-height .radio-mask input { margin-top: 15px; }
+.js label.radio { padding: 6px 0px 6px 38px; }
+fieldset {  }
+fieldset::before, fieldset::after { content: ""; display: table; }
+fieldset::after { clear: both; }
+fieldset legend { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; margin: 0px 0px 16px; padding: 0px; }
+fieldset legend strong, fieldset legend.strong { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif ! important; }
+fieldset.radio legend { font-size: 1.6em; line-height: 1.25; font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; margin-bottom: 6px; }
+fieldset.radio.inline label { float: left; margin-right: 15px; clear: none; }
+fieldset.radio label { cursor: pointer; clear: both; }
+fieldset.radio input[type="radio"] { width: auto; margin: 0px 5px 0px 0px; }
+fieldset.inline-group { float: left; width: 100%; }
+fieldset.inline-group label { display: none; }
+fieldset.inline-group label.radio, fieldset.inline-group label.checkbox { display: block; float: left; margin-right: 20px; }
+fieldset.inline-group input, fieldset.inline-group select, fieldset.inline-group textarea { float: left; margin-right: 10px; }
+fieldset.inline-group .input-wrap { position: relative; float: left; margin-right: 10px; }
+fieldset.inline-group .input-wrap input, fieldset.inline-group .input-wrap select, fieldset.inline-group .input-wrap textarea { margin-right: 0px; }
+.label-seperator { height: 50px; font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; padding: 0px 10px; line-height: 50px; display: block; float: left; }
+div.input { margin-bottom: 20px; clear: both; position: relative; }
+div.input::before, div.input::after { content: ""; display: table; }
+div.input::after { clear: both; }
+div.input label { margin-bottom: 6px; }
+div.input.submit-right { margin-bottom: 0px; }
+div.input.submit-right button, div.input.submit-right .m-action-button, div.input.submit-right input[type="submit"] { float: right; }
+div.input .prepend-wrap { position: relative; float: left; }
+div.input .prepend-wrap input, div.input .prepend-wrap textarea { padding-left: 35px; width: 270px; }
+div.input .prepend-wrap input.medium, div.input .prepend-wrap textarea.medium { width: 175px; }
+div.input .prepend-wrap .prepend { position: absolute; top: 15px; left: 15px; font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; color: rgb(204, 204, 204); }
+div.input .input-wrap { position: relative; float: left; }
+div.input .input-wrap input, div.input .input-wrap textarea { padding-right: 40px; width: 270px; }
+div.input .input-wrap.icon span.calendar, div.input .input-wrap.icon a.calendar { content: ""; display: none; cursor: pointer; position: absolute; top: 9px; right: 15px; z-index: 2; width: 30px; height: 30px; background: transparent url('calendar-primary1.svg') repeat scroll 0% 0%; }
+.js div.input .input-wrap.icon span.calendar, .js div.input .input-wrap.icon a.calendar { display: block; }
+div.input .input-wrap.full-width { width: 100%; }
+div.input .input-wrap.full-width input, div.input .input-wrap.full-width textarea, div.input .input-wrap.full-width select { width: 100%; }
+select { font-family: "Helvetica",arial,sans-serif ! important; }
+.sp-pat-m-hf-01-product-service { background-color: rgb(2, 71, 49); float: left; width: 100%; overflow-y: hidden; opacity: 0; display: none; }
+.js .sp-pat-m-hf-01-product-service { display: block; }
+.sp-pat-m-hf-01-product-service.nojs-open { opacity: 1; overflow: visible; display: block; }
+.sp-pat-m-hf-01-product-service .m-container { padding: 20px 0px; }
+.sp-pat-m-hf-01-product-service .m-container::before, .sp-pat-m-hf-01-product-service .m-container::after { content: ""; display: table; }
+.sp-pat-m-hf-01-product-service .m-container::after { clear: both; }
+.sp-pat-m-hf-01-product-service ul { text-align: left; padding: 0px 20px; }
+.sp-pat-m-hf-01-product-service .m-01-fourcol .m-01-section { float: left; width: 23.3333%; margin: 0px 0.833333%; display: inline-block; background-color: rgb(2, 57, 39); text-align: center; padding: 20px 20px 20px 0px; box-sizing: border-box; }
+.sp-pat-m-hf-01-product-service .m-01-fourcol .m-01-section h2 { color: rgb(0, 106, 77); }
+.sp-pat-m-hf-01-product-service h2 { padding-bottom: 14px; }
+.sp-pat-m-hf-01-product-service h2 a { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; line-height: 1.25; text-decoration: none; color: rgb(119, 186, 0); font-size: 2.4em; }
+.sp-pat-m-hf-01-product-service h2:hover { text-decoration: underline; }
+.sp-pat-m-hf-01-product-service ul li { padding: 0px; list-style: outside none none; background: transparent none repeat scroll 0px center; }
+.sp-pat-m-hf-01-product-service ul li a { padding: 4px 0px 4px 18px; display: block; color: rgb(255, 255, 255); text-decoration: none; word-wrap: break-word; font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; background-image: url('chevron-right-white.svg'); background-size: 8px 12px; background-repeat: no-repeat; background-position: 0px 7px; }
+.sp-pat-m-hf-01-product-service ul li a:hover { color: rgb(255, 255, 255); text-decoration: underline; }
+.sp-pat-m-hf-01-safe-secure { background-color: rgb(0, 95, 69); float: left; width: 100%; overflow-y: hidden; opacity: 0; display: none; }
+.js .sp-pat-m-hf-01-safe-secure { display: block; }
+.sp-pat-m-hf-01-safe-secure .m-container { position: relative; padding: 0px 0px 30px; }
+.sp-pat-m-hf-01-safe-secure .m-container::before, .sp-pat-m-hf-01-safe-secure .m-container::after { content: ""; display: table; }
+.sp-pat-m-hf-01-safe-secure .m-container::after { clear: both; }
+.sp-pat-m-hf-01-safe-secure .m-01-threecol .m-01-section { float: left; width: 31.6667%; margin: 0px 0.833333%; display: inline-block; background-color: rgb(2, 57, 39); text-align: center; padding: 20px 20px 20px 0px; box-sizing: border-box; }
+.sp-pat-m-hf-01-safe-secure h2 { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 2.4em; line-height: 1.25; color: rgb(119, 186, 0); display: inline; float: left; width: 98.3333%; margin: 28px 0.833333% 0px; }
+.sp-pat-m-hf-01-safe-secure h3::after { content: ""; display: block; width: 4em; border-bottom: 2px solid rgb(119, 186, 0); margin-top: 20px; }
+.sp-pat-m-hf-01-safe-secure p { color: rgb(255, 255, 255); text-align: left; font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; margin: 0px 0px 1em; }
+.sp-pat-m-hf-01-safe-secure p a { color: rgb(255, 255, 255); text-decoration: underline; }
+.sp-pat-m-hf-01-safe-secure ul { text-align: left; list-style-type: disc; list-style-position: inside; padding-left: 0px; }
+.sp-pat-m-hf-01-safe-secure ul li { color: rgb(255, 255, 255); font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; margin-bottom: 4px; }
+.sp-pat-m-hf-01-safe-secure ul li a { color: rgb(255, 255, 255); text-decoration: underline; }
+.sp-pat-m-hf-01-safe-secure ul.links { margin-left: 0px; margin-top: 20px; }
+.sp-pat-m-hf-01-safe-secure ul.links li { list-style: outside none none; background: transparent url('chevron-right-white.svg') no-repeat scroll left center / 8px 12px; text-align: left; color: rgb(255, 255, 255); padding: 4px 0px 4px 18px; margin: 0px; font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; }
+.sp-pat-m-hf-01-safe-secure ul.links li a { display: block; line-height: 1.4em; color: rgb(255, 255, 255); text-decoration: none; }
+.sp-pat-m-hf-01-safe-secure ul.links li a:hover { color: rgb(255, 255, 255); text-decoration: underline; }
+.sp-pat-m-hf-01-safe-secure .m-container .m-01-section { background-color: transparent; padding-bottom: 0px; }
+.sp-pat-m-hf-01-bank-bar-container { background-color: rgb(0, 95, 69); float: left; width: 100%; position: relative; height: 0px; overflow-y: hidden; }
+.sp-pat-m-hf-01-bank-bar-container::before, .sp-pat-m-hf-01-bank-bar-container::after { content: ""; display: table; }
+.sp-pat-m-hf-01-bank-bar-container::after { clear: both; }
+.js .sp-pat-m-hf-01-bank-bar-container { display: none; transition: all 0.75s cubic-bezier(0.42, 0, 0.58, 1) 0ms; }
+.sp-pat-m-hf-01-bank-bar-container::before { content: ""; border-top: 5px solid rgb(90, 140, 0); width: 100%; display: block; }
+.sp-pat-m-hf-01-bank-bar-container.open::before { content: ""; border-top: 5px solid rgb(90, 140, 0); width: 100%; display: block; }
+div.sp-pat-m-hf-01-bank-bar { font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; background-color: rgb(0, 106, 77); float: left; width: 100%; }
+div.sp-pat-m-hf-01-bank-bar .desktop_logo { display: block; }
+div.sp-pat-m-hf-01-bank-bar .mobile_logo, div.sp-pat-m-hf-01-bank-bar .m-01-menu-home, div.sp-pat-m-hf-01-bank-bar .m-01-menu-buttons, div.sp-pat-m-hf-01-bank-bar .m-01-menu-logoff { display: none; }
+div.sp-pat-m-hf-01-bank-bar ul, div.sp-pat-m-hf-01-bank-bar li { margin: 0px; padding: 0px; list-style: outside none none; }
+div.sp-pat-m-hf-01-bank-bar a { text-decoration: none; font-size: 1.6em; color: rgb(255, 255, 255); }
+div.sp-pat-m-hf-01-bank-bar .m-hf-01-container { height: auto; }
+div.sp-pat-m-hf-01-bank-bar .m-hf-01-container .m-01-menu-button { display: none; }
+div.sp-pat-m-hf-01-bank-bar .m-01-menu-bar { float: left; margin-left: 0.833333%; }
+div.sp-pat-m-hf-01-bank-bar .m-01-menu-bar.pull-right { float: right; margin-left: 0px; }
+div.sp-pat-m-hf-01-bank-bar .m-01-logo { margin: 0px 0.833333%; width: auto; padding: 14.5px 0px; display: inline-block; float: left; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation { margin-right: 0.833333%; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation::before, div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation::after { content: ""; display: table; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation::after { clear: both; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation ul li { display: inline-block; border-right: medium none rgb(0, 106, 77); float: left; background: transparent none repeat scroll 0px center; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation ul li a { padding: 0px 40px 0px 20px; display: block; float: left; font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; font-size: 1.6em; color: rgb(255, 255, 255); line-height: 80px; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation ul li a:hover { color: rgb(255, 255, 255); }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation .m-hf-01-products-services a { background-image: url('chevron-down-white.svg'); background-size: 12px 8px; background-position: right 20px center; background-repeat: no-repeat; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation .m-hf-01-cookie-policy a { padding-right: 20px; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation .m-hf-01-safe-secure a { border-right: 1px solid rgb(2, 71, 49); border-left: 1px solid rgb(2, 71, 49); background-image: url('padlock-white.svg'); background-size: 14px 20px; background-repeat: no-repeat; background-position: 92% center; line-height: 16px; text-align: right; padding: 24px 46px 24px 20px; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation .m-hf-01-safe-secure a:hover { background-position: 92% center; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation .m-hf-01-safe-secure a span { display: block; font-size: 0.8em; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation .m-hf-01-products-services a:hover { background-color: transparent; background-image: url('chevron-down-white.svg'), linear-gradient(to bottom, rgb(116, 166, 26) 0px, rgb(90, 140, 0) 100%); background-repeat: no-repeat, repeat; background-attachment: scroll, scroll; background-clip: border-box, border-box; background-origin: padding-box, padding-box; background-position: right 20px center; background-size: 12px 8px, 100% 100%; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation .m-hf-01-cookie-policy a:hover { background: transparent linear-gradient(to bottom, rgb(116, 166, 26) 0px, rgb(90, 140, 0) 100%) repeat scroll 0% 0%; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation .m-hf-01-safe-secure a.selected, div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation .m-hf-01-safe-secure a:hover { border-right: 1px solid rgb(2, 71, 49); padding-right: 46px; background-color: transparent; background-image: url('padlock-white.svg'), linear-gradient(to bottom, rgb(116, 166, 26) 0px, rgb(90, 140, 0) 100%); background-repeat: no-repeat, repeat; background-attachment: scroll, scroll; background-clip: border-box, border-box; background-origin: padding-box, padding-box; background-size: 14px 20px, 100% 100%; background-position: 92% center; }
+div.sp-pat-m-hf-01-bank-bar .m-fh-01-navigation .m-hf-01-safe-secure a span { font-style: italic; font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; }
+.m-hf-02-business-admin::before, .m-hf-02-business-admin::after { content: ""; display: table; }
+.m-hf-02-business-admin::after { clear: both; }
+.sp-pat-m-hf-02-help-and-support h3::after { content: ""; display: block; width: 2em; border-bottom: 2px solid rgb(100, 156, 0); margin: 1em 0px 0px; }
+.m-hf-02-customer-bar h3::after, .m-hf-02-your-accounts h3::after, .m-hf-02-your-profile h3::after, .m-hf-02-business-admin h3::after, .m-hf-02-inbox h3::after { content: ""; display: block; width: 2em; border-bottom: 2px solid rgb(100, 156, 0); margin: 1em 0px 0px; }
+.m-hf-02-customer-bar ul, .m-hf-02-your-accounts ul, .m-hf-02-your-profile ul, .m-hf-02-business-admin ul, .m-hf-02-inbox ul, .m-hf-02-customer-bar li, .m-hf-02-your-accounts li, .m-hf-02-your-profile li, .m-hf-02-business-admin li, .m-hf-02-inbox li { margin: 0px; padding: 0px; list-style: outside none none; }
+.m-hf-02-customer-bar, .m-hf-02-name-setting, .m-hf-02-nameonly { clear: both; position: relative; text-align: left; border-bottom: 1px solid rgb(229, 229, 229); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.m-hf-02-customer-bar .m-container, .m-hf-02-name-setting .m-container, .m-hf-02-nameonly .m-container {  }
+.m-hf-02-customer-bar .m-container::before, .m-hf-02-name-setting .m-container::before, .m-hf-02-nameonly .m-container::before, .m-hf-02-customer-bar .m-container::after, .m-hf-02-name-setting .m-container::after, .m-hf-02-nameonly .m-container::after { content: ""; display: table; }
+.m-hf-02-customer-bar .m-container::after, .m-hf-02-name-setting .m-container::after, .m-hf-02-nameonly .m-container::after { clear: both; }
+.m-hf-02-customer-bar div.m-hf-02-name, .m-hf-02-name-setting div.m-hf-02-name, .m-hf-02-nameonly div.m-hf-02-name { height: 6em; display: inline; float: left; margin: 0px 0px 0px 0.833333%; width: auto; color: rgb(51, 51, 51); }
+.m-hf-02-customer-bar div.m-hf-02-name .nav-title, .m-hf-02-name-setting div.m-hf-02-name .nav-title, .m-hf-02-nameonly div.m-hf-02-name .nav-title { border: 0px none; }
+.m-hf-02-customer-bar div.m-hf-02-name .nav-title span, .m-hf-02-name-setting div.m-hf-02-name .nav-title span, .m-hf-02-nameonly div.m-hf-02-name .nav-title span { display: block; margin: 11px 0px 0px; }
+.m-hf-02-customer-bar div.m-hf-02-name .nav-title span a, .m-hf-02-name-setting div.m-hf-02-name .nav-title span a, .m-hf-02-nameonly div.m-hf-02-name .nav-title span a { color: rgb(102, 102, 102); text-decoration: none; pointer-events: none; cursor: default; }
+.m-hf-02-customer-bar div.m-hf-02-name .nav-title span.m-hf-02-name, .m-hf-02-name-setting div.m-hf-02-name .nav-title span.m-hf-02-name, .m-hf-02-nameonly div.m-hf-02-name .nav-title span.m-hf-02-name { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; font-size: 2em; line-height: 1; }
+.m-hf-02-customer-bar div.m-hf-02-name .nav-title span.m-hf-02-logged-in, .m-hf-02-name-setting div.m-hf-02-name .nav-title span.m-hf-02-logged-in, .m-hf-02-nameonly div.m-hf-02-name .nav-title span.m-hf-02-logged-in { margin: 0px 0px 8px; color: rgb(102, 102, 102); font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.4em; line-height: 1.43; background: transparent url('padlock-small.svg') no-repeat scroll left 2px / 14px 14px; padding-left: 17px; }
+.m-hf-02-customer-bar ul, .m-hf-02-name-setting ul, .m-hf-02-nameonly ul { margin: 0px; }
+.m-hf-02-customer-bar .m-hf-02-nav, .m-hf-02-name-setting .m-hf-02-nav, .m-hf-02-nameonly .m-hf-02-nav { float: right; width: auto; margin: 0px 0.833333% 0px 0px; max-width: unset; }
+.js .m-hf-02-customer-bar .m-hf-02-nav, .js .m-hf-02-name-setting .m-hf-02-nav, .js .m-hf-02-nameonly .m-hf-02-nav { transition: all 0.75s cubic-bezier(0.42, 0, 0.58, 1) 0.1s; }
+.m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-home, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-home, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-home, .m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-tab, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-tab, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-tab, .m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-logout, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-logout, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-logout, .m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-mail, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-mail, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-mail { display: inline; }
+.m-hf-02-customer-bar .m-hf-02-nav li .nav-title, .m-hf-02-name-setting .m-hf-02-nav li .nav-title, .m-hf-02-nameonly .m-hf-02-nav li .nav-title { float: left; display: inline; border-right: 1px solid rgb(229, 229, 229); }
+.m-hf-02-customer-bar .m-hf-02-nav li .nav-title a, .m-hf-02-name-setting .m-hf-02-nav li .nav-title a, .m-hf-02-nameonly .m-hf-02-nav li .nav-title a { font-size: 1.6em; font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; background-image: url('chevron-down-primary1.svg'); background-size: 12px 8px; background-position: right 20px center; background-repeat: no-repeat; color: rgb(0, 106, 77); display: block; padding: 0px 2.2em 0px 1em; line-height: 60px; text-align: center; text-decoration: none; }
+.m-hf-02-customer-bar .m-hf-02-nav li .nav-title a:hover, .m-hf-02-name-setting .m-hf-02-nav li .nav-title a:hover, .m-hf-02-nameonly .m-hf-02-nav li .nav-title a:hover { background-image: url('chevron-down-secondaryonlight.svg'); background-size: 12px 8px; background-position: right 20px center; background-repeat: no-repeat; background-color: rgb(240, 240, 240); color: rgb(100, 156, 0); }
+.m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-home .nav-title a, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-home .nav-title a, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-home .nav-title a { background-image: url('home-primary1.svg'); background-size: 20px 17px; background-position: center center; background-repeat: no-repeat; padding: 0px; width: 45px; height: 60px; display: block; overflow: hidden; }
+.m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-home .nav-title a:hover, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-home .nav-title a:hover, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-home .nav-title a:hover { background-color: rgb(243, 243, 243); background-image: url('home-secondaryonlight.svg'); background-size: 20px 17px; background-position: center center; background-repeat: no-repeat; }
+.m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-mail .nav-title a, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-mail .nav-title a, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-mail .nav-title a { background: transparent none repeat scroll 0% 0%; padding: 0px 25px 0px 1em; position: relative; }
+.m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-mail .nav-title a .m-hf-02-mail-icon, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-mail .nav-title a .m-hf-02-mail-icon, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-mail .nav-title a .m-hf-02-mail-icon { display: block; text-indent: -9999px; overflow: hidden; background-image: url('message-primary1.svg'); background-size: 23px 15px; background-position: center center; background-repeat: no-repeat; width: 35px; }
+.m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-mail .nav-title a .m-hf-02-mail-badge, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-mail .nav-title a .m-hf-02-mail-badge, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-mail .nav-title a .m-hf-02-mail-badge, .m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-mail .nav-title a .m-hf-02-mail-badge-read, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-mail .nav-title a .m-hf-02-mail-badge-read, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-mail .nav-title a .m-hf-02-mail-badge-read { border-radius: 50%; position: absolute; font-size: 0.9em; text-align: center; right: 20px; top: 31%; color: rgb(255, 255, 255); height: 23px; min-width: 23px; background-color: rgb(220, 42, 77); line-height: 26px; }
+.m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-mail .nav-title a .m-hf-02-mail-badge-read, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-mail .nav-title a .m-hf-02-mail-badge-read, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-mail .nav-title a .m-hf-02-mail-badge-read { background-color: rgb(100, 156, 0); }
+.m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-mail .nav-title a:hover, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-mail .nav-title a:hover, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-mail .nav-title a:hover { background: rgb(243, 243, 243) none repeat scroll 0% 0%; }
+.m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-mail .nav-title a:hover .m-hf-02-mail-icon, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-mail .nav-title a:hover .m-hf-02-mail-icon, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-mail .nav-title a:hover .m-hf-02-mail-icon { background-image: url('message-secondaryonlight.svg'); background-size: 23px 15px; background-position: center center; background-repeat: no-repeat; }
+.m-hf-02-customer-bar .m-hf-02-nav li.m-hf-02-logout .nav-title a, .m-hf-02-name-setting .m-hf-02-nav li.m-hf-02-logout .nav-title a, .m-hf-02-nameonly .m-hf-02-nav li.m-hf-02-logout .nav-title a { background-image: none; padding: 0px 0.5em; }
+.m-hf-02-customer-bar .m-hf-02-nav li .nav-content, .m-hf-02-name-setting .m-hf-02-nav li .nav-content, .m-hf-02-nameonly .m-hf-02-nav li .nav-content { position: absolute; overflow: hidden; left: 0px; top: 6em; width: 100%; padding-top: 4px; min-height: 20em; max-height: 9999em; transition: height 0.75s cubic-bezier(0.42, 0, 0.58, 1) 0.75s; }
+.m-hf-02-customer-bar .m-hf-02-nav .nav-content.error .error-text::after, .m-hf-02-name-setting .m-hf-02-nav .nav-content.error .error-text::after, .m-hf-02-nameonly .m-hf-02-nav .nav-content.error .error-text::after { content: ""; display: block; width: 2em; border-bottom: 2px solid rgb(220, 42, 77); margin: 1em auto 0px; }
+.m-hf-02-customer-bar .m-hf-02-nav li .nav-title a, .m-hf-02-name-setting .m-hf-02-nav li .nav-title a, .m-hf-02-nameonly .m-hf-02-nav li .nav-title a { text-decoration: none; }
+.m-hf-02-customer-bar .m-hf-02-nav .nav-content::before, .m-hf-02-name-setting .m-hf-02-nav .nav-content::before, .m-hf-02-nameonly .m-hf-02-nav .nav-content::before, .m-hf-02-customer-bar .m-hf-02-nav .nav-content::after, .m-hf-02-name-setting .m-hf-02-nav .nav-content::after, .m-hf-02-nameonly .m-hf-02-nav .nav-content::after { opacity: 0; transition: all 0.35s cubic-bezier(0.42, 0, 0.58, 1) 0.75s; }
+.m-hf-02-customer-bar .m-hf-02-nav .nav-content::before, .m-hf-02-name-setting .m-hf-02-nav .nav-content::before, .m-hf-02-nameonly .m-hf-02-nav .nav-content::before { content: ""; background: transparent url('spinner-outer.png') no-repeat scroll center center / 54px auto; border: 0px none; position: absolute; left: 50%; top: 95px; width: 54px; height: 54px; margin-left: -27px; margin-top: -27px; animation: 1.2s linear 0s normal none infinite running spin; }
+.m-hf-02-customer-bar .m-hf-02-nav .loading.fade-in::before, .m-hf-02-name-setting .m-hf-02-nav .loading.fade-in::before, .m-hf-02-nameonly .m-hf-02-nav .loading.fade-in::before, .m-hf-02-customer-bar .m-hf-02-nav .loading.fade-in::after, .m-hf-02-name-setting .m-hf-02-nav .loading.fade-in::after, .m-hf-02-nameonly .m-hf-02-nav .loading.fade-in::after, .m-hf-02-customer-bar .m-hf-02-nav .loading.fade-in, .m-hf-02-name-setting .m-hf-02-nav .loading.fade-in, .m-hf-02-nameonly .m-hf-02-nav .loading.fade-in { opacity: 1; }
+.m-hf-02-customer-bar .m-hf-02-nav .loading.fade-out::before, .m-hf-02-name-setting .m-hf-02-nav .loading.fade-out::before, .m-hf-02-nameonly .m-hf-02-nav .loading.fade-out::before, .m-hf-02-customer-bar .m-hf-02-nav .loading.fade-out::after, .m-hf-02-name-setting .m-hf-02-nav .loading.fade-out::after, .m-hf-02-nameonly .m-hf-02-nav .loading.fade-out::after, .m-hf-02-customer-bar .m-hf-02-nav .loading.fade-out, .m-hf-02-name-setting .m-hf-02-nav .loading.fade-out, .m-hf-02-nameonly .m-hf-02-nav .loading.fade-out { opacity: 0; }
+.m-hf-02-help-and-support::before, .m-hf-02-help-and-support::after { content: ""; display: table; }
+.m-hf-02-help-and-support::after { clear: both; }
+.m-hf-02-help-and-support .m-hf-02-links::before, .m-hf-02-help-and-support .m-hf-02-links::after { content: ""; display: table; }
+.m-hf-02-help-and-support .m-hf-02-links::after { clear: both; }
+.m-hf-02-help-and-support .m-hf-02-links h3::after { content: ""; display: block; width: 2em; margin-top: 1em; border-bottom: 2px solid rgb(119, 186, 0); }
+.sp-pat-m-hf-02-help-and-support .m-hf-02-pull-out div h3::after { margin-left: auto; margin-right: auto; border-bottom-color: rgb(119, 186, 0); }
+.m-hf-02-your-accounts::before, .m-hf-02-your-accounts::after { content: ""; display: table; }
+.m-hf-02-your-accounts::after { clear: both; }
+.m-hf-02-your-profile::before, .m-hf-02-your-profile::after { content: ""; display: table; }
+.m-hf-02-your-profile::after { clear: both; }
+.sp-pat-m-hf-03-footer { font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; text-align: left; }
+.sp-pat-m-hf-03-footer ul, .sp-pat-m-hf-03-footer li { margin: 0px; padding: 0px; list-style: outside none none; line-height: 1.2; }
+.sp-pat-m-hf-03-footer .m-container .footer-section { margin-top: 10px; margin-bottom: 10px; background-color: rgb(0, 106, 77); }
+.sp-pat-m-hf-03-footer .m-hf-01-threecol .footer-section { display: inline; float: left; width: 31.6667%; margin: 0px 0.833333%; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-01 { background-color: rgb(0, 106, 77); clear: both; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-01 .m-container { overflow: auto; padding: 50px 0px; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-01 h3 { color: rgb(255, 255, 255); font-weight: normal; margin: 0px 0px 20px; font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-01 ul li { color: rgb(255, 255, 255); font-weight: normal; margin-bottom: 10px; font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-01 ul li a { color: rgb(255, 255, 255); text-decoration: none; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-01 ul li a:hover { text-decoration: underline; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-02 { background-color: rgb(2, 71, 49); clear: both; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-02 .m-container { padding: 15px 0px; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-02 .m-container div { padding-left: 8px; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-02 .m-container div a { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; background: transparent url('chevron-right-white.svg') no-repeat scroll right 4px / 8px 12px; color: rgb(255, 255, 255); padding-right: 15px; text-decoration: none; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-02 .m-container div a:hover { text-decoration: underline; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-03 { background-color: rgb(255, 255, 255); clear: both; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-03 .m-container { padding: 25px 0px; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-03 .smallprint { padding: 0px 8px; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-03 p { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.4em; line-height: 1.43; color: rgb(102, 102, 102); margin: 0px 0px 0.7em; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-03 p a { color: rgb(0, 106, 77); text-decoration: none; font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; }
+.sp-pat-m-hf-03-footer .m-hf-03-footer-03 p a:hover { text-decoration: underline; }
+.m-primary-info-message::before, .m-primary-error-message::before, .m-primary-success-message::before, .m-primary-info-message::after, .m-primary-error-message::after, .m-primary-success-message::after { content: ""; display: table; }
+.m-primary-info-message::after, .m-primary-error-message::after, .m-primary-success-message::after { clear: both; }
+.m-secondary-info-message::before, .m-secondary-error-message::before, .m-secondary-success-message::before, .m-secondary-info-message::after, .m-secondary-error-message::after, .m-secondary-success-message::after { content: ""; display: table; }
+.m-secondary-info-message::after, .m-secondary-error-message::after, .m-secondary-success-message::after { clear: both; }
+.js .m-overlay { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 1000; background: rgba(0, 0, 0, 0.6) none repeat scroll 0% 0%; }
+.js .m-overlay .overlay-panel { position: absolute; z-index: 1001; }
+.m-overlay { display: none; }
+.m-overlay .overlay-panel { width: 584px; position: relative; background: rgb(255, 255, 255) none repeat scroll 0% 0%; box-shadow: 0.1em 0.1em 0px rgba(0, 0, 0, 0.1); padding: 20px; }
+.m-overlay .overlay-panel .overlay-content {  }
+.m-overlay .overlay-panel .overlay-content::before, .m-overlay .overlay-panel .overlay-content::after { content: ""; display: table; }
+.m-overlay .overlay-panel .overlay-content::after { clear: both; }
+.m-overlay .overlay-panel .overlay-close { position: absolute; top: 20px; right: 20px; display: block; width: 15px; height: 15px; background-image: url('cross-grey.svg'); background-size: 15px 15px; background-position: center center; background-repeat: no-repeat; }
+.m-overlay .overlay-focus-handler { position: absolute; opacity: 0; }
+.overlay-wrap::before, .overlay-wrap::after { content: ""; display: table; }
+.overlay-wrap::after { clear: both; }
+.logoutWarning .actions li::before, .logoutWarning .actions li::after { content: ""; display: table; }
+.logoutWarning .actions li::after { clear: both; }
+.sp-pat-m-qtp-01-quick-transfer-pay::before, .sp-pat-m-qtp-01-quick-transfer-pay::after { content: ""; display: table; }
+.sp-pat-m-qtp-01-quick-transfer-pay::after { clear: both; }
+.m-accordion { background: rgb(255, 255, 255) none repeat scroll 0% 0%; margin-bottom: 20px; box-shadow: 0.1em 0.1em 0px rgba(0, 0, 0, 0.1); }
+.m-accordion .m-accordion { box-shadow: 0px 0px 0px transparent; }
+.m-accordion .m-accordion-title, .m-accordion .m-fixed-title { font-size: 1.6em; padding: 16px 19px 14px; font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; cursor: pointer; line-height: 1.2; text-align: center; }
+.m-accordion .m-accordion-title a, .m-accordion .m-fixed-title a { text-decoration: none; display: block; }
+.js .m-accordion .m-accordion-title, .m-accordion .m-fixed-title { background-image: url('plus-secondaryonlight.png'); background-position: 95% center; background-repeat: no-repeat; }
+.js .m-accordion .m-accordion-title:hover a, .m-accordion .m-fixed-title:hover a { text-decoration: none; color: rgb(100, 156, 0); }
+.m-accordion .m-accordion-title { background-repeat: no-repeat; padding-right: 40px; padding-left: 40px; }
+.m-accordion .m-accordion-content { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; text-align: center; }
+.js .m-accordion .m-accordion-content { display: none; }
+.m-accordion.accordion-dark { background: rgb(0, 106, 77) none repeat scroll 0% 0%; }
+.m-accordion.accordion-dark .m-accordion-title a, .m-accordion.accordion-dark .m-fixed-title a, .m-accordion.accordion-dark .m-accordion-content { color: rgb(255, 255, 255); }
+.m-accordion.accordion-dark .m-accordion-title, .m-accordion.accordion-dark .m-fixed-title { border-bottom: 1px solid rgb(153, 153, 153); }
+.m-accordion.accordion-dark .m-accordion-content { background: rgb(0, 95, 69) none repeat scroll 0% 0%; }
+.js .m-accordion.accordion-dark .m-accordion-title, .js .m-accordion.accordion-dark .m-fixed-title { background-image: url('plus-secondaryondark.png'); background-position: 95% center; background-repeat: no-repeat; }
+.js .m-accordion.accordion-dark .m-accordion-title:hover, .js .m-accordion.accordion-dark .m-fixed-title:hover { color: rgb(255, 255, 255); background-color: rgb(0, 85, 62); }
+.js .m-accordion.accordion-dark .m-accordion-title:hover a, .js .m-accordion.accordion-dark .m-fixed-title:hover a { color: rgb(255, 255, 255); }
+.m-860-overlay { position: fixed; z-index: 998; left: 0px; right: 0px; top: 0px; bottom: 0px; background: rgba(0, 0, 0, 0.6) none repeat scroll 0% 0%; display: none; opacity: 0; transition: opacity 400ms ease-in-out 0ms; }
+.m-show-me-container { position: absolute; z-index: 999; background: rgb(62, 131, 164) none repeat scroll 0% 0%; display: none; left: 0px; top: 0px; box-shadow: 0.1em 0.1em 0px rgba(0, 0, 0, 0.1); }
+.m-show-me-container .close-show-me-button { position: absolute; top: 10px; right: 10px; display: block; width: 15px; height: 15px; background-image: url('cross-white.svg'); background-size: 15px 15px; background-position: center center; background-repeat: no-repeat; }
+.m-860-d-show-me-menu ul::before, .m-860-d-show-me-menu ul::after { content: ""; display: table; }
+.m-860-d-show-me-menu ul::after { clear: both; }
+.m-860-d-show-me-menu ul::before, .m-860-d-show-me-menu ul::after { content: ""; display: table; }
+.m-860-d-show-me-menu ul::after { clear: both; }
+.m-860-d-show-me-menu ul li:nth-child(2n+3) { clear: both; }
+.m-860-d-show-me-menu.three-col ul li:nth-child(2n+3) { clear: none; }
+.m-860-d-show-me-menu.three-col ul li:nth-child(3n+4) { clear: both; }
+.m-861-tip-controls::before, .m-861-tip-controls::after { content: ""; display: table; }
+.m-861-tip-controls::after { clear: both; }
+.m-star-rating ol::before, .m-star-rating ol::after { content: ""; display: table; }
+.m-star-rating ol::after { clear: both; }
+tbody { transition: opacity 400ms ease-in-out 0ms; }
+.m-tabs .m-tabs-container::before, .m-tabs .m-tabs-container::after { content: ""; display: table; }
+.m-tabs .m-tabs-container::after { clear: both; }
+.m-tabs .m-tabs-container li a::after, .m-tabs .m-tabs-container li a .after { position: absolute; left: 0px; bottom: 9px; height: 75%; width: 0px; border-left: 1px solid rgb(204, 204, 204); display: block; content: ""; }
+.m-tabs .m-tabs-container li:first-child a::after { display: none; }
+.m-tabs .m-tabs-container li.selected a::after, .m-tabs .m-tabs-container li.selected a .after { position: absolute; left: 50%; margin-left: -15px; bottom: -13px; background: transparent none repeat scroll 0% 0%; border-width: 13px 15px 0px; border-style: solid solid none; border-color: rgb(0, 106, 77) transparent -moz-use-text-color; width: 0px; height: 0px; display: block; content: ""; }
+.js .m-tool-tip { position: relative; margin-left: 5px; }
+.js .tool-tip { display: none; width: 305px; z-index: 100; overflow: visible; }
+.js .tool-tip .triangle { position: absolute; left: 15px; bottom: -10px; border-width: 10px 10px 0px; border-style: solid solid none; border-color: rgb(0, 106, 77) transparent -moz-use-text-color; width: 0px; height: 0px; display: block; content: ""; }
+.js .tool-tip .close { background-image: url('cross-white.svg'); background-size: 15px 15px; width: 15px; height: 15px; top: 10px; right: 10px; position: absolute; display: block; }
+.m-tool-tip { font-size: 10px ! important; }
+.tool-tip, .help { display: block; background: rgb(0, 106, 77) none repeat scroll 0% 0%; padding: 15px 30px 5px 15px; overflow: visible; position: relative; clear: both; box-shadow: 0.1em 0.1em 0px rgba(0, 0, 0, 0.1); font-size: 10px; }
+.tool-tip p, .help p, .tool-tip a, .help a { color: rgb(255, 255, 255); font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; margin-bottom: 10px; }
+.tool-tip p.header, .help p.header, .tool-tip a.header, .help a.header { font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; margin-bottom: 5px; }
+.tool-tip a:hover, .help a:hover { text-decoration: underline; }
+.tool-tip .close, .help .close { display: none; }
+.question-trigger { background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 50%; width: 30px; height: 30px; line-height: 30px ! important; text-align: center; font-size: 16px ! important; color: rgb(0, 106, 77) ! important; text-decoration: none; font-family: "lloyds_bank_jack-mediumWEB",arial,sans-serif ! important; display: inline-block; margin: 0px 5px; }
+.question-trigger.on-light { background: rgb(240, 240, 240) none repeat scroll 0% 0%; }
+th .question-trigger, td .question-trigger { width: 20px; height: 20px; line-height: 20px ! important; font-size: 12px ! important; margin: 0px; }
+.vpd-ajax-container { display: block; position: relative; min-height: 70px; }
+.vpd-ajax-content { display: block; width: 100%; transition: opacity 400ms ease-in-out 0ms; }
+.sp-pat-009-banner { margin: 0px 0px 2em; box-shadow: 0.1em 0.1em 0px rgba(0, 0, 0, 0.1); padding: 0px 0px 2em; background-color: rgb(255, 255, 255); border-top: 5px solid rgb(0, 106, 77); }
+.sp-pat-009-banner .m-dm-panel { overflow: hidden; clear: both; }
+.sp-pat-009-banner .m-dm-panel .main-panel { position: relative; padding: 20px 20px 0px 0px; overflow: hidden; }
+.sp-pat-009-banner .m-dm-panel .main-panel .main-section { margin-bottom: 2em; }
+.sp-pat-009-banner .m-dm-panel .main-panel .main-section h2 { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 36px; color: rgb(0, 106, 77); line-height: 1; margin: 0px 0px 14px; }
+.sp-pat-009-banner .m-dm-panel .main-panel .main-section h3 { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; color: rgb(102, 102, 102); margin: 0px 0px 14px; font-size: 24px; line-height: 1; }
+.sp-pat-009-banner .m-dm-panel .main-panel .button-section { margin: 0px 0px 20px; }
+.sp-pat-009-banner .m-dm-panel .main-panel .button-section a.m-action-button { padding: 15px 20px; display: inline-block; }
+.sp-pat-009-banner .m-dm-panel .main-panel .button-section a.m-action-button.mb-primary-btn { background: transparent linear-gradient(to bottom, rgb(0, 132, 96) 0px, rgb(0, 106, 77) 100%) repeat scroll 0% 0%; color: rgb(255, 255, 255); }
+.sp-pat-009-banner .m-dm-panel .main-panel .button-section a.m-action-button.mb-primary-btn:hover { background: transparent linear-gradient(to bottom, rgb(0, 106, 77) 0px, rgb(0, 132, 96) 100%) repeat scroll 0% 0%; }
+.sp-pat-009-banner .m-dm-panel .main-panel .button-section a.m-action-button.mb-primary-btn:hover { background: transparent linear-gradient(to bottom, rgb(0, 106, 77) 0px, rgb(0, 132, 96) 100%) repeat scroll 0% 0%; }
+.sp-pat-009-banner .m-dm-panel .image-panel { float: right; width: 240px; }
+.sp-pat-009-banner .m-dm-panel .image-panel img { display: block; }
+.sp-pat-009-banner .m-dm-panel .m-dm-terms { clear: both; overflow: hidden; }
+.sp-pat-009-banner .m-dm-panel .main-panel { padding-left: 20px; color: rgb(51, 51, 51); font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; }
+.sp-pat-009-banner .m-dm-panel .m-dm-terms { padding: 0px 20px; }
+.sp-pat-009-banner .m-dm-panel .image-panel { width: 33%; text-align: right; }
+.sp-pat-009-banner .m-dm-panel .image-panel img { margin: 0px auto; display: inline-block; }
+.sp-pat-placements-indicative-loans .m-dm-panel .main-panel .main-section .loan-details li::after { display: block; clear: both; height: 0px; content: "."; visibility: hidden; }
+.sp-pat-placements-tile { margin: 0px 0px 2em; box-shadow: 0.1em 0.1em 0px rgba(0, 0, 0, 0.1); padding: 0px 0px 2em; background-color: rgb(255, 255, 255); border-top: 5px solid rgb(0, 106, 77); }
+.sp-pat-placements-tile .m-dm-panel { overflow: hidden; clear: both; }
+.sp-pat-placements-tile .m-dm-panel .main-panel { position: relative; padding: 20px 20px 0px 0px; overflow: hidden; }
+.sp-pat-placements-tile .m-dm-panel .main-panel .main-section { margin-bottom: 2em; }
+.sp-pat-placements-tile .m-dm-panel .main-panel .main-section p { font-family: "lloyds_bank_jack-lightWEB",arial,sans-serif; font-size: 1.6em; line-height: 1.25; }
+.sp-pat-placements-tile .m-dm-panel .main-panel .button-section { margin: 0px 0px 20px; }
+.sp-pat-placements-tile .m-dm-panel .main-panel .button-section a.m-action-button { padding: 15px 20px; display: inline-block; }
+.sp-pat-placements-tile .m-dm-panel .main-panel .button-section a.m-action-button.mb-primary-btn { background: transparent linear-gradient(to bottom, rgb(0, 132, 96) 0px, rgb(0, 106, 77) 100%) repeat scroll 0% 0%; color: rgb(255, 255, 255); }
+.sp-pat-placements-tile .m-dm-panel .main-panel .button-section a.m-action-button.mb-primary-btn.placements-red { background: transparent linear-gradient(to bottom, rgb(224, 64, 95) 0px, rgb(220, 42, 77) 100%) repeat scroll 0% 0%; color: rgb(255, 255, 255); }
+.sp-pat-placements-tile .m-dm-panel .main-panel .button-section a.m-action-button.mb-primary-btn.placements-red:hover { background: transparent linear-gradient(to bottom, rgb(220, 42, 77) 0px, rgb(224, 64, 95) 100%) repeat scroll 0% 0%; }
+.sp-pat-placements-tile .m-dm-panel .main-panel .button-section a.m-action-button.mb-primary-btn:hover { background: transparent linear-gradient(to bottom, rgb(0, 106, 77) 0px, rgb(0, 132, 96) 100%) repeat scroll 0% 0%; }
+.sp-pat-placements-tile .m-dm-panel .main-panel .button-section a.m-action-button.mb-primary-btn:hover { background: transparent linear-gradient(to bottom, rgb(0, 106, 77) 0px, rgb(0, 132, 96) 100%) repeat scroll 0% 0%; }
+.sp-pat-placements-tile .m-dm-panel .image-panel { float: right; width: 240px; }
+.sp-pat-placements-tile .m-dm-panel .image-panel img { display: block; }
+.sp-pat-placements-tile .m-dm-panel .image-panel { float: none; width: 100%; }
+.sp-pat-placements-tile .m-dm-panel .image-panel img { display: block; width: 100%; }
+.sp-pat-placements-tile .m-dm-panel .main-panel { overflow: visible; padding: 15px 20px 0px; }
+.sp-pat-placements-tile .m-dm-panel .main-panel .main-section p { font-family: "lloyds_bank_jack-regularWEB",arial,sans-serif; padding: 0px; text-align: center; }
+.sp-pat-placements-tile .m-dm-panel .main-panel .button-section { margin: 0px; text-align: center; padding: 0px; }
+.sp-pat-placements-tile .m-dm-panel .main-panel .button-section a.m-action-button { max-width: none; display: block; margin-bottom: 20px; padding: 20px; }
+.p-101-01-apply-for-bulk-payment .content::before, .p-101-01-apply-for-bulk-payment .content::after { content: ""; display: table; }
+.p-101-01-apply-for-bulk-payment .content::after { clear: both; }
+.p-101-01-apply-for-bulk-payment .content::before, .p-101-01-apply-for-bulk-payment .content::after { content: ""; display: table; }
+.p-101-01-apply-for-bulk-payment .content::after { clear: both; }
+.p-101-01-apply-for-bulk-payment .grey-panel::before, .p-101-01-apply-for-bulk-payment .grey-panel::after { content: ""; display: table; }
+.p-101-01-apply-for-bulk-payment .grey-panel::after { clear: both; }
+.p-104-05-bulk-payment-recipients .content::before, .p-104-05-bulk-payment-recipients .content::after { content: ""; display: table; }
+.p-104-05-bulk-payment-recipients .content::after { clear: both; }
+.p-104-05-bulk-payment-recipients .content::before, .p-104-05-bulk-payment-recipients .content::after { content: ""; display: table; }
+.p-104-05-bulk-payment-recipients .content::after { clear: both; }
+.p-104-05-bulk-payment-recipients .grey-panel::before, .p-104-05-bulk-payment-recipients .grey-panel::after { content: ""; display: table; }
+.p-104-05-bulk-payment-recipients .grey-panel::after { clear: both; }
+.p-104-05-updates-panel::before, .p-104-05-updates-panel::after { content: ""; display: table; }
+.p-104-05-updates-panel::after { clear: both; }
+.p-104-05-updates-panel h3::after, .p-104-05-updates-panel h3 .after { content: ""; display: block; width: 40px; border-bottom: 3px solid rgb(204, 204, 204); margin: 15px auto 0px; }
+.p-104-05-updates-panel .recipient-updates-list::before, .p-104-05-updates-panel .recipient-updates-list::after { content: ""; display: table; }
+.p-104-05-updates-panel .recipient-updates-list::after { clear: both; }
+.p-104-05-updates-panel .recipient-updates-list li::before, .p-104-05-updates-panel .recipient-updates-list li::after { content: ""; display: table; }
+.p-104-05-updates-panel .recipient-updates-list li::after { clear: both; }
+.p-111-00-select-business-view .business-panel::before, .p-111-00-select-business-view .business-panel::after { content: ""; display: table; }
+.p-111-00-select-business-view .business-panel::after { clear: both; }
+.p-27-00-x13-update-maturity .option::after, .td-steps-common .option::after, .p-27-00-x13-update-maturity .option::before, .td-steps-common .option::before { content: ""; display: table; }
+.p-27-00-x13-update-maturity .option::after, .td-steps-common .option::after { clear: both; }
+.p-27-00-x13-update-maturity .instruction-options::after, .td-steps-common .instruction-options::after, .p-27-00-x13-update-maturity .instruction-options::before, .td-steps-common .instruction-options::before { content: ""; display: table; }
+.p-27-00-x13-update-maturity .instruction-options::after, .td-steps-common .instruction-options::after { clear: both; }
+.p-27-00-x13-update-maturity .custom-instruction-dates::before, .td-steps-common .custom-instruction-dates::before, .p-27-00-x13-update-maturity .custom-instruction-dates::after, .td-steps-common .custom-instruction-dates::after { content: ""; display: table; }
+.p-27-00-x13-update-maturity .custom-instruction-dates::after, .td-steps-common .custom-instruction-dates::after { clear: both; }
+.p-27-00-x13-update-maturity .custom-instruction-dates::after, .td-steps-common .custom-instruction-dates::after, .p-27-00-x13-update-maturity .custom-instruction-dates::before, .td-steps-common .custom-instruction-dates::before { content: ""; display: table; }
+.p-27-00-x13-update-maturity .custom-instruction-dates::after, .td-steps-common .custom-instruction-dates::after { clear: both; }
+.treasury-deposits-received div.section::after, .treasury-deposits-received div.section::before { content: ""; display: table; }
+.treasury-deposits-received div.section::after { clear: both; }
+.treasury-deposits-received div.section.received-details dl dt, .treasury-deposits-received div.section.received-details dl dd:not(.normal-transform) { text-transform: uppercase; }
+.treasury-deposits-common .content::before, .treasury-deposits-common .content::after { content: ""; display: table; }
+.treasury-deposits-common .content::after { clear: both; }
+.treasury-deposits-common .content::before, .treasury-deposits-common .content::after { content: ""; display: table; }
+.treasury-deposits-common .content::after { clear: both; }
+.treasury-deposits-common div.section::after, .treasury-deposits-common div.section::before { content: ""; display: table; }
+.treasury-deposits-common div.section::after { clear: both; }
+.p-304-00-01-make-bulk-payment .content::before, .p-304-00-01-make-bulk-payment .content::after { content: ""; display: table; }
+.p-304-00-01-make-bulk-payment .content::after { clear: both; }
+.p-304-00-01-make-bulk-payment .content::before, .p-304-00-01-make-bulk-payment .content::after { content: ""; display: table; }
+.p-304-00-01-make-bulk-payment .content::after { clear: both; }
+.p-304-00-01-make-bulk-payment .header-with-button::before, .p-304-00-01-make-bulk-payment .header-with-button::after { content: ""; display: table; }
+.p-304-00-01-make-bulk-payment .header-with-button::after { clear: both; }
+.p-304-01-01-view-bulk-payment-limits .content::before, .p-304-01-01-view-bulk-payment-limits .content::after { content: ""; display: table; }
+.p-304-01-01-view-bulk-payment-limits .content::after { clear: both; }
+.p-304-01-01-view-bulk-payment-limits .content::before, .p-304-01-01-view-bulk-payment-limits .content::after { content: ""; display: table; }
+.p-304-01-01-view-bulk-payment-limits .content::after { clear: both; }
+.p-304-01-01-view-bulk-payment-limits .limit-change-container::before, .p-304-01-01-view-bulk-payment-limits .limit-change-container::after { content: ""; display: table; }
+.p-304-01-01-view-bulk-payment-limits .limit-change-container::after { clear: both; }
+.p-304-01-01-view-bulk-payment-limits .limit-change-container .limit-content::before, .p-304-01-01-view-bulk-payment-limits .limit-change-container .limit-content::after { content: ""; display: table; }
+.p-304-01-01-view-bulk-payment-limits .limit-change-container .limit-content::after { clear: both; }
+.iccCSS div.clearfix::before, .iccCSS div.clearfix::after { content: ""; display: table; }
+.iccCSS div.clearfix::after { clear: both; }
+.iccCSS .list-number-icon::before, .iccCSS .list-number-icon::after { content: ""; display: table; }
+.iccCSS .list-number-icon::after { clear: both; }
+.iccCSS .list-number-icon li::before { border-radius: 50%; position: absolute; left: 0px; font-size: 1.5em; color: rgb(255, 255, 255); height: 50px; min-width: 50px; line-height: 50px; background-color: rgb(179, 0, 116); text-indent: 20px; }
+.lt-ie9 .iccCSS .list-number-icon li::before { background-image: url('accordian-circle.png'); background-repeat: no-repeat; background-position: left center; }
+.iccCSS .list-number-icon li.no-1::before { content: "1"; font-size: 2em; }
+.iccCSS .list-number-icon li.no-2::before { content: "2"; }
+.iccCSS .list-number-icon li.no-3::before { content: "3"; }
+.iccCSS .quote-data-panel::before, .iccCSS .quote-data-panel::after { content: ""; display: table; }
+.iccCSS .quote-data-panel::after { clear: both; }
+.rename-me-text-link.right.white::after { background-image: url('chevron-right-white.svg'); background-size: 8px 12px; background-position: right 20px center; background-repeat: no-repeat; content: ""; display: inline-block; margin-right: 10px; width: 8px; height: 12px; }
+.lt-ie9 .rename-me-text-link.right.white::after { background-position: 95% center; background-image: url('chevron-right-white.png'); background-repeat: no-repeat; }
+.rename-me-text-link.left.white::before { background-image: url('chevron-left-white.svg'); background-size: 8px 12px; background-position: left center; background-repeat: no-repeat; content: ""; display: inline-block; margin-right: 10px; width: 8px; height: 12px; }
+.lt-ie9 .rename-me-text-link.left.white::before { background-image: url('chevron-left-white.png'); background-repeat: no-repeat; }
+.rename-me-text-link.right.primary::after { background-position: right 20px center; background-image: url('chevron-right-secondaryonlight.svg'); background-size: 8px 12px; background-repeat: no-repeat; content: ""; display: inline-block; margin-right: 10px; width: 8px; height: 12px; }
+.lt-ie9 .rename-me-text-link.right.primary::after { background-position: 95% center ! important; background-image: url('chevron-right-secondaryonlight.png') ! important; background-repeat: no-repeat ! important; }
+.rename-me-text-link.left.primary::before { background-image: url('chevron-left-secondaryonlight.svg'); background-size: 8px 12px; background-position: left center; background-repeat: no-repeat; content: ""; display: inline-block; margin-right: 10px; width: 8px; height: 12px; }
+.lt-ie9 .rename-me-text-link.left.primary::before { background-image: url('chevron-left-secondaryonlight.png'); background-repeat: no-repeat; }
+.s-08-03-d-loans-additional-payment .content::before, .s-08-03-d-loans-additional-payment .content::after { content: ""; display: table; }
+.s-08-03-d-loans-additional-payment .content::after { clear: both; }
+.s-08-03-d-loans-additional-payment .panel::before, .s-08-03-d-loans-additional-payment .panel::after { content: ""; display: table; }
+.s-08-03-d-loans-additional-payment .panel::after { clear: both; }
+.s-246-loans-repayment-holiday .content::before, .s-246-loans-repayment-holiday .content::after { content: ""; display: table; }
+.s-246-loans-repayment-holiday .content::after { clear: both; }
+.s-246-loans-repayment-holiday .content::before, .s-246-loans-repayment-holiday .content::after { content: ""; display: table; }
+.s-246-loans-repayment-holiday .content::after { clear: both; }
+.s-246-loans-repayment-holiday .panel::before, .s-246-loans-repayment-holiday .panel::after { content: ""; display: table; }
+.s-246-loans-repayment-holiday .panel::after { clear: both; }
+.s-246-loans-repayment-holiday .panel-header::after, .s-246-loans-repayment-holiday .panel-header .after { position: absolute; bottom: 0px; left: 50%; margin-left: -20px; width: 40px; height: 2px; background: rgb(100, 156, 0) none repeat scroll 0% 0%; content: ""; display: block; }
+.s-246-loans-repayment-holiday dl::before, .s-246-loans-repayment-holiday dl::after { content: ""; display: table; }
+.s-246-loans-repayment-holiday dl::after { clear: both; }
+.s-246-loans-repayment-holiday dl::before, .s-246-loans-repayment-holiday dl::after { content: ""; display: table; }
+.s-246-loans-repayment-holiday dl::after { clear: both; }
+.m-button-group-wrap.button-group-border-top.button-group-print::before { border-top: 0px none; }
+.s-247-00-loans-early-settlement ul::before, .s-247-00-loans-early-settlement ol::before, .s-247-00-loans-early-settlement ul::after, .s-247-00-loans-early-settlement ol::after { content: ""; display: table; }
+.s-247-00-loans-early-settlement ul::after, .s-247-00-loans-early-settlement ol::after { clear: both; }
+.s-247-00-loans-early-settlement .content::before, .s-247-00-loans-early-settlement .content::after { content: ""; display: table; }
+.s-247-00-loans-early-settlement .content::after { clear: both; }
+.s-247-00-loans-early-settlement .content::before, .s-247-00-loans-early-settlement .content::after { content: ""; display: table; }
+.s-247-00-loans-early-settlement .content::after { clear: both; }
+.s-247-00-loans-early-settlement .panel::before, .s-247-00-loans-early-settlement .panel::after { content: ""; display: table; }
+.s-247-00-loans-early-settlement .panel::after { clear: both; }
+.s-247-00-loans-early-settlement dl.opening::before, .s-247-00-loans-early-settlement dl.opening::after { content: ""; display: table; }
+.s-247-00-loans-early-settlement dl.opening::after { clear: both; }
+.s-247-00-loans-early-settlement dl.dl-right-border::before, .s-247-00-loans-early-settlement dl.dl-right-border::after { content: ""; display: table; }
+.s-247-00-loans-early-settlement dl.dl-right-border::after { clear: both; }
+.s-247-00-loans-early-settlement dl.dl-right-border::before, .s-247-00-loans-early-settlement dl.dl-right-border::after { content: ""; display: table; }
+.s-247-00-loans-early-settlement dl.dl-right-border::after { clear: both; }
+.s-298-d-balance-extra-payday .content::before, .s-298-d-balance-extra-payday .content::after { content: ""; display: table; }
+.s-298-d-balance-extra-payday .content::after { clear: both; }
+.s-298-d-balance-extra-payday .content::before, .s-298-d-balance-extra-payday .content::after { content: ""; display: table; }
+.s-298-d-balance-extra-payday .content::after { clear: both; }
+.s-298-d-balance-extra-payday .panel::before, .s-298-d-balance-extra-payday .panel::after { content: ""; display: table; }
+.s-298-d-balance-extra-payday .panel::after { clear: both; }
+.s-298-d-balance-extra-payday .payDayChoices::before, .s-298-d-balance-extra-payday .payDayChoices::after { content: ""; display: table; }
+.s-298-d-balance-extra-payday .payDayChoices::after { clear: both; }
+.s-298-d-balance-extra-payday .payDayChoices .payDayChoicesRow::before, .s-298-d-balance-extra-payday .payDayChoices .payDayChoicesRow::after { content: ""; display: table; }
+.s-298-d-balance-extra-payday .payDayChoices .payDayChoicesRow::after { clear: both; }
+.s-72-00-d-make-international-payment .content::before, .s-72-00-d-make-international-payment .content::after { content: ""; display: table; }
+.s-72-00-d-make-international-payment .content::after { clear: both; }
+.s-72-00-d-make-international-payment .content::before, .s-72-00-d-make-international-payment .content::after { content: ""; display: table; }
+.s-72-00-d-make-international-payment .content::after { clear: both; }
+.s-72-00-d-make-international-payment .m-accordion .m-accordion-content::before, .s-72-00-d-make-international-payment .m-accordion .m-accordion-content::after { content: ""; display: table; }
+.s-72-00-d-make-international-payment .m-accordion .m-accordion-content::after { clear: both; }
+.s-72-00-d-make-international-payment table::before, .s-72-00-d-make-international-payment table::after { content: ""; display: table; }
+.s-72-00-d-make-international-payment table::after { clear: both; }
+.s-72-00-d-make-international-payment .m-error-message::before, .s-72-00-d-make-international-payment .m-error-message::after { content: ""; display: table; }
+.s-72-00-d-make-international-payment .m-error-message::after { clear: both; }
+body .hide-desktab { display: none ! important; }
+body .m-container { max-width: 1206px; min-width: 960px; margin: 0px auto; }
+#outer .des-m-sat-xx-account-tile .des-m-sat-xx-account-information .account-name a::after { content: ""; display: block; position: absolute; width: 20px; height: 32px; right: 1em; top: 50%; margin-top: -16px; background-image: url('carousel-arrow-right-primary1.svg'); background-size: 20px 32px; background-position: 95% center; background-repeat: no-repeat; }
+.lt-ie9 #outer .des-m-sat-xx-account-tile .des-m-sat-xx-account-information .account-name a::after { background-image: url('carousel-arrow-right-primary1.png'); background-repeat: no-repeat; }
+#outer .des-m-atd-01-panel.loading::before, #outer .des-m-atd-01-panel.loading::after { position: fixed; }
+#outer .m-hf-02-customer-bar .m-505-d-newly-upgraded-user-header .feedback-popout::before { display: none; }
+#outer .m-506-dm-swipey-swipey-tour .buttons::before, #outer .m-506-dm-swipey-swipey-tour .buttons::after { content: ""; display: table; }
+#outer .m-506-dm-swipey-swipey-tour .buttons::after { clear: both; }
+#outer .m-672-dm-sticker.double-message.truncate p::after { content: ""; display: table; width: 20px; height: 20px; position: absolute; top: 50%; margin-top: -10px; right: 20px; background-image: url('chevron-down-white.svg'); background-size: 12px 8px; background-position: center center; background-repeat: no-repeat; }
+.lt-ie9 #outer .m-672-dm-sticker.double-message.truncate p::after { background-image: url('chevron-down-white.png'); background-repeat: no-repeat; }
+#outer .m-700-d-statements .data-table .transaction-details tr.money-out div.transactional-amount::before { content: "-"; }
+#outer .m-700-d-statements .data-table .transaction-details tr.money-in div.transactional-amount::before { content: "+"; }
+#outer .m-702-dm-instatement-offer-row::after { display: none; }
+#outer .m-702-dm-instatement-offer-row a.m-702-dm-trigger::before, #outer .m-702-dm-instatement-offer-row a.m-702-dm-trigger::after { content: ""; display: table; }
+#outer .m-702-dm-instatement-offer-row a.m-702-dm-trigger::after { clear: both; }
+#outer .m-702-dm-instatement-offer-row span.trigger-message::before, #outer .m-702-dm-instatement-offer-row span.trigger-message::after { display: none; }
+#outer .m-750-d-credit-card-statement .transactions a::after { border-top: 0px none; }
+#outer .m-750-d-credit-card-statement .m-tabs-container::before { display: none; }
+#outer .sp-m-850-notification .notification-wrap::after { display: none; }
+#outer .sp-m-850-notification .notification-wrap::after { display: none; }
+#outer .sp-pat-m-hf-01-bank-bar-container::before { display: none; overflow-y: visible; border-top: 0px none; }
+#outer .sp-pat-m-hf-01-bank-bar::before, #outer .sp-pat-m-hf-01-bank-bar::after { content: ""; display: table; }
+#outer .sp-pat-m-hf-01-bank-bar::after { clear: both; }
+#outer .sp-pat-m-hf-01-bank-bar .m-hf-01-container::before, #outer .sp-pat-m-hf-01-bank-bar .m-hf-01-container::after { content: ""; display: table; }
+#outer .sp-pat-m-hf-01-bank-bar .m-hf-01-container::after { clear: both; }
+#outer .sp-pat-m-hf-01-bank-bar .m-hf-01-container .m-01-menu-button::after, #outer .sp-pat-m-hf-01-bank-bar .m-hf-01-container .m-01-menu-button::before { content: ""; width: 1.33em; height: 0.22em; background-color: rgb(0, 106, 77); display: block; position: absolute; }
+#outer .sp-pat-m-hf-01-bank-bar .m-hf-01-container .m-01-menu-button::before { top: 0.25em; }
+#outer .sp-pat-m-hf-01-bank-bar .m-hf-01-container .m-01-menu-button::after { bottom: 0.25em; }
+#outer .sp-pat-m-hf-01-product-service h2::after { content: ""; display: block; border-bottom: 2px solid rgb(178, 178, 178); margin: 1em auto 0.2em; width: 2em; }
+#outer .sp-pat-m-hf-01-product-service::before { border-top: 0px none; }
+#outer .m-hf-02-customer-bar ul.m-hf-link-list li::before, #outer .sp-pat-m-hf-02-help-and-support ul.m-hf-link-list li::before, #outer .m-hf-02-your-accounts ul.m-hf-link-list li::before, #outer .m-hf-02-your-profile ul.m-hf-link-list li::before, #outer .m-hf-02-inbox ul.m-hf-link-list li::before { content: ""; display: block; border-top: 1px solid rgb(1, 59, 44); margin: 0px 10px; }
+#outer .m-hf-02-customer-bar h3::after, #outer .sp-pat-m-hf-02-help-and-support h3::after, #outer .m-hf-02-your-accounts h3::after, #outer .m-hf-02-your-profile h3::after, #outer .m-hf-02-inbox h3::after { display: none; }
+#outer .m-hf-02-customer-bar .m-hf-02-nav::before, #outer .m-hf-02-customer-bar .m-hf-02-nav::after { content: ""; display: table; }
+#outer .m-hf-02-customer-bar .m-hf-02-nav::after { clear: both; }
+#outer .m-hf-02-customer-bar .m-hf-02-nav.open li:not(.selected) .nav-content { display: none; }
+#outer .m-hf-02-customer-bar .m-hf-02-nav .nav-content::before { background: transparent url('spinner-outer-white.png') no-repeat scroll center center / 54px auto; }
+#outer .m-hf-02-customer-bar .m-hf-02-nav .nav-content::after { background: transparent url('spinner-inner-secure-white.png') no-repeat scroll center center / 54px auto; animation: 0s ease 0s normal none 1 running none; }
+#outer .m-hf-02-inbox h3::after { display: none; }
+#outer .m-hf-02-inbox li.unread a::before { position: absolute; border-radius: 50px; width: 12px; height: 12px; background: red none repeat scroll 0% 0%; border: 1px solid rgb(255, 255, 255); left: 10px; top: 42%; }
+#outer .m-hf-02-inbox ul::before { content: ""; display: block; border-top: 1px solid rgb(1, 59, 44); margin: 0px 10px; }
+#outer .m-hf-02-inbox ul::after { content: ""; display: block; border-top: 1px solid rgb(26, 122, 95); margin: 0px 10px; }
+#outer .sp-pat-m-qtp-01-quick-transfer-pay::before, #outer .sp-pat-m-qtp-01-quick-transfer-pay::after { content: ""; display: table; }
+#outer .sp-pat-m-qtp-01-quick-transfer-pay::after { clear: both; }
+#outer .treasury-deposits-common .step-no::after { display: table; content: "."; float: right; }
+#outer .treasury-deposits-common .supplementary-mobile::after, #outer .treasury-deposits-common .supplementary-mobile::before { display: table; content: ""; clear: both; }
+#outer .treasury-deposits-common .hasDatepicker::before { content: ""; display: table; width: 0px; height: 0px; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 18px solid rgb(0, 106, 77); margin-left: 97%; position: absolute; right: 15px; }
+#outer .s-08-03-d-loans-additional-payment .m-accordion-content::before, #outer .s-08-03-d-loans-additional-payment .m-accordion-content::after { content: ""; display: table; }
+#outer .s-08-03-d-loans-additional-payment .m-accordion-content::after { clear: both; }
+#outer #outer .layout-default .layout-side::before, #outer #outer .layout-right .layout-side::before, #outer #outer .layout-default .layout-content::before, #outer #outer .layout-right .layout-content::before, #outer #outer .layout-default .layout-side::after, #outer #outer .layout-right .layout-side::after, #outer #outer .layout-default .layout-content::after, #outer #outer .layout-right .layout-content::after { content: ""; display: table; }
+#outer #outer .layout-default .layout-side::after, #outer #outer .layout-right .layout-side::after, #outer #outer .layout-default .layout-content::after, #outer #outer .layout-right .layout-content::after { clear: both; }
+/* ::::: https://secure.lloydsbank.co.uk/personal/assets/LloydsRetail/ress/css/styles-min160630.css ::::: */
+
+#outer .layout-right::before, #outer .layout-right::after { content: ""; display: table; }
+#outer .layout-right::after { clear: both; }
+body { margin: 0px; }
+.ls-canvas .ls-area { overflow: hidden; }
+.ls-canvas .ls-area-body { overflow: hidden; }
+.ls-canvas .ls-area .ls-1st { margin-top: 0px ! important; }
+.ls-canvas .ls-cmp-wrap { padding: 1px 0px; }
+.ls-canvas .iw_component { margin: -1px 0px; }
+body { margin: 0px; }
+.ls-canvas .ls-area { overflow: hidden; }
+.ls-canvas .ls-area-body { overflow: hidden; }
+.ls-canvas .ls-area .ls-1st { margin-top: 0px ! important; }
+.ls-canvas .ls-cmp-wrap { padding: 1px 0px; }
+.ls-canvas .iw_component { margin: -1px 0px; }
+body { margin: 0px; }
+.ls-canvas .ls-area { overflow: hidden; }
+.ls-canvas .ls-area-body { overflow: hidden; }
+.ls-canvas .ls-area .ls-1st { margin-top: 0px ! important; }
+.ls-canvas .ls-cmp-wrap { padding: 1px 0px; }
+.ls-canvas .iw_component { margin: -1px 0px; }
+body { margin: 0px; }
+.ls-canvas .ls-area { overflow: hidden; }
+.ls-canvas .ls-area-body { overflow: hidden; }
+.ls-canvas .ls-area .ls-1st { margin-top: 0px ! important; }
+.ls-canvas .ls-cmp-wrap { padding: 1px 0px; }
+.ls-canvas .iw_component { margin: -1px 0px; }
+body { margin: 0px; }
+.ls-canvas .ls-area { overflow: hidden; }
+.ls-canvas .ls-area-body { overflow: hidden; }
+.ls-canvas .ls-area .ls-1st { margin-top: 0px ! important; }
+.ls-canvas .ls-cmp-wrap { padding: 1px 0px; }
+.ls-canvas .iw_component { margin: -1px 0px; }
+body { margin: 0px; }
+.ls-canvas .ls-area { overflow: hidden; }
+.ls-canvas .ls-area-body { overflow: hidden; }
+.ls-canvas .ls-area .ls-1st { margin-top: 0px ! important; }
+.ls-canvas .ls-cmp-wrap { padding: 1px 0px; }
+.ls-canvas .iw_component { margin: -1px 0px; }
+body { margin: 0px; }
+.ls-canvas .ls-area { overflow: hidden; }
+.ls-canvas .ls-area-body { overflow: hidden; }
+.ls-canvas .ls-area .ls-1st { margin-top: 0px ! important; }
+.ls-canvas .ls-cmp-wrap { padding: 1px 0px; }
+.ls-canvas .iw_component { margin: -1px 0px; }
+body { margin: 0px; }
+.ls-canvas .ls-area { overflow: hidden; }
+.ls-canvas .ls-area-body { overflow: hidden; }
+.ls-canvas .ls-area .ls-1st { margin-top: 0px ! important; }
+.ls-canvas .ls-cmp-wrap { padding: 1px 0px; }
+.ls-canvas .iw_component { margin: -1px 0px; }
+body { margin: 0px; }
+.ls-canvas .ls-area { overflow: hidden; }
+.ls-canvas .ls-area-body { overflow: hidden; }
+.ls-canvas .ls-area .ls-1st { margin-top: 0px ! important; }
+.ls-canvas .ls-cmp-wrap { padding: 1px 0px; }
+.ls-canvas .iw_component { margin: -1px 0px; }
+body { margin: 0px; }
+.ls-canvas .ls-area { overflow: hidden; }
+.ls-canvas .ls-area-body { overflow: hidden; }
+.ls-canvas .ls-area .ls-1st { margin-top: 0px ! important; }
+.ls-canvas .ls-cmp-wrap { padding: 1px 0px; }
+.ls-canvas .iw_component { margin: -1px 0px; }

@@ -1,0 +1,213 @@
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+  <title>Fabacademy
+    2016</title>
+    
+<!-- <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>  /*copio de google font*/-->
+    
+   
+
+    
+ 
+<link media="all" href="index.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+     <header class="site-header"><h1>Fab Academy 2016 BCN - How to make [Almost] anything</h1></header>
+        <div id="test"> Week06 - electronics design ////// </div><br>
+     
+           <p>Assignment:<br>
+       * Redraw the echo hello-world board <br>
+       * Add (at least) a button and LED (with current-limiting resistor) <br>
+       * Check the design rules, and make it, extra credit: simulate its operation <br>
+           </p><br><br>
+
+               <font size="4">REDRAW THE ECHO HELLO-WORLD BOARD</font><br>
+                    
+                     <p>For the design of the board there are several programs that you can use, I started with Eagle. I used the  <a href="http://archive.fabacademy.org/archives/2016/doc/electronics_design_eagle.html" target="_top">Eagle tutorial</a> from the fabacademy archive and the   <a href="https://www.youtube.com/watch?v=1AXwjZoyNnohttp://archive.fabacademy.org/archives/2016/doc/electronics_design_eagle.html" target="_top">tutorials</a> that Ferdi sent us as a guide to starting the assignment.<br><br>
+                     
+                     You can download eagle here:<br>
+                     Choose "Freeware".<br>
+                     <a href="http://www.cadsoftusa.com/download-eagle/" target="_top">Eagle</a><br><br>
+
+                     Fablab component library:<br>
+                     Copy the library into the install directory of eagle into a folder called "lbr" (in Windows it is most likely C:\Program Files\EAGLE\lbr\ (fact check this).<br>
+                     <a href="http://archive.fabacademy.org/archives/2016/doc/electronics/fab.lbr" target="_top">fab.lbr</a><br><br>
+                    
+                     STEPS THAT I DID:<br>
+                     (following the <a href="http://archive.fabacademy.org/archives/2016/doc/electronics_design_eagle.html" target="_top">Eagle tutorial</a> and Ferdi's indications):<br><br>
+                     * Create a new project:<br>
+                         File -&gt; New -&gt; Project<br>
+                         Create a new Schematic and Board (see step 3 - <a href="http://archive.fabacademy.org/archives/2016/doc/electronics_design_eagle.html" target="_top">Eagle tutorial</a>)<br><br>
+                         <img src="w6-e1.jpg" height="450px"><br><br>
+                     * Activate the Component Libraries (see step 5 - <a href="http://archive.fabacademy.org/archives/2016/doc/electronics_design_eagle.html" target="_top">Eagle tutorial</a>)<br><br>
+                         <img src="w6-e2.jpg" height="380px"><br><br>
+                         <img src="w6-e3.jpg" height="505px"><br><br><br>
+                     * Add Components from the Fab library (see step 6, 7 &amp; 8 - <a href="http://archive.fabacademy.org/archives/2016/doc/electronics_design_eagle.html" target="_top">Eagle tutorial</a>)<br>
+                         -Make sure that the library is active looking the green point:<br><br>
+                         <img src="w6-e4.jpg" height="464px"><br><br><br>
+                         -Look the    <a href="https://docs.google.com/spreadsheets/d/1U-jcBWOJEjBT5A0N84IUubtcHKMEMtndQPLCkZCkVsU/pub?single=true&amp;gid=0&amp;output=html" target="_top">Fab Inventory spreadsheet</a> which contains a list of all parts with codes and suppliers, and check with the datasheet of each component.<br>
+                         -Add a componet in eagle: press add on the command line or press add in the tool bar. You can search the components adding asterisks.<br><br>
+                         <img src="w6-e5.jpg" height="455px"><br><br>
+                         -PARTS:<br>
+                        
+                         1X 6-pin programming header: for programming the board<br>
+                         Inventory: 649-95278-101A06LF<br>
+                         Fab library symbol: AVRISPSMD<br><br>
+                         
+                         1X Microcontroller: attiny44A. Once the microcontroller is programmed, the program stored in non-volatile memory. This means that it will remember the program.<br>
+                         Inventory: ATTINY44A-SSU-ND<br>
+                         Fab library symbol: ATTINY44<br><br>
+                        
+                         1X FTDI header: powers the board and allows board to talk to computer<br>
+                         Inventory: CONN HEADER 36POS .100 R-A SMD (S1143E-36-ND)<br>
+                         Fab library symbol: FTDI-SMD-HEADER<br><br>
+                         
+                         1X 20MHz resonator: external clock. The attiny has a 8Mhz clock but the resonator is faster (increase the clock speed of the processor) and more accurate.<br>
+                         Inventory: CER RESONATOR 20.00MHZ SMD (XC1109CT-ND)<br>
+                         Fab library symbol: RESONATOR<br><br>
+                         
+                         2X Resistor (value 10k)<br>
+                         Inventory: RES 10.0K OHM 1-4W 1% 1206 SMD (311-10.0KFRCT-ND)<br>
+                         Fab library symbol: RES-US1206FAB<br><br>
+
+
+                         1X Button (OMRON switch)<br>
+                         Inventory: SW262CT-ND<br>
+                         Fab library symbol: 6MM_SWITCH6MM_SWITCH<br><br>
+                         GND<br><br>
+                         VCC<br><br>
+                    
+                         1X LED (Light Emitting Diode) - LEDs have polarity - the side with the line is the cathode and connects to the ground side.<br>
+                         Inventory: 160-1167-1-ND<br>
+                         Fab library: LEDFAB<br><br>
+                         1X Resistor (value 100 ohm)<br>
+                         Inventory: 311-100FRCT-ND<br>
+                         Fab library symbol: RES-US1206FAB<br><br>
+                         We have to calculate the current limiting resistor for the LED so we don't burn it.
+                         For that we need the values from the data sheet of the LED:<br><br>
+                         <img src="w6-e6.jpg" height="65px"><br><br>
+                         <img src="w6-e7.jpg" height="55px"><br><br>
+                             <a href="http://led.linear1.org/1led.wiz?VS=5;VF=1.8;ID=40" target="_top">Led Calculator</a><br><br>
+                         <img src="w6-e8.jpg" height="346px"><br><br>
+                         So one Led requires a 82ohm resistor, I chose to use one of 100ohm to be safe.<br><br><br>
+                         
+                         * INTERFACE / SCHEMATIC<br><br>
+                         
+                         For making the schematic (connections between parts) I used the image below from the Eagle Tutorial.<br><br>
+                         <img src="w6-e10.jpg" height="500px"><br><br>
+                         Commands (use the command line or the menu):<br><br>
+                         For moving a group of parts:<br>
+                         1_select move<br>
+                         2_select group<br>
+                         3_right click + command<br><br>
+                         The green line are the NETs, for naming them in order to make the connection (the program will ask you if you want to make it), you have to use the commands NAME and LABEL. The command VALUE addes value to components (i.e. ohm rating).<br>
+                         ERC = electronic rules check; this ensures your board will actually work.<br><br>
+                         <img src="w6-e9.jpg" height="450px"><br><br>
+                         For understanding the connection of the button and the led was very useful using this images that Ferdi recommended to look for:<br>
+                         
+                         <img src="w6-e11.jpg" height="350px"><br><br>
+                         
+                          * INTERFACE / BOARD<br><br>
+                         
+                         For switching to the board interface from the schematic you can use the command line typing board or use the menu pressing Generate/switch to board.<br><br>
+                         
+                         <img src="w6-e12.jpg" height="380px"><br><br>
+                         Commands for creating the traces between components:<br><br>
+                         MOVE/ROTATE: First I moved the components and rotated when was necesary.<br><br>
+                         SHOW: After typing this, select a component to see information about it displayed in the bottom left corner of the screen. Also, if you type show + [name of component] you can see that component highlighted. You can use this to see all the ground traces, for example (Eagle Tutorial).<br><br>
+                         
+                         ROUTE/RIPUP: You have to follow the yellow lines, and choose the wide of the traces. Our traces should be 0.4064mm (16mil/0.016inch) wide minimum.<br><br>
+                        
+                         
+                         DCR: Design rules check, DRC &gt; CLEARANCE &gt; CHECK on the parts.
+                         We have to check if the traces are distant enough so the drill bit can pass through them at least once. Therefore the value we have to use depends on the drill bit wich is 1/64 inches = 0.39 mm, we use 16mil=0.4mm. <br><br>
+                         
+                         <img src="w6-e13.jpg" height="420px"><br><br>
+
+
+                         GRID: Editing the grid is very useful for correct the errors that the DCR give us. The rute have constraints given by the grid, so we can reduce the module of the grid in order to be more precise. The standard grid is SIZE 2.54 mm, but we can change it to dividends. The program also gives the possibility of be even more precise using Alt.
+                         <br><br>
+                         
+                         <img src="w6-e14.jpg" height="450px"><br><br>
+                         This was very useful for making the three traces of the middle.<br><br>
+                         <img src="w6-e15.jpg" height="420px"><br><br>
+              </p>
+      
+      
+                         
+               <font size="4">EXPORTING THE DESIGN &amp; MILLING</font><br>
+                     
+                     <p>When the design is finished we export the traces as png file:<br>
+                         
+                        Turn off the layers, leaving only the traces:<br><br>
+                        <img src="w6-e16.jpg" height="365px"><br><br>
+                        
+                         
+                        FILE -&gt; EXPORT -&gt; IMAGE<br>
+                        Settings:<br>
+                        Full area<br>
+                        Monochrome / 1000 DPI<br>
+                        <img src="w6-e17.jpg" height="380px"><br><br>
+                        Note: The Eagle Tutorial recommend 500 DPI, but for me it wasn't work. Some traces didn't mill well therefore i had to correct them manually.<br><br>
+                        <img src="w6-e18.jpg" height="426px"><br><br>
+                         
+                        MAKING THE OUTLINE FILE:<br>
+                        Open the traces file in GIMP<br>
+                        Edited image canvas size, IMAGE -&gt; CANVAS SIZE<br>
+                        In width/Height add +1.6, 0.8 each side (drill bit wich is 1/32 inches = 0.79 mm), press center and resize.<br><br>
+                         <img src="w6-e19.jpg" height="381px"><br><br>
+                         Duplicate the layer (right button) and painted it in white (Bucket Fill Tool)<br><br>
+                         <img src="w6-e20.jpg" height="380px"><br><br>
+                         SELECT -&gt; ALL<br>
+                         SELECT -&gt; BORDER (0.8mm)<br>
+                         Paint the border in black<br><br>
+          
+                         <img src="w6-e21.jpg" height="380px"><br><br><br>
+                         FILES:<br><br>
+                         
+                         <img src="w6-e22.jpg" height="340px"><br><br><br>
+                         
+                   
+                         
+                         MILLING:<br>
+                         I used <a href="http://fabmodules.org/" target="_top">Fab Modules</a><br>
+                         <a href="http://archive.fabacademy.org/archives/2016/fablabbcn2016/students/346/Week04.htm">See Week04</a><br><br>
+                         
+                         SOLDERING:<br>
+                         TIPS:<br>
+                         * LEDs have polarity - the side with the line is the cathode and connects to the ground side <br>
+                         * ATTINY has a direction<br><br>
+                         
+                         <img src="w6-e23.jpg" height="402px"><br><br><br></p> 
+                         
+                         
+               <font size="4">REDRAW THE ECHO HELLO-WORLD BOARD 2</font><br>
+                         
+                     <p>I started to design another board, this time adding a female connector (inspired by a student from last year), in order to use all available free pins on the Attiny, but I couldn't mill it yet.
+                     I wanted to use the bottom layer and print the traces in the vinyl cutter.<br><br>
+                         Free pins:<br>
+                         
+                       
+                     pin 5 <br>
+                     pin 11 <br>
+                     MISO (used to program the boards and then free)<br>
+                     MOSI (used to program the boards and then free) <br>
+                     SCK (used to program the boards and then free)<br><br>
+                         
+                         <img src="w6-e24.jpg" height="463px"><br><br>
+                         
+                         <img src="w6-e25.jpg" height="402px"><br><br>
+                    I had to modify the holes in GIMP because the 1/32 drill bit is to big for the holes that I exported from Eagle (see <a href="http://fabacademy.org/archives/2015/eu/students/perona.francesca/htm/06_week.html)" target="_top">FR_2015</a>)<br><br><br>
+                         
+                         
+                         <img src="w6-e26.jpg" height="160px"><br><br><br>        
+                   <a href="http://archive.fabacademy.org/archives/2016/fablabbcn2016/students/346/files/W6/W6.rar" download="">Download files</a><br><br><br><br>    </p>                                          
+                           
+   <a href="http://archive.fabacademy.org/archives/2016/fablabbcn2016/students/346/index.htm">home</a><br><br><br> 
+      
+           
+  
+</body>
+</html>

@@ -1,0 +1,195 @@
+/* ::::: https://wiki.archlinux.org/load.php?debug=false&lang=en&modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.content.externallinks%7Cmediawiki.skinning.interface%7Cskins.archlinux.styles&only=styles&skin=archlinux ::::: */
+
+@media screen {
+	.mw-content-ltr { direction: ltr; }
+	.sitedir-ltr textarea, .sitedir-ltr input { direction: ltr; }
+	input[type="submit"], input[type="button"], input[type="reset"], input[type="file"] { direction: ltr; }
+	@supports (text-decoration:underline dotted) {
+}
+	#catlinks { text-align: left; }
+	.catlinks ul { display: inline; margin: 0px; padding: 0px; list-style: outside none none; }
+	.catlinks li { display: inline-block; line-height: 1.25em; border-left: 1px solid rgb(170, 170, 170); margin: 0.125em 0px; padding: 0px 0.5em; }
+	.catlinks li:first-child { padding-left: 0.25em; border-left: medium none; }
+	.mw-hidden-cats-hidden { display: none; }
+	.plainlinks a.external { background: transparent none repeat scroll 0% 0% ! important; padding: 0px ! important; }
+	.visualClear { clear: both; }
+	.mw-content-ltr ul, .mw-content-rtl .mw-content-ltr ul { margin: 0.3em 0px 0px 1.6em; padding: 0px; }
+	h1:lang(anp), h1:lang(as), h1:lang(bh), h1:lang(bho), h1:lang(bn), h1:lang(gu), h1:lang(hi), h1:lang(kn), h1:lang(ks), h1:lang(ml), h1:lang(mr), h1:lang(my), h1:lang(mai), h1:lang(ne), h1:lang(new), h1:lang(or), h1:lang(pa), h1:lang(pi), h1:lang(sa), h1:lang(ta), h1:lang(te) { line-height: 1.6em ! important; }
+	h2:lang(anp), h3:lang(anp), h4:lang(anp), h5:lang(anp), h6:lang(anp), h2:lang(as), h3:lang(as), h4:lang(as), h5:lang(as), h6:lang(as), h2:lang(bho), h3:lang(bho), h4:lang(bho), h5:lang(bho), h6:lang(bho), h2:lang(bh), h3:lang(bh), h4:lang(bh), h5:lang(bh), h6:lang(bh), h2:lang(bn), h3:lang(bn), h4:lang(bn), h5:lang(bn), h6:lang(bn), h2:lang(gu), h3:lang(gu), h4:lang(gu), h5:lang(gu), h6:lang(gu), h2:lang(hi), h3:lang(hi), h4:lang(hi), h5:lang(hi), h6:lang(hi), h2:lang(kn), h3:lang(kn), h4:lang(kn), h5:lang(kn), h6:lang(kn), h2:lang(ks), h3:lang(ks), h4:lang(ks), h5:lang(ks), h6:lang(ks), h2:lang(ml), h3:lang(ml), h4:lang(ml), h5:lang(ml), h6:lang(ml), h2:lang(mr), h3:lang(mr), h4:lang(mr), h5:lang(mr), h6:lang(mr), h2:lang(my), h3:lang(my), h4:lang(my), h5:lang(my), h6:lang(my), h2:lang(mai), h3:lang(mai), h4:lang(mai), h5:lang(mai), h6:lang(mai), h2:lang(ne), h3:lang(ne), h4:lang(ne), h5:lang(ne), h6:lang(ne), h2:lang(new), h3:lang(new), h4:lang(new), h5:lang(new), h6:lang(new), h2:lang(or), h3:lang(or), h4:lang(or), h5:lang(or), h6:lang(or), h2:lang(pa), h3:lang(pa), h4:lang(pa), h5:lang(pa), h6:lang(pa), h2:lang(pi), h3:lang(pi), h4:lang(pi), h5:lang(pi), h6:lang(pi), h2:lang(sa), h3:lang(sa), h4:lang(sa), h5:lang(sa), h6:lang(sa), h2:lang(ta), h3:lang(ta), h4:lang(ta), h5:lang(ta), h6:lang(ta), h2:lang(te), h3:lang(te), h4:lang(te), h5:lang(te), h6:lang(te) { line-height: 1.2em; }
+	ol:lang(azb) li, ol:lang(bcc) li, ol:lang(bgn) li, ol:lang(bqi) li, ol:lang(fa) li, ol:lang(glk) li, ol:lang(kk-arab) li, ol:lang(lrc) li, ol:lang(luz) li, ol:lang(mzn) li { list-style-type: persian; }
+	ol:lang(ckb) li, ol:lang(sdh) li { list-style-type: arabic-indic; }
+	ol:lang(hi) li, ol:lang(mr) li { list-style-type: devanagari; }
+	ol:lang(as) li, ol:lang(bn) li { list-style-type: bengali; }
+	ol:lang(or) li { list-style-type: oriya; }
+	#toc ul, .toc ul { margin: 0.3em 0px; }
+	.mw-content-ltr .toc ul, .mw-content-ltr #toc ul, .mw-content-rtl .mw-content-ltr .toc ul, .mw-content-rtl .mw-content-ltr #toc ul { text-align: left; }
+	.mw-content-ltr .toc ul ul, .mw-content-ltr #toc ul ul, .mw-content-rtl .mw-content-ltr .toc ul ul, .mw-content-rtl .mw-content-ltr #toc ul ul { margin: 0px 0px 0px 2em; }
+	#toc #toctitle, .toc #toctitle, #toc .toctitle, .toc .toctitle { direction: ltr; }
+	.mw-jump, #jump-to-nav { overflow: hidden; height: 0px; }
+	.printfooter { display: none; }
+	.mw-editsection, .toctoggle, .tochidden, #jump-to-nav { -moz-user-select: none; }
+	sup, sub { line-height: 1; }
+}
+@media screen {
+	.mw-body a.external, .link-https { background-color: transparent; background-repeat: no-repeat; background-attachment: scroll; background-position: right center; background-clip: border-box; background-origin: padding-box; background-size: auto auto; background-image: linear-gradient(transparent, transparent), url('undefined'); padding-right: 15px; }
+	.mw-body a.external { color: rgb(51, 102, 187); }
+}
+@media screen {
+	a { text-decoration: none; color: rgb(6, 69, 173); background: transparent none repeat scroll 0% 0%; }
+	a:visited { color: rgb(11, 0, 128); }
+	a:active { color: rgb(250, 167, 0); }
+	a:hover, a:focus { text-decoration: underline; }
+	.mw-body a.external { color: rgb(51, 102, 187); }
+	.mw-body a.external:visited { color: rgb(102, 51, 102); }
+	.mw-body a.external:active { color: rgb(187, 102, 51); }
+	img { border: medium none; vertical-align: middle; }
+	h1, h2, h3, h4, h5, h6 { color: black; background: transparent none repeat scroll 0% 0%; font-weight: normal; margin: 0px; overflow: hidden; padding-top: 0.5em; padding-bottom: 0.17em; border-bottom: 1px solid rgb(170, 170, 170); }
+	h1 { font-size: 188%; }
+	h2 { font-size: 150%; }
+	h3, h4, h5, h6 { border-bottom: medium none; font-weight: bold; }
+	h3 { font-size: 128%; }
+	h4 { font-size: 116%; }
+	h1, h2 { margin-bottom: 0.6em; }
+	h3, h4, h5 { margin-bottom: 0.3em; }
+	p { margin: 0.4em 0px 0.5em; }
+	p img { margin: 0px; }
+	ul { list-style-type: square; margin: 0.3em 0px 0px 1.6em; padding: 0px; }
+	li { margin-bottom: 0.1em; }
+	pre, code, tt, kbd, samp, .mw-code { font-family: monospace,Courier; }
+	code { color: black; background-color: rgb(249, 249, 249); border: 1px solid rgb(221, 221, 221); border-radius: 2px; padding: 1px 4px; }
+	pre, .mw-code { color: black; background-color: rgb(249, 249, 249); border: 1px solid rgb(221, 221, 221); padding: 1em; white-space: pre-wrap; }
+	form { border: medium none; margin: 0px; }
+	#toc, .toc, .mw-warning, .toccolours { border: 1px solid rgb(170, 170, 170); background-color: rgb(249, 249, 249); padding: 5px; font-size: 95%; }
+	#toc, .toc { display: table; padding: 7px; }
+	#toc h2, .toc h2 { display: inline; border: medium none; padding: 0px; font-size: 100%; font-weight: bold; }
+	#toc #toctitle, .toc #toctitle, #toc .toctitle, .toc .toctitle { text-align: center; }
+	#toc ul, .toc ul { list-style-type: none; list-style-image: none; margin-left: 0px; padding: 0px; text-align: left; }
+	#toc ul ul, .toc ul ul { margin: 0px 0px 0px 2em; }
+	#toc .toctoggle, .toc .toctoggle { font-size: 94%; }
+	.catlinks { border: 1px solid rgb(170, 170, 170); background-color: rgb(249, 249, 249); padding: 5px; margin-top: 1em; clear: both; }
+	.firstHeading { margin-bottom: 0.1em; line-height: 1.2em; padding-bottom: 0px; }
+	#siteSub { display: none; }
+	#jump-to-nav { margin-top: -1.4em; margin-bottom: 1.4em; }
+	#contentSub, #contentSub2 { font-size: 84%; line-height: 1.2em; margin: 0px 0px 1.4em 1em; color: rgb(84, 84, 84); width: auto; }
+}
+.mw-wiki-logo { background-image: url('archlogo.png'); }
+@media screen {
+	div#column-content { width: 100%; float: right; margin: 0px 0px 0.6em -12.2em; padding: 0px; }
+	.mw-body { margin: 2.8em 0px 0px 12.2em; padding: 1em; position: relative; z-index: 2; background: white none repeat scroll 0% 0%; color: black; border-width: 1px medium 1px 1px; border-style: solid none solid solid; border-color: rgb(170, 170, 170) -moz-use-text-color rgb(170, 170, 170) rgb(170, 170, 170); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; line-height: 1.5em; }
+	div#column-one { padding-top: 160px; }
+	#column-one h2 { position: absolute; top: -9999px; }
+	body { font: x-small sans-serif; background: rgb(249, 249, 249) url('undefined') no-repeat scroll 0px 0px; color: black; margin: 0px; padding: 0px; direction: ltr; unicode-bidi: embed; }
+	div#globalWrapper { font-size: 127%; width: 100%; margin: 0px; padding: 0px; position: relative; z-index: 0; }
+	a { color: rgb(0, 43, 184); }
+	a:visited { color: rgb(90, 54, 150); }
+	ul { list-style-type: square; list-style-image: url('undefined'); }
+	pre, .mw-code { line-height: 1.1em; }
+	#firstHeading { padding-top: 0px; overflow: visible; }
+	.mw-indicators { float: right; line-height: 1.5em; font-size: 95%; }
+	.portlet { border: medium none; margin: 0px 0px 0.5em; padding: 0px; float: none; width: 11.6em; overflow: hidden; }
+	.portlet h3 { background: transparent none repeat scroll 0% 0%; padding: 0px 1em 0px 0.5em; display: inline; height: 1em; text-transform: lowercase; font-size: 91%; font-weight: normal; white-space: nowrap; }
+	.pBody { font-size: 95%; background-color: white; color: black; border-collapse: collapse; border: 1px solid rgb(170, 170, 170); padding: 0px 0.8em 0.3em 0.5em; }
+	.pBody::after { content: ""; clear: both; display: block; }
+	.portlet ul { line-height: 1.5em; font-size: 95%; }
+	.portlet li { padding: 0px; margin: 0px; }
+	#p-logo { top: 0px; left: 0px; position: absolute; z-index: 3; height: 155px; width: 12em; overflow: visible; }
+	#p-logo a, #p-logo a:hover { display: block; height: 155px; width: 12.2em; background-repeat: no-repeat; background-position: 35% 50% ! important; text-decoration: none; }
+	#p-search { position: relative; z-index: 3; }
+	input.searchButton { margin-top: 1px; font-size: 95%; }
+	#searchGoButton { padding-left: 0.5em; padding-right: 0.5em; font-weight: bold; }
+	#searchInput { width: 10.9em; margin: 0px; font-size: 95%; }
+	#p-search .pBody { padding: 0.5em 0.4em 0.4em; text-align: center; }
+	#p-personal { position: absolute; left: 0px; top: 0px; z-index: 3; }
+	#p-personal { width: 100%; white-space: nowrap; padding: 0px; margin: 0px; border: medium none; background: transparent none repeat scroll 0% 0%; overflow: visible; line-height: 1.2em; }
+	#p-personal h3 { display: none; }
+	#p-personal .portlet, #p-personal .pBody { z-index: 0; padding: 0px; margin: 0px; border: medium none; overflow: visible; background: transparent none repeat scroll 0% 0%; }
+	#p-personal ul { border: medium none; line-height: 1.4em; color: rgb(47, 111, 171); padding: 0px 2em 0px 14em; margin: 0px; text-align: right; list-style-type: none; list-style-image: none; z-index: 0; background: transparent none repeat scroll 0% 0%; cursor: default; }
+	#p-personal li { z-index: 0; border: medium none; padding: 0px; display: inline; color: rgb(47, 111, 171); margin-left: 1em; line-height: 1.2em; background: transparent none repeat scroll 0% 0%; }
+	#p-personal li a { text-decoration: none; color: rgb(0, 88, 150); padding-bottom: 0.2em; }
+	#p-personal li a:hover { background-color: white; text-decoration: none; }
+	li#pt-userpage, li#pt-anonuserpage, li#pt-login { background: transparent url('undefined') no-repeat scroll left top; padding-left: 20px; }
+	#p-personal ul { text-transform: lowercase; }
+	#p-cactions { position: absolute; top: 1.3em; left: 11.5em; margin: 0px; white-space: nowrap; width: 76%; line-height: 1.1em; overflow: visible; background: transparent none repeat scroll 0% 0%; border-collapse: collapse; padding-left: 1em; font-size: 95%; }
+	#p-cactions ul { list-style-type: none; list-style-image: none; }
+	#p-cactions li { display: inline; border-width: 1px 1px medium; border-style: solid solid none; border-color: rgb(170, 170, 170) rgb(170, 170, 170) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; padding: 0px 0px 1em; margin: 0px 0.3em 0px 0px; overflow: visible; background: white none repeat scroll 0% 0%; }
+	#p-cactions li.selected { border-color: rgb(250, 189, 35); font-weight: bold; }
+	#p-cactions li a { background-color: rgb(251, 251, 251); color: rgb(0, 43, 184); border: medium none; padding: 0px 0.8em 0.3em; position: relative; z-index: 0; margin: 0px; text-decoration: none; }
+	#p-cactions li.selected a { z-index: 3; background-color: white; }
+	#p-cactions li a:hover { z-index: 3; text-decoration: none; background-color: white; }
+	#p-cactions h3 { display: none; }
+	li#ca-talk { margin-right: 1.6em; }
+	#p-cactions .pBody { font-size: 1em; background-color: transparent; color: inherit; border-collapse: inherit; border: 0px none; padding: 0px; }
+	#p-cactions li a { text-transform: lowercase; }
+	#p-lang { position: relative; z-index: 3; }
+	div#footer { background-color: white; border-top: 1px solid rgb(250, 189, 35); border-bottom: 1px solid rgb(250, 189, 35); margin: 0.6em 0px 1em; overflow: hidden; padding: 0.4em 0px 0.3em; text-align: center; font-size: 90%; }
+	div#footer li { display: inline; margin: 0px 1.3em; }
+	div#searchTarget ul li::before { color: orange; content: "» "; }
+	#archnavbar { height: 40px ! important; padding: 10px 15px ! important; background: rgb(51, 51, 51) none repeat scroll 0% 0% ! important; border-bottom: 5px solid rgb(0, 136, 204) ! important; }
+	#archnavbarlogo { float: left ! important; margin: 0px ! important; padding: 0px ! important; height: 40px ! important; width: 190px ! important; background: transparent url('archlogo_001.png') no-repeat scroll 0% 0% ! important; }
+	#archnavbarlogo p { margin: 0px ! important; padding: 0px ! important; text-indent: -9999px ! important; }
+	#archnavbarlogo a { display: block ! important; height: 40px ! important; width: 190px ! important; }
+	#archnavbar ul { display: inline ! important; float: right ! important; list-style: outside none none ! important; margin: 0px ! important; padding: 0px ! important; }
+	#archnavbar ul li { float: left ! important; font-size: 14px ! important; font-family: sans-serif ! important; line-height: 45px ! important; padding-right: 15px ! important; padding-left: 15px ! important; }
+	#archnavbar ul#archnavbarlist li a { color: rgb(153, 153, 153); font-weight: bold ! important; text-decoration: none ! important; }
+	#archnavbar ul li a:hover { color: white ! important; text-decoration: underline ! important; }
+	body { background: rgb(246, 249, 252) none repeat scroll 0% 0%; }
+	body, #content, table, h1, h2, h3, h4, h5, pre, code, tt { color: rgb(34, 34, 34); }
+	h1 { font-weight: bold; }
+	pre, code, tt { background-color: rgb(235, 241, 245); font-family: monospace; }
+	pre { border: 1px solid rgb(187, 204, 221); overflow: auto; }
+	code, tt { display: inline-block; padding: 0px 0.3em; border-width: 0px; border-radius: 0px; }
+	ul, .portlet ul { list-style-image: none; }
+	#bodyContent > div.mw-content-ltr a, #bodyContent > div.mw-content-rtl a, #wikiPreview > div.mw-content-ltr a, #wikiPreview > div.mw-content-rtl a { font-weight: bold; }
+	#bodyContent #toc a, #bodyContent .special li > a, #bodyContent .special li span a, #bodyContent #pagehistory a { font-weight: normal; }
+	a:link, #toc a, #p-cactions li a, #p-personal li a, #p-cactions li a:visited, #p-personal li a:visited, #bodyContent a.external, #bodyContent a.extiw { text-decoration: none; outline: medium none; color: rgb(0, 119, 187); }
+	a:visited, #bodyContent a.external:visited { color: rgb(102, 102, 102); }
+	a:hover, #p-personal li a:hover, #bodyContent #toc a:hover, #bodyContent a.external:hover { text-decoration: underline; background-color: transparent; color: rgb(153, 153, 153); }
+	a:focus, a:active, #toc a:focus, #toc a:active, #p-cactions li a:focus, #p-cactions li a:active, #p-personal li a:focus, #p-personal li a:active, #bodyContent a.external:focus, #bodyContent a.external:active, #bodyContent a.extiw:focus, #bodyContent a.extiw:active { color: rgb(238, 153, 0) ! important; }
+	#p-personal { top: 5px; }
+	#p-cactions { top: 27px; }
+	#content { top: 10px; }
+	div#globalWrapper { width: 99%; }
+	#toc, .toc, .mw-warning { background-color: rgb(249, 250, 255); border: 1px solid rgb(215, 223, 227); }
+	.pBody { border: 1px solid rgb(221, 221, 221); }
+	div#content { border: 1px solid rgb(204, 204, 204); }
+	#p-logo { display: none ! important; }
+	div#column-one { padding-top: 36px; }
+	div#footer { color: rgb(136, 136, 136); background-color: transparent; border-top: medium none; border-bottom: medium none; }
+	#footer ul { margin-left: 170px; }
+	#archnavbar ul li.anb-selected a { color: white ! important; }
+}
+.suggestions { overflow: hidden; position: absolute; top: 0px; left: 0px; width: 0px; border: medium none; z-index: 1099; padding: 0px; margin: -1px 0px 0px; }
+.suggestions-special { position: relative; background-color: white; cursor: pointer; border: 1px solid rgb(170, 170, 170); margin: -2px 0px 0px; display: none; padding: 0.25em; line-height: 1.25em; }
+.suggestions-results { background-color: white; cursor: pointer; border: 1px solid rgb(170, 170, 170); padding: 0px; margin: 0px; }
+pre, .mw-code { white-space: pre; }
+span.archwiki-template-pkg { font-family: monospace; }
+div.archwiki-template-message { position: relative; overflow: hidden; min-height: 4.6em; margin-bottom: 1em; background-color: rgb(249, 250, 255); border: 1px solid rgb(215, 223, 227); padding: 0px 100px; text-align: center; }
+div.archwiki-template-message > p > a { display: block; position: absolute; top: 5px; }
+div.archwiki-template-message > p > a:first-of-type { left: 26px; }
+div.archwiki-template-message > p > a:last-of-type { right: 26px; }
+div.archwiki-template-message > div { font-size: 90%; }
+#bodyContent a.external[href], #bodyContent a.extiw, .link-https { background: transparent url('undefined') no-repeat scroll right center; padding-right: 13px; }
+#bodyContent a.external[href^="http://wiki.archlinux.org"], #bodyContent a.external[href^="https://wiki.archlinux.org"] { background: transparent none repeat scroll 0% 0%; padding-right: 0px; }
+a:link, #toc a, #bodyContent #toc a, #p-cactions li a, #p-personal li a, #p-cactions li a:visited, #p-personal li a:visited, #bodyContent a.external, #bodyContent a.extiw { color: rgb(0, 119, 187); }
+a:hover, #toc a:hover, #bodyContent #toc a:hover, #p-cactions li a:hover, #p-personal li a:hover, #p-cactions li a:visited:hover, #p-personal li a:visited:hover, #bodyContent a.external:hover, #bodyContent a.extiw:hover { color: rgb(0, 119, 187); text-decoration: underline; }
+a:visited, #toc a:visited, #bodyContent #toc a:visited, #bodyContent a.external:visited, #bodyContent a.extiw:visited { color: rgb(51, 85, 119); }
+a:visited:hover, #toc a:visited:hover, #bodyContent #toc a:visited:hover, #bodyContent a.external:visited:hover, #bodyContent a.extiw:visited:hover { color: rgb(51, 85, 119); text-decoration: underline; }
+a:focus, a:active, #toc a:focus, #toc a:active, #bodyContent #toc a:focus, #bodyContent #toc a:active, #p-cactions li a:focus, #p-cactions li a:active, #p-personal li a:focus, #p-personal li a:active, #bodyContent a.external:focus, #bodyContent a.external:active, #bodyContent a.extiw:focus, #bodyContent a.extiw:active { color: rgb(238, 153, 0) ! important; }
+code, tt { display: inline; white-space: pre; padding: 0.3em; }
+/* ::::: https://wiki.archlinux.org/load.php?debug=false&lang=en&modules=site&only=styles&skin=archlinux ::::: */
+
+pre, .mw-code { white-space: pre; }
+span.archwiki-template-pkg { font-family: monospace; }
+div.archwiki-template-message { position: relative; overflow: hidden; min-height: 4.6em; margin-bottom: 1em; background-color: rgb(249, 250, 255); border: 1px solid rgb(215, 223, 227); padding: 0px 100px; text-align: center; }
+div.archwiki-template-message > p > a { display: block; position: absolute; top: 5px; }
+div.archwiki-template-message > p > a:first-of-type { left: 26px; }
+div.archwiki-template-message > p > a:last-of-type { right: 26px; }
+div.archwiki-template-message > div { font-size: 90%; }
+#bodyContent a.external[href], #bodyContent a.extiw, .link-https { background: transparent url('undefined') no-repeat scroll right center; padding-right: 13px; }
+#bodyContent a.external[href^="http://wiki.archlinux.org"], #bodyContent a.external[href^="https://wiki.archlinux.org"] { background: transparent none repeat scroll 0% 0%; padding-right: 0px; }
+a:link, #toc a, #bodyContent #toc a, #p-cactions li a, #p-personal li a, #p-cactions li a:visited, #p-personal li a:visited, #bodyContent a.external, #bodyContent a.extiw { color: rgb(0, 119, 187); }
+a:hover, #toc a:hover, #bodyContent #toc a:hover, #p-cactions li a:hover, #p-personal li a:hover, #p-cactions li a:visited:hover, #p-personal li a:visited:hover, #bodyContent a.external:hover, #bodyContent a.extiw:hover { color: rgb(0, 119, 187); text-decoration: underline; }
+a:visited, #toc a:visited, #bodyContent #toc a:visited, #bodyContent a.external:visited, #bodyContent a.extiw:visited { color: rgb(51, 85, 119); }
+a:visited:hover, #toc a:visited:hover, #bodyContent #toc a:visited:hover, #bodyContent a.external:visited:hover, #bodyContent a.extiw:visited:hover { color: rgb(51, 85, 119); text-decoration: underline; }
+a:focus, a:active, #toc a:focus, #toc a:active, #bodyContent #toc a:focus, #bodyContent #toc a:active, #p-cactions li a:focus, #p-cactions li a:active, #p-personal li a:focus, #p-personal li a:active, #bodyContent a.external:focus, #bodyContent a.external:active, #bodyContent a.extiw:focus, #bodyContent a.extiw:active { color: rgb(238, 153, 0) ! important; }
+code, tt { display: inline; white-space: pre; padding: 0.3em; }

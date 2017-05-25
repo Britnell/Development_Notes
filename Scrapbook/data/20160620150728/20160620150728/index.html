@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>BeagleBone and USB GSM Stick | Mark's Blog</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+<link rel="pingback" href="http://mark.mckillen.com/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="http://mark.mckillen.com/wp-content/themes/twentyeleven/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="Mark's Blog » Feed" href="http://mark.mckillen.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Mark's Blog » Comments Feed" href="http://mark.mckillen.com/comments/feed/">
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://mark.mckillen.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://mark.mckillen.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="BeagleBone and GPS" href="http://mark.mckillen.com/2012/11/beaglebone-and-gps/">
+<link rel="next" title="New arrival: Rigol DS1102E DSO" href="http://mark.mckillen.com/2012/11/new-arrival-rigol-ds1102e-dso/">
+<meta name="generator" content="WordPress 3.8">
+<link rel="canonical" href="http://mark.mckillen.com/2012/11/beaglebone-and-usb-gsm-stick/">
+<link rel="shortlink" href="http://mark.mckillen.com/?p=159">
+	
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-159 single-format-standard single-author singular two-column right-sidebar">
+<div id="page" class="hfeed">
+	<header id="branding" role="banner">
+			<hgroup>
+				<h1 id="site-title"><span><a href="http://mark.mckillen.com/" title="Mark's Blog" rel="home">Mark's Blog</a></span></h1>
+				<h2 id="site-description">Marko's getting his blog on ;-)</h2>
+			</hgroup>
+
+						<a href="http://mark.mckillen.com/">
+									<img src="ethnode_header.jpg" alt="" height="288" width="1000">
+							</a>
+			
+								<form method="get" id="searchform" action="http://mark.mckillen.com/">
+		<label for="s" class="assistive-text">Search</label>
+		<input value="" class="field" name="s" id="s" placeholder="Search" type="text">
+		<input class="submit" name="submit" id="searchsubmit" value="Search" type="submit">
+	</form>
+			
+			<nav id="access" role="navigation">
+				<h3 class="assistive-text">Main menu</h3>
+								<div class="skip-link"><a class="assistive-text" href="#content" title="Skip to primary content">Skip to primary content</a></div>
+				<div class="skip-link"><a class="assistive-text" href="#secondary" title="Skip to secondary content">Skip to secondary content</a></div>
+								<div class="menu"><ul><li><a href="http://mark.mckillen.com/">Home</a></li><li class="page_item page-item-37"><a href="http://mark.mckillen.com/about-me/">About Me!</a></li></ul></div>
+			</nav><!-- #access -->
+	</header><!-- #branding -->
+
+
+	<div id="main">
+
+		<div id="primary">
+			<div id="content" role="main">
+
+				
+					<nav id="nav-single">
+						<h3 class="assistive-text">Post navigation</h3>
+						<span class="nav-previous"><a href="http://mark.mckillen.com/2012/11/beaglebone-and-gps/" rel="prev"><span class="meta-nav">←</span> Previous</a></span>
+						<span class="nav-next"><a href="http://mark.mckillen.com/2012/11/new-arrival-rigol-ds1102e-dso/" rel="next">Next <span class="meta-nav">→</span></a></span>
+					</nav><!-- #nav-single -->
+
+					
+<article id="post-159" class="post-159 post type-post status-publish format-standard hentry category-beaglebone category-sysadmin tag-beagebone tag-gsm-modem tag-ppp tag-usb">
+	<header class="entry-header">
+		<h1 class="entry-title">BeagleBone and USB GSM Stick</h1>
+
+				<div class="entry-meta">
+			<span class="sep">Posted on </span><a href="http://mark.mckillen.com/2012/11/beaglebone-and-usb-gsm-stick/" title="17:58" rel="bookmark"><time class="entry-date" datetime="2012-11-19T17:58:14+00:00">19/11/2012</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="http://mark.mckillen.com/author/mckillnm/" title="View all posts by Mark" rel="author">Mark</a></span></span>		</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>More sysadmin than electronics today!</p>
+<p>I have an O2 USB modem and I was wondering about getting the BeagleBone hooked up to it.&nbsp; It would be cool to have the BeagleBone “phone home” if is was out in the field logging, or whatever.</p>
+<div id="attachment_157" style="width: 1210px;" class="wp-caption aligncenter"><a href="http://mark.mckillen.com/wp-content/uploads/2012/11/Huawei-Mobile-Broadband-E1752C-front.jpg"><img class="size-full wp-image-157" title="Huawei Mobile Broadband E1752C (front)" src="huawei-mobile-broadband-e1752c-front.jpg" alt="" height="751" width="1200"></a><p class="wp-caption-text">Front side of my USB GSM modem</p></div>
+<p>As you can see form the photo of the back-side it’s a Huawei Mobile Broadband E1752C USB modem.</p>
+<div id="attachment_156" style="width: 910px;" class="wp-caption aligncenter"><a href="http://mark.mckillen.com/wp-content/uploads/2012/11/Huawei-Mobile-Broadband-E1752C-back.jpg"><img class="size-full wp-image-156" title="Huawei Mobile Broadband E1752C (back)" src="huawei-mobile-broadband-e1752c-back.jpg" alt="" height="506" width="900"></a><p class="wp-caption-text">The back side of the Huawei Mobile Broadband E1752C USB stick</p></div>
+<p>It turns out to be really easy to use this (or any other USB GSM modem) with Ubuntu.&nbsp; It a little “old school” without a GUI to work in, but hay, command line is king after all!.. It brings back memories of using pppd and chat scripts when I used Linux to connect over a copper phone line to the “Internet!”.</p>
+<p>On the O2 network here in Ireland my /etc/ppp/peers/o2 file looks like this:</p>
+<pre>debug
+connect "/usr/sbin/chat -v -f /etc/chatscripts/o2"
+lock
+local
+user "o2"
+password "o2"
+ttyUSB0
+noauth
+defaultroute
+noipdefault
+usepeerdns
+ipcp-max-failure 5
+lcp-echo-failure 5
+lcp-echo-interval 30
+persist
+
+#auth
+refuse-chap
+refuse-mschap
+refuse-mschap-v2
+refuse-eap
+
+# compression
+novjccomp
+nobsdcomp
+noaccomp
+nopcomp
+novj
+noccp</pre>
+<p>And my chat script looks like this:</p>
+<pre>ECHO ON
+TIMEOUT 10
+ABORT 'BUSY'
+ABORT 'NO ANSWER'
+ABORT 'ERROR'
+ABORT 'NO CARRIER'
+
+""&nbsp;&nbsp; &nbsp;AT
+OK&nbsp;&nbsp; &nbsp;AT+CPIN=XXXX
+TIMEOUT 5 ERROR-AT-OK
+AT+CGDCONT=1,"IP","open.internet"
+OK&nbsp;&nbsp; &nbsp;"ATD*99#"
+CONNECT&nbsp;&nbsp; &nbsp;""</pre>
+<p>Nice little trick here for the PIN entry.. You need it the first time the modem boots up, but not for re-connecting the “TIMEOUT 5 ERROR-AT-OK” will allow the PIN code to fail (because it already been entered) and not stop the script.</p>
+<p>As I want to remote connect to BeagleBone, I’ve got it to send it’s IP address back to base (every time the PPP interface comes up).&nbsp; You will need to set up shared SSH keys between your server and the Bone to get this to work without a password.</p>
+<p>Then I created the following little script ( /etc/ppp/ip-up.d/001updateIP ):</p>
+<pre>#!/bin/sh
+#
+# scp the current IP address back to base...
+# (MMcK 2012-11-19)
+#
+
+/sbin/ifconfig -a \
+&nbsp;&nbsp;&nbsp; | awk '/inet addr/ { print $2 }' \
+&nbsp;&nbsp;&nbsp; | awk -F: '{ print $2 }' \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt; /tmp/bone.ipaddr
+
+/usr/bin/scp -q /tmp/bone.ipaddr &lt;me&gt;@&lt;my server&gt;:</pre>
+<p>Now every time the Bone comes online over the PPP interface I can connect to it by looking up it’s new IP address.</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		This entry was posted in <a href="http://mark.mckillen.com/category/electronics/beaglebone/" title="View all posts in BeagleBone" rel="category tag">BeagleBone</a>, <a href="http://mark.mckillen.com/category/sysadmin/" title="View all posts in Sysadmin" rel="category tag">Sysadmin</a> and tagged <a href="http://mark.mckillen.com/tag/beagebone/" rel="tag">BeageBone</a>, <a href="http://mark.mckillen.com/tag/gsm-modem/" rel="tag">GSM modem</a>, <a href="http://mark.mckillen.com/tag/ppp/" rel="tag">ppp</a>, <a href="http://mark.mckillen.com/tag/usb/" rel="tag">USB</a> by <a href="http://mark.mckillen.com/author/mckillnm/">Mark</a>. Bookmark the <a href="http://mark.mckillen.com/2012/11/beaglebone-and-usb-gsm-stick/" title="Permalink to BeagleBone and USB GSM Stick" rel="bookmark">permalink</a>.		
+			</footer><!-- .entry-meta -->
+</article><!-- #post-159 -->
+
+						<div id="comments">
+	
+	
+	
+			
+</div><!-- #comments -->
+
+				
+			</div><!-- #content -->
+		</div><!-- #primary -->
+
+
+	</div><!-- #main -->
+
+	<footer id="colophon" role="contentinfo">
+
+			
+
+			<div id="site-generator">
+                        <p>©2016 Mark McKillen</p>
+<!-- Piwik -->
+
+<!-- End Piwik Tracking Code -->
+
+                        
+			</div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+
+
+</body>
+</html>

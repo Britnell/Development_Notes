@@ -1,0 +1,1139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+	<title>sprintf | Liudr's Blog</title>
+	<link rel="pingback" href="https://liudr.wordpress.com/xmlrpc.php">
+	<link rel="alternate" type="application/rss+xml" title="Liudr's Blog » Feed" href="https://liudr.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Liudr's Blog » Comments Feed" href="https://liudr.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Liudr's Blog » sprintf Comments Feed" href="https://liudr.wordpress.com/2012/01/16/sprintf/feed/">
+	
+	
+
+
+
+
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s1.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://liudr.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Happy New Year!" href="https://liudr.wordpress.com/2012/01/02/happy-new-year/">
+<link rel="next" title="phi_interfaces library beta&nbsp;release" href="https://liudr.wordpress.com/2012/01/19/phi_interfaces-library-beta-release/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://liudr.wordpress.com/2012/01/16/sprintf/">
+<link rel="shortlink" href="http://wp.me/s16Drp-sprintf">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=https%3A%2F%2Fliudr.wordpress.com%2F2012%2F01%2F16%2Fsprintf%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=https%3A%2F%2Fliudr.wordpress.com%2F2012%2F01%2F16%2Fsprintf%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="sprintf">
+<meta property="og:url" content="https://liudr.wordpress.com/2012/01/16/sprintf/">
+<meta property="og:description" content="I notice that lots of arduino fans are not coming from a C programming background. Even the C++ people may not know such a neat C feature, the sprintf function. I use it so often in my codes and li…">
+<meta property="article:published_time" content="2012-01-16T21:03:35+00:00">
+<meta property="article:modified_time" content="2014-12-09T19:03:50+00:00">
+<meta property="og:site_name" content="Liudr's Blog">
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="https://s0.wp.com/i/webclip.png">
+<link rel="openid.server" href="https://liudr.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://liudr.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://liudr.wordpress.com/osd.xml" title="Liudr's Blog">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+		
+		<meta name="application-name" content="Liudr's Blog"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Arduino raspberry pi circuits programming python Linux and physics"><meta name="msapplication-task" content="name=Subscribe;action-uri=https://liudr.wordpress.com/feed/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Read Freshly Pressed;action-uri=http://wordpress.com/#fresh;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="title" content="sprintf | Liudr's Blog on WordPress.com">
+<meta name="description" content="I notice that lots of arduino fans are not coming from a C programming background. Even the C++ people may not know such a neat C feature, the sprintf function. I use it so often in my codes and libraries thus it demands a small introduction. The following is a link to the sprintf function…">
+		
+		
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-1428 single-format-standard logged-in admin-bar no-customize-support mp6 customizer-styles-applied highlander-enabled highlander-light">
+
+<div id="header">
+	<div class="header-left">
+					<h4><a href="https://liudr.wordpress.com/">Liudr's Blog</a></h4>
+				<p id="description">Arduino raspberry pi circuits programming python Linux and physics</p>
+	</div>
+	<div class="header-right">
+		<form method="get" id="searchform" action="https://liudr.wordpress.com/">
+			<div><label class="hidden" for="s">Search:</label>
+			<input value="" name="s" id="s" type="text">
+			<input id="searchsubmit" value="Go" type="submit"></div>
+		</form>
+	</div>
+</div>
+<div id="access">
+	<div id="nav">
+		<div id="supernav" class="navleft nav">
+			<div class="menu"><ul><li><a href="https://liudr.wordpress.com/">Home</a></li><li class="page_item page-item-2"><a href="https://liudr.wordpress.com/about/">About</a></li><li class="page_item page-item-1221"><a href="https://liudr.wordpress.com/buy/">Buy</a></li><li class="page_item page-item-1485"><a href="https://liudr.wordpress.com/donate/">Donate</a></li><li class="page_item page-item-761 page_item_has_children"><a href="https://liudr.wordpress.com/gadget/">Gadgets</a><ul class="children"><li class="page_item page-item-1917"><a href="https://liudr.wordpress.com/gadget/sdi-12-usb-adapter/">SDI-12 USB adapter</a></li><li class="page_item page-item-1187 page_item_has_children"><a href="https://liudr.wordpress.com/gadget/phi-panel/">phi-panel</a><ul class="children"><li class="page_item page-item-1894"><a href="https://liudr.wordpress.com/gadget/phi-panel/phi-panel-firmware-upgrade/">Phi-panel firmware upgrade</a></li></ul></li><li class="page_item page-item-652"><a href="https://liudr.wordpress.com/gadget/phi-connect/">Phi-connect</a></li></ul></li><li class="page_item page-item-709 page_item_has_children"><a href="https://liudr.wordpress.com/libraries/">Libraries</a><ul class="children"><li class="page_item page-item-1899"><a href="https://liudr.wordpress.com/libraries/download/">Download</a></li><li class="page_item page-item-875"><a href="https://liudr.wordpress.com/libraries/phi_big_font/">Phi_big_font</a></li><li class="page_item page-item-714"><a href="https://liudr.wordpress.com/libraries/phi_buttons/">Phi_buttons</a></li><li class="page_item page-item-1421"><a href="https://liudr.wordpress.com/libraries/phi_interfaces/">phi_interfaces</a></li><li class="page_item page-item-1003"><a href="https://liudr.wordpress.com/libraries/phi_morse/">Phi_morse</a></li><li class="page_item page-item-719"><a href="https://liudr.wordpress.com/libraries/phi_prompt/">Phi_prompt</a></li><li class="page_item page-item-1624"><a href="https://liudr.wordpress.com/libraries/phi_prompt-ui-pdk/">Phi_prompt UI PDK</a></li><li class="page_item page-item-978"><a href="https://liudr.wordpress.com/libraries/phi_super_font/">Phi_super_font</a></li><li class="page_item page-item-601"><a href="https://liudr.wordpress.com/libraries/phi-menu/">Phi-menu</a></li></ul></li><li class="page_item page-item-754 page_item_has_children"><a href="https://liudr.wordpress.com/shields/">Shields</a><ul class="children"><li class="page_item page-item-2097"><a href="https://liudr.wordpress.com/shields/sdi-12-data-logging-shield/">SDI-12 data logging&nbsp;shield</a></li><li class="page_item page-item-502"><a href="https://liudr.wordpress.com/shields/phi-2-shield/">Phi-2 shield</a></li><li class="page_item page-item-152"><a href="https://liudr.wordpress.com/shields/phi-1-shield/">Phi-1 shield</a></li><li class="page_item page-item-1661"><a href="https://liudr.wordpress.com/shields/phi-3-shield/">Phi-3 shield</a></li></ul></li></ul></div>
+		</div>
+		<div class="navright">
+			<a class="rsslink" rel="nofollow" href="https://liudr.wordpress.com/feed/">Posts</a>
+			<a class="rsslink" rel="nofollow" href="https://liudr.wordpress.com/comments/feed/">Comments</a>
+		</div>
+	</div>
+
+	<div id="subnav" class="subnav nav">
+			<div class="menu">
+		<ul>
+				<li class="cat-item cat-item-134289"><a href="https://liudr.wordpress.com/category/arduino/" title="Arduino tips and projects">Arduino</a>
+</li>
+	<li class="cat-item cat-item-217"><a href="https://liudr.wordpress.com/category/announcements/">Announcements</a>
+</li>
+	<li class="cat-item cat-item-1559"><a href="https://liudr.wordpress.com/category/gadgets/">Gadgets</a>
+</li>
+	<li class="cat-item cat-item-332"><a href="https://liudr.wordpress.com/category/coding/">Coding</a>
+</li>
+	<li class="cat-item cat-item-53308"><a href="https://liudr.wordpress.com/category/sensors/" title="How various sensors work and how to hook them up on arduino">Sensors</a>
+<ul class="children">
+	<li class="cat-item cat-item-306676724"><a href="https://liudr.wordpress.com/category/sensors/sdi-12/">SDI-12</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1211"><a href="https://liudr.wordpress.com/category/physics/" title="This category includes posts relevant to physics projects.">Physics</a>
+</li>
+	<li class="cat-item cat-item-832"><a href="https://liudr.wordpress.com/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-49695267"><a href="https://liudr.wordpress.com/category/raspberry-pi/">Raspberry pi</a>
+</li>
+	<li class="cat-item cat-item-71653"><a href="https://liudr.wordpress.com/category/eagle/" title="Eagle PCB program and PCB fabrication related posts are categorized here.">Eagle</a>
+</li>
+		</ul>
+	</div>
+	</div>
+</div>
+
+<div id="wrap">
+<div id="content">
+
+	<div id="content-left">
+
+		
+			<div id="nav-above">
+				<div class="nav-previous"><a href="https://liudr.wordpress.com/2012/01/02/happy-new-year/" rel="prev"><span class="meta-nav">←</span> Happy New Year!</a></div>
+				<div class="nav-next"><a href="https://liudr.wordpress.com/2012/01/19/phi_interfaces-library-beta-release/" rel="next">phi_interfaces library beta&nbsp;release <span class="meta-nav">→</span></a></div>
+			</div>
+
+			<div class="post-1428 post type-post status-publish format-standard hentry category-arduino category-coding tag-sprintf">
+
+				<div class="entry">
+
+					<h1>sprintf</h1>
+
+					<div class="post-info">
+						<p>
+							<span class="time">January 16, 2012</span>
+																						<span class="post-comments"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comments">22 Comments</a></span>
+																				</p>
+					</div>
+
+					<p>I notice that lots of arduino fans are <strong>not</strong> coming from a C programming background. Even the C++ people may not know such a neat C feature, the <strong>sprintf</strong> function. I use it so often in my codes and libraries thus it demands a small introduction.</p>
+<p>The following is a link to the sprintf function (I’ll be adding this link to my sample codes):<br>
+<a href="http://www.cplusplus.com/reference/clibrary/cstdio/sprintf/" target="_top">http://www.cplusplus.com/reference/clibrary/cstdio/sprintf/</a></p>
+<p>Essentially the sprintf function takes in a few parameters, such as integers, floats etc. and then follow a format string, output a formatted string that involves the parameters. Since arduino doesn’t print float (to reduce compiled file size), you may need to print two integers for a float. Say if I want to print on LCD the current time in the following format:</p>
+<p><strong><span style="color: rgb(0, 128, 0);">13:02:00</span></strong></p>
+<p>I have three variables:</p>
+<pre>int hour=13;
+ int min=2;
+ int sec=0;</pre>
+<p>If I do the simple print, I have to do the following:</p>
+<pre> lcd.print(hour);
+ lcd.print(":");
+ lcd.print(min);
+ lcd.print(":");
+ lcd.print(sec);</pre>
+<p>And the result is less than perfect:<br>
+<strong><span style="color: rgb(0, 128, 0);">13:2:0</span></strong></p>
+<p>So how do I demand the formatting of the numbers to have a maximal 2 integer digits and no missing leading zeros? I have to tell the print function so by means of a format string. Let’s start from simple and add all details step-by-step:</p>
+<p>A format string is just a string.<br>
+First I want to output integer (not float or else), so integer output is “%d”, or “%ld” for long integer.<br>
+Next I want 2 digit integer so “%2d”, or “%4d” if I wanted 4 digit integer.<br>
+Next I want to keep leading zero so my time looks right, so”%02d”. If I used “%2d” then leading spaces are provided so I get 13:(space)2:(space)0</p>
+<p>Now I’m done with format string, it’s time to call the sprintf:</p>
+<pre>char[9] buffer=""; ///&lt; This is the buffer for the string the sprintf outputs to</pre>
+<pre>sprintf(buffer, "%02d:%02d:%02d", hour, min, sec); ///&lt; This has 3 2-digit integers with leading zeros, separated by ":" . The list of parameters, hour, min, sec, provides the numbers the sprintf prints out with.</pre>
+<pre>lcd.print(buffer); ///&lt; You will get "13:02:00"</pre>
+<p>This will get you:</p>
+<p><strong><span style="color: rgb(0, 128, 0);">13:02:00</span></strong></p>
+<p>From the above example you can see that you can mix regular texts such as “:” or else with the format string in a complex output. Say we want to output a count-down number like “You have XX minutes left.”, then we do:</p>
+<pre>sprintf(buffer, "You have %2d minutes left.", min);</pre>
+<p>You always need to have a buffer char array long enough to hold the output. Count the characters before you define the length of the buffer array and add 1 to the count for string terminator. For the above string, the output is 25 characters, the “%2d” counts as 2 characters. Then you do:</p>
+<pre>char [26] buffer="";</pre>
+<p>It’s worth mentioning that sprintf is just for the look. There is no reason to use it if you don’t care about the look of your output.</p>
+<p>Now that you have read so much about sprintf, you may also want to know sscanf, which is the opposite. It picks out number from a complex string so if you have a string like “13:02:00”, you can extract hour, min, and sec from the string. This is especially useful when accepting parameters from serial port. If you want to know about this function, read here or reply to this post saying you are interested in a post about the sscanf.</p>
+<p><a href="http://www.cplusplus.com/reference/clibrary/cstdio/sscanf/" target="_top">http://www.cplusplus.com/reference/clibrary/cstdio/sscanf/</a></p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-1428" class="share-facebook sd-button share-icon no-text" href="https://liudr.wordpress.com/2012/01/16/sprintf/?share=facebook&amp;nb=1" target="_top" title="Share on Facebook"><span><span class="share-count">1</span></span><span class="sharing-screen-reader-text">Share on Facebook (Opens in new window)<span class="share-count">1</span></span></a></li><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-1428" class="share-twitter sd-button share-icon no-text" href="https://liudr.wordpress.com/2012/01/16/sprintf/?share=twitter&amp;nb=1" target="_top" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-reddit"><a rel="nofollow" data-shared="" class="share-reddit sd-button share-icon no-text" href="https://liudr.wordpress.com/2012/01/16/sprintf/?share=reddit&amp;nb=1" target="_top" title="Click to share on Reddit"><span></span><span class="sharing-screen-reader-text">Click to share on Reddit (Opens in new window)</span></a></li><li class="share-press-this"><a rel="nofollow" data-shared="" class="share-press-this sd-button share-icon no-text" href="https://liudr.wordpress.com/2012/01/16/sprintf/?share=press-this&amp;nb=1" target="_top" title="Click to Press This!"><span></span><span class="sharing-screen-reader-text">Click to Press This! (Opens in new window)</span></a></li><li class="share-print"><a rel="nofollow" data-shared="" class="share-print sd-button share-icon no-text" href="https://liudr.wordpress.com/2012/01/16/sprintf/#print" target="_top" title="Click to print"><span></span><span class="sharing-screen-reader-text">Click to print (Opens in new window)</span></a></li><li class="share-email share-service-visible"><a rel="nofollow" data-shared="" class="share-email sd-button share-icon no-text" href="https://liudr.wordpress.com/2012/01/16/sprintf/?share=email&amp;nb=1" target="_top" title="Click to email"><span></span><span class="sharing-screen-reader-text">Click to email (Opens in new window)</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-16357919-1428-57bd508087769" data-src="//widgets.wp.com/likes/#blog_id=16357919&amp;post_id=1428&amp;origin=liudr.wordpress.com&amp;obj_id=16357919-1428-57bd508087769" data-name="like-post-frame-16357919-1428-57bd508087769"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-16357919-1428-57bd508087769" src="index_1.html" frameborder="0" height="55px" width="100%"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div style="display: block;" id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal"><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="595" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="0" data-origin="1428" rel="nofollow" title="Optimizing your program
+
+The following is just a reply I made on arduino forum. May be useful to share. This is related to another post a while ago: http://liudr.wordpress.com/2011/02/04/how-to-optimize-your-arduino-memory-usage/ In case you run into memory issues, On the efficiency in function calling: 1) Stack space is filled with return address and parameters you…" href="https://liudr.wordpress.com/2011/03/07/optimizing-your-program/" class="jp-relatedposts-post-a">Optimizing your program</a></span><span class="jp-relatedposts-post-context">In "Arduino"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="1468" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="1" data-origin="1428" rel="nofollow" title="sscanf
+
+Last time I blogged about how to use sprintf to format output, especially with numbers, into strings. This time it is sscanf, the reverse, how to extract information, such as numbers from a formatted strings. A lot of situations call for such a process. Say you want to command your…" href="https://liudr.wordpress.com/2012/01/30/sscanf/" class="jp-relatedposts-post-a">sscanf</a></span><span class="jp-relatedposts-post-context">In "Arduino"</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="1556" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="2" data-origin="1428" rel="nofollow" title="Arduino Emulation on PC
+
+I have worked on this for a while and was able to run arduino code on my PC. This is to make debugging much easier and compiling much faster (1 second compared with minutes of compile and upload). Since the purpose was to develop phi_prompt programs, I only made emulations…" href="https://liudr.wordpress.com/2012/04/15/arduino-emulation-on-pc/" class="jp-relatedposts-post-a">Arduino Emulation on PC</a></span><span class="jp-relatedposts-post-context">In "Arduino"</span></p></div></div></div><div class="clear"></div>
+					
+					<!--
+					<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="https://liudr.wordpress.com/2012/01/16/sprintf/"
+    dc:identifier="https://liudr.wordpress.com/2012/01/16/sprintf/"
+    dc:title="sprintf"
+    trackback:ping="https://liudr.wordpress.com/2012/01/16/sprintf/trackback/" />
+</rdf:RDF>					-->
+
+				</div>
+
+				<div class="post-meta">
+					<p>
+						<span class="categories">Filed under <a href="https://liudr.wordpress.com/category/arduino/" rel="category tag">Arduino</a>, <a href="https://liudr.wordpress.com/category/coding/" rel="category tag">Coding</a></span>
+						<span class="tags">Tagged with <a href="https://liudr.wordpress.com/tag/sprintf/" rel="tag">sprintf</a></span>					</p>
+				</div>
+
+			</div>
+
+			
+						<p></p>
+
+			<div id="comments">
+	
+
+	<h3 id="comments-title">22 Responses to <em>sprintf</em>	</h3>
+
+	<ol class="commentlist snap_preview">
+				<li class="comment byuser comment-author-ahdavidson even thread-even depth-1 highlander-comment" id="li-comment-1265">
+		<div id="comment-1265">
+		<div class="comment-author vcard">
+			<img id="grav-727676d6bbb0742d2f300ba8146f70db-0" alt="" src="727676d6bbb0742d2f300ba8146f70db" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn">ahdavidson</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-1265">January 18, 2012 at 7:40 am</a></div>
+
+		<div class="comment-body"><p>But be aware that floating point is not fully implemented on Arduino, so using %f does not work!</p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="https://liudr.wordpress.com/2012/01/16/sprintf/?replytocom=1265#respond" onclick="return addComment.moveForm( &quot;comment-1265&quot;, &quot;1265&quot;, &quot;respond&quot;, &quot;1428&quot; )" aria-label="Reply to ahdavidson">Reply</a>		</div>
+	</div>
+
+	<ul class="children">
+		<li class="comment byuser comment-author-liudr bypostauthor odd alt depth-2 highlander-comment" id="li-comment-1266">
+		<div id="comment-1266">
+		<div class="comment-author vcard">
+			<img id="grav-452895556c2a062c5435d9419d1b0936-0" alt="" src="452895556c2a062c5435d9419d1b0936" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn"><a href="https://liudr.wordpress.com/" rel="external nofollow" class="url">liudr</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-1266">January 18, 2012 at 7:51 am</a></div>
+
+		<div class="comment-body"><p>Thanks for the reminder! That’s right. I’ll change the example to %ld for long integer and add your comment. There is a way to enable the %f but it will increase the file compile size by quite a bit and I don’t remember how to do it anymore.</p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="https://liudr.wordpress.com/2012/01/16/sprintf/?replytocom=1266#respond" onclick="return addComment.moveForm( &quot;comment-1266&quot;, &quot;1266&quot;, &quot;respond&quot;, &quot;1428&quot; )" aria-label="Reply to liudr">Reply</a>		</div>
+	</div>
+
+	<ul class="children">
+		<li class="comment byuser comment-author-ahdavidson even depth-3 highlander-comment" id="li-comment-1267">
+		<div id="comment-1267">
+		<div class="comment-author vcard">
+			<img id="grav-727676d6bbb0742d2f300ba8146f70db-1" alt="" src="727676d6bbb0742d2f300ba8146f70db" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn">ahdavidson</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-1267">January 18, 2012 at 8:08 am</a></div>
+
+		<div class="comment-body"><p>Somewhere in the Arduino forum, I remember reading a lot about this issue, so there might some useful links there.</p>
+</div>
+
+		<div class="reply">
+					</div>
+	</div>
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt depth-2 highlander-comment" id="li-comment-3347">
+		<div id="comment-3347">
+		<div class="comment-author vcard">
+			<img id="grav-505ce157f6fee6105150bbddb1f5a476-0" alt="" src="505ce157f6fee6105150bbddb1f5a476" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn">AndrewK</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-3347">October 19, 2012 at 8:53 pm</a></div>
+
+		<div class="comment-body"><p>Is that why my code isn’t working.. Thanks<img class="wp-smiley emoji" draggable="false" alt=":)" src="simple-smile.svg" style="height: 1em; max-height: 1em;" height="16" width="16"></p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="https://liudr.wordpress.com/2012/01/16/sprintf/?replytocom=3347#respond" onclick="return addComment.moveForm( &quot;comment-3347&quot;, &quot;3347&quot;, &quot;respond&quot;, &quot;1428&quot; )" aria-label="Reply to AndrewK">Reply</a>		</div>
+	</div>
+
+	<ul class="children">
+		<li class="comment byuser comment-author-liudr bypostauthor even depth-3 highlander-comment" id="li-comment-3443">
+		<div id="comment-3443">
+		<div class="comment-author vcard">
+			<img id="grav-452895556c2a062c5435d9419d1b0936-1" alt="" src="452895556c2a062c5435d9419d1b0936" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn"><a href="https://liudr.wordpress.com/" rel="external nofollow" class="url">liudr</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-3443">October 23, 2012 at 11:39 pm</a></div>
+
+		<div class="comment-body"><p>I’m a little confused. Which code was that?</p>
+</div>
+
+		<div class="reply">
+					</div>
+	</div>
+
+	</li><!-- #comment-## -->
+		<li class="comment odd alt depth-3 highlander-comment" id="li-comment-3452">
+		<div id="comment-3452">
+		<div class="comment-author vcard">
+			<img id="grav-505ce157f6fee6105150bbddb1f5a476-1" alt="" src="505ce157f6fee6105150bbddb1f5a476" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn">AndrewK</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-3452">October 24, 2012 at 6:33 am</a></div>
+
+		<div class="comment-body"><p>I was using %f in my code and only getting ? in the output, I hadn’t realized that it wasn’t handled. The code I mentioned is just my current project, not something I posted looking for help on<img class="wp-smiley emoji" draggable="false" alt=":)" src="simple-smile.svg" style="height: 1em; max-height: 1em;" height="16" width="16"></p>
+</div>
+
+		<div class="reply">
+					</div>
+	</div>
+
+	</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-liudr bypostauthor even depth-3 highlander-comment" id="li-comment-3456">
+		<div id="comment-3456">
+		<div class="comment-author vcard">
+			<img id="grav-452895556c2a062c5435d9419d1b0936-2" alt="" src="452895556c2a062c5435d9419d1b0936" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn"><a href="https://liudr.wordpress.com/" rel="external nofollow" class="url">liudr</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-3456">October 24, 2012 at 10:03 am</a></div>
+
+		<div class="comment-body"><p>Exactly AndrewK. The sprintf doesn’t understand %f since the default compiling option won’t include that for saving memory. You will get a “?”.</p>
+</div>
+
+		<div class="reply">
+					</div>
+	</div>
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 highlander-comment" id="li-comment-1325">
+		<div id="comment-1325">
+		<div class="comment-author vcard">
+			<img id="grav-5a749248b942e832de3a83ff4adf47d1-0" alt="" src="5a749248b942e832de3a83ff4adf47d1" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn">Roy</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-1325">January 28, 2012 at 5:45 pm</a></div>
+
+		<div class="comment-body"><p>Liudr,<br>
+Nice Post on the sprintf….if you have the time/inclination I would thoroughly enjoy short tutorial from you on the scanf as well.  I find your use of examples very helpful.</p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="https://liudr.wordpress.com/2012/01/16/sprintf/?replytocom=1325#respond" onclick="return addComment.moveForm( &quot;comment-1325&quot;, &quot;1325&quot;, &quot;respond&quot;, &quot;1428&quot; )" aria-label="Reply to Roy">Reply</a>		</div>
+	</div>
+
+	<ul class="children">
+		<li class="comment byuser comment-author-liudr bypostauthor even depth-2 highlander-comment" id="li-comment-1328">
+		<div id="comment-1328">
+		<div class="comment-author vcard">
+			<img id="grav-452895556c2a062c5435d9419d1b0936-3" alt="" src="452895556c2a062c5435d9419d1b0936" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn"><a href="https://liudr.wordpress.com/" rel="external nofollow" class="url">liudr</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-1328">January 28, 2012 at 8:45 pm</a></div>
+
+		<div class="comment-body"><p>Roy,</p>
+<p>I’m glad that you liked the tutorial. I’ll get started with the sscanf tutorial. It’s just another very useful function to handle strings. You can send human-readable texts from PC via serial port to arduino and arduino can use sscanf to turn the texts into numbers.</p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="https://liudr.wordpress.com/2012/01/16/sprintf/?replytocom=1328#respond" onclick="return addComment.moveForm( &quot;comment-1328&quot;, &quot;1328&quot;, &quot;respond&quot;, &quot;1428&quot; )" aria-label="Reply to liudr">Reply</a>		</div>
+	</div>
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="post pingback">
+		<p>Pingback: <a href="https://liudr.wordpress.com/2012/01/30/sscanf/" rel="external nofollow" class="url">sscanf « Liudr's Blog</a></p>
+	</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 highlander-comment" id="li-comment-1792">
+		<div id="comment-1792">
+		<div class="comment-author vcard">
+			<img id="grav-200c702993adc9973998d2d0fc15defa-0" alt="" src="200c702993adc9973998d2d0fc15defa" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn">michael_x</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-1792">March 24, 2012 at 1:49 pm</a></div>
+
+		<div class="comment-body"><p>With Arduino not caring about where variables (and const literals) reside, it’s even slightly easier to define the buffer right:</p>
+<p>char* buffer= “00:00:00″; // the content will be overritten, just to avoid wrong size counting<br>
+sprintf(buffer,”%02d:%02d:%02d”,h,m,s);</p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="https://liudr.wordpress.com/2012/01/16/sprintf/?replytocom=1792#respond" onclick="return addComment.moveForm( &quot;comment-1792&quot;, &quot;1792&quot;, &quot;respond&quot;, &quot;1428&quot; )" aria-label="Reply to michael_x">Reply</a>		</div>
+	</div>
+
+	<ul class="children">
+		<li class="comment byuser comment-author-liudr bypostauthor even depth-2 highlander-comment" id="li-comment-1795">
+		<div id="comment-1795">
+		<div class="comment-author vcard">
+			<img id="grav-452895556c2a062c5435d9419d1b0936-4" alt="" src="452895556c2a062c5435d9419d1b0936" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn"><a href="https://liudr.wordpress.com/" rel="external nofollow" class="url">liudr</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-1795">March 24, 2012 at 6:08 pm</a></div>
+
+		<div class="comment-body"><p>Good idea. Just be on the cautious side of this practice. I can recall many times I started with a smaller buffer and grew beyond its limits, leading to endless headache in debugging.</p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="https://liudr.wordpress.com/2012/01/16/sprintf/?replytocom=1795#respond" onclick="return addComment.moveForm( &quot;comment-1795&quot;, &quot;1795&quot;, &quot;respond&quot;, &quot;1428&quot; )" aria-label="Reply to liudr">Reply</a>		</div>
+	</div>
+
+	<ul class="children">
+		<li class="comment odd alt depth-3 highlander-comment" id="li-comment-1806">
+		<div id="comment-1806">
+		<div class="comment-author vcard">
+			<img id="grav-200c702993adc9973998d2d0fc15defa-1" alt="" src="200c702993adc9973998d2d0fc15defa" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn">michael_x</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-1806">March 25, 2012 at 2:32 pm</a></div>
+
+		<div class="comment-body"><p>You’re right, but that’s the same with your char buffer[9];<br>
+No one stops you to  strcpy(buffer, “This is too long”); </p>
+<p>Weird things will happen <img src="1f609.svg" alt="😉" draggable="false" class="emoji"></p>
+<p>Try this on Arduino :</p>
+<p>int a = 0;<br>
+char buffer[4];<br>
+int c = 0;<br>
+void setup()<br>
+{<br>
+   strcpy(buffer, “Hello world”);<br>
+   Serial.begin(9600);<br>
+}<br>
+void loop()<br>
+{<br>
+  delay(2000);<br>
+  Serial.println(buffer);<br>
+  Serial.print(a);<br>
+  Serial.print(c);<br>
+  a++; c–;<br>
+}</p>
+<p>The only thing to recognize always is the word “Hell”</p>
+</div>
+
+		<div class="reply">
+					</div>
+	</div>
+
+	</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-liudr bypostauthor even depth-3 highlander-comment" id="li-comment-1807">
+		<div id="comment-1807">
+		<div class="comment-author vcard">
+			<img id="grav-452895556c2a062c5435d9419d1b0936-5" alt="" src="452895556c2a062c5435d9419d1b0936" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn"><a href="https://liudr.wordpress.com/" rel="external nofollow" class="url">liudr</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-1807">March 25, 2012 at 2:42 pm</a></div>
+
+		<div class="comment-body"><p>Yeah, in old C world you are responsible of “wiping your own ass”. The C++ changed it to “all destructed asses are automatically wiped”. The memory allocation will strongly influence how your code works since you are assuming continuous memory on the variables. In a different system where data and code are stored in the same space and without protection, you will be overwriting your code with that strcpy. Virus and encryption people do that to cover their tracks from sourcers. Been a while since I used the term sourcer.</p>
+</div>
+
+		<div class="reply">
+					</div>
+	</div>
+
+	</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-liudr bypostauthor odd alt depth-3 highlander-comment" id="li-comment-1808">
+		<div id="comment-1808">
+		<div class="comment-author vcard">
+			<img id="grav-452895556c2a062c5435d9419d1b0936-6" alt="" src="452895556c2a062c5435d9419d1b0936" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn"><a href="https://liudr.wordpress.com/" rel="external nofollow" class="url">liudr</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-1808">March 25, 2012 at 2:49 pm</a></div>
+
+		<div class="comment-body"><p>BTW, GNU C has this function that ANSI C doesn’t yet have. Check it out.</p>
+<p>int strlcpy(char *dst, const char *src, int siz)</p>
+<p>It’s safer for the ass especially when you pass strlen(buffer] as siz parameter<img src="1f609.svg" alt="😉" draggable="false" class="emoji"></p>
+</div>
+
+		<div class="reply">
+					</div>
+	</div>
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even depth-2 highlander-comment" id="li-comment-1995">
+		<div id="comment-1995">
+		<div class="comment-author vcard">
+			<img id="grav-86f069349e7e83a335d7cd8e50d6379e-0" alt="" src="86f069349e7e83a335d7cd8e50d6379e" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn">bperrybap</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-1995">May 3, 2012 at 12:27 am</a></div>
+
+		<div class="comment-body"><p>This is very bad practice. While it often works, it is not guaranteed to work.<br>
+In fact the C standard says that the behavior of writing to a read only string is undefined.</p>
+<p>See this for some additional information about some of the issues and how to<br>
+work around it by using a different declaration.<br>
+<a href="http://stackoverflow.com/questions/1405594/writing-into-c-string" rel="nofollow">http://stackoverflow.com/questions/1405594/writing-into-c-string</a><br>
+— bill</p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="https://liudr.wordpress.com/2012/01/16/sprintf/?replytocom=1995#respond" onclick="return addComment.moveForm( &quot;comment-1995&quot;, &quot;1995&quot;, &quot;respond&quot;, &quot;1428&quot; )" aria-label="Reply to bperrybap">Reply</a>		</div>
+	</div>
+
+	<ul class="children">
+		<li class="comment byuser comment-author-liudr bypostauthor odd alt depth-3 highlander-comment" id="li-comment-1998">
+		<div id="comment-1998">
+		<div class="comment-author vcard">
+			<img id="grav-452895556c2a062c5435d9419d1b0936-7" alt="" src="452895556c2a062c5435d9419d1b0936" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn"><a href="https://liudr.wordpress.com/" rel="external nofollow" class="url">liudr</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-1998">May 3, 2012 at 7:12 am</a></div>
+
+		<div class="comment-body"><p>Good eye. I didn’t see the star. Without the star this would be fine and with the star I think verbose mode should complain that line.</p>
+</div>
+
+		<div class="reply">
+					</div>
+	</div>
+
+	</li><!-- #comment-## -->
+		<li class="comment even depth-3 highlander-comment" id="li-comment-2005">
+		<div id="comment-2005">
+		<div class="comment-author vcard">
+			<img id="grav-200c702993adc9973998d2d0fc15defa-2" alt="" src="200c702993adc9973998d2d0fc15defa" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn">michael_x</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-2005">May 6, 2012 at 12:25 pm</a></div>
+
+		<div class="comment-body"><p>@bperrybap:<br>
+&gt;This is very bad practice. </p>
+<p>You’re absolutely right.<br>
+I was astonished that it compiles and works on an Arduino without warning.  </p>
+<p>Replacing<br>
+   char* buffer= “00:00:00″;<br>
+by<br>
+   char buffer[]= “00:00:00″;<br>
+is definitely better:   E.g.   sizeof(buffer) gives a correct result.<br>
+Thanks for your additional link.</p>
+</div>
+
+		<div class="reply">
+					</div>
+	</div>
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 highlander-comment" id="li-comment-8811">
+		<div id="comment-8811">
+		<div class="comment-author vcard">
+			<img id="grav-df5ab366112e87a1d2f922223245356d-0" alt="" src="df5ab366112e87a1d2f922223245356d" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn">Anupam</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-8811">June 5, 2014 at 3:34 am</a></div>
+
+		<div class="comment-body"><p>thanks sir,it really helped me to understand sprintf……..</p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="https://liudr.wordpress.com/2012/01/16/sprintf/?replytocom=8811#respond" onclick="return addComment.moveForm( &quot;comment-8811&quot;, &quot;8811&quot;, &quot;respond&quot;, &quot;1428&quot; )" aria-label="Reply to Anupam">Reply</a>		</div>
+	</div>
+
+	</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 highlander-comment" id="li-comment-9404">
+		<div id="comment-9404">
+		<div class="comment-author vcard">
+			<img id="grav-575d4981861567564ad20dcbdc53e2bf-0" alt="" src="575d4981861567564ad20dcbdc53e2bf" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn">Abe</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-9404">December 9, 2014 at 10:17 am</a></div>
+
+		<div class="comment-body"><p>FYI: your code renders with smart quotes, so when I coppied and pasted a snippet, the double quotes were the wrong character and caused an error. Took a while to track it down, so I thought I’d mention it. But this is not a complaint–thanks for the good info!</p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="https://liudr.wordpress.com/2012/01/16/sprintf/?replytocom=9404#respond" onclick="return addComment.moveForm( &quot;comment-9404&quot;, &quot;9404&quot;, &quot;respond&quot;, &quot;1428&quot; )" aria-label="Reply to Abe">Reply</a>		</div>
+	</div>
+
+	<ul class="children">
+		<li class="comment byuser comment-author-liudr bypostauthor odd alt depth-2 highlander-comment" id="li-comment-9405">
+		<div id="comment-9405">
+		<div class="comment-author vcard">
+			<img id="grav-452895556c2a062c5435d9419d1b0936-8" alt="" src="452895556c2a062c5435d9419d1b0936" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn"><a href="https://liudr.wordpress.com/" rel="external nofollow" class="url">liudr</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-9405">December 9, 2014 at 1:03 pm</a></div>
+
+		<div class="comment-body"><p>Thanks Abe. WordPress must have updated since I posted it. It’s doing the smart quote. I had to reform the code as PRE to get rid of the smart quote.</p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="https://liudr.wordpress.com/2012/01/16/sprintf/?replytocom=9405#respond" onclick="return addComment.moveForm( &quot;comment-9405&quot;, &quot;9405&quot;, &quot;respond&quot;, &quot;1428&quot; )" aria-label="Reply to liudr">Reply</a>		</div>
+	</div>
+
+	<ul class="children">
+		<li class="comment even depth-3 highlander-comment" id="li-comment-9406">
+		<div id="comment-9406">
+		<div class="comment-author vcard">
+			<img id="grav-575d4981861567564ad20dcbdc53e2bf-1" alt="" src="575d4981861567564ad20dcbdc53e2bf" class="avatar avatar-40 grav-hashed grav-hijack" height="40" width="40">			<cite class="fn">Abe</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/#comment-9406">December 9, 2014 at 3:04 pm</a></div>
+
+		<div class="comment-body"><p>Nice! That will help the next person. Thanks.</p>
+</div>
+
+		<div class="reply">
+					</div>
+	</div>
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	</ol>
+
+
+				<div id="respond" class="comment-respond js">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://liudr.wordpress.com/2012/01/16/sprintf/#respond" style="display: none;">Cancel reply</a></small></h3>				<form action="https://liudr.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<input id="highlander_comment_nonce" name="highlander_comment_nonce" value="d9e478f336" type="hidden"><input name="_wp_http_referer" value="/2012/01/16/sprintf/" type="hidden">
+<input name="hc_post_as" id="hc_post_as" value="wordpress" type="hidden">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea class="autosizejs " tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px none; padding: 0px; box-sizing: content-box; word-wrap: break-word; height: 0px ! important; min-height: 0px ! important; overflow: hidden; transition: none 0s ease 0s ; font-family: Arial,Helvetica,Tahoma,Verdana,sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: none; word-spacing: 0px; text-indent: 0px; line-height: 17px; width: 608px;"></textarea><textarea style="height: 37px; overflow: hidden; word-wrap: break-word; resize: none;" placeholder="Enter your comment here..." id="comment" name="comment" title="Enter your comment here..."></textarea></div>
+</div>
+
+<div style="display: none;" id="comment-form-identity">
+
+	<div style="display: none;" id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li style="display: none;">
+				<a href="#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li class="selected">
+				<a href="#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+			<li>
+			<iframe id="googleplus-sign-in" name="googleplus-sign-in" src="index_2.html" scrolling="no" allowtransparency="true" seamless="seamless" frameborder="0" height="24" width="24"></iframe>
+			</li>
+		</ul>
+	</div>
+
+	<div style="" id="comment-form-guest" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_top">				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Gravatar" class="no-grav" width="25">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" value="" type="email"></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" value="" type="text"></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" value="" type="text"></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="846d5de9c5b8b5d9e8696f7da36bd526" alt="Gravatar" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="https://2.gravatar.com/avatar/846d5de9c5b8b5d9e8696f7da36bd526?s=25&amp;d=https%3A%2F%2Fs2.wp.com%2Fwp-content%2Fmu-plugins%2Fhighlander-comments%2Fimages%2Fwplogo.png&amp;r=G" type="hidden">
+				<input name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="106105690" type="hidden">
+				<input name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="47bf36733144cc93184b9023b978761b9ec06731" type="hidden">
+				<p class="comment-form-posting-as pa-wordpress"><strong>kinyarwandablog:</strong> You are commenting using your WordPress.com account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Twitter picture" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" type="hidden">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Facebook photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" type="hidden">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Google+ photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" type="hidden">
+				<p class="comment-form-posting-as pa-googleplus"><strong></strong> You are commenting using your Google+ account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+
+
+<div style="display: none;" id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p></div>
+
+<p style="display: none;" class="form-submit"><input name="submit" id="comment-submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="1428" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="161b6a00bd" type="hidden"></p>
+<input name="genseq" value="1472024704" type="hidden">
+<p style="display: none;"></p>				<input id="ak_js" name="ak_js" value="1472024717351" type="hidden"></form>
+					</div><!-- #respond -->
+		<div style="clear: both;"></div>
+</div><!-- #comments -->
+	</div>
+
+<div id="sidebar">
+
+	<div id="text-3" class="widget widget_text"><h4>Support my open source arduino libraries, python code, and insightful blogs!</h4>			<div class="textwidget"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=XVMVH7982P4T6" target="_top"><img src="btn_donatecc_lg.gif" alt=""></a></div>
+		</div><div id="gallery-2" class="widget widget-gallery">
+<div class="widget-gallery-rectangular carousel">
+<div class="tiled-gallery type-rectangular" data-original-width="265" data-carousel-extra="{&quot;blog_id&quot;:16357919,&quot;permalink&quot;:&quot;https:\/\/liudr.wordpress.com\/2012\/01\/16\/sprintf\/&quot;,&quot;likes_blog_id&quot;:16357919}">
+		<div class="gallery-row" style="width: 265px; height: 122px;" data-original-width="265" data-original-height="122">
+			<div class="gallery-group images-2" style="width: 92px; height: 122px;" data-original-width="92" data-original-height="122">
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/2016/02/08/sdi-12-usb-adapter-on-raspberry-pi/2016-02-05-100346_1680x1050_scrot/" border="0">
+			<img data-attachment-id="1937" data-orig-file="https://liudr.files.wordpress.com/2016/02/2016-02-05-100346_1680x1050_scrot.png" data-orig-size="1680,1050" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="2016-02-05-100346_1680x1050_scrot" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2016/02/2016-02-05-100346_1680x1050_scrot.png?w=300" data-large-file="https://liudr.files.wordpress.com/2016/02/2016-02-05-100346_1680x1050_scrot.png?w=630" src="2016-02-05-100346_1680x1050_scrot.png" data-original-width="88" data-original-height="55" title="2016-02-05-100346_1680x1050_scrot" alt="2016-02-05-100346_1680x1050_scrot" style="width: 88px; height: 55px;" height="55" width="88">
+		</a>
+	
+	
+	</div>
+
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/gadget/usb-dongle/" border="0">
+			<img data-attachment-id="1941" data-orig-file="https://liudr.files.wordpress.com/2011/03/usb-dongle.png" data-orig-size="600,400" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="USB dongle" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2011/03/usb-dongle.png?w=300" data-large-file="https://liudr.files.wordpress.com/2011/03/usb-dongle.png?w=600" src="usb-dongle.png" data-original-width="88" data-original-height="59" title="USB dongle" alt="USB dongle" style="width: 88px; height: 59px;" height="59" width="88">
+		</a>
+	
+	
+	</div>
+
+					</div> <!-- close group -->
+			<div class="gallery-group images-1" style="width: 173px; height: 122px;" data-original-width="173" data-original-height="122">
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/2016/02/20/connect-to-dropbox/dropbox-dev-3/" border="0">
+			<img data-attachment-id="1958" data-orig-file="https://liudr.files.wordpress.com/2016/02/dropbox-dev-3.png" data-orig-size="1043,728" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="dropbox dev-3" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2016/02/dropbox-dev-3.png?w=300" data-large-file="https://liudr.files.wordpress.com/2016/02/dropbox-dev-3.png?w=630" src="dropbox-dev-3.png" data-original-width="169" data-original-height="118" title="dropbox dev-3" alt="dropbox dev-3" style="width: 169px; height: 118px;" height="118" width="169">
+		</a>
+	
+	
+	</div>
+
+					</div> <!-- close group -->
+		</div> <!-- close row -->
+	<div class="gallery-row" style="width: 265px; height: 76px;" data-original-width="265" data-original-height="76">
+			<div class="gallery-group images-1" style="width: 265px; height: 76px;" data-original-width="265" data-original-height="76">
+							<div class="tiled-gallery-item tiled-gallery-item-large">
+		<a href="https://liudr.wordpress.com/74hc4050-twisted-icsp/" border="0">
+			<img data-attachment-id="1926" data-orig-file="https://liudr.files.wordpress.com/2016/01/74hc4050-twisted-icsp.png" data-orig-size="1104,306" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="74HC4050 twisted ICSP" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2016/01/74hc4050-twisted-icsp.png?w=300" data-large-file="https://liudr.files.wordpress.com/2016/01/74hc4050-twisted-icsp.png?w=630" src="74hc4050-twisted-icsp.png" data-original-width="261" data-original-height="72" title="74HC4050 twisted ICSP" alt="74HC4050 twisted ICSP" style="width: 261px; height: 72px;" height="72" width="261">
+		</a>
+	
+	
+	</div>
+
+					</div> <!-- close group -->
+		</div> <!-- close row -->
+	<div class="gallery-row" style="width: 265px; height: 82px;" data-original-width="265" data-original-height="82">
+			<div class="gallery-group images-1" style="width: 157px; height: 82px;" data-original-width="157" data-original-height="82">
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/2015/08/11/sdi-12-usb-adapter-coming/top-2/" border="0">
+			<img data-attachment-id="1875" data-orig-file="https://liudr.files.wordpress.com/2015/08/top.png" data-orig-size="796,403" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="top" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2015/08/top.png?w=300" data-large-file="https://liudr.files.wordpress.com/2015/08/top.png?w=630" src="top.png" data-original-width="153" data-original-height="78" title="top" alt="top" style="width: 153px; height: 78px;" height="78" width="153">
+		</a>
+	
+	
+	</div>
+
+					</div> <!-- close group -->
+			<div class="gallery-group images-1" style="width: 108px; height: 82px;" data-original-width="108" data-original-height="82">
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/programmer_developer_edition/" border="0">
+			<img data-attachment-id="1869" data-orig-file="https://liudr.files.wordpress.com/2015/04/programmer_developer_edition.jpg" data-orig-size="958,718" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;2.6&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;SAMSUNG-SGH-I747&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1429828491&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;3.7&quot;,&quot;iso&quot;:&quot;320&quot;,&quot;shutter_speed&quot;:&quot;0.033333333333333&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="Programmer_developer_edition" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2015/04/programmer_developer_edition.jpg?w=300" data-large-file="https://liudr.files.wordpress.com/2015/04/programmer_developer_edition.jpg?w=630" src="programmer_developer_edition.jpg" data-original-width="104" data-original-height="78" title="Programmer_developer_edition" alt="Programmer_developer_edition" style="width: 104px; height: 78px;" height="78" width="104">
+		</a>
+	
+	
+	</div>
+
+					</div> <!-- close group -->
+		</div> <!-- close row -->
+	<div class="gallery-row" style="width: 265px; height: 127px;" data-original-width="265" data-original-height="127">
+			<div class="gallery-group images-1" style="width: 168px; height: 127px;" data-original-width="168" data-original-height="127">
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/screen-capture/" border="0">
+			<img data-attachment-id="1865" data-orig-file="https://liudr.files.wordpress.com/2014/12/f0000tek.jpg" data-orig-size="640,480" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;Tektronix Enabling Innovation&quot;,&quot;camera&quot;:&quot;TDS1002B&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;Screen Capture&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="Screen Capture" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2014/12/f0000tek.jpg?w=300" data-large-file="https://liudr.files.wordpress.com/2014/12/f0000tek.jpg?w=630" src="f0000tek.jpg" data-original-width="164" data-original-height="123" title="Screen Capture" alt="Screen Capture" style="width: 164px; height: 123px;" height="123" width="164">
+		</a>
+	
+	
+	</div>
+
+					</div> <!-- close group -->
+			<div class="gallery-group images-2" style="width: 97px; height: 127px;" data-original-width="97" data-original-height="127">
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/20140818_140820/" border="0">
+			<img data-attachment-id="1848" data-orig-file="https://liudr.files.wordpress.com/2014/08/20140818_140820-e1408389330381.jpg" data-orig-size="1024,576" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;2.6&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;SAMSUNG-SGH-I747&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1408370900&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;3.7&quot;,&quot;iso&quot;:&quot;200&quot;,&quot;shutter_speed&quot;:&quot;0.066666666666667&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="20140818_140820" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2014/08/20140818_140820-e1408389330381.jpg?w=300" data-large-file="https://liudr.files.wordpress.com/2014/08/20140818_140820-e1408389330381.jpg?w=630" src="20140818_140820-e1408389330381.jpg" data-original-width="93" data-original-height="52" title="20140818_140820" alt="20140818_140820" style="width: 93px; height: 52px;" height="52" width="93">
+		</a>
+	
+	
+	</div>
+
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/rotary-encoder-4/" border="0">
+			<img data-attachment-id="1842" data-orig-file="https://liudr.files.wordpress.com/2014/06/rotary-encoder-4.png" data-orig-size="488,348" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="Rotary encoder 4" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2014/06/rotary-encoder-4.png?w=300" data-large-file="https://liudr.files.wordpress.com/2014/06/rotary-encoder-4.png?w=488" src="rotary-encoder-4.png" data-original-width="93" data-original-height="67" title="Rotary encoder 4" alt="Rotary encoder 4" style="width: 93px; height: 67px;" height="67" width="93">
+		</a>
+	
+	
+	</div>
+
+					</div> <!-- close group -->
+		</div> <!-- close row -->
+	<div class="gallery-row" style="width: 265px; height: 122px;" data-original-width="265" data-original-height="122">
+			<div class="gallery-group images-2" style="width: 84px; height: 122px;" data-original-width="84" data-original-height="122">
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/1820/" border="0">
+			<img data-attachment-id="1820" data-orig-file="https://liudr.files.wordpress.com/2014/04/dsc03184.jpg" data-orig-size="800,600" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;2.8&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;DSC-W80&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1339517522&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;5.8&quot;,&quot;iso&quot;:&quot;125&quot;,&quot;shutter_speed&quot;:&quot;0.025&quot;,&quot;title&quot;:&quot;???????????????????????????????&quot;}" data-image-title="phi-2 20X4 V2 assembled" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2014/04/dsc03184.jpg?w=300" data-large-file="https://liudr.files.wordpress.com/2014/04/dsc03184.jpg?w=630" src="dsc03184.jpg" data-original-width="80" data-original-height="60" title="phi-2 20X4 V2 assembled" alt="phi-2 20X4 V2 assembled" style="width: 80px; height: 60px;" height="60" width="80">
+		</a>
+	
+	
+	</div>
+
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/2012/12/20/directional-keypad-for-phi-panel/attachment/1721/" border="0">
+			<img data-attachment-id="1721" data-orig-file="https://liudr.files.wordpress.com/2012/12/phi-panel-backpack-20x4-directional-keypad-front-yn-dialog-3.jpg" data-orig-size="798,532" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;2.8&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;DSC-W80&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1356365112&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;5.8&quot;,&quot;iso&quot;:&quot;320&quot;,&quot;shutter_speed&quot;:&quot;0.025&quot;,&quot;title&quot;:&quot;???????????????????????????????&quot;}" data-image-title="???????????????????????????????" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2012/12/phi-panel-backpack-20x4-directional-keypad-front-yn-dialog-3.jpg?w=300" data-large-file="https://liudr.files.wordpress.com/2012/12/phi-panel-backpack-20x4-directional-keypad-front-yn-dialog-3.jpg?w=630" src="phi-panel-backpack-20x4-directional-keypad-front-yn-dialog-3.jpg" data-original-width="80" data-original-height="54" title="???????????????????????????????" alt="???????????????????????????????" style="width: 80px; height: 54px;" height="54" width="80">
+		</a>
+	
+	
+	</div>
+
+					</div> <!-- close group -->
+			<div class="gallery-group images-1" style="width: 181px; height: 122px;" data-original-width="181" data-original-height="122">
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/2012/12/14/rotary-encoder-keypad-for-phi-panel/phi-panel-backpack-20x4-rotary-encoder-keypad-front-long-menu-angle/" border="0">
+			<img data-attachment-id="1649" data-orig-file="https://liudr.files.wordpress.com/2012/12/phi-panel-backpack-20x4-rotary-encoder-keypad-front-long-menu-angle.jpg" data-orig-size="798,532" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;2.8&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;DSC-W80&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1355346550&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;5.8&quot;,&quot;iso&quot;:&quot;320&quot;,&quot;shutter_speed&quot;:&quot;0.025&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="phi-panel backpack 20X4 rotary encoder keypad front long menu angle" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2012/12/phi-panel-backpack-20x4-rotary-encoder-keypad-front-long-menu-angle.jpg?w=300" data-large-file="https://liudr.files.wordpress.com/2012/12/phi-panel-backpack-20x4-rotary-encoder-keypad-front-long-menu-angle.jpg?w=630" src="phi-panel-backpack-20x4-rotary-encoder-keypad-front-long-menu-angle.jpg" data-original-width="177" data-original-height="118" title="phi-panel backpack 20X4 rotary encoder keypad front long menu angle" alt="phi-panel backpack 20X4 rotary encoder keypad front long menu angle" style="width: 177px; height: 118px;" height="118" width="177">
+		</a>
+	
+	
+	</div>
+
+					</div> <!-- close group -->
+		</div> <!-- close row -->
+	<div class="gallery-row" style="width: 265px; height: 55px;" data-original-width="265" data-original-height="55">
+			<div class="gallery-group images-1" style="width: 71px; height: 55px;" data-original-width="71" data-original-height="55">
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/dsc03181/" border="0">
+			<img data-attachment-id="1601" data-orig-file="https://liudr.files.wordpress.com/2012/11/dsc03181.jpg" data-orig-size="800,600" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;2.8&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;DSC-W80&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1339516879&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;5.8&quot;,&quot;iso&quot;:&quot;200&quot;,&quot;shutter_speed&quot;:&quot;0.025&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="DSC03181" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2012/11/dsc03181.jpg?w=300" data-large-file="https://liudr.files.wordpress.com/2012/11/dsc03181.jpg?w=630" src="dsc03181.jpg" data-original-width="67" data-original-height="51" title="DSC03181" alt="DSC03181" style="width: 67px; height: 51px;" height="51" width="67">
+		</a>
+	
+	
+	</div>
+
+					</div> <!-- close group -->
+			<div class="gallery-group images-1" style="width: 42px; height: 55px;" data-original-width="42" data-original-height="55">
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/2012/03/24/phi-panel-backpack-face-plate/faceplate16x2-2/" border="0">
+			<img data-attachment-id="1523" data-orig-file="https://liudr.files.wordpress.com/2012/03/faceplate16x2-2.jpg" data-orig-size="600,800" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;2.8&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;DSC-W80&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1332488491&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;5.8&quot;,&quot;iso&quot;:&quot;200&quot;,&quot;shutter_speed&quot;:&quot;0.025&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="faceplate16X2-2" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2012/03/faceplate16x2-2.jpg?w=225" data-large-file="https://liudr.files.wordpress.com/2012/03/faceplate16x2-2.jpg?w=600" src="faceplate16x2-2.jpg" data-original-width="38" data-original-height="51" title="faceplate16X2-2" alt="faceplate16X2-2" style="width: 38px; height: 51px;" height="51" width="38">
+		</a>
+	
+	
+	</div>
+
+					</div> <!-- close group -->
+			<div class="gallery-group images-1" style="width: 80px; height: 55px;" data-original-width="80" data-original-height="55">
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/enclosure05/" border="0">
+			<img data-attachment-id="1400" data-orig-file="https://liudr.files.wordpress.com/2011/12/enclosure05.jpg" data-orig-size="798,532" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;2.8&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;DSC-W80&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1323821284&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;5.8&quot;,&quot;iso&quot;:&quot;400&quot;,&quot;shutter_speed&quot;:&quot;0.076923076923077&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="Enclosure05" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2011/12/enclosure05.jpg?w=300" data-large-file="https://liudr.files.wordpress.com/2011/12/enclosure05.jpg?w=630" src="enclosure05.jpg" data-original-width="76" data-original-height="51" title="Enclosure05" alt="Enclosure05" style="width: 76px; height: 51px;" height="51" width="76">
+		</a>
+	
+	
+	</div>
+
+					</div> <!-- close group -->
+			<div class="gallery-group images-1" style="width: 72px; height: 55px;" data-original-width="72" data-original-height="55">
+							<div class="tiled-gallery-item tiled-gallery-item-small">
+		<a href="https://liudr.wordpress.com/optiloader_setup/" border="0">
+			<img data-attachment-id="1278" data-orig-file="https://liudr.files.wordpress.com/2011/10/optiloader_setup.jpg" data-orig-size="800,600" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;2.8&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;DSC-W80&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1317586830&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;5.8&quot;,&quot;iso&quot;:&quot;200&quot;,&quot;shutter_speed&quot;:&quot;0.025&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="optiloader_setup" data-image-description="" data-medium-file="https://liudr.files.wordpress.com/2011/10/optiloader_setup.jpg?w=300" data-large-file="https://liudr.files.wordpress.com/2011/10/optiloader_setup.jpg?w=630" src="optiloader_setup.jpg" data-original-width="68" data-original-height="51" title="optiloader_setup" alt="optiloader_setup" style="width: 68px; height: 51px;" height="51" width="68">
+		</a>
+	
+	
+	</div>
+
+					</div> <!-- close group -->
+		</div> <!-- close row -->
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="footer-widgeted">
+    <div class="footer-widgeted-1">
+            </div>
+    <div class="footer-widgeted-2">
+            </div>
+    <div class="footer-widgeted-3">
+            </div>
+</div>
+
+<div id="footer">
+	<div class="footerleft">
+		<p><a href="https://wordpress.com/?ref=footer_website">Create a free website or blog at WordPress.com.</a></p>
+    </div>
+    <div class="footerright">
+	        </div>
+</div>
+
+</div>
+
+<!-- wpcom_wp_footer -->
+	
+
+
+
+
+	
+
+		<div style="display: none;">
+	<div class="grofile-hash-map-727676d6bbb0742d2f300ba8146f70db">
+	</div>
+	<div class="grofile-hash-map-452895556c2a062c5435d9419d1b0936">
+	</div>
+	<div class="grofile-hash-map-505ce157f6fee6105150bbddb1f5a476">
+	</div>
+	<div class="grofile-hash-map-5a749248b942e832de3a83ff4adf47d1">
+	</div>
+	<div class="grofile-hash-map-200c702993adc9973998d2d0fc15defa">
+	</div>
+	<div class="grofile-hash-map-86f069349e7e83a335d7cd8e50d6379e">
+	</div>
+	<div class="grofile-hash-map-df5ab366112e87a1d2f922223245356d">
+	</div>
+	<div class="grofile-hash-map-575d4981861567564ad20dcbdc53e2bf">
+	</div>
+	</div>
+
+	<div id="ab-reblog-box">
+		<form action="https://liudr.wordpress.com/2012/01/16/sprintf/" name="reblog">
+			<textarea id="reblog-content" name="reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="blogid" id="lblogid">Post to</label>
+
+			<select name="to_blog_id" id="reblog-to-blog-id">
+														<option value="112385674">kinyarwandablog</option>
+							</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/" class="cancel">Cancel</a></span>
+				<input name="reblog-submit" class="button-primary" id="reblog-submit" value="Reblog Post" type="submit">
+				<input id="original-blog-id" value="16357919" type="hidden">
+				<input id="original-post-id" value="1428" type="hidden">
+			</div>
+
+			<input id="_wpnonce" name="_wpnonce" value="f4f6ca6599" type="hidden"><input name="_wp_http_referer" value="/2012/01/16/sprintf/" type="hidden">		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+	
+<div id="report-form-window" style="display: none;"></div>
+
+
+	
+		
+				
+			
+
+
+	<div id="carousel-reblog-box">
+		<form action="https://liudr.wordpress.com/2012/01/16/sprintf/" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">Post to</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+							<option value="112385674">kinyarwandablog</option>
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/" class="cancel">Cancel</a></span>
+				<input name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="Reblog Post" type="submit">
+				<input id="carousel-reblog-blog-id" value="16357919" type="hidden">
+				<input id="carousel-reblog-blog-url" value="https://liudr.wordpress.com" type="hidden">
+				<input id="carousel-reblog-blog-title" value="Liudr's Blog" type="hidden">
+				<input id="carousel-reblog-post-url" value="" type="hidden">
+				<input id="carousel-reblog-post-title" value="" type="hidden">
+			</div>
+
+			<input id="_wpnonce" name="_wpnonce" value="f4f6ca6599" type="hidden"><input name="_wp_http_referer" value="/2012/01/16/sprintf/" type="hidden">		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+<!--[if lte IE 8]>
+<link rel='stylesheet' id='jetpack-carousel-ie8fix-css'  href='https://s1.wp.com/wp-content/mu-plugins/carousel/jetpack-carousel-ie8fix.css?m=1412618825h&#038;ver=20121024' type='text/css' media='all' />
+<![endif]-->
+
+
+
+
+
+
+
+
+<div class="actnbr-pub-enterprise actnbr-has-follow actnbr-hidden" id="actionbar"><ul><li class="actnbr-btn actnbr-hidden"> 			    	<a class="actnbr-action actnbr-actn-follow" href="https://liudr.wordpress.com/2012/01/16/sprintf/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a> 			    	<div class="actnbr-popover tip tip-top-left actnbr-notice"> 			    		<div class="tip-arrow"></div> 			    		<div class="tip-inner"> 			    			New posts from this site will now appear in your <a href="https://wordpress.com/">Reader</a> 			    		</div> 			    	</div> 			    </li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename actnbr-hidden"><a href="http://liudr.wordpress.com/"><img alt="" src="void.gif" class="avatar avatar-36" height="36" width="36"> Liudr's Blog</a></li> 				   	<li class="actnbr-folded-customize actnbr-hidden"><a href="https://liudr.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fliudr.wordpress.com%2F2012%2F01%2F16%2Fsprintf%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li> 				    <li class="actnbr-folded-follow actnbr-hidden"><a class="actnbr-action actnbr-actn-follow" href="https://liudr.wordpress.com/2012/01/16/sprintf/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a></li> 				     				    <li class="actnbr-shortlink actnbr-hidden"><a href="http://wp.me/s16Drp-sprintf">Copy shortlink</a></li> 				    <li class="flb-report actnbr-hidden"><a href="http://en.wordpress.com/abuse/">Report this content</a></li> 				    <li class="actnbr-reader actnbr-hidden"><a href="https://wordpress.com/read/blogs/16357919">View Site in the Reader</a></li> 				    <li class="actnbr-subs actnbr-hidden"><a href="https://wordpress.com/following/edit">Manage Sites I Follow</a></li> 				    <li class="actnbr-fold actnbr-hidden"><a href="https://liudr.wordpress.com/2012/01/16/sprintf/">Collapse this bar</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+		<iframe src="index_4.html" scrolling="no" id="likes-master" name="likes-master" style="display: none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		
+		
+
+
+		<div id="wpadminbar" class="ltr">
+							<a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1">Skip to toolbar</a>
+						<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Toolbar" tabindex="0">
+						<ul id="wp-admin-bar-root-default" class="ab-top-menu">
+			
+		<li id="wp-admin-bar-blog" class="menupop my-sites"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/stats/kinyarwandablog.wordpress.com">My Site</a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-blog-default" class="ab-submenu">
+			
+		<li id="wp-admin-bar-blog-info" class="current-site">		<div class="ab-item ab-empty-item"><div class="ab-site-icon"></div><span class="ab-site-title">kinyarwandablog</span><span class="ab-site-description">kinyarwandablog.wordpress.com</span></div>		</li>
+		<li id="wp-admin-bar-new-site"><a class="ab-item" href="https://wordpress.com/start?ref=admin-bar-logged-in">+ Add New Site</a>		</li>
+		<li id="wp-admin-bar-blog-stats" class="mb-icon"><a class="ab-item" href="https://wordpress.com/stats/kinyarwandablog.wordpress.com">Stats <img style="width: 95px; margin: 0px; float: right;" src="admin-bar-hours-scale-2x.php" alt="Stats" title="Showing site views per hour for the last 48 hours. Click for full Site Stats."></a>		</li>
+		<li id="wp-admin-bar-plan" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/plans/kinyarwandablog.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-plan">Plan</a><a href="https://wordpress.com/plans/kinyarwandablog.wordpress.com" class="ab-secondary" id="wp-admin-bar-plan-badge">Free</a></div>		</li>		</ul>
+			<ul id="wp-admin-bar-publish" class="ab-submenu">
+			
+		<li id="wp-admin-bar-publish-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Publish</div>		</li>
+		<li id="wp-admin-bar-new-post" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/posts/kinyarwandablog.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-edit-post">Blog Posts</a><a href="https://wordpress.com/post/kinyarwandablog.wordpress.com" class="ab-secondary" id="wp-admin-bar-new-post">Add</a></div>		</li>
+		<li id="wp-admin-bar-new-page" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/pages/kinyarwandablog.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-edit-page">Pages</a><a href="https://wordpress.com/page/kinyarwandablog.wordpress.com" class="ab-secondary" id="wp-admin-bar-new-page">Add</a></div>		</li>		</ul>
+			<ul id="wp-admin-bar-look-and-feel" class="ab-submenu">
+			
+		<li id="wp-admin-bar-look-and-feel-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Personalize</div>		</li>
+		<li id="wp-admin-bar-themes" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/design/kinyarwandablog.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-themes">Themes</a><a href="https://kinyarwandablog.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fliudr.wordpress.com%2F2012%2F01%2F16%2Fsprintf%2F" class="ab-secondary" id="wp-admin-bar-cmz">Customize</a></div>		</li>
+		<li id="wp-admin-bar-menus" class="mb-icon"><a class="ab-item" href="https://wordpress.com/menus/kinyarwandablog.wordpress.com">Menus</a>		</li>		</ul>
+			<ul id="wp-admin-bar-configuration" class="ab-submenu">
+			
+		<li id="wp-admin-bar-configuration-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Configure</div>		</li>
+		<li id="wp-admin-bar-sharing" class="mb-icon"><a class="ab-item" href="https://wordpress.com/sharing/kinyarwandablog.wordpress.com">Sharing</a>		</li>
+		<li id="wp-admin-bar-users-toolbar" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/people/team/kinyarwandablog.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-people">People</a><a href="https://kinyarwandablog.wordpress.com/wp-admin/users.php?page=wpcom-invite-users" class="ab-secondary" id="wp-admin-bar-people-add">Add</a></div>		</li>
+		<li id="wp-admin-bar-domains" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/domains/kinyarwandablog.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-domains">Domains</a><a href="https://wordpress.com/domains/add/kinyarwandablog.wordpress.com" class="ab-secondary" id="wp-admin-bar-domains-add">Add</a></div>		</li>
+		<li id="wp-admin-bar-blog-settings" class="mb-icon"><a class="ab-item" href="https://wordpress.com/settings/general/kinyarwandablog.wordpress.com">Settings</a>		</li>		</ul>
+	</div>		</li>
+		<li id="wp-admin-bar-jumptotop-button-menu"><a class="ab-item" href="#"><div style="top: 0px;" id="jumptotop"><span class="noticon noticon-top"></span></div></a>		</li>
+		<li id="wp-admin-bar-newdash" class="menupop"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/">Reader</a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-newdash-default" class="ab-submenu">
+			
+		<li id="wp-admin-bar-streams-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Streams</div>		</li>
+		<li id="wp-admin-bar-following" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/" class="ab-item ab-primary mb-icon" id="wp-admin-bar-followed-sites">Followed Sites</a><a href="https://wordpress.com/following/edit" class="ab-secondary" id="wp-admin-bar-reader-followed-sites-manage">Manage</a></div>		</li>
+		<li id="wp-admin-bar-discover-discover" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/discover">Discover</a>		</li>
+		<li id="wp-admin-bar-discover-search" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/read/search">Search</a>		</li>
+		<li id="wp-admin-bar-discover-recommended-blogs" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/recommendations">Recommendations</a>		</li>
+		<li id="wp-admin-bar-my-activity-my-likes" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/activities/likes">My Likes</a>		</li>		</ul>
+	</div>		</li>
+		<li style="" id="wp-admin-bar-admin-bar-likes-widget">		<div class="ab-item ab-empty-item"></div><iframe class="admin-bar-likes-widget jetpack-likes-widget" scrolling="no" name="admin-bar-likes-widget" src="index_5.html" frameborder="0"></iframe>		</li>		</ul>
+			<ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+			
+		<li id="wp-admin-bar-notes" class="menupop">		<div class="ab-item ab-empty-item"><span id="wpnt-notes-unread-count" class="wpnt-loading wpn-unread"></span><span class="noticon noticon-bell"></span><span class="ab-text">Notifications</span></div><div class="wide" id="wpnt-notes-panel2" style="display: none;" dir="ltr" lang="en"><iframe class="wide" src="index_6.html" style="" id="wpnt-notes-iframe2" allowtransparency="true" scrolling="no" frameborder="0"></iframe></div>		</li>
+		<li id="wp-admin-bar-my-account" class="menupop with-avatar no-grav"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/me/"><img alt="" src="846d5de9c5b8b5d9e8696f7da36bd526_001.dat" class="avatar avatar-32" height="32" width="32"><span class="ab-text">Me</span></a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-user-actions" class="ab-submenu">
+			
+		<li id="wp-admin-bar-user-info" class="user-info user-info-item">		<div class="ab-item ab-empty-item" tabindex="-1"><img alt="" src="846d5de9c5b8b5d9e8696f7da36bd526_002.dat" class="avatar avatar-128" height="128" width="128"><span class="display-name">kinyarwandablog</span><a class="username" href="http://gravatar.com/kinyarwandablog">@kinyarwandablog</a><form action="https://liudr.wordpress.com/wp-login.php?action=logout&amp;redirect_to=https%3A%2F%2Fwordpress.com%2F%3Fapppromo&amp;_wpnonce=d351902150" method="post"><button class="ab-sign-out" type="submit">Sign Out</button></form></div>		</li>
+		<li id="wp-admin-bar-profile-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Profile</div>		</li>
+		<li id="wp-admin-bar-my-profile" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me">My Profile</a>		</li>
+		<li id="wp-admin-bar-account-settings" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/account">Account Settings</a>		</li>
+		<li id="wp-admin-bar-billing" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/billing">Billing History</a>		</li>
+		<li id="wp-admin-bar-security" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/security">Security</a>		</li>
+		<li id="wp-admin-bar-notifications" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/notifications">Notifications</a>		</li>
+		<li id="wp-admin-bar-special-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Special</div>		</li>
+		<li id="wp-admin-bar-get-apps" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/get-apps">Get Apps</a>		</li>
+		<li id="wp-admin-bar-next-steps" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/next">Next Steps</a>		</li>
+		<li id="wp-admin-bar-help" class="mb-icon"><a class="ab-item" href="https://wordpress.com/help">Help</a>		</li>		</ul>
+	</div>		</li>
+		<li id="wp-admin-bar-ab-new-post"><a class="ab-item" href="https://wordpress.com/post/kinyarwandablog.wordpress.com"></a>		</li>		</ul>
+				</div>
+							<a class="screen-reader-shortcut" href="https://liudr.wordpress.com/wp-login.php?action=logout&amp;_wpnonce=d351902150">Log Out</a>
+					</div>
+
+	
+
+	<div class="wpcom-bubble action-bubble">
+		<div class="bubble-txt"></div>
+	</div>
+	
+		
+	
+
+<div id="sharing_email" style="display: none;">
+		<form action="https://liudr.wordpress.com/2012/01/16/sprintf/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input name="target_email" id="target_email" value="" type="email">
+
+							<input name="source_name" value="kinyarwandablog" type="hidden">
+				<input name="source_email" value="tommy.britnell@gmail.com" type="hidden">
+						<input id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" type="text">
+			
+			<div class="recaptcha" id="sharing_recaptcha"></div><input name="recaptcha_public_key" id="recaptcha_public_key" value="6LcYW8MSAAAAADBAuEH9yaPcF7lWh11Iq62ZKtoo" type="hidden">
+			<img style="float: right; display: none;" class="loading" src="loading.gif" alt="loading" height="16" width="16">
+			<input value="Send Email" class="sharing_send" type="submit">
+			<a rel="nofollow" href="#cancel" class="sharing_cancel">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div><img id="wpstats" alt=":)" src="g.gif"></body>
+</html>

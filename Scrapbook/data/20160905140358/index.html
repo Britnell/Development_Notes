@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://effbot.org/zone/rss.xml"><link rel="shortcut icon" href="effbot.ico"><title>Getting Information About a&nbsp;File</title>
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body data-page-id="213"><div id="doc2" class="yui-t2"><div id="hd"></div><div id="bd"><div id="yui-main"><div class="yui-b"><div class="content"><div class="yui-g"><h1 class="maintitle">Getting Information About a&nbsp;File</h1></div><div class="yui-ge"><div class="yui-u first"><p><i>This is an old draft from 1997.</i></p><p>The file system itself can reveal some interesting information
+about a document.  For example, it can tell you the size of the
+document file, and when it was created, modified, or even last read.
+On some platforms, you can also find out who owns the file in
+question.  To get this information in Python, you can use the stat
+function in the platform-independent <b>os</b> module:
+
+</p><pre>import os
+
+st = os.stat("file.dat")
+</pre><p></p><p>This function takes the name of a file, and returns a 10-member
+tuple with the following contents:</p></div><div class="yui-u">&nbsp;</div></div><div class="yui-g"><pre class="wide wide">(mode, ino, dev, nlink, uid, gid, size, atime, mtime, ctime)
+</pre>
+
+The </div><div class="yui-ge"><div class="yui-u first"><b>stat</b> module contains constants named ST_MODE, ST_INO, etc.,
+allowing you to refer to these by name instead of number:
+
+<dl><dt><b>mode</b> (ST_MODE)</dt><dd>The access rights for this file. <p class="fixme">FIXME: summary
+0xxx S_IRUSR, S_IWUSR, S_IXUSR, etc. os.path.isfile, os.path.isdir,
+os.path.islink, os.path.ismount</p></dd>
+<dt><b>ino, dev</b> (ST_INO, ST_DEV)</dt><dd>The ino (I-node) and dev (device) members can be used to determine
+the physical location of a file.  On a UNIX system, the (dev,
+ino)-tuple uniquely identifies a physical file.  On a Windows system,
+the device number (FIXME: always? usually?) corresponds to the drive
+letter (0=A:, 1=B:, 2=C:, etc).</dd>
+<dt><b>nlink</b> (ST_NLINK)</dt><dd>On a UNIX system, this is the number of hard links to this file.
+Under Windows, this member is always 1.</dd>
+<dt><b>uid, gid</b> (ST_UID, ST_GID)</dt><dd>On a UNIX system, these can be used to determine the owner of a
+given file.  Under Windows, these are set to 0.</dd>
+<dt><b>size</b> (ST_SIZE)</dt><dd>The size of the file, in bytes.  <p class="fixme">FIXME:
+os.path.getsize()</p></dd>
+<dt><b>atime, mtime, ctime</b> (ST_ATIME, ST_MTIME, ST_CTIME)</dt><dd>The time when the file was last accessed, last modified, and when
+the file information was last changed.  The times are given in seconds
+since a reference time (the “epoch”, usually 1970) in the same was as
+time.time() returns the current time.  Under Windows, the time of last
+access is usually not valid.</dd>
+</dl><p>Here’s an example that prints the size and time of last modification
+for a given file:</p></div><div class="yui-u">&nbsp;</div></div><div class="yui-g"><pre class="wide wide">import os, time
+from stat import * # ST_SIZE etc
+
+try:
+    st = os.stat(file)
+except IOError:
+    print "failed to get information about", file
+else:
+    print "file size:", st[ST_SIZE]
+    print "file modified:", time.asctime(time.localtime(st[ST_MTIME]))
+</pre></div><div class="yui-ge"><div class="yui-u first"><p>The <b>os</b> module also provides a <b>fstat</b> function, which
+can be used on an opened file.  It takes an integer file handle, not a
+file object, so you have to use the <b>fileno</b> method on the file
+object:</p><pre>fp = open("file.dat")
+st = os.fstat(fp.fileno())
+</pre><p>This function returns the same values as a corresponding call to
+os.stat.</p><p class="fixme">FIXME: describe os.lstat and statcache.stat. briefly
+describe the time functions.</p><h2>Owner Information</h2><p>On a UNIX system, you can use <b>stat</b> to figure out who’s
+owning a file.  The ST_UID member provides this information, but
+disguised as an integer value — a user identity.  The <b>pwd</b>
+(password) module contains functions to map this to the user’s name.
+The following snippet maps the ST_UID field to a login name:</p><pre>try:
+    import pwd # not available on all platforms
+    userinfo = pwd.getpwuid(st[ST_UID])
+except (ImportError, KeyError):
+    print "failed to get the owner name for", file
+else:
+    print "file owned by:", userinfo[0]
+</pre><p>The <b>getpwuid</b> function returns a tuple with user information,
+or raises a KeyError exception if the user is not known.  The tuple
+contains the following fields: (name, password, uid, info, directory,
+shell).</p><dl><dt><b>name</b></dt><dd>User name.  This is the user’s login identity.</dd>
+<dt><b>password</b></dt><dd>Encrypted password (see below).</dd>
+<dt><b>uid</b></dt><dd>User identity (an integer).</dd>
+<dt><b>gid</b></dt><dd>Group identity (an integer).</dd>
+<dt><b>info</b></dt><dd>User information, like full name, department, phone number,
+etc.</dd>
+<dt><b>directory</b></dt><dd>The user’s login directory.</dd>
+<dt><b>shell</b></dt><dd>The user’s login shell.</dd>
+</dl><p>In addition to <b>getpwuid</b>, this module includes
+<b>getpwnam</b> which taks a user name instead of a user identity, and
+<b>getpwall</b> which returns a list of user information tuples, for
+all known users of the system.  The function names may sound strange,
+but they are taken from the underlying POSIX C functions.</p><p>If you are going to fetch the user name for a large number of
+files, it may be more efficient to use <b>getpwall</b> to preload a
+dictionary with the user information:</p><pre>import pwd
+
+_info = {}
+
+for userinfo in pwd.getpwall():
+    _info[userinfo[2]] = userinfo
+
+def getuserinfo(uid):
+    return _info[uid]
+</pre><h3>Password issues</h3><p>An interesting detail is that the <b>pwd</b> module returns the
+user’s password.  This of course sounds like a serious security risk,
+doesn’t it?  Well, it’s not as bad as it may seem: UNIX uses a one-way
+encryption scheme, meaning that you can go from a clear-text password
+to an encrypted password, but not the other way around (at least not
+easily).</p><p>If you use Python on a UNIX platform, you usually have access to
+the <b>crypt</b> module.  Using that module, you can check a password
+by encrypting it yourself, and comparing the result to the entry in
+the password database.  Here’s a small function that let’s you
+“simulate” logging in to the machine:</p></div><div class="yui-u">&nbsp;</div></div><div class="yui-g"><pre class="wide wide">import pwd, crypt
+
+def login(user, password):
+    "Check if a user would be able to log in using password."
+    try:
+	pw1 = pwd.getpwnam(user)[1]
+        pw2 = crypt.crypt(password, pw1)
+	return pw1 == pw2
+    except KeyError:
+	return 0 # no such user
+</pre></div><div class="yui-ge"><div class="yui-u first"><p>Note that the <b>crypt</b> function takes the encrypted password as
+its second argument.  This is because the first two characters in the
+encrypted password is a random number, used to make sure there’s more
+than one way to store the same password.</p><p class="fixme">FIXME: add information on NIS, shadow password
+databases, etc.</p><h3>Caching data</h3><p>If the number of users is large, but you only need to get the name
+of a few of them, storing all user names in a dictionary is a waste of
+time and money.  Instead, you can look up the identities using
+<b>getpwuid</b>, but store the result in a Python dictionary.  The
+next time you use the same identity, it is readfrom the dictionary
+instead, saving you a (possibly slow) call to the <b>pwd</b> module.</p><pre>import pwd
+
+_users = {}
+
+def getuserinfo(uid):
+    try:
+	return _users[uid]
+    except KeyError:
+	_users[uid] = info = pwd.getpwuid(st[ST_UID])
+	return info
+</pre><p>A function or method that uses a dictionary to store results in
+this fashion is called a <i>memo function</i>.  Obviously, this only
+works if the result is always the same for any given arguent, and it
+should only be used when the number of possible argument values is
+relatively limited (at least for a given instance of your program).
+For example, using this technique to speed up a mathematical operation
+such as <b>math.sin</b> is not a very good idea (not only because the
+number of possible arguments is large; the math operations are already
+fast enough compared to dictionary lookups).  Another important
+restriction is that it must be possible to use the arguments as
+dictionary keys.</p><p>Interestingly enough, Python makes it easy to turn an arbitrary
+function info a memo function.  The following Memoize class shows one
+way to do it; it uses the __call__ method to capture calls to the
+object itself, and looks the argument tuple up in the memo dictionary.
+The actual function is only called if the argument haven’t been used
+before.</p><pre>class Memoize:
+
+    def __init__(self, function):
+	self.memo = {}
+	self.function = function
+
+    def __call__(self, *args):
+	try:
+	    return self.memo[args]
+	except KeyError:
+	    result = apply(self.function, args)
+	    self.memo[args] = result
+	    return result
+</pre><p>Given this class, we can turn getpwuid into a memo function with a
+single line of code:</p><pre>import pwd
+
+getuserinfo = Memoize(pwd.getpwuid)
+</pre><p>If resources are really scarce (or the data you store is large),
+you may wish to limit the size of the dictionary.  For example, you
+can make sure it never contains more than 100 entries by adding the
+following lines to the above example, just before you update the
+dictionary with a new user:
+
+</p><pre>            if len(self.memo) &gt;= 100:
+		del self.memo[some entry]
+</pre><p></p><p>The only problem here is to decide which entry to remove.  The
+longer it takes to create the data that we want to store in the cache,
+the more important it becomes that we make the right decision.  A
+simple solution is remove a random entry every time a new entry is
+added to the cache.  This is not very easy to implement, it is also
+more efficient than you might believe.  Especially in situations where
+you don’t know much about how the cache will be used, removing a
+random item is a good way to prevent worst-case behaviour.</p><p>The following class implements this cache scheme, using a
+dictionary interface rather than the functional interface used by the
+Memoize class.  To use this class for your own cache, create a
+subclass and implement your own version of the <b>fetch</b> method.</p><pre>import random
+
+class RandomCache:
+
+    def __init__(self, size=None):
+	self.size = size
+	self.data = {}
+
+    def __getitem__(self, item):
+	try:
+	    return self.data[item]
+	except KeyError:
+	    value = self.fetch(item)
+	    if self.size and len(self.data) &gt;= self.size:
+		del self.data[random.choice(self.data.keys())]
+	    self.data[item] = value
+
+    def fetch(self, item):
+	raise NotImplementedError
+</pre><p>Another way is to keep track of when an entry was last used, and
+remove the oldest entry every time the cache has become too large.
+The following class provides the same interface as the RandomCache
+class, ut it removes the least recently used (LRU) entry.</p><pre>class LRUCache:
+
+    def __init__(self, size=None):
+        self.size = size
+	self.data = {}
+	self.user = []
+
+    def __getitem__(self, item):
+	try:
+	    value = self.data[item]
+	    if self.size:
+		# <i>bring used item to front</i>
+		self.used.remove(item)
+		self.used.append(item)
+	except KeyError:
+	    value = self.fetch(item)
+	    if self.size:
+		if len(self.data) &gt;= self.size:
+		    del self.data[self.used.pop(0)]
+		self.user.append(item)
+	    self.data[item] = value
+	return value
+
+    def fetch(self, item):
+	raise NotImplementedError
+</pre><p class="fixme">FIXME: using a list isn’t very efficent if size is
+large.  add an example using a priority heap instead (and
+benchmark!)</p><h2>Getting Information from HTML Documents</h2><p>Most documents published on the World Wide Web are written in a
+special document format called Hypertext Markup Language (HTML).  This
+is basically a text format; you can create and edit most HTML document
+using conventional tools.  But in addition to plain text, an HTML
+document can also contain special markup elements which describes
+things like the overall document structure, text styles, and embedded
+images.  Here’s a simple example:</p></div><div class="yui-u">&nbsp;</div></div><div class="yui-g"><pre class="wide wide">&lt;TITLE&gt;HTML Overview&lt;/TITLE&gt;
+
+&lt;H1&gt;Overview&lt;/H1&gt;
+
+&lt;P&gt;
+An HTML document is basically an ordinary text file, but in addition
+to the plain text, it can also include certain markup directives.
+These directives include &lt;EM&gt;tags&lt;/EM&gt; and &lt;EM&gt;entities&lt;/EM&gt;.
+
+&lt;P&gt;
+Tags are used to delimit different sections of the document.
+
+For example, the &lt;TITLE&gt; tag is used to define the document
+title, and &lt;P&gt; starts a new paragraph.
+
+&lt;P&gt;
+Entities are used to represent special characters and symbols by
+name (&amp;&lt;EM&gt;name&lt;/EM&gt;;) or number (&amp;&lt;EM&gt;number&lt;/EM&gt;;), rather than
+writing them as is in the text.  Certain characters must always be
+written as entities, unless they are part of the markup.
+</pre></div><div class="yui-ge"><div class="yui-u first"><p class="fixme">June 2004: The above example is pretty weird, and the
+whole description represents a somewhat aged view of HTML, don’t you
+think? /F</p><p>Somewhat simplified, the markup consists of tags written in angle
+brackets (&lt;TITLE&gt;, &lt;P&gt;, etc.), and character entities,
+consisting of an ampersand, a name, and a semicolon (&amp;lt;, etc.).</p><p>Tags are used to divide the document into different parts, and to
+embed images, tables, and other objects in the text.  When used for
+the former purpose, the tags are usually used in pairs, like
+&lt;TITLE&gt; and &lt;/TITLE&gt; in this example.  Other tags used in
+the example are &lt;H1&gt; for first-level heading, &lt;EM&gt; for
+emphasized text, and &lt;P&gt; for paragraph breaks.  Note that since
+it wouldn’t make sense to nest paragraphs, there’s no need to
+explicitly close them using &lt;/P&gt; (you can do it if you wish,
+though).</p><p>The other type of markup, entities, is used to embed symbols and
+special characters i the text.  For example, to embed markup
+characters like &lt;, &gt;, and &amp; in the text, you must write them
+as entities (&amp;lt;, &amp;gt;, and &amp;amp;).</p><p>But enough theory. Here’s how this document looks in a web
+browser:</p><blockquote>
+<i>Figure: The sample document rendered by the Grail3 web browser</i>
+</blockquote><p>If you compare the source document with the text displayed by the
+browser, you’ll notice some additional things.  The tags are not
+displayed at all, and the entities are converted to characters, as
+expected.  The TITLE section is displayed in the browser’s window
+title bar, and the H1 and EM sections are rendered using separate
+fonts.  Also note that line breaks don’t correspond to those in the
+source document.  HTML boldly collapses any sequence of whitespace,
+including newline characters, into a single space.  You need to use
+tags to separate paragraphs and line.</p><p>For a complete description of HTML, see <i>HTML 3.2 Reference
+Specification</i>.</p><h3>Descriptive tags</h3><p>In addition to all the tags that can be used to control the look of
+a document, HTML also provides tags which provide information about
+the document itself.  For our purposes, the most interesting tag is
+the META tag, which in its simplest form provides a key/value pair
+with information about the document.</p><pre>&lt;META NAME='key' CONTENT='value'&gt;
+</pre><p>At the time of writing, the key names are not standardized, but
+major search engines like InfoSeek and Alta Vista uses the following
+convention:</p><dl><dt><b>keywords</b></dt><dd>The content field contains a number of keywords relevant for this
+document.  The keywords are separated by commas.</dd>
+<dt><b>description</b></dt><dd>The content field contains a descriptive text (a summary or an
+abstract).  When you search for documents, this tet may be displayed
+along with the document title (taken from the TITLE tag) to help you
+pick the rigt document.</dd>
+</dl><p>Other commonly used fields are author, generator (what program was
+used to create the file), publisher, and timestamp (when was the
+document last modified).  Here’s a sample document containing a number
+of META tags:
+
+</p><pre>FIXME
+</pre><h3>Parsing the document</h3>
+
+How that we know what to look for, it’s time to write some code to
+extract this information from any given HTML file.  As usual, the
+standard library contains just what we need: the <b>htmllib</b> and
+<b>formatter</b> modules.<p></p><p>The <b>htmllib</b> module defines one class, HTMLParser, which
+reads the HTML document and calls methods of a formatter object.  The
+parser class have methods corresponding to the various tags that can
+occur in an HTML document, most of which you can override if you wish
+to handle some tag in a special way.
+
+</p><p class="fixme">FIGURE: parser/formatter/writer structure, including
+typical operations</p><p>The formatter class have methods corresponding to more abstract
+text operations, like font changes, paragraph marks, flowing text,
+etc.  The formatter module defines two standard formatters, a
+NullFormatter class which happily ignores everything generated by the
+parser, and an AbstractFormatter class which converts the text
+operations to concrete text rendering operations.</p><p>Since we’re out to extract information from the HTML document
+itself, we can use the NullFormatter class, and simply overload the
+parser method used to handle the META tag.
+
+</p><pre>from htmllib import HTMLParser
+from formatter import NullFormatter
+import string
+
+class MetaParser(HTMLParser):
+
+    def __init__(self):
+	HTMLParser.__init__(self, NullFormatter())
+	self.meta_dict = {}
+
+    def do_meta(self, attrs):
+	# this method is called for META tags
+
+	name = content = None
+	
+	# attrs is a list of 2-tuples
+	for k, v in attrs:
+	    if k == "name":
+		name = string.lower(v)
+	    elif k == "content":
+		content = v
+
+	if name and content:
+	    self.meta_dict[name] = content
+
+    def getmeta(file):
+	# extract META tags from an HTML document
+
+	p = MetaParser()
+	f = open(file)
+
+	while 1:
+	    s = fp.read(10000)
+	    if not s:
+		break
+	    p.feed(s)
+
+	p.close()
+
+	# the title tag is extracted by the base class
+	if p.title:
+	    p.meta_dict["title"] = p.title
+
+	return p.meta_dict
+</pre><p></p><p>The parser is designed to parse the document in pieces, so we
+simply read chunks from the HTML file, and pass them to the
+<b>feed</b> method.  There’s no need to read individual lines, or to
+make sure the chunks don’t end in the middle of a tag or an entity.</p><p>We override the <b>do_meta</b> method, which is called by the
+parser for each META tag in the document.  In this method, the
+<b>attrs</b> argument contains the parameters used in the META tag.
+We scan this list to look for name and content parameters, and if both
+are found, store the content in the meta_dict dictionary.  The parser
+base class automatically extracts the TITLE section, if present, and
+we’ll add that to the dictionary before returning the dictionary to
+the caller.</p><p>Running this on our sample file produces the following output:</p></div><div class="yui-u">&nbsp;</div></div><div class="yui-g"><pre class="wide wide">&gt;&gt;&gt; import htmlmeta
+&gt;&gt;&gt; htmlmeta.getmeta("fredrik.html")
+{'author: 'Fredrik', 'title': 'Python Resources', 'description':
+"Fredrik's Python Resource Center", 'keywords': 'Python, PIL, Tkinter,
+stuff', 'generator': 'PyHTML 1.2'}
+</pre></div><div class="yui-ge"><div class="yui-u first"><h2>Getting Information from Image Files</h2><p>For an image file, you might be interested in things like image
+size, type of image data, and compression ratio.  The easiest way to
+get this information is to use PIL’s identification mechanism.  Simply
+call PIL’s <b>open</b> function, and examine the resulting image
+object.  This operation is usually fast, since PIL only reads as much
+of the file as is necessary to determine what the file contains, and
+how to read the image data proper.  The actual image is not read or
+decoded until it is actually needed.</p><p>The following example determines format, pixel type, and size of a
+given image file:</p><pre>from PIL import Image
+
+try:
+    im = Image.open(file)
+except IOError:
+    print "failed to identify", file
+else:
+    print "image format:", im.format
+    print "image mode:", im.mode
+    print "image size:", im.size
+    if im.info.has_key("description"):
+	print "image description:", im.info["description"]
+</pre><p>You can derive other metrics from this information as well.  For
+example, by comparing the size of the image file with the size of the
+actual image data, you can get a measure of the compression ratio for
+an image.</p></div><div class="yui-u">&nbsp;</div></div><div class="yui-g"><pre class="wide wide">MODEBITS = {
+    # bits per pixel for common PIL image modes
+    "1": 1, "P": 8, "L": 8, "RGB": 24, "RGBA": 32, "CMYK": 32
+}
+
+try:
+    bits = MODEBITS[im.mode]
+    imagebytes = ((im.size[0] * bits + 7) / 8) * im.size[1]
+    filebytes = os.stat(file)[ST_SIZE]
+except (IOError, KeyError):
+    print "failed to determine compression ratio for", file
+else:
+    print "compression:", round(imagebytes / filebytes, 2), "times"
+</pre></div><div class="yui-ge"><div class="yui-u first"><p>The compression ratio is close to 1 for non-compressed formats like
+BMP and PPM, typically 2-10 for GIF and other lossless compression
+formats, and 10-20 for JPEG files.  Note that as the expression is
+written, you won’t end up dividing by zero since an empty file cannot
+possibly be a valid image file.  If you change the expression to get
+the compressed size in percent of the full size, don’t forget that an
+image file may contain an empty image (imagebytes=0).</p></div><div class="yui-u">&nbsp;</div></div><div class="yui-g"></div></div></div></div><div class="yui-b"><div id="menu"><ul><li><b><a href="http://effbot.org/" title="Go to effbot.org.">::: effbot.org</a></b></li><li><b><a href="http://effbot.org/zone/" title="Go to zone index page.">::: zone :::</a></b></li></ul></div></div></div><div id="ft"><p><a href="http://www.djangoproject.com/"><img src="djangosite80x15.gif" alt="A Django site." title="A Django site." style="vertical-align: bottom;" border="0" height="15" width="80"></a>
+rendered by a <a href="http://www.djangoproject.com/">django</a> application.  hosted by <a href="http://www.webfaction.com/shared_hosting?affiliate=slab">webfaction</a>.</p></div></div>
+</body>
+</html>

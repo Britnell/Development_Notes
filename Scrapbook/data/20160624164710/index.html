@@ -1,0 +1,1094 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" dir="ltr" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" class="js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+  <title>A 10-Minute Guide for Using PPP to Connect Linux to the Internet | Linux Journal</title>
+  
+<link rel="canonical" href="http://www.linuxjournal.com/article/2109">
+<meta name="keywords" content="HOWTOs">
+<meta name="description" content="Connecting your Linux machine to the Internet with PPP is easy in most situations. In this article I show you how to configure PPP for the most common type of connection.">
+<link rel="shortcut icon" href="linuxjournal_favicon.png" type="image/x-icon">
+  
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/sites/linuxjournal.com/themes/zen/zen/ie.css?a" />
+<![endif]-->
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+<!-- PUT THIS TAG IN THE head SECTION -->
+
+
+
+
+
+<!-- END OF TAG FOR head SECTION -->
+
+
+
+ <!-- <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script> -->
+ <!--<script type="text/javascript">_uacct = "UA-1117794-1"; urchinTracker();</script> -->
+
+
+
+<!-- Start Quantcast tag -->
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="not-front not-logged-in node-type-xmlnode one-sidebar sidebar-right page-node-2109 section-node"><object>
+
+</object>
+<!-- End Quantcast tag -->
+
+
+
+
+
+<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="index_1.html" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0"></iframe><iframe src="index_2.html" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="index_3.html" style="display: none;" scrolling="no" allowfullscreen="true" allowtransparency="true" name="f182b1702a88fac" frameborder="0"></iframe></div></div></div>
+
+
+  <div id="page"><div id="page-inner">
+<div id="header-top">
+<!--<div id="login">
+<form action="/?q=user&amp;destination=node%2F2109"  method="post" id="user-login">
+Username/Email:&nbsp;<input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+Password:&nbsp;<input type="password" maxlength="" name="pass" id="edit-pass" size="15" class="form-text required" />
+<input type="submit" name="op" value="Login" class="form-submit" />
+
+
+<input type="hidden" name="form_id" id="edit-user-login" value="user_login" />
+
+</form>
+</div>
+<div id="login-links">
+<a href="/user/register">Register</a> | <a href="/user/password">Forgot your password?</a>
+
+
+
+</div>
+<div id="connect">
+<a href="http://www.twitter.com/linuxjournal" title="Follow us on Twitter"><img alt="Twitter" src="/files/linuxjournal.com/images/twittericon.jpg" /></a><a href="http://www.facebook.com/linuxjournal" title="Become a Fan on Facebook"><img alt="Facebook" src="/files/linuxjournal.com/images/fbicon.jpg" /></a><a href="http://www.flickr.com/groups/linuxjournal/pool/" title="Contribute to Our Flickr Pool"><img alt="Flickr" src="/files/linuxjournal.com/images/flickricon.jpg" /></a><a href="/rss_feeds" title="Subscribe to Our Feeds"><img alt="RSS" src="/files/linuxjournal.com/images/rssicon.jpg" /></a>
+</div>-->
+       <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    <div id="subscribe-button"><a href="http://www.linuxjournal.com/subscribe">Click to subscribe</a></div>
+<div id="login-button"><a href="http://www.linuxjournal.com/user">Login</a></div>
+
+</div> <!-- /#header-top -->
+
+
+
+
+
+
+    <a name="top" id="navigation-top"></a>
+
+
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="http://www.linuxjournal.com/" title="Home" rel="home"><img src="logo-lj.jpg" alt="Linux Journal" id="logo-image"></a></div>
+          
+          
+          
+	<div id="leaderboard-adblock" class="adblock leaderboard-adblock">
+       <div id="block-block-90" class="block block-block region-odd odd region-count-1 count-15"><div class="block-inner">
+
+  
+  <div class="content">
+    <!--paging_filter--><!-- PUT THIS TAG IN DESIRED LOCATION OF SLOT Leaderboard728x90
+     -->
+
+<!-- END OF TAG FOR SLOT Leaderboard728x90
+     -->
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+	</div>
+
+        </div> <!-- /#logo-title -->
+      
+
+
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+                                      <h1 class="title">A 10-Minute Guide for Using PPP to Connect Linux to the Internet</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-2109" class="node node-type-xmlnode"><div class="node-inner">
+
+
+
+  
+
+  
+  
+  
+
+
+  
+
+<div id="facebook-like">
+<!--<iframe src="http://www.facebook.com/plugins/like.php?href=http://www.linuxjournal.com/article/2109&amp;layout=standard&amp;show_faces=false&amp;width=250&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=55" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:55px;" allowTransparency="true"></iframe>-->
+<div fb-iframe-plugin-query="app_id=406458029406839&amp;container_width=0&amp;href=http%3A%2F%2Fwww.linuxjournal.com%2F%2Farticle%2F2109&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=250" fb-xfbml-state="rendered" class="fb-like fb_iframe_widget" data-href="http://www.linuxjournal.com//article/2109" data-send="false" data-width="250" data-show-faces="false"><span style="vertical-align: bottom; width: 250px; height: 28px;"><iframe class="" src="index_4.html" style="border: medium none; visibility: visible; width: 250px; height: 28px;" title="fb:like Facebook Social Plugin" scrolling="no" allowfullscreen="true" allowtransparency="true" name="f20494ea4dd82ec" frameborder="0" height="1000px" width="250px"></iframe></span></div>
+
+</div>
+
+<div class="issue"> 
+	<div class="issue-cover">
+	<a href="http://www.linuxjournal.com/issue/36"><img title="Issue 36" alt="Issue 36" src="cover36.small.jpg"></a>
+	</div>
+	<p><a href="http://www.linuxjournal.com/issue/36">From Issue #36<br>April 1997</a></p>
+</div>
+
+  
+
+  
+
+  
+      <div class="meta">
+              <div class="submitted">
+		Apr 01, 1997		&nbsp;By&nbsp;<a href="http://www.linuxjournal.com/user/800102" title="View user profile.">Terry Dawson</a>	</div>
+      
+              <div class="terms terms-inline">&nbsp;in<ul class="links inline"><li class="taxonomy_term_116 first last"><a href="http://www.linuxjournal.com/tag/howtos" rel="tag" title="">HOWTOs</a></li>
+</ul></div>
+      
+  	 </div>
+    <!-- how'd this get in here?</div> -->
+  
+  
+    	<div class="abstract">
+	Having trouble connecting to the Internet? Here's an easy way to do it using PPP.	</div>
+    
+
+
+  <div class="content">
+
+    <div class="article" lang="en"><div class="simplesect" lang="en"><div class="titlepage"><a name="N0xa50890.0xb44d80"></a></div><p>Connecting your Linux machine to the
+Internet with PPP is easy in most situations. In this article I
+show you how to configure PPP for the most common type of
+connection. We assume your Linux machine is a stand-alone machine
+that dials into an Internet Service Provider and performs an
+automatic login, and the Internet Service Provider allocates the IP
+address that your machine will use. You can find details of how to
+configure PPP for other situations in the PPP-HOWTO by Robert Hart.
+You will need the right software and a couple of pieces of
+information before you start. Let's get started.
+</p></div><div class="simplesect" lang="en"><div class="titlepage"><a name="N0xa50890.0xb44e88"></a>Preparation</div><p>First, check that you have the right software. The program
+that manages PPP for Linux is called
+<span class="bold"><b>pppd</b></span>. The pppd program is linked
+very tightly with the kernel, so you must run a version of pppd
+that matches your kernel.</p><pre class="programlisting">Kernel Version    pppd version
+1.2.*             2.1.2d
+1.3.0 -&gt; 1.3.84   2.1.2d
+1.3.84 -&gt; 1.3.99  2.2.0f
+2.0.*             2.2.0f
+2.1.*             2.2.0f
+</pre><p>Check the version of pppd and kernel that you have installed
+with the following commands:
+</p><pre class="programlisting">$ /usr/sbin/pppd version
+$ uname -a
+</pre>
+
+
+The first command is a trick. The pppd command doesn't actually
+have a version option. However, the version number will appear in
+the error message pppd returns, since you have supplied it with a
+bad argument.
+<p></p><p>If the first command fails, you probably don't have PPP
+installed. You can obtain the latest version of the source
+from:</p><pre class="programlisting">ftp://sunsite.unc.edu/pub/Linux/system/Network/serial/ppp/
+</pre><p>If you have installed from a distribution such as Debian, Red
+Hat or Slackware, the pppd program is available precompiled within
+those distributions. You just have to get the package and install
+it.
+</p><p>Next you must check that your kernel has PPP support. Do this
+by giving the command:</p><pre class="programlisting">$ dmesg | grep -i ppp
+</pre><p>You should see the following messages:
+</p><pre class="programlisting">PPP: version 2.2.0 (dynamic channel allocation)
+PPP Dynamic channel allocation code copyright 1995 Caldera, Inc.
+PPP line discipline registered.
+</pre>
+
+
+If not, PPP may have been installed as a module. Become root and
+try:
+<pre class="programlisting"># insmod ppp
+</pre>
+
+
+If that fails, you will have to rebuild your kernel with PPP
+support. Follow the instructions in /usr/src/linux/README, and when
+configuring your kernel ensure that you answer “Yes” to:
+<pre class="programlisting">General setup  ---&gt;
+        [*] Networking support
+Network device support  ---&gt;
+        [*] Network device support
+        &lt;*&gt; PPP (point-to-point) support
+</pre>
+
+
+These prompts may be different in non-2.0 kernels.
+<p></p><p>Next you must note what keystrokes you will send and what
+prompts you will receive to log in to your ISP. The best way to
+collect these is to try manually logging into your ISP using a
+terminal program such as minicom. Be sure to make note of the
+capitalization of prompts such as the “login:” prompt as this
+will be important later.</p><p>A typical scenario follows:</p><pre class="programlisting">Expect      Send                 Comment
+------      ----                 -------
+nothing     AT&amp;F/r               (mode reset)
+OK          AT&amp;D2&amp;C1/r           (mode initialization)
+OK          AT&amp;D555-9999/r       (modem dialing command)
+</pre><p>The modem dials, sends CONNECT message and then you enter
+userid and password as follows:</p><pre class="programlisting">login:  username/r
+password: password/r
+</pre><p>Lastly, you must know the IP address of a nameserver so that
+you can configure your name resolver and use host names instead of
+IP addresses. Get this information from your ISP.
+</p></div><div class="simplesect" lang="en"><div class="titlepage"><a name="N0xa50890.0xb45618"></a>Configuring PPP</div><p>The pppd program can accept configuration parameters from two
+places. The first is from the command line, and the second is from
+“options” files. The arguments supplied are close to identical in
+either case, but the command line method can be messy. So I will
+describe how to configure PPP using the options files
+instead.</p><p>The normal location of the options file is:</p><pre class="programlisting">/etc/ppp/options
+</pre><p>The options file is a simple text file containing parameters
+pppd will use when it is executed—one parameter per line. The
+options file must be readable by whoever will execute the pppd
+program. In most installations this will be root, either directly
+or by executing pppd from a program like sudo.
+</p><p>If you don't have an <b>/etc/ppp</b> directory,
+as root create one using the following commands:</p><pre class="programlisting"># mkdir /etc/ppp
+# chown root:root /etc/ppp
+# chmod 755 /etc/ppp
+</pre><p>Create an <b>/etc/ppp/options</b> file that looks
+like the following example:
+</p><pre class="programlisting">debug
+/dev/ttyS0
+38400
+modem
+crtscts
+lock
+connect /etc/ppp/net-connect
+asyncmap 0
+defaultroute
+:
+</pre>
+
+
+This example assumes:
+<div class="orderedlist"><ol type="1"><li><p>You want PPP to give you diagnostic information as
+it runs.</p></li><li><p>Your modem is connected to serial device
+/dev/ttyS0.</p></li><li><p>You want the serial port speed to be set at 38400
+bps.</p></li><li><p>You want to listen to the Data Carrier Detect
+signal.</p></li><li><p>You will use hardware (RTS/CTS) handshaking.</p></li><li><p>Your dialer program is /etc/ppp/net-connect.</p></li><li><p>You have a full 8 bit clean connection.</p></li><li><p>By default datagrams should be sent via the PPP
+link.</p></li><li><p>You want the PPP server that you call to assign the
+IP address you will use.</p></li></ol></div>
+
+<p></p><p>These are all fairly typical defaults for an ISP connection.
+You will have to adjust the serial device to suit where you have
+your modem connected and, if you are using data compression, you
+might want to set your serial port speed to something higher. PPP
+provides a means of <span class="emphasis"><em>escaping</em></span> select
+characters, so that they do not interfere with your connection. For
+example, if you were running PPP over a link that would disconnect
+if it received a control-D character, you could ask PPP to escape
+that character, and it would automatically replace it with another
+and reverse the process at the other end. While the default is
+safe, it escapes a number of characters that normally don't need
+escaping and this will decrease the performance of your link. Since
+most ISPs provide 8 bit clean links you don't need to escape any
+characters, so we tell pppd not to, using the asyncmap
+option.</p><p>The pppd package includes a program called
+<span class="bold"><b>chat</b></span>. The chat program is a simple
+program that can be used to automate the dialing procedure. The
+chat program also accepts arguments from the command line or from a
+file. Again I'll describe how to configure it from a file as this
+is the better method.</p><p>To make use of the chat program from within pppd, we must
+ensure that the <b>connect</b> option points to a
+script that calls chat. Create a script called
+<b>/etc/ppp/net-connect</b> that looks like:</p><pre class="programlisting">#!/bin/sh
+/usr/sbin/chat -v -t 60 -f /etc/ppp/net-chat
+</pre><p>This shell script will invoke the chat command with the
+<b>-v</b>, <b>-t</b> and
+<b>-f</b> arguments. The <b>-v</b> argument
+is useful when you are configuring pppd, as it sends verbose
+diagnostic messages to the system log to show you what is happening
+as the chat program runs. The <b>-t 60</b> argument
+simply tells the chat program to wait 60 seconds for the expected
+text to arrive before timing out with an error. The
+<b>-f</b> argument tells chat the name of the file it
+should use to get the expect/send sequences it will use to login.
+</p><p>Make sure the script is readable and executable by whoever
+will invoke pppd. Assuming again that “whoever” is
+<b>root</b>, use the following commands:</p><pre class="programlisting"># chmod 500 /etc/ppp/net-connect
+# chown root:root /etc/ppp/net-connect
+</pre><p>Create a chat script called
+<b>/etc/ppp/net-chat</b> that will automate the login
+sequence as described earlier. I will base this script on the
+details presented in the table.
+</p><pre class="programlisting">ABORT "BUSY"
+ABORT "NO CARRIER"
+""            AT&amp;F\r
+OK              AT&amp;D2&amp;C1\r
+OK              ATD555-9999\r
+ogin:
+sword:
+</pre>
+
+
+The first two lines are special. The <b>ABORT</b>
+keyword is a special token that allows you to specify strings of
+characters that will cause the chat program to exit. In the example
+presented, if the chat program receives either the string
+<b>"BUSY"</b> or the string <b>"NO
+CARRIER"</b> then it will abort immediately. The rest of the
+file is a simple list of expect/send pairs, based on the
+information we gathered when we manually logged in. The above
+example reads in full:
+<div class="blockquote"><blockquote class="blockquote"><p>ABORT the script if we receive
+<b>"BUSY"</b> or <b>"NO CARRIER"</b>.
+Expect nothing, then send <b>AT&amp;F&lt;
+carriage-return&gt;</b> to reset the modem to factory
+configuration, expect to receive <b>OK</b> then send
+<b>AT&amp;D2&amp;C1&lt;carriage-return&gt;</b>, then
+expect <b>OK</b> and send
+<b>ATD555-9999&lt;carriage-return&gt;</b>, then expect
+<b>login:</b> and send
+<b>username&lt;carriage-return&gt;</b>, then expect
+<b>sword:</b> and send
+<b>password&lt;carriage-return&gt;</b>, and then exit
+normally.</p></blockquote></div>
+
+There are a couple of important points to note in this example.
+First, the modem initialization string I've suggested will, in most
+modems, ensure that the modem will raise the Data Carrier Detect
+line when a call is connected, and will hang up the call if the DTR
+line is lowered. This ensures that the modem is matched with the
+<b>modem</b> option supplied to pppd. Second, I haven't
+used the full prompt, but only the last few characters. This is
+generally good practice because under some circumstances the first
+characters from a line may be dropped. Looking only for the last
+few characters ensures our login succeeds even if this occurs.
+Finally, you will notice the &lt;carriage-return&gt; is coded as
+<b>\r</b>. There are a range of other characters may be
+encoded and sent in this way, if necessary. The chat man page
+explains what they are should you need to use them.
+<p></p><p>Finally, we must ensure this script is readable by whoever
+will invoke pppd. Again assuming that whoever is be
+<b>root</b>, you can use the following commands:</p><pre class="programlisting"># chown root:root /etc/ppp/net-chat
+# chmod 600 /etc/ppp/net-chat
+</pre></div></div><div class="links"><div class="item-list"><ul class="pager"><li class="pager-current first">1</li>
+<li class="pager-item"><a href="http://www.linuxjournal.com/article/2109?page=0,1" title="Go to page 2" class="active">2</a></li>
+<li class="pager-item"><a href="http://www.linuxjournal.com/article/2109?page=0,2" title="Go to page 3" class="active">3</a></li>
+<li class="pager-next"><a href="http://www.linuxjournal.com/article/2109?page=0,1" title="Go to next page" class="active">next ›</a></li>
+<li class="pager-last last"><a href="http://www.linuxjournal.com/article/2109?page=0,2" title="Go to last page" class="active">last »</a></li>
+</ul></div></div>
+  </div>
+      <div class="user-signature clear-block">
+______________________
+	<p>
+        <!--paging_filter-->	</p>
+      </div>
+   
+
+
+  <ul class="links inline"><li class="flag-anon first"><a href="http://www.linuxjournal.com/u?destination=node%2F2109">Login to save this as favorite</a></li>
+<li class="service-links-delicious"><a href="http://del.icio.us/post?url=http%3A%2F%2Fwww.linuxjournal.com%2Farticle%2F2109&amp;title=A+10-Minute+Guide+for+Using+PPP+to+Connect+Linux+to+the+Internet" title="Bookmark this post on del.icio.us." id="service-links-delicious-1" class="service-links-delicious" rel="nofollow"><img src="delicious.png" alt="del.icio.us" title="" height="16" width="16"></a></li>
+<li class="service-links-digg"><a href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.linuxjournal.com%2Farticle%2F2109&amp;title=A+10-Minute+Guide+for+Using+PPP+to+Connect+Linux+to+the+Internet" title="Digg this post on digg.com" id="service-links-digg-1" class="service-links-digg" rel="nofollow"><img src="digg.png" alt="Digg" title="" height="16" width="16"></a></li>
+<li class="service-links-facebook"><a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.linuxjournal.com%2Farticle%2F2109&amp;t=A+10-Minute+Guide+for+Using+PPP+to+Connect+Linux+to+the+Internet" title="Share on Facebook." id="service-links-facebook-1" class="service-links-facebook" rel="nofollow"><img src="facebook.png" alt="Facebook" title="" height="16" width="16"></a></li>
+<li class="service-links-reddit"><a href="http://reddit.com/submit?url=http%3A%2F%2Fwww.linuxjournal.com%2Farticle%2F2109&amp;title=A+10-Minute+Guide+for+Using+PPP+to+Connect+Linux+to+the+Internet" title="Submit this post on reddit.com." id="service-links-reddit-1" class="service-links-reddit" rel="nofollow"><img src="reddit.png" alt="Reddit" title="" height="16" width="16"></a></li>
+<li class="service-links-slashdot"><a href="http://slashdot.org/bookmark.pl?url=http%3A%2F%2Fwww.linuxjournal.com%2Farticle%2F2109&amp;title=A+10-Minute+Guide+for+Using+PPP+to+Connect+Linux+to+the+Internet" title="Bookmark this post on SlashDot" id="service-links-slashdot-1" class="service-links-slashdot" rel="nofollow"><img src="slashdot.png" alt="SlashDot" title="" height="16" width="16"></a></li>
+<li class="service-links-stumbleupon"><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fwww.linuxjournal.com%2Farticle%2F2109&amp;title=A+10-Minute+Guide+for+Using+PPP+to+Connect+Linux+to+the+Internet" title="Thumb this up at StumbleUpon" id="service-links-stumbleupon-1" class="service-links-stumbleupon" rel="nofollow"><img src="stumbleit.png" alt="StumbleUpon" title="" height="16" width="16"></a></li>
+<li class="tweet_Twitter last"><a href="http://twitter.com/home?status=+A+10-Minute+Guide+for+Using+PPP+to+Connect+Linux+to+the+Internet%3A+http%3A/%2Fwww.linuxjournal.com/article/2109" class="tweet" rel="nofollow" target="_top"><img src="twitter.png" alt="Post to Twitter" title="Post to Twitter" height="16" width="16"></a></li>
+</ul>
+ <!-- <div class="contentad">
+
+  </div>
+  -->
+
+<div id="article_footer"><!-- article_footer -->
+<!--<script type='text/javascript'>
+GA_googleFillSlot("article_footer");
+</script> -->
+<!-- MediumRectangle300x250 -->
+<center></center>
+</div> <!-- /#article_footer -->
+
+
+
+
+</div></div> <!-- /node-inner, /node -->
+
+
+  <div id="comments">
+          <h2 id="comments-title">Comments</h2>
+        <form action="http://www.linuxjournal.com/article/2109" accept-charset="UTF-8" method="post" id="comment-controls">
+<div><div class="box"><div class="box-inner">
+
+      <h2 class="title">Comment viewing options</h2>
+  
+  <div class="content">
+    <div class="container-inline"><input name="form_build_id" id="form-KQd_wkYbG87vJ1UxvFGGHpgxw85UJhE87JBjHk8VF-I" value="form-KQd_wkYbG87vJ1UxvFGGHpgxw85UJhE87JBjHk8VF-I" type="hidden">
+<input name="form_id" id="edit-comment-controls" value="comment_controls" type="hidden">
+<div class="form-item" id="edit-mode-wrapper">
+ <select name="mode" class="form-select" id="edit-mode"><option value="1">Flat list - collapsed</option><option value="2">Flat list - expanded</option><option value="3">Threaded list - collapsed</option><option value="4" selected="selected">Threaded list - expanded</option></select>
+</div>
+<div class="form-item" id="edit-order-wrapper">
+ <select name="order" class="form-select" id="edit-order"><option value="1" selected="selected">Date - newest first</option><option value="2">Date - oldest first</option></select>
+</div>
+<div class="form-item" id="edit-comments-per-page-wrapper">
+ <select name="comments_per_page" class="form-select" id="edit-comments-per-page"><option value="10">10 comments per page</option><option value="30">30 comments per page</option><option value="50" selected="selected">50 comments per page</option><option value="70">70 comments per page</option><option value="90">90 comments per page</option><option value="150">150 comments per page</option><option value="200">200 comments per page</option><option value="250">250 comments per page</option><option value="300">300 comments per page</option></select>
+</div>
+<input name="op" id="edit-submit" value="Save settings" class="form-submit" type="submit">
+</div><div class="description">Select your preferred way to display the comments and click "Save settings" to activate your changes.</div>  </div>
+
+</div></div> <!-- /box-inner, /box -->
+
+</div></form>
+<a id="comment-325987"></a>
+<div class="comment comment-published odd first comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="http://www.linuxjournal.com/article/2109#comment-325987" class="active">regarding GPRS modem connection and ppp link</a>          </h3>
+  
+  
+  <div class="picture">
+  <img src="personicon.jpg" alt="Anonymous's picture" title="Anonymous's picture"></div>
+
+  <div class="submitted">
+    Submitted by Anonymous (not verified) on Sun, 09/28/2008 - 12:15.  </div>
+
+  <div class="content">
+    <p>Dear Sir,</p>
+<p>I am able to establish a ppp connection through modem but when i kiil the process then i am not able to reconnect . </p>
+<p>I am havingppp-on entry in the inittab file aslo. all options are set correct. Modem doesnot process AT commands untill hard reseted i.e power downing the modem.</p>
+<p>Any help &amp; suggestions would be highly appreciated.</p>
+<p>Anil</p>
+      </div>
+
+  
+</div></div> <!-- /comment-inner, /comment -->
+  </div>
+        </div> <!-- /#content-area -->
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-158 first"><a href="http://www.linuxjournal.com/subscriptions">Subscribe</a></li>
+<li class="menu-150"><a href="http://www.linuxjournal.com/blog">Blogs</a></li>
+<li class="menu-1802"><a href="http://www.linuxjournal.com/tag/reviews" title="">Reviews</a></li>
+<li class="menu-187"><a href="http://www.linuxjournal.com/tag/how-tos">HOWTOs</a></li>
+<li class="menu-1803"><a href="http://geekguide.linuxjournal.com/" title="">Geek Guides</a></li>
+<li class="menu-71"><a href="http://www.linuxjournal.com/tag/tech-tips" title="">Hep &amp; Tips</a></li>
+<li class="menu-181"><a href="http://www.linuxjournal.com/getlinux">How to Get Linux</a></li>
+<li class="menu-184 last"><a href="http://www.linuxjournal.com/gettinghelp">Getting Help</a></li>
+</ul> <div id="searchbox">
+ 
+<div id="cse-search-form" style="width: 100%;"><div dir="ltr" class="gsc-control-searchbox-only gsc-control-searchbox-only-en"><form action="http://www.linuxjournal.com/article/2109" accept-charset="utf-8" class="gsc-search-box"><table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-input"><input value="" style="outline: medium none; background: rgb(255, 255, 255) url('google_custom_search_watermark.gif') no-repeat scroll left center;" spellcheck="false" dir="ltr" id="gsc-i-id1" title="search" name="search" class=" gsc-input" size="10" autocomplete="off" type="text"><input id="bgresponse" name="bgresponse" type="hidden"></td><td class="gsc-search-button"><input title="search" class="gsc-search-button" value="Search" type="button"></td><td class="gsc-clear-button"><div title="clear results" class="gsc-clear-button">&nbsp;</div></td></tr></tbody></table><table class="gsc-branding" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td><td class="gsc-branding-img"><img class="gsc-branding-img" src="small-logo.png"></td></tr></tbody></table></form></div></div>
+
+
+
+
+</div><!-- /#searchbox -->
+            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+      
+              <div id="sidebar-right"><div id="sidebar-right-inner" class="region region-right">
+          <div id="block-block-119" class="block block-block region-odd even region-count-1 count-4"><div class="block-inner">
+
+  
+  <div class="content">
+    <!--paging_filter--><p><a href="http://www.linuxjournal.com/new-issue"><img alt="New Issue" src="subscriberbutton-june2016.png"></a></p>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-block-44" class="block block-block region-even odd region-count-2 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <!--paging_filter--><!-- PUT THIS TAG IN DESIRED LOCATION OF SLOT Large_Rectangle336x280
+     -->
+
+<!-- END OF TAG FOR SLOT Large_Rectangle336x280
+     -->  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-menu-menu-channels" class="block block-menu region-odd even region-count-3 count-6"><div class="block-inner">
+
+      <h2 class="title">Trending Topics</h2>
+  
+  <div class="content">
+    <ul class="menu"><li class="leaf first"><a href="http://www.linuxjournal.com/tag/sysadmin" title="">SysAdmin</a></li>
+<li class="leaf"><a href="http://devops.linuxjournal.com/" title="">DevOps</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/tag/security" title="">Security</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/tag/cloud" title="">Cloud</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/tag/hpc" title="">HPC</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/tag/mobile" title="">Mobile</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/tag/virtualization" title="">Virtualization</a></li>
+<li class="leaf last"><a href="http://www.linuxjournal.com/tag/web-development" title="">Web Development</a></li>
+</ul>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-block-115" class="block block-block region-even odd region-count-4 count-7"><div class="block-inner">
+
+      <h2 class="title">Webinar</h2>
+  
+  <div class="content">
+    <!--paging_filter--><div style="text-align: center; margin-bottom: 40px;"><h3>Fast/Flexible Linux OS Recovery</h3>
+<p>On Demand Now</p>
+<p>
+In this live one-hour webinar, learn how to enhance your existing backup strategies for complete disaster recovery preparedness using Storix System Backup Administrator (SBAdmin), a highly flexible full-system recovery solution for UNIX and Linux systems.
+</p><p>
+Join <em>Linux Journal</em>'s Shawn Powers and David Huffman, President/CEO, Storix, Inc.
+</p>
+<p>Free to <em>Linux Journal</em> readers.</p>
+<a class="awesome" href="http://geekguide.linuxjournal.com/content/fastflexible-linux-os-recovery">Register Now!</a>
+</div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-quicktabs-1" class="block block-quicktabs region-odd even region-count-5 count-8"><div class="block-inner">
+
+  
+  <div class="content">
+    <div id="quicktabs-1" class="quicktabs_wrapper quicktabs-style-zen quicktabs-processed"><ul class="quicktabs_tabs quicktabs-style-zen"><li class="qtab-0 active first"><a href="http://www.linuxjournal.com/article/2109?quicktabs_1=0#quicktabs-1" id="quicktabs-tab-1-0" class="qt_tab active">The Latest</a></li><li class="qtab-1"><a href="http://www.linuxjournal.com/article/2109?quicktabs_1=1#quicktabs-1" id="quicktabs-tab-1-1" class="qt_tab active">Popular</a></li><li class="qtab-2 last"><a href="http://www.linuxjournal.com/article/2109?quicktabs_1=2#quicktabs-1" id="quicktabs-tab-1-2" class="qt_tab active">Recent Comments</a></li></ul><div id="quicktabs_container_1" class="quicktabs_main quicktabs-style-zen"><div id="quicktabs_tabpage_1_0" class="quicktabs_tabpage"><div id="block-views-latest_stories-block_1" class="block block-views region-odd odd region-count-1 count-1"><div class="block-inner">
+
+  
+  <div class="content">
+    <div class="view view-latest-stories view-id-latest_stories view-display-id-block_1 view-dom-id-1">
+    
+  
+  
+      <div class="view-content">
+      <table class="views-table cols-2">
+    <thead>
+    <tr>
+              <th class="views-field views-field-title">
+                  </th>
+              <th class="views-field views-field-created">
+                  </th>
+          </tr>
+  </thead>
+  <tbody>
+          <tr class="odd views-row-first">
+                  <td class="views-field views-field-title">
+            <a href="http://www.linuxjournal.com/content/astronomy-kde">Astronomy for KDE</a>          </td>
+                  <td class="views-field views-field-created">
+            Jun 23, 2016          </td>
+              </tr>
+          <tr class="even">
+                  <td class="views-field views-field-title">
+            <a href="http://www.linuxjournal.com/content/profiles-and-rc-files">Profiles and RC Files</a>          </td>
+                  <td class="views-field views-field-created">
+            Jun 22, 2016          </td>
+              </tr>
+          <tr class="odd">
+                  <td class="views-field views-field-title">
+            <a href="http://www.linuxjournal.com/content/understanding-ceph-and-its-place-market">Understanding Ceph and Its Place in the Market</a>          </td>
+                  <td class="views-field views-field-created">
+            Jun 21, 2016          </td>
+              </tr>
+          <tr class="even">
+                  <td class="views-field views-field-title">
+            <a href="http://www.linuxjournal.com/content/softmaker-freeoffice">SoftMaker FreeOffice</a>          </td>
+                  <td class="views-field views-field-created">
+            Jun 20, 2016          </td>
+              </tr>
+          <tr class="odd">
+                  <td class="views-field views-field-title">
+            <a href="http://www.linuxjournal.com/content/git-29-released">Git 2.9 Released</a>          </td>
+                  <td class="views-field views-field-created">
+            Jun 17, 2016          </td>
+              </tr>
+          <tr class="even views-row-last">
+                  <td class="views-field views-field-title">
+            <a href="http://www.linuxjournal.com/content/giant-zero-part-0x">The Giant Zero, Part 0.x</a>          </td>
+                  <td class="views-field views-field-created">
+            Jun 16, 2016          </td>
+              </tr>
+      </tbody>
+</table>
+    </div>
+  
+  
+  
+      
+<div class="more-link">
+  <a href="http://www.linuxjournal.com/latest">
+    more  </a>
+</div>
+  
+  
+  
+</div>   </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+</div><div id="quicktabs_tabpage_1_1" class="quicktabs_tabpage quicktabs-hide"><div id="block-views-popular-block_1" class="block block-views region-even even region-count-2 count-2"><div class="block-inner">
+
+  
+  <div class="content">
+    <div class="view view-popular view-id-popular view-display-id-block_1 view-dom-id-2">
+    
+  
+  
+      <div class="view-content">
+      <div class="item-list">
+    <ul>
+          <li class="views-row views-row-1 views-row-odd views-row-first">  
+  <span class="views-field-title">
+                <span class="field-content"><a href="http://www.linuxjournal.com/content/astronomy-kde">Astronomy for KDE</a></span>
+  </span>
+</li>
+          <li class="views-row views-row-2 views-row-even">  
+  <span class="views-field-title">
+                <span class="field-content"><a href="http://www.linuxjournal.com/content/download-linux-management-red-hat-satellite-measuring-business-impact-and-roi">Download "Linux Management with Red Hat Satellite: Measuring Business Impact and ROI"</a></span>
+  </span>
+</li>
+          <li class="views-row views-row-3 views-row-odd">  
+  <span class="views-field-title">
+                <span class="field-content"><a href="http://www.linuxjournal.com/content/profiles-and-rc-files">Profiles and RC Files</a></span>
+  </span>
+</li>
+          <li class="views-row views-row-4 views-row-even">  
+  <span class="views-field-title">
+                <span class="field-content"><a href="http://www.linuxjournal.com/content/understanding-ceph-and-its-place-market">Understanding Ceph and Its Place in the Market</a></span>
+  </span>
+</li>
+          <li class="views-row views-row-5 views-row-odd">  
+  <span class="views-field-title">
+                <span class="field-content"><a href="http://www.linuxjournal.com/content/maru-os-brings-debian-your-phone">Maru OS Brings Debian to Your Phone</a></span>
+  </span>
+</li>
+          <li class="views-row views-row-6 views-row-even">  
+  <span class="views-field-title">
+                <span class="field-content"><a href="http://www.linuxjournal.com/content/git-29-released">Git 2.9 Released</a></span>
+  </span>
+</li>
+          <li class="views-row views-row-7 views-row-odd">  
+  <span class="views-field-title">
+                <span class="field-content"><a href="http://www.linuxjournal.com/content/giant-zero-part-0x">The Giant Zero, Part 0.x</a></span>
+  </span>
+</li>
+          <li class="views-row views-row-8 views-row-even">  
+  <span class="views-field-title">
+                <span class="field-content"><a href="http://www.linuxjournal.com/content/whats-our-next-fight">What's Our Next Fight?</a></span>
+  </span>
+</li>
+          <li class="views-row views-row-9 views-row-odd">  
+  <span class="views-field-title">
+                <span class="field-content"><a href="http://www.linuxjournal.com/content/snappy-moves-new-platforms">Snappy Moves to New Platforms</a></span>
+  </span>
+</li>
+          <li class="views-row views-row-10 views-row-even views-row-last">  
+  <span class="views-field-title">
+                <span class="field-content"><a href="http://www.linuxjournal.com/content/openswitch-finds-new-home">OpenSwitch Finds a New Home</a></span>
+  </span>
+</li>
+      </ul>
+</div>    </div>
+  
+  
+  
+      
+<div class="more-link">
+  <a href="http://www.linuxjournal.com/popular/today">
+    more  </a>
+</div>
+  
+  
+  
+</div>   </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+</div><div id="quicktabs_tabpage_1_2" class="quicktabs_tabpage quicktabs-hide"><div id="block-disqus-disqus_recent_comments" class="block block-disqus region-odd odd region-count-3 count-3"><div class="block-inner">
+
+  
+  <div class="content">
+    <div id="dsq-recentcomments" class="dsq-widget"> 	 <ul class="dsq-widget-list">	 <li class="dsq-widget-item">	 <img class="dsq-widget-avatar" src="avatar92.jpg">	 Keith	 <span class="dsq-widget-comment"><p>Nice article, I definitely learned some things.  BYW in my experience (lots of CentOS and Ubuntu), .bashrc is far more prevalent than .bash_profile.  You should at least mention it.</p></span>	 <p class="dsq-widget-meta"><a href="http://www.linuxjournal.com/content/profiles-and-rc-files">Profiles and RC Files</a>&nbsp;·&nbsp;<a href="http://www.linuxjournal.com/content/profiles-and-rc-files#comment-2746990350">18 hours ago</a></p>	 </li>	 <li class="dsq-widget-item">	 <a href="https://disqus.com/by/disqus_mQLmY3dJk9/"><img class="dsq-widget-avatar" src="noavatar92.png"></a>	 <a class="dsq-widget-user" href="https://disqus.com/by/disqus_mQLmY3dJk9/">Antonio</a>	 <span class="dsq-widget-comment"><p>I can confirm that FreeOffice offers the best compatibility with MS Office. I never had any problems going back and forth, it opens all of my Word and Excel files faithfully, even when...</p></span>	 <p class="dsq-widget-meta"><a href="http://www.linuxjournal.com/content/softmaker-freeoffice">SoftMaker FreeOffice</a>&nbsp;·&nbsp;<a href="http://www.linuxjournal.com/content/softmaker-freeoffice#comment-2742444778">3 days ago</a></p>	 </li>	 <li class="dsq-widget-item">	 <a href="https://disqus.com/by/disqus_8v3ULVviqg/"><img class="dsq-widget-avatar" src="noavatar92.png"></a>	 <a class="dsq-widget-user" href="https://disqus.com/by/disqus_8v3ULVviqg/">dusty rivers</a>	 <span class="dsq-widget-comment"><p>ShowBox is the awesome app to watch free movies online: <a href="https://showboxappdownloadio.com/showbox-apk/" rel="nofollow">https://showboxappdownloadio.c...</a></p></span>	 <p class="dsq-widget-meta"><a href="http://www.linuxjournal.com/content/susan-laubers-linux-command-line-complete-video-course-prentice-hall">Susan Lauber's Linux Command Line Complete Video Course (Prentice Hall)</a>&nbsp;·&nbsp;<a href="http://www.linuxjournal.com/content/susan-laubers-linux-command-line-complete-video-course-prentice-hall#comment-2742195985">3 days ago</a></p>	 </li>	 <li class="dsq-widget-item">	 <a href="https://disqus.com/by/connienew/"><img class="dsq-widget-avatar" src="avatar92_001.jpg"></a>	 <a class="dsq-widget-user" href="https://disqus.com/by/connienew/">Connie New</a>	 <span class="dsq-widget-comment"><p>It is the best that is available now. A standard that can now be easily adopted, easy for developers, as well as making distro maintainers not to have to adapt each application for their distro....</p></span>	 <p class="dsq-widget-meta"><a href="http://www.linuxjournal.com/content/snappy-moves-new-platforms">Snappy Moves to New Platforms</a>&nbsp;·&nbsp;<a href="http://www.linuxjournal.com/content/snappy-moves-new-platforms#comment-2737419338">6 days ago</a></p>	 </li>	 <li class="dsq-widget-item">	 <a href="https://disqus.com/by/evansummers/"><img class="dsq-widget-avatar" src="avatar92_002.jpg"></a>	 <a class="dsq-widget-user" href="https://disqus.com/by/evansummers/">Evan Summers</a>	 <span class="dsq-widget-comment"><p>I think that the way forward must be secure atomic deployments and updates via containerized applications. It must be atomic and not affect the system if they fail, so that updates can be...</p></span>	 <p class="dsq-widget-meta"><a href="http://www.linuxjournal.com/content/snappy-moves-new-platforms">Snappy Moves to New Platforms</a>&nbsp;·&nbsp;<a href="http://www.linuxjournal.com/content/snappy-moves-new-platforms#comment-2736132480">6 days ago</a></p>	 </li>	 </ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+</div></div></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-block-97" class="block block-block region-even odd region-count-6 count-9"><div class="block-inner">
+
+  
+  <div class="content">
+    <!--paging_filter--><!-- subscriptions -->
+
+<br>
+<a class="red" href="http://www.linuxjournal.com/subs/customer_service">Already a subscriber? Click here for subscriber services.</a>
+
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-block-116" class="block block-block region-odd even region-count-7 count-10"><div class="block-inner">
+
+      <h2 class="title">Geek Guides</h2>
+  
+  <div class="content">
+    <!--paging_filter--><!--<img src="http://geekguide.linuxjournal.com/sites/default/files/styles/medium/public/GeekGuide-Cover-IBM-LinuxOnPower.jpg" style="margin: 0 auto;display:block;" alt="Agile Product Development Cover" />
+<p>
+Practical books for the most technical people on the planet. Newly available books include:
+<ul>
+<li><a href="http://geekguide.linuxjournal.com/content/agile-product-development">Agile Product Development by Ted Schmidt</a></li>
+<li><a href="http://geekguide.linuxjournal.com/content/improve-business-processes-enterprise-job-scheduler">Improve Business Processes with an Enterprise Job Scheduler by Mike Diehl</a></li>
+<li><a href="http://geekguide.linuxjournal.com/content/finding-your-way-mapping-your-network-improve-manageability">Finding Your Way: Mapping Your Network to Improve Manageability by Bill Childers</a></li>
+<li><a href="http://geekguide.linuxjournal.com/content/diy-commerce-site">DIY Commerce Site by Reven Lerner</a></li>
+</ul>
+</p>
+<p>
+<strong>Plus <a href="http://geekguide.linuxjournal.com/">many more</a>.</strong> 
+</p>-->
+
+<img src="geekguide-cover-ibm-linuxonpower.jpg" style="margin: 0px auto; display: block;" alt="Linux on Power: Why Open Architecture Matters by Ted Schmidt">
+
+<p>With all the industry talk about the benefits of Linux on Power and all the performance advantages offered by its open architecture, you may be considering a move in that direction. If you are thinking about analytics, big data and cloud computing, you would be right to evaluate Power. The idea of using commodity x86 hardware and replacing it every three years is an outdated cost model. It doesn’t consider the total cost of ownership, and it doesn’t consider the advantage of real processing power, high-availability and multithreading like a demon.
+</p><p>
+This ebook takes a look at some of the practical applications of the Linux on Power platform and ways you might bring all the performance power of this open architecture to bear for your organization. There are no smoke and mirrors here—just hard, cold, empirical evidence provided by independent sources. I also consider some innovative ways Linux on Power will be used in the future.
+</p>
+<a style="margin-left: 25%;" href="http://geekguide.linuxjournal.com/content/linux-power-why-open-architecture-matters" class="awesome">Get the Guide</a>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-views-linux_minute-block_2" class="block block-views region-even odd region-count-8 count-11"><div class="block-inner">
+
+  
+  <div class="content">
+    <div class="view view-linux-minute view-id-linux_minute view-display-id-block_2 view-dom-id-3">
+    
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field-field-embed-video-embed">
+                <span class="field-content"><div class="emvideo emvideo-preview emvideo-youtube"><div class="emfield-emvideo emfield-emvideo-youtube">        <div id="emvideo-youtube-flash-wrapper-1"><object type="application/x-shockwave-flash" data="yi3lhog8qwu+rel=0+enablejsapi=1+playerapiid=ytplayer+fs=1" id="emvideo-youtube-flash-1" height="250" width="300">
+          <param name="movie" value="http://www.youtube.com/v/yi3lhoG8qwU&amp;rel=0&amp;enablejsapi=1&amp;playerapiid=ytplayer&amp;fs=1">
+          <param name="allowScriptAccess" value="sameDomain">
+          <param name="quality" value="best">
+          <param name="allowFullScreen" value="true">
+          <param name="bgcolor" value="#FFFFFF">
+          <param name="scale" value="noScale">
+          <param name="salign" value="TL">
+          <param name="FlashVars" value="playerMode=embedded">
+          <param name="wmode" value="transparent">
+        </object></div></div></div></span>
+  </div>
+  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.linuxjournal.com/266-video">June 2016 Video Preview</a></span>
+  </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>   </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-views-linux_minute-block_3" class="block block-views region-odd even region-count-9 count-12"><div class="block-inner">
+
+  
+  <div class="content">
+    <div class="view view-linux-minute view-id-linux_minute view-display-id-block_3 view-dom-id-4">
+    
+  
+  
+      <div class="view-content">
+      <table class="views-view-grid col-3">
+  <tbody>
+                <tr class="row-1 row-first row-last">
+                  <td class="col-1 col-first">
+              
+  <div class="views-field-field-embed-video-embed">
+                <span class="field-content"><a href="http://www.linuxjournal.com/265-video"><img src="0.jpg" alt="See video" title="See video" height="225" width="300"></a></span>
+  </div>
+  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.linuxjournal.com/265-video">May 2016 Video Preview</a></span>
+  </div>
+          </td>
+                  <td class="col-2">
+              
+  <div class="views-field-field-embed-video-embed">
+                <span class="field-content"><a href="http://www.linuxjournal.com/264-video"><img src="0_001.jpg" alt="See video" title="See video" height="225" width="300"></a></span>
+  </div>
+  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://www.linuxjournal.com/264-video">April 2016 Video Preview</a></span>
+  </div>
+          </td>
+                  <td class="col-3 col-last">
+                      </td>
+              </tr>
+      </tbody>
+</table>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <!--paging_filter--><div id="more-vids"><a href="http://www.linuxjournal.com/video">Click here for more videos</a></div>
+    </div>
+  
+  
+</div>   </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-block-67" class="block block-block region-even odd region-count-10 count-13"><div class="block-inner">
+
+  
+  <div class="content">
+    <!--paging_filter--><p><a href="http://www.linuxjournal.com/enewsletters"><img alt=" Linux Newsletter" src="newsletterbanner_t3b.jpg"></a></p>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-block-98" class="block block-block region-odd even region-count-11 count-14"><div class="block-inner">
+
+  
+  <div class="content">
+    <!--paging_filter--><!-- sidebar_bottom_lr -->
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-right-inner, /#sidebar-right -->
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-block-62" class="block block-block region-odd even region-count-1 count-16"><div class="block-inner">
+
+  
+  <div class="content">
+    <!--paging_filter--><div id="subsform">  
+     
+        
+	<form method="post" name="form" action="https://www.pubservice.com/subnew2page.aspx?PC=LJ&amp;PK&amp;FC=" class="subform">
+        
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr>
+            <td valign="top">First Name</td>
+
+            <td colspan="2" valign="top">Last Name</td>
+          </tr>
+
+    
+          <tr>
+            <td valign="top"><input value="" name="FN" size="18" maxlength="" class="form1" type="text"></td>
+
+            <td colspan="2" valign="top"><input name="LN" value="" size="18" class="form1" type="text"></td>
+          </tr>
+          <tr>
+            <td valign="top">Address 1</td>
+
+            <td colspan="2" valign="top">Address 2</td>
+
+
+          </tr>
+          <tr>
+            <td valign="top"><input value="" name="A1" size="18" maxlength="" class="form1" type="text"></td>
+
+            <td colspan="2" valign="top"><input value="" name="A2" size="18" class="form1" type="text"></td>
+
+  
+          </tr>
+          <tr>
+            <td valign="top">City</td>
+
+            <td valign="top">State</td>
+
+            <td valign="top">Zip</td>
+          </tr>
+
+    
+          <tr>
+            <td valign="top"><input value="" name="CT" size="18" maxlength="" class="form1" type="text"></td>
+
+            <td valign="top"><input value="" name="ST" size="2" class="form2" type="text"></td>
+
+            <td valign="top"><input value="" name="ZP" size="5" maxlength="5" class="form3" type="text"></td>
+          </tr>
+       <tr>
+            <td colspan="3" valign="top">Email</td>
+       </tr>
+       <tr>
+<td colspan="3" valign="top"><input value="" name="EM" size="40" class="form4" type="text"></td>
+        </tr>
+        </tbody></table>
+        
+        <div align="center">
+         <input src="clickhere.jpg" type="image">
+        </div>
+
+      </form>
+       <div class="subslinks">
+          <a href="https://www.pubservice.com/subnew2page.aspx?PC=LJ&amp;PK=MPUB911&amp;FC=CANADA&amp;SA=P">Canadian Residents</a> | <a href="https://www.pubservice.com/Subnew1.aspx?PC=LJ&amp;PK=MPUB911&amp;FC=UNITED%20STATES&amp;ref=1&amp;SA=P">Foreign Residents</a> | <a href="https://www.pubservice.com/subgift.aspx?PC=LJ">Gift Subscriptions</a> | <a href="http://www.linuxjournal.com/subs/customer_service">Customer Service</a> | <a href="http://www.linuxjournal.com/content/privacystatement">Privacy Policy</a>
+
+          </div>
+ 		</div> 
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-block-63" class="block block-block region-even odd region-count-2 count-17"><div class="block-inner">
+
+  
+  <div class="content">
+    <!--paging_filter--><iframe src="index_5.html" height="400" width="99%"></iframe>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-menu-menu-subscriptions" class="block block-menu region-odd even region-count-3 count-18"><div class="block-inner">
+
+      <h2 class="title">Digital Edition</h2>
+  
+  <div class="content">
+    <ul class="menu"><li class="leaf first"><a href="https://www.pubservice.com/subnew1.aspx?PC=LJ" title="Subscribe to Linux Journal">Subscribe/Renew</a></li>
+<li class="leaf"><a href="https://www.pubservice.com/subinfo.aspx?PC=LJ&amp;DO=P" title="Pay Your Subscription Bill">Pay My Bill</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/subs/customer_service" title="">Customer Service</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/digital" title="">Digital Downloads</a></li>
+<li class="leaf last"><a href="https://www.pubservice.com/subgift.aspx?PC=LJ" title="Give a Subscription to Linux Journal">Gift Subscriptions</a></li>
+</ul>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-menu-menu-linux-resources" class="block block-menu region-even odd region-count-4 count-19"><div class="block-inner">
+
+      <h2 class="title">Magazine Formats</h2>
+  
+  <div class="content">
+    <ul class="menu"><li class="leaf first"><a href="http://www.linuxjournal.com/content/pdf" title="PC/Mac">PC/Mac</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/content/android" title="Android App">Android</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/content/ios" title="iPhone/iPad">iPhone/iPad</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/content/epub" title="EPUB Format">EPUB</a></li>
+<li class="leaf last"><a href="http://www.linuxjournal.com/content/kindle" title="Kindle Format">Kindle</a></li>
+</ul>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-menu-menu-store" class="block block-menu region-odd even region-count-5 count-20"><div class="block-inner">
+
+      <h2 class="title">The Store</h2>
+  
+  <div class="content">
+    <ul class="menu"><li class="leaf first"><a href="http://lj.mybigcommerce.com/categories/Buttons-%26-Stickers/" title="Buttons &amp; Stickers">Stickers</a></li>
+<li class="leaf"><a href="http://lj.mybigcommerce.com/categories/T%252dShirts-%26-Apparel/" title="T-shirts and Apparel">T-shirts</a></li>
+<li class="leaf"><a href="http://lj.mybigcommerce.com/categories/Posters/" title="Posters">Posters</a></li>
+<li class="leaf"><a href="http://lj.mybigcommerce.com/categories/Back-Issues-%252d-Digital-Downloads/" title="Buy Back Issues of Linux Journal">Back Issues</a></li>
+<li class="leaf last"><a href="http://linuxjournal.com/archive_cd" title="LJ Archive">LJ Archive</a></li>
+</ul>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-menu-menu-about" class="block block-menu region-even odd region-count-6 count-21"><div class="block-inner">
+
+      <h2 class="title">About Us</h2>
+  
+  <div class="content">
+    <ul class="menu"><li class="leaf first"><a href="http://www.linuxjournal.com/advertising" title="Advertise in Linux Journal">Advertise</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/author" title="Write for Us">Author Info</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/contact" title="Write a Letter to the Editor">Write a Letter</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/aboutus/FAQ" title="Frequently Asked Questions">FAQ</a></li>
+<li class="leaf last"><a href="http://www.linuxjournal.com/staff" title="Masthead">Masthead</a></li>
+</ul>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-menu-menu-the-site" class="block block-menu region-odd even region-count-7 count-22"><div class="block-inner">
+
+      <h2 class="title">The Site</h2>
+  
+  <div class="content">
+    <ul class="menu"><li class="leaf first"><a href="http://www.linuxjournal.com/content/copyright" title="Copyright">Copyright</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/rss_feeds" title="RSS Feeds">RSS Feeds</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/content/privacy-statement" title="Privacy Statement">Privacy Policy</a></li>
+<li class="leaf"><a href="http://www.linuxjournal.com/events" title="Events">Events</a></li>
+<li class="leaf last"><a href="http://www.linuxjournal.com/aboutus" title="Contact Us">Contact Us</a></li>
+</ul>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-block-70" class="block block-block region-even odd region-count-8 count-23"><div class="block-inner">
+
+  
+  <div class="content">
+    <!--paging_filter--><div id="copyright">Copyright © 1994 - 2015 <em>Linux Journal</em>. All rights reserved.</div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <div id="user_relationships_popup_form" class="user_relationships_ui_popup_form"></div>
+
+
+
+
+
+
+
+<table class="gstl_50 gssb_c" style="width: 214px; display: none; top: 234px; position: absolute; left: 726px;" cellpadding="0" cellspacing="0"><tbody><tr><td class="gssb_f"></td><td style="width: 100%;" class="gssb_e"></td></tr></tbody></table></body>
+</html>

@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>U-Boot on BeagleBone Black</title>
+
+<link rel="pingback" href="http://www.twam.info/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="http://www.twam.info/wp-content/themes/twam2013/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+<!-- All in One SEO Pack 2.3.5 by Michael Torbert of Semper Fi Web Design[355,400] -->
+<meta name="description" itemprop="description" content="Understanding the boot up mechanism of the BeagleBone Black is important to be able to modify it. As we later want to change the Linux Kernel itself we need to">
+
+<link rel="canonical" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black">
+<!-- /all in one seo pack -->
+<link rel="alternate" type="application/rss+xml" title="twam.info » Feed" href="http://www.twam.info/feed">
+<link rel="alternate" type="application/rss+xml" title="twam.info » Comments Feed" href="http://www.twam.info/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="twam.info » U-Boot on BeagleBone Black Comments Feed" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black/feed">
+		
+		
+
+
+<!-- This site uses the Google Analytics by MonsterInsights plugin v5.5 - Universal disabled - https://www.monsterinsights.com/ -->
+
+<!-- / Google Analytics by MonsterInsights -->
+<link rel="https://api.w.org/" href="http://www.twam.info/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.twam.info/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.twam.info/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.5.3">
+<link rel="shortlink" href="http://www.twam.info/?p=2944">
+<link rel="alternate" type="application/json+oembed" href="http://www.twam.info/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.twam.info%2Fhardware%2Fbeaglebone-black%2Fu-boot-on-beaglebone-black">
+<link rel="alternate" type="text/xml+oembed" href="http://www.twam.info/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.twam.info%2Fhardware%2Fbeaglebone-black%2Fu-boot-on-beaglebone-black&amp;format=xml">
+		
+						<!-- WordPress Popular Posts v3.3.3 -->
+				
+				<!-- End WordPress Popular Posts v3.3.3 -->
+					
+	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-2944 single-format-standard single-author singular two-column right-sidebar">
+<div id="page" class="hfeed">
+	<header id="branding" role="banner">
+			<hgroup>
+				<h1 id="site-title"><span><a href="http://www.twam.info/" title="twam.info" rel="home">twam.info</a></span></h1>
+				<h2 id="site-description">My computer, physics, electronics &amp; photography blog</h2>
+			</hgroup>
+
+			
+								<form method="get" id="searchform" action="http://www.twam.info/">
+		<label for="s" class="assistive-text">Search</label>
+		<input value="" class="field" name="s" id="s" placeholder="Search" type="text">
+		<input class="submit" name="submit" id="searchsubmit" value="Search" type="submit">
+	</form>
+						<nav id="access" role="navigation">
+				<h3 class="assistive-text">Main menu</h3>
+								<div class="skip-link"><a class="assistive-text" href="#content" title="Skip to primary content">Skip to primary content</a></div>
+				<div class="skip-link"><a class="assistive-text" href="#secondary" title="Skip to secondary content">Skip to secondary content</a></div>
+								<div class="menu-mainmenu-container"><ul id="menu-mainmenu" class="menu"><li id="menu-item-1751" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-1751"><a href="http://www.twam.info/">Home</a>
+<ul class="sub-menu">
+	<li id="menu-item-3204" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3204"><a href="http://www.twam.info/category/electronics">Electronics</a></li>
+	<li id="menu-item-3206" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-3206"><a href="http://www.twam.info/category/hardware">Hardware</a></li>
+	<li id="menu-item-3208" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3208"><a href="http://www.twam.info/category/software">Software</a></li>
+	<li id="menu-item-3207" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3207"><a href="http://www.twam.info/category/photography">Photography</a></li>
+	<li id="menu-item-3209" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3209"><a href="http://www.twam.info/category/study">Study</a></li>
+	<li id="menu-item-3210" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3210"><a href="http://www.twam.info/category/travels">Travels</a></li>
+	<li id="menu-item-3205" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3205"><a href="http://www.twam.info/category/general">General</a></li>
+</ul>
+</li>
+<li id="menu-item-1749" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1749"><a href="http://www.twam.info/about_me">About me</a></li>
+<li id="menu-item-1750" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1750"><a href="http://www.twam.info/imprint">Imprint</a></li>
+<li id="menu-item-2634" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2634"><a href="https://www.facebook.com/twamueller">Facebook</a></li>
+<li id="menu-item-2633" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2633"><a href="https://twitter.com/twamueller">Twitter</a></li>
+<li id="menu-item-2831" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2831"><a href="https://github.com/twam/">GitHub</a></li>
+</ul></div>			</nav><!-- #access -->
+	</header><!-- #branding -->
+
+
+	<div id="main">
+
+		<div id="primary">
+			<div id="content" role="main">
+
+				
+					<nav id="nav-single">
+						<h3 class="assistive-text">Post navigation</h3>
+						<span class="nav-previous"><a href="http://www.twam.info/electronics/beaglebone-black" rel="prev"><span class="meta-nav">←</span> Previous</a></span>
+						<span class="nav-next"><a href="http://www.twam.info/electronics/test-equipment/bandwidth-upgrade-for-agilent-dso-x-3014a" rel="next">Next <span class="meta-nav">→</span></a></span>
+					</nav><!-- #nav-single -->
+
+					
+<article id="post-2944" class="post-2944 post type-post status-publish format-standard hentry category-beaglebone-black tag-beaglebone-black tag-u-boot">
+	<header class="entry-header">
+		<h1 class="entry-title">U-Boot on BeagleBone Black</h1>
+
+				<div class="entry-meta">
+			<span class="sep">Posted on </span><a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black" title="11:37" rel="bookmark"><time class="entry-date" datetime="2014-08-23T11:37:07+00:00">August 23, 2014</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="http://www.twam.info/author/twam" title="View all posts by twam" rel="author">twam</a></span></span>		</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>Understanding the boot up mechanism of the BeagleBone Black is important to be able to modify it. As we later want to change the Linux Kernel itself we need to know how it is started by the BeagleBone.</p>
+<p>The AM335x processor on the BeagleBone Black has many configurable options where it can boot from which are all documented in Chapter 26 of the <a href="http://www.ti.com/lit/pdf/spruh73">AM335x ARM® Cortex™-A8 Microprocessors Technical Reference Manual</a>. The BeagleBone Black provides by alternative boot sequences which are selectable by the boot switch (S2). <span id="more-2944"></span> In default mode (S2 not pressed) it tries to boot from</p>
+<ol>
+<li>MMC1 (onboard eMMC),</li>
+<li>MMC0 (microSD),</li>
+<li>UART0,</li>
+<li>USB0.</li>
+</ol>
+<p>Usually it will find something in the onboard eMMC and boot from there. If S2 is pressed during power-up the boot sequence is changed to</p>
+<ol>
+<li>SPI0,</li>
+<li>MMC0 (microSD),</li>
+<li>UART0,</li>
+<li>USB0.</li>
+</ol>
+<p>As there is usually nothing bootable found on SPI0 it will boot from the microSD card. The onboard eMMC or an external microSD card have to be formatted in a special way for the AM335x processor to find its boot file, which is described very good on the <a href="http://processors.wiki.ti.com/index.php/MMC_Boot_Format">MMC boot format</a> wiki page at TI. If the AM335x processor finds a valid formatted MMC it searchings for a file named MLO on the first partition and if it is found it boots from that file.</p>
+<p>This is very <a href="http://www.denx.de/wiki/U-Boot">U-Boot</a> kicks in. U-Boot is a very versatile boot loader which can be used on the BeagleBone Black. U-Boot provides this MLO file as a second-stage boot-loader which then loads the actual U-Boot which has to be provided as a file named u-boot.bin in the same directory. U-Boot itself will then look for a file named uEnv.txt for further configuration and then act upon it.</p>
+<h2>Formatting a microSD card</h2>
+<p>Now as we have the theoretical background, let's try it our self. The following steps were all done on a (virtual) Ubuntu Linux system. Our microSD card is connected to /dev/sdb as has a size of 16 GB. <b>The content of the SD card fill be deleted during this procedure.</b> Instead of calculating the exact partitions sizes needed as explained by the <a href="http://processors.wiki.ti.com/index.php/MMC_Boot_Format">MMC boot format</a> wiki page we use a script which does everything for use. Download, make it executable and run it by</p>
+<pre>wget http://dev.gentoo.org/~armin76/arm/beaglebone/mkcard.sh
+chmod +x mkcard.sh
+sudo ./mkcard.sh /dev/sdb</pre>
+<p>Be sure to have /dev/sdb pointing to your microSD card and not anything else! In the output of the script you can see the partition table it created and in our case it was a<br>
+primary FAT23 partition of 72261 blocks in size and a Linux ext4 partition of 15478627 blocks in size:</p>
+<pre>1024+0 records in
+1024+0 records out
+1048576 bytes (1.0 MB) copied, 0.447124 s, 2.3 MB/s
+Disk /dev/sdb doesn't contain a valid partition table
+DISK SIZE - 15931539456 bytes
+CYLINDERS - 1936
+Checking that no-one is using this disk right now ...
+OK
+
+Disk /dev/sdb: 1936 cylinders, 255 heads, 63 sectors/track
+
+sfdisk: ERROR: sector 0 does not have an msdos signature
+ /dev/sdb: unrecognized partition table type
+Old situation:
+No partitions found
+New situation:
+Units = cylinders of 8225280 bytes, blocks of 1024 bytes, counting from 0
+
+   Device Boot Start     End   #cyls    #blocks   Id  System
+/dev/sdb1   *      0+      8       9-     72261    c  W95 FAT32 (LBA)
+/dev/sdb2          9    1935    1927   15478627+  83  Linux
+/dev/sdb3          0       -       0          0    0  Empty
+/dev/sdb4          0       -       0          0    0  Empty
+Successfully wrote the new partition table
+
+Re-reading the partition table ...
+
+If you created or changed a DOS partition, /dev/foo7, say, then use dd(1)
+to zero the first 512 bytes:  dd if=/dev/zero of=/dev/foo7 bs=512 count=1
+(See fdisk(8).)
+umount: /dev/sdb1: not mounted
+mkfs.fat 3.0.26 (2014-03-07)
+mkfs.fat: warning - lowercase labels might not work properly with DOS or Windows
+umount: /dev/sdb2: not mounted
+mke2fs 1.42.9 (4-Feb-2014)
+Filesystem label=rootfs
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+969136 inodes, 3869656 blocks
+193482 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=3963617280
+119 block groups
+32768 blocks per group, 32768 fragments per group
+8144 inodes per group
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done   </pre>
+<p>Now you can mount the boot partition manually or replug the microSD card as most systems will mount it then automatically.</p>
+<h2>Compiling U-Boot</h2>
+<p>The next step is to compile U-Boot. As we need to <a href="http://en.wikipedia.org/wiki/Cross_compiler">cross compile</a> this for the BeagleBone Black we need a suitable compiler. On Ubuntu this can be installed relatively easy by</p>
+<pre>sudo apt-get install gcc-arm-linux-gnueabihf</pre>
+<p>Now we clone the git repository, create a default configuration and cross compile it for the BeagleBone Black by</p>
+<pre>git clone git://git.denx.de/u-boot.git &amp;&amp; cd u-boot
+make am335x_boneblack_defconfig
+ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make</pre>
+<p>We should get a MLO and u-boot.bin file in the current directory and can copy those onto the boot partition of microSD card.</p>
+<h2>Configuring U-Boot</h2>
+<p>To configure U-Boot we create a file uEnv.txt on the boot partition and fill it, e.g. with</p>
+<pre>console=ttyO0,115200n8
+ipaddr=192.168.23.2
+serverip=192.168.23.1
+rootpath=/exports/rootfs
+netargs=setenv bootargs console=${console} ${optargs} root=/dev/nfs nfsroot=${serverip}:${rootpath},${nfsopts} rw ip=${ipaddr}:${serverip}:192.168.23.1:255.255.255.0:beaglebone:eth0:none:192.168.23.1
+netboot=echo Booting from network ...; tftp ${loadaddr} ${bootfile}; tftp ${fdtaddr} ${fdtfile}; run netargs; bootz ${loadaddr} - ${fdtaddr}
+uenvcmd=run netboot
+</pre>
+<p>to instruct U-Boot to get the Linux Kernel and device tree via TFTP. The details are depending on your configuration :).</p>
+<h2>Booting ...</h2>
+<p>Finally we can now boot from our microSD card. To see the actual boot process a RS232 cable like the <a href="http://www.ftdichip.com/Products/Cables/USBTTLSerial.htm">TTL-232R-3V3</a> from <a href="http://www.ftdichip.com/">FTDI</a> is very handy. Just plug it to the J1 connector and open a serial terminal of your choice. Plug in the microSD card and hold down the S2 boot switch to force booting from the microSD card. You will see hopefully something like</p>
+<pre>U-Boot SPL 2014.10-rc1 (Aug 22 2014 - 19:20:25)
+reading u-boot.img
+reading u-boot.img
+
+
+U-Boot 2014.10-rc1 (Aug 22 2014 - 19:20:25)
+
+I2C:   ready
+DRAM:  512 MiB
+MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1
+Using default environment
+
+Net:   <ethaddr> not set. Validating first E-fuse MAC
+cpsw, usb_ether
+Hit any key to stop autoboot:  0
+switch to partitions #0, OK
+mmc0 is current device
+SD/MMC found on device 0
+reading uEnv.txt
+454 bytes read in 4 ms (110.4 KiB/s)
+Loaded environment from uEnv.txt
+Importing environment from mmc ...
+Running uenvcmd ...
+Booting from network ... 
+cpsw Waiting for PHY auto negotiation to complete. done
+link up on port 0, speed 100, full duplex
+Using cpsw device
+TFTP from server 192.168.23.36; our IP address is 192.168.23.30
+Filename 'zImage'.
+Load address: 0x82000000 
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         ####
+         1.5 MiB/s
+done
+Bytes transferred = 6342632 (60c7e8 hex)
+link up on port 0, speed 100, full duplex
+Using cpsw device
+TFTP from server 192.168.23.36; our IP address is 192.168.23.30
+Filename 'am335x-boneblack.dtb'.
+Load address: 0x88000000 
+Loading: #######
+         1.2 MiB/s
+done
+Bytes transferred = 31882 (7c8a hex)
+Kernel image @ 0x82000000 [ 0x000000 - 0x60c7e8 ]
+## Flattened Device Tree blob at 88000000
+   Booting using the fdt blob at 0x88000000
+   Loading Device Tree to 8fff5000, end 8ffffc89 ... OK
+
+Starting kernel ...</ethaddr></pre>
+<p>where we first can see of the U-Boot SPL (MLO file) and then afterwards U-Boot itself. Then it reads the uEnv.txt configuration file and acts upon it.</p>
+<h2>Always boot from microSD</h2>
+<p>If you always want to boot from your microSD card you can invalidate the boot partition on the onboard eMMC. Then the AM335x processor will always fail back to the second boot option in the default order which is the microSD card. This can be done easily by booting your favourite Linux distro on the BeagleBone Black and issue an </p>
+<pre>sudo dd if=/dev/zero of=/dev/mmcblk1 bs=1024 count=1024</pre>
+<p>Be warned: This will wipe your boot partition on the eMMC!</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		This entry was posted in <a href="http://www.twam.info/category/hardware/beaglebone-black" rel="category tag">BeagleBone Black</a> and tagged <a href="http://www.twam.info/tag/beaglebone-black" rel="tag">BeagleBone Black</a>, <a href="http://www.twam.info/tag/u-boot" rel="tag">U-Boot</a> by <a href="http://www.twam.info/author/twam">twam</a>. Bookmark the <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black" title="Permalink to U-Boot on BeagleBone Black" rel="bookmark">permalink</a>.		
+				<div id="author-info">
+			<div id="author-avatar">
+				<img alt="" src="f1f1b5a4161ee3e457fdb791257f76a3" srcset="http://0.gravatar.com/avatar/f1f1b5a4161ee3e457fdb791257f76a3?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68">			</div><!-- #author-avatar -->
+			<div id="author-description">
+								<h2>About the author</h2>
+				My name is Tobias Müller. I'm interested in com­puters, physics, elec­tronics and photo­graphy. <a href="http://www.twam.info/about_me" rel="nofollow">more …</a>							</div><!-- #author-description -->
+		</div><!-- #author-info -->
+		
+		<div class="social">
+	<ul class="social">
+		<li><span class="flattr">
+	<span class="flattr">
+		
+		<iframe allowtransparency="true" marginwidth="0" marginheight="0" border="0" title="Flattr" scrolling="no" class="FlattrButton" src="index_1.html" frameborder="0" height="20" width="110"></iframe>
+	</span>
+	</span></li>
+		<li><span class="twitter"><iframe src="index_2.html" title="Twitter Tweet Button" style="position: static; visibility: visible; width: 61px; height: 20px;" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe></span></li>
+		<li><span class="facebook"><a name="fb_share" type="button" href="http://www.facebook.com/sharer.php">Share</a></span></li>
+		<li><span class="pinterest"><a href="http://pinterest.com/pin/create/button/?url=http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black&amp;media=&amp;description=U-Boot%20on%20BeagleBone%20Black" class="pin-it-button" count-layout="horizontal"><img src="pinext.png" title="Pin It" border="0"></a></span></li>
+		<li><span class="googleplus"><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 70px; height: 15px;"><iframe title="+1" data-gapiattached="true" src="index_3.html" name="I0_1467107459457" id="I0_1467107459457" vspace="0" tabindex="0" style="position: static; top: 0px; width: 70px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 15px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" frameborder="0" width="100%"></iframe></div></span></li>
+	</ul>
+</div>
+
+	</footer><!-- .entry-meta -->
+</article><!-- #post-2944 -->
+
+						<div id="comments">
+	
+	
+			<h2 id="comments-title">
+			37 thoughts on “<span>U-Boot on BeagleBone Black</span>”		</h2>
+
+		
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="li-comment-181426">
+		<article id="comment-181426" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="b63831efe3b7396b49917ae64bbf8da0" srcset="http://2.gravatar.com/avatar/b63831efe3b7396b49917ae64bbf8da0?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Jay Bhukhanwala</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-181426"><time datetime="2014-11-07T07:20:52+00:00">November 7, 2014 at 07:20</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Thanks for the wonderful article.</p>
+<p>I have a dumb question though (more out of laziness than anything else):</p>
+<p>What exactly helps to determine, that MMC1 is onboard eMMC, whereas MMC0 is microSD ?<br>
+Is it the BBB Reference Manual ? Where exactly do I find that info ?</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=181426#respond" onclick="return addComment.moveForm( &quot;comment-181426&quot;, &quot;181426&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Jay Bhukhanwala">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-twam bypostauthor odd alt depth-2" id="li-comment-181593">
+		<article id="comment-181593" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f1f1b5a4161ee3e457fdb791257f76a3_001.dat" srcset="http://0.gravatar.com/avatar/f1f1b5a4161ee3e457fdb791257f76a3?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://www.twam.info/" rel="external nofollow" class="url">twam</a></span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-181593"><time datetime="2014-11-07T09:44:22+00:00">November 7, 2014 at 09:44</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>5.3.3 in the BeagleBone Black System Reference Manual states that MMC1 is the eMMC.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=181593#respond" onclick="return addComment.moveForm( &quot;comment-181593&quot;, &quot;181593&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to twam">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-208600">
+		<article id="comment-208600" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="351b9c68e9e1338c58bfca86e1d7c5f4" srcset="http://0.gravatar.com/avatar/351b9c68e9e1338c58bfca86e1d7c5f4?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Javi</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-208600"><time datetime="2014-11-24T12:02:49+00:00">November 24, 2014 at 12:02</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Hi, I have a question. It's possible disable boot from a microSD at the same way that you explain "Always boot from microSD"?</p>
+<p>Thank you!</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=208600#respond" onclick="return addComment.moveForm( &quot;comment-208600&quot;, &quot;208600&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Javi">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-twam bypostauthor odd alt depth-2" id="li-comment-208603">
+		<article id="comment-208603" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f1f1b5a4161ee3e457fdb791257f76a3_001.dat" srcset="http://0.gravatar.com/avatar/f1f1b5a4161ee3e457fdb791257f76a3?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://www.twam.info/" rel="external nofollow" class="url">twam</a></span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-208603"><time datetime="2014-11-24T12:12:38+00:00">November 24, 2014 at 12:12</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>'Always boot from microSD' is realized by not putting anything bootable on the eMMC. As long as you have noth bootable on the microSD card it won't boot from there. Also the eMMC is always prefered as long as you don't push the the boot button.</p>
+<p>If you want to disable booting from microSSD independent of the boot button or the content of the eMMC you have to alter the config pins.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=208603#respond" onclick="return addComment.moveForm( &quot;comment-208603&quot;, &quot;208603&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to twam">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment even depth-3" id="li-comment-311910">
+		<article id="comment-311910" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="0abcdb4c2836d681c8969443138086a0" srcset="http://0.gravatar.com/avatar/0abcdb4c2836d681c8969443138086a0?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn">Renan</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-311910"><time datetime="2015-07-14T01:52:04+00:00">July 14, 2015 at 01:52</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>How can I edit the config pins, and which ones should I change to disable booting from sd card reader?</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=311910#respond" onclick="return addComment.moveForm( &quot;comment-311910&quot;, &quot;311910&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Renan">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-twam bypostauthor odd alt depth-4" id="li-comment-311939">
+		<article id="comment-311939" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f1f1b5a4161ee3e457fdb791257f76a3_001.dat" srcset="http://0.gravatar.com/avatar/f1f1b5a4161ee3e457fdb791257f76a3?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://www.twam.info/" rel="external nofollow" class="url">twam</a></span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-311939"><time datetime="2015-07-14T07:36:51+00:00">July 14, 2015 at 07:36</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>You have to 'edit' them with a soldering iron.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=311939#respond" onclick="return addComment.moveForm( &quot;comment-311939&quot;, &quot;311939&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to twam">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-278206">
+		<article id="comment-278206" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="83fd13e8333a4194dbe482d5f9840b5c" srcset="http://2.gravatar.com/avatar/83fd13e8333a4194dbe482d5f9840b5c?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Shashwat</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-278206"><time datetime="2015-02-01T10:24:54+00:00">February 1, 2015 at 10:24</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Hi All,</p>
+<p>I have just started learning embedded linux and wants to have some hand's on experience of embedded devices bringup from scratch.</p>
+<p>I have a BBB, and have tried multiple steps to bring up the board but they are very confusing and the result was 0 most of the time.</p>
+<p>Can anyone please help me out and guide me on how to bring up embedded devices from scratch.</p>
+<p>Thanks in advance<br>
+ <img src="1f642.png" alt="🙂" class="emoji" draggable="false"></p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=278206#respond" onclick="return addComment.moveForm( &quot;comment-278206&quot;, &quot;278206&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Shashwat">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment odd alt depth-2" id="li-comment-287224">
+		<article id="comment-287224" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="7bf52c1021ac793aa0de9330da3dd132" srcset="http://1.gravatar.com/avatar/7bf52c1021ac793aa0de9330da3dd132?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn">Thaj</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-287224"><time datetime="2015-02-15T19:33:16+00:00">February 15, 2015 at 19:33</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Please follow the steps here<br>
+<a href="https://eewiki.net/display/linuxonarm/BeagleBone+Black" rel="nofollow">https://eewiki.net/display/linuxonarm/BeagleBone+Black</a></p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=287224#respond" onclick="return addComment.moveForm( &quot;comment-287224&quot;, &quot;287224&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Thaj">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-279237">
+		<article id="comment-279237" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="1290f0021aeee2686279bfc87594a0d9" srcset="http://1.gravatar.com/avatar/1290f0021aeee2686279bfc87594a0d9?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Carl</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-279237"><time datetime="2015-02-03T00:55:53+00:00">February 3, 2015 at 00:55</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Excellent explanation!<br>
+Different from your suggestion, I have modified the uEnv.txt on the eMMC so that I can boot via network (NFS) or uSD (using invalid uboot command). My question is: once you boot via NFS or uSD, how can you mount and access the eMMC so that the uEnv.txt on eMMC is modified to boot from eMMC again? I know you can reflash the eMMC, but that will be an overkill and really time-consuming as I have to switch from eMMC and NFS booting often.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=279237#respond" onclick="return addComment.moveForm( &quot;comment-279237&quot;, &quot;279237&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Carl">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-twam bypostauthor odd alt depth-2" id="li-comment-280841">
+		<article id="comment-280841" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f1f1b5a4161ee3e457fdb791257f76a3_001.dat" srcset="http://0.gravatar.com/avatar/f1f1b5a4161ee3e457fdb791257f76a3?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://www.twam.info/" rel="external nofollow" class="url">twam</a></span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-280841"><time datetime="2015-02-05T17:58:31+00:00">February 5, 2015 at 17:58</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>You can mount the /dev/mmcblk1p1 partition to your preferred location and change the uEnv.txt file.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=280841#respond" onclick="return addComment.moveForm( &quot;comment-280841&quot;, &quot;280841&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to twam">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even depth-2" id="li-comment-289378">
+		<article id="comment-289378" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="3c1f70016355acb4e6206e62c46596d0" srcset="http://0.gravatar.com/avatar/3c1f70016355acb4e6206e62c46596d0?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn">Samuel</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-289378"><time datetime="2015-02-22T18:27:29+00:00">February 22, 2015 at 18:27</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Hi !<br>
+I'm currently struggling doing exactly that : how do you boot from eMMC if the NFS server (or the DHCP server) is down as a faisafe ?<br>
+You spoke of invalid u-boot command ... ?</p>
+<p>thanks</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=289378#respond" onclick="return addComment.moveForm( &quot;comment-289378&quot;, &quot;289378&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Samuel">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-twam bypostauthor odd alt depth-3" id="li-comment-290834">
+		<article id="comment-290834" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f1f1b5a4161ee3e457fdb791257f76a3_001.dat" srcset="http://0.gravatar.com/avatar/f1f1b5a4161ee3e457fdb791257f76a3?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://www.twam.info/" rel="external nofollow" class="url">twam</a></span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-290834"><time datetime="2015-03-02T19:46:01+00:00">March 2, 2015 at 19:46</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>I didn't mention any invalid u-boot commands. I just said that the if you have a complete invalid boot section on the eMMC, the hardware built-in boot loader of the AM335x processor will fall back to its second boot option, which in that case is the SD card.</p>
+<p>Your plan might be possible using u-boot scripting, but I haven't tried this and I doubt that it's worth the effort. You want NFS boot usually for development and then you're pretty sure that your DHCP and NFS server is there. If not, fix it! <img src="1f609.png" alt="😉" class="emoji" draggable="false"> If you're using your BeagleBone Black in some kind of production environment you usually want to boot from eMMC or micro SD. If have have to boot from NFS for some reason then you should make sure that it's always there. Having a fallback on microSD would net you also the keep your settings and everything in sync between NFS and microSD/eMMC root.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=290834#respond" onclick="return addComment.moveForm( &quot;comment-290834&quot;, &quot;290834&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to twam">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-287231">
+		<article id="comment-287231" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="7bf52c1021ac793aa0de9330da3dd132_001.dat" srcset="http://1.gravatar.com/avatar/7bf52c1021ac793aa0de9330da3dd132?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Thaj</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-287231"><time datetime="2015-02-15T19:44:42+00:00">February 15, 2015 at 19:44</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Hey. Thanks Man. This is really helpful.</p>
+<p>I just have one doubt. There is MLO, u-boot.bin and uEnv.txt on eMMC already that comes by default with BBB. </p>
+<p>Can I just modify the uEnv.txt on eMMC to boot a kernel from microSD ? What i mean is can I just put the FS, Kernel zImage and dtb file on microSD and just modify the uEnv.txt in eMMC to point this kernel of microSD, Will that work? I am asking beacuse I dont want to corrupt the uboot on eMMC, but still i want to boot a custom kernel for device driver development.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=287231#respond" onclick="return addComment.moveForm( &quot;comment-287231&quot;, &quot;287231&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Thaj">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-twam bypostauthor odd alt depth-2" id="li-comment-288945">
+		<article id="comment-288945" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f1f1b5a4161ee3e457fdb791257f76a3_001.dat" srcset="http://0.gravatar.com/avatar/f1f1b5a4161ee3e457fdb791257f76a3?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://www.twam.info/" rel="external nofollow" class="url">twam</a></span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-288945"><time datetime="2015-02-19T20:40:40+00:00">February 19, 2015 at 20:40</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Sure, that is possible.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=288945#respond" onclick="return addComment.moveForm( &quot;comment-288945&quot;, &quot;288945&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to twam">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment even depth-3" id="li-comment-311627">
+		<article id="comment-311627" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="d1729978ee3bc48e0fe03186434d3994" srcset="http://1.gravatar.com/avatar/d1729978ee3bc48e0fe03186434d3994?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn">Maurice Sun</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-311627"><time datetime="2015-07-10T10:02:30+00:00">July 10, 2015 at 10:02</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Hi,<br>
+does anyone who made it successfully can share with your howto?<br>
+Thanks.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=311627#respond" onclick="return addComment.moveForm( &quot;comment-311627&quot;, &quot;311627&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Maurice Sun">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt depth-2" id="li-comment-307064">
+		<article id="comment-307064" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="472ebb037ce96678696d8beaa48ae06c" srcset="http://1.gravatar.com/avatar/472ebb037ce96678696d8beaa48ae06c?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn">Ron</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-307064"><time datetime="2015-06-04T19:17:41+00:00">June 4, 2015 at 19:17</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Thaj,<br>
+I would really like to know if you were able to modify the uEnv.txt file and see the parameters you added to it.  I have been racking my brains out on this one.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=307064#respond" onclick="return addComment.moveForm( &quot;comment-307064&quot;, &quot;307064&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Ron">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-289624">
+		<article id="comment-289624" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="637d52bc2c930b952635b6a255270044" srcset="http://0.gravatar.com/avatar/637d52bc2c930b952635b6a255270044?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Juan Benavides</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-289624"><time datetime="2015-02-23T21:27:07+00:00">February 23, 2015 at 21:27</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Hello Tobias, do you know if you can access the boot partition /boot/uboot/ to read/write files?<br>
+I want both the host PC and the BBB to be able to read/write files in the same directory at /boot/uboot/<br>
+With 17% of space left it seems like it should be possible but I'm having problems syncing the files. In other words I can create a file from the Host PC, and the BBB can see it right away. But, if I try the opposite, that is creating a file from the BBB, the Host PC doesn't see it. I tried the command sync to no avail.</p>
+<p>Filesystem      1K-blocks   Used   Available  Use%  Mounted on<br>
+/dev/mmcblk0p1  98094       80886  17208      83%   /boot/uboot</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=289624#respond" onclick="return addComment.moveForm( &quot;comment-289624&quot;, &quot;289624&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Juan Benavides">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-twam bypostauthor odd alt depth-2" id="li-comment-290832">
+		<article id="comment-290832" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f1f1b5a4161ee3e457fdb791257f76a3_001.dat" srcset="http://0.gravatar.com/avatar/f1f1b5a4161ee3e457fdb791257f76a3?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://www.twam.info/" rel="external nofollow" class="url">twam</a></span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-290832"><time datetime="2015-03-02T19:40:23+00:00">March 2, 2015 at 19:40</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>This depends on the system you have booted. If this shares the /boot partition with your host PC this is of course possible. You could also share the partition or folder via your favorite network protocol (NFS, SMB, ...)</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=290832#respond" onclick="return addComment.moveForm( &quot;comment-290832&quot;, &quot;290832&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to twam">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-291463">
+		<article id="comment-291463" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="efce3bba3059f0c07fd50714d8a6fbd0" srcset="http://2.gravatar.com/avatar/efce3bba3059f0c07fd50714d8a6fbd0?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Viswanath.B</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-291463"><time datetime="2015-03-07T11:50:39+00:00">March 7, 2015 at 11:50</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>I am newbie to Beaglebone(Black). I am trying to boot it through eMMC without any SDcard. Boot seems to proceed to an extent and stops. Following is the copy of boot steps, can any one suggest if I am missing any thing here. </p>
+<p>U-Boot 2013.04-dirty (Jul 10 2013 - 14:02:53)</p>
+<p>I2C:   ready<br>
+DRAM:  512 MiB<br>
+WARNING: Caches not enabled<br>
+NAND:  No NAND device found!!!<br>
+0 MiB<br>
+MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1<br>
+*** Warning - readenv() failed, using default environment</p>
+<p>musb-hdrc: ConfigData=0xde (UTMI-8, dyn FIFOs, HB-ISO Rx, HB-ISO Tx, SoftConn)<br>
+musb-hdrc: MHDRC RTL version 2.0<br>
+musb-hdrc: setup fifo_mode 4<br>
+musb-hdrc: 28/31 max ep, 16384/16384 memory<br>
+USB Peripheral mode controller at 47401000 using PIO, IRQ 0<br>
+musb-hdrc: ConfigData=0xde (UTMI-8, dyn FIFOs, HB-ISO Rx, HB-ISO Tx, SoftConn)<br>
+musb-hdrc: MHDRC RTL version 2.0<br>
+musb-hdrc: setup fifo_mode 4<br>
+musb-hdrc: 28/31 max ep, 16384/16384 memory<br>
+USB Host mode controller at 47401800 using PIO, IRQ 0<br>
+Net:    not set. Validating first E-fuse MAC<br>
+cpsw, usb_ether<br>
+Hit any key to stop autoboot:  0<br>
+gpio: pin 53 (gpio 53) value is 1<br>
+Card did not respond to voltage select!<br>
+mmc0(part 0) is current device<br>
+Card did not respond to voltage select!<br>
+No micro SD card found, setting mmcdev to 1<br>
+mmc_send_cmd : timeout: No status update<br>
+mmc1(part 0) is current device<br>
+mmc_send_cmd : timeout: No status update<br>
+gpio: pin 54 (gpio 54) value is 1<br>
+SD/MMC found on device 1<br>
+reading uEnv.txt<br>
+26 bytes read in 3 ms (7.8 KiB/s)<br>
+Loaded environment from uEnv.txt<br>
+Importing environment from mmc ...<br>
+gpio: pin 55 (gpio 55) value is 1<br>
+4385024 bytes read in 765 ms (5.5 MiB/s)<br>
+gpio: pin 56 (gpio 56) value is 1<br>
+24808 bytes read in 52 ms (465.8 KiB/s)<br>
+Booting from mmc ...<br>
+## Booting kernel from Legacy Image at 80007fc0 ...<br>
+   Image Name:   Angstrom/3.8.13/beaglebone<br>
+   Image Type:   ARM Linux Kernel Image (uncompressed)<br>
+   Data Size:    4384960 Bytes = 4.2 MiB<br>
+   Load Address: 80008000<br>
+   Entry Point:  80008000<br>
+   Verifying Checksum ... OK<br>
+## Flattened Device Tree blob at 80f80000<br>
+   Booting using the fdt blob at 0x80f80000<br>
+   XIP Kernel Image ... OK<br>
+OK<br>
+   Using Device Tree in place at 80f80000, end 80f890e7</p>
+<p>Starting kernel ...</p>
+<p>Uncompressing Linux... done, booting the kernel.<br>
+[    0.196410] omap2_mbox_probe: platform not supported<br>
+[    0.206977] tps65217-bl tps65217-bl: no platform data provided<br>
+[    0.283534] bone-capemgr bone_capemgr.8: slot #0: No cape found<br>
+[    0.320638] bone-capemgr bone_capemgr.8: slot #1: No cape found<br>
+[    0.357748] bone-capemgr bone_capemgr.8: slot #2: No cape found<br>
+[    0.394856] bone-capemgr bone_capemgr.8: slot #3: No cape found<br>
+[    0.414585] bone-capemgr bone_capemgr.8: slot #6: BB-BONELT-HDMIN conflict P8.45 (#5:BB-BONELT-HDMI)<br>
+[    0.424195] bone-capemgr bone_capemgr.8: slot #6: Failed verification<br>
+[    0.444657] omap_hsmmc mmc.4: of_parse_phandle_with_args of 'reset' failed<br>
+[    0.451953] bone-capemgr bone_capemgr.8: loader: failed to load slot-6 BB-BONELT-HDMIN:00A0 (prio 2)<br>
+[    0.518398] pinctrl-single 44e10800.pinmux: pin 44e10854 already requested by 44e10800.pinmux; cannot claim for gpio-leds.7<br>
+[    0.530134] pinctrl-single 44e10800.pinmux: pin-21 (gpio-leds.7) status -22<br>
+[    0.537459] pinctrl-single 44e10800.pinmux: could not request pin 21 on device pinctrl-single</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=291463#respond" onclick="return addComment.moveForm( &quot;comment-291463&quot;, &quot;291463&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Viswanath.B">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-311623">
+		<article id="comment-311623" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="d1729978ee3bc48e0fe03186434d3994_001.dat" srcset="http://1.gravatar.com/avatar/d1729978ee3bc48e0fe03186434d3994?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Maurice Sun</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-311623"><time datetime="2015-07-10T09:56:48+00:00">July 10, 2015 at 09:56</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Hi everyone,<br>
+Except for erasing the eMMC's boot section, can anyone share the procedures about how we can configure or modify the boot loader(u-boot) to decide we want to boot from uSD card?</p>
+<p>Appreciate!</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=311623#respond" onclick="return addComment.moveForm( &quot;comment-311623&quot;, &quot;311623&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Maurice Sun">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-322441">
+		<article id="comment-322441" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="2b3bcc6a833be2cf6b1b60c015af280f" srcset="http://2.gravatar.com/avatar/2b3bcc6a833be2cf6b1b60c015af280f?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Brian Tremaine</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-322441"><time datetime="2015-11-13T18:04:56+00:00">November 13, 2015 at 18:04</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>I'm using a BBB to profile the performance of an algorithm that will go into a AM3358 board. I'm not getting the integer performance I expect with a 1Ghz processor. Is there a way to verify if the cache is enabled on the BBB? I've searched for days and see some references to UBOOT turning cache off but I haven't seen anything on code changes to enable cache.</p>
+<p>Thanks,<br>
+Brian</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=322441#respond" onclick="return addComment.moveForm( &quot;comment-322441&quot;, &quot;322441&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Brian Tremaine">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-325786">
+		<article id="comment-325786" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="72f75587719d86d8cdcf2f0d17dc1941" srcset="http://1.gravatar.com/avatar/72f75587719d86d8cdcf2f0d17dc1941?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Reza</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-325786"><time datetime="2016-02-02T22:46:27+00:00">February 2, 2016 at 22:46</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Dear All<br>
+I'm beginner with beaglebone. Maybe my question is ridiculous for you…<br>
+Some forums noted the following instruction to convert a SD Card image to eMMC flasher:<br>
+In /boot/uEnv.txt:<br>
+##enable BBB: eMMC Flasher:<br>
+#cmdline=init=/opt/scripts/tools/eMMC/init-eMMC-flasher-v3.sh<br>
+Change to:<br>
+##enable BBB: eMMC Flasher:<br>
+cmdline=init=/opt/scripts/tools/eMMC/init-eMMC-flasher-v3.sh</p>
+<p>How should I reach to "/boot/uEnv.txt" from a windows computer and delete the # from the mentioned line?!<br>
+Regards</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=325786#respond" onclick="return addComment.moveForm( &quot;comment-325786&quot;, &quot;325786&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Reza">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-twam bypostauthor even depth-2" id="li-comment-325809">
+		<article id="comment-325809" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f1f1b5a4161ee3e457fdb791257f76a3_001.dat" srcset="http://0.gravatar.com/avatar/f1f1b5a4161ee3e457fdb791257f76a3?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://www.twam.info/" rel="external nofollow" class="url">twam</a></span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-325809"><time datetime="2016-02-03T17:57:09+00:00">February 3, 2016 at 17:57</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Just connect the SD Card to your Windows PC (e.g. by a USB SD Card reader). The Filesystem of /boot should appear as a drive as it is FAT formatted.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=325809#respond" onclick="return addComment.moveForm( &quot;comment-325809&quot;, &quot;325809&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to twam">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-325957">
+		<article id="comment-325957" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="114bf6c465507ce86192b44df1d5567e" srcset="http://1.gravatar.com/avatar/114bf6c465507ce86192b44df1d5567e?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Rajesh.D</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-325957"><time datetime="2016-02-14T13:28:23+00:00">February 14, 2016 at 13:28</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>I am new in bbb, when the time of booting from sd card I got this error..(timeout error).<br>
+TFTP from server 192.168.0.101; our IP address is 192.168.0.101<br>
+Filename 'uImage'.<br>
+Load address: 0x80200000<br>
+Loading: cpsw Waiting for PHY auto negotiation to complete......... TIMEOUT !<br>
+cpsw Waiting for PHY auto negotiation to complete......... TIMEOUT !<br>
+cpsw Waiting for PHY auto negotiation to complete......... TIMEOUT !<br>
+T cpsw Waiting for PHY auto negotiation to complete......... TIMEOUT !<br>
+cpsw Waiting for PHY auto negotiation to complete......... TIMEOUT !<br>
+cpsw Waiting for PHY auto negotiation to complete.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=325957#respond" onclick="return addComment.moveForm( &quot;comment-325957&quot;, &quot;325957&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Rajesh.D">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-twam bypostauthor even depth-2" id="li-comment-325958">
+		<article id="comment-325958" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f1f1b5a4161ee3e457fdb791257f76a3_001.dat" srcset="http://0.gravatar.com/avatar/f1f1b5a4161ee3e457fdb791257f76a3?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://www.twam.info/" rel="external nofollow" class="url">twam</a></span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-325958"><time datetime="2016-02-14T13:31:19+00:00">February 14, 2016 at 13:31</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Looks like you're having at least two problems:<br>
+Your IP and the IP of your TFTP server are the same. And for some reason auto negotiation does not complete. Maybe your cable is not plugged in or the other side does not understand auto negotiation.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=325958#respond" onclick="return addComment.moveForm( &quot;comment-325958&quot;, &quot;325958&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to twam">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-326204">
+		<article id="comment-326204" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="3cbb1a602ae6178f58362e418b9fc113" srcset="http://0.gravatar.com/avatar/3cbb1a602ae6178f58362e418b9fc113?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">eric</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-326204"><time datetime="2016-03-03T12:26:42+00:00">March 3, 2016 at 12:26</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Hi,<br>
+This is the most clear document I have ever seen these 5 days.<br>
+Thank you.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=326204#respond" onclick="return addComment.moveForm( &quot;comment-326204&quot;, &quot;326204&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to eric">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-326240">
+		<article id="comment-326240" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="0c7bac3d08bdb122989ef47e5b83fd46" srcset="http://0.gravatar.com/avatar/0c7bac3d08bdb122989ef47e5b83fd46?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Jakub</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-326240"><time datetime="2016-03-06T16:00:43+00:00">March 6, 2016 at 16:00</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Hello,</p>
+<p>I have a problem with the boot BBB if you connect to pin P8 (40 41 42 43) UNL motor driver board will not boot. I think it's bootable control pins used for HDMI. I have HDMI banned in uEnv.txt. If I connect UNL to boot everything works. What should I do?</p>
+<p>I apologize for my English.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=326240#respond" onclick="return addComment.moveForm( &quot;comment-326240&quot;, &quot;326240&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Jakub">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-327215">
+		<article id="comment-327215" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="add25531a3c236484883935ea00ff495" srcset="http://1.gravatar.com/avatar/add25531a3c236484883935ea00ff495?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">g3blv</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-327215"><time datetime="2016-04-03T15:54:49+00:00">April 3, 2016 at 15:54</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Hi Tobias,</p>
+<p>I'm running Ubuntu 14.04 on a BBB. I'm booting from a MircroSD card. It works fine when I'm holding down the S2 button but I would like to have it always booting from the MicroSD card. I've cleared the MMC partion with "sudo dd if=/dev/zero of=/dev/mmcblk1 bs=1024 count=1024" but I doesn't boot up. It still boots up fine from the MicroSD card by holding down the S2 button. Are there any other configurations I need to do to make it boot from the MircoSD card?</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=327215#respond" onclick="return addComment.moveForm( &quot;comment-327215&quot;, &quot;327215&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to g3blv">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-twam bypostauthor even depth-2" id="li-comment-327218">
+		<article id="comment-327218" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f1f1b5a4161ee3e457fdb791257f76a3_001.dat" srcset="http://0.gravatar.com/avatar/f1f1b5a4161ee3e457fdb791257f76a3?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://www.twam.info/" rel="external nofollow" class="url">twam</a></span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-327218"><time datetime="2016-04-03T18:24:41+00:00">April 3, 2016 at 18:24</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Usually this should work? Did you try to read the data from the eMMC and check if it is really all 0?</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=327218#respond" onclick="return addComment.moveForm( &quot;comment-327218&quot;, &quot;327218&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to twam">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-327251">
+		<article id="comment-327251" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="add25531a3c236484883935ea00ff495" srcset="http://1.gravatar.com/avatar/add25531a3c236484883935ea00ff495?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">g3blv</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-327251"><time datetime="2016-04-04T07:46:09+00:00">April 4, 2016 at 07:46</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Here is the output from lsblk, mmcblk1 beeing the eMMC and mmcblk0 being the MicroSD card. Checking in GParted I can see that mmcblk1 is "unallocated". </p>
+<p>NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT<br>
+mmcblk1boot0 179:16   0     1M  1 disk<br>
+mmcblk1boot1 179:24   0     1M  1 disk<br>
+mmcblk0      179:0    0   7.4G  0 disk<br>
+├─mmcblk0p1  179:1    0     1M  0 part /boot/uboot<br>
+└─mmcblk0p2  179:2    0   7.4G  0 part /<br>
+mmcblk1      179:8    0   1.8G  0 disk</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=327251#respond" onclick="return addComment.moveForm( &quot;comment-327251&quot;, &quot;327251&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to g3blv">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-twam bypostauthor even depth-2" id="li-comment-327274">
+		<article id="comment-327274" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f1f1b5a4161ee3e457fdb791257f76a3_001.dat" srcset="http://0.gravatar.com/avatar/f1f1b5a4161ee3e457fdb791257f76a3?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://www.twam.info/" rel="external nofollow" class="url">twam</a></span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-327274"><time datetime="2016-04-04T17:24:47+00:00">April 4, 2016 at 17:24</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Maybe you have to wipe the mmcblk1bootX partitions as well. I do <strong>not</strong> remember seeing them on my BBB, but maybe you have a newer kernel with some special support for those (see <a href="https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/Documentation/mmc/mmc-dev-parts.txt?id=refs/tags/v4.2.4" rel="nofollow">https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/Documentation/mmc/mmc-dev-parts.txt?id=refs/tags/v4.2.4</a>).</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=327274#respond" onclick="return addComment.moveForm( &quot;comment-327274&quot;, &quot;327274&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to twam">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-327804">
+		<article id="comment-327804" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="5452cdd4c1b3e7d666b9e1af5fc40ded" srcset="http://2.gravatar.com/avatar/5452cdd4c1b3e7d666b9e1af5fc40ded?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Raphael</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-327804"><time datetime="2016-04-13T11:43:23+00:00">April 13, 2016 at 11:43</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Hi Tobias,</p>
+<p>First, let me congratulate you for the quality of your post. I'm facing a question and I need your opinion if possible.</p>
+<p>I've in hand a BBB bought in december 2014. It works fine and boot from the Onboard eMMC (Debian 7). Recently, I've downloaded a new Debian ISO and flashed it on an external SD (Debian 8).<br>
+If I insert the SD in the BBB, the board boots from the SD, and not on the eMMC as it should be or explained in yout article:<br>
+1. MMC1 (onboard eMMC),<br>
+2.MMC0 (microSD),<br>
+3.UART0,<br>
+4.USB0.</p>
+<p>I mention that i do not use the S2 switch. If I remove the SD, it boots from the eMMC.</p>
+<p>As you explained, it should boot by defaut from the eMMC, Did I miss Something ?</p>
+<p>Thanks.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=327804#respond" onclick="return addComment.moveForm( &quot;comment-327804&quot;, &quot;327804&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Raphael">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-twam bypostauthor even depth-2" id="li-comment-327809">
+		<article id="comment-327809" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f1f1b5a4161ee3e457fdb791257f76a3_001.dat" srcset="http://0.gravatar.com/avatar/f1f1b5a4161ee3e457fdb791257f76a3?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://www.twam.info/" rel="external nofollow" class="url">twam</a></span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-327809"><time datetime="2016-04-13T19:57:46+00:00">April 13, 2016 at 19:57</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>The BBB should load U-Boot from the eMMC, but the config file there could make U-Boot try to boot a Linux from your SD card. Then it would look like everything is booting from SD card.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=327809#respond" onclick="return addComment.moveForm( &quot;comment-327809&quot;, &quot;327809&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to twam">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-328731">
+		<article id="comment-328731" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f28cd4cb5c4347d2ee33712ca1dbb5bf" srcset="http://0.gravatar.com/avatar/f28cd4cb5c4347d2ee33712ca1dbb5bf?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Mich</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-328731"><time datetime="2016-05-25T03:34:57+00:00">May 25, 2016 at 03:34</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>With no SD card, my BBB boots from eMMC just fine.</p>
+<p>With a SD card my BBB boots from eMMC, unless I press S2 (in which case it correctly boots from the SD card.)</p>
+<p>I'm trying to boot from the SD card without pressing S2, and without disturbing the eMMC partition (so that it can still boot from eMMC in case no SD card is inserted.)</p>
+<p>Can this be done by editing the (right now empty) file 'uEnv.txt' in the 'boot' directory of /dev/mmcblk0p1 ?</p>
+<p>mmcdev=0<br>
+bootpart=0:1<br>
+mmcroot=/dev/mmcblk0p1 ro</p>
+<p>...but it's not working. Any help is welcome!</p>
+<p>My SD card hold Ubuntu Snappy, so:</p>
+<p>mmcblk0p1: fa32 boot partition<br>
+mmcblk0p2: ext4 system 'A'<br>
+mmcblk0p3: ext4 system 'B'<br>
+mmcblk0p4: ext4 'writable'</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=328731#respond" onclick="return addComment.moveForm( &quot;comment-328731&quot;, &quot;328731&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Mich">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment even depth-2" id="li-comment-328732">
+		<article id="comment-328732" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f28cd4cb5c4347d2ee33712ca1dbb5bf_001.dat" srcset="http://0.gravatar.com/avatar/f28cd4cb5c4347d2ee33712ca1dbb5bf?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn">Mich</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-328732"><time datetime="2016-05-25T03:36:44+00:00">May 25, 2016 at 03:36</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Do I need to do more than just edit 'uEnv.txt' on the SD card, like do I need to copy MLO or a uboot.img onto the SD card too?</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=328732#respond" onclick="return addComment.moveForm( &quot;comment-328732&quot;, &quot;328732&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Mich">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt depth-2" id="li-comment-328733">
+		<article id="comment-328733" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="f28cd4cb5c4347d2ee33712ca1dbb5bf_001.dat" srcset="http://0.gravatar.com/avatar/f28cd4cb5c4347d2ee33712ca1dbb5bf?s=78&amp;d=mm&amp;r=g 2x" class="avatar avatar-39 photo" height="39" width="39"><span class="fn">Mich</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-328733"><time datetime="2016-05-25T03:55:36+00:00">May 25, 2016 at 03:55</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>By 'doesnt work' I mean that the boot sequence continues booting eMMC as if the lines in the SD card's uEnv.txt (mmcdev=0 ...) don't exist.</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=328733#respond" onclick="return addComment.moveForm( &quot;comment-328733&quot;, &quot;328733&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to Mich">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-329254">
+		<article id="comment-329254" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="9137319547f8668fb83aa2a958befad7" srcset="http://0.gravatar.com/avatar/9137319547f8668fb83aa2a958befad7?s=136&amp;d=mm&amp;r=g 2x" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">suraj rajput</span> on <a href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#comment-329254"><time datetime="2016-06-17T07:36:09+00:00">June 17, 2016 at 07:36</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Hi all,<br>
+    Am new to BBB at start am getting this kind of error plz help guys what to do<br>
+U-Boot SPL 2016.05 (Jun 15 2016 - 14:47:02)<br>
+Trying to boot from MMC2<br>
+reading args<br>
+spl_load_image_fat_os: error reading image args, err - -1<br>
+reading u-boot.img<br>
+spl_load_image_fat: error reading image u-boot.img, err - -1<br>
+Failed to mount ext2 filesystem...<br>
+spl_load_image_ext_os: ext4fs mount err - 0<br>
+Failed to mount ext2 filesystem...<br>
+spl_load_image_ext: ext4fs mount err - 0</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black?replytocom=329254#respond" onclick="return addComment.moveForm( &quot;comment-329254&quot;, &quot;329254&quot;, &quot;respond&quot;, &quot;2944&quot; )" aria-label="Reply to suraj rajput">Reply <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+		</ol>
+
+		
+		
+	
+	<div id="respond-form">
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black#respond" style="display: none;">Cancel reply</a></small></h3>				<form action="http://www.twam.info/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" value="" size="30" maxlength="245" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" value="" size="30" maxlength="200" type="text"></p>
+<p class="form-submit"><input name="submit" id="submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="2944" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="be1b43b4b3" type="hidden"></p><p style="display: none;"></p>				<input id="ak_js" name="ak_js" value="1467107460450" type="hidden"></form>
+					</div><!-- #respond -->
+			</div>
+</div><!-- #comments -->
+
+				
+			</div><!-- #content -->
+		</div><!-- #primary -->
+
+
+	</div><!-- #main -->
+
+	<footer id="colophon" role="contentinfo">
+
+			
+
+				</footer><!-- #colophon -->
+</div><iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="index_4.html" id="oauth2relay301267707" name="oauth2relay301267707"></iframe><!-- #page -->
+
+<!-- MathJax Latex Plugin installed: Disabled as no shortcodes on this page -->
+
+
+
+
+
+
+
+
+<iframe src="index_5.html" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" allowfullscreen="true" allowtransparency="true" scrolling="no" id="rufous-sandbox" frameborder="0"></iframe></body>
+</html>

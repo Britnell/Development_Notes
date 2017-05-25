@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html xmlns:expr="http://www.google.com/2005/gml/expr" xmlns:data="http://www.google.com/2005/gml/data" xmlns:b="http://www.google.com/2005/gml/b" xmlns="http://www.w3.org/1999/xhtml" dir="ltr" class="v2">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta content="width=1100" name="viewport">
+
+<meta content="blogger" name="generator">
+<link href="favicon.ico" rel="icon" type="image/x-icon">
+<link href="http://www.tutorialbyexample.com/2016/02/fatal-SSH-Error-Permission-denied-publickey-gssapi-keyex-gssapi-with-mic-password-in-ansible-playbook-yml.html" rel="canonical">
+<link rel="alternate" type="application/atom+xml" title="Tutorial By Example - Atom" href="http://www.tutorialbyexample.com/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="Tutorial By Example - RSS" href="http://www.tutorialbyexample.com/feeds/posts/default?alt=rss">
+<link rel="service.post" type="application/atom+xml" title="Tutorial By Example - Atom" href="https://www.blogger.com/feeds/290552782653817209/posts/default">
+
+<link rel="alternate" type="application/atom+xml" title="Tutorial By Example - Atom" href="http://www.tutorialbyexample.com/feeds/1272535482925052859/comments/default">
+<!--[if IE]><script type="text/javascript" src="https://www.blogger.com/static/v1/jsbin/1803938243-ieretrofit.js"></script>
+<![endif]-->
+<link href="https://1.bp.blogspot.com/-o8SCm9avlBg/Vr0SnDmeSLI/AAAAAAAAAlU/3aQa9Qg27kY/s320/fatal-localhost-SSH%2BError%2BPermission%2Bdenied%2B%2528publickey%252Cgssapi-keyex%252Cgssapi-with-mic%252Cpassword%2529..png" rel="image_src">
+<meta content="fatal: [localhost] => SSH Error: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password)., ansible, ssh, example and error in Unix." name="description">
+<meta content="http://www.tutorialbyexample.com/2016/02/fatal-SSH-Error-Permission-denied-publickey-gssapi-keyex-gssapi-with-mic-password-in-ansible-playbook-yml.html" property="og:url">
+<meta content="https://1.bp.blogspot.com/-o8SCm9avlBg/Vr0SnDmeSLI/AAAAAAAAAlU/3aQa9Qg27kY/w1200-h630-p-nu/fatal-localhost-SSH%2BError%2BPermission%2Bdenied%2B%2528publickey%252Cgssapi-keyex%252Cgssapi-with-mic%252Cpassword%2529..png" property="og:image">
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
+<title>Tutorial By Example: fatal: [localhost] =&gt; SSH Error: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).</title>
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class=" variant-open">
+<!-- <script>window.alert(&quot;This site uses cookies from Google to deliver its services, to personalise ads and to analyse traffic. Information about your use of this site is shared with Google. By using this site, you agree to its use of cookies. For more see https://ico.org.uk/concerns/cookies/&quot;); </script> -->
+<!--<b:section class='navbar' id='navbar' maxwidgets='1' showaddelement='no'> <b:widget id='Navbar1' locked='true' title='Navbar' type='Navbar'> <b:includable id='main'>&lt;script type=&quot;text/javascript&quot;&gt; function setAttributeOnload(object, attribute, val) { if(window.addEventListener) { window.addEventListener(&#39;load&#39;, function(){ object[attribute] = val; }, false); } else { window.attachEvent(&#39;onload&#39;, function(){ object[attribute] = val; }); } } &lt;/script&gt; &lt;div id=&quot;navbar-iframe-container&quot;&gt;&lt;/div&gt; &lt;script type=&quot;text/javascript&quot; src=&quot;https://apis.google.com/js/plusone.js&quot;&gt;&lt;/script&gt; &lt;script type=&quot;text/javascript&quot;&gt; gapi.load(&quot;gapi.iframes:gapi.iframes.style.bubble&quot;, function() { if (gapi.iframes &amp;&amp; gapi.iframes.getContext) { gapi.iframes.getContext().openChild({ url: &#39;https://www.blogger.com/navbar.g?targetBlogID\075290552782653817209\46blogName\75Tutorial+By+Example\46publishMode\75PUBLISH_MODE_HOSTED\46navbarType\75DISABLED\46layoutType\75LAYOUTS\46searchRoot\75http://www.tutorialbyexample.com/search\46blogLocale\75en_GB\46v\0752\46homepageUrl\75http://www.tutorialbyexample.com/\46blogFollowUrl\75https://plus.google.com/105832298173201712629\46vt\0754244383696064555852&#39;, where: document.getElementById(&quot;navbar-iframe-container&quot;), id: &quot;navbar-iframe&quot; }); } }); &lt;/script&gt;&lt;script type=&quot;text/javascript&quot;&gt; (function() { var script = document.createElement(&#39;script&#39;); script.type = &#39;text/javascript&#39;; script.src = &#39;//pagead2.googlesyndication.com/pagead/js/google_top_exp.js&#39;; var head = document.getElementsByTagName(&#39;head&#39;)[0]; if (head) { head.appendChild(script); }})(); &lt;/script&gt; </b:includable> </b:widget> </b:section>-->
+<div class="body-fauxcolumns">
+<div class="fauxcolumn-outer body-fauxcolumn-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</div>
+<div class="content">
+<div class="content-fauxcolumns">
+<div class="fauxcolumn-outer content-fauxcolumn-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</div>
+<div class="content-outer">
+<div class="content-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left content-fauxborder-left">
+<div class="fauxborder-right content-fauxborder-right"></div>
+<div class="content-inner">
+<header>
+<div class="header-outer">
+<div class="header-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left header-fauxborder-left">
+<div class="fauxborder-right header-fauxborder-right"></div>
+<div class="region-inner header-inner">
+<div class="header section" id="header"><div class="widget Header" data-version="1" id="Header1">
+<div id="header-inner">
+<div class="titlewrapper">
+<h1 class="title">
+<a href="http://www.tutorialbyexample.com/">Tutorial By Example</a>
+</h1>
+</div>
+<div class="descriptionwrapper">
+<p class="description"><span>Web Services, Agile Scrum, Java, Spring, Hibernet, Open Source &amp; All.  
+</span></p>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="header-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</header>
+<div class="tabs-outer">
+<div class="tabs-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left tabs-fauxborder-left">
+<div class="fauxborder-right tabs-fauxborder-right"></div>
+<div class="region-inner tabs-inner">
+<div class="tabs section" id="crosscol"><div class="widget PageList" data-version="1" id="PageList2">
+<h2>Pages</h2>
+<div class="widget-content">
+<ul>
+<li><a href="http://www.tutorialbyexample.com/">Home</a></li>
+<li><a href="http://www.tutorialbyexample.com/p/videos.html">Videos</a></li>
+<li><a href="http://www.tutorialbyexample.com/p/web-services-soap-rest.html">Web Services</a></li>
+<li><a href="http://www.tutorialbyexample.com/p/jmeter-tutorial-example-java-ws.html">JMeter</a></li>
+<li><a href="http://www.tutorialbyexample.com/p/soapui-webservices-tutorial-testing.html">SoapUI</a></li>
+<li><a href="http://www.tutorialbyexample.com/p/agile-scrum.html">Agile Scrum</a></li>
+<li><a href="http://www.tutorialbyexample.com/p/java-tutorial-example-program-code.html">Java</a></li>
+<li><a href="http://www.tutorialbyexample.com/p/examples-tutorials-java.html">Blog</a></li>
+<li><a href="http://www.tutorialbyexample.com/p/contact-us.html">Contact Us</a></li>
+<li><a href="http://www.tutorialbyexample.com/p/cookies.html">Concerns &gt; Cookies</a></li>
+</ul>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=290552782653817209&amp;widgetType=PageList&amp;widgetId=PageList2&amp;action=editWidget&amp;sectionId=crosscol" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;PageList2&quot;));" target="configPageList2" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div></div>
+<div class="tabs no-items section" id="crosscol-overflow"></div>
+</div>
+</div>
+<div class="tabs-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<div class="main-outer">
+<div class="main-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left main-fauxborder-left">
+<div class="fauxborder-right main-fauxborder-right"></div>
+<div class="region-inner main-inner">
+<div class="columns fauxcolumns">
+<div class="fauxcolumn-outer fauxcolumn-center-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<div class="fauxcolumn-outer fauxcolumn-left-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<div class="fauxcolumn-outer fauxcolumn-right-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<!-- corrects IE6 width calculation -->
+<div class="columns-inner">
+<div class="column-center-outer">
+<div class="column-center-inner">
+<div class="main section" id="main"><div id="uds-searchControl"><a name="uds-search-results"></a><div id="uds-searchResults"><div dir="ltr" class="gsc-control"><div class="gsc-results-wrapper-nooverlay"><div class="gsc-tabsAreaInvisible"><div class="gsc-tabHeader gsc-inline-block gsc-tabhActive">This Blog</div><span class="gs-spacer"> </span><div class=" gsc-tabHeader gsc-tabhInactive gsc-inline-block" tabindex="0">Linked From Here</div><span class="gs-spacer"> </span><div class=" gsc-tabHeader gsc-tabhInactive gsc-inline-block" tabindex="0">The Web</div><span class="gs-spacer"> </span></div><div class="gsc-above-wrapper-area-invisible"><table class="gsc-above-wrapper-area-container" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td></tr></tbody></table></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><table class="gsc-resultsHeader" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">This Blog</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-more-results-active"><div title="show one result" class="gsc-result-selector gsc-one-result">&nbsp;</div><div title="show more results" class="gsc-result-selector gsc-more-results">&nbsp;</div><div title="show all results" class="gsc-result-selector gsc-all-results">&nbsp;</div></div></td><td class="gsc-configLabelCell"></td></tr></tbody></table><div><div class="gsc-expansionArea"></div></div></div><div class="gsc-resultsRoot gsc-tabData gsc-tabdInactive"><table class="gsc-resultsHeader" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">Linked From Here</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-more-results-active"><div title="show one result" class="gsc-result-selector gsc-one-result">&nbsp;</div><div title="show more results" class="gsc-result-selector gsc-more-results">&nbsp;</div><div title="show all results" class="gsc-result-selector gsc-all-results">&nbsp;</div></div></td><td class="gsc-configLabelCell"></td></tr></tbody></table><div><div class="gsc-expansionArea"></div></div></div><div class="gsc-resultsRoot gsc-tabData gsc-tabdInactive"><table class="gsc-resultsHeader" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">The Web</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-more-results-active"><div title="show one result" class="gsc-result-selector gsc-one-result">&nbsp;</div><div title="show more results" class="gsc-result-selector gsc-more-results">&nbsp;</div><div title="show all results" class="gsc-result-selector gsc-all-results">&nbsp;</div></div></td><td class="gsc-configLabelCell"></td></tr></tbody></table><div><div class="gsc-expansionArea"></div></div></div></div></div></div></div><div style="display: none;" class="gsc-clear-button" id="uds-searchClearResults">&nbsp;</div></div><div class="widget Blog" data-version="1" id="Blog1">
+<div class="blog-posts hfeed">
+
+          <div class="date-outer">
+        
+
+          <div class="date-posts">
+        
+<div class="post-outer">
+<div class="post hentry" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<meta content="https://1.bp.blogspot.com/-o8SCm9avlBg/Vr0SnDmeSLI/AAAAAAAAAlU/3aQa9Qg27kY/s320/fatal-localhost-SSH%2BError%2BPermission%2Bdenied%2B%2528publickey%252Cgssapi-keyex%252Cgssapi-with-mic%252Cpassword%2529..png" itemprop="image_url">
+<meta content="290552782653817209" itemprop="blogId">
+<meta content="1272535482925052859" itemprop="postId">
+<a name="1272535482925052859"></a>
+<h3 class="post-title entry-title" itemprop="name">
+fatal: [localhost] =&gt; SSH Error: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).
+</h3>
+<div class="post-header">
+<div class="post-header-line-1"></div>
+</div>
+<div class="post-body entry-content" id="post-body-1272535482925052859" itemprop="articleBody">
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://1.bp.blogspot.com/-o8SCm9avlBg/Vr0SnDmeSLI/AAAAAAAAAlU/3aQa9Qg27kY/s1600/fatal-localhost-SSH%2BError%2BPermission%2Bdenied%2B%2528publickey%252Cgssapi-keyex%252Cgssapi-with-mic%252Cpassword%2529..png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img alt="fatal-localhost-SSH Error Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password)." src="fatal-localhost-ssh@2berror@2bpermission@2bdenied@2b@2528publickey@252cgssapi-keyex@252cgssapi-with-mic@252cpassword@2529..png" title="fatal-localhost-SSH Error Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password)." border="0" height="171" width="320"></a></div>
+<br>
+<br>
+Following are the solution of "<b>fatal: [localhost] =&gt; SSH Error: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).</b>":<br>
+<div>
+
+<!-- body_big -->
+<br>
+<ins data-adsbygoogle-status="done" class="adsbygoogle" data-ad-client="ca-pub-6751841053897580" data-ad-format="auto" data-ad-slot="1410091551" style="display: block; height: 60px;"><ins id="aswift_0_expand" style="display: inline-table; border: medium none; height: 60px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 688px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 60px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 688px; background-color: transparent;"><iframe src="index_1.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_0" name="aswift_0" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="60" width="688"></iframe></ins></ins></ins>
+</div>
+<h4 style="text-align: left;">
+Video:</h4>
+<div class="separator" style="clear: both; text-align: center;">
+<iframe class="YOUTUBE-iframe-video" data-thumbnail-src="https://i.ytimg.com/vi/k1RH6MXOy1c/0.jpg" src="index_2.html" allowfullscreen="" frameborder="0" height="266" width="320"></iframe></div>
+<div>
+<br></div>
+<h4 style="text-align: left;">
+<span style="color: purple;">Create the files likewise mention bellow:</span></h4>
+[root@vagrant-centos65 vagrant]# pwd<br>
+/home/vagrant<br>
+[root@vagrant-centos65 vagrant]# ls -R<br>
+.:<br>
+hosts &nbsp;provision.sh &nbsp;tutorialbyexample.yml<br>
+<div>
+<br></div>
+<div>
+or</div>
+<div>
+<br></div>
+<div>
+<div>
+[root@vagrant-centos65 vagrant]# ls -ltr</div>
+<div>
+total 12</div>
+<div>
+-rw-r--r-- 1 root root 342 Feb 11 21:50 hosts</div>
+<div>
+-rw-r--r-- 1 root root 854 Feb 11 21:50 tutorialbyexample.yml</div>
+<div>
+-rwxrwxrwx 1 root root 141 Feb 11 21:55 provision.sh</div>
+</div>
+<div>
+<br></div>
+<div>
+<span style="color: purple;">Add the contents in files like:</span></div>
+<div>
+<span style="color: purple;"><br></span></div>
+<div>
+<div style="color: purple;">
+vi hosts</div>
+<div style="color: purple;">
+<br></div>
+<div>
+<div>
+# This is the default ansible 'hosts' file.</div>
+<div>
+#</div>
+<div>
+# It should live in /etc/ansible/hosts</div>
+<div>
+#</div>
+<div>
+# &nbsp; - Comments begin with the '#' character</div>
+<div>
+# &nbsp; - Blank lines are ignored</div>
+<div>
+# &nbsp; - Groups of hosts are delimited by [header] elements</div>
+<div>
+# &nbsp; - You can enter hostnames or ip addresses</div>
+<div>
+# &nbsp; - A hostname/ip can be a member of multiple groups</div>
+<div>
+<br></div>
+<div>
+[local-1]</div>
+<div>
+localhost</div>
+</div>
+<div style="color: purple;">
+<br></div>
+</div>
+<div>
+Save the file.&nbsp;</div>
+<div>
+<br></div>
+<div>
+<h4 style="text-align: left;">
+<span style="color: purple;">&nbsp;vi tutorialbyexample.yml</span></h4>
+</div>
+<div>
+<br></div>
+<div>
+<div>
+# &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This yml file is used for &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+<div>
+# &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Created by: Vinod Kumar &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div>
+<div>
+##################################################################</div>
+<div>
+---</div>
+<div>
+- hosts: local-1</div>
+<div>
+&nbsp; sudo: yes</div>
+<div>
+&nbsp; vars:</div>
+<div>
+<br></div>
+<div>
+##################################################################</div>
+<div>
+# This is the task section for all activities</div>
+<div>
+##################################################################</div>
+<div>
+&nbsp; tasks:</div>
+<div>
+<br></div>
+<div>
+&nbsp; &nbsp; &nbsp;# #############################################################</div>
+<div>
+&nbsp; &nbsp; &nbsp;# This is for host checking alive or not</div>
+<div>
+&nbsp; &nbsp; &nbsp;# #############################################################</div>
+<div>
+&nbsp; &nbsp; &nbsp;- name: 1. Check that the servers alive</div>
+<div>
+&nbsp; &nbsp; &nbsp; &nbsp;action: ping</div>
+<div>
+<br></div>
+<div>
+&nbsp; &nbsp; &nbsp;# #############################################################</div>
+</div>
+<div>
+</div>
+<div>
+
+<!-- body_big -->
+<br>
+<ins data-adsbygoogle-status="done" class="adsbygoogle" data-ad-client="ca-pub-6751841053897580" data-ad-format="auto" data-ad-slot="1410091551" style="display: block; height: 60px;"><ins id="aswift_1_expand" style="display: inline-table; border: medium none; height: 60px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 688px; background-color: transparent;"><ins id="aswift_1_anchor" style="display: block; border: medium none; height: 60px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 688px; background-color: transparent;"><iframe src="index_7.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_1" name="aswift_1" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="60" width="688"></iframe></ins></ins></ins>
+</div>
+<div>
+<h4 style="text-align: left;">
+<span style="color: purple;">&nbsp;vi provision.sh</span></h4>
+</div>
+<div>
+<div>
+cp -rf /home/vagrant/hosts /tmp</div>
+<div>
+chmod -x /tmp/hosts</div>
+<div>
+sudo ansible-playbook -vvvv -i /tmp/hosts /home/vagrant/tutorialbyexample.yml -u root -k</div>
+<div style="color: purple;">
+<br></div>
+<h4 style="color: purple; text-align: left;">
+<br><span style="color: purple;">Run it provision.sh and provide the password.</span></h4>
+</div>
+<div>
+[root@vagrant-centos65 vagrant]# ./provision.sh</div>
+<div>
+SSH password:</div>
+<div>
+<div>
+<br></div>
+<div>
+PLAY [local-1] ****************************************************************</div>
+<div>
+<br></div>
+<div>
+GATHERING FACTS ***************************************************************</div>
+<div>
+&lt;localhost&gt; ESTABLISH CONNECTION FOR USER: root</div>
+<div>
+&lt;localhost&gt; REMOTE_MODULE setup</div>
+<div>
+&lt;localhost&gt; EXEC sshpass -d4 ssh -C -tt -vvv -o ControlMaster=auto -o ControlPersist=60s -o ControlPath="/root/.ansible/cp/ansible-ssh-%h-%p-%r" -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no -o PubkeyAuthentication=no -o ConnectTimeout=10 localhost /bin/sh -c 'mkdir -p $HOME/.ansible/tmp/ansible-tmp-1455228622.12-15128046797845 &amp;&amp; echo $HOME/.ansible/tmp/ansible-tmp-1455228622.12-15128046797845'</div>
+<div>
+&lt;localhost&gt; PUT /tmp/tmpQBbGli TO /root/.ansible/tmp/ansible-tmp-1455228622.12-15128046797845/setup</div>
+<div>
+&lt;localhost&gt; EXEC sshpass -d4 ssh -C -tt -vvv -o ControlMaster=auto -o ControlPersist=60s -o ControlPath="/root/.ansible/cp/ansible-ssh-%h-%p-%r" -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no -o PubkeyAuthentication=no -o ConnectTimeout=10 localhost /bin/sh -c 'sudo -k &amp;&amp; sudo -H -S -p "[sudo via ansible, key=oxmfsjkdmwkijahkrvcznamgmnbjwubl] password: " -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-oxmfsjkdmwkijahkrvcznamgmnbjwubl; LANG=C LC_CTYPE=C /usr/bin/python /root/.ansible/tmp/ansible-tmp-1455228622.12-15128046797845/setup; rm -rf /root/.ansible/tmp/ansible-tmp-1455228622.12-15128046797845/ &gt;/dev/null 2&gt;&amp;1'"'"''</div>
+<div>
+ok: [localhost]</div>
+<div>
+<br></div>
+<div>
+TASK: [1. Check that the servers alive] ***************************************</div>
+<div>
+&lt;localhost&gt; ESTABLISH CONNECTION FOR USER: root</div>
+<div>
+&lt;localhost&gt; REMOTE_MODULE ping</div>
+<div>
+&lt;localhost&gt; EXEC sshpass -d7 ssh -C -tt -vvv -o ControlMaster=auto -o ControlPersist=60s -o ControlPath="/root/.ansible/cp/ansible-ssh-%h-%p-%r" -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no -o PubkeyAuthentication=no -o ConnectTimeout=10 localhost /bin/sh -c 'mkdir -p $HOME/.ansible/tmp/ansible-tmp-1455228644.99-208418987783009 &amp;&amp; echo $HOME/.ansible/tmp/ansible-tmp-1455228644.99-208418987783009'</div>
+<div>
+&lt;localhost&gt; PUT /tmp/tmpyLzvHg TO /root/.ansible/tmp/ansible-tmp-1455228644.99-208418987783009/ping</div>
+<div>
+&lt;localhost&gt; EXEC sshpass -d7 ssh -C -tt -vvv -o ControlMaster=auto -o ControlPersist=60s -o ControlPath="/root/.ansible/cp/ansible-ssh-%h-%p-%r" -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no -o PubkeyAuthentication=no -o ConnectTimeout=10 localhost /bin/sh -c 'sudo -k &amp;&amp; sudo -H -S -p "[sudo via ansible, key=bllzznvgwbdnusqwnapssctiakzilnke] password: " -u root /bin/sh -c '"'"'echo BECOME-SUCCESS-bllzznvgwbdnusqwnapssctiakzilnke; LANG=C LC_CTYPE=C /usr/bin/python /root/.ansible/tmp/ansible-tmp-1455228644.99-208418987783009/ping; rm -rf /root/.ansible/tmp/ansible-tmp-1455228644.99-208418987783009/ &gt;/dev/null 2&gt;&amp;1'"'"''</div>
+<div>
+ok: [localhost] =&gt; {"changed": false, "ping": "pong"}</div>
+<div>
+<br></div>
+<div>
+PLAY RECAP ********************************************************************</div>
+<div>
+localhost &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: ok=2 &nbsp; &nbsp;changed=0 &nbsp; &nbsp;unreachable=0 &nbsp; &nbsp;failed=0</div>
+</div>
+<div>
+<br></div>
+<div>
+<br></div>
+<div>
+Hopping your issue got resolved..if not then put you details.....</div>
+<div>
+<br></div>
+</div>
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1"><span class="post-author vcard">
+Posted by
+<span class="fn" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+<meta content="https://plus.google.com/105832298173201712629" itemprop="url">
+<a data-gapiattached="true" data-onload="true" data-gapiscan="true" class="g-profile" href="https://plus.google.com/105832298173201712629" rel="author" title="author profile">
+<span itemprop="name">Tutorialbyexample</span>
+</a>
+</span>
+</span>
+<span class="post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-1199094459">
+<a href="https://www.blogger.com/post-edit.g?blogID=290552782653817209&amp;postID=1272535482925052859&amp;from=pencil" title="Edit Post">
+<img alt="" class="icon-action" src="icon18_edit_allbkg.gif" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="post-share-buttons goog-inline-block">
+<a class="goog-inline-block share-button sb-email" href="https://www.blogger.com/share-post.g?blogID=290552782653817209&amp;postID=1272535482925052859&amp;target=email" target="_top" title="Email This"><span class="share-button-link-text">Email This</span></a><a class="goog-inline-block share-button sb-blog" href="https://www.blogger.com/share-post.g?blogID=290552782653817209&amp;postID=1272535482925052859&amp;target=blog" onclick="window.open(this.href, &quot;_blank&quot;, &quot;height=270,width=475&quot;); return false;" target="_top" title="BlogThis!"><span class="share-button-link-text">BlogThis!</span></a><a class="goog-inline-block share-button sb-twitter" href="https://www.blogger.com/share-post.g?blogID=290552782653817209&amp;postID=1272535482925052859&amp;target=twitter" target="_top" title="Share to Twitter"><span class="share-button-link-text">Share to Twitter</span></a><a class="goog-inline-block share-button sb-facebook" href="https://www.blogger.com/share-post.g?blogID=290552782653817209&amp;postID=1272535482925052859&amp;target=facebook" onclick="window.open(this.href, &quot;_blank&quot;, &quot;height=430,width=640&quot;); return false;" target="_top" title="Share to Facebook"><span class="share-button-link-text">Share to Facebook</span></a><a class="goog-inline-block share-button sb-pinterest" href="https://www.blogger.com/share-post.g?blogID=290552782653817209&amp;postID=1272535482925052859&amp;target=pinterest" target="_top" title="Share to Pinterest"><span class="share-button-link-text">Share to Pinterest</span></a><div class="goog-inline-block google-plus-share-container"><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 300px; height: 20px;"><iframe title="+1" data-gapiattached="true" src="index_11.html" name="I0_1470150194198" id="I0_1470150194198" vspace="0" tabindex="0" style="position: static; top: 0px; width: 300px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" frameborder="0" width="100%"></iframe></div></div>
+</div>
+<span class="post-backlinks post-comment-link">
+</span>
+</div>
+<div class="post-footer-line post-footer-line-2"><span class="post-labels">
+Labels:
+<a href="http://www.tutorialbyexample.com/search/label/Ansible" rel="tag">Ansible</a>,
+<a href="http://www.tutorialbyexample.com/search/label/DevOps" rel="tag">DevOps</a>,
+<a href="http://www.tutorialbyexample.com/search/label/Open%20Source" rel="tag">Open Source</a>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3"><span class="reaction-buttons">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr>
+<td class="reactions-label-cell" nowrap="nowrap" valign="top" width="1%">
+<span class="reactions-label">
+Reactions:</span>&nbsp;</td>
+<td><iframe allowtransparency="true" class="reactions-iframe" name="reactions" scrolling="no" src="index_12.html" frameborder="0"></iframe></td>
+</tr></tbody></table>
+</span>
+</div>
+</div>
+</div>
+<div class="comments" id="comments">
+<a name="comments"></a>
+<h4>3 comments:</h4>
+<div class="comments-content">
+
+
+<div id="comment-holder">
+
+<div id="bc_0_4C" kind="c"><div id="bc_0_4CT"><div id="bc_0_3T" class="comment-thread" kind="r" t="0" u="0"><ol id="bc_0_3TB"><li id="bc_0_1B" class="comment" kind="b"><div class="avatar-image-container"><img src="blank.gif"></div><div id="c7908601427152579982" class="comment-block"><div id="bc_0_1M" class="comment-header" kind="m"><cite class="user">Anonymous</cite><span class="icon user"></span><span class="datetime secondary-text"><a rel="nofollow" href="http://www.tutorialbyexample.com/2016/02/fatal-SSH-Error-Permission-denied-publickey-gssapi-keyex-gssapi-with-mic-password-in-ansible-playbook-yml.html?showComment=1456603608498#c7908601427152579982">27 February 2016 at 12:06</a></span></div><p id="bc_0_1MC" class="comment-content">Grt...example and video for Ansible, I was facing this issue from long time, tried several way finally resolved by your video by bellow line....<br><br>vi provision.sh<br>cp -rf /home/vagrant/hosts /tmp<br>chmod -x /tmp/hosts<br>sudo ansible-playbook -vvvv -i /tmp/hosts /home/vagrant/tutorialbyexample.yml -u root -k</p><span id="bc_0_1MN" class="comment-actions secondary-text" kind="m"><a kind="i" href="javascript:;" target="_self" o="r">Reply</a><span class="item-control blog-admin pid-1570389456"><a o="d" target="_self" href="https://www.blogger.com/delete-comment.g?blogID=290552782653817209&amp;postID=7908601427152579982">Delete</a></span></span></div><div id="bc_0_1BR" class="comment-replies"><span id="bc_0_1b+seedFaVyD" kind="d"><div id="bc_0_0T" class="comment-thread inline-thread" kind="t" t="0" u="0"><span id="bc_0_0TT" class="thread-toggle thread-expanded" kind="g"><span id="bc_0_0TA" class="thread-arrow"></span><span id="bc_0_0TN" class="thread-count"><span id="bc_0_0TNT" style="display: none;"></span><span id="bc_0_0TNU" style="display: none;"></span><a href="javascript:;" target="_self">Replies</a><div id="bc_0_0TD" class="thread-dropContainer thread-expanded"><span class="thread-drop"></span></div></span></span><ol id="bc_0_0TC" class="thread-chrome thread-expanded"><div><li id="bc_0_0B" class="comment" kind="b"><div class="avatar-image-container"><img src="photo.jpg"></div><div id="c5653431999235869037" class="comment-block"><div id="bc_0_0M" class="comment-header" kind="m"><cite class="user blog-author"><a rel="nofollow" href="https://www.blogger.com/profile/17693366291388092105">Tutorialbyexample</a></cite><span class="icon user blog-author"></span><span class="datetime secondary-text"><a rel="nofollow" href="http://www.tutorialbyexample.com/2016/02/fatal-SSH-Error-Permission-denied-publickey-gssapi-keyex-gssapi-with-mic-password-in-ansible-playbook-yml.html?showComment=1457896181288#c5653431999235869037">13 March 2016 at 12:09</a></span></div><p id="bc_0_0MC" class="comment-content">Thanks for your response.......Ansible will rule devops....Cheers Team!!!</p><span id="bc_0_0MN" class="comment-actions secondary-text" kind="m"><span class="item-control blog-admin pid-1199094459"><a o="d" target="_self" href="https://www.blogger.com/delete-comment.g?blogID=290552782653817209&amp;postID=5653431999235869037">Delete</a></span></span></div><div id="bc_0_0BR" class="comment-replies"></div><div id="bc_0_0B_box" class="comment-replybox-single"></div></li></div><div id="bc_0_0I" class="continue" kind="ci"><a href="javascript:;" target="_self">Reply</a></div></ol><div id="bc_0_0T_box" class="comment-replybox-thread"></div></div></span></div><div id="bc_0_1B_box" class="comment-replybox-single"></div></li><li id="bc_0_2B" class="comment" kind="b"><div class="avatar-image-container"><img src="b16-rounded.gif"></div><div id="c499891432668357763" class="comment-block"><div id="bc_0_2M" class="comment-header" kind="m"><cite class="user"><a rel="nofollow" href="https://www.blogger.com/profile/12496749636197498505">Unknown</a></cite><span class="icon user"></span><span class="datetime secondary-text"><a rel="nofollow" href="http://www.tutorialbyexample.com/2016/02/fatal-SSH-Error-Permission-denied-publickey-gssapi-keyex-gssapi-with-mic-password-in-ansible-playbook-yml.html?showComment=1460109105414#c499891432668357763">8 April 2016 at 02:51</a></span></div><p id="bc_0_2MC" class="comment-content">Thankssssssssssssssss :D</p><span id="bc_0_2MN" class="comment-actions secondary-text" kind="m"><a kind="i" href="javascript:;" target="_self" o="r">Reply</a><span class="item-control blog-admin pid-773581896"><a o="d" target="_self" href="https://www.blogger.com/delete-comment.g?blogID=290552782653817209&amp;postID=499891432668357763">Delete</a></span></span></div><div id="bc_0_2BR" class="comment-replies"></div><div id="bc_0_2B_box" class="comment-replybox-single"></div></li></ol><div style="display: none;" id="bc_0_3I" class="continue" kind="ci"><a href="javascript:;" target="_self">Add comment</a></div><div id="bc_0_3T_box" class="comment-replybox-thread"><iframe style="display: block;" data-resized="true" allowtransparency="true" class="blogger-iframe-colorize blogger-comment-from-post" id="comment-editor" name="comment-editor" src="index_16.html" frameborder="0" height="214px" width="100%"></iframe></div><div id="bc_0_3L" class="loadmore loaded" kind="rb"><a href="javascript:;" target="_self">Load more...</a></div></div></div></div></div>
+</div>
+<p class="comment-footer">
+</p><div class="comment-form">
+<a name="comment-form"></a>
+<p>Please provide your input, it will honer for me...</p>
+<a href="https://www.blogger.com/comment-iframe.g?blogID=290552782653817209&amp;postID=1272535482925052859&amp;blogspotRpcToken=4437654" id="comment-editor-src"></a>
+
+
+
+</div>
+<p></p>
+<div id="backlinks-container">
+<div id="Blog1_backlinks-container"><a name="links"></a><h4>Links to this post</h4>
+<p class="comment-footer">
+<a class="comment-link" href="https://www.blogger.com/blog-this.g" id="Blog1_backlinks-create-link" target="_top">Create a Link</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="inline-ad">
+
+<!-- tutorialbyexample_main_Blog1_234x60_as -->
+<ins id="aswift_2_expand" style="display: inline-table; border: medium none; height: 60px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 234px; background-color: transparent;"><ins id="aswift_2_anchor" style="display: block; border: medium none; height: 60px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 234px; background-color: transparent;"><iframe src="index_20.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_2" name="aswift_2" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="60" width="234"></iframe></ins></ins>
+</div>
+
+        </div></div>
+      
+</div>
+<div class="blog-pager" id="blog-pager">
+<span id="blog-pager-newer-link">
+<a class="blog-pager-newer-link" href="http://www.tutorialbyexample.com/2016/02/how-to-use-configure-git-eclipse-with-java-project-clone-repo-commit-push-master-origin-HEAD-code-example-sample-tutorial.html" id="Blog1_blog-pager-newer-link" title="Newer Post">Newer Post</a>
+</span>
+<span id="blog-pager-older-link">
+<a class="blog-pager-older-link" href="http://www.tutorialbyexample.com/2016/02/diagram-for-exception-classes-hierarchy-Object-Throwable-Exception-and-Error-in-java-programming-code-example-video.html" id="Blog1_blog-pager-older-link" title="Older Post">Older Post</a>
+</span>
+<a class="home-link" href="http://www.tutorialbyexample.com/">Home</a>
+</div>
+<div class="clear"></div>
+<div class="post-feeds">
+<div class="feed-links">
+Subscribe to:
+<a class="feed-link" href="http://www.tutorialbyexample.com/feeds/1272535482925052859/comments/default" target="_top" type="application/atom+xml">Post Comments (Atom)</a>
+</div>
+</div>
+
+</div></div>
+</div>
+</div>
+<div class="column-left-outer">
+<div class="column-left-inner">
+<aside>
+</aside>
+</div>
+</div>
+<div class="column-right-outer">
+<div class="column-right-inner">
+<aside>
+<div class="sidebar section" id="sidebar-right-1"><div class="widget CustomSearch" data-version="1" id="CustomSearch1">
+<h2 class="title">Search This Blog</h2>
+<div class="widget-content">
+<div id="CustomSearch1_form"><form action="http://www.tutorialbyexample.com/2016/02/fatal-SSH-Error-Permission-denied-publickey-gssapi-keyex-gssapi-with-mic-password-in-ansible-playbook-yml.html" accept-charset="utf-8" class="gsc-search-box"><table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-input"><input value="" title="search" name="search" class=" gsc-input" size="10" autocomplete="off" type="text"><input id="bgresponse" name="bgresponse" type="hidden"></td><td class="gsc-search-button"><input title="search" class="gsc-search-button" value="Search" type="submit"></td></tr></tbody></table><table class="gsc-branding" cellpadding="0" cellspacing="0"><tbody><tr style="display: none;"><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td><td class="gsc-branding-img-noclear"><img class="gsc-branding-img-noclear" src="small-logo.png"></td></tr></tbody></table></form></div>
+</div>
+
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=290552782653817209&amp;widgetType=CustomSearch&amp;widgetId=CustomSearch1&amp;action=editWidget&amp;sectionId=sidebar-right-1" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;CustomSearch1&quot;));" target="configCustomSearch1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget HTML" data-version="1" id="HTML1">
+<div class="widget-content">
+<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="index_21.html" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0"></iframe><iframe src="index_22.html" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+
+
+<div fb-iframe-plugin-query="app_id=&amp;container_width=275&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Ftutorialbyexample&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=true&amp;show_posts=false" fb-xfbml-state="rendered" class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/tutorialbyexample" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><span style="vertical-align: bottom; width: 275px; height: 214px;"><iframe class="" src="index_26.html" style="border: medium none; visibility: visible; width: 275px; height: 214px;" title="fb:page Facebook Social Plugin" scrolling="no" allowfullscreen="true" allowtransparency="true" name="f352e1f48c98eb4" frameborder="0" height="1000px" width="1000px"></iframe></span></div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=290552782653817209&amp;widgetType=HTML&amp;widgetId=HTML1&amp;action=editWidget&amp;sectionId=sidebar-right-1" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;HTML1&quot;));" target="configHTML1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget HTML" data-version="1" id="HTML3">
+<div class="widget-content">
+
+<!-- tutorialbyexample_sidebar-right-1_AdSense5_300x250_as -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-6751841053897580" data-ad-slot="2454912358"><ins id="aswift_3_expand" style="display: inline-table; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><ins id="aswift_3_anchor" style="display: block; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><iframe src="index_30.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_3" name="aswift_3" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="250" width="300"></iframe></ins></ins></ins>
+
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=290552782653817209&amp;widgetType=HTML&amp;widgetId=HTML3&amp;action=editWidget&amp;sectionId=sidebar-right-1" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;HTML3&quot;));" target="configHTML3" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget Label" data-version="1" id="Label1">
+<h2>Labels</h2>
+<div class="widget-content list-label-widget-content">
+<ul>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/About%20TutorialByExample">About TutorialByExample</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Agile">Agile</a>
+<span dir="ltr">(6)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Ansible">Ansible</a>
+<span dir="ltr">(8)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Apache">Apache</a>
+<span dir="ltr">(3)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Apache%20Tomcat">Apache Tomcat</a>
+<span dir="ltr">(5)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Birthday">Birthday</a>
+<span dir="ltr">(2)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Cache">Cache</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/CentOS">CentOS</a>
+<span dir="ltr">(4)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Cobertura">Cobertura</a>
+<span dir="ltr">(3)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Coding-Standards">Coding-Standards</a>
+<span dir="ltr">(5)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Common">Common</a>
+<span dir="ltr">(22)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Communication">Communication</a>
+<span dir="ltr">(2)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Design-Pattern">Design-Pattern</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/DevOps">DevOps</a>
+<span dir="ltr">(13)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Docker">Docker</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Eclipse">Eclipse</a>
+<span dir="ltr">(4)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Expect">Expect</a>
+<span dir="ltr">(2)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Food">Food</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Gerrit">Gerrit</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Git">Git</a>
+<span dir="ltr">(4)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Hibernate">Hibernate</a>
+<span dir="ltr">(2)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Hudson">Hudson</a>
+<span dir="ltr">(2)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Interview">Interview</a>
+<span dir="ltr">(2)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Issue-Solution">Issue-Solution</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Jar">Jar</a>
+<span dir="ltr">(2)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Java">Java</a>
+<span dir="ltr">(34)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/JAX-WS">JAX-WS</a>
+<span dir="ltr">(4)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Jenkins">Jenkins</a>
+<span dir="ltr">(3)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Jenkins%20Pipeline">Jenkins Pipeline</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Jmeter">Jmeter</a>
+<span dir="ltr">(4)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Jsp">Jsp</a>
+<span dir="ltr">(2)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/JUnit">JUnit</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Logging">Logging</a>
+<span dir="ltr">(2)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Marketing">Marketing</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Maven">Maven</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/mongodb">mongodb</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Open%20Source">Open Source</a>
+<span dir="ltr">(46)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Provision">Provision</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Restful-WS">Restful-WS</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Scrum">Scrum</a>
+<span dir="ltr">(5)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/SDLC">SDLC</a>
+<span dir="ltr">(3)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Service%20Virtualisation">Service Virtualisation</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/SoapUI">SoapUI</a>
+<span dir="ltr">(4)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Tar">Tar</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Testing">Testing</a>
+<span dir="ltr">(7)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Tomcat">Tomcat</a>
+<span dir="ltr">(5)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Unix">Unix</a>
+<span dir="ltr">(20)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Vagrant">Vagrant</a>
+<span dir="ltr">(6)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/VirtualBox">VirtualBox</a>
+<span dir="ltr">(4)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Web%20Services">Web Services</a>
+<span dir="ltr">(13)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Web%20Services%20Client">Web Services Client</a>
+<span dir="ltr">(7)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/WinSCP">WinSCP</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://www.tutorialbyexample.com/search/label/Zip">Zip</a>
+<span dir="ltr">(2)</span>
+</li>
+</ul>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=290552782653817209&amp;widgetType=Label&amp;widgetId=Label1&amp;action=editWidget&amp;sectionId=sidebar-right-1" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;Label1&quot;));" target="configLabel1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget HTML" data-version="1" id="HTML2">
+<div class="widget-content">
+
+<!-- tutorialbyexample_sidebar-right-1_AdSense5_300x250_as -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-6751841053897580" data-ad-slot="2454912358"><ins id="aswift_4_expand" style="display: inline-table; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><ins id="aswift_4_anchor" style="display: block; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><iframe src="index_31.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_4" name="aswift_4" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="250" width="300"></iframe></ins></ins></ins>
+
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=290552782653817209&amp;widgetType=HTML&amp;widgetId=HTML2&amp;action=editWidget&amp;sectionId=sidebar-right-1" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;HTML2&quot;));" target="configHTML2" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget PopularPosts" data-version="1" id="PopularPosts1">
+<h2>Popular Posts</h2>
+<div class="widget-content popular-posts">
+<ul>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://www.tutorialbyexample.com/2015/02/oracle-database-testing-jmeter-tutorials.html" target="_top">
+<img alt="" src="database-jmeter-tutorial-example.png" border="0">
+</a>
+</div>
+<div class="item-title"><a href="http://www.tutorialbyexample.com/2015/02/oracle-database-testing-jmeter-tutorials.html">Oracle DataBase Testing By Jmeter</a></div>
+<div class="item-snippet">     Let's start for JMeter tutorial, how to connect database and all:  Start the  jmeter from */*/bin/jmeter.bat. Where * indicate the ...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://www.tutorialbyexample.com/2015/02/soap-webservices-mockservice-soapui-war.html" target="_top">
+<img alt="" src="soap@2bmock@2bservice@2bwsdl@2bweb@2bservices@2bwar.png" border="0">
+</a>
+</div>
+<div class="item-title"><a href="http://www.tutorialbyexample.com/2015/02/soap-webservices-mockservice-soapui-war.html">Deploying SOAP Web Services as Mock Service By SoapUI WAR in Tomcate Tutorial</a></div>
+<div class="item-snippet">   In our earlier tutorial, we discussed about how to create mock services in SoapUI environment. Web Services SOAP (WSDL) MockService by So...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://www.tutorialbyexample.com/2015/02/apache-server-load-balancer-sticky-non.html" target="_top">
+<img alt="" src="load@2bbalancer@2c@2bsoftware@2blevel@2c@2bapache@2c@2blunix@2c@2btomcat@2c@2bproduction@2bsystem.png" border="0">
+</a>
+</div>
+<div class="item-title"><a href="http://www.tutorialbyexample.com/2015/02/apache-server-load-balancer-sticky-non.html">Apache Server Load Balancer Sticky Non Sticky Sessions</a></div>
+<div class="item-snippet">  In this tutorial, we'll discuses about (Apache Server) load balancer, hardware &amp; software.            Let's discussed about so...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://www.tutorialbyexample.com/2016/01/how-to-install-ansible194-in-centos65.html" target="_top">
+<img alt="" src="default.jpg" border="0">
+</a>
+</div>
+<div class="item-title"><a href="http://www.tutorialbyexample.com/2016/01/how-to-install-ansible194-in-centos65.html">How to install Ansible 1.9.4 in CentOS 6.5</a></div>
+<div class="item-snippet">  Follow the following steps for installing the ansible 1.9.4 in centos6.5:   Video:       Logging with root user in Centos6.5 and perform b...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://www.tutorialbyexample.com/2015/02/java-logging-log4j-program-example.html" target="_top">
+<img alt="" src="log4j@2bloggin@2bjava.png" border="0">
+</a>
+</div>
+<div class="item-title"><a href="http://www.tutorialbyexample.com/2015/02/java-logging-log4j-program-example.html">Log4j Logging in Java  </a></div>
+<div class="item-snippet">   Overview:   Log4j is an open source project maintained by the Apache Foundation. It is available for many programming languages other tha...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+</ul>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=290552782653817209&amp;widgetType=PopularPosts&amp;widgetId=PopularPosts1&amp;action=editWidget&amp;sectionId=sidebar-right-1" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;PopularPosts1&quot;));" target="configPopularPosts1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget AdSense" data-version="1" id="AdSense5">
+<div class="widget-content">
+
+<!-- tutorialbyexample_sidebar-right-1_AdSense5_300x250_as -->
+<ins id="aswift_5_expand" style="display: inline-table; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><ins id="aswift_5_anchor" style="display: block; border: medium none; height: 250px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><iframe src="index_32.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_5" name="aswift_5" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="250" width="300"></iframe></ins></ins>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=290552782653817209&amp;widgetType=AdSense&amp;widgetId=AdSense5&amp;action=editWidget&amp;sectionId=sidebar-right-1" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;AdSense5&quot;));" target="configAdSense5" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget Profile" data-version="1" id="Profile1">
+<h2>About Me</h2>
+<div class="widget-content">
+<a href="https://plus.google.com/105832298173201712629"><img alt="My photo" class="profile-img" src="photo_002.jpg" height="80" width="80"></a>
+<dl class="profile-datablock">
+<dt class="profile-data">
+<a data-gapiattached="true" data-onload="true" data-gapiscan="true" class="profile-name-link g-profile" href="https://plus.google.com/105832298173201712629" rel="author" style="background-image: url('gprofile_button-16.png');">
+Tutorialbyexample
+</a>
+<br>
+<div id="___follow_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 111px; height: 20px;"><iframe data-gapiattached="true" src="index_33.html" name="I1_1470150194209" id="I1_1470150194209" vspace="0" tabindex="0" style="position: static; top: 0px; width: 111px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" frameborder="0" width="100%"></iframe></div>
+</dt>
+</dl>
+<a class="profile-link" href="https://plus.google.com/105832298173201712629" rel="author">View my complete profile</a>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=290552782653817209&amp;widgetType=Profile&amp;widgetId=Profile1&amp;action=editWidget&amp;sectionId=sidebar-right-1" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;Profile1&quot;));" target="configProfile1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div></div>
+</aside>
+</div>
+</div>
+</div>
+<div style="clear: both;"></div>
+<!-- columns -->
+</div>
+<!-- main -->
+</div>
+</div>
+<div class="main-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<footer>
+<div class="footer-outer">
+<div class="footer-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left footer-fauxborder-left">
+<div class="fauxborder-right footer-fauxborder-right"></div>
+<div class="region-inner footer-inner">
+<div class="foot no-items section" id="footer-1"></div>
+<table class="section-columns columns-3" border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="first columns-cell">
+<div class="foot no-items section" id="footer-2-1"></div>
+</td>
+<td class="columns-cell">
+<div class="foot no-items section" id="footer-2-2"></div>
+</td>
+<td class="columns-cell">
+<div class="foot no-items section" id="footer-2-3"></div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- outside of the include in order to lock Attribution widget -->
+<div class="foot section" id="footer-3"><div class="widget Attribution" data-version="1" id="Attribution1">
+<div class="widget-content" style="text-align: center;">
+IT &amp; Non IT, WebServices, SOA, JMeter, SOAP UI, Ansible, Open Source Tools, Java, J2ee, Maven . Picture Window template. Powered by <a href="https://www.blogger.com/" target="_top">Blogger</a>.
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=290552782653817209&amp;widgetType=Attribution&amp;widgetId=Attribution1&amp;action=editWidget&amp;sectionId=footer-3" onclick="return _WidgetManager._PopupConfig(document.getElementById(&quot;Attribution1&quot;));" target="configAttribution1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+<div class="footer-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</footer>
+<!-- content -->
+</div>
+</div>
+<div class="content-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</div>
+
+
+
+<iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="index_34.html" id="oauth2relay232385490" name="oauth2relay232385490"></iframe>
+
+
+</body>
+</html>

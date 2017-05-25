@@ -1,0 +1,515 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+	
+	
+	
+	
+	<meta name="description" content="MotetinoMega wireless programming mystery">
+	<meta name="keywords" content="Moteino,RFM69,LoRa,Arduino,Wireless,IoT,internet of things,home automation,LowPowerLab,RaspberryPi">
+	<title>MotetinoMega wireless programming mystery</title>
+	<link rel="canonical" href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/">
+	<link rel="help" href="https://lowpowerlab.com/forum/help/">
+	<link rel="search" href="https://lowpowerlab.com/forum/search/">
+	<link rel="contents" href="https://lowpowerlab.com/forum/index.php">
+	<link rel="alternate" type="application/rss+xml" title="LowPowerLab community forum - RSS" href="https://lowpowerlab.com/forum/.xml/?type=rss">
+	<link rel="prev" href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/?prev_next=prev">
+	<link rel="next" href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/?prev_next=next">
+	<link rel="index" href="https://lowpowerlab.com/forum/moteinomega/">
+	
+	
+		
+	
+	
+	
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div id="wrapper" style="width: 90%;">
+	<div id="header"><div class="frame">
+		<div id="top_section">
+			<h1 class="forumtitle">
+				<a href="https://lowpowerlab.com/forum/index.php">LowPowerLab community forum</a>
+			</h1>
+			<img id="upshrink" src="upshrink.png" alt="*" title="Shrink or expand the header." style="cursor: pointer;">
+			<img id="smflogo" src="smflogo.png" alt="Simple Machines Forum" title="Simple Machines Forum">
+		</div>
+		<div id="upper_section" class="middletext">
+			<div class="user">
+				
+				<form id="guest_form" action="https://lowpowerlab.com/forum/login2/" method="post" accept-charset="ISO-8859-1" onsubmit="hashLoginPassword(this, '0539d938ad2965d8cac435aa23341f7f');">
+					<div class="info">Welcome, <strong>Guest</strong>. Please <a href="https://lowpowerlab.com/forum/login/">login</a> or <a href="https://lowpowerlab.com/forum/register/">register</a>.<br>Did you miss your <a href="https://lowpowerlab.com/forum/activate/">activation email</a>?</div>
+					<input value="" name="user" size="10" class="input_text" type="text">
+					<input name="passwrd" size="10" class="input_password" type="password">
+					<select name="cookielength">
+						<option value="60">1 Hour</option>
+						<option value="1440">1 Day</option>
+						<option value="10080">1 Week</option>
+						<option value="43200">1 Month</option>
+						<option value="-1" selected="selected">Forever</option>
+					</select>
+					<input value="Login" class="button_submit" type="submit"><br>
+					<div class="info">Login with username, password and session length</div>
+					<br><input value="" name="openid_identifier" id="openid_url" size="25" class="input_text openid_login" type="text">
+					<input name="hash_passwrd" value="" type="hidden">
+				</form>
+			</div>
+			<div class="news normaltext">
+				<form id="search_form" action="https://lowpowerlab.com/forum/search2/" method="post" accept-charset="ISO-8859-1">
+					<input name="search" value="" class="input_text" type="text">&nbsp;
+					<input name="submit" value="Search" class="button_submit" type="submit">
+					<input name="advanced" value="0" type="hidden">
+					<input name="topic" value="1754" type="hidden"></form>
+				<h2>News: </h2>
+				<p>SMF just installed</p>
+			</div>
+		</div>
+		<br class="clear">
+		
+		<div id="main_menu">
+			<ul class="dropmenu" id="menu_nav">
+				<li id="button_home">
+					<a class="active firstlevel" href="https://lowpowerlab.com/forum/index.php">
+						<span class="last firstlevel">Home</span>
+					</a>
+				</li>
+				<li id="button_blog">
+					<a class="firstlevel" href="http://lowpowerlab.com/">
+						<span class="last firstlevel">Blog</span>
+					</a>
+				</li>
+				<li id="button_shop">
+					<a class="firstlevel" href="http://lowpowerlab.com/shop">
+						<span class="last firstlevel">Shop</span>
+					</a>
+				</li>
+				<li id="button_help">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/help/">
+						<span class="firstlevel">Help</span>
+					</a>
+				</li>
+				<li id="button_search">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/search/">
+						<span class="firstlevel">Search</span>
+					</a>
+				</li>
+				<li id="button_login">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/login/">
+						<span class="firstlevel">Login</span>
+					</a>
+				</li>
+				<li id="button_register">
+					<a class="firstlevel" href="https://lowpowerlab.com/forum/register/">
+						<span class="last firstlevel">Register</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<br class="clear">
+	</div></div>
+	<div id="content_section"><div class="frame">
+		<div id="main_content_section">
+	<div class="navigate_section">
+		<ul>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php"><span>LowPowerLab community forum</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php#c1"><span>Support &amp; discussion forums</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/moteinomega/"><span>MoteinoMEGA</span></a> (Moderator: <a href="https://lowpowerlab.com/forum/profile/?u=1030" title="Board Moderator">syrinxtech</a>) »
+			</li>
+			<li class="last">
+				<a href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/"><span>MotetinoMega wireless programming mystery</span></a>
+			</li>
+		</ul>
+	</div>
+			<a id="top"></a>
+			<a id="msg12643"></a>
+			<div class="pagesection">
+				<div class="nextlinks"><a href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/?prev_next=prev#new">« previous</a> <a href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/?prev_next=next#new">next »</a></div>
+		<div class="buttonlist floatright">
+			<ul>
+				<li><a class="button_strip_print" href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/?action=printpage" rel="new_win nofollow"><span class="last">Print</span></a></li>
+			</ul>
+		</div>
+				<div class="pagelinks floatleft">Pages: [<strong>1</strong>] </div>
+			</div>
+			<div id="forumposts">
+				<div class="cat_bar">
+					<h3 class="catbg">
+						<img src="normal_post.gif" alt="" align="bottom">
+						<span id="author">Author</span>
+						Topic: MotetinoMega wireless programming mystery &nbsp;(Read 312 times)
+					</h3>
+				</div>
+				<form action="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/?action=quickmod2" method="post" accept-charset="ISO-8859-1" name="quickModForm" id="quickModForm" style="margin: 0px;" onsubmit="return oQuickModify.bInEditMode ? oQuickModify.modifySave('0539d938ad2965d8cac435aa23341f7f', 'fc29d8a') : false">
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=1294" title="View the profile of letcher">letcher</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_12643_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 11</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=1294"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_12643">
+										<a href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/msg12643/#msg12643" rel="nofollow">MotetinoMega wireless programming mystery</a>
+									</h5>
+									<div class="smalltext">« <strong> on:</strong> March 29, 2016, 09:18:33 PM »</div>
+									<div id="msg_12643_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_12643">I have a couple of MoteinoMegas, one in a remote location and one for development.&nbsp; While trying to reprogram the remote (deployed) device with the current wireless programmer it appeared to work as expected.&nbsp; However, when testing the device it did not have the code changes I had made.&nbsp; To further test I changed some ascii messages that are sent and they stayed the same as the original code.<br><br>Next I wirelessly programmed my development device and the changes were there as expected.&nbsp; I then assumed I had damaged the dual optiboot loader and so I swapped the development device with the deployed device.&nbsp; The deployed moteinoMega programs just fine now with the wireless programmer. <br><br>Today I spent a LOT of time installing AVRStudio 6 so I could reflash the bootloader with a AVRISP tool.&nbsp; I eventually succeeded and then I also loaded the hex file of my working code while I had everything connected.&nbsp; I made a dump file of the flash memory while connected to the AVRISP and compared the dump file to the hex file generated by the Arduino IDE.&nbsp; They appear to be the same.<br><br>Since the reflashed MoteinoMega seemed to work correctly I assumed the reflash of the bootloader had worked.&nbsp; However, although it appears to be programmed wirelessly it still did not change the loaded code.&nbsp; Its as though the new code is loaded into the eprom but not transferred to the flash memory. Any idea of what is going on here? </div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_12643">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg12644"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=1" title="View the profile of Felix">Felix</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_12644_extra_info">
+								<li class="membergroup">Administrator</li>
+								<li class="postgroup">Hero Member</li>
+								<li class="stars"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"></li>
+								<li class="avatar">
+									<a href="https://lowpowerlab.com/forum/profile/?u=1">
+										<img class="avatar" src="index.php" alt="">
+									</a>
+								</li>
+								<li class="postcount">Posts: 3594</li>
+								<li class="gender">Country: <img src="us.png" alt="us" title="United States"></li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=1"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+										<li><a href="http://lowpowerlab.com/" title="LowPowerLab" target="_top" class="new_win"><img src="www_sm.gif" alt="LowPowerLab"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_12644">
+										<a href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/msg12644/#msg12644" rel="nofollow">Re: MotetinoMega wireless programming mystery</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #1 on:</strong> March 29, 2016, 09:29:27 PM »</div>
+									<div id="msg_12644_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_12644">Can you confirm the Moteino is restarted (via WDT) after the transfer of the new sketch HEX is done?</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_12644">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg12646"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=1294" title="View the profile of letcher">letcher</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_12646_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 11</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=1294"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_12646">
+										<a href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/msg12646/#msg12646" rel="nofollow">Re: MotetinoMega wireless programming mystery</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #2 on:</strong> March 29, 2016, 09:58:55 PM »</div>
+									<div id="msg_12646_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_12646">It appears to reboot.&nbsp; As a simple test I opened a serial terminal via the IDE and then reprogrammed with the wireless program.&nbsp; Here is a fragment of the result:<br><br>adio [24] &gt; 464c583a3335323a8d147f14e1140d0a006e616e00696e66<br>FLX:352:OK<br>radio [14] &gt; 464c583a3335333a006f76660000<br>FLX:353:OK<br>FLX?OK<br>UNShifting channel to 915000000<br>FLASH IMG TRANSMISSION SUCCESS!<br>REBOOTING...þSerial initialized<br>Transmitting at 915 Mhz...<br>mail_maga.ino 3-23-2016<br>Interrupts enabled<br></div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_12646">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg12647"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=1" title="View the profile of Felix">Felix</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_12647_extra_info">
+								<li class="membergroup">Administrator</li>
+								<li class="postgroup">Hero Member</li>
+								<li class="stars"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"></li>
+								<li class="avatar">
+									<a href="https://lowpowerlab.com/forum/profile/?u=1">
+										<img class="avatar" src="index.php" alt="">
+									</a>
+								</li>
+								<li class="postcount">Posts: 3594</li>
+								<li class="gender">Country: <img src="us.png" alt="us" title="United States"></li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=1"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+										<li><a href="http://lowpowerlab.com/" title="LowPowerLab" target="_top" class="new_win"><img src="www_sm.gif" alt="LowPowerLab"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_12647">
+										<a href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/msg12647/#msg12647" rel="nofollow">Re: MotetinoMega wireless programming mystery</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #3 on:</strong> March 29, 2016, 10:19:24 PM »</div>
+									<div id="msg_12647_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_12647">Yup it looks like it reboots.<br>So same everything, except a different target MoteinoMEGA, and that works? And this one MoteinoMEGA doesn't?</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_12647">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg12648"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=1294" title="View the profile of letcher">letcher</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_12648_extra_info">
+								<li class="postgroup">Newbie</li>
+								<li class="stars"><img src="star.gif" alt="*"></li>
+								<li class="postcount">Posts: 11</li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=1294"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_12648">
+										<a href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/msg12648/#msg12648" rel="nofollow">Re: MotetinoMega wireless programming mystery</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #4 on:</strong> March 30, 2016, 12:13:05 AM »</div>
+									<div id="msg_12648_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_12648">Yep.&nbsp; I'll try further test if you think of a direction.&nbsp; Seems like we could learn something.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_12648">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				<a id="msg12650"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://lowpowerlab.com/forum/profile/?u=1" title="View the profile of Felix">Felix</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_12650_extra_info">
+								<li class="membergroup">Administrator</li>
+								<li class="postgroup">Hero Member</li>
+								<li class="stars"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"><img src="staradmin.gif" alt="*"></li>
+								<li class="avatar">
+									<a href="https://lowpowerlab.com/forum/profile/?u=1">
+										<img class="avatar" src="index.php" alt="">
+									</a>
+								</li>
+								<li class="postcount">Posts: 3594</li>
+								<li class="gender">Country: <img src="us.png" alt="us" title="United States"></li>
+								<li class="profile">
+									<ul>
+										<li><a href="https://lowpowerlab.com/forum/profile/?u=1"><img src="profile_sm.gif" alt="View Profile" title="View Profile"></a></li>
+										<li><a href="http://lowpowerlab.com/" title="LowPowerLab" target="_top" class="new_win"><img src="www_sm.gif" alt="LowPowerLab"></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="xx.gif" alt="">
+									</div>
+									<h5 id="subject_12650">
+										<a href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/msg12650/#msg12650" rel="nofollow">Re: MotetinoMega wireless programming mystery</a>
+									</h5>
+									<div class="smalltext">« <strong>Reply #5 on:</strong> March 30, 2016, 08:33:22 AM »</div>
+									<div id="msg_12650_quick_mod"></div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="inner" id="msg_12650">Libs have to be up to date, on all parts involved, I assume you've already checked that.<br>I would check what the state of the HEX is on the FLASH MEM. You can use the <a href="https://github.com/LowPowerLab/SPIFlash/blob/master/examples/SPIFlash_ReadWrite/SPIFlash_ReadWrite.ino" class="bbc_link" target="_top">sample sketch</a> and do a dump ('d') to see the first 256 bytes. The important part is the first bytes of the header. It gets a little tedious to look at hex bytes and try to figure out if all is good. The header is of the form FLXIMG:nnnn:xxxxxx...x where nnnn is the byte count and the xxxxx..x is the actual hex image bytes.<br>If it's not missing anything then the bootloader has some issue. I've seen where the image is written but the header is missing some part and thus the bootloader skips to the existing sketch. The byte count (nnnn) is written last by the WirelessHEX lib after the image is completely transferred.</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_12650">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="ip.gif" alt="">
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator">
+				</form>
+			</div>
+			<a id="lastPost"></a>
+			<div class="pagesection">
+				
+		<div class="buttonlist floatright">
+			<ul>
+				<li><a class="button_strip_print" href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/?action=printpage" rel="new_win nofollow"><span class="last">Print</span></a></li>
+			</ul>
+		</div>
+				<div class="pagelinks floatleft">Pages: [<strong>1</strong>] </div>
+				<div class="nextlinks_bottom"><a href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/?prev_next=prev#new">« previous</a> <a href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/?prev_next=next#new">next »</a></div>
+			</div>
+	<div class="navigate_section">
+		<ul>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php"><span>LowPowerLab community forum</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/index.php#c1"><span>Support &amp; discussion forums</span></a> »
+			</li>
+			<li>
+				<a href="https://lowpowerlab.com/forum/moteinomega/"><span>MoteinoMEGA</span></a> (Moderator: <a href="https://lowpowerlab.com/forum/profile/?u=1030" title="Board Moderator">syrinxtech</a>) »
+			</li>
+			<li class="last">
+				<a href="https://lowpowerlab.com/forum/moteinomega/motetinomega-wireless-programming-mystery/"><span>MotetinoMega wireless programming mystery</span></a>
+			</li>
+		</ul>
+	</div>
+			<div id="moderationbuttons"></div>
+			<div class="plainbox" id="display_jump_to"><label class="smalltext" for="display_jump_to_select">Jump to:</label> <select name="display_jump_to_select" id="display_jump_to_select" onfocus="grabJumpToContent();"><option value="?board=9.0">=&gt; MoteinoMEGA</option></select>&nbsp;<input value="go" onclick="window.location.href = 'https://lowpowerlab.com/forum/index.php?board=9.0';" type="button"></div>
+		<br class="clear">
+				
+				
+		
+		
+			
+		</div>
+	</div></div>
+	<div id="footer_section"><div class="frame">
+		<ul class="reset">
+			<li class="copyright">
+			<span class="smalltext" style="display: inline; visibility: visible; font-family: Verdana,Arial,sans-serif;"><a href="https://lowpowerlab.com/forum/credits/" title="Simple Machines Forum" target="_top" class="new_win">SMF 2.0.11</a> |
+ <a href="http://www.simplemachines.org/about/smf/license.php" title="License" target="_top" class="new_win">SMF © 2015</a>, <a href="http://www.simplemachines.org/" title="Simple Machines" target="_top" class="new_win">Simple Machines</a>
+			</span></li>
+			<li><a id="button_xhtml" href="http://validator.w3.org/check?uri=referer" target="_top" class="new_win" title="Valid XHTML 1.0!"><span>XHTML</span></a></li>
+			<li><a id="button_rss" href="https://lowpowerlab.com/forum/.xml/?type=rss" class="new_win"><span>RSS</span></a></li>
+			<li class="last"><a id="button_wap2" href="https://lowpowerlab.com/forum/index.php?wap2" class="new_win"><span>WAP2</span></a></li>
+		</ul>
+	</div></div>
+</div>
+</body>
+</html>

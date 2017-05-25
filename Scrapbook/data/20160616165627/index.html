@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<link rel="SHORTCUT ICON" href="pyfav.png" type="image/png">
+<link rel="start" href="https://docs.python.org/2.4/index.html" title="Python Documentation Index">
+<link rel="first" href="https://docs.python.org/2.4/lib/lib.html" title="Python Library Reference">
+<link rel="contents" href="https://docs.python.org/2.4/lib/contents.html" title="Contents">
+<link rel="index" href="https://docs.python.org/2.4/lib/genindex.html" title="Index">
+<link rel="last" href="https://docs.python.org/2.4/lib/about.html" title="About this document...">
+<link rel="help" href="https://docs.python.org/2.4/lib/about.html" title="About this document...">
+<link rel="prev" href="https://docs.python.org/2.4/lib/http-error-processor-objects.html">
+<link rel="parent" href="https://docs.python.org/2.4/lib/module-urllib2.html">
+<link rel="next" href="https://docs.python.org/2.4/lib/module-httplib.html">
+<meta name="aesop" content="information">
+<title>11.5.22 Examples </title>
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div class="navigation">
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+<table align="center" cellpadding="0" cellspacing="2" width="100%">
+<tbody><tr>
+<td class="online-navigation"><a rel="prev" title="11.5.21 HTTPErrorProcessor Objects" href="https://docs.python.org/2.4/lib/http-error-processor-objects.html"><img src="previous.png" alt="Previous Page" border="0" height="32" width="32"></a></td>
+<td class="online-navigation"><a rel="parent" title="11.5 urllib2  " href="https://docs.python.org/2.4/lib/module-urllib2.html"><img src="up.png" alt="Up One Level" border="0" height="32" width="32"></a></td>
+<td class="online-navigation"><a rel="next" title="11.6 httplib  " href="https://docs.python.org/2.4/lib/module-httplib.html"><img src="next.png" alt="Next Page" border="0" height="32" width="32"></a></td>
+<td align="center" width="100%">Python Library Reference</td>
+<td class="online-navigation"><a rel="contents" title="Table of Contents" href="https://docs.python.org/2.4/lib/contents.html"><img src="contents.png" alt="Contents" border="0" height="32" width="32"></a></td>
+<td class="online-navigation"><a href="https://docs.python.org/2.4/lib/modindex.html" title="Module Index"><img src="modules.png" alt="Module Index" border="0" height="32" width="32"></a></td>
+<td class="online-navigation"><a rel="index" title="Index" href="https://docs.python.org/2.4/lib/genindex.html"><img src="index_001.png" alt="Index" border="0" height="32" width="32"></a></td>
+</tr></tbody></table>
+<div class="online-navigation">
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="https://docs.python.org/2.4/lib/http-error-processor-objects.html">11.5.21 HTTPErrorProcessor Objects</a>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="https://docs.python.org/2.4/lib/module-urllib2.html">11.5 urllib2  </a>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="https://docs.python.org/2.4/lib/module-httplib.html">11.6 httplib  </a>
+</div>
+<hr></div>
+</div>
+<!--End of Navigation Panel-->
+
+<h2><a name="SECTION00135220000000000000000"></a><a name="urllib2-examples"></a>
+<br>
+11.5.22 Examples 
+</h2>
+
+<p>
+This example gets the python.org main page and displays the first 100
+bytes of it:
+
+</p><p>
+</p><div class="verbatim"><pre>&gt;&gt;&gt; import urllib2
+&gt;&gt;&gt; f = urllib2.urlopen('http://www.python.org/')
+&gt;&gt;&gt; print f.read(100)
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
+&lt;?xml-stylesheet href="./css/ht2html
+</pre></div>
+
+<p>
+Here we are sending a data-stream to the stdin of a CGI and reading
+the data it returns to us. Note that this example will only work when the
+Python installation supports SSL.
+
+</p><p>
+</p><div class="verbatim"><pre>&gt;&gt;&gt; import urllib2
+&gt;&gt;&gt; req = urllib2.Request(url='https://localhost/cgi-bin/test.cgi',
+...                       data='This data is passed to stdin of the CGI')
+&gt;&gt;&gt; f = urllib2.urlopen(req)
+&gt;&gt;&gt; print f.read()
+Got Data: "This data is passed to stdin of the CGI"
+</pre></div>
+
+<p>
+The code for the sample CGI used in the above example is:
+
+</p><p>
+</p><div class="verbatim"><pre>#!/usr/bin/env python
+import sys
+data = sys.stdin.read()
+print 'Content-type: text-plain\n\nGot Data: "%s"' % data
+</pre></div>
+
+<p>
+Use of Basic HTTP Authentication:
+
+</p><p>
+</p><div class="verbatim"><pre>import urllib2
+# Create an OpenerDirector with support for Basic HTTP Authentication...
+auth_handler = urllib2.HTTPBasicAuthHandler()
+auth_handler.add_password('realm', 'host', 'username', 'password')
+opener = urllib2.build_opener(auth_handler)
+# ...and install it globally so it can be used with urlopen.
+urllib2.install_opener(opener)
+urllib2.urlopen('http://www.example.com/login.html')
+</pre></div>
+
+<p>
+<tt class="function">build_opener()</tt> provides many handlers by default, including a
+<tt class="class">ProxyHandler</tt>.  By default, <tt class="class">ProxyHandler</tt> uses the
+environment variables named <code>&lt;scheme&gt;_proxy</code>, where <code>&lt;scheme&gt;</code>
+is the URL scheme involved.  For example, the <a class="envvar" id="l2h-3295" xml:id="l2h-3295">http_proxy</a>
+environment variable is read to obtain the HTTP proxy's URL.
+
+</p><p>
+This example replaces the default <tt class="class">ProxyHandler</tt> with one that uses
+programatically-supplied proxy URLs, and adds proxy authorization support
+with <tt class="class">ProxyBasicAuthHandler</tt>.
+
+</p><p>
+</p><div class="verbatim"><pre>proxy_handler = urllib2.ProxyHandler({'http': 'http://www.example.com:3128/'})
+proxy_auth_handler = urllib2.HTTPBasicAuthHandler()
+proxy_auth_handler.add_password('realm', 'host', 'username', 'password')
+
+opener = build_opener(proxy_handler, proxy_auth_handler)
+# This time, rather than install the OpenerDirector, we use it directly:
+opener.open('http://www.example.com/login.html')
+</pre></div>
+
+<p>
+Adding HTTP headers:
+
+</p><p>
+Use the <var>headers</var> argument to the <tt class="class">Request</tt> constructor, or:
+
+</p><p>
+</p><div class="verbatim"><pre>import urllib2
+req = urllib2.Request('http://www.example.com/')
+req.add_header('Referer', 'http://www.python.org/')
+r = urllib2.urlopen(req)
+</pre></div>
+
+<p>
+<tt class="class">OpenerDirector</tt> automatically adds a <span class="mailheader">User-Agent:</span>
+header to every <tt class="class">Request</tt>.  To change this:
+
+</p><p>
+</p><div class="verbatim"><pre>import urllib2
+opener = urllib2.build_opener()
+opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+opener.open('http://www.example.com/')
+</pre></div>
+
+<p>
+Also, remember that a few standard headers
+(<span class="mailheader">Content-Length:</span>, <span class="mailheader">Content-Type:</span> and
+<span class="mailheader">Host:</span>) are added when the <tt class="class">Request</tt> is passed to
+<tt class="function">urlopen()</tt> (or <tt class="method">OpenerDirector.open()</tt>).
+
+</p><div class="navigation">
+<div class="online-navigation">
+<p></p><hr>
+<table align="center" cellpadding="0" cellspacing="2" width="100%">
+<tbody><tr>
+<td class="online-navigation"><a rel="prev" title="11.5.21 HTTPErrorProcessor Objects" href="https://docs.python.org/2.4/lib/http-error-processor-objects.html"><img src="previous.png" alt="Previous Page" border="0" height="32" width="32"></a></td>
+<td class="online-navigation"><a rel="parent" title="11.5 urllib2  " href="https://docs.python.org/2.4/lib/module-urllib2.html"><img src="up.png" alt="Up One Level" border="0" height="32" width="32"></a></td>
+<td class="online-navigation"><a rel="next" title="11.6 httplib  " href="https://docs.python.org/2.4/lib/module-httplib.html"><img src="next.png" alt="Next Page" border="0" height="32" width="32"></a></td>
+<td align="center" width="100%">Python Library Reference</td>
+<td class="online-navigation"><a rel="contents" title="Table of Contents" href="https://docs.python.org/2.4/lib/contents.html"><img src="contents.png" alt="Contents" border="0" height="32" width="32"></a></td>
+<td class="online-navigation"><a href="https://docs.python.org/2.4/lib/modindex.html" title="Module Index"><img src="modules.png" alt="Module Index" border="0" height="32" width="32"></a></td>
+<td class="online-navigation"><a rel="index" title="Index" href="https://docs.python.org/2.4/lib/genindex.html"><img src="index_001.png" alt="Index" border="0" height="32" width="32"></a></td>
+</tr></tbody></table>
+<div class="online-navigation">
+<b class="navlabel">Previous:</b>
+<a class="sectref" rel="prev" href="https://docs.python.org/2.4/lib/http-error-processor-objects.html">11.5.21 HTTPErrorProcessor Objects</a>
+<b class="navlabel">Up:</b>
+<a class="sectref" rel="parent" href="https://docs.python.org/2.4/lib/module-urllib2.html">11.5 urllib2  </a>
+<b class="navlabel">Next:</b>
+<a class="sectref" rel="next" href="https://docs.python.org/2.4/lib/module-httplib.html">11.6 httplib  </a>
+</div>
+</div>
+<hr>
+<span class="release-info">Release 2.4.4, documentation updated on 18 October 2006.</span>
+</div>
+<!--End of Navigation Panel-->
+<address>
+See <i><a href="https://docs.python.org/2.4/lib/about.html">About this document...</a></i> for information on suggesting changes.
+</address>
+
+
+</body>
+</html>

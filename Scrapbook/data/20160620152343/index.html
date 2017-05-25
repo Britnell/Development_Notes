@@ -1,0 +1,300 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Using the Mikroelektronika GSM Click on the BeagleBone Black - Marco Marchini</title>
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Using the Mikroelektronika GSM Click on the BeagleBone Black">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Using the Mikroelektronika GSM Click on the BeagleBone Black">
+    <meta property="og:description" content="">
+
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="http://localhost:2368/apple-touch-icon-precomposed.png" rel="apple-touch-icon">
+
+    
+    
+
+
+    <link rel="canonical" href="http://marcomarchini.net/using-the-mikroelektronika-gsm-click-on-the-beaglebone-black/index.html">
+    
+    <meta property="og:site_name" content="Marco Marchini">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Using the Mikroelektronika GSM Click on the BeagleBone Black">
+    <meta property="og:description" content="I recently came across the problem of connecting a BeagleBone Black to the Internet using a GSM/GPRS connection, so that the applications on the board could access a remote service without the need for a cabled or wifi network...">
+    <meta property="og:url" content="http://localhost:2368/using-the-mikroelektronika-gsm-click-on-the-beaglebone-black/">
+    <meta property="article:published_time" content="2014-11-13T16:46:08.630Z">
+    <meta property="article:modified_time" content="2014-11-18T11:09:48.629Z">
+    <meta property="article:tag" content="beaglebone black">
+    <meta property="article:tag" content="GSM Click">
+    
+    <meta name="twitter:card" content="content">
+    <meta name="twitter:title" content="Using the Mikroelektronika GSM Click on the BeagleBone Black">
+    <meta name="twitter:description" content="I recently came across the problem of connecting a BeagleBone Black to the Internet using a GSM/GPRS connection, so that the applications on the board could access a remote service without the need for a cabled or wifi network...">
+    <meta name="twitter:url" content="http://localhost:2368/using-the-mikroelektronika-gsm-click-on-the-beaglebone-black/">
+    
+    
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="Marco Marchini" href="http://marcomarchini.net/rss/index.html">
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="post-template tag-beaglebone-black tag-gsm-click no-js">
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    <header class="panel-cover panel-cover--collapsed ">
+      <div class="panel-main">
+    
+        <div class="panel-main__inner panel-inverted">
+        <div class="panel-main__content">
+    
+            <h1 class="panel-cover__title panel-title"><a href="http://marcomarchini.net/" title="link to homepage for Marco Marchini">Marco Marchini</a></h1>
+            <!--span class="panel-cover__subtitle panel-subtitle">Computer Engineer</span-->
+            <hr class="panel-cover__divider">
+            <p class="panel-cover__description">computer engineer, developer, maker</p>
+            <hr class="panel-cover__divider panel-cover__divider--secondary">
+    
+            <div class="navigation-wrapper">
+    
+              <nav class="cover-navigation cover-navigation--primary">
+                <ul class="navigation">
+                  <!--li class="navigation__item"><a href="/#blog" title="link to Marco Marchini blog" class="blog-button">Blog</a></li-->
+                  <!--li class="navigation__item"><a href="/about" title="about me" class="blog-button">About me</a></li-->
+                </ul>
+              </nav>
+    
+              <br>
+    
+              
+              <nav class="cover-navigation navigation--social">
+              
+                <ul class="navigation">
+              
+              
+                <!-- LinkedIn -->
+                <li class="navigation__item">
+                  <a href="http://www.linkedin.com/pub/marco-marchini/34/57a/84b/en" target="_top" title="Marco Marchini on LinkedIn">
+                    <i class="icon icon-social-linkedin"></i>
+                    <span class="label">LinkedIn</span>
+                  </a>
+                </li>
+              
+                <!-- GitHub -->
+                <li class="navigation__item">
+                  <a href="http://github.com/marcom04" target="_top" title="marcom04 on GitHub">
+                    <i class="icon icon-social-github"></i>
+                    <span class="label">GitHub</span>
+                  </a>
+                </li>
+              
+                <!-- Twitter -->
+                <li class="navigation__item">
+                  <a href="http://twitter.com/_dontfreakout_" target="_top" title="@_dontfreakout_ on Twitter">
+                    <i class="icon icon-social-twitter"></i>
+                    <span class="label">Twitter</span>
+                  </a>
+                </li>
+              
+                <!-- Facebook -->
+                <li class="navigation__item">
+                  <a href="http://www.facebook.com/marco.marchini.04" target="_top" title="Marco Marchini on Facebook">
+                    <i class="icon icon-social-facebook"></i>
+                    <span class="label">Facebook</span>
+                  </a>
+                </li>
+              
+                <!-- Instagram -->
+                <li class="navigation__item">
+                  <a href="http://instagram.com/dontfreakout04" target="_top" title="dontfreakout04 on Instagram">
+                    <i class="icon icon-social-instagram"></i>
+                    <span class="label">Instagram</span>
+                  </a>
+                </li>
+              
+                <!-- Email -->
+                <li class="navigation__item">
+                  <a href="mailto:mmarchini87@gmail.com" title="Email mmarchini87@gmail.com">
+                    <i class="icon icon-mail"></i>
+                    <span class="label">Email</span>
+                  </a>
+                </li>
+              
+                <!-- RSS >
+                <li class="navigation__item">
+                  <a href="/rss/" title="Subscribe">
+                    <i class='icon icon-rss'></i>
+                    <span class="label">RSS</span>
+                  </a>
+                </li-->
+              
+                </ul>
+              </nav>
+    
+            </div>
+    
+          </div>
+    
+        </div>
+    
+        <div class="panel-cover--overlay cover-slate"></div>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            
+
+  <article class="post-container post-container--single">
+
+    <header class="post-header">
+      <h4><a href="http://marcomarchini.net/index.html#blog" title="back to Marco Marchini blog" class="blog-button"></a></h4>
+      <div class="post-meta">
+        <time datetime="13 Nov 2014" class="post-meta__date date">13 Nov 2014</time> • <span class="post-meta__tags tags">on <a href="http://marcomarchini.net/tag/beaglebone-black/">beaglebone black</a>, <a href="http://marcomarchini.net/tag/gsm-click/">GSM Click</a></span>
+        <span class="post-meta__author author"><img src="416179_2939973630896_2079588679_o.jpg" alt="profile image for Marco Marchini" class="avatar post-meta__avatar"> by Marco Marchini</span>
+      </div>
+      <h1 class="post-title">Using the Mikroelektronika GSM Click on the BeagleBone Black</h1>
+    </header>
+
+    <section class="post tag-beaglebone-black tag-gsm-click">
+      <p>I recently came across the problem of connecting a BeagleBone Black to the Internet using a GSM/GPRS connection, so that the applications on the board could access a remote service without the need for a cabled or wifi network.</p>
+
+<p>After some research, I found a pretty good solution: the <a href="http://www.mikroe.com/click/gsm/">GSM Click from Mikroelektronika</a>. This add-on board is one of a series of boards associated by the use of the so called Mikrobus interface. The GSM Click mounts a <a href="http://www.telit.com/products/product-service-selector/product-service-selector/show/product/gl865-quad/">Telit GL865-QUAD</a> GSM/GPRS module, which supports GSM/GPRS 850/900/1800/ 1900 MHz Quad-band frequency.</p>
+
+<h3 id="wiring">Wiring</h3>
+
+<p>The GSM Click can use a 3.3V power supply and communicates through a simple serial interface. Therefore, connecting it to the BeagleBone Black was pretty straightforward:</p>
+
+  
+
+<table class="tg">  
+  <tbody><tr>
+    <th class="tg-hgcj">BeagleBone Black</th>
+    <th class="tg-hgcj">GSM Click</th>
+  </tr>
+  <tr>
+    <td class="tg-s6z2">P9_04 (DC_3.3V)</td>
+    <td class="tg-s6z2">3.3V</td>
+  </tr>
+  <tr>
+    <td class="tg-s6z2">P9_02 (GND)</td>
+    <td class="tg-s6z2">GND</td>
+  </tr>
+  <tr>
+    <td class="tg-s6z2">P9_21 (UART2_TXD)</td>
+    <td class="tg-s6z2">RX</td>
+  </tr>
+  <tr>
+    <td class="tg-s6z2">P9_22 (UART2_RXD)</td>
+    <td class="tg-s6z2">TX</td>
+  </tr>
+</tbody></table>
+
+<p>As you can see, I used the UART2 port on the BeagleBone Black. This is because I've noticed that using UART1 for the GSM Click creates problems if there's a USB device plugged into the board (as in my case). <br>
+Otherwise, if no USB device is attached, UART1 works perfectly.</p>
+
+<p>Actyally, it seems there are problems with the GSM Click whenever we have another serial device attached. In fact, there are problems also when the UART0 (debug) is attached to my laptop. &lt;--- VERIFY THIS!</p>
+
+<h3 id="usingtheuartswiththeadafruitbbiopythonlibrary">Using the UARTs with the Adafruit BBIO Python library</h3>
+
+<p>GPIO handling is greatly simplified on the BeagleBone Black, thanks to the awesome job done by Adafruit with its <a href="https://github.com/adafruit/adafruit-beaglebone-io-python">Adafruit BBIO Python library</a>. <br>
+First thing, download and install the library (complete guide at the link provided above) and some other prerequisites:  </p>
+
+<pre class=" language-bash"><code class=" language-bash">sudo apt<span class="token operator">-</span>get install build<span class="token operator">-</span>essential python<span class="token operator">-</span>dev python<span class="token operator">-</span>pip <span class="token operator">-</span>y  
+sudo pip install Adafruit_BBIO  
+sudo pip install pyserial  
+</code></pre>
+
+<p>then execute this simple Python script to test out that everything works correctly:  </p>
+
+<pre class=" language-python"><code class=" language-python"><span class="token keyword">import</span> Adafruit_BBIO<span class="token punctuation">.</span>UART <span class="token keyword">as</span> UART  
+<span class="token keyword">import</span> serial
+
+UART<span class="token punctuation">.</span>setup<span class="token punctuation">(</span><span class="token string">"UART2"</span><span class="token punctuation">)</span>
+
+sp <span class="token operator">=</span> serial<span class="token punctuation">.</span>Serial<span class="token punctuation">(</span>port <span class="token operator">=</span> <span class="token string">'/dev/ttyO2'</span><span class="token punctuation">,</span> baudrate<span class="token operator">=</span><span class="token number">9600</span><span class="token punctuation">)</span>  
+sp<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>  
+sp<span class="token punctuation">.</span>open<span class="token punctuation">(</span><span class="token punctuation">)</span>  
+<span class="token keyword">if</span> sp<span class="token punctuation">.</span>isOpen<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  
+    <span class="token keyword">print</span> <span class="token string">"Serial port is open!"</span>
+    sp<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>
+sp<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>  
+</code></pre>
+
+<h3 id="testingserialcommunicationwithminicom">Testing serial communication with minicom</h3>
+
+<p>Installing minicom is useful to test serial ports and to interact with serial devices:  </p>
+
+<pre class=" language-bash"><code class=" language-bash">sudo apt<span class="token operator">-</span>get install minicom  
+</code></pre>
+
+<p>If you are using UART2 for the GSM module, you can launch:  </p>
+
+<pre class=" language-bash"><code class=" language-bash">minicom <span class="token operator">-</span>b <span class="token number">9600</span> <span class="token operator">-</span>D <span class="token operator">/</span>dev<span class="token operator">/</span>ttyO2  
+</code></pre>
+
+<p>and then write the command "AT" (without quotes) followed by carriage return. If you get the response "OK", your module is good to go.</p>
+
+<h3 id="sakis3gandppp">Sakis3g and ppp</h3>
+
+<p>Next step: installing sakis3g. This utility handles Internet connections through UMTS USB devices. For some reason sakis3g's website (<a href="http://localhost:2368/using-the-mikroelektronika-gsm-click-on-the-beaglebone-black/sakis3g.org">sakis3g.org</a>) has been down for a while, but it's possible to download the software from download mirrors, like <a href="http://en.sourceforge.jp/projects/sfnet_vim-n4n0/downloads/sakis3g.tar.gz/">this one</a>.  </p>
+
+<pre class=" language-bash"><code class=" language-bash">sudo apt<span class="token operator">-</span>get install ppp  
+</code></pre>
+
+<h3 id="theinitializationscript">The initialization script</h3>
+
+<p>tinit.py</p>
+
+<h3 id="connecting">Connecting</h3>
+
+<h3 id="disconnecting">Disconnecting</h3>
+
+<h3 id="references">References</h3>
+
+<ul>
+<li><a href="https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black/uart">Adafruit BBIO and UARTs</a> </li>
+<li><a href="http://en.sourceforge.jp/projects/sfnet_vim-n4n0/downloads/sakis3g.tar.gz/">Sakis3g download mirror</a>  </li>
+</ul>
+    </section>
+
+  </article>
+
+
+
+
+            <footer class="footer">
+                <span class="footer__copyright"> Marco Marchini © 2014. All rights reserved.</span>
+                <span class="footer__copyright"><a href="http://uno.daleanthony.com/" title="link to page for Uno Ghost theme">Uno theme</a> by <a href="http://daleanthony.com/" title="link to website for Dale-Anthony">Dale-Anthony</a></span>
+                <span class="footer__copyright">Proudly published with <a href="http://ghost.org/" title="link to Ghost website">Ghost</a></span>
+            </footer>
+        </div>
+    </div>
+
+    
+
+    
+    
+
+
+</body>
+</html>

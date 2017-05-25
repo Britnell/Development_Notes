@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#" class="js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<div style="display: none;" id="fit-vids-style" class="fit-vids-style">­</div>
+	<meta charset="UTF-8">
+	<title>The ADC of the AVR » maxEmbedded</title>
+			
+	
+	
+	<link rel="pingback" href="http://maxembedded.com/xmlrpc.php">
+
+	<!--[if lt IE 9]>
+		<script src="http://maxembedded.com/wp-content/themes/Lucid/js/html5.js" type="text/javascript"></script>
+	<![endif]-->
+
+	
+
+	
+<!-- This site is optimized with the Yoast SEO plugin v3.1.2 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The ADC of the AVR » maxEmbedded">
+<meta property="og:description" content="Analog to Digital Conversion Most real world data is analog. Whether it be temperature, pressure, voltage, etc, their variation is always analog in nature. For example, the temperature inside a boiler is around 800°C. During its light-up, the temperature never approaches directly to 800°C. If the ambient temperature is 400°C, it will start increasing gradually …">
+<meta property="og:url" content="http://maxembedded.com/2011/06/the-adc-of-the-avr/">
+<meta property="og:site_name" content="maxEmbedded">
+<meta property="article:publisher" content="https://www.facebook.com/maxEmbedded">
+<meta property="article:author" content="maxEmbedded">
+<meta property="article:tag" content="adc">
+<meta property="article:tag" content="avr adc">
+<meta property="article:section" content="Atmel AVR">
+<meta property="article:published_time" content="2011-06-20T02:37:08-07:00">
+<meta property="article:modified_time" content="2015-11-04T00:18:09-07:00">
+<meta property="og:updated_time" content="2015-11-04T00:18:09-07:00">
+<meta property="og:image" content="http://maxembedded.com/wp-content/uploads/2012/12/adc-of-avr.png">
+<meta property="og:image:width" content="750">
+<meta property="og:image:height" content="331">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="maxEmbedded » Feed" href="http://maxembedded.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="maxEmbedded » Comments Feed" href="http://maxembedded.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="maxEmbedded » The ADC of the AVR Comments Feed" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/feed/">
+		
+		<meta content="Lucid v.2.5" name="generator">
+	
+
+
+
+
+<!-- Inline jetpack_facebook_likebox -->
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="https://api.w.org/" href="http://maxembedded.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://maxembedded.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://maxembedded.com/wp-includes/wlwmanifest.xml"> 
+
+<link rel="shortlink" href="http://wp.me/p4sQoO-46">
+<link rel="alternate" type="application/json+oembed" href="http://maxembedded.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fmaxembedded.com%2F2011%2F06%2Fthe-adc-of-the-avr%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://maxembedded.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fmaxembedded.com%2F2011%2F06%2Fthe-adc-of-the-avr%2F&amp;format=xml">
+
+<link rel="dns-prefetch" href="http://widgets.wp.com/">
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://0.gravatar.com/">
+<link rel="dns-prefetch" href="http://1.gravatar.com/">
+<link rel="dns-prefetch" href="http://2.gravatar.com/">
+<link rel="dns-prefetch" href="http://jetpack.wordpress.com/">
+<link rel="dns-prefetch" href="http://s1.wp.com/">
+<link rel="dns-prefetch" href="http://s2.wp.com/">
+<link rel="dns-prefetch" href="http://public-api.wordpress.com/">
+<link rel="dns-prefetch" href="http://i0.wp.com/">
+<link rel="dns-prefetch" href="http://i1.wp.com/">
+<link rel="dns-prefetch" href="http://i2.wp.com/">
+		
+	<link rel="shortcut icon" href="maxembedd-logo1.png"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-254 single-format-standard custom-background chrome et_includes_sidebar">
+		<header id="main-header">
+		<div class="container clearfix">
+			<a href="#" class="mobile_nav closed">Pages Menu<span></span><ul id="mobile_menu" class="et_mobile_menu"><li id="menu-item-3269" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3269 et_first_mobile_item"><a href="http://maxembedded.com/index/"><span class="main_text">maxEmbedded Index</span></a></li>
+<li id="menu-item-3347" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3347"><a class="sf-with-ul" href="http://maxembedded.com/"><span class="main_text">Categories<span class="sf-sub-indicator"> »</span></span></a>
+<ul style="display: none; visibility: hidden;" class="sub-menu">
+	<li id="menu-item-3345" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3345"><a href="http://maxembedded.com/category/featured/">Featured</a></li>
+	<li id="menu-item-3340" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3340"><a href="http://maxembedded.com/category/getting-started/">Getting Started</a></li>
+	<li id="menu-item-3341" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3341"><a href="http://maxembedded.com/category/robotics-2/">Robotics</a></li>
+	<li id="menu-item-3342" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3342"><a href="http://maxembedded.com/category/electronics/">Electronics</a></li>
+	<li id="menu-item-3348" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3348"><a href="http://maxembedded.com/category/e-linux/">e-Linux</a></li>
+	<li id="menu-item-3343" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3343"><a href="http://maxembedded.com/category/computer-vision/">Computer Vision</a></li>
+	<li id="menu-item-3339" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-3339"><a href="http://maxembedded.com/category/microcontrollers-2/">Microcontrollers</a></li>
+	<li id="menu-item-3346" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3346"><a href="http://maxembedded.com/category/single-board-computers/">Single Board Computers</a></li>
+	<li id="menu-item-3344" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3344"><a href="http://maxembedded.com/category/offbeat/">Offbeat</a></li>
+</ul>
+</li>
+<li id="menu-item-3250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3250"><a href="http://maxembedded.com/tools/"><span class="main_text">Tools</span></a></li>
+</ul></a>			<nav id="top-menu">
+				<ul style="visibility: visible;" id="menu-global-menu" class="nav sf-js-enabled"><li id="menu-item-3269" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3269"><a href="http://maxembedded.com/index/"><span class="main_text">maxEmbedded Index</span><span style="display: block;" class="menu_slide">maxEmbedded Index</span></a></li>
+<li id="menu-item-3347" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3347"><a class="sf-with-ul" href="http://maxembedded.com/"><span class="main_text">Categories<span class="sf-sub-indicator"> »</span></span><span style="display: block;" class="menu_slide">Categories<span class="sf-sub-indicator"> »</span></span></a>
+<ul style="display: none; visibility: hidden;" class="sub-menu">
+	<li id="menu-item-3345" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3345"><a href="http://maxembedded.com/category/featured/">Featured</a></li>
+	<li id="menu-item-3340" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3340"><a href="http://maxembedded.com/category/getting-started/">Getting Started</a></li>
+	<li id="menu-item-3341" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3341"><a href="http://maxembedded.com/category/robotics-2/">Robotics</a></li>
+	<li id="menu-item-3342" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3342"><a href="http://maxembedded.com/category/electronics/">Electronics</a></li>
+	<li id="menu-item-3348" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3348"><a href="http://maxembedded.com/category/e-linux/">e-Linux</a></li>
+	<li id="menu-item-3343" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3343"><a href="http://maxembedded.com/category/computer-vision/">Computer Vision</a></li>
+	<li id="menu-item-3339" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-3339"><a href="http://maxembedded.com/category/microcontrollers-2/">Microcontrollers</a></li>
+	<li id="menu-item-3346" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3346"><a href="http://maxembedded.com/category/single-board-computers/">Single Board Computers</a></li>
+	<li id="menu-item-3344" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3344"><a href="http://maxembedded.com/category/offbeat/">Offbeat</a></li>
+</ul>
+</li>
+<li id="menu-item-3250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3250"><a href="http://maxembedded.com/tools/"><span class="main_text">Tools</span><span style="display: block;" class="menu_slide">Tools</span></a></li>
+</ul>			</nav>
+
+			<div id="social-icons"><a href="https://twitter.com/maxEmbedded" target="_top"><img alt="Twitter" src="twitter.png"></a><a href="http://maxembedded.com/feed/" target="_top"><img alt="Rss" src="rss.png"></a><a href="https://www.facebook.com/maxEmbedded" target="_top"><img alt="Facebook" src="facebook.png"></a></div> <!-- end #social-icons -->
+			<div id="search">
+				<div id="search-form">
+					<form method="get" id="searchform" action="http://maxembedded.com//">
+						<input value="Search This Site..." name="s" id="searchinput" type="text">
+						<input alt="Submit" src="search_btn.png" id="searchsubmit" type="image">
+					</form>
+				</div> <!-- end #search-form -->
+			</div> <!-- end #search -->
+		</div> <!-- end .container -->
+	</header> <!-- end #main-header -->
+
+	
+	<div class="container">
+		<div id="logo-area">
+			<a href="http://maxembedded.com/">
+								<img src="header-white.png" alt="maxEmbedded" id="logo">
+			</a>
+
+					</div>
+	</div> <!-- end .container -->
+	<div id="secondary-menu">
+		<div class="container">
+			<a href="#" class="mobile_nav closed">Categories Menu<span></span><ul id="category_mobile_menu" class="et_mobile_menu"><li id="menu-item-3327" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3327 et_first_mobile_item"><a href="http://maxembedded.com/"><span class="main_text">Home</span></a></li>
+<li id="menu-item-3228" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3228"><a href="http://maxembedded.com/index/"><span class="main_text">mE Index</span></a></li>
+<li id="menu-item-3338" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3338"><a href="http://maxembedded.com/category/getting-started/"><span class="main_text">Getting Started</span></a></li>
+<li id="menu-item-3224" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-3224"><a class="sf-with-ul" href="http://maxembedded.com/category/microcontrollers-2/atmel-avr/"><span class="main_text">Atmel AVR<span class="sf-sub-indicator"> »</span></span></a>
+<ul style="display: none; visibility: hidden;" class="sub-menu">
+	<li id="menu-item-3335" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3335"><a href="http://maxembedded.com/tag/avr-basics/">AVR Basics</a></li>
+	<li id="menu-item-3334" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3334"><a href="http://maxembedded.com/tag/avr-adc/">AVR ADC</a></li>
+	<li id="menu-item-3336" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3336"><a href="http://maxembedded.com/tag/avr-serial/">AVR Serial</a></li>
+	<li id="menu-item-3337" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3337"><a href="http://maxembedded.com/tag/avr-timers/">AVR Timers</a></li>
+</ul>
+</li>
+<li id="menu-item-3329" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3329"><a href="http://maxembedded.com/category/electronics/"><span class="main_text">Electronics</span></a></li>
+<li id="menu-item-3333" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3333"><a class="sf-with-ul" href="http://maxembedded.com/"><span class="main_text">More<span class="sf-sub-indicator"> »</span></span></a>
+<ul style="display: none; visibility: hidden;" class="sub-menu">
+	<li id="menu-item-3483" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3483"><a href="http://maxembedded.com/search/">Search</a></li>
+	<li id="menu-item-3237" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3237"><a href="http://maxembedded.com/code-gallery/">Code Gallery</a></li>
+	<li id="menu-item-3485" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3485"><a href="http://maxembedded.com/blogroll/">Blogroll</a></li>
+	<li id="menu-item-3328" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3328"><a href="http://maxembedded.com/category/robotics-2/">Robotics</a></li>
+	<li id="menu-item-3247" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3247"><a href="http://maxembedded.com/category/e-linux/">e-Linux</a></li>
+	<li id="menu-item-3330" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3330"><a href="http://maxembedded.com/category/computer-vision/">Computer Vision</a></li>
+	<li id="menu-item-3246" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3246"><a href="http://maxembedded.com/category/microcontrollers-2/msp430/">MSP430</a></li>
+	<li id="menu-item-3331" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3331"><a href="http://maxembedded.com/category/single-board-computers/">Single Board Computers</a></li>
+	<li id="menu-item-3332" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3332"><a href="http://maxembedded.com/tools/">Tools</a></li>
+	<li id="menu-item-3484" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3484"><a href="http://maxembedded.com/sitemap/">Sitemap</a></li>
+</ul>
+</li>
+<li id="menu-item-3501" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3501"><a class="sf-with-ul" href="http://maxembedded.com/about/"><span class="main_text">About<span class="sf-sub-indicator"> »</span></span></a>
+<ul style="display: none; visibility: hidden;" class="sub-menu">
+	<li id="menu-item-3236" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3236"><a href="http://maxembedded.com/contact/">Contact</a></li>
+	<li id="menu-item-3316" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3316"><a href="http://maxembedded.com/credits/">Credits</a></li>
+</ul>
+</li>
+</ul></a>			<nav id="second-menu" class="clearfix">
+				<ul style="visibility: visible;" id="menu-top-menu" class="nav sf-js-enabled"><li id="menu-item-3327" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3327"><a href="http://maxembedded.com/"><span class="main_text">Home</span><span style="display: block;" class="menu_slide">Home</span></a></li>
+<li id="menu-item-3228" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3228"><a href="http://maxembedded.com/index/"><span class="main_text">mE Index</span><span style="display: block;" class="menu_slide">mE Index</span></a></li>
+<li id="menu-item-3338" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3338"><a href="http://maxembedded.com/category/getting-started/"><span class="main_text">Getting Started</span><span style="display: block;" class="menu_slide">Getting Started</span></a></li>
+<li id="menu-item-3224" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-3224"><a class="sf-with-ul" href="http://maxembedded.com/category/microcontrollers-2/atmel-avr/"><span class="main_text">Atmel AVR<span class="sf-sub-indicator"> »</span></span><span style="display: block;" class="menu_slide">Atmel AVR<span class="sf-sub-indicator"> »</span></span></a>
+<ul style="display: none; visibility: hidden;" class="sub-menu">
+	<li id="menu-item-3335" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3335"><a href="http://maxembedded.com/tag/avr-basics/">AVR Basics</a></li>
+	<li id="menu-item-3334" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3334"><a href="http://maxembedded.com/tag/avr-adc/">AVR ADC</a></li>
+	<li id="menu-item-3336" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3336"><a href="http://maxembedded.com/tag/avr-serial/">AVR Serial</a></li>
+	<li id="menu-item-3337" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3337"><a href="http://maxembedded.com/tag/avr-timers/">AVR Timers</a></li>
+</ul>
+</li>
+<li id="menu-item-3329" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3329"><a href="http://maxembedded.com/category/electronics/"><span class="main_text">Electronics</span><span style="display: block;" class="menu_slide">Electronics</span></a></li>
+<li id="menu-item-3333" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3333"><a class="sf-with-ul" href="http://maxembedded.com/"><span class="main_text">More<span class="sf-sub-indicator"> »</span></span><span style="display: block;" class="menu_slide">More<span class="sf-sub-indicator"> »</span></span></a>
+<ul style="display: none; visibility: hidden;" class="sub-menu">
+	<li id="menu-item-3483" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3483"><a href="http://maxembedded.com/search/">Search</a></li>
+	<li id="menu-item-3237" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3237"><a href="http://maxembedded.com/code-gallery/">Code Gallery</a></li>
+	<li id="menu-item-3485" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3485"><a href="http://maxembedded.com/blogroll/">Blogroll</a></li>
+	<li id="menu-item-3328" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3328"><a href="http://maxembedded.com/category/robotics-2/">Robotics</a></li>
+	<li id="menu-item-3247" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3247"><a href="http://maxembedded.com/category/e-linux/">e-Linux</a></li>
+	<li id="menu-item-3330" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3330"><a href="http://maxembedded.com/category/computer-vision/">Computer Vision</a></li>
+	<li id="menu-item-3246" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3246"><a href="http://maxembedded.com/category/microcontrollers-2/msp430/">MSP430</a></li>
+	<li id="menu-item-3331" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3331"><a href="http://maxembedded.com/category/single-board-computers/">Single Board Computers</a></li>
+	<li id="menu-item-3332" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3332"><a href="http://maxembedded.com/tools/">Tools</a></li>
+	<li id="menu-item-3484" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3484"><a href="http://maxembedded.com/sitemap/">Sitemap</a></li>
+</ul>
+</li>
+<li id="menu-item-3501" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3501"><a class="sf-with-ul" href="http://maxembedded.com/about/"><span class="main_text">About<span class="sf-sub-indicator"> »</span></span><span style="display: block;" class="menu_slide">About<span class="sf-sub-indicator"> »</span></span></a>
+<ul style="display: none; visibility: hidden;" class="sub-menu">
+	<li id="menu-item-3236" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3236"><a href="http://maxembedded.com/contact/">Contact</a></li>
+	<li id="menu-item-3316" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3316"><a href="http://maxembedded.com/credits/">Credits</a></li>
+</ul>
+</li>
+</ul>			</nav>
+		</div> <!-- end .container -->
+	</div> <!-- end #secondary-menu -->
+	<div id="main-area">
+		<div class="container">
+
+<div id="content-area" class="clearfix">
+	<div id="left-area">
+		<div id="breadcrumbs" class="clearfix">
+					<a href="http://maxembedded.com/" class="breadcrumbs_home">Home</a> <span class="raquo">»</span>
+
+									<a href="http://maxembedded.com/category/microcontrollers-2/atmel-avr/">Atmel AVR</a> <span class="raquo">»</span> The ADC of the AVR					</div> <!-- end #breadcrumbs -->			
+	<article id="post-254" class="entry clearfix post-254 post type-post status-publish format-standard has-post-thumbnail hentry category-atmel-avr category-microcontrollers-2 tag-adc tag-avr-adc">
+		<p class="meta-info">Posted  by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> on Jun 20, 2011 in <a href="http://maxembedded.com/category/microcontrollers-2/atmel-avr/" rel="category tag">Atmel AVR</a>, <a href="http://maxembedded.com/category/microcontrollers-2/" rel="category tag">Microcontrollers</a> | <span class="comments-number"><a href="http://maxembedded.com/2011/06/the-adc-of-the-avr/#respond">318 comments</a></span></p>
+							<div class="post-thumbnail">
+				<img src="adc-of-avr.png" alt="The ADC of the AVR" height="210" width="630">			</div> 	<!-- end .post-thumbnail -->
+		
+		<div class="post_content clearfix">
+			<h1 class="title">The ADC of the AVR</h1>
+
+			<h1 style="text-align: justify;"><span style="color: rgb(255, 102, 0);">Analog to Digital Conversion</span></h1>
+<p style="text-align: justify;"><a href="http://i2.wp.com/maxembedded.files.wordpress.com/2011/06/avr_series.png"><img class="alignleft size-full wp-image-105" title="AVR Series" src="avr_series.png" alt="AVR Series" height="105" width="140"></a>Most real world data is analog. Whether it be temperature, pressure, voltage, etc, their variation is always analog in nature. For example, the temperature inside a boiler is around 800°C. During its light-up, the temperature never approaches directly to 800°C. If the ambient temperature is 400°C, it will start increasing gradually to 450°C, 500°C and thus reaches 800°C over a period of time. This is an analog data.</p>
+<div style="width: 259px;" class="wp-caption alignright"><a href="http://i2.wp.com/maxembedded.files.wordpress.com/2011/06/signal-acquisition-process.png"><img class=" wp-image-256 " title="Signal Acquisition Process" src="signal-acquisition-process.png" alt="Signal Acquisition Process" srcset="http://i1.wp.com/maxembedded.com/wp-content/uploads/2011/06/signal-acquisition-process.png?w=497 497w, http://i0.wp.com/maxembedded.com/wp-content/uploads/2011/06/signal-acquisition-process.png?resize=250%2C300 250w" sizes="(max-width: 249px) 100vw, 249px" height="299" width="249"></a><p class="wp-caption-text">Signal Acquisition Process</p></div>
+<p style="text-align: justify;">Now, we must process the data that we have received. But analog signal processing is quite inefficient in terms of accuracy, speed and desired output. Hence, we convert them to digital form using an Analog to Digital Converter (ADC).</p>
+<h3 style="text-align: justify;">Signal Acquisition Process</h3>
+<p style="text-align: justify;">In general, the signal (or data) acquisition process has 3 steps.</p>
+<ul style="text-align: justify;">
+<li>In the <strong>Real World</strong>, a <a title="Sensor&nbsp;Fundamentals" href="http://maxembedded.wordpress.com/2011/06/18/sensor-fundamentals/" target="_top">sensor</a> senses any physical parameter and converts into an equivalent analog electrical signal.</li>
+</ul>
+<ul style="text-align: justify;">
+<li>For efficient and ease of signal processing, this analog signal is converted into a digital signal using an <strong>Analog to Digital Converter (ADC)</strong>.</li>
+</ul>
+<ul style="text-align: justify;">
+<li>This digital signal is then fed to the <strong>Microcontroller (MCU)</strong> and is processed accordingly.</li>
+</ul>
+<div style="width: 157px;" class="wp-caption alignright"><a href="http://i1.wp.com/maxembedded.files.wordpress.com/2011/06/adc-pins-atmega16-32.png"><img class="size-full wp-image-258" title="ADC Pins - ATMEGA16/32" src="adc-pins-atmega16-32.png" alt="ADC Pins - ATMEGA16/32" height="224" width="147"></a><p class="wp-caption-text">ADC Pins – ATMEGA16/32</p></div>
+<h3 style="text-align: justify;">Interfacing Sensors</h3>
+<p style="text-align: justify;">In general, sensors provide with analog output, but a MCU is a digital one. Hence we need to use ADC. For simple circuits, comparator op-amps can be used. But even this won’t be required if we use a MCU. We can straightaway use the inbuilt ADC of the MCU. In ATMEGA16/32, PORTA contains the ADC pins.</p>
+<h1 style="text-align: justify;"><span style="color: rgb(255, 102, 0);">The ADC of the AVR</span></h1>
+<p style="text-align: justify;">The AVR features inbuilt ADC in almost all its MCU. In ATMEGA16/32, PORTA contains the ADC pins. Some other features of the ADC are as follows:</p>
+<div style="width: 606px;" class="wp-caption aligncenter"><a href="http://i0.wp.com/maxembedded.files.wordpress.com/2011/06/adc-features-atmega1632.png"><img class="size-full wp-image-260" title="ADC Features - ATMEGA16/32" src="adc-features-atmega1632.png" alt="ADC Features - ATMEGA16/32" srcset="http://i0.wp.com/maxembedded.com/wp-content/uploads/2011/06/adc-features-atmega1632.png?w=596 596w, http://i0.wp.com/maxembedded.com/wp-content/uploads/2011/06/adc-features-atmega1632.png?resize=300%2C163 300w" sizes="(max-width: 596px) 100vw, 596px" height="297" width="546"></a><p class="wp-caption-text">ADC Features – ATMEGA16/32</p></div>
+<p style="text-align: justify;">Right now, we are concerned about the <strong>8 channel 10 bit resolution</strong> feature.</p>
+<ul style="text-align: justify;">
+<li><strong>8 channel</strong> implies that there are 8 ADC pins are multiplexed together. You can easily see that these pins are located across PORTA (PA0…PA7).</li>
+<li><strong>10 bit resolution</strong> implies that there are 2^10 = 1024 steps (as described below).</li>
+</ul>
+<div style="width: 650px;" class="wp-caption aligncenter"><a href="http://i1.wp.com/maxembedded.files.wordpress.com/2011/06/8-channel-10-bit-adc.png"><img class="size-full wp-image-262" title="8 channel 10 bit ADC" src="8-channel-10-bit-adc.png" alt="8 channel 10 bit ADC" srcset="http://i2.wp.com/maxembedded.com/wp-content/uploads/2011/06/8-channel-10-bit-adc.png?w=772 772w, http://i1.wp.com/maxembedded.com/wp-content/uploads/2011/06/8-channel-10-bit-adc.png?resize=300%2C181 300w" sizes="(max-width: 640px) 100vw, 640px" height="330" width="546"></a><p class="wp-caption-text">8 channel 10 bit ADC</p></div>
+<p style="text-align: justify;">Suppose we use a 5V reference. In this case, any analog value in between 0 and 5V is converted into its equivalent ADC value as shown above. The 0-5V range is divided into 2^10 = 1024 steps. Thus, a 0V input will give an ADC output of 0, 5V input will give an ADC output of 1023, whereas a 2.5V input will give an ADC output of around 512. This is the basic concept of ADC.</p>
+<p style="text-align: justify;">To those whom it might concern, the type of ADC implemented inside the AVR MCU is of <a title="Successive Approximation ADC" href="http://en.wikipedia.org/wiki/Successive_approximation_ADC" target="_top">Successive Approximation</a> type.</p>
+<p style="text-align: justify;">Apart from this, the other things that we need to know about the AVR ADC are:</p>
+<ul style="text-align: justify;">
+<li>ADC Prescaler</li>
+<li>ADC Registers – ADMUX, ADCSRA, ADCH, ADCL and SFIOR</li>
+</ul>
+<h1 style="text-align: justify;"><span style="color: rgb(255, 102, 0);">ADC Prescaler</span></h1>
+<p style="text-align: justify;">The ADC of the AVR converts analog signal into digital signal at some regular interval. This interval is determined by the clock frequency. In general, the ADC operates within a frequency range of 50kHz to 200kHz. But the CPU clock frequency is much higher (in the order of MHz). So to achieve it, frequency division must take place. The prescaler acts as this division factor. It produces desired frequency from the external higher frequency. There are some predefined division factors – 2, 4, 8, 16, 32, 64, and 128. For example, a prescaler of 64 implies F_ADC = F_CPU/64. For F_CPU = 16MHz, F_ADC = 16M/64 = 250kHz.</p>
+<p style="text-align: justify;">Now, the major question is… which frequency to select? Out of the 50kHz-200kHz range of frequencies, which one do we need? Well, the answer lies in your need. <strong>There is a trade-off between frequency and accuracy</strong>. Greater the frequency, lesser the accuracy and vice-versa. So, if your application is not sophisticated and doesn’t require much accuracy, you could go for higher frequencies.</p>
+<h1 style="text-align: justify;"><span style="color: rgb(255, 102, 0);">ADC Registers</span></h1>
+<p style="text-align: justify;">We will discuss the registers one by one.</p>
+<h2 style="text-align: justify;">ADMUX – ADC Multiplexer Selection Register</h2>
+<p style="text-align: justify;">The ADMUX register is as follows.</p>
+<div style="width: 650px;" class="wp-caption aligncenter"><a href="http://i2.wp.com/maxembedded.files.wordpress.com/2011/06/admux1.png"><img class="size-full wp-image-271" title="ADMUX" src="admux1.png" alt="ADMUX" srcset="http://i1.wp.com/maxembedded.com/wp-content/uploads/2011/06/admux1.png?w=1058 1058w, http://i0.wp.com/maxembedded.com/wp-content/uploads/2011/06/admux1.png?resize=300%2C50 300w, http://i2.wp.com/maxembedded.com/wp-content/uploads/2011/06/admux1.png?resize=1024%2C171 1024w" sizes="(max-width: 640px) 100vw, 640px" height="91" width="546"></a><p class="wp-caption-text">ADMUX Register</p></div>
+<p style="text-align: justify;">The bits that are highlighted are of interest to us. In any case, we will discuss all the bits one by one.</p>
+<ul style="text-align: justify;">
+<li><strong>Bits 7:6 – REFS1:0 – Reference Selection Bits</strong> – These bits are used to choose the reference voltage. The following combinations are used.</li>
+</ul>
+<div style="width: 650px;" class="wp-caption aligncenter"><a href="http://i2.wp.com/maxembedded.files.wordpress.com/2011/06/reference-voltage-selection.png"><img class="size-full wp-image-272" title="Reference Voltage Selection" src="reference-voltage-selection.png" alt="Reference Voltage Selection" srcset="http://i0.wp.com/maxembedded.com/wp-content/uploads/2011/06/reference-voltage-selection.png?w=782 782w, http://i2.wp.com/maxembedded.com/wp-content/uploads/2011/06/reference-voltage-selection.png?resize=300%2C68 300w" sizes="(max-width: 640px) 100vw, 640px" height="125" width="546"></a><p class="wp-caption-text">Reference Voltage Selection</p></div>
+<div style="width: 157px;" class="wp-caption alignright"><a href="http://i1.wp.com/maxembedded.files.wordpress.com/2011/06/adc-voltage-reference-pins.png"><img class="size-full wp-image-273" title="ADC Voltage Reference Pins" src="adc-voltage-reference-pins.png" alt="ADC Voltage Reference Pins" height="224" width="147"></a><p class="wp-caption-text">ADC Voltage Reference Pins</p></div>
+<p style="padding-left: 60px; text-align: justify;">The ADC needs a reference voltage to work upon. For this we have a three pins AREF, AVCC and GND. We can supply our own reference voltage across AREF and GND. For this, <strong>choose the first option</strong>. Apart from this case, you can either connect a capacitor across AREF pin and ground it to prevent from noise, or you may choose to leave it unconnected. If you want to use the VCC (+5V), <strong>choose the second option</strong>. Or else, <strong>choose the last option</strong> for internal Vref.</p>
+<p style="padding-left: 60px; text-align: justify;">Let’s choose the second option for Vcc = 5V.</p>
+<ul style="text-align: justify;">
+<li><strong>Bit 5 – ADLAR – ADC Left Adjust Result</strong> – Make it ‘1’ to Left Adjust the ADC Result. We will discuss about this a bit later.</li>
+</ul>
+<ul style="text-align: justify;">
+<li><strong>Bits 4:0 – MUX4:0 – Analog Channel and Gain Selection Bits</strong> – There are 8 ADC channels (PA0…PA7). Which one do we choose? Choose any one! It doesn’t matter. How to choose? You can choose it by setting these bits. Since there are 5 bits, it consists of 2^5 = 32 different conditions as follows. However, we are concerned only with the first 8 conditions. Initially, all the bits are set to zero.</li>
+</ul>
+<div style="width: 650px;" class="wp-caption aligncenter"><a href="http://i2.wp.com/maxembedded.files.wordpress.com/2011/06/input-channel-and-gain-selections1.png"><img class="size-full wp-image-277" title="Input Channel and Gain Selections" src="input-channel-and-gain-selections1.png" alt="Input Channel and Gain Selections" srcset="http://i2.wp.com/maxembedded.com/wp-content/uploads/2011/06/input-channel-and-gain-selections1.png?w=702 702w, http://i1.wp.com/maxembedded.com/wp-content/uploads/2011/06/input-channel-and-gain-selections1.png?resize=203%2C300 203w, http://i1.wp.com/maxembedded.com/wp-content/uploads/2011/06/input-channel-and-gain-selections1.png?resize=694%2C1024 694w" sizes="(max-width: 640px) 100vw, 640px" height="806" width="546"></a><p class="wp-caption-text">Input Channel and Gain Selections</p></div>
+<p style="text-align: justify;">Thus, to initialize ADMUX, we write</p>
+<div><div id="highlighter_277674" class="syntaxhighlighter nogutter  cpp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp plain">ADMUX = (1&lt;&lt;REFS0);</code></div></div></td></tr></tbody></table></div></div>
+<h2 style="text-align: justify;">ADCSRA – ADC Control and Status Register A</h2>
+<p style="text-align: justify;">The ADCSRA register is as follows.</p>
+<div style="width: 650px;" class="wp-caption aligncenter"><a href="http://i2.wp.com/maxembedded.files.wordpress.com/2011/06/adcsra.png"><img class="size-full wp-image-281" title="ADCSRA Register" src="adcsra.png" alt="ADCSRA Register" srcset="http://i2.wp.com/maxembedded.com/wp-content/uploads/2011/06/adcsra.png?w=1061 1061w, http://i1.wp.com/maxembedded.com/wp-content/uploads/2011/06/adcsra.png?resize=300%2C47 300w, http://i0.wp.com/maxembedded.com/wp-content/uploads/2011/06/adcsra.png?resize=1024%2C161 1024w" sizes="(max-width: 640px) 100vw, 640px" height="86" width="546"></a><p class="wp-caption-text">ADCSRA Register</p></div>
+<p style="text-align: justify;">The bits that are highlighted are of interest to us. In any case, we will discuss all the bits one by one.</p>
+<ul style="text-align: justify;">
+<li><strong>Bit 7 – ADEN – ADC Enable</strong> – As the name says, it enables the ADC feature. Unless this is enabled, ADC operations cannot take place across PORTA i.e. PORTA will behave as GPIO pins.</li>
+</ul>
+<ul style="text-align: justify;">
+<li><strong>Bit 6 – ADSC – ADC Start Conversion</strong> – Write this to ‘1’ before starting any conversion. This 1 is written as long as the conversion is in progress, after which it returns to zero. Normally it takes 13 ADC clock pulses for this operation. But when you call it for the first time, it takes 25 as it performs the initialization together with it.</li>
+</ul>
+<ul style="text-align: justify;">
+<li><strong>Bit 5 – ADATE – ADC Auto Trigger Enable</strong> – Setting it to ‘1’ enables auto-triggering of ADC. ADC is triggered automatically at every rising edge of clock pulse. View the SFIOR register for more details.</li>
+</ul>
+<ul style="text-align: justify;">
+<li><strong>Bit 4 – ADIF – ADC Interrupt Flag</strong> – Whenever a conversion is finished and the registers are updated, this bit is set to ‘1’ automatically. Thus, this is used to check whether the conversion is complete or not.</li>
+</ul>
+<ul style="text-align: justify;">
+<li><strong>Bit 3 – ADIE – ADC Interrupt Enable</strong> – When this bit is set to ‘1’, the ADC interrupt is enabled. This is used in the case of interrupt-driven ADC.</li>
+</ul>
+<ul style="text-align: justify;">
+<li><strong>Bits 2:0 – ADPS2:0 – ADC Prescaler Select Bits</strong> – The prescaler (division factor between XTAL frequency and the ADC clock frequency) is determined by selecting the proper combination from the following.</li>
+</ul>
+<div style="width: 650px;" class="wp-caption aligncenter"><a href="http://i0.wp.com/maxembedded.files.wordpress.com/2011/06/adc-prescaler-selections.png"><img class="size-full wp-image-283" title="ADC Prescaler Selections" src="adc-prescaler-selections.png" alt="ADC Prescaler Selections" srcset="http://i2.wp.com/maxembedded.com/wp-content/uploads/2011/06/adc-prescaler-selections.png?w=780 780w, http://i1.wp.com/maxembedded.com/wp-content/uploads/2011/06/adc-prescaler-selections.png?resize=300%2C121 300w" sizes="(max-width: 640px) 100vw, 640px" height="221" width="546"></a><p class="wp-caption-text">ADC Prescaler Selections</p></div>
+<p style="padding-left: 60px; text-align: justify;">Assuming XTAL frequency of 16MHz and the frequency range of 50kHz-200kHz, we choose a prescaler of 128.</p>
+<p style="padding-left: 60px; text-align: justify;">Thus, F_ADC = 16M/128 = 125kHz.</p>
+<p style="text-align: justify;">Thus, we initialize ADCSRA as follows.</p>
+<div><div id="highlighter_410896" class="syntaxhighlighter nogutter  cpp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp plain">ADCSRA = (1&lt;&lt;ADEN)|(1&lt;&lt;ADPS2)|(1&lt;&lt;ADPS1)|(1&lt;&lt;ADPS0);</code></div><div class="line number2 index1 alt1"><code class="cpp comments">// prescaler = 128</code></div></div></td></tr></tbody></table></div></div>
+<h2 style="text-align: justify;">ADCL and ADCH – ADC Data Registers</h2>
+<p style="text-align: justify;">The result of the ADC conversion is stored here. Since the ADC has a resolution of 10 bits, it requires 10 bits to store the result. Hence one single 8 bit register is not sufficient. We need two registers – ADCL and ADCH (ADC Low byte and ADC High byte) as follows. The two can be called together as ADC.</p>
+<div style="width: 650px;" class="wp-caption aligncenter"><a href="http://i0.wp.com/maxembedded.files.wordpress.com/2011/06/adc-data-registers-adlar-0.png"><img class="size-full wp-image-284" title="ADC Data Registers (ADLAR = 0)" src="adc-data-registers-adlar-0.png" alt="ADC Data Registers (ADLAR = 0)" srcset="http://i0.wp.com/maxembedded.com/wp-content/uploads/2011/06/adc-data-registers-adlar-0.png?w=1054 1054w, http://i1.wp.com/maxembedded.com/wp-content/uploads/2011/06/adc-data-registers-adlar-0.png?resize=300%2C95 300w, http://i2.wp.com/maxembedded.com/wp-content/uploads/2011/06/adc-data-registers-adlar-0.png?resize=1024%2C326 1024w" sizes="(max-width: 640px) 100vw, 640px" height="174" width="546"></a><p class="wp-caption-text">ADC Data Registers (ADLAR = 0)</p></div>
+<div style="width: 650px;" class="wp-caption aligncenter"><a href="http://i0.wp.com/maxembedded.files.wordpress.com/2011/06/adc-data-registers-adlar-1.png"><img class="size-full wp-image-285" title="ADC Data Registers (ADLAR = 1)" src="adc-data-registers-adlar-1.png" alt="ADC Data Registers (ADLAR = 1)" srcset="http://i2.wp.com/maxembedded.com/wp-content/uploads/2011/06/adc-data-registers-adlar-1.png?w=1063 1063w, http://i1.wp.com/maxembedded.com/wp-content/uploads/2011/06/adc-data-registers-adlar-1.png?resize=300%2C86 300w, http://i1.wp.com/maxembedded.com/wp-content/uploads/2011/06/adc-data-registers-adlar-1.png?resize=1024%2C293 1024w" sizes="(max-width: 640px) 100vw, 640px" height="156" width="546"></a><p class="wp-caption-text">ADC Data Registers (ADLAR = 1)</p></div>
+<p style="text-align: justify;">You can very well see the the effect of ADLAR bit (in ADMUX register). Upon setting ADLAR = 1, the conversion result is left adjusted.</p>
+<h2 style="text-align: justify;">SFIOR – Special Function I/O Register</h2>
+<p style="text-align: justify;">In normal operation, we do not use this register. This register comes into play whenever ADATE (in ADCSRA) is set to ‘1’. The register goes like this.</p>
+<div style="width: 650px;" class="wp-caption aligncenter"><a href="http://i2.wp.com/maxembedded.files.wordpress.com/2011/06/sfior-register.png"><img class="size-full wp-image-287" title="SFIOR Register" src="sfior-register.png" alt="SFIOR Register" srcset="http://i0.wp.com/maxembedded.com/wp-content/uploads/2011/06/sfior-register.png?w=1051 1051w, http://i1.wp.com/maxembedded.com/wp-content/uploads/2011/06/sfior-register.png?resize=300%2C50 300w, http://i1.wp.com/maxembedded.com/wp-content/uploads/2011/06/sfior-register.png?resize=1024%2C172 1024w" sizes="(max-width: 640px) 100vw, 640px" height="92" width="546"></a><p class="wp-caption-text">SFIOR Register</p></div>
+<p style="text-align: justify;">The bits highlighted in yellow will be discussed as they are related to ADATE. Other bits are reserved bits.</p>
+<ul style="text-align: justify;">
+<li><strong>Bits 7:5 – ADC Auto Trigger Source</strong> – Whenever ADATE is set to ‘1’, these bits determine the trigger source for ADC conversion. There are 8 possible trigger sources.</li>
+</ul>
+<div style="width: 650px;" class="wp-caption aligncenter"><a href="http://i1.wp.com/maxembedded.files.wordpress.com/2011/06/adc-auto-trigerring-source-selections.png"><img class="size-full wp-image-288" title="ADC Auto Trigerring Source Selections" src="adc-auto-trigerring-source-selections.png" alt="ADC Auto Trigerring Source Selections" srcset="http://i0.wp.com/maxembedded.com/wp-content/uploads/2011/06/adc-auto-trigerring-source-selections.png?w=700 700w, http://i0.wp.com/maxembedded.com/wp-content/uploads/2011/06/adc-auto-trigerring-source-selections.png?resize=300%2C120 300w" sizes="(max-width: 640px) 100vw, 640px" height="218" width="546"></a><p class="wp-caption-text">ADC Auto Triggering Source Selections</p></div>
+<p style="padding-left: 60px; text-align: justify;">These options are will be discussed in the posts related to timers. Those who have prior knowledge of timers can use it. The rest can leave it for now, we won’t be using this anyway.</p>
+<h1 style="text-align: justify;"><span style="color: rgb(255, 102, 0);">ADC Initialization</span></h1>
+<p style="text-align: justify;">The following code segment initializes the ADC.</p>
+<div><div id="highlighter_957207" class="syntaxhighlighter  cpp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp keyword bold">void</code> <code class="cpp plain">adc_init()</code></div><div class="line number2 index1 alt1"><code class="cpp plain">{</code></div><div class="line number3 index2 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// AREF = AVcc</code></div><div class="line number4 index3 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">ADMUX = (1&lt;&lt;REFS0);</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// ADC Enable and prescaler of 128</code></div><div class="line number7 index6 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// 16000000/128 = 125000</code></div><div class="line number8 index7 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">ADCSRA = (1&lt;&lt;ADEN)|(1&lt;&lt;ADPS2)|(1&lt;&lt;ADPS1)|(1&lt;&lt;ADPS0);</code></div><div class="line number9 index8 alt2"><code class="cpp plain">}</code></div></div></td></tr></tbody></table></div></div>
+<h1 style="text-align: justify;"><span style="color: rgb(255, 102, 0);">Reading ADC Value</span></h1>
+<p style="text-align: justify;">The following code segment reads the value of the ADC. Always refer to the register description above for every line of code.</p>
+<div><div id="highlighter_335723" class="syntaxhighlighter  cpp"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp plain">uint16_t adc_read(uint8_t ch)</code></div><div class="line number2 index1 alt1"><code class="cpp plain">{</code></div><div class="line number3 index2 alt2"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp comments">// select the corresponding channel 0~7</code></div><div class="line number4 index3 alt1"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp comments">// ANDing with ’7′ will always keep the value</code></div><div class="line number5 index4 alt2"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp comments">// of ‘ch’ between 0 and 7</code></div><div class="line number6 index5 alt1"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp plain">ch &amp;= 0b00000111;&nbsp; </code><code class="cpp comments">// AND operation with 7</code></div><div class="line number7 index6 alt2"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp plain">ADMUX = (ADMUX &amp; 0xF8)|ch; </code><code class="cpp comments">// clears the bottom 3 bits before ORing</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp comments">// start single convertion</code></div><div class="line number10 index9 alt1"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp comments">// write ’1′ to ADSC</code></div><div class="line number11 index10 alt2"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp plain">ADCSRA |= (1&lt;&lt;ADSC);</code></div><div class="line number12 index11 alt1">&nbsp;</div><div class="line number13 index12 alt2"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp comments">// wait for conversion to complete</code></div><div class="line number14 index13 alt1"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp comments">// ADSC becomes ’0′ again</code></div><div class="line number15 index14 alt2"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp comments">// till then, run loop continuously</code></div><div class="line number16 index15 alt1"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp keyword bold">while</code><code class="cpp plain">(ADCSRA &amp; (1&lt;&lt;ADSC));</code></div><div class="line number17 index16 alt2">&nbsp;</div><div class="line number18 index17 alt1"><code class="cpp spaces">&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp plain">(ADC);</code></div><div class="line number19 index18 alt2"><code class="cpp plain">}</code></div></div></td></tr></tbody></table></div></div>
+<h1 style="text-align: justify;"><span style="color: rgb(255, 102, 0);">Physical Connections</span></h1>
+<p style="text-align: justify;">Let’s connect two LDRs (Light Dependent Resistors) to pins PA0 and PA1 respectively. The connection is as follows. The function of potentiometers is explained in a later section, <strong>Sensor Calibration</strong>. You can scroll down to it. ;)</p>
+<div style="width: 436px;" class="wp-caption aligncenter"><a href="http://i1.wp.com/maxembedded.files.wordpress.com/2011/06/ldr-connections.jpg"><img class="size-full wp-image-290" title="LDR Connections" src="ldr-connections.jpg" alt="LDR Connections" srcset="http://i1.wp.com/maxembedded.com/wp-content/uploads/2011/06/ldr-connections.jpg?w=426 426w, http://i2.wp.com/maxembedded.com/wp-content/uploads/2011/06/ldr-connections.jpg?resize=300%2C292 300w, http://i2.wp.com/maxembedded.com/wp-content/uploads/2011/06/ldr-connections.jpg?resize=37%2C37 37w" sizes="(max-width: 426px) 100vw, 426px" height="416" width="426"></a><p class="wp-caption-text">LDR Connections</p></div>
+<p style="text-align: justify;">Now suppose we want to display the corresponding ADC values in an LCD. So, we also need to connect an LCD to our MCU. Read this post to know about <a title="LCD Interfacing with&nbsp;AVR" href="http://maxembedded.wordpress.com/2011/06/16/lcd-interfacing-with-avr/" target="_top">LCD interfacing</a>.</p>
+<p style="text-align: justify;">Since it is an LDR, it senses the intensity of light and accordingly change its resistance. The resistance decreases exponentially as the light intensity increases. Suppose we also want to light up an LED whenever the light level decreases. So, we can connect the LED to any one of the GPIO pins, say PC0.</p>
+<p style="text-align: justify;">Note that since the ADC returns values in between 0 and 1023, for dark conditions, the value should be low (below 100 or 150) whereas for bright conditions, the value should be quite high (above 900).</p>
+<p style="text-align: justify;">Now let’s write the complete code.</p>
+<h1 style="text-align: justify;"><span style="color: rgb(255, 102, 0);">Example Code</span></h1>
+<p style="text-align: justify;">To learn about LCD interfacing, view <a title="LCD Interfacing with&nbsp;AVR" href="http://maxembedded.wordpress.com/2011/06/16/lcd-interfacing-with-avr/" target="_top">this</a> post. You can type, compile and build it in AVR Studio 5. View <a title="Using AVR Studio&nbsp;5" href="http://maxembedded.wordpress.com/2011/06/12/using-avr-studio-5/" target="_top">this</a> page to know how. To know about the I/O port operations in AVR, view <a title="I/O Port Operations in&nbsp;AVR" href="http://maxembedded.wordpress.com/2011/06/10/port-operations-in-avr/" target="_top">this</a> page.</p>
+<div><div id="highlighter_294578" class="syntaxhighlighter collapsed  cpp"><div class="toolbar"><span><a href="#" class="toolbar_item command_expandSource expandSource">+ expand source</a></span><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div><div class="line number40 index39 alt1">40</div><div class="line number41 index40 alt2">41</div><div class="line number42 index41 alt1">42</div><div class="line number43 index42 alt2">43</div><div class="line number44 index43 alt1">44</div><div class="line number45 index44 alt2">45</div><div class="line number46 index45 alt1">46</div><div class="line number47 index46 alt2">47</div><div class="line number48 index47 alt1">48</div><div class="line number49 index48 alt2">49</div><div class="line number50 index49 alt1">50</div><div class="line number51 index50 alt2">51</div><div class="line number52 index51 alt1">52</div><div class="line number53 index52 alt2">53</div><div class="line number54 index53 alt1">54</div><div class="line number55 index54 alt2">55</div><div class="line number56 index55 alt1">56</div><div class="line number57 index56 alt2">57</div><div class="line number58 index57 alt1">58</div><div class="line number59 index58 alt2">59</div><div class="line number60 index59 alt1">60</div><div class="line number61 index60 alt2">61</div><div class="line number62 index61 alt1">62</div><div class="line number63 index62 alt2">63</div><div class="line number64 index63 alt1">64</div><div class="line number65 index64 alt2">65</div><div class="line number66 index65 alt1">66</div><div class="line number67 index66 alt2">67</div><div class="line number68 index67 alt1">68</div><div class="line number69 index68 alt2">69</div><div class="line number70 index69 alt1">70</div><div class="line number71 index70 alt2">71</div><div class="line number72 index71 alt1">72</div><div class="line number73 index72 alt2">73</div><div class="line number74 index73 alt1">74</div><div class="line number75 index74 alt2">75</div><div class="line number76 index75 alt1">76</div><div class="line number77 index76 alt2">77</div><div class="line number78 index77 alt1">78</div><div class="line number79 index78 alt2">79</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp preprocessor">#include &lt;avr/io.h&gt;</code></div><div class="line number2 index1 alt1"><code class="cpp preprocessor">#include &lt;util/delay.h&gt;</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="cpp preprocessor">#include "lcd.h"</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="cpp preprocessor">#define LTHRES 500</code></div><div class="line number7 index6 alt2"><code class="cpp preprocessor">#define RTHRES 500</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="cpp comments">// initialize adc</code></div><div class="line number10 index9 alt1"><code class="cpp keyword bold">void</code> <code class="cpp plain">adc_init()</code></div><div class="line number11 index10 alt2"><code class="cpp plain">{</code></div><div class="line number12 index11 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// AREF = AVcc</code></div><div class="line number13 index12 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">ADMUX = (1&lt;&lt;REFS0);</code></div><div class="line number14 index13 alt1">&nbsp;</div><div class="line number15 index14 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// ADC Enable and prescaler of 128</code></div><div class="line number16 index15 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// 16000000/128 = 125000</code></div><div class="line number17 index16 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">ADCSRA = (1&lt;&lt;ADEN)|(1&lt;&lt;ADPS2)|(1&lt;&lt;ADPS1)|(1&lt;&lt;ADPS0);</code></div><div class="line number18 index17 alt1"><code class="cpp plain">}</code></div><div class="line number19 index18 alt2">&nbsp;</div><div class="line number20 index19 alt1"><code class="cpp comments">// read adc value</code></div><div class="line number21 index20 alt2"><code class="cpp plain">uint16_t adc_read(uint8_t ch)</code></div><div class="line number22 index21 alt1"><code class="cpp plain">{</code></div><div class="line number23 index22 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// select the corresponding channel 0~7</code></div><div class="line number24 index23 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// ANDing with '7' will always keep the value</code></div><div class="line number25 index24 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// of 'ch' between 0 and 7</code></div><div class="line number26 index25 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">ch &amp;= 0b00000111;&nbsp; </code><code class="cpp comments">// AND operation with 7</code></div><div class="line number27 index26 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">ADMUX = (ADMUX &amp; 0xF8)|ch;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="cpp comments">// clears the bottom 3 bits before ORing</code></div><div class="line number28 index27 alt1">&nbsp;</div><div class="line number29 index28 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// start single conversion</code></div><div class="line number30 index29 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// write '1' to ADSC</code></div><div class="line number31 index30 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">ADCSRA |= (1&lt;&lt;ADSC);</code></div><div class="line number32 index31 alt1">&nbsp;</div><div class="line number33 index32 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// wait for conversion to complete</code></div><div class="line number34 index33 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// ADSC becomes '0' again</code></div><div class="line number35 index34 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// till then, run loop continuously</code></div><div class="line number36 index35 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">while</code><code class="cpp plain">(ADCSRA &amp; (1&lt;&lt;ADSC));</code></div><div class="line number37 index36 alt2">&nbsp;</div><div class="line number38 index37 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp plain">(ADC);</code></div><div class="line number39 index38 alt2"><code class="cpp plain">}</code></div><div class="line number40 index39 alt1">&nbsp;</div><div class="line number41 index40 alt2"><code class="cpp color1 bold">int</code> <code class="cpp plain">main()</code></div><div class="line number42 index41 alt1"><code class="cpp plain">{</code></div><div class="line number43 index42 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">uint16_t adc_result0, adc_result1;</code></div><div class="line number44 index43 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">char</code> <code class="cpp plain">int_buffer[10];</code></div><div class="line number45 index44 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">DDRC = 0x01;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="cpp comments">// to connect led to PC0</code></div><div class="line number46 index45 alt1">&nbsp;</div><div class="line number47 index46 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// initialize adc and lcd</code></div><div class="line number48 index47 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">adc_init();</code></div><div class="line number49 index48 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">lcd_init(LCD_DISP_ON_CURSOR);</code></div><div class="line number50 index49 alt1">&nbsp;</div><div class="line number51 index50 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// display the labels on LCD</code></div><div class="line number52 index51 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">lcd_puts(</code><code class="cpp string">"left&nbsp; ADC = "</code><code class="cpp plain">);</code></div><div class="line number53 index52 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">lcd_gotoxy(0,1);</code></div><div class="line number54 index53 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">lcd_puts(</code><code class="cpp string">"right ADC = "</code><code class="cpp plain">);</code></div><div class="line number55 index54 alt2">&nbsp;</div><div class="line number56 index55 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">_delay_ms(50);</code></div><div class="line number57 index56 alt2">&nbsp;</div><div class="line number58 index57 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">while</code><code class="cpp plain">(1)</code></div><div class="line number59 index58 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">{</code></div><div class="line number60 index59 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">adc_result0 = adc_read(0);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="cpp comments">// read adc value at PA0</code></div><div class="line number61 index60 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">adc_result1 = adc_read(1);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="cpp comments">// read adc value at PA1</code></div><div class="line number62 index61 alt1">&nbsp;</div><div class="line number63 index62 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// condition for led to glow</code></div><div class="line number64 index63 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(adc_result0 &lt; LTHRES &amp;&amp; adc_result1 &lt; RTHRES)</code></div><div class="line number65 index64 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">PORTC = 0x01;</code></div><div class="line number66 index65 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">else</code></div><div class="line number67 index66 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">PORTC = 0x00;</code></div><div class="line number68 index67 alt1">&nbsp;</div><div class="line number69 index68 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// now display on lcd</code></div><div class="line number70 index69 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">itoa(adc_result0, int_buffer, 10);</code></div><div class="line number71 index70 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">lcd_gotoxy(12,0);</code></div><div class="line number72 index71 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">lcd_puts(int_buffer);</code></div><div class="line number73 index72 alt2">&nbsp;</div><div class="line number74 index73 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">itoa(adc_result1, int_buffer, 10);</code></div><div class="line number75 index74 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">lcd_gotoxy(12,1);</code></div><div class="line number76 index75 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">lcd_puts(int_buffer);</code></div><div class="line number77 index76 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">_delay_ms(50);</code></div><div class="line number78 index77 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number79 index78 alt2"><code class="cpp plain">}</code></div></div></td></tr></tbody></table></div></div>
+<h1 style="text-align: justify;"><span style="color: rgb(255, 102, 0);">Sensor Calibration</span></h1>
+<p style="text-align: justify;">Calibration means linking your real world data with the virtual data. In the problem statement given earlier, I have mentioned that the LED should glow if the light intensity reduces. But <em>when</em> should it start to glow? The MCU/code doesn’t know by itself. You get the readings from the sensor continuously in between 0 and 1023. So, the question is <em>how do we know that below ‘such and such’ level the LED should glow?</em></p>
+<p style="text-align: justify;">This is achieved by calibration. You need to physically set this value. What you do is that you run the sensor for all the lighting conditions. You have the ADC values for all these levels. Now, you need to physically see and check the conditions yourself and then apply a threshold. Below this threshold, the light intensity goes sufficiently down enough for the LED to glow.</p>
+<p style="text-align: justify;">The potentiometer connected in the circuit is also for the same reason. Now, by the basic knowledge of electronics, you could easily say that upon changing the pot value the ADC value changes. Thus, for various reasons (like poor lighting conditions, you are unable to distinguish between bright and dark conditions, etc), you can vary the pot to get desired results.</p>
+<p style="text-align: justify;">This is why I have given the two thresholds (RTHRES anf LTHRES) in the beginning of the code.</p>
+<p style="text-align: justify;">So, this is all with the ADC. I hope you enjoyed reading this. <strong>Please post the comments below for any suggestion, doubt, clarification, etc.</strong></p>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Loved it? Share it!</h3><div class="sd-content"><ul><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-254" class="share-facebook sd-button share-icon" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?share=facebook&amp;nb=1" target="_top" title="Click to share on Facebook"><span>Facebook<span class="share-count">50</span></span></a></li><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-254" class="share-twitter sd-button share-icon" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?share=twitter&amp;nb=1" target="_top" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-254" class="share-google-plus-1 sd-button share-icon" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?share=google-plus-1&amp;nb=1" target="_top" title="Click to share on Google+"><span>Google</span></a></li><li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-254" class="share-linkedin sd-button share-icon" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?share=linkedin&amp;nb=1" target="_top" title="Click to share on LinkedIn"><span>LinkedIn</span></a></li><li><a href="#" class="sharing-anchor sd-button share-more"><span>More</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none;"><ul><li class="share-email share-service-visible"><a rel="nofollow" data-shared="" class="share-email sd-button share-icon" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?share=email&amp;nb=1" target="_top" title="Click to email this to a friend"><span>Email</span></a></li><li class="share-print"><a rel="nofollow" data-shared="" class="share-print sd-button share-icon" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/#print" target="_top" title="Click to print"><span>Print</span></a></li><li class="share-end"></li><li class="share-tumblr"><a rel="nofollow" data-shared="" class="share-tumblr sd-button share-icon" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?share=tumblr&amp;nb=1" target="_top" title="Click to share on Tumblr"><span>Tumblr</span></a></li><li class="share-end"></li></ul></div></div></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-65979954-254-5797442edb794" data-src="//widgets.wp.com/likes/#blog_id=65979954&amp;post_id=254&amp;origin=maxembedded.com&amp;obj_id=65979954-254-5797442edb794" data-name="like-post-frame-65979954-254-5797442edb794"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-65979954-254-5797442edb794" src="index_1.html" frameborder="0" height="55px" width="100%"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div style="display: block;" id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-visual"><div class="jp-relatedposts-post jp-relatedposts-post0 jp-relatedposts-post-thumbs" data-post-id="231" data-post-format="false"><a data-position="0" data-origin="254" rel="nofollow" title="Sensor Fundamentals
+
+Human-like Robots Humans (or in general any living organism) has to have some senses to become totally autonomous. Humans have five senses - vision, smell, taste, hearing and touch. If so, then what do robots have? Let me ask you a simple question. What does a robot needs to become…" href="http://maxembedded.com/2011/06/sensor-fundamentals/" class="jp-relatedposts-post-a"><img class="jp-relatedposts-post-img" src="sensors.jpg" alt="Sensor Fundamentals" width="350"></a><h4 class="jp-relatedposts-post-title"><a data-position="0" data-origin="254" rel="nofollow" title="Sensor Fundamentals
+
+Human-like Robots Humans (or in general any living organism) has to have some senses to become totally autonomous. Humans have five senses - vision, smell, taste, hearing and touch. If so, then what do robots have? Let me ask you a simple question. What does a robot needs to become…" href="http://maxembedded.com/2011/06/sensor-fundamentals/" class="jp-relatedposts-post-a">Sensor Fundamentals</a></h4><p class="jp-relatedposts-post-excerpt">Human-like Robots Humans (or in general any living organism) has to have some senses to become totally autonomous. Humans have five senses - vision, smell, taste, hearing and touch. If so, then what do robots have? Let me ask you a simple question. What does a robot needs to become…</p><p class="jp-relatedposts-post-date">June 18, 2011</p><p class="jp-relatedposts-post-context">In "Atmel AVR"</p></div><div class="jp-relatedposts-post jp-relatedposts-post1 jp-relatedposts-post-thumbs" data-post-id="75" data-post-format="false"><a data-position="1" data-origin="254" rel="nofollow" title="AVR Basics
+
+Hello everyone! From now on, we will be working with AVR microcontrollers. I hope you have an AVR MCU development board and an ISP with you. And I also assume that you have the elementary concepts of a MCU. If not, then I suggest you to go through the following…" href="http://maxembedded.com/2011/06/avr-basics/" class="jp-relatedposts-post-a"><img class="jp-relatedposts-post-img" src="avr1.png" alt="AVR Basics" width="350"></a><h4 class="jp-relatedposts-post-title"><a data-position="1" data-origin="254" rel="nofollow" title="AVR Basics
+
+Hello everyone! From now on, we will be working with AVR microcontrollers. I hope you have an AVR MCU development board and an ISP with you. And I also assume that you have the elementary concepts of a MCU. If not, then I suggest you to go through the following…" href="http://maxembedded.com/2011/06/avr-basics/" class="jp-relatedposts-post-a">AVR Basics</a></h4><p class="jp-relatedposts-post-excerpt">Hello everyone! From now on, we will be working with AVR microcontrollers. I hope you have an AVR MCU development board and an ISP with you. And I also assume that you have the elementary concepts of a MCU. If not, then I suggest you to go through the following…</p><p class="jp-relatedposts-post-date">June 9, 2011</p><p class="jp-relatedposts-post-context">In "Atmel AVR"</p></div><div class="jp-relatedposts-post jp-relatedposts-post2 jp-relatedposts-post-thumbs" data-post-id="1300" data-post-format="false"><a data-position="2" data-origin="254" rel="nofollow" title="Using an Analog Accelerometer
+
+Everybody would have at least once heard of &nbsp;&quot;accelerometer&quot;, most probably, in some way associated to smartphones. But what actually are they? Accelerometers What are they? Well, according to the dictionary, an accelerometer is a device (a sensor) that is typically used to measure the acceleration (very obvious from the…" href="http://maxembedded.com/2013/06/using-an-analog-accelerometer/" class="jp-relatedposts-post-a"><img class="jp-relatedposts-post-img" src="accelerometer.jpg" alt="Using an Analog Accelerometer" width="350"></a><h4 class="jp-relatedposts-post-title"><a data-position="2" data-origin="254" rel="nofollow" title="Using an Analog Accelerometer
+
+Everybody would have at least once heard of &nbsp;&quot;accelerometer&quot;, most probably, in some way associated to smartphones. But what actually are they? Accelerometers What are they? Well, according to the dictionary, an accelerometer is a device (a sensor) that is typically used to measure the acceleration (very obvious from the…" href="http://maxembedded.com/2013/06/using-an-analog-accelerometer/" class="jp-relatedposts-post-a">Using an Analog Accelerometer</a></h4><p class="jp-relatedposts-post-excerpt">Everybody would have at least once heard of &nbsp;"accelerometer", most probably, in some way associated to smartphones. But what actually are they? Accelerometers What are they? Well, according to the dictionary, an accelerometer is a device (a sensor) that is typically used to measure the acceleration (very obvious from the…</p><p class="jp-relatedposts-post-date">June 28, 2013</p><p class="jp-relatedposts-post-context">In "Atmel AVR"</p></div></div></div>								</div> 	<!-- end .post_content -->
+	</article> <!-- end .entry -->
+
+	
+	
+<!-- 728x90-Leaderboard-New -->
+<ins class="adsbygoogle" style="display: inline-block; width: 728px; height: 90px;" data-ad-client="ca-pub-2127326018455564" data-ad-slot="2319276130"></ins>
+
+	<!-- You can start editing here. -->
+
+<section id="comment-wrap">
+			<h1 id="comments" class="page_title">318 Comments</h1>
+
+					<div class="comment_navigation_top clearfix">
+				<div class="nav-previous"><a href="http://maxembedded.com/2011/06/the-adc-of-the-avr/comment-page-7/#comments"><span class="meta-nav">←</span> Older Comments</a></div>
+				<div class="nav-next"></div>
+			</div> <!-- .navigation -->
+		
+					<ol class="commentlist clearfix">
+					<li class="comment even thread-even depth-1" id="li-comment-176824">
+		<article id="comment-176824" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-2124e409cffb38f25b01148bc8d815d2-0" alt="" src="2124e409cffb38f25b01148bc8d815d2" srcset="http://2.gravatar.com/avatar/2124e409cffb38f25b01148bc8d815d2?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn">Arturas</span>				<span class="comment_date">
+					November 9, 2015				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>Thank you! This is best example on the Internet!<br>
+All code compilling, all works.</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=176824#respond" onclick="return addComment.moveForm( &quot;comment-176824&quot;, &quot;176824&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Arturas">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-acdknrs odd alt depth-2" id="li-comment-176943">
+		<article id="comment-176943" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-e649b24161b3335b0f76678d57c9d485-0" alt="" src="e649b24161b3335b0f76678d57c9d485" srcset="http://2.gravatar.com/avatar/e649b24161b3335b0f76678d57c9d485?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn">Prashant Agarwal</span>				<span class="comment_date">
+					November 24, 2015				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>Thanks!</p>
+<p>Keep Reading, Keep Sharing. :D</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=176943#respond" onclick="return addComment.moveForm( &quot;comment-176943&quot;, &quot;176943&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Prashant Agarwal">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-177071">
+		<article id="comment-177071" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-d2e59f77963155a16c06f40d30715297-0" alt="" src="d2e59f77963155a16c06f40d30715297" srcset="http://1.gravatar.com/avatar/d2e59f77963155a16c06f40d30715297?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn"><a href="http://gravatar.com/anurag1133" rel="external nofollow" class="url">anurag1133</a></span>				<span class="comment_date">
+					January 2, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>thanks for this great blog …</p>
+<p>but i am facing little bit of problem in displaying current value in lcd using avr atmega16 …please<br>
+provide me any solution to how to display current flowing in single phase wire and display it on lcd….waiting for your reply</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=177071#respond" onclick="return addComment.moveForm( &quot;comment-177071&quot;, &quot;177071&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to anurag1133">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-177263">
+		<article id="comment-177263" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-fdec0c7b900ea552e4e18c6128acafea-0" alt="" src="fdec0c7b900ea552e4e18c6128acafea" srcset="http://0.gravatar.com/avatar/fdec0c7b900ea552e4e18c6128acafea?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn"><a href="http://suachuamayep.com/" rel="external nofollow" class="url">phuoc</a></span>				<span class="comment_date">
+					January 22, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>i want code asm if you have .and help me . why i do my project only 1 times.</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=177263#respond" onclick="return addComment.moveForm( &quot;comment-177263&quot;, &quot;177263&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to phuoc">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-maxmiaggi bypostauthor even depth-2" id="li-comment-178518">
+		<article id="comment-178518" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-861cb6ee77e733ee31a32ffa329ed89f-0" alt="" src="861cb6ee77e733ee31a32ffa329ed89f" srcset="http://2.gravatar.com/avatar/861cb6ee77e733ee31a32ffa329ed89f?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn"><a href="http://prasadmayank.com/" rel="external nofollow" class="url">Max</a></span>				<span class="comment_date">
+					March 25, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>Not sure what you’re asking. We discussed the concept and the register. If you have been programming in assembly, then you should be able to convert the code by yourself. Understand the concept first.</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=178518#respond" onclick="return addComment.moveForm( &quot;comment-178518&quot;, &quot;178518&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Max">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-177519">
+		<article id="comment-177519" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-62a4be216d777b653f12d0043698f74d-0" alt="" src="62a4be216d777b653f12d0043698f74d" srcset="http://0.gravatar.com/avatar/62a4be216d777b653f12d0043698f74d?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn">Rida</span>				<span class="comment_date">
+					February 23, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>hello, thanks for sharing this sir… i have tried your code.. but its giving me only 1 fix value 1023 continuously …</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=177519#respond" onclick="return addComment.moveForm( &quot;comment-177519&quot;, &quot;177519&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Rida">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-maxmiaggi bypostauthor even depth-2" id="li-comment-178516">
+		<article id="comment-178516" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-861cb6ee77e733ee31a32ffa329ed89f-1" alt="" src="861cb6ee77e733ee31a32ffa329ed89f" srcset="http://2.gravatar.com/avatar/861cb6ee77e733ee31a32ffa329ed89f?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn"><a href="http://prasadmayank.com/" rel="external nofollow" class="url">Max</a></span>				<span class="comment_date">
+					March 25, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>Which means your input is always high. Check your input.</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=178516#respond" onclick="return addComment.moveForm( &quot;comment-178516&quot;, &quot;178516&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Max">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment odd alt depth-3" id="li-comment-179661">
+		<article id="comment-179661" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-5845e3ca0fb60d49775a4f223fa0e7ef-0" alt="" src="5845e3ca0fb60d49775a4f223fa0e7ef" srcset="http://2.gravatar.com/avatar/5845e3ca0fb60d49775a4f223fa0e7ef?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn">venky</span>				<span class="comment_date">
+					June 24, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>[CODE REMOVED BY ADMIN]<br>
+sir please verify it once ,,,i didnt get anything ,,, I connected one variable pot to ADC0</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=179661#respond" onclick="return addComment.moveForm( &quot;comment-179661&quot;, &quot;179661&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to venky">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-177858">
+		<article id="comment-177858" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-6a34a311979daa6886030d695cac9408-0" alt="" src="6a34a311979daa6886030d695cac9408" srcset="http://0.gravatar.com/avatar/6a34a311979daa6886030d695cac9408?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn">Shabab Alam</span>				<span class="comment_date">
+					March 11, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>Hi ,<br>
+I tried to assign port B the digital equivalent of the analog signal but this code didn’t work. can someone please tell me the correction and why this code isn’t working..</p>
+<p>thankyou</p>
+<p> ADMUX |=0b10000000 ;<br>
+	 ADMUX &amp;=0b11000000;<br>
+	 ADCSRA |= 0b10000111;<br>
+	 ADCSRA |= 1&lt;&lt;ADSC;<br>
+	 DDRB=0x00;<br>
+	 while(ADCSRA &amp; (1&lt;&lt;ADSC));<br>
+	 PORTB=ADCL;</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=177858#respond" onclick="return addComment.moveForm( &quot;comment-177858&quot;, &quot;177858&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Shabab Alam">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-maxmiaggi bypostauthor odd alt depth-2" id="li-comment-178517">
+		<article id="comment-178517" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-861cb6ee77e733ee31a32ffa329ed89f-2" alt="" src="861cb6ee77e733ee31a32ffa329ed89f" srcset="http://2.gravatar.com/avatar/861cb6ee77e733ee31a32ffa329ed89f?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn"><a href="http://prasadmayank.com/" rel="external nofollow" class="url">Max</a></span>				<span class="comment_date">
+					March 25, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>Refer to code in the writeup. You’re setting the ADMUX and ADCSRA wrong. Also PORTB is 8bit and ADC is 16bit register. So there are two ways to do it. First is to set ADLAR=1 (in ADMUX) and read from ADCH (<code>PORTB = ADCH;</code>). Or the second option is to right shift ADC register by 2 and then store the result in PORTB (<code>ADC = ADC &gt;&gt; 2; PORTB = ADCL;</code>)</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=178517#respond" onclick="return addComment.moveForm( &quot;comment-178517&quot;, &quot;178517&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Max">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-178694">
+		<article id="comment-178694" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-4f42c6cd51b67df49b26fbf44025b99a-0" alt="" src="4f42c6cd51b67df49b26fbf44025b99a" srcset="http://1.gravatar.com/avatar/4f42c6cd51b67df49b26fbf44025b99a?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn">thrishool</span>				<span class="comment_date">
+					April 10, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>Hey how yo write that code in programmet note pad using c</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=178694#respond" onclick="return addComment.moveForm( &quot;comment-178694&quot;, &quot;178694&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to thrishool">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-maxmiaggi bypostauthor odd alt depth-2" id="li-comment-179045">
+		<article id="comment-179045" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-861cb6ee77e733ee31a32ffa329ed89f-3" alt="" src="861cb6ee77e733ee31a32ffa329ed89f" srcset="http://2.gravatar.com/avatar/861cb6ee77e733ee31a32ffa329ed89f?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn"><a href="http://prasadmayank.com/" rel="external nofollow" class="url">Max</a></span>				<span class="comment_date">
+					May 4, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>Sorry what?</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=179045#respond" onclick="return addComment.moveForm( &quot;comment-179045&quot;, &quot;179045&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Max">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-178796">
+		<article id="comment-178796" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-cf8170f3ad6b49326ff2a2197f8192a9-0" alt="" src="cf8170f3ad6b49326ff2a2197f8192a9" srcset="http://0.gravatar.com/avatar/cf8170f3ad6b49326ff2a2197f8192a9?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn">chazz</span>				<span class="comment_date">
+					April 19, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>hi max,<br>
+what is the converted value format.. for suppose if the adc input is 3v.. after conversion we will get the count as 613 or so.. now this obtained conversion value will be in hexadecimal or binary??</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=178796#respond" onclick="return addComment.moveForm( &quot;comment-178796&quot;, &quot;178796&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to chazz">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-maxmiaggi bypostauthor odd alt depth-2" id="li-comment-179037">
+		<article id="comment-179037" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-861cb6ee77e733ee31a32ffa329ed89f-4" alt="" src="861cb6ee77e733ee31a32ffa329ed89f" srcset="http://2.gravatar.com/avatar/861cb6ee77e733ee31a32ffa329ed89f?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn"><a href="http://prasadmayank.com/" rel="external nofollow" class="url">Max</a></span>				<span class="comment_date">
+					May 4, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>It is in decimal, base 10.</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=179037#respond" onclick="return addComment.moveForm( &quot;comment-179037&quot;, &quot;179037&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Max">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-178800">
+		<article id="comment-178800" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-574cd719844fc26fd3bffff1864fda9e-0" alt="" src="574cd719844fc26fd3bffff1864fda9e" srcset="http://2.gravatar.com/avatar/574cd719844fc26fd3bffff1864fda9e?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn">mcmark</span>				<span class="comment_date">
+					April 20, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>hello, do you have a code like this using at32uc3l0256?</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=178800#respond" onclick="return addComment.moveForm( &quot;comment-178800&quot;, &quot;178800&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to mcmark">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-maxmiaggi bypostauthor odd alt depth-2" id="li-comment-179036">
+		<article id="comment-179036" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-861cb6ee77e733ee31a32ffa329ed89f-5" alt="" src="861cb6ee77e733ee31a32ffa329ed89f" srcset="http://2.gravatar.com/avatar/861cb6ee77e733ee31a32ffa329ed89f?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn"><a href="http://prasadmayank.com/" rel="external nofollow" class="url">Max</a></span>				<span class="comment_date">
+					May 4, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>If you understand the concept, you should be able to write the code yourself by reading the datasheet.</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=179036#respond" onclick="return addComment.moveForm( &quot;comment-179036&quot;, &quot;179036&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Max">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-179072">
+		<article id="comment-179072" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-3af2e13b407550502ee4971d30a5ae9a-0" alt="" src="3af2e13b407550502ee4971d30a5ae9a" srcset="http://0.gravatar.com/avatar/3af2e13b407550502ee4971d30a5ae9a?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn">jorirango</span>				<span class="comment_date">
+					May 6, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>thank for the best tutorials on the internet but one thing i didn’t get is in last EX why the use of pot not just fixed value resistance</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=179072#respond" onclick="return addComment.moveForm( &quot;comment-179072&quot;, &quot;179072&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to jorirango">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-maxmiaggi bypostauthor odd alt depth-2" id="li-comment-179089">
+		<article id="comment-179089" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-861cb6ee77e733ee31a32ffa329ed89f-6" alt="" src="861cb6ee77e733ee31a32ffa329ed89f" srcset="http://2.gravatar.com/avatar/861cb6ee77e733ee31a32ffa329ed89f?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn"><a href="http://prasadmayank.com/" rel="external nofollow" class="url">Max</a></span>				<span class="comment_date">
+					May 7, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>It is used for sensor calibration. Read the last section, it is explained there.</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=179089#respond" onclick="return addComment.moveForm( &quot;comment-179089&quot;, &quot;179089&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Max">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment even depth-3" id="li-comment-179103">
+		<article id="comment-179103" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-3af2e13b407550502ee4971d30a5ae9a-1" alt="" src="3af2e13b407550502ee4971d30a5ae9a" srcset="http://0.gravatar.com/avatar/3af2e13b407550502ee4971d30a5ae9a?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn">jorirango</span>				<span class="comment_date">
+					May 8, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>i know i have read it i just don’t understand how it adjust the sensitivity of the ldr</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=179103#respond" onclick="return addComment.moveForm( &quot;comment-179103&quot;, &quot;179103&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to jorirango">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-179518">
+		<article id="comment-179518" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-c414d192ec31b7f2a96ebae44ea1c5ab-0" alt="" src="c414d192ec31b7f2a96ebae44ea1c5ab" srcset="http://0.gravatar.com/avatar/c414d192ec31b7f2a96ebae44ea1c5ab?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn">yagmursavlukbas</span>				<span class="comment_date">
+					June 4, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>adc_result1 = adc_read(1);      // read adc value at PA1<br>
+printf(“%d\n”,adc_result1);<br>
+I tried to get the value of A1 pin, the rest of the code is the same with yours except the above. But it does not work.</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=179518#respond" onclick="return addComment.moveForm( &quot;comment-179518&quot;, &quot;179518&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to yagmursavlukbas">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-maxmiaggi bypostauthor even depth-2" id="li-comment-179676">
+		<article id="comment-179676" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-861cb6ee77e733ee31a32ffa329ed89f-7" alt="" src="861cb6ee77e733ee31a32ffa329ed89f" srcset="http://2.gravatar.com/avatar/861cb6ee77e733ee31a32ffa329ed89f?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn"><a href="http://prasadmayank.com/" rel="external nofollow" class="url">Mayank</a></span>				<span class="comment_date">
+					June 24, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p><code>printf()</code> is a C function that prints a formatted string to the serial buffer. Where is your serial buffer connected? Use <code>lcd_puts()</code> if you like to print on the LCD.</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=179676#respond" onclick="return addComment.moveForm( &quot;comment-179676&quot;, &quot;179676&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Mayank">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-179737">
+		<article id="comment-179737" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-6dd7e781bdf6c6fe1697c4d6f7d4fc55-0" alt="" src="6dd7e781bdf6c6fe1697c4d6f7d4fc55" srcset="http://0.gravatar.com/avatar/6dd7e781bdf6c6fe1697c4d6f7d4fc55?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn">Aravind Manimaran</span>				<span class="comment_date">
+					July 2, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>can u give me code to print the adc value of and ldr in the serial monitor.Im using arduino uno and atmega328p.just tell me how to accet values from keyboard so that when i press some  letter the printing starts and when i press another key the printing stops.</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=179737#respond" onclick="return addComment.moveForm( &quot;comment-179737&quot;, &quot;179737&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Aravind Manimaran">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-maxmiaggi bypostauthor even depth-2" id="li-comment-179774">
+		<article id="comment-179774" class="comment-body clearfix">
+			<div class="comment_postinfo">
+				<div class="comment_avatar">
+					<img id="grav-861cb6ee77e733ee31a32ffa329ed89f-8" alt="" src="861cb6ee77e733ee31a32ffa329ed89f" srcset="http://2.gravatar.com/avatar/861cb6ee77e733ee31a32ffa329ed89f?s=80&amp;d=wavatar&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40">				</div> <!-- end .comment_avatar -->
+
+				<span class="fn"><a href="http://prasadmayank.com/" rel="external nofollow" class="url">Mayank</a></span>				<span class="comment_date">
+					July 5, 2016				</span>
+							</div> <!-- end .comment_postinfo -->
+
+			<div class="comment_area">
+				
+				<div class="comment-content clearfix">
+					<p>Sorry bro. We don’t write code for others. If you understand the concept, you should be smart enough to write it yourself.</p>
+
+					<div class="reply-container"><a rel="nofollow" class="comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/?replytocom=179774#respond" onclick="return addComment.moveForm( &quot;comment-179774&quot;, &quot;179774&quot;, &quot;respond&quot;, &quot;254&quot; )" aria-label="Reply to Mayank">Reply</a></div>				</div> <!-- end comment-content-->
+			</div> <!-- end comment_area-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+			</ol>
+		
+					<div class="comment_navigation_bottom clearfix">
+				<div class="nav-previous"><a href="http://maxembedded.com/2011/06/the-adc-of-the-avr/comment-page-7/#comments"><span class="meta-nav">←</span> Older Comments</a></div>
+				<div class="nav-next"></div>
+			</div> <!-- .navigation -->
+		
+								
+		<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://maxembedded.com/2011/06/the-adc-of-the-avr/#respond" style="display: none;">Cancel reply</a></small></h3>
+			<form action="http://maxembedded.com/2011/06/the-adc-of-the-avr/" id="commentform" class="comment-form">
+				<iframe src="index_2.html" allowtransparency="false" style="width: 100%; height: 430px; border: 0px none;" scrolling="no" name="jetpack_remote_comment" id="jetpack_remote_comment" frameborder="0"></iframe>
+			<input value="1469534840921" name="ak_js" id="ak_js" type="hidden"></form>
+		</div>
+
+		
+		<input name="comment_parent" id="comment_parent" value="" type="hidden">
+
+			
+</section>	</div> <!-- end #left_area -->
+
+		<div id="sidebar">
+		<div id="search-2" class="widget widget_search"><h4 class="widgettitle">Search maxEmbedded</h4><form role="search" method="get" id="searchform" class="searchform" action="http://maxembedded.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input value="" name="s" id="s" type="text">
+					<input id="searchsubmit" value="Search" type="submit">
+				</div>
+			</form></div> <!-- end .widget --><div id="ettabbedwidget-2" class="widget widget_ettabbedwidget">		<ul id="tab-controls" class="clearfix">
+			<li class="first active"><a href="#"><span>Popular</span></a></li>
+			<li class="second"><a href="#"><span>Recent</span></a></li>
+			<li class="last"><a href="#"><span>Random</span></a></li>
+		</ul>
+
+		<div id="all-tabs">
+			<div id="popular-tab">
+				<ul>
+									<li class="clearfix">
+	<span class="post-meta">Mon<span>20</span></span>
+	<h4><a href="http://maxembedded.com/2011/06/the-adc-of-the-avr/">The ADC of the AVR</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> in <a href="http://maxembedded.com/category/microcontrollers-2/atmel-avr/" rel="category tag">Atmel AVR</a>, <a href="http://maxembedded.com/category/microcontrollers-2/" rel="category tag">Microcontrollers</a></p>
+</li>									<li class="clearfix">
+	<span class="post-meta">Fri<span>24</span></span>
+	<h4><a href="http://maxembedded.com/2011/06/avr-timers-timer0/">AVR Timers – TIMER0</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> in <a href="http://maxembedded.com/category/microcontrollers-2/atmel-avr/" rel="category tag">Atmel AVR</a>, <a href="http://maxembedded.com/category/microcontrollers-2/" rel="category tag">Microcontrollers</a></p>
+</li>									<li class="clearfix">
+	<span class="post-meta">Tue<span>06</span></span>
+	<h4><a href="http://maxembedded.com/2011/09/rf-module-interfacing-without-microcontrollers/">RF Module Interfacing without Microcontrollers</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> in <a href="http://maxembedded.com/category/electronics/" rel="category tag">Electronics</a></p>
+</li>									<li class="clearfix">
+	<span class="post-meta">Thu<span>16</span></span>
+	<h4><a href="http://maxembedded.com/2011/06/lcd-interfacing-with-avr/">LCD Interfacing with AVR</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> in <a href="http://maxembedded.com/category/microcontrollers-2/atmel-avr/" rel="category tag">Atmel AVR</a>, <a href="http://maxembedded.com/category/microcontrollers-2/" rel="category tag">Microcontrollers</a></p>
+</li>									<li class="clearfix">
+	<span class="post-meta">Thu<span>20</span></span>
+	<h4><a href="http://maxembedded.com/2012/12/making-an-rf-car/">Making an RF Car</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/yashtambi/" title="Posts by Yash" rel="author">Yash</a> in <a href="http://maxembedded.com/category/electronics/" rel="category tag">Electronics</a>, <a href="http://maxembedded.com/category/robotics-2/" rel="category tag">Robotics</a></p>
+</li>								</ul>
+			</div> <!-- end #popular-tab -->
+
+			<div id="recent-tab">
+				<ul>
+									<li class="clearfix">
+	<span class="post-meta">Mon<span>11</span></span>
+	<h4><a href="http://maxembedded.com/2016/07/turn-raspberry-pi-development-server/">How to Turn Your Raspberry Pi Into a Development Server</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/irinapapuc/" title="Posts by Irina Papuc" rel="author">Irina Papuc</a> in <a href="http://maxembedded.com/category/iot/" rel="category tag">IoT</a>, <a href="http://maxembedded.com/category/single-board-computers/raspberry-pi/" rel="category tag">Raspberry Pi</a>, <a href="http://maxembedded.com/category/single-board-computers/" rel="category tag">Single Board Computers</a></p>
+</li>									<li class="clearfix">
+	<span class="post-meta">Fri<span>06</span></span>
+	<h4><a href="http://maxembedded.com/2016/05/getting-started-esp8266-wifi-module/">Getting Started with ESP8266 WiFi Module</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> in <a href="http://maxembedded.com/category/microcontrollers-2/expressif-esp8266/" rel="category tag">Expressif ESP8266</a>, <a href="http://maxembedded.com/category/featured/" rel="category tag">Featured</a>, <a href="http://maxembedded.com/category/getting-started/" rel="category tag">Getting Started</a>, <a href="http://maxembedded.com/category/iot/" rel="category tag">IoT</a>, <a href="http://maxembedded.com/category/microcontrollers-2/" rel="category tag">Microcontrollers</a></p>
+</li>									<li class="clearfix">
+	<span class="post-meta">Thu<span>24</span></span>
+	<h4><a href="http://maxembedded.com/2016/03/using-microchip-mplab-xpress-ide-and-evaluation-board/">Using Microchip MPLAB Xpress IDE and Evaluation Board</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> in <a href="http://maxembedded.com/category/featured/" rel="category tag">Featured</a>, <a href="http://maxembedded.com/category/getting-started/" rel="category tag">Getting Started</a>, <a href="http://maxembedded.com/category/microcontrollers-2/microchip-pic/" rel="category tag">Microchip PIC</a>, <a href="http://maxembedded.com/category/microcontrollers-2/" rel="category tag">Microcontrollers</a></p>
+</li>									<li class="clearfix">
+	<span class="post-meta">Sun<span>14</span></span>
+	<h4><a href="http://maxembedded.com/2015/06/setting-up-avr-gcc-toolchain-on-linux-and-mac-os-x/">Setting up AVR-GCC Toolchain on Linux and Mac OS X</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> in <a href="http://maxembedded.com/category/microcontrollers-2/atmel-avr/" rel="category tag">Atmel AVR</a>, <a href="http://maxembedded.com/category/microcontrollers-2/" rel="category tag">Microcontrollers</a></p>
+</li>									<li class="clearfix">
+	<span class="post-meta">Sun<span>05</span></span>
+	<h4><a href="http://maxembedded.com/2015/04/raspberry-pi-headless-setup/">Raspberry Pi – Headless Setup</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> in <a href="http://maxembedded.com/category/e-linux/" rel="category tag">e-Linux</a>, <a href="http://maxembedded.com/category/featured/" rel="category tag">Featured</a>, <a href="http://maxembedded.com/category/getting-started/" rel="category tag">Getting Started</a>, <a href="http://maxembedded.com/category/single-board-computers/raspberry-pi/" rel="category tag">Raspberry Pi</a>, <a href="http://maxembedded.com/category/single-board-computers/" rel="category tag">Single Board Computers</a></p>
+</li>								</ul>
+			</div> <!-- end #recent-tab -->
+
+			<div id="random-tab">
+				<ul>
+									<li class="clearfix">
+	<span class="post-meta">Mon<span>13</span></span>
+	<h4><a href="http://maxembedded.com/2011/06/using-the-avr-studio-5-simulator-and-debugger/">Using the AVR Studio 5 Simulator and Debugger</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> in <a href="http://maxembedded.com/category/microcontrollers-2/atmel-avr/" rel="category tag">Atmel AVR</a>, <a href="http://maxembedded.com/category/microcontrollers-2/" rel="category tag">Microcontrollers</a></p>
+</li>									<li class="clearfix">
+	<span class="post-meta">Thu<span>14</span></span>
+	<h4><a href="http://maxembedded.com/2011/07/avr-timers-ctc-mode/">AVR Timers – CTC Mode</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> in <a href="http://maxembedded.com/category/microcontrollers-2/atmel-avr/" rel="category tag">Atmel AVR</a>, <a href="http://maxembedded.com/category/microcontrollers-2/" rel="category tag">Microcontrollers</a></p>
+</li>									<li class="clearfix">
+	<span class="post-meta">Sun<span>16</span></span>
+	<h4><a href="http://maxembedded.com/2012/12/the-all-new-maxembedded/">The All New maxEmbedded</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> in <a href="http://maxembedded.com/category/offbeat/" rel="category tag">Offbeat</a></p>
+</li>									<li class="clearfix">
+	<span class="post-meta">Sat<span>07</span></span>
+	<h4><a href="http://maxembedded.com/2012/01/avr-timers-pwm-mode-part-ii/">AVR Timers – PWM Mode – Part II</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> in <a href="http://maxembedded.com/category/microcontrollers-2/atmel-avr/" rel="category tag">Atmel AVR</a>, <a href="http://maxembedded.com/category/microcontrollers-2/" rel="category tag">Microcontrollers</a></p>
+</li>									<li class="clearfix">
+	<span class="post-meta">Sun<span>10</span></span>
+	<h4><a href="http://maxembedded.com/2013/11/serial-peripheral-interface-spi-basics/">Serial Peripheral Interface – SPI Basics</a></h4>
+	<p class="meta-info">Posted by <a href="http://maxembedded.com/author/maxmiaggi/" title="Posts by Mayank" rel="author">Mayank</a> in <a href="http://maxembedded.com/category/microcontrollers-2/atmel-avr/" rel="category tag">Atmel AVR</a>, <a href="http://maxembedded.com/category/microcontrollers-2/" rel="category tag">Microcontrollers</a></p>
+</li>								</ul>
+			</div> <!-- end #popular-tab -->
+		</div> <!-- end #all-tabs -->
+</div> <!-- end .widget --><div id="categories-2" class="widget widget_categories"><h4 class="widgettitle">Browse maxE by Categories</h4><label class="screen-reader-text" for="cat">Browse maxE by Categories</label><select name="cat" id="cat" class="postform">
+	<option value="-1">Select Category</option>
+	<option class="level-0" value="2">Computer Vision</option>
+	<option class="level-0" value="3">e-Linux</option>
+	<option class="level-0" value="4">Electronics</option>
+	<option class="level-0" value="364">Featured</option>
+	<option class="level-0" value="365">Getting Started</option>
+	<option class="level-0" value="679">Guest Articles</option>
+	<option class="level-0" value="684">IoT</option>
+	<option class="level-0" value="6">Microcontrollers</option>
+	<option class="level-1" value="11">&nbsp;&nbsp;&nbsp;Atmel AVR</option>
+	<option class="level-1" value="683">&nbsp;&nbsp;&nbsp;Expressif ESP8266</option>
+	<option class="level-1" value="681">&nbsp;&nbsp;&nbsp;Microchip PIC</option>
+	<option class="level-1" value="7">&nbsp;&nbsp;&nbsp;MSP430</option>
+	<option class="level-0" value="8">Offbeat</option>
+	<option class="level-0" value="9">Robotics</option>
+	<option class="level-0" value="10">Single Board Computers</option>
+	<option class="level-1" value="18">&nbsp;&nbsp;&nbsp;BeagleBone Black</option>
+	<option class="level-1" value="20">&nbsp;&nbsp;&nbsp;Raspberry Pi</option>
+</select>
+
+
+
+</div> <!-- end .widget --><div id="text-3" class="widget widget_text"><h4 class="widgettitle">Subscribe to maxEmbedded</h4>			<div class="textwidget"><!-- Begin MailChimp Signup Form -->
+
+
+<div id="mc_embed_signup">
+<form action="http://maxembedded.us11.list-manage.com/subscribe/post?u=7653f7fee3c20d3345c445bd0&amp;id=fafcfc7bc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="novalidate">
+    <div id="mc_embed_signup_scroll">
+	
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address </label>
+	<input aria-required="true" value="" name="EMAIL" class="required email" id="mce-EMAIL" type="email">
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display: none;"></div>
+		<div class="response" id="mce-success-response" style="display: none;"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;"><input name="b_7653f7fee3c20d3345c445bd0_fafcfc7bc0" tabindex="-1" value="" type="text"></div>
+    <div class="clear"><input value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" type="submit"></div>
+    </div>
+</form>
+</div>
+
+<!--End mc_embed_signup--></div>
+		</div> <!-- end .widget --><div id="facebook-likebox-2" class="widget widget_facebook_likebox"><h4 class="widgettitle"><a href="https://www.facebook.com/maxEmbedded">Like maxE on Facebook</a></h4>		<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="index_3.html" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0"></iframe><iframe src="index_4.html" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+		<div fb-iframe-plugin-query="app_id=249643311490&amp;container_width=250&amp;height=130&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2FmaxEmbedded&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=false&amp;show_posts=false&amp;width=200" fb-xfbml-state="rendered" class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/maxEmbedded" data-width="200" data-height="130" data-hide-cover="false" data-show-facepile="false" data-show-posts="false"><span style="vertical-align: bottom; width: 200px; height: 130px;"><iframe class="" src="index_6.html" style="border: medium none; visibility: visible; width: 200px; height: 130px;" title="fb:page Facebook Social Plugin" scrolling="no" allowfullscreen="true" allowtransparency="true" name="f209292ee3a4d9c" frameborder="0" height="130px" width="200px"></iframe></span></div>
+		</div> <!-- end .widget --><div id="adsensewidget-4" class="widget widget_adsensewidget"><h4 class="widgettitle">Sponsored Links</h4>		<div style="overflow: hidden;">
+			
+<!-- 300x600-Skyscraper-New -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 600px;" data-ad-client="ca-pub-2127326018455564" data-ad-slot="2179675338"></ins>
+			<div class="clearfix"></div>
+		</div> <!-- end adsense -->
+	</div> <!-- end .widget -->	</div> <!-- end #sidebar -->
+</div> 	<!-- end #content-area -->
+
+
+		</div> <!-- end .container -->
+	</div> <!-- end #main-area -->
+	<footer id="main-footer">
+			<div id="footer-divider"></div>
+			<div class="container">
+			<div id="footer-widgets" class="clearfix">
+				<div style="min-height: 408px;" class="footer-widget"><div id="text-2" class="f_widget widget_text"><h4 class="widgettitle">Copyright</h4>			<div class="textwidget"><p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width: 0px;" src="88x31.png"></a><br><span>maxEmbedded</span> by <a href="http://maxembedded.com/" rel="cc:attributionURL">Mayank Prasad</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.</p>
+<p>© Copyright 2011-2014 by maxEmbedded. Some rights reserved.</p>
+</div>
+		</div> <!-- end .footer-widget --></div> <!-- end .footer-widget --><div style="min-height: 408px;" class="footer-widget"><div id="tag_cloud-2" class="f_widget widget_tag_cloud"><h4 class="widgettitle">Tags</h4><div class="tagcloud"><a href="http://maxembedded.com/tag/accelerometer/" class="tag-link-378 tag-link-position-1" title="2 topics" style="font-size: 9.98425pt;">accelerometer</a>
+<a href="http://maxembedded.com/tag/adapter/" class="tag-link-591 tag-link-position-2" title="1 topic" style="font-size: 8pt;">adapter</a>
+<a href="http://maxembedded.com/tag/adc/" class="tag-link-27 tag-link-position-3" title="4 topics" style="font-size: 12.4094pt;">adc</a>
+<a href="http://maxembedded.com/tag/assembly/" class="tag-link-545 tag-link-position-4" title="1 topic" style="font-size: 8pt;">assembly</a>
+<a href="http://maxembedded.com/tag/avr-adc/" class="tag-link-367 tag-link-position-5" title="4 topics" style="font-size: 12.4094pt;">avr adc</a>
+<a href="http://maxembedded.com/tag/avr-basics/" class="tag-link-366 tag-link-position-6" title="11 topics" style="font-size: 16.5984pt;">avr basics</a>
+<a href="http://maxembedded.com/tag/avr-eeprom/" class="tag-link-673 tag-link-position-7" title="1 topic" style="font-size: 8pt;">avr eeprom</a>
+<a href="http://maxembedded.com/tag/avr-interrupts/" class="tag-link-680 tag-link-position-8" title="1 topic" style="font-size: 8pt;">avr interrupts</a>
+<a href="http://maxembedded.com/tag/avr-serial/" class="tag-link-379 tag-link-position-9" title="6 topics" style="font-size: 14.063pt;">avr serial</a>
+<a href="http://maxembedded.com/tag/avr-timers/" class="tag-link-60 tag-link-position-10" title="8 topics" style="font-size: 15.1654pt;">avr timers</a>
+<a href="http://maxembedded.com/tag/basics/" class="tag-link-369 tag-link-position-11" title="36 topics" style="font-size: 22pt;">basics</a>
+<a href="http://maxembedded.com/tag/bootloader/" class="tag-link-80 tag-link-position-12" title="1 topic" style="font-size: 8pt;">bootloader</a>
+<a href="http://maxembedded.com/tag/code-gallery/" class="tag-link-558 tag-link-position-13" title="1 topic" style="font-size: 8pt;">code gallery</a>
+<a href="http://maxembedded.com/tag/code-optimization/" class="tag-link-546 tag-link-position-14" title="1 topic" style="font-size: 8pt;">code optimization</a>
+<a href="http://maxembedded.com/tag/color-spaces/" class="tag-link-672 tag-link-position-15" title="1 topic" style="font-size: 8pt;">color spaces</a>
+<a href="http://maxembedded.com/tag/counters/" class="tag-link-671 tag-link-position-16" title="7 topics" style="font-size: 14.6142pt;">counters</a>
+<a href="http://maxembedded.com/tag/cv-basics/" class="tag-link-376 tag-link-position-17" title="3 topics" style="font-size: 11.3071pt;">cv basics</a>
+<a href="http://maxembedded.com/tag/filter-circuit/" class="tag-link-594 tag-link-position-18" title="1 topic" style="font-size: 8pt;">filter circuit</a>
+<a href="http://maxembedded.com/tag/i2c/" class="tag-link-172 tag-link-position-19" title="1 topic" style="font-size: 8pt;">i2c</a>
+<a href="http://maxembedded.com/tag/ir-sensor/" class="tag-link-184 tag-link-position-20" title="2 topics" style="font-size: 9.98425pt;">ir sensor</a>
+<a href="http://maxembedded.com/tag/matlab/" class="tag-link-577 tag-link-position-21" title="1 topic" style="font-size: 8pt;">matlab</a>
+<a href="http://maxembedded.com/tag/msp430-basics/" class="tag-link-381 tag-link-position-22" title="3 topics" style="font-size: 11.3071pt;">msp430 basics</a>
+<a href="http://maxembedded.com/tag/opencv/" class="tag-link-578 tag-link-position-23" title="1 topic" style="font-size: 8pt;">opencv</a>
+<a href="http://maxembedded.com/tag/pcb-design/" class="tag-link-675 tag-link-position-24" title="3 topics" style="font-size: 11.3071pt;">pcb design</a>
+<a href="http://maxembedded.com/tag/power-supply/" class="tag-link-254 tag-link-position-25" title="1 topic" style="font-size: 8pt;">power supply</a>
+<a href="http://maxembedded.com/tag/printed-circuit-boards/" class="tag-link-676 tag-link-position-26" title="3 topics" style="font-size: 11.3071pt;">printed circuit boards</a>
+<a href="http://maxembedded.com/tag/pwm/" class="tag-link-261 tag-link-position-27" title="2 topics" style="font-size: 9.98425pt;">pwm</a>
+<a href="http://maxembedded.com/tag/raspberry-pi-2/" class="tag-link-678 tag-link-position-28" title="4 topics" style="font-size: 12.4094pt;">raspberry pi</a>
+<a href="http://maxembedded.com/tag/rf-communication/" class="tag-link-273 tag-link-position-29" title="2 topics" style="font-size: 9.98425pt;">rf communication</a>
+<a href="http://maxembedded.com/tag/rf-module/" class="tag-link-274 tag-link-position-30" title="2 topics" style="font-size: 9.98425pt;">rf module</a>
+<a href="http://maxembedded.com/tag/robotics/" class="tag-link-281 tag-link-position-31" title="1 topic" style="font-size: 8pt;">robotics</a>
+<a href="http://maxembedded.com/tag/robot-locomotion/" class="tag-link-279 tag-link-position-32" title="2 topics" style="font-size: 9.98425pt;">robot locomotion</a>
+<a href="http://maxembedded.com/tag/rs232/" class="tag-link-621 tag-link-position-33" title="2 topics" style="font-size: 9.98425pt;">rs232</a>
+<a href="http://maxembedded.com/tag/sbc-basics/" class="tag-link-674 tag-link-position-34" title="4 topics" style="font-size: 12.4094pt;">sbc basics</a>
+<a href="http://maxembedded.com/tag/sensors/" class="tag-link-290 tag-link-position-35" title="4 topics" style="font-size: 12.4094pt;">sensors</a>
+<a href="http://maxembedded.com/tag/serial/" class="tag-link-291 tag-link-position-36" title="6 topics" style="font-size: 14.063pt;">Serial</a>
+<a href="http://maxembedded.com/tag/spi/" class="tag-link-308 tag-link-position-37" title="2 topics" style="font-size: 9.98425pt;">spi</a>
+<a href="http://maxembedded.com/tag/ssd/" class="tag-link-312 tag-link-position-38" title="1 topic" style="font-size: 8pt;">ssd</a>
+<a href="http://maxembedded.com/tag/timers/" class="tag-link-329 tag-link-position-39" title="7 topics" style="font-size: 14.6142pt;">timers</a>
+<a href="http://maxembedded.com/tag/toolchain/" class="tag-link-332 tag-link-position-40" title="1 topic" style="font-size: 8pt;">toolchain</a>
+<a href="http://maxembedded.com/tag/transformer/" class="tag-link-334 tag-link-position-41" title="1 topic" style="font-size: 8pt;">transformer</a>
+<a href="http://maxembedded.com/tag/uart/" class="tag-link-338 tag-link-position-42" title="2 topics" style="font-size: 9.98425pt;">uart</a>
+<a href="http://maxembedded.com/tag/usart/" class="tag-link-344 tag-link-position-43" title="2 topics" style="font-size: 9.98425pt;">usart</a>
+<a href="http://maxembedded.com/tag/voltage-regulator/" class="tag-link-349 tag-link-position-44" title="1 topic" style="font-size: 8pt;">voltage regulator</a>
+<a href="http://maxembedded.com/tag/wireless/" class="tag-link-539 tag-link-position-45" title="2 topics" style="font-size: 9.98425pt;">wireless</a></div>
+</div> <!-- end .footer-widget --></div> <!-- end .footer-widget --><div style="min-height: 408px;" class="footer-widget last"><div id="top-posts-2" class="f_widget widget_top-posts"><h4 class="widgettitle">Top Posts &amp; Pages</h4><ul>				<li>
+										<a href="http://maxembedded.com/2013/02/how-to-build-your-own-power-supply/" class="bump-view" data-bump-view="tp">
+						How to build your own Power Supply					</a>
+									</li>
+							<li>
+										<a href="http://maxembedded.com/2013/08/how-to-build-an-ir-sensor/" class="bump-view" data-bump-view="tp">
+						How to build an IR Sensor					</a>
+									</li>
+							<li>
+										<a href="http://maxembedded.com/2011/06/avr-timers-timer0/" class="bump-view" data-bump-view="tp">
+						AVR Timers - TIMER0					</a>
+									</li>
+							<li>
+										<a href="http://maxembedded.com/2013/09/the-usart-of-the-avr/" class="bump-view" data-bump-view="tp">
+						The USART of the AVR					</a>
+									</li>
+							<li>
+										<a href="http://maxembedded.com/2011/06/the-adc-of-the-avr/" class="bump-view" data-bump-view="tp">
+						The ADC of the AVR					</a>
+									</li>
+							<li>
+										<a href="http://maxembedded.com/2013/11/the-spi-of-the-avr/" class="bump-view" data-bump-view="tp">
+						The SPI of the AVR					</a>
+									</li>
+							<li>
+										<a href="http://maxembedded.com/2011/07/avr-timers-ctc-mode/" class="bump-view" data-bump-view="tp">
+						AVR Timers - CTC Mode					</a>
+									</li>
+			</ul></div> <!-- end .footer-widget --></div> <!-- end .footer-widget -->			</div> <!-- end #footer-widgets -->
+		</div> <!-- end .container -->
+
+					<div id="bottom-advertisment">
+				<div class="container">
+					
+<!-- 728x90-Leaderboard-New -->
+<ins class="adsbygoogle" style="display: inline-block; width: 728px; height: 90px;" data-ad-client="ca-pub-2127326018455564" data-ad-slot="2319276130"></ins>
+				</div> <!-- end .container -->
+			</div>
+			</footer> <!-- end #main-footer -->
+
+	<div id="footer-bottom">
+		<div class="container clearfix">
+			<ul id="bottom-menu" class="bottom-nav"><li id="menu-item-3259" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3259"><a href="http://maxembedded.com/?page_id=1108">Home</a></li>
+<li id="menu-item-3240" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3240"><a href="http://maxembedded.com/copyright/">Copyright</a></li>
+<li id="menu-item-3239" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3239"><a href="http://maxembedded.com/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-3317" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3317"><a href="http://maxembedded.com/credits/">Credits</a></li>
+<li id="menu-item-3487" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3487"><a href="http://maxembedded.com/sitemap/">Sitemap</a></li>
+<li id="menu-item-3260" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3260"><a href="http://maxembedded.com/contact/">Contact</a></li>
+</ul>
+			<p id="copyright">© Copyright 2011-2014 by maxEmbedded. Some rights reserved.</p>
+
+			<p id="copyright" align="center"><br>maxEmbedded is a free and open source platform to share knowledge and learn about the concepts of robotics, embedded systems and computer vision. People from around the world who are enthusiastic about these topics and willing to support the open source community are invited to share their information, knowledge and expertise by means of written tutorials and videos on the website.</p>
+
+
+		</div> <!-- end .container -->
+	</div> <!-- end #footer-bottom -->
+
+		<div style="display: none;">
+	<div class="grofile-hash-map-2124e409cffb38f25b01148bc8d815d2">
+	</div>
+	<div class="grofile-hash-map-327eb62c8cf4d8f0eab20b4f67394f98">
+	</div>
+	<div class="grofile-hash-map-d2e59f77963155a16c06f40d30715297">
+	</div>
+	<div class="grofile-hash-map-fdec0c7b900ea552e4e18c6128acafea">
+	</div>
+	<div class="grofile-hash-map-d8ef8db780cd5b99672bf41654fefc01">
+	</div>
+	<div class="grofile-hash-map-62a4be216d777b653f12d0043698f74d">
+	</div>
+	<div class="grofile-hash-map-5845e3ca0fb60d49775a4f223fa0e7ef">
+	</div>
+	<div class="grofile-hash-map-6a34a311979daa6886030d695cac9408">
+	</div>
+	<div class="grofile-hash-map-4f42c6cd51b67df49b26fbf44025b99a">
+	</div>
+	<div class="grofile-hash-map-cf8170f3ad6b49326ff2a2197f8192a9">
+	</div>
+	<div class="grofile-hash-map-574cd719844fc26fd3bffff1864fda9e">
+	</div>
+	<div class="grofile-hash-map-3af2e13b407550502ee4971d30a5ae9a">
+	</div>
+	<div class="grofile-hash-map-c414d192ec31b7f2a96ebae44ea1c5ab">
+	</div>
+	<div class="grofile-hash-map-6dd7e781bdf6c6fe1697c4d6f7d4fc55">
+	</div>
+	</div>
+
+	
+		
+				
+				
+				
+			
+		
+		<iframe src="index_7.html" id="sumome-jquery-iframe" style="display: none;"></iframe><a href="javascript:void(0);" title="SumoMe" style="background-color: rgb(0, 115, 183); border-radius: 3px 0px 0px 3px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); position: fixed; display: block ! important; z-index: 2147483647; padding: 0px; width: 44px; height: 40px; text-indent: -10000px; opacity: 1; top: 40px; right: -40px;"><span style="display: block; width: 40px; height: 40px; background: white url('undefined') no-repeat scroll 8px 8px; margin-left: 4px; border-radius: 3px 0px 0px 3px; margin-right: 0px;"></span></a><iframe src="index_8.html" style="display: none;"></iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fb-root"></div>
+
+
+
+
+
+
+
+
+
+
+
+		<iframe src="index_9.html" scrolling="no" id="likes-master" name="likes-master" style="display: none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		
+		<!--[if IE]>
+		<script type="text/javascript">
+		if ( 0 === window.location.hash.indexOf( '#comment-' ) ) {
+			// window.location.reload() doesn't respect the Hash in IE
+			window.location.hash = window.location.hash;
+		}
+		</script>
+		<![endif]-->
+		
+
+	
+
+
+<img id="wpstats" alt=":)" src="g.gif" height="5" width="6"><div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div id="sharing_email" style="display: none;">
+		<form action="http://maxembedded.com/2011/06/the-adc-of-the-avr/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input name="target_email" id="target_email" value="" type="email">
+
+			
+				<label for="source_name">Your Name</label>
+				<input name="source_name" id="source_name" value="" type="text">
+
+				<label for="source_email">Your Email Address</label>
+				<input name="source_email" id="source_email" value="" type="email">
+
+						<input id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" type="text">
+			
+			
+			<img style="float: right; display: none;" class="loading" src="loading.gif" alt="loading" height="16" width="16">
+			<input value="Send Email" class="sharing_send" type="submit">
+			<a rel="nofollow" href="#cancel" class="sharing_cancel">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div><div style="position: fixed; top: 0px; left: 0px; overflow: hidden;"><input style="position: absolute; left: -300px;" value="" id="focus_retriever" readonly="true" type="text"></div></body>
+</html>

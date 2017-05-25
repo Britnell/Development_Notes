@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" class="client-js" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<title>BeagleBone Black Extracting eMMC contents - eLinux.org</title>
+<meta name="generator" content="MediaWiki 1.25.3">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://elinux.org/opensearch_desc.php" title="eLinux.org (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://elinux.org/api.php?action=rsd">
+<link rel="alternate" hreflang="x-default" href="http://elinux.org/BeagleBone_Black_Extracting_eMMC_contents">
+<link rel="copyright" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<link rel="alternate" type="application/atom+xml" title="eLinux.org Atom feed" href="http://elinux.org/index.php?title=Special:RecentChanges&amp;feed=atom">
+
+<meta name="ResourceLoaderDynamicStyles" content="">
+
+
+
+
+
+
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/skins/Vector/csshover.min.htc")}</style><![endif]-->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-BeagleBone_Black_Extracting_eMMC_contents skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+							<div id="siteNotice"><div id="localNotice" dir="ltr" lang="en"><div style="margin: 10px 10px 0px 0px; border: 1px solid rgb(223, 223, 223); padding: 0px 1em 1em; background-color: rgb(255, 255, 204);">
+<p><b>Did you know that elinux.org has Mailing Lists?  Please feel free to <a href="http://elinux.org/ELinuxWiki:Mailing_List" title="ELinuxWiki:Mailing List"> register today</a> to discuss the wiki in general, request features, etc. etc.. Thanks!--<a href="http://elinux.org/User:Wmat" title="User:Wmat">Wmat</a> (<a href="http://elinux.org/User_talk:Wmat" title="User talk:Wmat">talk</a>)<br></b>
+</p>
+</div>
+</div></div>
+						<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">BeagleBone Black Extracting eMMC contents</span></h1>
+						<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From eLinux.org</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-navigation">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="#" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Intro"><span class="tocnumber">1</span> <span class="toctext">Intro</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Steps_to_save"><span class="tocnumber">1.1</span> <span class="toctext">Steps to save</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Performing_restore.2Fflashing"><span class="tocnumber">1.2</span> <span class="toctext">Performing restore/flashing</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="#Sources"><span class="tocnumber">2</span> <span class="toctext">Sources</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#Build_steps"><span class="tocnumber">2.1</span> <span class="toctext">Build steps</span></a>
+<ul>
+<li class="toclevel-3 tocsection-6"><a href="#uEnv.txt"><span class="tocnumber">2.1.1</span> <span class="toctext">uEnv.txt</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="#autorun.sh"><span class="tocnumber">2.1.2</span> <span class="toctext">autorun.sh</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="#Other_sources_used"><span class="tocnumber">2.1.3</span> <span class="toctext">Other sources used</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="#Alternatives"><span class="tocnumber">3</span> <span class="toctext">Alternatives</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Intro">Intro</span></h1>
+<p>There are lots of ways to extract the contents of the eMMC to save off and reuse. I'm proposing a method using Buildroot and an initramfs such that you can simply drop a few files from a .zip onto a normal, FAT-formatted SD card to perform the extraction. There are several things really handy here, such as the ability to edit autorun.sh to be whatever script you want to run on your board at boot. In the archive, I only have the necessary autorun.sh for <b>saving</b> your eMMC content. The flip-side is provided here in the text such that you need to go through a couple of steps before you trash your eMMC.
+</p>
+<h2><span class="mw-headline" id="Steps_to_save">Steps to save</span></h2>
+<p>The steps for saving off your eMMC contents to a file:
+</p>
+<ul><li> Get a 4GB or larger uSD card that is FAT formatted.</li>
+<li> Make sure that the partition on the uSD card is marked as active.</li>
+<li> Download <a rel="nofollow" class="external text" href="https://s3.amazonaws.com/beagle/beagleboneblack-save-emmc.zip">beagleboneblack-save-emmc.zip</a> and extract the contents onto your uSD card.</li>
+<li> Eject uSD card from your computer, insert into powered-off BeagleBone Black and apply power to your board while holding down the S2 button (release button a couple seconds after boot).</li></ul>
+<p><b>IMPORTANT</b>: Due to the way the environment sets the partition <i>mmcblk1</i>, some newer boards (shipped with Debian 7.5 or newer) won't work with the autorun.sh. As a workaround, instead of holding down the S2 button, just power the board with the uSD card inserted.
+</p><p><b>IMPORTANT</b>: On Rev C BeagleBone Blacks from element14, you need to create a folder titled "dtbs" and copy am335x-boneblack.dtb into it in order for the SD card to be booted.
+</p><p><b>IMPORTANT</b>: On Rev C BeagleBone Greens from Seed Studio, you need to create a folder titled "dtbs" and copy am335x-boneblack.dtb to dtbs/am335x-bonegreen.dtb (note the name change) in order for the SD card to be booted.
+</p>
+<ul><li> You'll notice USR0 (the LED closest to the S1 button in the corner) will (after about 20 seconds) start to blink steadily, rather than the double-pulse "heartbeat" pattern that is typical when your BeagleBone Black is running the typical Linux kernel configuration.</li>
+<li> It'll run for a bit under 10 minutes and then USR0 will stay ON steady. That's your cue to remove power, remove the uSD card and put it back into your computer.</li>
+<li> You should see a file called BeagleBoneBlack-eMMC-image-XXXXX.img.gz, where XXXXX is a set of random numbers. Save off this file to use for restoring your image later.</li></ul>
+<p><b>NOTE</b>: Because the date won't be set on your board, you might want to adjust the date on the file to remember when you made it.
+</p><p><b>NOTE</b>: Delete the file if you want to make room for a new backup image.
+</p><p><b>NOTE</b>: If you plan to use Windows Win32 Disk Imager, you'll need to uncompress the image. It is compressed due to some FAT  (non-FAT32) partitions not being able to store more than 2GB files.
+</p><p><b>NOTE</b>: To mark a partition as active in Windows 7: Open command prompt and enter the following commands: diskpart -&gt; list disk -&gt; select disk x (where x is the uSD card) -&gt; list partition -&gt; select partition 1 (assuming the uSD card has 1 partition) -&gt; active.
+</p>
+<h2><span class="mw-headline" id="Performing_restore.2Fflashing">Performing restore/flashing</span></h2>
+<p>To restore the file, make sure there is a valid BeagleBoneBlack-eMMC-image-XXXX.img file on the uSD card and edit autorun.sh with your favorite text editor to contain the following:
+</p>
+<pre>#!/bin/sh
+echo timer &gt; /sys/class/leds/beaglebone\:green\:usr0/trigger
+gunzip -c /mnt/BBB-eMMC-XXXXX.img.gz | dd of=/dev/mmcblk1 bs=16M
+UUID=$(/sbin/blkid -c /dev/null -s UUID -o value /dev/mmcblk1p2)
+mkdir -p /mnt
+mount /dev/mmcblk1p2 /mnt
+sed -i "s/^uuid=.*\$/uuid=$UUID/" /mnt/boot/uEnv.txt
+umount /mnt
+sync
+echo default-on &gt; /sys/class/leds/beaglebone\:green\:usr0/trigger
+</pre>
+<p><b>NOTE</b>: Be certain to replace the 'XXXXX' above with the proper name of your image file.
+</p><p><b>NOTE</b>: You can share and use other people's image files, but be sure to have them uncompressed on the card or add decompression to the script.
+</p><p><b>NOTE</b>: The UUID replacement is required for recent Debian images. If you have something other than a 2 partition image, you might need to adjust or remove the lines that configure the UUID. They should be generally safe, but be aware that the newer u-boots that ship with BeagleBone Black attempt to use the UUID and pointing the '/dev/mmcblk1p2' to the right root partition is important.
+</p><p><b>NOTE</b>: if you have difficulty booting a Rev. C BBB with this tool mount the SD card and make the following changes:
+</p>
+<pre>cd /mnt #or wherever you have mounted the card
+mkdir dtbs
+cp am335x-boneblack.dtb dtbs/am335x-boneblack.dtb
+# if you have a BeageBoneGreen just change the name:
+cp am335x-boneblack.dtb dtbs/am335x-bonegreen.dtb
+</pre>
+<p>You may also try booting with the barrel jack (AC power) rather than the USB port.
+</p>
+<h1><span class="mw-headline" id="Sources">Sources</span></h1>
+<p>This image was built using Buildroot. The sources are at <a rel="nofollow" class="external free" href="https://github.com/jadonk/buildroot">https://github.com/jadonk/buildroot</a> with tag save-emmc-0.0.1. Download via <a rel="nofollow" class="external free" href="https://github.com/jadonk/buildroot/releases/tag/save-emmc-0.0.1">https://github.com/jadonk/buildroot/releases/tag/save-emmc-0.0.1</a> or clone the git repo. It is a small fork from <a rel="nofollow" class="external text" href="http://git.buildroot.net/buildroot/commit/?id=e9f6011617528646768e69203e85fe64364b7efd">git://git.buildroot.net/buildroot tag e9f6011617528646768e69203e85fe64364b7efd</a>.
+</p>
+<h2><span class="mw-headline" id="Build_steps">Build steps</span></h2>
+<p>To build, 'make beagleboneblack_defconfig; make; ./mkuimage.sh'.  Output files (am335x-boneblack.dtb, MLO, u-boot.img and uImage) will be in the output/images subdirectory. The following files were created manually.
+</p>
+<h3><span class="mw-headline" id="uEnv.txt">uEnv.txt</span></h3>
+<pre>bootpart=0:1
+bootdir=
+fdtaddr=0x81FF0000
+optargs=quiet capemgr.disable_partno=BB-BONELT-HDMI,BB-BONELT-HDMIN
+uenvcmd=load mmc 0 ${loadaddr} uImage;run loadfdt;setenv bootargs console=${console} ${optargs};bootm ${loadaddr} - ${fdtaddr}
+</pre>
+<h3><span class="mw-headline" id="autorun.sh">autorun.sh</span></h3>
+<pre>#!/bin/sh
+echo timer &gt; /sys/class/leds/beaglebone\:green\:usr0/trigger·
+
+#un-comment the following 2 lines to perform a backup
+IMAGEFILE=/mnt/BBB-eMMC-$RANDOM.img.gz
+dd if=/dev/mmcblk1 bs=16M | gzip -c &gt; $IMAGEFILE
+
+#un-comment the following 6 lines to perform a restore (be sure to replace XXXXX with your image name)
+#gunzip -c /mnt/BBB-eMMC-XXXXX.img.gz | dd of=/dev/mmcblk1 bs=16M
+#UUID=$(/sbin/blkid -c /dev/null -s UUID -o value /dev/mmcblk1p2)
+#mkdir -p /mnt
+#mount /dev/mmcblk1p2 /mnt
+#sed -i "s/^uuid=.*\$/uuid=$UUID/" /mnt/boot/uEnv.txt
+#umount /mnt
+
+sync
+echo default-on &gt; /sys/class/leds/beaglebone\:green\:usr0/trigger
+</pre>
+<h3><span class="mw-headline" id="Other_sources_used">Other sources used</span></h3>
+<p>The kernel is based on <a rel="nofollow" class="external free" href="https://github.com/beagleboard/kernel/commit/9fdb452245a58158a4bea787cdc663c17681bcfe">https://github.com/beagleboard/kernel/commit/9fdb452245a58158a4bea787cdc663c17681bcfe</a>, but I applied the patches, added firmware and uploaded it to <a rel="nofollow" class="external free" href="https://github.com/beagleboard/linux/commit/ddd36e546e53d3c493075bbebd6188ee843208f9">https://github.com/beagleboard/linux/commit/ddd36e546e53d3c493075bbebd6188ee843208f9</a> to pull down in the Buildroot makefile. The link to the source for the firmware is in the commit.
+</p>
+<h1><span class="mw-headline" id="Alternatives">Alternatives</span></h1>
+<p>For many BeagleBone Debian users, there is a simple alternative of using the /opt/scripts/tools/eMMC/beaglebone-black-make-microSD-flasher-from-eMMC.sh to write an image from the on-board eMMC to a microSD card in a way that the microSD card becomes a "flasher" to write to other BeagleBone eMMCs. Simply boot off the on-board eMMC that you wish to copy, insert a blank microSD card at least 4GB, run the script as root and wait for the script to complete. At that point, you shut down your board and remove the microSD card. Booting off that microSD card on other BeagleBones should result in the typical "flasher" process writing the contents onto that BeagleBone's eMMC.
+</p><p>The source code for the script is at <a rel="nofollow" class="external free" href="https://github.com/RobertCNelson/boot-scripts/blob/master/tools/eMMC/beaglebone-black-make-microSD-flasher-from-eMMC.sh">https://github.com/RobertCNelson/boot-scripts/blob/master/tools/eMMC/beaglebone-black-make-microSD-flasher-from-eMMC.sh</a>.
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.026 seconds
+Real time usage: 0.037 seconds
+Preprocessor visited node count: 70/1000000
+Preprocessor generated node count: 120/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+
+<!-- Saved in parser cache with key elinux:pcache:idhash:76076-0!*!*!!en!*!* and timestamp 20160629160012 and revision id 401401
+ -->
+</div>									<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="http://elinux.org/index.php?title=BeagleBone_Black_Extracting_eMMC_contents&amp;oldid=401401">http://elinux.org/index.php?title=BeagleBone_Black_Extracting_eMMC_contents&amp;oldid=401401</a>"					</div>
+													<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://elinux.org/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="http://elinux.org/index.php?title=Category:BeagleBone&amp;action=edit&amp;redlink=1" class="new" title="Category:BeagleBone (page does not exist)">BeagleBone</a></li><li><a href="http://elinux.org/index.php?title=Category:BeagleBoneBlack_HowTo&amp;action=edit&amp;redlink=1" class="new" title="Category:BeagleBoneBlack HowTo (page does not exist)">BeagleBoneBlack HowTo</a></li></ul></div></div>												<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-login"><a href="http://elinux.org/index.php?title=Special:UserLogin&amp;returnto=BeagleBone+Black+Extracting+eMMC+contents" title="You are encouraged to log in; however, it is not mandatory [Alt+Shift+o]" accesskey="o">Log in</a></li><li id="pt-createaccount"><a href="http://elinux.org/Special:RequestAccount" title="You are encouraged to create an account and log in; however, it is not mandatory">Request account</a></li><li id="pt-openidlogin"><a href="http://elinux.org/index.php?title=Special:OpenIDLogin&amp;returnto=BeagleBone_Black_Extracting_eMMC_contents">Log in / create account with OpenID</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li id="ca-nstab-main" class="selected"><span><a href="http://elinux.org/BeagleBone_Black_Extracting_eMMC_contents" title="View the content page [Alt+Shift+c]" accesskey="c">Page</a></span></li>
+															<li id="ca-talk"><span><a href="http://elinux.org/Talk:BeagleBone_Black_Extracting_eMMC_contents" title="Discussion about the content page [Alt+Shift+t]" accesskey="t">Discussion</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 tabindex="0" id="p-variants-label"><span style="display: block;">Variants</span><a tabindex="-1" href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="http://elinux.org/BeagleBone_Black_Extracting_eMMC_contents">Read</a></span></li>
+															<li id="ca-viewsource"><span><a href="http://elinux.org/index.php?title=BeagleBone_Black_Extracting_eMMC_contents&amp;action=edit" title="This page is protected.
+You can view its source [Alt+Shift+e]" accesskey="e">View source</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="http://elinux.org/index.php?title=BeagleBone_Black_Extracting_eMMC_contents&amp;action=history" title="Past revisions of this page [Alt+Shift+h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div style="" id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 tabindex="0" id="p-cactions-label"><span>More</span><a tabindex="-1" href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="http://elinux.org/index.php" id="searchform">
+														<div id="simpleSearch">
+															<input autocomplete="off" tabindex="1" name="search" placeholder="Search" title="Search eLinux.org [Alt+Shift+f]" accesskey="f" id="searchInput" type="search"><input value="Special:Search" name="title" type="hidden"><input name="go" value="Go" title="Go to a page with this exact name if exists" id="searchButton" class="searchButton" type="submit">								</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a style="background-image: url('logo_clear.png');" href="http://elinux.org/Main_Page" title="Visit the main page"></a></div>
+						<div class="portal first" role="navigation" id="p-Navigation" aria-labelledby="p-Navigation-label">
+			<h3 id="p-Navigation-label">Navigation</h3>
+
+			<div class="body">
+									<ul>
+													<li id="n-mainpage"><a href="http://elinux.org/Main_Page" title="Visit the main page [Alt+Shift+z]" accesskey="z">Main Page</a></li>
+													<li id="n-portal"><a href="http://elinux.org/eLinux.org:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+													<li id="n-currentevents"><a href="http://elinux.org/eLinux.org:Current_events" title="Find background information on current events">Current events</a></li>
+													<li id="n-recentchanges"><a href="http://elinux.org/Special:RecentChanges" title="A list of recent changes in the wiki [Alt+Shift+r]" accesskey="r">Recent changes</a></li>
+													<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" title="The place to find out">Help</a></li>
+													<li id="n-Volunteering"><a href="http://elinux.org/Sitesupport-url">Volunteering</a></li>
+													<li id="n-Bug-Tracker"><a href="http://bugs.elinux.org/" rel="nofollow">Bug Tracker</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-Where_else_to_find_us" aria-labelledby="p-Where_else_to_find_us-label">
+			<h3 id="p-Where_else_to_find_us-label">Where else to find us</h3>
+
+			<div class="body">
+									<ul>
+													<li id="n-Google.2B-Community"><a href="https://plus.google.com/u/0/communities/113852495250648539361" rel="nofollow">Google+ Community</a></li>
+													<li id="n-Twitter-.28.40elinux.29"><a href="https://twitter.com/elinux" rel="nofollow">Twitter (@elinux)</a></li>
+													<li id="n-.23elinux-on-Freenode"><a href="irc://#elinux@irc.freenode.net" rel="nofollow">#elinux on Freenode</a></li>
+													<li id="n-Facebook-.28.40elinux.org.29"><a href="https://www.facebook.com/elinuxorg-750739005020534/" rel="nofollow">Facebook (@elinux.org)</a></li>
+													<li id="n-Mailing-Lists"><a href="http://www.elinux.org/ELinuxWiki:Mailing_List" rel="nofollow">Mailing Lists</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Tools</h3>
+
+			<div class="body">
+									<ul>
+													<li id="t-whatlinkshere"><a href="http://elinux.org/Special:WhatLinksHere/BeagleBone_Black_Extracting_eMMC_contents" title="A list of all wiki pages that link here [Alt+Shift+j]" accesskey="j">What links here</a></li>
+													<li id="t-recentchangeslinked"><a href="http://elinux.org/Special:RecentChangesLinked/BeagleBone_Black_Extracting_eMMC_contents" title="Recent changes in pages linked from this page [Alt+Shift+k]" accesskey="k">Related changes</a></li>
+													<li id="t-specialpages"><a href="http://elinux.org/Special:SpecialPages" title="A list of all special pages [Alt+Shift+q]" accesskey="q">Special pages</a></li>
+													<li id="t-print"><a href="http://elinux.org/index.php?title=BeagleBone_Black_Extracting_eMMC_contents&amp;printable=yes" rel="alternate" title="Printable version of this page [Alt+Shift+p]" accesskey="p">Printable version</a></li>
+													<li id="t-permalink"><a href="http://elinux.org/index.php?title=BeagleBone_Black_Extracting_eMMC_contents&amp;oldid=401401" title="Permanent link to this revision of the page">Permanent link</a></li>
+													<li id="t-info"><a href="http://elinux.org/index.php?title=BeagleBone_Black_Extracting_eMMC_contents&amp;action=info" title="More information about this page">Page information</a></li>
+											</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 3 February 2016, at 13:58.</li>
+											<li id="footer-info-viewcount">This page has been accessed 33,323 times.</li>
+											<li id="footer-info-copyright">Content is available under <a class="external" rel="nofollow" href="http://creativecommons.org/licenses/by-sa/3.0/">a Creative Commons Attribution-ShareAlike 3.0 Unported License</a> unless otherwise noted.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://elinux.org/eLinux.org:Privacy_policy" title="eLinux.org:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://elinux.org/eLinux.org:About" title="eLinux.org:About">About eLinux.org</a></li>
+											<li id="footer-places-disclaimer"><a href="http://elinux.org/eLinux.org:General_disclaimer" title="eLinux.org:General disclaimer">Disclaimers</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+															<a href="http://creativecommons.org/licenses/by-sa/3.0/"><img src="88x31.png" alt="a Creative Commons Attribution-ShareAlike 3.0 Unported License" height="31" width="88"></a>
+													</li>
+											<li id="footer-poweredbyico">
+															<a href="http://www.mediawiki.org/"><img src="poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" height="31" width="88"></a>
+													</li>
+									</ul>
+						<div style="clear: both;"></div>
+		</div>
+		
+
+<div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div>
+
+
+	
+
+	</body>
+</html>

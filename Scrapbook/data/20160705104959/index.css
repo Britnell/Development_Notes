@@ -1,0 +1,424 @@
+/* ::::: http://www.embeddedforu.com/wp-content/plugins/bbpress/templates/default/css/bbpress.css?ver=2.5.7-5693 ::::: */
+
+#bbpress-forums div.bbp-forum-content::after, #bbpress-forums div.bbp-topic-content::after, #bbpress-forums div.bbp-reply-content::after { clear: both; content: "."; display: block; float: none; height: 0px; font-size: 0px; visibility: hidden; }
+div.bbp-submit-wrapper { margin-top: 15px; float: right; clear: both; }
+.bbp-login-form fieldset legend { display: none; }
+.bbp-login-form .bbp-username input, .bbp-login-form .bbp-email input, .bbp-login-form .bbp-password input { padding: 5px; }
+.bbp-login-form label { width: 140px; display: inline-block; }
+.bbp-login-form .bbp-username, .bbp-login-form .bbp-email, .bbp-login-form .bbp-password, .bbp-login-form .bbp-remember-me, .bbp-login-form .bbp-submit-wrapper { margin-top: 10px; }
+.bbp-login-form .bbp-remember-me {  }
+.bbp-login-form .bbp-submit-wrapper { text-align: right; }
+.bbp-login-form .bbp-login-links {  }
+.bbp-login-form .bbp-login-links a { float: left; clear: left; }
+@media screen and (max-device-width: 480px), not all {
+}
+@media only screen and (max-width: 480px) {
+	div.bbp-submit-wrapper { float: left; }
+}
+@media only screen and (max-width: 320px) {
+}
+@media only screen and (max-width: 240px) {
+}
+/* ::::: http://www.embeddedforu.com/wp-content/plugins/ig-shortcodes/inc/shortcodes.css?ver=4.5.2 ::::: */
+
+.ig-shortcode-toggle h3.toggle-heading::after { content: "+"; float: right; color: rgb(204, 204, 204); }
+.toggle-active h3.toggle-heading::after { content: "-"; float: right; color: rgb(204, 204, 204); }
+@media screen and (max-width: 767px) {
+}
+/* ::::: http://www.embeddedforu.com/wp-content/plugins/ig-shortcodes/inc/genericons/genericons.css?ver=4.5.2 ::::: */
+
+@font-face {
+	font-family: "Genericons";
+	font-style: normal;
+	font-weight: normal;
+	src: url('genericons.eot') format("embedded-opentype"), url('genericons.woff') format("woff"), url('genericons.ttf') format("truetype"), url('genericonst.svg') format("svg");
+}
+.genericon-404::before { content: ""; }
+.genericon-activity::before { content: ""; }
+.genericon-anchor::before { content: ""; }
+.genericon-aside::before { content: ""; }
+.genericon-attachment::before { content: ""; }
+.genericon-audio::before { content: ""; }
+.genericon-bold::before { content: ""; }
+.genericon-book::before { content: ""; }
+.genericon-bug::before { content: ""; }
+.genericon-cart::before { content: ""; }
+.genericon-category::before { content: ""; }
+.genericon-chat::before { content: ""; }
+.genericon-checkmark::before { content: ""; }
+.genericon-close::before { content: ""; }
+.genericon-close-alt::before { content: ""; }
+.genericon-cloud::before { content: ""; }
+.genericon-cloud-download::before { content: ""; }
+.genericon-cloud-upload::before { content: ""; }
+.genericon-code::before { content: ""; }
+.genericon-codepen::before { content: ""; }
+.genericon-cog::before { content: ""; }
+.genericon-collapse::before { content: ""; }
+.genericon-comment::before { content: ""; }
+.genericon-day::before { content: ""; }
+.genericon-digg::before { content: ""; }
+.genericon-document::before { content: ""; }
+.genericon-dot::before { content: ""; }
+.genericon-downarrow::before { content: ""; }
+.genericon-download::before { content: ""; }
+.genericon-draggable::before { content: ""; }
+.genericon-dribbble::before { content: ""; }
+.genericon-dropbox::before { content: ""; }
+.genericon-dropdown::before { content: ""; }
+.genericon-dropdown-left::before { content: ""; }
+.genericon-edit::before { content: ""; }
+.genericon-ellipsis::before { content: ""; }
+.genericon-expand::before { content: ""; }
+.genericon-external::before { content: ""; }
+.genericon-facebook::before { content: ""; }
+.genericon-facebook-alt::before { content: ""; }
+.genericon-fastforward::before { content: ""; }
+.genericon-feed::before { content: ""; }
+.genericon-flag::before { content: ""; }
+.genericon-flickr::before { content: ""; }
+.genericon-foursquare::before { content: ""; }
+.genericon-fullscreen::before { content: ""; }
+.genericon-gallery::before { content: ""; }
+.genericon-github::before { content: ""; }
+.genericon-googleplus::before { content: ""; }
+.genericon-googleplus-alt::before { content: ""; }
+.genericon-handset::before { content: ""; }
+.genericon-heart::before { content: ""; }
+.genericon-help::before { content: ""; }
+.genericon-hide::before { content: ""; }
+.genericon-hierarchy::before { content: ""; }
+.genericon-home::before { content: ""; }
+.genericon-image::before { content: ""; }
+.genericon-info::before { content: ""; }
+.genericon-instagram::before { content: ""; }
+.genericon-italic::before { content: ""; }
+.genericon-key::before { content: ""; }
+.genericon-leftarrow::before { content: ""; }
+.genericon-link::before { content: ""; }
+.genericon-linkedin::before { content: ""; }
+.genericon-linkedin-alt::before { content: ""; }
+.genericon-location::before { content: ""; }
+.genericon-lock::before { content: ""; }
+.genericon-mail::before { content: ""; }
+.genericon-maximize::before { content: ""; }
+.genericon-menu::before { content: ""; }
+.genericon-microphone::before { content: ""; }
+.genericon-minimize::before { content: ""; }
+.genericon-minus::before { content: ""; }
+.genericon-month::before { content: ""; }
+.genericon-move::before { content: ""; }
+.genericon-next::before { content: ""; }
+.genericon-notice::before { content: ""; }
+.genericon-paintbrush::before { content: ""; }
+.genericon-path::before { content: ""; }
+.genericon-pause::before { content: ""; }
+.genericon-phone::before { content: ""; }
+.genericon-picture::before { content: ""; }
+.genericon-pinned::before { content: ""; }
+.genericon-pinterest::before { content: ""; }
+.genericon-pinterest-alt::before { content: ""; }
+.genericon-play::before { content: ""; }
+.genericon-plugin::before { content: ""; }
+.genericon-plus::before { content: ""; }
+.genericon-pocket::before { content: ""; }
+.genericon-polldaddy::before { content: ""; }
+.genericon-portfolio::before { content: ""; }
+.genericon-previous::before { content: ""; }
+.genericon-print::before { content: ""; }
+.genericon-quote::before { content: ""; }
+.genericon-rating-empty::before { content: ""; }
+.genericon-rating-full::before { content: ""; }
+.genericon-rating-half::before { content: ""; }
+.genericon-reddit::before { content: ""; }
+.genericon-refresh::before { content: ""; }
+.genericon-reply::before { content: ""; }
+.genericon-reply-alt::before { content: ""; }
+.genericon-reply-single::before { content: ""; }
+.genericon-rewind::before { content: ""; }
+.genericon-rightarrow::before { content: ""; }
+.genericon-search::before { content: ""; }
+.genericon-send-to-phone::before { content: ""; }
+.genericon-send-to-tablet::before { content: ""; }
+.genericon-share::before { content: ""; }
+.genericon-show::before { content: ""; }
+.genericon-shuffle::before { content: ""; }
+.genericon-sitemap::before { content: ""; }
+.genericon-skip-ahead::before { content: ""; }
+.genericon-skip-back::before { content: ""; }
+.genericon-skype::before { content: ""; }
+.genericon-spam::before { content: ""; }
+.genericon-spotify::before { content: ""; }
+.genericon-standard::before { content: ""; }
+.genericon-star::before { content: ""; }
+.genericon-status::before { content: ""; }
+.genericon-stop::before { content: ""; }
+.genericon-stumbleupon::before { content: ""; }
+.genericon-subscribe::before { content: ""; }
+.genericon-subscribed::before { content: ""; }
+.genericon-summary::before { content: ""; }
+.genericon-tablet::before { content: ""; }
+.genericon-tag::before { content: ""; }
+.genericon-time::before { content: ""; }
+.genericon-top::before { content: ""; }
+.genericon-trash::before { content: ""; }
+.genericon-tumblr::before { content: ""; }
+.genericon-twitch::before { content: ""; }
+.genericon-twitter::before { content: ""; }
+.genericon-unapprove::before { content: ""; }
+.genericon-unsubscribe::before { content: ""; }
+.genericon-unzoom::before { content: ""; }
+.genericon-uparrow::before { content: ""; }
+.genericon-user::before { content: ""; }
+.genericon-video::before { content: ""; }
+.genericon-videocamera::before { content: ""; }
+.genericon-vimeo::before { content: ""; }
+.genericon-warning::before { content: ""; }
+.genericon-website::before { content: ""; }
+.genericon-week::before { content: ""; }
+.genericon-wordpress::before { content: ""; }
+.genericon-xpost::before { content: ""; }
+.genericon-youtube::before { content: ""; }
+.genericon-zoom::before { content: ""; }
+/* ::::: http://fonts.googleapis.com/css?family=Ubuntu:400,700&subset=latin,latin-ext ::::: */
+
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 400;
+	src: local("Ubuntu"), url('odszji8yqnw8v2xpulzjo_eszw2xoq-xsnqo47m55da.woff2') format("woff2");
+	unicode-range: U+460-52F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 400;
+	src: local("Ubuntu"), url('iq9vjx1umasknigywyycxveszw2xoq-xsnqo47m55da.woff2') format("woff2");
+	unicode-range: U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 400;
+	src: local("Ubuntu"), url('wkvqmvwsfw_kkeau9slq2_eszw2xoq-xsnqo47m55da.woff2') format("woff2");
+	unicode-range: U+1F00-1FFF;
+}
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 400;
+	src: local("Ubuntu"), url('gyatqxuikkqjyja1snpdlveszw2xoq-xsnqo47m55da.woff2') format("woff2");
+	unicode-range: U+370-3FF;
+}
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 400;
+	src: local("Ubuntu"), url('wu5iuha-xnkdbvqrwqzag_eszw2xoq-xsnqo47m55da.woff2') format("woff2");
+	unicode-range: U+100-24F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 400;
+	src: local("Ubuntu"), url('sdgtilo5qrsfwu6yc11axg.woff2') format("woff2");
+	unicode-range: U+0-FF, U+131, U+152-153, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 700;
+	src: local("Ubuntu Bold"), local("Ubuntu-Bold"), url('oxrpyim05jry_0rfieq_orjtnkitppoi_ivcxxdnrsc.woff2') format("woff2");
+	unicode-range: U+460-52F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 700;
+	src: local("Ubuntu Bold"), local("Ubuntu-Bold"), url('4z2u46_rrlofkohswjg3vxjtnkitppoi_ivcxxdnrsc.woff2') format("woff2");
+	unicode-range: U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 700;
+	src: local("Ubuntu Bold"), local("Ubuntu-Bold"), url('2vawvxeaxhvkfcncbcqcyrjtnkitppoi_ivcxxdnrsc.woff2') format("woff2");
+	unicode-range: U+1F00-1FFF;
+}
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 700;
+	src: local("Ubuntu Bold"), local("Ubuntu-Bold"), url('m-ii49wh_tyynojqylgtmbjtnkitppoi_ivcxxdnrsc.woff2') format("woff2");
+	unicode-range: U+370-3FF;
+}
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 700;
+	src: local("Ubuntu Bold"), local("Ubuntu-Bold"), url('nsltvfqot-rvwgthhnkejhjtnkitppoi_ivcxxdnrsc.woff2') format("woff2");
+	unicode-range: U+100-24F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 700;
+	src: local("Ubuntu Bold"), local("Ubuntu-Bold"), url('0ihfxul2emph0rojezvraftxra8tvwticgirnjhmvjw.woff2') format("woff2");
+	unicode-range: U+0-FF, U+131, U+152-153, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* ::::: http://www.embeddedforu.com/wp-content/themes/iconic-one/style.css?ver=4.5.2 ::::: */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0px; padding: 0px; border: 0px none; font-size: 100%; vertical-align: baseline; }
+body { line-height: 1; }
+ol, ul { list-style: outside none none; }
+.entry-content pre, .comment-content pre { background: rgb(244, 244, 244) none repeat scroll 0% 0%; }
+blockquote::before, blockquote::after, q::before, q::after { content: none; }
+h1, h2, h3, h4, h5, h6 { clear: both; }
+html { overflow-y: scroll; font-size: 100%; }
+a:focus { outline: medium none; }
+article, aside, details, figcaption, figure, footer, header, nav, section { display: block; }
+audio:not([controls]) { display: none; }
+small { font-size: smaller; }
+img { border: 0px none; }
+.socialmedia img { border-radius: 4px; }
+.themonic-logo img { max-width: 100%; }
+.clear::after, .wrapper::after, .format-status .entry-header::after { clear: both; }
+.clear::before, .clear::after, .wrapper::before, .wrapper::after, .format-status .entry-header::before, .format-status .entry-header::after { display: table; content: ""; }
+.wrapper { border: 1px solid rgb(233, 233, 233); }
+button, input, textarea { border: 1px solid rgb(204, 204, 204); border-radius: 0px; font-family: inherit; margin-right: 0%; margin-bottom: 7px; padding: 8px 10px; }
+button, input { line-height: normal; }
+textarea { font-size: 100%; overflow: auto; vertical-align: top; }
+#searchsubmit, .es_textbox_button { background: rgb(0, 161, 224) none repeat scroll 0% 0%; border: 0px none; color: rgb(255, 255, 255); min-width: 24%; }
+.es_textbox_button { margin-top: -10px; }
+.es_button { padding-top: 0px ! important; padding-bottom: 0px ! important; }
+input[type="checkbox"], input[type="radio"], input[type="file"], input[type="hidden"], input[type="image"], input[type="color"] { border: 0px none; border-radius: 0px; padding: 0px; }
+.site-content nav { border: 1px solid rgb(237, 237, 237); background: rgb(249, 249, 249) none repeat scroll 0% 0%; clear: both; line-height: 2; margin-bottom: 28px; overflow: hidden; padding: 2%; }
+.nav-previous a, .nav-next > a { color: rgb(68, 68, 68); text-decoration: none; }
+.nav-previous, .previous-image { float: left; padding-bottom: 7px; width: 50%; }
+.nav-next, .next-image { float: right; text-align: right; width: 50%; }
+.nav-single + .comments-area, #comment-nav-above { margin: 48px 0px; }
+html { font-size: 90.5%; }
+body { font-size: 14px; font-family: "Ubuntu",Helvetica,Arial,sans-serif; text-rendering: optimizelegibility; color: rgb(68, 68, 68); }
+a { outline: medium none; color: rgb(11, 145, 234); text-decoration: none; }
+a:hover { color: rgb(12, 135, 211); text-decoration: underline; }
+.assistive-text, .site .screen-reader-text { position: absolute ! important; clip: rect(1px, 1px, 1px, 1px); }
+.themonic-nav .assistive-text:hover, .themonic-nav .assistive-text:active, .themonic-nav .assistive-text:focus { background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 2px solid rgb(51, 51, 51); border-radius: 3px; clip: auto ! important; color: rgb(0, 0, 0); display: block; font-size: 12px; padding: 12px; position: absolute; top: 5px; left: 5px; z-index: 100000; }
+.site { padding: 0px 24px; background-color: rgb(255, 255, 255); }
+.site-content { margin: 0px 14px; }
+.widget-area { margin-top: 10px; }
+.site-header { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); height: auto; margin-bottom: 24px; text-align: left; }
+.themonic-logo { padding: 17px; float: left; margin: 10px 0px; }
+.themonic-nav { box-shadow: 1px 2px 9px 1px rgb(248, 248, 248); text-align: center; float: left; width: 100%; }
+.themonic-nav li { font-size: 12px; line-height: 1.42857; width: auto; transition: all 0.3s ease 0s; }
+.themonic-nav li:hover { display: inline-block; text-decoration: none; background: rgb(0, 161, 224) none repeat scroll 0% 0%; }
+.themonic-nav li a { padding: 0px 20px; }
+.widget-area .widget { hyphens: auto; margin-bottom: 20px; word-wrap: break-word; }
+.widget-area .widget-title { background: rgb(242, 242, 242) none repeat scroll 0% 0%; font-size: 16px; }
+.widget.widget_search { margin-bottom: 14px; }
+.widget-area .widget li, .widget-area .widget .textwidget { font-size: 13px; line-height: 1.64615; border-bottom: 1px solid rgb(233, 233, 233); padding: 5px 0px; }
+.widget-area .widget p { margin-bottom: 12px; padding: 10px; }
+.widget-area .widget a { color: rgb(117, 117, 117); text-decoration: none; font-size: 98%; }
+.widget-area .widget a:hover { color: rgb(79, 82, 84); }
+.widget-area #s { width: 67.9999%; display: block; }
+footer[role="contentinfo"] { background: rgb(242, 242, 242) none repeat scroll 0% 0%; width: 100%; border-top: 1px solid rgb(237, 237, 237); border-bottom: 1px solid rgb(233, 233, 233); clear: both; font-size: 14px; height: auto; line-height: 2; margin-right: auto; margin-bottom: 0px; padding: 24px 0px; }
+footer[role="contentinfo"] a { color: rgb(104, 104, 104); margin-left: 5px; text-decoration: none; }
+footer[role="contentinfo"] a:hover { color: rgb(51, 51, 51); }
+.entry-meta { clear: both; }
+.entry-header { margin-bottom: 20px; }
+.entry-header .entry-title { font-size: 28px; line-height: 1.2; font-weight: normal; margin-bottom: 20px; }
+.comments-link a, .entry-meta a { color: rgb(117, 117, 117); }
+.comments-link a:hover, .entry-meta a:hover { color: rgb(51, 51, 51); }
+.entry-content, .entry-summary, .mu_register { line-height: 1.71429; }
+.entry-content h1, .comment-content h1, .entry-content h2, .comment-content h2, .entry-content h3, .comment-content h3, .entry-content h4, .comment-content h4, .entry-content h5, .comment-content h5, .entry-content h6, .comment-content h6 { margin: 24px 0px; line-height: 1.71429; }
+.entry-content h2, .comment-content h2, .mu_register h2 { font-size: 18px; line-height: 1.6; }
+.entry-content p, .entry-summary p, .comment-content p, .mu_register p { margin: 0px 0px 20px; line-height: 1.71429; }
+.entry-content ol, .comment-content ol, .entry-content ul, .comment-content ul, .mu_register ul { margin: 0px 0px 24px; line-height: 1.71429; }
+.entry-content ul, .comment-content ul, .mu_register ul { list-style: outside none square; }
+.entry-content li, .comment-content li, .mu_register li { margin: 0px 0px 0px 36px; }
+.entry-content pre, .comment-content pre { border: 1px solid rgb(237, 237, 237); border-radius: 20px; color: rgb(102, 102, 102); font-family: Consolas,Monaco,Lucida Console,monospace; font-size: 12px; line-height: 1.51429; margin: 24px 0px; overflow: auto; padding: 24px; }
+.site-content article { border-bottom: 2px double rgb(243, 243, 243); margin-bottom: 28px; padding-bottom: 24px; word-wrap: break-word; hyphens: auto; }
+footer.entry-meta { margin-top: 24px; font-size: 13px; line-height: 1.84615; color: rgb(117, 117, 117); }
+.entry-meta > span a { color: rgb(51, 51, 51); padding: 2px; text-decoration: none; }
+#respond { margin-top: 48px; }
+#respond h3#reply-title { font-size: 16px; line-height: 1.5; }
+#respond h3#reply-title #cancel-comment-reply-link { margin-left: 10px; font-weight: normal; font-size: 12px; }
+#respond form { margin: 24px 0px; }
+#respond form p { margin: 11px 0px; }
+#respond form label { display: block; line-height: 1.71429; }
+#respond form input[type="text"], #respond form textarea { box-sizing: border-box; font-size: 12px; line-height: 1.71429; padding: 10px; width: 100%; }
+.required { color: red; }
+.widget_search label { display: block; font-size: 13px; line-height: 1.84615; }
+.below-title-meta { background: rgb(247, 247, 247) none repeat scroll 0% 0%; padding-bottom: 26px; color: rgb(162, 162, 162); line-height: 1.7; width: 106.3%; margin-left: -3.1%; }
+.below-title-meta a { color: rgb(102, 102, 102); text-decoration: none; }
+.below-title-meta a:hover { color: rgb(68, 68, 68); }
+.adt { float: left; padding-left: 22px; }
+.adt-comment { float: right; padding-right: 16px; }
+.footercopy { padding-left: 20px; float: left; }
+.footercredit { float: right; padding-right: 20px; margin-left: 20px; }
+.site-wordpress { color: rgb(136, 136, 136); padding: 10px 2px; float: right; font-size: 13px; }
+.socialmedia { float: right; padding: 7px 10px; text-align: right; width: 25%; margin-top: 30px; }
+.socialmedia a { padding: 0px 5px; }
+.selectnav { display: none; }
+select.selectnav { border: 1px solid rgb(221, 221, 221); border-radius: 4px; margin: 4px; padding: 10px; width: 96%; }
+@media screen and (max-width: 768px) {
+	.js .selectnav { display: inline-block; }
+	.main-navigation ul.nav-menu, .main-navigation div.nav-menu > ul, .nav-menu li { display: none; }
+	.themonic-nav ul { display: none; }
+	.themonic-nav li a, .themonic-nav li { display: none; }
+	.themonic-nav ul.nav-menu, .themonic-nav div.nav-menu > ul { display: none; }
+	.socialmedia { display: none; }
+	.site-header { text-align: center; height: auto; border: medium none; }
+	.themonic-logo { float: none; margin: 0px 0px 10px; }
+	.themonic-nav { box-shadow: none; }
+	.link-comments { display: none; }
+	.entry-header .entry-title { margin-top: 20px; }
+	.wrapper { border: medium none; }
+}
+@media screen and (max-width: 1040px) {
+	#searchsubmit { margin-left: 0px; }
+}
+@media screen and (max-width: 420px) {
+	.site-header { height: auto; border: medium none; }
+	.entry-header .entry-title { font-size: 18px; }
+}
+@media screen and (min-width: 768px) {
+	.site { margin: 0px auto; max-width: 1040px; overflow: hidden; }
+	.site-content { border-right: 1px solid rgb(241, 241, 241); float: left; margin: 0px 1%; padding: 30px 2% 0px 1%; width: 68.2%; }
+	.widget-area { float: right; margin: 24px 0px; padding: 0px 2% 0px 0px; width: 23.7%; }
+	.themonic-nav ul.nav-menu, .themonic-nav div.nav-menu > ul { background: rgb(243, 243, 243) none repeat scroll 0px 0px; border-bottom: 5px solid rgb(22, 161, 231); border-top: 1px solid rgb(237, 237, 237); display: inline-block ! important; text-align: left; width: 100%; }
+	.themonic-nav ul { margin: 0px; text-indent: 0px; }
+	.themonic-nav li a, .themonic-nav li { display: inline-block; text-decoration: none; }
+	.themonic-nav li a { border-bottom: 0px none; color: rgb(106, 106, 106); line-height: 3.69231; padding: 0px 20px; text-transform: uppercase; white-space: nowrap; transition: all 0.3s ease 0s; }
+	.themonic-nav li a:hover { color: rgb(255, 255, 255); }
+	.themonic-nav li { position: relative; }
+	.themonic-nav li ul { display: none; margin: 0px; padding: 0px; position: absolute; top: 100%; z-index: 1; }
+	.themonic-nav ul li:hover > ul { border-left: 0px none; display: block; }
+	.themonic-nav li ul li a { background: rgb(239, 239, 239) none repeat scroll 0% 0%; border-bottom: 1px solid rgb(249, 249, 249); display: block; font-size: 11px; line-height: 2.18182; padding: 8px 10px; width: 160px; white-space: normal; }
+	.themonic-nav li ul li a:hover { background: rgb(233, 233, 233) none repeat scroll 0% 0%; color: rgb(68, 68, 68); }
+	.entry-header .entry-title { font-size: 28px; margin-bottom: 20px; }
+	#respond form input[type="text"] { width: 46.3333%; }
+	.template-front-page .widget-area .widget:nth-child(2n+1) { clear: right; }
+	.template-front-page .widget-area .widget:nth-child(2n), .template-front-page.two-sidebars .widget-area .front-widgets + .front-widgets { float: right; width: 39.0625%; margin: 0px 0px 24px; }
+	.template-front-page.two-sidebars .widget, .template-front-page.two-sidebars .widget:nth-child(2n) { float: none; width: auto; }
+}
+@media screen and (min-width: 960px) {
+	body { background-color: rgb(230, 230, 230); }
+	body .site { padding: 24px 24px 0px; margin-bottom: 24px; }
+}
+@media screen and (max-width: 768px) {
+	.themonic-nav ul.nav-menu, .themonic-nav div.nav-menu > ul, .themonic-nav li { background: transparent none repeat scroll 0% 0%; border-bottom: medium none; border-top: medium none; display: none; }
+}
+/* ::::: http://www.embeddedforu.com/wp-content/themes/iconic-one/custom.css?ver=4.5.2 ::::: */
+
+/* ::::: http://www.embeddedforu.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b ::::: */
+
+/* ::::: http://www.embeddedforu.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeFadeToGrey.css?ver=3.0.9b ::::: */
+
+/* ::::: http://www.embeddedforu.com/wp-content/plugins/email-subscribers/widget/es-widget.css ::::: */
+
+.es_msg { padding-top: 5px; padding-bottom: 5px; color: rgb(255, 0, 0); }
+.es_textbox { padding-bottom: 10px; }
+.es_button { padding-top: 10px; padding-bottom: 5px; }
+.es_textbox_class { width: 67.99%; }
+.es_textbox_button { width: 100px; }
+.es_lablebox { padding-bottom: 3px; }

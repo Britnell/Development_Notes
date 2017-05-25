@@ -1,0 +1,47 @@
+/* ::::: https://static.flattr.net/button/button.css ::::: */
+
+.flattr-button-iframe * { outline: 0px none; margin: 0px; padding: 0px; }
+.flattr-button-iframe body { background: transparent none repeat scroll 0% 0%; }
+.flattr-button-iframe .flattr-button, .flattr-button-iframe .flattr-dummy-button { position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; min-width: 55px; min-height: 62px; width: auto; height: auto; }
+.flattr-button-iframe .flattr-button.compact, .flattr-button-iframe .flattr-dummy-button.compact { height: auto; }
+.flattr-button, .flattr-dummy-button { font: 14px "Helvetica",sans-serif; position: relative; width: 55px; height: 62px; }
+.flattr-button a, .flattr-dummy-button a { text-decoration: none; }
+.flattr-button span, .flattr-dummy-button span { display: block; }
+.flattr-button .share, .flattr-button .flattr-count, .flattr-dummy-button .share, .flattr-dummy-button .flattr-count { position: absolute; z-index: 10; left: 0px; bottom: 32.2581%; }
+.flattr-button .share > span, .flattr-button .flattr-count, .flattr-dummy-button .share > span, .flattr-dummy-button .flattr-count { border: 1px solid rgb(230, 230, 230); margin-bottom: 6px; text-align: center; border-radius: 3px; background: transparent linear-gradient(rgb(255, 255, 255), rgb(250, 250, 250)) repeat scroll 0% 0%; color: rgb(138, 138, 138); }
+.flattr-button .share > span::before, .flattr-button .share > span::after, .flattr-button .flattr-count::before, .flattr-button .flattr-count::after, .flattr-dummy-button .share > span::before, .flattr-dummy-button .share > span::after, .flattr-dummy-button .flattr-count::before, .flattr-dummy-button .flattr-count::after { position: absolute; left: 50%; top: 100%; width: 0px; height: 0px; content: ""; display: block; border-width: 5px; border-style: solid; border-color: rgb(230, 230, 230) transparent transparent; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; margin-left: -5px; z-index: 1000; }
+.flattr-button .share > span::after, .flattr-button .flattr-count::after, .flattr-dummy-button .share > span::after, .flattr-dummy-button .flattr-count::after { margin-left: -4px; border-width: 4px; border-top-color: rgb(250, 250, 250); z-index: 1001; }
+.flattr-button .flattr-count, .flattr-dummy-button .flattr-count { right: 0px; top: 0px; }
+.flattr-button .flattr-count span, .flattr-dummy-button .flattr-count span { position: absolute; width: 100%; height: 12px; top: 50%; margin-top: -6px; line-height: 1; }
+.flattr-button a .flattr-count:hover, .flattr-dummy-button a .flattr-count:hover { background: transparent linear-gradient(rgb(255, 255, 255), rgb(250, 248, 230)) repeat scroll 0% 0%; border-color: rgb(230, 228, 211); color: rgb(138, 137, 127); }
+.flattr-button a .flattr-count:hover::before, .flattr-dummy-button a .flattr-count:hover::before { border-top-color: rgb(235, 233, 216); }
+.flattr-button a .flattr-count:hover::after, .flattr-dummy-button a .flattr-count:hover::after { border-top-color: rgb(250, 248, 230); }
+.flattr-button .flattr span, .flattr-dummy-button .flattr span { text-decoration: none; position: absolute; z-index: 20; bottom: 0px; top: 67.7419%; left: 0px; right: 0px; border: 1px solid rgb(126, 163, 82); background: transparent linear-gradient(rgb(146, 189, 94), rgb(136, 176, 88)) repeat scroll 0% 0%; border-radius: 3px; }
+.flattr-button .flattr span.flattr-link::before, .flattr-button .flattr span::after, .flattr-dummy-button .flattr span.flattr-link::before, .flattr-dummy-button .flattr span::after { position: absolute; content: ""; display: block; background: transparent none no-repeat scroll 0px 0px; top: 50%; left: 50%; height: 14px; margin-top: -7px; }
+.flattr-button .flattr span.flattr-link::before, .flattr-dummy-button .flattr span.flattr-link::before { background-image: url('undefined'); left: 4px; width: 10px; height: 10px; margin-top: -5px; }
+@media not all, (min-resolution: 192dpi) {
+	.flattr-button .flattr span.flattr-link::before, .flattr-dummy-button .flattr span.flattr-link::before { background-image: url('logo-retina.png'); background-size: 100% auto; }
+}
+.flattr-button .flattr span.flattr-link::after, .flattr-dummy-button .flattr span.flattr-link::after { background-image: url('undefined'); margin-left: -5px; width: 26px; }
+@media not all, (min-resolution: 192dpi) {
+	.flattr-button .flattr span.flattr-link::after, .flattr-dummy-button .flattr span.flattr-link::after { background-image: url('text-retina.png'); background-size: 100% auto; }
+}
+.flattr-button .flattr span.flattr-flattred::after, .flattr-dummy-button .flattr span.flattr-flattred::after { background-image: url('undefined'); margin-left: -18px; width: 38px; }
+.flattr-button .flattr span.flattr-subscribed::after, .flattr-dummy-button .flattr span.flattr-subscribed::after { background-image: url('undefined'); margin: -6px 0px 0px -24px; width: 48px; }
+.flattr-button .flattr span.flattr-mything::after, .flattr-dummy-button .flattr span.flattr-mything::after { background-image: url('undefined'); margin: -6px 0px 0px -25px; width: 49px; }
+.flattr-button .flattr span.flattr-pending::after, .flattr-dummy-button .flattr span.flattr-pending::after { background-image: url('undefined'); margin-left: -18px; width: 41px; }
+.flattr-button .flattr span.flattr-error::after, .flattr-dummy-button .flattr span.flattr-error::after { background-image: url('undefined'); margin: -5px 0px 0px -12px; width: 24px; }
+.flattr-button a.flattr span:hover, .flattr-dummy-button a.flattr span:hover { background: transparent linear-gradient(rgb(245, 148, 37), rgb(232, 140, 35)) repeat scroll 0% 0%; border-color: rgb(219, 132, 33); }
+.flattr-button.show-share a.flattr span.flattr-flattred::after, .flattr-button a.flattr span.flattr-flattred:hover::after, .flattr-dummy-button.show-share a.flattr span.flattr-flattred::after, .flattr-dummy-button a.flattr span.flattr-flattred:hover::after { background-image: url('undefined'); margin: -6px 0px 0px -24px; width: 48px; }
+.flattr-button.light .flattr .flattr-link::before, .flattr-dummy-button.light .flattr .flattr-link::before { background-image: url('undefined'); left: 2px; width: 14px; height: 14px; margin-top: -7px; }
+.flattr-button.light .flattr .flattr-link::after, .flattr-dummy-button.light .flattr .flattr-link::after { background-image: url('undefined'); }
+.flattr-button.compact, .flattr-dummy-button.compact { height: 20px; min-width: 110px; min-height: 0px; }
+.flattr-button.compact .share, .flattr-button.compact .flattr-count, .flattr-dummy-button.compact .share, .flattr-dummy-button.compact .flattr-count { left: 48.1818%; }
+.flattr-button.compact .flattr-count, .flattr-dummy-button.compact .flattr-count { bottom: 0px; margin: 0px 0px 0px 6px; }
+.flattr-button.compact .flattr-count::before, .flattr-button.compact .flattr-count::after, .flattr-dummy-button.compact .flattr-count::before, .flattr-dummy-button.compact .flattr-count::after { margin: -5px 0px 0px; left: auto; right: 100%; top: 50%; border-top-color: transparent; border-right-color: rgb(235, 235, 235); }
+.flattr-button.compact .flattr-count::after, .flattr-dummy-button.compact .flattr-count::after { margin: -4px 0px 0px; border-right-color: rgb(255, 255, 255); }
+.flattr-button.compact .flattr-count:hover::before, .flattr-button.compact .flattr-count:hover::after, .flattr-dummy-button.compact .flattr-count:hover::before, .flattr-dummy-button.compact .flattr-count:hover::after { border-top-color: transparent; }
+.flattr-button.compact .flattr-count:hover::before, .flattr-dummy-button.compact .flattr-count:hover::before { border-right-color: rgb(235, 233, 216); }
+.flattr-button.compact .flattr-count:hover::after, .flattr-dummy-button.compact .flattr-count:hover::after { border-right-color: rgb(255, 254, 242); }
+.flattr-button.compact .flattr span, .flattr-dummy-button.compact .flattr span { top: 0px; right: 51.8182%; }
+.flattr-button.compact .share > span::before, .flattr-button.compact .share > span::after, .flattr-dummy-button.compact .share > span::before, .flattr-dummy-button.compact .share > span::after { content: none; }

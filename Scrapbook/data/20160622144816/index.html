@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" class="client-js" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<title>Linux command line basics - eLinux.org</title>
+<meta name="generator" content="MediaWiki 1.25.3">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://elinux.org/opensearch_desc.php" title="eLinux.org (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://elinux.org/api.php?action=rsd">
+<link rel="alternate" hreflang="x-default" href="http://elinux.org/Linux_command_line_basics">
+<link rel="copyright" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<link rel="alternate" type="application/atom+xml" title="eLinux.org Atom feed" href="http://elinux.org/index.php?title=Special:RecentChanges&amp;feed=atom">
+
+<meta name="ResourceLoaderDynamicStyles" content="">
+
+
+
+
+
+
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/skins/Vector/csshover.min.htc")}</style><![endif]-->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Linux_command_line_basics skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+							<div id="siteNotice"><div id="localNotice" dir="ltr" lang="en"><div style="margin: 10px 10px 0px 0px; border: 1px solid rgb(223, 223, 223); padding: 0px 1em 1em; background-color: rgb(255, 255, 204);">
+<p><b>Did you know that elinux.org has Mailing Lists?  Please feel free to <a href="http://elinux.org/ELinuxWiki:Mailing_List" title="ELinuxWiki:Mailing List"> register today</a> to discuss the wiki in general, request features, etc. etc.. Thanks!--<a href="http://elinux.org/User:Wmat" title="User:Wmat">Wmat</a> (<a href="http://elinux.org/User_talk:Wmat" title="User talk:Wmat">talk</a>)<br></b>
+</p>
+</div>
+</div></div>
+						<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">Linux command line basics</span></h1>
+						<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From eLinux.org</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-navigation">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><p>Linux Command Line Interface (CLI from now on) could be at first glance discouraging for the average Joe, since nowadays we are only used to Graphic Interfaces. But don’t let that get you down, using a command line shell could be not only very useful, but also kind of funny. This guide will help you make your first steps in the command shell environment.
+</p><p>First, when could a Command Line Interface be useful for you?
+</p>
+<ul><li>Remote Connection via SSH: SSH remote connection allows you to interact with UDOO without physical access to it. SSH is available only with command line interface. </li></ul>
+<ul><li>Using a minimal Linux Distribution without a graphical interface. Some Linux Distributions come without a Graphical User Interface in order to maximize available resources. Command line interface is your only bet in this scenario. Some power-users consider CLI the most convenient way to perform code execution and file-system operations. Even if you are not in this category, you may find that the CLI can be very fast when you get used to it. </li></ul>
+<p>To help you get started, here are some very basic Linux commands:
+</p>
+<pre>sudo
+</pre>
+<p>Your first ally, this command allows users to run programs with the security privileges of root, or superuser. Its name is a concatenation of "<tt>su</tt>" (super user) and "<tt>do</tt>", or take action . So, if you get an error message saying "<tt>only root can do that</tt>", just use the same command preceded with <tt>sudo</tt>.
+</p>
+<pre>sudo su
+</pre>
+<p>This enables root privileges once for all, without forcing you to type <tt>sudo</tt> everytime. It works until you close the shell you are working in. 
+</p>
+<pre>sudo su touch
+</pre>
+<p>Creates an empty file.
+</p>
+<pre>nano
+</pre>
+<p>Open an handy text editor. To save and exit, press <kbd>CTRL</kbd> and <kbd>X</kbd>, and press <kbd>Y</kbd> for yes or <kbd>N</kbd> for no.
+</p>
+<pre>cat
+</pre>
+<p>Shows the content of a file, it speeds up file inspection for smaller files. e.g. <tt>cat /etc/hostname</tt>
+</p>
+<pre>ls
+</pre>
+<p>Lists the contents of the current folder.
+</p>
+<pre>cd
+</pre>
+<p>Changes current folder to specific folder.
+</p>
+<pre>cd..
+</pre>
+<p>Changes current folder to a higher folder level.
+</p>
+<pre>cd /
+</pre>
+<p>Changes current folder to root (top filesystem level).
+</p>
+<pre>rm
+</pre>
+<p>Deletes a file.
+</p>
+<pre>rm -rf
+</pre>
+<p>Deletes a folder.
+</p>
+<pre>mv
+</pre>
+<p>Moves a file or a folder. Useful for renaming as well, e.g. <tt>mv myfile /myfolder/myfile</tt> and <tt>mv myfile mysecondfile</tt>
+</p>
+<pre>cp
+</pre>
+<p>Copies a file, e.g. <tt>cp myfile /home/ubuntu/</tt>
+</p>
+<pre>cp -R
+</pre>
+<p>Copies a folder, e.g. <tt>cp -R myfolder /home/ubuntu/myfolder</tt>
+</p>
+<pre>mkdir
+</pre>
+<p>Creates a folder 
+</p>
+<pre>top
+</pre>
+<p>A very useful utility, this command basically gives you a complete overview of the system's status. It produces an ordered list of running processes selected by user-specified criteria. <tt>top</tt> shows how much processing power and memory are being used, as well as other information about the running processes. 
+</p>
+<pre>df -h
+</pre>
+<p>Shows used and available disk space, in megabytes. 
+</p>
+<pre>ifconfig -a
+</pre>
+<p>Shows useful networking data, like current IP, netmasks and other statistics. 
+</p>
+<pre>chmod
+</pre>
+<p>Lets you set files permissions. This utility is very important for people concerned about security, but it is also useful for coders, since you can set a script as executable with it.
+</p>
+<pre>dmesg
+</pre>
+<p>Shows the messages resulting from the most recent system boot. This is useful for troubleshooting, since you can see which modules have been loaded, which binaries have started and so on. 
+</p>
+<pre>sync
+</pre>
+<p>Thanks to this command your SD card lifespan will drastically improve, remember to launch it every time before you turn UDOO off or remove the power. It completes all pending input/output operations. It must be launched as root, or with <tt>sudo</tt>. 
+</p>
+<pre>reboot
+</pre>
+<p>Reboots the system.
+</p>
+<pre>shutdown
+</pre>
+<p>Shuts it down.
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.009 seconds
+Real time usage: 0.012 seconds
+Preprocessor visited node count: 1/1000000
+Preprocessor generated node count: 4/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 1/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+
+<!-- Saved in parser cache with key elinux:pcache:idhash:93680-0!*!*!*!*!*!* and timestamp 20160621182854 and revision id 357584
+ -->
+</div>									<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="http://elinux.org/index.php?title=Linux_command_line_basics&amp;oldid=357584">http://elinux.org/index.php?title=Linux_command_line_basics&amp;oldid=357584</a>"					</div>
+													<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://elinux.org/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://elinux.org/Category:UDOO" title="Category:UDOO">UDOO</a></li></ul></div></div>												<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-login"><a href="http://elinux.org/index.php?title=Special:UserLogin&amp;returnto=Linux+command+line+basics" title="You are encouraged to log in; however, it is not mandatory [Alt+Shift+o]" accesskey="o">Log in</a></li><li id="pt-createaccount"><a href="http://elinux.org/Special:RequestAccount" title="You are encouraged to create an account and log in; however, it is not mandatory">Request account</a></li><li id="pt-openidlogin"><a href="http://elinux.org/index.php?title=Special:OpenIDLogin&amp;returnto=Linux_command_line_basics">Log in / create account with OpenID</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li id="ca-nstab-main" class="selected"><span><a href="http://elinux.org/Linux_command_line_basics" title="View the content page [Alt+Shift+c]" accesskey="c">Page</a></span></li>
+															<li id="ca-talk" class="new"><span><a href="http://elinux.org/index.php?title=Talk:Linux_command_line_basics&amp;action=edit&amp;redlink=1" title="Discussion about the content page [Alt+Shift+t]" accesskey="t">Discussion</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 tabindex="0" id="p-variants-label"><span style="display: block;">Variants</span><a tabindex="-1" href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="http://elinux.org/Linux_command_line_basics">Read</a></span></li>
+															<li id="ca-viewsource"><span><a href="http://elinux.org/index.php?title=Linux_command_line_basics&amp;action=edit" title="This page is protected.
+You can view its source [Alt+Shift+e]" accesskey="e">View source</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="http://elinux.org/index.php?title=Linux_command_line_basics&amp;action=history" title="Past revisions of this page [Alt+Shift+h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div style="" id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 tabindex="0" id="p-cactions-label"><span>More</span><a tabindex="-1" href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="http://elinux.org/index.php" id="searchform">
+														<div id="simpleSearch">
+															<input autocomplete="off" tabindex="1" name="search" placeholder="Search" title="Search eLinux.org [Alt+Shift+f]" accesskey="f" id="searchInput" type="search"><input value="Special:Search" name="title" type="hidden"><input name="go" value="Go" title="Go to a page with this exact name if exists" id="searchButton" class="searchButton" type="submit">								</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a style="background-image: url('logo_clear.png');" href="http://elinux.org/Main_Page" title="Visit the main page"></a></div>
+						<div class="portal first" role="navigation" id="p-Navigation" aria-labelledby="p-Navigation-label">
+			<h3 id="p-Navigation-label">Navigation</h3>
+
+			<div class="body">
+									<ul>
+													<li id="n-mainpage"><a href="http://elinux.org/Main_Page" title="Visit the main page [Alt+Shift+z]" accesskey="z">Main Page</a></li>
+													<li id="n-portal"><a href="http://elinux.org/eLinux.org:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+													<li id="n-currentevents"><a href="http://elinux.org/eLinux.org:Current_events" title="Find background information on current events">Current events</a></li>
+													<li id="n-recentchanges"><a href="http://elinux.org/Special:RecentChanges" title="A list of recent changes in the wiki [Alt+Shift+r]" accesskey="r">Recent changes</a></li>
+													<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" title="The place to find out">Help</a></li>
+													<li id="n-Volunteering"><a href="http://elinux.org/Sitesupport-url">Volunteering</a></li>
+													<li id="n-Bug-Tracker"><a href="http://bugs.elinux.org/" rel="nofollow">Bug Tracker</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-Where_else_to_find_us" aria-labelledby="p-Where_else_to_find_us-label">
+			<h3 id="p-Where_else_to_find_us-label">Where else to find us</h3>
+
+			<div class="body">
+									<ul>
+													<li id="n-Google.2B-Community"><a href="https://plus.google.com/u/0/communities/113852495250648539361" rel="nofollow">Google+ Community</a></li>
+													<li id="n-Twitter-.28.40elinux.29"><a href="https://twitter.com/elinux" rel="nofollow">Twitter (@elinux)</a></li>
+													<li id="n-.23elinux-on-Freenode"><a href="irc://#elinux@irc.freenode.net" rel="nofollow">#elinux on Freenode</a></li>
+													<li id="n-Facebook-.28.40elinux.org.29"><a href="https://www.facebook.com/elinuxorg-750739005020534/" rel="nofollow">Facebook (@elinux.org)</a></li>
+													<li id="n-Mailing-Lists"><a href="http://www.elinux.org/ELinuxWiki:Mailing_List" rel="nofollow">Mailing Lists</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Tools</h3>
+
+			<div class="body">
+									<ul>
+													<li id="t-whatlinkshere"><a href="http://elinux.org/Special:WhatLinksHere/Linux_command_line_basics" title="A list of all wiki pages that link here [Alt+Shift+j]" accesskey="j">What links here</a></li>
+													<li id="t-recentchangeslinked"><a href="http://elinux.org/Special:RecentChangesLinked/Linux_command_line_basics" title="Recent changes in pages linked from this page [Alt+Shift+k]" accesskey="k">Related changes</a></li>
+													<li id="t-specialpages"><a href="http://elinux.org/Special:SpecialPages" title="A list of all special pages [Alt+Shift+q]" accesskey="q">Special pages</a></li>
+													<li id="t-print"><a href="http://elinux.org/index.php?title=Linux_command_line_basics&amp;printable=yes" rel="alternate" title="Printable version of this page [Alt+Shift+p]" accesskey="p">Printable version</a></li>
+													<li id="t-permalink"><a href="http://elinux.org/index.php?title=Linux_command_line_basics&amp;oldid=357584" title="Permanent link to this revision of the page">Permanent link</a></li>
+													<li id="t-info"><a href="http://elinux.org/index.php?title=Linux_command_line_basics&amp;action=info" title="More information about this page">Page information</a></li>
+											</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 7 November 2014, at 08:18.</li>
+											<li id="footer-info-viewcount">This page has been accessed 3,216 times.</li>
+											<li id="footer-info-copyright">Content is available under <a class="external" rel="nofollow" href="http://creativecommons.org/licenses/by-sa/3.0/">a Creative Commons Attribution-ShareAlike 3.0 Unported License</a> unless otherwise noted.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://elinux.org/eLinux.org:Privacy_policy" title="eLinux.org:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://elinux.org/eLinux.org:About" title="eLinux.org:About">About eLinux.org</a></li>
+											<li id="footer-places-disclaimer"><a href="http://elinux.org/eLinux.org:General_disclaimer" title="eLinux.org:General disclaimer">Disclaimers</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+															<a href="http://creativecommons.org/licenses/by-sa/3.0/"><img src="88x31.png" alt="a Creative Commons Attribution-ShareAlike 3.0 Unported License" height="31" width="88"></a>
+													</li>
+											<li id="footer-poweredbyico">
+															<a href="http://www.mediawiki.org/"><img src="poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" height="31" width="88"></a>
+													</li>
+									</ul>
+						<div style="clear: both;"></div>
+		</div>
+		
+
+
+<div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div>
+
+	
+
+	</body>
+</html>

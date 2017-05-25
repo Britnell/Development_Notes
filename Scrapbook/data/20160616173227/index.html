@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>How to use urllib2 in Python</title>
+        <link rel="profile" href="http://gmpg.org/xfn/11">
+        <link rel="canonical" href="http://www.pythonforbeginners.com/python-on-the-web/how-to-use-urllib2-in-python/">    
+        <meta property="og:locale" content="en_US">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="How to use urllib2 in Python">
+        <meta property="og:url" content="http://www.pythonforbeginners.com/python-on-the-web/how-to-use-urllib2-in-python/">
+        <meta property="og:site_name" content="Python For Beginners">        
+        <link rel="alternate" type="application/rss+xml" title="Python For Beginners » Feed" href="http://www.pythonforbeginners.com/feed/">       
+        <meta name="description" content=" Overview While the title of this posts says &quot;Urllib2&quot;, we are going to show some examples where you use urllib, ... " lang="en-US">
+        <meta name="keywords" content="learn python, python 101, what is python, what is django, python tutorial">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+<!--BEGIN FIRSTIMPRESSION TAG -->
+
+<!-- END FIRSTIMPRESSION TAG -->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<!-- BuySellAds Ad Code -->
+
+<!-- End BuySellAds Ad Code -->
+        <div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="index_1.html" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0"></iframe><iframe src="index_25.html" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="index_39.html" style="display: none;" scrolling="no" allowfullscreen="true" allowtransparency="true" name="f374a16024b4d62" frameborder="0"></iframe></div></div></div>
+
+        <div style="visibility: visible; opacity: 1;" id="wrapper">
+            
+<div style="visibility: visible; opacity: 1;" class="container navigation">  <div style="visibility: visible; opacity: 1;" class="navbar navbar-inverse2">
+
+<div style="text-align: center; padding-top: 5px; height: 100px; visibility: visible; opacity: 1;"><iframe style="margin: 0px; padding: 0px; border: 0px none; width: 728px; height: 90px; overflow: hidden;" class="sovrn_ad_unit" data-zid="333136" src="index_40.html" scrolling="no" padding="0" margin="0" id="sovrn_ad_unit_333136_async" frameborder="0" height="90" width="728"></iframe>
+<div id="beacon_aff44b899c" style="position: absolute; left: 0px; top: 0px; visibility: hidden;">
+<img src="lg.php" height="0" width="0">
+<img src="pixel_match" height="0" width="0">
+</div>
+
+</div>
+     <div class="navbar-header">
+	     
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>        
+        <a class="navbar-brand" href="http://www.pythonforbeginners.com/" title="pythonforbeginners.com">
+          <img src="pfb_logo.png" alt="pythonforbeginners.com">
+        </a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          
+          <li><a href="http://www.pythonforbeginners.com/" title="Home">Home</a></li>
+          <li><a href="http://www.pythonforbeginners.com/learn-python/" title="Learn Python">Learn Python</a></li>
+          <li><a href="http://www.pythonforbeginners.com/basics/" title="Basics">Basics</a></li>
+          <li><a href="http://www.pythonforbeginners.com/lists/" title="lists">Lists</a></li>
+          <li><a href="http://www.pythonforbeginners.com/dictionary/" title="dictionary">Dictionary</a></li>
+          <li><a href="http://www.pythonforbeginners.com/code-snippets-source-code/" title="code snippets">Code Snippets</a></li>
+          <li><a href="http://www.pythonforbeginners.com/modules-in-python/" title="modules">Modules</a></li>
+         </ul>          
+      </div>
+  </div>
+</div>
+</div> 
+
+
+
+            
+
+
+
+
+
+
+   
+    <div style="visibility: visible; opacity: 1;" class="container content">
+<div style="text-align: center; margin: 0px auto; width: 970px;">
+</div>
+
+        <div class="col-md-7 col-lg-8">
+<div class="breadcrumb"><a href="http://www.pythonforbeginners.com/">Home</a> &gt;&gt; How to use urllib2 in Python</div>
+
+
+            <div class="post-header">
+                Feb. 22, 2013
+                <ul class="nav nav-pills">
+                
+                    <li><a href="http://www.pythonforbeginners.com/urllib2/" title="Urllib2"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Urllib2</a></li>
+                
+                    <li><a href="http://www.pythonforbeginners.com/python-on-the-web/" title="Web &amp; Internet"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Web &amp; Internet</a></li>
+                
+                </ul>
+            </div>
+            <h1>How to use urllib2 in Python</h1>
+          
+<div align="left">
+
+</div>
+
+            <div class="post-bodycopy cf">
+                <h2>Overview</h2>
+<pre>While the title of this posts says "Urllib2", we are going to show some
+examples where you use urllib, since they are often used together. 
+</pre>
+
+<pre>This is going to be an introduction post of urllib2, where we are going to
+focus on Getting URLs, Requests, Posts, User Agents and Error handling. 
+
+Please see the official documentation for more information. 
+
+<strong>Also, this article is written for Python version 2.x</strong>
+</pre>
+
+<pre>HTTP is based on requests and responses - the client makes requests and
+servers send responses. 
+
+A program on the Internet can work as a client (access resources) or as
+a server (makes services available).
+
+An URL identifies a resource on the Internet. 
+</pre>
+
+<h2>What is Urllib2?</h2>
+<pre><strong>urllib2</strong> is a Python module that can be used for fetching URLs. 
+
+It defines functions and classes to help with URL actions (basic and digest
+authentication, redirections, cookies, etc)
+
+The magic starts with importing the urllib2 module. 
+</pre>
+
+<div fi-instance-id="fiInstance_101519_4_1120559" style="margin: 10px auto; float: none; clear: both; display: block;" id="FIOnDemandWrapper_fiInstance_101519_4_1120559" class="FIOnDemandWrapper"><div style="margin: 0px auto; clip: auto; height: 280px; width: 336px;" class="apd_static_banner "><ins data-adsbygoogle-status="done" class="adsbygoogle" data-ad-client="ca-pub-3622156405313063" style="display: inline-block; width: 336px; height: 280px;" data-ad-slot="A65ZCV4tmhfy8ugQ9TdQ"><ins id="aswift_2_expand" style="display: inline-table; border: medium none; height: 280px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 336px; background-color: transparent;"><ins id="aswift_2_anchor" style="display: block; border: medium none; height: 280px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 336px; background-color: transparent;"><iframe src="index_41.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_2" name="aswift_2" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="280" width="336"></iframe></ins></ins></ins></div></div><h2>What is the difference between urllib and urllib2?</h2>
+<pre>While both modules do URL request related stuff, they have different
+functionality
+
+<strong>urllib2</strong> can accept a Request object to set the headers for a URL request,
+<strong>urllib</strong> accepts only a URL. 
+
+<strong>urllib</strong> provides the urlencode method which is used for the generation
+of GET query strings, <strong>urllib2</strong> doesn't have such a function.
+
+Because of that <strong>urllib</strong> and <strong>urllib2</strong> are often used together. 
+</pre>
+
+<pre>Please see the documentation for more information.
+
+<a href="http://docs.python.org/2/library/urllib.html" title="urllib" target="_top">Urllib</a>
+<a href="http://docs.python.org/2/library/urllib2.html" title="urllib2" target="_top">Urllib2</a>
+</pre>
+
+<h2>What is urlopen?</h2>
+<pre><strong>urllib2</strong> offers a very simple interface, in the form of the urlopen function. 
+
+This function is capable of fetching URLs using a variety of different protocols
+(HTTP, FTP, ...)
+
+Just pass the URL to <strong>urlopen()</strong> to get a <strong>"file-like"</strong> handle to the remote data.
+
+Additionaly, <strong>urllib2</strong> offers an interface for handling common situations -
+like basic authentication, cookies, proxies and so on. 
+
+These are provided by objects called handlers and openers.
+</pre>
+
+<h2>Getting URLs</h2>
+<pre>This is the most basic way to use the library. 
+
+Below you can see how to make a simple request with urllib2.
+
+Begin by importing the urllib2 module.
+
+Place the response in a variable (response)
+
+The response is now a file-like object.
+
+Read the data from the response into a string (html)
+
+Do something with that string. 
+
+<strong>Note</strong> if there is a space in the URL, you will need to parse it using urlencode. 
+</pre>
+
+<pre>Let's see an example of how this works.
+</pre>
+
+<pre class="prettyprint">import urllib2
+response = urllib2.urlopen('http://pythonforbeginners.com/')
+print response.info()
+html = response.read()
+# do something
+response.close()  # best practice to close the file
+
+Note: you can also use an URL starting with "ftp:", "file:", etc.).
+</pre>
+
+<pre>The remote server accepts the incoming values and formats a plain text response
+to send back. 
+
+The return value from <strong>urlopen()</strong> gives access to the headers from the HTTP server
+through the <strong>info()</strong> method, and the data for the remote resource via methods like
+<strong>read()</strong> and <strong>readlines()</strong>. 
+
+Additionally, the file object that is returned by <strong>urlopen()</strong> is iterable. 
+</pre>
+
+<h2>Simple urllib2 script</h2>
+<pre>Let's show another example of a simple urllib2 script
+</pre>
+
+<pre class="prettyprint">import urllib2
+response = urllib2.urlopen('http://python.org/')
+print "Response:", response
+
+# Get the URL. This gets the real URL. 
+print "The URL is: ", response.geturl()
+
+# Getting the code
+print "This gets the code: ", response.code
+
+# Get the Headers. 
+# This returns a dictionary-like object that describes the page fetched, 
+# particularly the headers sent by the server
+print "The Headers are: ", response.info()
+
+# Get the date part of the header
+print "The Date is: ", response.info()['date']
+
+# Get the server part of the header
+print "The Server is: ", response.info()['server']
+
+# Get all data
+html = response.read()
+print "Get all data: ", html
+
+# Get only the length
+print "Get the length :", len(html)
+
+# Showing that the file object is iterable
+for line in response:
+ print line.rstrip()
+
+# Note that the rstrip strips the trailing newlines and carriage returns before
+# printing the output.
+  
+</pre>
+
+<h2>Download files with Urllib2</h2>
+<pre>This small script will download a file from pythonforbeginners.com website
+</pre>
+<pre class="prettyprint">import urllib2
+
+# file to be written to
+file = "downloaded_file.html"
+
+url = "http://www.pythonforbeginners.com/"
+response = urllib2.urlopen(url)
+
+#open the file for writing
+fh = open(file, "w")
+
+# read from request while writing to file
+fh.write(response.read())
+fh.close()
+
+# You can also use the with statement:
+with open(file, 'w') as f: f.write(response.read())
+</pre>
+
+<pre>The difference in this script is that we use 'wb' , which means that we open the
+file binary.
+</pre>
+ 
+<pre class="prettyprint">import urllib2
+
+mp3file = urllib2.urlopen("http://www.example.com/songs/mp3.mp3")
+
+output = open('test.mp3','wb')
+
+output.write(mp3file.read())
+
+output.close()
+</pre>
+
+<h2>Urllib2 Requests</h2>
+<pre>The Request object represents the HTTP request you are making.
+
+In its simplest form you create a request object that specifies the URL you want
+to fetch. 
+
+Calling urlopen with this Request object returns a response object for the URL
+requested. 
+
+The request function under the urllib2 class accepts both url and parameter. 
+
+When you don't include the data (and only pass the url), the request being made
+is actually a GET request
+
+When you do include the data, the request being made is a POST request, where the
+url will be your post url, and the parameter will be http post content.
+</pre>
+
+<pre>Let's take a look at the example below
+</pre>
+
+<pre class="prettyprint">import urllib2
+import urllib
+
+# Specify the url
+url = 'http://www.pythonforbeginners.com'
+
+# This packages the request (it doesn't make it) 
+request = urllib2.Request(url)
+
+# Sends the request and catches the response
+response = urllib2.urlopen(request)
+
+# Extracts the response
+html = response.read()
+
+# Print it out
+print html 
+</pre>
+
+<pre>You can set the outgoing data on the Request to post it to the server.
+
+Additionally, you can pass data  extra information("metadata") about the data or
+the about request itself, to the server - this information is sent as HTTP
+"headers".
+
+If you want to POST data, you have to first create the data to a dictionary.
+</pre>
+
+<pre>Make sure that you understand what the code does.
+</pre>
+ 
+<pre class="prettyprint"># Prepare the data
+query_args = { 'q':'query string', 'foo':'bar' }
+
+# This urlencodes your data (that's why we need to import urllib at the top)
+data = urllib.urlencode(query_args)
+
+# Send HTTP POST request
+request = urllib2.Request(url, data)
+
+response = urllib2.urlopen(request)
+ 
+html = response.read()
+
+# Print the result
+print html
+</pre>
+
+<h2>User Agents</h2>
+<pre>The way a browser identifies itself is through the User-Agent header.
+
+By default urllib2 identifies itself as <strong>Python-urllib/x.y</strong>
+where x and y are the major and minor version numbers of the Python release.
+
+This could confuse the site, or just plain not work. 
+</pre>
+
+<pre>With urllib2 you can add your own headers with urllib2. 
+
+The reason why you would want to do that is that some websites dislike being
+browsed by programs. 
+
+If you are creating an application that will access other people’s web resources,
+it is  courteous to include real user agent information in your requests,
+so they can identify the source of the hits more easily.
+
+When you create the Request object you can add your headers to a dictionary,
+and use the add_header() to set the user agent value before opening the request. 
+</pre>
+
+<pre>That would look something like this:
+</pre>
+
+<pre class="prettyprint"># Importing the module
+import urllib2
+
+# Define the url
+url = 'http://www.google.com/#q=my_search'
+
+# Add your headers
+headers = {'User-Agent' : 'Mozilla 5.10'}
+
+# Create the Request. 
+request = urllib2.Request(url, None, headers)
+
+# Getting the response
+response = urllib2.urlopen(request)
+
+# Print the headers
+print response.headers
+</pre>
+
+<pre>You can also add headers with "add_header()"
+
+syntax:  Request.add_header(key, val)
+
+<a href="http://docs.python.org/2/library/urllib2.html#urllib2.Request.add_header" title="add-header" target="_top">urllib2.Request.add_header</a>
+
+The example below, use the Mozilla 5.10 as a User Agent, and that is also what
+will show up in the web server log file.
+</pre>
+
+<pre class="prettyprint">import urllib2
+
+req = urllib2.Request('http://192.168.1.2/')
+
+req.add_header('User-agent', 'Mozilla 5.10')
+
+res = urllib2.urlopen(req)
+
+html = res.read()
+
+print html
+</pre>
+
+<pre>This is what will show up in the log file.
+“GET / HTTP/1.1? 200 151 “-” “Mozilla 5.10?
+</pre>
+    
+<h2>urllib.urlparse</h2>
+<pre>The urlparse module provides functions to analyze URL strings.
+ 
+It defines a standard interface to break Uniform Resource Locator (URL)
+strings up in several optional parts, called components, known as
+(scheme, location, path, query and fragment)
+</pre>
+
+<pre><strong>Let's say you have an url:</strong>
+http://www.python.org:80/index.html
+
+The <strong>scheme</strong> would be http
+
+The <strong>location</strong> would be www.python.org:80
+
+The <strong>path</strong> is index.html
+
+We don't have any <strong>query</strong> and <strong>fragment</strong>
+</pre>
+
+<pre>The most common functions are urljoin and urlsplit
+</pre>
+
+<pre class="prettyprint">import urlparse
+
+url = "http://python.org"
+
+domain = urlparse.urlsplit(url)[1].split(':')[0]
+
+print "The domain name of the url is: ", domain
+</pre>
+
+<pre>For more information about urlparse, please see the official <a href="http://docs.python.org/2/library/urlparse.html" title="urlparse" target="_top">documentation</a>.
+</pre>
+
+<h2>urllib.urlencode</h2>
+<pre>When you pass information through a URL, you need to make sure it only uses
+specific allowed characters. 
+
+Allowed characters are any alphabetic characters, numerals, and a few special
+characters that have meaning in the URL string.
+
+The most commonly encoded character is the <strong>space</strong> character. 
+
+You see this character whenever you see a plus-sign (+) in a URL. 
+
+This represents the space character. 
+
+The plus sign acts as a special character representing a space in a URL
+
+Arguments can be passed to the server by encoding them with and appending them
+to the URL.
+</pre>
+
+<pre>Let's take a look at the following example. 
+</pre>
+
+<pre class="prettyprint">import urllib
+import urllib2
+
+query_args = { 'q':'query string', 'foo':'bar' } # you have to pass in a dictionary  
+
+encoded_args = urllib.urlencode(query_args)
+
+print 'Encoded:', encoded_args
+
+url = 'http://python.org/?' + encoded_args
+
+print urllib2.urlopen(url).read()
+</pre>
+
+<pre>If I would print this now, I would get an encoded string like this:
+<strong>q=query+string&amp;foo=bar</strong>
+
+Python's urlencode takes variable/value pairs and creates a properly escaped
+querystring:
+</pre>
+
+<pre class="prettyprint">from urllib import urlencode
+
+artist = "Kruder &amp; Dorfmeister"
+
+artist = urlencode({'ArtistSearch':artist})
+</pre>
+
+<pre>This sets the variable artist equal to:
+
+Output : ArtistSearch=Kruder+%26+Dorfmeister
+</pre>
+
+<h2>Error Handling</h2>
+<pre>This section of error handling is based on the information from Voidspace.org.uk great article:
+"<a href="http://www.voidspace.org.uk/python/articles/urllib2.shtml#handling-exceptions" title="voidspace.org.uk" target="_top">Urllib2 - The Missing Manual</a>" 
+
+urlopen raises <strong>URLError</strong> when it cannot handle a response.
+
+<strong>HTTPError</strong> is the subclass of <strong>URLError</strong> raised in the specific case of HTTP URLs.
+</pre>
+
+<h5>URLError</h5>
+<pre>Often, URLError is raised because there is no network connection,
+or the specified server doesn't exist. 
+
+In this case, the exception raised will have a 'reason' attribute,
+which is a tuple containing an error code and a text error message.
+</pre>
+
+<pre>Example of URLError
+</pre>
+
+<pre class="prettyprint">req = urllib2.Request('http://www.pretend_server.org')
+
+try: 
+    urllib2.urlopen(req)
+
+except URLError, e:
+    print e.reason
+
+(4, 'getaddrinfo failed')
+</pre>
+
+<h5>HTTPError</h5>
+<pre>Every HTTP response from the server contains a numeric "status code". 
+
+Sometimes the status code indicates that the server is unable to fulfill
+the request. 
+
+The default handlers will handle some of these responses for you (for example,
+if the response is a "redirection" that requests the client fetch the document
+from a different URL, urllib2 will handle that for you). 
+
+For those it can't handle, urlopen will raise an HTTPError. 
+</pre>
+
+<pre>Typical errors include '404' (page not found), '403' (request forbidden),
+and '401' (authentication required).
+
+When an error is raised the server responds by returning an HTTP error code
+and an error page.
+
+You can use the HTTPError instance as a response on the page returned.
+
+This means that as well as the code attribute, it also has read, geturl,
+and info, methods.
+</pre>
+
+<pre class="prettyprint">req = urllib2.Request('http://www.python.org/fish.html')
+
+try:
+    urllib2.urlopen(req)
+
+except URLError, e:
+    print e.code
+    print e.read()
+</pre>
+
+<pre class="prettyprint">from urllib2 import Request, urlopen, URLError
+
+req = Request(someurl)
+
+try:
+    response = urlopen(req)
+
+except URLError, e:
+
+    if hasattr(e, 'reason'):
+        print 'We failed to reach a server.'
+        print 'Reason: ', e.reason
+
+    elif hasattr(e, 'code'):
+        print 'The server could not fulfill the request.'
+        print 'Error code: ', e.code
+else:
+    # everything is fine
+</pre>
+
+<pre>Please take a look at the links below to get more understanding of the Urllib2
+library.
+</pre>
+
+<h5>Sources and further reading</h5>
+<pre><a href="http://pymotw.com/2/urllib2/" title="pymotw-urllib2" target="_top">http://pymotw.com/2/urllib2/</a>
+<a href="http://www.kentsjohnson.com/" title="kentsjohnson" target="_top">http://www.kentsjohnson.com/</a>
+<a href="http://www.voidspace.org.uk/python/articles/urllib2.shtml" title="voidspace" target="_top">http://www.voidspace.org.uk/python/articles/urllib2.shtml</a>
+<a href="http://techmalt.com/" title="techmalt.com" target="_top">http://techmalt.com/</a>
+<a href="http://www.hacksparrow.com/python-difference-between-urllib-and-urllib2.html" title="hacksparrow" target="_top">http://www.hacksparrow.com/</a>
+<a href="http://docs.python.org/2/howto/urllib2.html" title="python_urllib2" target="_top">http://docs.python.org/2/howto/urllib2.html</a>
+<a href="http://stackoverflow.com/questions/22676/how-do-i-download-a-file-over-http-using-python" title="http://www.stackoverflow.com" target="_top">http://www.stackoverflow.com
+</a><a href="http://www.oreillynet.com/pub/h/476" title="oreilly" target="_top">http://www.oreillynet.com/</a>
+</pre>
+             
+<section class="a">
+<h3>Recommended Python Training – <a href="http://treehouse.7eer.net/c/198007/228915/3944?u=https%3A%2F%2Fteamtreehouse.com%2Fjoin%2F3mo-s-1724&amp;subId1=pfb_3m">Treehouse</a></h3><p>
+	<a href="http://treehouse.7eer.net/c/198007/228915/3944?u=https%3A%2F%2Fteamtreehouse.com%2Fjoin%2F3mo-s-1724&amp;subId1=pfb_3m"><img style="float: right; text-align: right;" alt="Treehouse" src="treehouse.png"></a>
+For <a href="http://treehouse.7eer.net/c/198007/228915/3944?u=https%3A%2F%2Fteamtreehouse.com%2Fjoin%2F3mo-s-1724&amp;subId1=pfb_3m">Python training</a>, our top recommendation is Treehouse.
+</p><p>
+<a href="http://treehouse.7eer.net/c/198007/228915/3944?u=https%3A%2F%2Fteamtreehouse.com%2Fjoin%2F3mo-s-1724&amp;subId1=pfb_3m">Treehouse</a> is an online training service that teaches web design, web development and app development with videos, quizzes and interactive coding exercises.
+</p><p>
+Treehouse has beginner to advanced Python training that programmers of all levels benefit from.
+</p>
+</section>
+
+                <div>
+                    <iframe data-url="http://www.pythonforbeginners.com/python-on-the-web/how-to-use-urllib2-in-python/" src="index_55.html" title="Twitter Tweet Button" style="position: static; visibility: visible; width: 74px; height: 28px;" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe>
+                    <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 106px; height: 24px;"><iframe title="+1" data-gapiattached="true" src="index_56.html" name="I0_1466090958556" id="I0_1466090958556" vspace="0" tabindex="0" style="position: static; top: 0px; width: 106px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" frameborder="0" width="100%"></iframe></div>
+                    <div fb-iframe-plugin-query="action=like&amp;app_id=1474940332733250&amp;container_width=534&amp;href=http%3A%2F%2Fwww.pythonforbeginners.com%2Fpython-on-the-web%2Fhow-to-use-urllib2-in-python%2F&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;share=true&amp;show_faces=true" fb-xfbml-state="rendered" class="fb-like fb_iframe_widget" data-href="http://www.pythonforbeginners.com/python-on-the-web/how-to-use-urllib2-in-python/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"><span style="vertical-align: bottom; width: 128px; height: 20px;"><iframe class="" src="index_60.html" style="border: medium none; visibility: visible; width: 128px; height: 20px;" title="fb:like Facebook Social Plugin" scrolling="no" allowfullscreen="true" allowtransparency="true" name="f3ff46129b4cfc8" frameborder="0" height="1000px" width="1000px"></iframe></span></div>                        
+                </div><br><br>
+
+                Read more about:
+                <ul class="nav nav-pills">
+                
+                <li><a href="http://www.pythonforbeginners.com/urllib2/" title="Urllib2"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Urllib2</a></li>
+                
+                <li><a href="http://www.pythonforbeginners.com/python-on-the-web/" title="Web &amp; Internet"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Web &amp; Internet</a></li>
+                
+                </ul>
+            </div><div fi-instance-id="fiInstance_101005_0_1120559" style="margin-right: auto; margin-left: auto; float: none; margin-top: 10px ! important; margin-bottom: 10px ! important; clear: both ! important;" id="FIOnDemandWrapper_fiInstance_101005_0_1120559" class="FIOnDemandWrapper"><div style="margin: 0px auto; clip: auto; height: 90px; width: 728px;" class="apd_static_banner "><ins data-adsbygoogle-status="done" class="adsbygoogle" data-ad-client="ca-pub-3622156405313063" style="display: inline-block; width: 728px; height: 90px;" data-ad-slot="pu7G7uNUybpVpZp65vXs"><ins id="aswift_0_expand" style="display: inline-table; border: medium none; height: 90px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 728px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 90px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 728px; background-color: transparent;"><iframe src="index_61.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_0" name="aswift_0" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="90" width="728"></iframe></ins></ins></ins></div></div>
+        
+            <div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="index_62.html" style="width: 1px ! important; min-width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 1144px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" name="dsq-app2" id="dsq-app2" frameborder="0" width="100%"></iframe></div>
+<div style="font-size: small;"><i>Disclosure of Material Connection: Some of the links in the post above are “affiliate links.” This means if you click on the link and purchase the item, I will receive an affiliate commission. Regardless, PythonForBeginners.com only recommend products or services that we try personally and believe will add value to our readers.</i></div>
+        </div>
+        
+        
+<div style="visibility: visible; opacity: 1;" class="col-md-5 col-lg-4">
+    <form role="form" id="search" method="get" action="http://www.pythonforbeginners.com/search/"> 
+      <div class="input-group">
+          <input value="" placeholder="Search" id="q" name="q" class="form-control" type="text">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">SEARCH</button>
+          </span>               
+      </div>
+    </form>
+    <aside style="visibility: visible; opacity: 1;">
+<div style="padding: 8px; visibility: visible; opacity: 1;"><iframe style="margin: 0px; padding: 0px; border: 0px none; width: 300px; height: 600px; overflow: hidden;" class="sovrn_ad_unit" data-zid="333133" src="index_63.html" scrolling="no" padding="0" margin="0" id="sovrn_ad_unit_333133_async" frameborder="0" height="600" width="300"></iframe>
+<div id="beacon_d786884a00" style="position: absolute; left: 0px; top: 0px; visibility: hidden;">
+<img src="lg_001.php" height="0" width="0">
+<img src="pixel_match" height="0" width="0">
+</div>
+
+
+</div>
+
+       
+          <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.pythonforbeginners.com%2F&amp;region=follow_link&amp;screen_name=pythonbeginners&amp;tw_p=followbutton" class="btn btn-lg btn-success" data-show-count="false" data-size="large"><span class="fa fa-twitter on fa-square-o"></span> follow @pythonbeginners</a><br><br>
+  
+        <div class="categories">
+          <h3>Categories</h3>
+          <ul class="nav nav-pills nav-stacked">
+              <li><a href="http://www.pythonforbeginners.com/basics/">Basics</a></li>
+              <li><a href="http://www.pythonforbeginners.com/cheatsheet/">Cheatsheet</a></li>
+              <li><a href="http://www.pythonforbeginners.com/code-snippets-source-code/">Code snippets</a></li>
+              <li><a href="http://www.pythonforbeginners.com/development/">Development</a></li>
+              <li><a href="http://www.pythonforbeginners.com/dictionary/">Dictionary</a></li>
+              <li><a href="http://www.pythonforbeginners.com/error-handling/">Error Handling</a></li>
+              <li><a href="http://www.pythonforbeginners.com/lists/">Lists</a></li>
+              <li><a href="http://www.pythonforbeginners.com/loops/">Loops</a></li>
+              <li><a href="http://www.pythonforbeginners.com/modules-in-python/">Modules</a></li>
+              <li><a href="http://www.pythonforbeginners.com/python-strings/">Strings</a></li>
+              <li><a href="http://www.pythonforbeginners.com/systems-programming/">System &amp; OS</a></li>
+              <li><a href="http://www.pythonforbeginners.com/python-on-the-web/">Web &amp; Internet</a></li>
+          </ul>
+        </div>
+<div style="padding: 15px 0px; visibility: visible; opacity: 1;"><iframe style="margin: 0px; padding: 0px; border: 0px none; width: 300px; height: 250px; overflow: hidden;" class="sovrn_ad_unit" data-zid="333139" src="index_64.html" scrolling="no" padding="0" margin="0" id="sovrn_ad_unit_333139_async" frameborder="0" height="250" width="300"></iframe></div>
+
+      <div class="textwidget">
+        <div id="___page_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 300px; height: 353px;"><iframe title="+Badge" data-gapiattached="true" src="index_65.html" name="I1_1466090962917" id="I1_1466090962917" vspace="0" tabindex="0" style="position: static; top: 0px; width: 300px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 353px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" frameborder="0" width="100%"></iframe></div>
+      </div>
+<!-- sovrn 300x250 -->
+<div style="padding: 15px 0px; visibility: visible; opacity: 1;"><iframe style="margin: 0px; padding: 0px; border: 0px none; width: 300px; height: 250px; overflow: hidden;" class="sovrn_ad_unit" data-zid="333143" src="index_67.html" scrolling="no" padding="0" margin="0" id="sovrn_ad_unit_333143_async" frameborder="0" height="250" width="300"></iframe></div><div fi-instance-id="fiInstance_101503_0_1120559" style="margin: 0px auto; float: none; clear: both; position: fixed; top: 10px; left: 654.75px;" id="FIOnDemandWrapper_fiInstance_101503_0_1120559" class="FIOnDemandWrapper apd_docked"><div style="position: static; top: auto; left: auto;" class="apd_docked_instance"><div style="z-index: 10000000; position: absolute; display: block; height: 17px; padding: 0px 5px; margin: 0px; background-color: rgb(115, 108, 108); color: rgb(255, 255, 255); cursor: pointer; opacity: 1; bottom: 100%; left: 254px; top: 600px; border-bottom-left-radius: 4px; border-bottom-right-radius: 0px;"><span style="display: block; line-height: 14px; height: 20px; vertical-align: middle; padding: 2px; color: rgb(255, 255, 255); font-family: Arial; text-shadow: 1px 1px 2px black; font-size: 12px; text-align: center; white-space: nowrap;">Close</span></div><div style="margin: 0px auto; clip: auto; height: 600px; width: 300px;" class="apd_docked_banner "><ins data-adsbygoogle-status="done" class="adsbygoogle" data-ad-client="ca-pub-3622156405313063" style="display: inline-block; width: 300px; height: 600px;" data-ad-slot="D8SddeGxk6tPxW4LC8wv"><ins id="aswift_1_expand" style="display: inline-table; border: medium none; height: 600px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><ins id="aswift_1_anchor" style="display: block; border: medium none; height: 600px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><iframe src="index_69.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_1" name="aswift_1" style="left: 0px; position: absolute; top: 0px;" frameborder="0" height="600" width="300"></iframe></ins></ins></ins></div></div></div>
+    </aside>
+</div>
+
+    </div><iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="index_70.html" id="oauth2relay606497481" name="oauth2relay606497481"></iframe> 
+
+
+            <div class="push"></div>
+        
+       
+
+
+<div class="container container-footer">
+    <div id="footer">
+          © <a href="http://pythonforbeginners.com/">Python For Beginners</a> 2012-2016  |  <a href="http://www.pythonforbeginners.com/privacy-policy/">Privacy Policy</a>
+    
+</div>
+</div>
+        
+        
+        
+
+        
+        
+ 
+
+
+
+
+
+    
+
+<div style="position: fixed; top: 0px; left: 0px; overflow: hidden;"><input style="position: absolute; left: -300px;" value="" id="focus_retriever" readonly="true" type="text"></div><iframe src="index_71.html" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" allowfullscreen="true" allowtransparency="true" scrolling="no" id="rufous-sandbox" frameborder="0"></iframe></body>
+</html>

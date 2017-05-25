@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head xmlns="http://www.w3.org/1999/xhtml">
+<meta content="application/xhtml+xml; charset=UTF-8" http-equiv="Content-Type" />
+
+    <title>Problem loading page</title>
+    <link rel="stylesheet" href="chrome://browser/skin/aboutNetError.css" type="text/css" media="all" />
+    <!-- If the location of the favicon is changed here, the FAVICON_ERRORPAGE_URL symbol in
+         toolkit/components/places/src/nsFaviconService.h should be updated. -->
+    <link rel="icon" type="image/png" id="favicon" href="chrome://global/skin/icons/warning-16.png" />
+
+    
+  </head>
+<body xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+    <!-- ERROR ITEM CONTAINER (removed during loading to avoid bug 39098) -->
+    
+
+    <!-- PAGE CONTAINER (for styling purposes only) -->
+    <div id="errorPageContainer">
+
+      <!-- Error Title -->
+      <div id="errorTitle">
+        <h1 id="errorTitleText">Secure Connection Failed</h1>
+      </div>
+
+      <!-- LONG CONTENT (the section most likely to require scrolling) -->
+      <div id="errorLongContent">
+
+        <!-- Short Description -->
+        <div id="errorShortDesc">
+          <p id="errorShortDescText">The connection to www.reddit.com was interrupted while the page was loading.</p>
+        </div>
+
+        <!-- Long Description (Note: See netError.dtd for used XHTML tags) -->
+        <div id="errorLongDesc">
+<ul>
+  <li>The page you are trying to view cannot be shown because the authenticity of the received data could not be verified.</li> 
+  <li>Please contact the web site owners to inform them of this problem.</li> 
+</ul>
+</div>
+
+        <!-- Override section - For ssl errors only.  Removed on init for other
+             error types.  -->
+        
+
+        <div id="learnMoreContainer">
+          <p><a href="https://support.mozilla.org/kb/what-does-your-connection-is-not-secure-mean" id="learnMoreLink" target="new">Learn more…</a></p>
+        </div>
+
+        <div id="buttonContainer">
+          <button id="returnButton" autocomplete="off" autofocus="true">Go Back</button>
+          <div id="buttonSpacer"></div>
+          <button id="advancedButton" autocomplete="off" autofocus="true">Advanced</button>
+        </div>
+      </div>
+
+      <button id="errorTryAgain" autocomplete="off" onclick="retryThis(this);">Try Again</button>
+      
+
+      <!-- UI for option to report certificate errors to Mozilla. Removed on
+           init for other error types .-->
+      <div id="certificateErrorReporting">
+        <p>
+          <input type="checkbox" id="automaticallyReportInFuture" />
+          <label for="automaticallyReportInFuture" id="automaticallyReportInFuture">Report errors like this to help Mozilla identify and block malicious sites</label>
+        </p>
+      </div>
+
+      <div id="advancedPanelContainer">
+        <div id="weakCryptoAdvancedPanel">
+          <div id="weakCryptoAdvancedDescription">
+            <p><span class="hostname"></span> uses security technology that is outdated and vulnerable to attack. An attacker could easily reveal information which you thought to be safe.</p>
+          </div>
+          <div id="advancedLongDesc"></div>
+          <div id="overrideWeakCryptoPanel">
+            <a id="overrideWeakCrypto" href="#">(Not secure) Try loading <span class="hostname"></span> using outdated security</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!--
+    - Note: It is important to run the script this way, instead of using
+    - an onload handler. This is because error pages are loaded as
+    - LOAD_BACKGROUND, which means that onload handlers will not be executed.
+    -->
+    
+
+  </body>
+</html>

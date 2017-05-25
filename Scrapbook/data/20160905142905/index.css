@@ -1,0 +1,53 @@
+/* ::::: http://www.gtk.org/css/global.css ::::: */
+
+* { margin: 0px; padding: 0px; outline: 0px none; font-size: 100%; font-style: inherit; font-family: inherit; font-weight: inherit; vertical-align: baseline; }
+strong, th, h1, h2, h3, h4, h5, h6, dt { font-weight: bold ! important; }
+pre { font-family: "Bistream Vera Sans Mono","DejaVu Sans Mono",monospace; margin-bottom: 16px; padding: 0px 8px; font-size: 14px; background-color: rgb(121, 123, 118); color: rgb(255, 255, 255); }
+a { background-repeat: no-repeat; background-position: left center; }
+a.external { background-image: url('external.png'); background-position: right center; padding-right: 14px; }
+p { margin-bottom: 1em; }
+h1 { font-size: 2em; margin-bottom: 0.67em; }
+h2 { font-size: 1.5em; margin-bottom: 0.75em; }
+a:link, a:visited, h2 { color: rgb(63, 121, 186); text-decoration: none; }
+a:link:hover, a:visited:hover { border-bottom: 1px dotted; }
+a:focus { outline-style: dotted; outline-width: 1px; border-bottom: medium none ! important; }
+ul { list-style-type: circle; }
+dt { display: inline; }
+dd { margin-bottom: 16px; }
+html, body { text-align: center; font-family: "Bitstream Vera Sans","DejaVu Sans",Charcoal,"Lucida Sans Unicode","Lucida Sans","Lucida Grande",Calibri,Helvetica,Arial,sans-serif; font-size: 100%; }
+html { background-color: rgb(238, 238, 238); background-image: url('gtkbg.png'); background-repeat: no-repeat; background-position: 2% -15px; }
+#container { width: 900px; margin: 0px auto; font-size: 16px; }
+#header { background: transparent url('header-logo.png') no-repeat scroll center top; margin-top: 8px; height: 100px; }
+#header h1 { position: absolute; left: -999px; width: 990px; }
+#navigation { background-color: rgb(0, 0, 0); padding: 8px 0px; }
+#navigation ul { list-style: outside none none; }
+#navigation li { display: inline; margin: 0px 8px; }
+#navigation a, #footer a { color: rgb(255, 255, 255); text-decoration: none; font-weight: normal; }
+#navigation li.current a { font-weight: bold; border-bottom: 1px dotted; }
+#content { background-color: rgb(255, 255, 255); text-align: left; line-height: 1.5em; padding: 20px; position: relative; }
+#content ul { margin-bottom: 16px; }
+.sidebar { background-color: rgb(238, 238, 238); float: right; width: 300px; padding: 16px; margin: 0px 0px 16px 16px; }
+.sidebar h2, .sidebar h3 { font-size: 1.25em; margin-bottom: 0.25em; }
+#footer { background-color: rgb(0, 0, 0); clear: both; color: rgb(255, 255, 255); margin-bottom: 8px; padding: 12px; font-size: 12px; }
+.newsfeed { font-size: 0.875em; list-style: outside none none; }
+.newsfeed_buttons { text-align: right; font-size: 0.75em; color: rgb(170, 170, 170); line-height: 1.25em; }
+/* ::::: http://www.gtk.org/css/browser.css ::::: */
+
+pre::-moz-selection { background: rgb(255, 255, 255) none repeat scroll 0% 0%; color: rgb(0, 0, 0); }
+#container { box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); border-radius: 25px 25px 16px 16px; }
+.sidebar { border-radius: 1em; }
+#footer { border-radius: 0px 0px 16px 16px; }
+.newsfeed .time, .newsfeed_buttons { text-shadow: 1px 1px 0px rgb(255, 255, 255); }
+@media handheld, screen and (max-width: 900px), screen and (max-device-width: 900px) {
+	html { background-image: none; }
+	#container { width: auto; box-shadow: none; border-radius: 0px; }
+	#header { margin: 0px; }
+	#footer { margin: 0px; border-radius: 0px; }
+}
+@media handheld, screen and (max-width: 650px), screen and (max-device-width: 650px) {
+	#header { background-image: url('logo-small.png') ! important; background-repeat: no-repeat; background-position: 8px center; background-color: rgb(89, 141, 197); height: auto; min-height: 83px; text-align: left; }
+	#header h1 { position: static; color: rgb(255, 255, 255); font-size: 59px; padding: 19px 0px; margin: 0px 0px 0px 78px; font-weight: normal ! important; line-height: 1em; width: auto; text-shadow: -1px -1px 2px rgb(85, 85, 85); }
+	.sidebar { float: none; width: auto; margin-left: 0px; background-color: transparent; padding: 0px; }
+	.sidebar h2 { font-size: 1.5em; margin-bottom: 0.75em; }
+	pre { white-space: pre-wrap; }
+}

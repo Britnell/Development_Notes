@@ -1,0 +1,80 @@
+/* ::::: https://help.ubuntu.com/moin_static193/light/css/common.css ::::: */
+
+hr { height: 1pt; background-color: rgb(193, 180, 150); border: 0px none; }
+/* ::::: https://help.ubuntu.com/moin_static193/light/css/screen.css ::::: */
+
+/* ::::: https://help.ubuntu.com/moin_static193/light/css/reset.css ::::: */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dd, dl, dt, li, ol, ul, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0px; padding: 0px; border: 0px none; font-weight: inherit; font-style: inherit; font-size: 100%; line-height: 1; font-family: inherit; text-align: left; vertical-align: baseline; }
+a img, :link img, :visited img { border: 0px none; }
+table { border-collapse: collapse; border-spacing: 0px; }
+ol, ul { list-style: outside none none; }
+q::before, q::after, blockquote::before, blockquote::after { content: ""; }
+/* ::::: https://help.ubuntu.com/moin_static193/light/css/styles.css ::::: */
+
+body { font-family: "Ubuntu","Ubuntu Beta","Bitstream Vera Sans",DejaVu Sans,Tahoma,sans-serif; color: rgb(51, 51, 51); background: white url('body_bg.png') repeat scroll 0% 0%; font-size: 13px; line-height: 1.5; margin: 0px; padding: 0px; }
+#container { background: rgb(247, 246, 245) none repeat scroll 0% 0%; margin: 0px auto 20px; padding: 0px; width: 976px; }
+#container-inner { background-color: rgb(255, 255, 255); }
+#header, #container-inner {  }
+#header { background: rgb(221, 72, 20) url('header_bg.png') repeat-x scroll left top; height: 64px; margin: 0px; padding: 0px; position: relative; }
+#mothership ul { margin: 0px; padding: 0px; list-style-type: none; height: 20px; }
+#mothership li { float: right; padding: 3px 0px; margin: 0px 16px 0px 0px; font-size: 10px; line-height: 14px; }
+#mothership a { color: rgb(51, 51, 51); }
+#menu-search { height: 40px; margin: 0px 16px; }
+#title { padding: 12px 0px; }
+#title h1 { margin-left: 16px; }
+#title a { color: rgb(51, 51, 51); }
+#cwt-content { width: 850px; margin: 0px 63px; background-color: rgb(255, 255, 255); }
+#ubuntu-header { background-image: url('header_logo.png'); background-repeat: no-repeat; height: 32px; right: 16px; margin: 0px; padding: 0px; position: absolute; top: 16px; width: 292px; overflow: hidden; text-indent: -9999px; }
+#ubuntu-header a { display: block; height: 100%; width: 100%; }
+#footer { padding-top: 16px; }
+#footer p { margin: 0px; padding-bottom: 16px; border-bottom: 1px dotted rgb(174, 167, 159); text-align: center; }
+#main-menu { list-style: outside none none; margin: 0px 0px 0px 16px; padding: 0px; height: 100%; background: transparent url('topnav_divider.png') no-repeat scroll left top ! important; }
+#main-menu li { float: left; margin: 0px; padding: 0px; height: 64px; font-size: 14px; line-height: 16px; background: transparent url('topnav_divider.png') no-repeat scroll right top ! important; }
+#main-menu a { display: block; float: left; margin: 0px; padding: 24px 8px; text-decoration: none; color: rgb(255, 255, 255); text-shadow: 0px 1px rgb(0, 0, 0); }
+.main-menu-item.current, #main-menu a:hover, #main-menu a.active { line-height: 16px; background: transparent url('topnav_active_bg.png') no-repeat scroll right top ! important; }
+h1, h2, h3, h4, h5 { padding: 0px; margin: 1em 0px 0px; font-weight: normal; }
+h1 { font-size: 28px; line-height: 32px; margin-top: 0em; }
+h2 { font-size: 24px; line-height: 28px; margin-bottom: 8px; }
+h3 { font-size: 16px; line-height: 20px; margin-bottom: 8px; }
+h4 { font-size: 12px; line-height: 14px; }
+p { font-size: 13px; line-height: 1.5; margin-bottom: 8px; }
+pre { background-color: rgb(243, 243, 243); border: 1px dashed rgb(193, 180, 150); font-family: UbuntuMono,courier,monospace; padding: 4pt; white-space: pre-wrap; word-wrap: break-word; }
+tt { font-family: UbuntuMono,courier,monospace; }
+strong { font-weight: bold; }
+a { color: rgb(221, 72, 20); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul li { margin-left: 0px; margin-bottom: 8px; }
+ul li:last-child { margin-bottom: 0px; }
+#pageinfo { font-size: 70%; padding: 0px 16px 12px; text-align: right; }
+.clearfix::after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+/* ::::: https://help.ubuntu.com/moin_static193/light/css/forms.css ::::: */
+
+input, select { font-size: 100%; }
+@media not all {
+}
+.clear { clear: both; }
+body { background-image: url('bg_dotted.png'); }
+#main-menu a { padding: 24px 8px; }
+#search-box { margin-left: 650px; background-color: rgb(242, 242, 242); width: 290px; height: 33px; padding: 7px 0px 0px 10px; }
+#second-nav { background-color: rgb(242, 242, 242); height: 40px; width: 645px; float: left; }
+#second-nav li { display: block; float: left; font-size: 12px; padding: 13px 8px 0px 10px; }
+#second-nav li:first-child { background: transparent url('subnav_active_bg.png') repeat scroll left 1px ! important; }
+#second-nav li:first-child a { color: rgb(221, 72, 20); display: block; padding-bottom: 13px; }
+#second-nav li a { display: block; padding-bottom: 13px; }
+#cwt-nav3 { border-radius: 4px; margin: 0px 16px; background-color: rgb(247, 247, 247); }
+#cwt-nav3 hr { border: 0px none; width: 100%; color: rgb(217, 217, 217); background-color: rgb(217, 217, 217); margin: 0px; padding: 0px; }
+#subheader ul { display: inline; float: left; }
+#title span { color: rgb(174, 167, 159); }
+#cwt-content table li { margin-left: 1.5em; line-height: 18px; }
+#cwt-content table ol { list-style-type: decimal; }
+#cwt-content pre { line-height: 16px; margin-bottom: 8px; }
+#cwt-content h1 { margin-bottom: 8px; }
+#footer { margin: 0px; font-size: 90%; color: rgb(68, 68, 68); }
+#cwt-content td, #cwt-content th { margin: 1px; padding: 4px; }
+#cwt-content td, #cwt-content th { border: 1px solid rgb(233, 233, 233); }
+#cwt-content ol, #cwt-content ul, #cwt-content dl { margin-bottom: 8px; list-style-type: decimal; }
+#cwt-content li, #cwt-content dd, #cwt-content dt { line-height: 1.5; }
+#cwt-content ol li, #cwt-content ul li { margin-left: 2.4em; }
+#cwt-content tt { font-family: monospace; }

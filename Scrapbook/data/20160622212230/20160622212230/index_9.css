@@ -1,0 +1,21 @@
+body { background-color: transparent; }
+* { margin: 0px; padding: 0px; }
+a { text-decoration: none; outline: 0px none; }
+a:hover { cursor: pointer; }
+.wrapper { width: 100%; height: 250px; position: relative; overflow: hidden; font-family: Arial,Helvetica,sans-serif; }
+h2 { color: rgb(10, 40, 67); font-size: 17px; height: 33px; line-height: 33px; text-transform: capitalize; padding: 0px; }
+.uladj { overflow: hidden; }
+ul { list-style-type: none; }
+ul li { padding: 4px 0px; overflow: hidden; background: rgb(9, 43, 62) none repeat scroll 0% 0%; border: 1px solid rgb(123, 123, 123); margin: 0px 0px 4px; }
+ul li a { font-size: 15px; font-weight: bold; color: rgb(255, 255, 255); padding: 0px 6% 0px 0px; display: block; word-wrap: break-word; line-height: 27px; height: 27px; overflow: hidden; background: transparent url('arrow.png') no-repeat scroll 98% 8px; }
+ul span { float: left; width: 25px; padding: 0px 0px 0px 5px; text-align: center; font-style: italic; color: rgb(221, 208, 0); font-size: 16px; font-weight: bold; line-height: 27px; height: 27px; }
+ul li:hover { background: rgb(250, 226, 18) none repeat scroll 0% 0%; border: 1px solid rgb(25, 44, 54); transition: all 0.65s ease 0s; }
+ul li:hover a { color: rgb(11, 39, 68); background-image: url('arrow_h.png'); }
+ul li:hover span { color: rgb(11, 39, 68); }
+ul li a:hover {  }
+.clear { clear: both; overflow: hidden; font-size: 0px; line-height: 0; margin: 0px; padding: 0px; }
+a.footer { clear: both; position: absolute; bottom: 0px; right: 0px; width: 15px; height: 15px; background: transparent url('adchoicesicon.png') no-repeat scroll right top; }
+a.footer:hover { width: 75px; background: transparent url('adchoices.png') no-repeat scroll right top; }
+@media screen and (max-width: 479px) {
+	ul li a { padding: 0px 7% 0px 0px; }
+}

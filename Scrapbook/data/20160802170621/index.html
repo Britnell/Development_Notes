@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" xmlns:fb="https://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#" xmlns="http://www.w3.org/1999/xhtml" style="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="Wherein I record things I wish I'd known earlier">
+        <meta name="viewport" content="width=device-width">
+        <title>Playing with Ansible — edunham</title>
+            
+            
+            
+            
+            
+            
+        <link rel="shortcut icon" href="favicon.ico"><!-- Load modernizr and JQuery -->
+        
+        
+        
+        
+        
+        <link rel="next" title="Configuration Management Comparison" href="http://edunham.net/2015/06/05/configuration_management_comparison.html"><link rel="prev" title="Display Defaults" href="http://edunham.net/2015/06/08/display_defaults.html"><link rel="alternate" type="application/rss+xml" title="RSS" href="http://edunham.net/rss.html">
+
+    
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body role="document">
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header role="banner">
+            <hgroup>
+              <h1><a href="http://edunham.net/index.html">edunham</a></h1><h2>is a "DevOps" Engineer at Mozilla Research</h2></hgroup>
+          </header>
+      <nav role="navigation">
+        <ul>
+        <li class="main-nav"><div class="rss">
+        <a href="http://edunham.net/rss.html" title="Subscribe via RSS"><span class="fa fa-lg fa-rss"></span></a>
+    </div></li>
+        <li class="main-nav">
+            <a href="http://edunham.net/index.html">Blog</a>
+            </li>
+        <li class="main-nav">
+            <a href="http://edunham.net/pages/about.html">About</a>
+            </li>
+        <li class="main-nav">
+            <a href="http://edunham.net/pages/cfp_aggregators.html">CFP Aggregator Sites</a>
+            </li>
+        <li class="main-nav">
+            <a href="http://edunham.net/pages/issue_aggregators.html">Issue Aggregators</a>
+            </li>
+        <li class="main-nav">
+            <a href="http://edunham.net/pages/lists.html">Lists</a>
+            </li>
+        <li class="main-nav">
+            <a href="http://edunham.net/pages/subdomains.html">Other Pages</a>
+            </li>
+        <li class="main-nav">
+            <a href="http://edunham.net/pages/talks.html">Talks</a>
+            </li>
+        <li>
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Creative Commons License" style="border-width: 0px;" src="88x31.png"></a>
+        </li>
+        </ul>
+    </nav><div class="main-container" role="main"><div class="main wrapper body clearfix"><article><div class="timestamp postmeta">
+            <span>June 08, 2015</span>
+        </div>
+    <div class="section" id="playing-with-ansible">
+<h1>Playing with Ansible</h1>
+<p>Although I currently expect that I’ll end up choosing Salt for work, I’ve
+gotten <a class="reference external" href="https://xkcd.com/356/">nerdsniped</a> by the apparent simplicity and
+power of Ansible. Since I’m trying to make a habit of narrating my first
+encounters with various tools, here’s a short novel of 0 through cloning a
+repo.</p>
+<div id="more"> </div><div class="section" id="starting-out">
+<h2>Starting Out</h2>
+<p>Google hands me the <a class="reference external" href="http://docs.ansible.com/intro_getting_started.html">intro doc</a> right away. I noticed
+this when researcing my config management comparison post as well – Googling
+for a given topic results in more useful docs and less marketing with Ansible
+than CFEngine, Puppet, or Chef.</p>
+<p>I install Ansible with <span class="docutils literal"><span class="pre">yaourt</span> <span class="pre">-S</span> <span class="pre">ansible</span></span>. This installs it:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible --version
+ansible 1.9.1
+  configured module search path = None
+</pre></div>
+</div>
+<p>I wonder what that search path info is for... I’m sure the docs will tell me
+when I need it.</p>
+<p>So, I need an <span class="docutils literal"><span class="pre">/etc/ansible/hosts</span></span> First, I need a host to put in it. Since
+I use DigitalOcean for my VPS and have some free credit lying around from the
+<a class="reference external" href="https://education.github.com/">GitHub Education Pack</a>, I go spin up a
+$5/month droplet to play with. I make sure to check the box to add my SSH key,
+and add the key to my agent locally, to avoid hassles in the future.</p>
+</div>
+<div class="section" id="write-etc-ansible-hosts">
+<h2>Write <span class="docutils literal"><span class="pre">/etc/ansible/hosts</span></span></h2>
+<p>I grab the droplet’s IP address from <a class="reference external" href="https://cloud.digitalocean.com/droplets">the digitalocean console</a>, then I drop it into
+<span class="docutils literal"><span class="pre">/etc/ansible/hosts</span></span>. I wonder for a minute whether there’s any way to alias
+the host or generally refer to it by something more friendly than an IP
+address, thn I remember that there ways of grouping hosts in order to address
+them and the tutorial gets to that later on.</p>
+<p>Oh yeah, and I did that thing I always do and forgot to open the file in
+<span class="docutils literal"><span class="pre">/etc/</span></span> with sudo, hitting that familiar error:</p>
+<div class="highlight-python"><div class="highlight"><pre>E45: 'readonly' option is set (add ! to override)
+</pre></div>
+</div>
+<p>The fix is to write with:</p>
+<div class="highlight-python"><div class="highlight"><pre>:w !sudo tee %
+</pre></div>
+</div>
+<p>This says “write the file; shell out to <span class="docutils literal"><span class="pre">sudo</span> <span class="pre">tee</span></span>, give it the contents of
+the whole file (<span class="docutils literal"><span class="pre">%</span></span>) as an argument” (thanks <a class="reference external" href="http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work">stackoverflow</a>!)</p>
+</div>
+<div class="section" id="ping-the-host-s">
+<h2>Ping the Host(s)</h2>
+<p>Next tutorial step is <span class="docutils literal"><span class="pre">ansible</span> <span class="pre">all</span> <span class="pre">-m</span> <span class="pre">ping</span></span>. I fumbled the typing on the
+first try, and learned something from the error:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible all -m png
+162.243.134.126 | FAILED =&gt; module png not found in configured module paths
+</pre></div>
+</div>
+<p>This tells me that the <span class="docutils literal"><span class="pre">-m</span> <span class="pre">ping</span></span> is actually running a module on it. I took
+a look at the <a class="reference external" href="https://github.com/ansible/ansible">source</a> to see if the
+ping module is easy to find to read, but I’m not familiar enough to know
+exactly where to find it. A bit more clicking around suggests it’s probably
+somewhere in <a class="reference external" href="https://github.com/ansible/ansible-modules-core">here</a>. Oh
+hey, I found it! It’s only in like the <a class="reference external" href="https://github.com/ansible/ansible-modules-core/blob/devel/system/ping.py">second place I checked</a>.
+It’s short and easy to read. The docstring is pretty interesting; the
+<span class="docutils literal"><span class="pre">C(path)</span></span> syntax appears to be some kind of cross-referencing directive. So
+we make a module with some boilerplate in it, import the basic utils, then
+blindly call <span class="docutils literal"><span class="pre">main()</span></span>. This is totally something I could write if I needed
+to.</p>
+<p>So, when I spell <span class="docutils literal"><span class="pre">ping</span></span> correctly, I get:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible all -m ping
+The authenticity of host '162.243.134.126 (162.243.134.126)' can't be
+established.
+ECDSA key fingerprint is
+SHA256:pMoI7FvPgBiFqosItd7rmlHABpiKWBToM/asCOgbAh8.
+Are you sure you want to continue connecting (yes/no)?
+</pre></div>
+</div>
+<p>and then tell it yes. Cool story, standard SSH stuff.</p>
+<p>And then...</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible all -m ping
+162.243.134.126 | FAILED =&gt; SSH Error: Permission denied
+(publickey,password).
+while connecting to 162.243.134.126:22
+It is sometimes useful to re-run the command using -vvvv, which prints
+SSH debug output to help diagnose the issue.
+</pre></div>
+</div>
+<p>Well okay then, I guess that makes sense considering that the user on the
+remote box is root and locally I’m edunham. Let’s see... I could totally look
+this up, but let’s blindly guess that the <span class="docutils literal"><span class="pre">-u</span></span> flag is what’s necessary...:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible all -u root -m ping
+162.243.134.126 | success &gt;&gt; {
+    "changed": false,
+    "ping": "pong"
+}
+</pre></div>
+</div>
+<p>Ah-ha, it behaves like a proper little Unix utility with guessable flags! Good
+social engineering tactic there, Ansible, making me feel all clever...</p>
+</div>
+<div class="section" id="let-s-install-a-thing">
+<h2>Let’s install a thing!</h2>
+<p>With this initial success, I’m going to deviate from the tutorial a bit and
+see how Ansible handles trying to install a package from source. I’ve decided
+to build a mockup of <span class="docutils literal"><span class="pre">play.rust-lang.org</span></span>, since it’s one of the SPOFs
+that’s scaring me the worst about Rust’s infrastructure at the moment. It’s an
+Arch box that hasn’t been updated in a while, running Arch because this tool
+called <a class="reference external" href="https://github.com/thestinger/playpen">playpen</a> comes packaged for
+Arch but you have to biuld it yourself on Ubuntu. (Yes, the devs were doing
+the ops work before I got there).</p>
+<p>So, I want to install playpen from source. First, I guess, I should probably
+install Git from the package manager, so that Ansible can clone playpen.</p>
+<p>The tutorial’s next step is to run an echo command, so I guess I could
+repurpose it into an apt-get command, but that seems very wrong. Let’s see
+what’s next...</p>
+<p>The <a class="reference external" href="http://docs.ansible.com/intro_inventory.html">inventory</a> section of the
+intro comes next, and it explains how to name groups of hosts. Turns out that
+happens in <span class="docutils literal"><span class="pre">/etc/ansible/hosts</span></span> as well... I’d really rather not keep the
+metadata on how things are grouped up over in <span class="docutils literal"><span class="pre">/etc/</span></span>. I feel like it might
+be better to put the inventory in the config repo... and <a class="reference external" href="http://stackoverflow.com/questions/21958727/where-to-store-ansible-host-file-on-osx">stackoverflow</a>
+points out that one can pass the <span class="docutils literal"><span class="pre">-i</span></span> flag to specify a custom inventory
+location. The best practices doc (thank you, Ansible, for having a best
+practices doc that’s actually easy to find) has a section on <a class="reference external" href="https://docs.ansible.com/playbooks_best_practices.html#content-organization">content
+organization</a>,
+which on the one hand doesn’t say much about keeping a copy of the hosts file,
+but on the other hand reassures me by not forbidding it either. I’m just a
+little bit worried about keeping the grouping metadata of the hosts file from
+getting lost, since running commands on the <em>correct</em> hosts is a core feature
+of any good CM tool.</p>
+<p>So, change workflow a little:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cp /etc/ansible/hosts ~/repos/toy-ansible/hosts
+$ cat hosts
+[server]
+play ansible_ssh_host=162.243.134.126
+$ ansible play -u root -m ping -i hosts
+play | success &gt;&gt; {
+    "changed": false,
+    "ping": "pong"
+}
+</pre></div>
+</div>
+<p>Okay, now I can keep this metadata in the repository if I want to. Still not
+totally sure what best practices will be here for my particular use case;
+maybe using DNS; maybe storing the exact IPs in a file that never gets
+committed but leaving hosts as a skeleton to document what goes where if
+anyone else tries to set up a copy; maybe publishing it and just trusting AWS
+firewall to do what i tell it to. Because if ansible gets run from or via the
+bastion, I can leave SSH access just as locked down as it’s always been.</p>
+<p>So. One PR to <a class="reference external" href="https://github.com/ansible/ansible/pull/11194">fix confusing wording</a> later, I’m back to figuring
+out the next file to stick in my repo to explain to the Ansible world that
+this “play” host needs to have Git installed on it.</p>
+<p>...okay, that’s a lot of <span class="docutils literal"><span class="pre">/etc/ansible/whatever</span></span> files and dirs in the
+tutorial. Maybe I’m supposed to be keeping all of <span class="docutils literal"><span class="pre">/etc/ansible</span></span> in Git,
+rather than my arbitrary repos place? Maybe there’s some prefix in an
+environment variable that I can set so I odn’t have to keep passing <span class="docutils literal"><span class="pre">-i</span></span>
+every time?</p>
+<p>Okay, tutorial. All this stuff about managing many hosts is cool and I’ll come
+back to it later, but can we get on with the single host case already?</p>
+<p>And no, tutorial, I do NOT want to learn about ad-hoc commands before
+playbooks. Okay, you can shut everything down on Christmas, but that will make
+people Quite Unhappy. I want to live in a world where special snowflakes and
+one-offs are always a bad thing, so I’m jumping straight to the <a class="reference external" href="http://docs.ansible.com/playbooks.html">playbooks</a> section.</p>
+</div>
+<div class="section" id="id2">
+<h2>Playbooks</h2>
+<p>Ok, so I’m just really bad at recognizing YAML. I claimed elsewhere that I
+didn’t recognize the syntax of Ansible playbooks, which is true, but that’s my
+fault and not theirs.</p>
+<p>Their sample playbook makes sense! Let’s try writing something of my own... oh
+wait, I don’t know what file extension nor location it belongs with. Fine,
+guess I’ve gotta actually keep reading the docs for awhile.</p>
+</div>
+</div>
+<div class="section" id="the-next-day">
+<h1>The Next Day</h1>
+<p>So, I come back and find the <a class="reference external" href="http://docs.ansible.com/playbooks_intro.html">playbooks tutorial</a> conveniently open in a tab.
+Cool, that’s what to put in a playbook... but what do I call it? Dig around
+for best practices, don’t find any, file <a class="reference external" href="https://github.com/ansible/ansible/issues/11204">another bug</a>, call it <span class="docutils literal"><span class="pre">server.yml</span></span>
+because who cares. Guess from the sample playbook how to translate from Yum to
+Apt.</p>
+<div class="section" id="install-git">
+<h2>install Git</h2>
+<p>We’re going to jump right into trying to install Playpen from source, because
+I find I learn the most from doing things wrong.</p>
+<p>First, I’ll try to install Git. From the tutorial, I’m guessing this should
+work:</p>
+<div class="highlight-python"><div class="highlight"><pre>---
+- hosts: play
+  remote_user: root
+  tasks:
+  - name: install Git
+    apt:
+        pkg=git
+        state=latest
+</pre></div>
+</div>
+<p>Now, the right thing to do here would be see whether it runs, but I’m going to
+do the wrong thing and try to figure out how to install Playpen from source as
+well. Let’s just pretend that changing too many things at once is a test of
+the quality of those inevitable error messages I’m going to induce.</p>
+</div>
+<div class="section" id="shave-a-yak-and-install-known-hosts">
+<h2>shave a yak and install known_hosts</h2>
+<p>There’s a post about <a class="reference external" href="https://groups.google.com/forum/#!topic/ansible-project/R4Ho-oqJf3o">installing redis</a> on the
+Google group, and the guy who wrote most of Ansible chimes in with some advice
+on best practices (though the thread is from 2013, so it may be totally
+obsolete by now). Looking for the right way to do a <span class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></span> through
+Ansible reveals that it <a class="reference external" href="http://www.tomaz.me/2013/10/14/solution-for-ansible-git-module-getting-stuck-on-clone.html">sometimes gets stuck</a>,
+usually when <span class="docutils literal"><span class="pre">known_hosts</span></span> is missing. Looks like I get to learn how to put
+a file in place, before learning to git clone.</p>
+<p>I’m not totally sure if the boilerplate about <span class="docutils literal"><span class="pre">ansible_ssh_user</span></span> that I’m
+copying is actually going to accomplish my goal, but we’ll see when I run it.
+Since I’m <span class="docutils literal"><span class="pre">edunham</span></span> on the machine where I’m running Ansible and <span class="docutils literal"><span class="pre">root</span></span> on
+the remote system, it’ll be obvious to which user that variable referred.</p>
+<p>Now my <span class="docutils literal"><span class="pre">server.yml</span></span> looks like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>---
+- hosts: play
+  remote_user: root
+  tasks:
+  - name: install Git
+    apt:
+        pkg=git
+        state=latest
+  - name: Install known_hosts file
+    copy:
+        src=known_hosts
+        dest=/home/${ansible_ssh_user}/.ssh/known_hosts
+        owner=${ansible_ssh_user}
+        group=${ansible_ssh_user}
+</pre></div>
+</div>
+<p>I then moved my laptop’s <span class="docutils literal"><span class="pre">~/.ssh/known_hosts</span></span> to a backup location, tried to
+pull from github, added the key, and copied the now-much-shorter
+<span class="docutils literal"><span class="pre">~/.ssh/known_hosts</span></span> into my Ansible repo.</p>
+</div>
+<div class="section" id="trial-and-error-and-error">
+<h2>Trial and error and error</h2>
+<p>After putting my local backup back into place so my laptop knows more hosts
+than just GitHub, it’s time to see whether Ansible can apply that playbook:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible-playbook server.yml
+
+PLAY [play]
+*******************************************************************
+skipping: no hosts matched
+
+PLAY RECAP
+********************************************************************
+</pre></div>
+</div>
+<p>Huh, I clearly did something wrong... Oh, that’s right, it wouldn’t know which
+host <span class="docutils literal"><span class="pre">play</span></span> is because I moved the ansible <span class="docutils literal"><span class="pre">hosts</span></span> file into the repo!:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible-playbook -i hosts server.yml
+
+PLAY [play]
+*******************************************************************
+
+GATHERING FACTS
+***************************************************************
+fatal: [play] =&gt; SSH Error: Permission denied (publickey,password).
+while connecting to 162.243.134.126:22
+It is sometimes useful to re-run the command using -vvvv, which
+prints SSH debug output to help diagnose the issue.
+
+TASK: [install Git]
+***********************************************************
+FATAL: no hosts matched or all hosts have already failed -- aborting
+
+
+PLAY RECAP
+********************************************************************
+to retry, use: --limit @/home/edunham/server.retry
+play                       : ok=0    changed=0 unreachable=1    failed=0
+</pre></div>
+</div>
+<p>And that would be a failure to add the relevant ssh key after reboot. I add
+the ssh key to my agent, and this time it works:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible-playbook -i hosts server.yml
+
+PLAY [play] *******************************************************************
+
+GATHERING FACTS ***************************************************************
+ok: [play]
+
+TASK: [install Git] ***********************************************************
+changed: [play]
+
+TASK: [Install known_hosts file] **********************************************
+failed: [play] =&gt; {"checksum": "926e119d8b84c44f4790c47436967ada72e05ba3", "failed": true}
+msg: Destination directory /home/${ansible_ssh_user}/.ssh does not exist
+
+FATAL: all hosts have already failed -- aborting
+
+PLAY RECAP ********************************************************************
+           to retry, use: --limit @/home/edunham/server.retry
+
+play                       : ok=2    changed=1    unreachable=0    failed=1
+</pre></div>
+</div>
+<p>Okay, the <span class="docutils literal"><span class="pre">ansible_ssh_user</span></span> stuff was indeed screwed up. If I Google a bit
+more, I find that I actually skipped something importat in the <a class="reference external" href="http://docs.ansible.com/intro_inventory.html">inventory
+intro</a>: setting the user for
+the host. So I add <span class="docutils literal"><span class="pre">ansible_ssh_user=root</span></span> to the hosts file, and try
+again... and it fails again. Even when I substitute <span class="docutils literal"><span class="pre">root</span></span> for
+<span class="docutils literal"><span class="pre">${ansible_ssh_user}</span></span> in the playbook, it fails the same way. Looks like
+it’s not automatically creating the directory for me.</p>
+</div>
+<div class="section" id="create-a-directory">
+<h2>Create a directory</h2>
+<p>So, I get to make <span class="docutils literal"><span class="pre">.ssh</span></span> by hand. Cool story. So now that task looks like
+this:</p>
+<div class="highlight-python"><div class="highlight"><pre>- name: Install known_hosts file
+  file:
+      path=/home/${ansible_ssh_user}/.ssh/
+      state=directory
+      owner=${ansible_ssh_user}
+      group=${ansible_ssh_user}
+  copy:
+      src=known_hosts
+      dest=/home/${ansible_ssh_user}/.ssh/known_hosts
+      owner=${ansible_ssh_user}
+      group=${ansible_ssh_user}
+</pre></div>
+</div>
+<p>for which I’m rewarded with the error <span class="docutils literal"><span class="pre">ERROR:</span> <span class="pre">multiple</span> <span class="pre">actions</span> <span class="pre">specified</span> <span class="pre">in</span>
+<span class="pre">task:</span> <span class="pre">'file'</span> <span class="pre">and</span> <span class="pre">'Install</span> <span class="pre">known_hosts</span> <span class="pre">file'</span></span>. So I give a separate name to
+each action, try again, and get a new error:</p>
+<div class="highlight-python"><div class="highlight"><pre>failed: [play] =&gt; {"failed": true, "gid": 0, "group": "root", "mode": "0755",
+"owner": "root", "path": "/home/${ansible_ssh_user}", "size": 4096, "state":
+"directory", "uid": 0}
+msg: chown failed: failed to look up user ${ansible_ssh_user}
+</pre></div>
+</div>
+<p>At this point, since Google wasn’t giving me helpful results in a timely
+manner, I pinged a friend on IRC and he suggested an alternate syntax, which
+works:</p>
+<div class="highlight-python"><div class="highlight"><pre>---
+- hosts: play
+  remote_user: root
+  tasks:
+  - name: install Git
+    apt:
+        pkg=git
+        state=latest
+  - name: Create .ssh directory
+    file:
+        path=/home/{{ ansible_ssh_user }}/.ssh/
+        state=directory
+        owner={{ ansible_ssh_user }}
+        group={{ ansible_ssh_user }}
+  - name: Install known_hosts file
+    copy:
+        src=known_hosts
+        dest=/home/{{ ansible_ssh_user }}/.ssh/known_hosts
+        owner={{ ansible_ssh_user }}
+        group={{ ansible_ssh_user }}
+</pre></div>
+</div>
+<p>I’m glad it works like that, because it feels more like all the other
+Python-flavored templating that I’ve touched (Flask, Django, etc.). And it’s
+definitely a Python habit, but I prefer brain damage.</p>
+<p>I wonder if it’d be okay to put spaces around the <span class="docutils literal"><span class="pre">=</span></span> signs... one <span class="docutils literal"><span class="pre">:%s/=/</span>
+<span class="pre">=</span> <span class="pre">/g</span></span> and an <span class="docutils literal"><span class="pre">ansible-playbook</span></span> invocation later, I find that adding spaces
+causes it to fail with an erorr like:</p>
+<div class="highlight-python"><div class="highlight"><pre>fatal: [play] =&gt; a duplicate parameter was found in the argument string ()
+</pre></div>
+</div>
+<p>Not freaking helpful. But next time I see it, I’ll recognize it as too many
+spaces rather than just being totally confused.</p>
+</div>
+<div class="section" id="time-to-clone-playpen">
+<h2>Time to clone playpen</h2>
+<p>Now I should, in theory, have the ability to clone a repo from github. Time to
+test this hypothesis.... I’m starting by reading then copying from the <a class="reference external" href="http://docs.ansible.com/git_module.html">git
+module docs</a>.</p>
+<p>Let’s try it:</p>
+<div class="highlight-python"><div class="highlight"><pre>- name: Clone Playpen
+  git:
+      repo=git@github.com:thestinger/playpen.git
+      dest=/home/{{ ansible_ssh_user }}/playpen_source
+</pre></div>
+</div>
+<p>And it fails, because it got a GitHub host key that wasn’t recognized. I guess
+there are actually several keys:</p>
+<div class="highlight-python"><div class="highlight"><pre># ssh-keygen -r github.com
+github.com IN SSHFP 1 1 7bc4945739c3552b9de0260f4524e05329587dea
+github.com IN SSHFP 1 2 b040403fc0992ef0bf9144d8aaa25049d8564839821eb592d7338399e456609c
+github.com IN SSHFP 2 1 ce76002677a077bf43dabb446a23e86bb127c8c3
+github.com IN SSHFP 2 2 858dec00d20192cf334f54c96cccd5900f4540c2975e5d24c8236c255618c10c
+github.com IN SSHFP 3 1 261f7e4445378789267eb92c744e9e0d32a5f98d
+github.com IN SSHFP 3 2 a4ca08ec5bcf801885aa8b08b5deeb9a51c006988a5814e833f6ac08e81b021f
+</pre></div>
+</div>
+<p>In investigating which key I actually added to <span class="docutils literal"><span class="pre">known_hosts</span></span>, I discover a
+couple of worrisome things:</p>
+<p>First, my initial fumbling managed to create a <span class="docutils literal"><span class="pre">/home/${ansible_ssh_user}</span></span>
+directory, which is empty. Ha ha, I guess? I’ve manually removed it.</p>
+<p>Second, although Ansible claims to have installed the <span class="docutils literal"><span class="pre">known_hosts</span></span> file, I
+can’t actually see it. Actually after a bit more digging, it turns out that I
+was just being dumb at Unix. The system has a <span class="docutils literal"><span class="pre">/.ssh</span></span> created by
+DigitalOcean, which contains only my <span class="docutils literal"><span class="pre">authorized_keys</span></span> file. Ansible
+successfully created the <span class="docutils literal"><span class="pre">/home/root/.ssh/known_hosts</span></span> file, but <span class="docutils literal"><span class="pre">cd</span></span> as
+root takes you to <span class="docutils literal"><span class="pre">/</span></span> rather than to <span class="docutils literal"><span class="pre">/home/root</span></span>. Duh.</p>
+<p>Turns out that if I throw the <span class="docutils literal"><span class="pre">known_hosts</span></span> file into <span class="docutils literal"><span class="pre">/.ssh</span></span>,
+I can move on to the next error:</p>
+<div class="highlight-python"><div class="highlight"><pre>failed: [play] =&gt; {"cmd": "/usr/bin/git ls-remote '' -h refs/heads/HEAD", "failed": true, "rc": 128}
+stderr: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+msg: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+</pre></div>
+</div>
+<p>Should’ve been using the HTTPS url, since I don’t want to add a public key
+from this machine to anybody’s github account, and I’ll never need to push
+back to the repo from my play server.</p>
+</div>
+<div class="section" id="success">
+<h2>Success!</h2>
+<p>With that fix, it’s now successfully changed! The working playbook looks like
+this:</p>
+<div class="highlight-python"><div class="highlight"><pre>---
+- hosts: play
+  remote_user: root
+  tasks:
+  - name: install Git
+    apt:
+        pkg=git
+        state=latest
+  - name: Create .ssh directory
+    file:
+        # The ansible_ssh_user is specified in the hosts file
+        # For this host I'm using root, so .ssh location is special
+        path=/.ssh/
+        state=directory
+        owner={{ ansible_ssh_user }}
+        group={{ ansible_ssh_user }}
+  - name: Install known_hosts file
+    copy:
+        src=known_hosts
+        dest=/.ssh/known_hosts
+        owner={{ ansible_ssh_user }}
+        group={{ ansible_ssh_user }}
+  - name: Clone Playpen
+    git:
+        repo=https://github.com/thestinger/playpen.git
+        dest=/home/{{ ansible_ssh_user }}/playpen_source
+</pre></div>
+</div>
+</div>
+<div class="section" id="next-up">
+<h2>Next Up</h2>
+<p>My next steps will be to install the tools necesassary to build Playpen, and
+get Ansible to build it. I probably won’t keep up the “let’s-play” blog style,
+because it exponentially increases the amount of typing involved, and if you
+read this far you’re either a creepy stalker, thoroughly sick of hearing about
+my flailing at Ansible, or possibly both.</p>
+</div>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>Posted by E. Dunham</span>
+        </div>
+        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="http://edunham.net/tags/ansible.html">ansible</a></span>
+        </div>
+        </div><ul class="related clearfix">
+            <li class="left"> « <a href="http://edunham.net/2015/06/08/display_defaults.html">Display Defaults</a></li>
+            <li class="right"><a href="http://edunham.net/2015/06/05/configuration_management_comparison.html">Configuration Management Comparison</a> » </li>
+        </ul></article><aside class="sidebar"><section><div class="widget">
+    <h1>Recent Posts</h1>
+    <ul><li>
+            <a href="http://edunham.net/2016/07/01/thinkpad_13_trackpoint_i3.html">Thinkpad 13 Trackpoint slowdown in i3 window manager</a>
+        </li><li>
+            <a href="http://edunham.net/2016/06/27/hieroglyph_and_tinkerer_dependencies.html">Hieroglyph and Tinkerer Dependencies</a>
+        </li><li>
+            <a href="http://edunham.net/2016/06/23/cfps_made_easy.html">CFPs Made Easier</a>
+        </li><li>
+            <a href="http://edunham.net/2016/05/27/thinkpad_13.html">2ish weeks with the Thinkpad 13</a>
+        </li><li>
+            <a href="http://edunham.net/2016/05/10/reflections_on_my_first_live_webcast.html">Reflections on my first live webcast</a>
+        </li><li>
+            <a href="http://edunham.net/2016/05/05/paths_into_devops.html">Paths Into DevOps</a>
+        </li><li>
+            <a href="http://edunham.net/2016/04/18/persona_and_3rd_party_cookies_in_firefox.html">Persona and third-party cookies in Firefox</a>
+        </li><li>
+            <a href="http://edunham.net/2016/04/11/plushie_rustacean_pattern.html">Plushie Rustacean Pattern</a>
+        </li><li>
+            <a href="http://edunham.net/2016/03/24/could_rust_have_a_left_pad_incident.html">Could Rust have a left-pad incident?</a>
+        </li><li>
+            <a href="http://edunham.net/2016/03/23/reducing_saltstack_log_verbosity_for_travisci.html">Reducing SaltStack log verbosity for TravisCI</a>
+        </li></ul>
+</div>
+</section><section><div class="widget" id="searchbox" role="search">
+    <h1><a href="#searchbox">Search</a></h1>
+    <form action="http://edunham.net/search.html" method="get">
+        <input value="" name="q" type="text">
+        <button type="submit"><span class="fa fa-search"></span></button>
+    </form>
+</div></section><section><div class="widget">
+    <h1><a href="http://edunham.net/archive.html">Blog Archive</a></h1>
+</div></section><section><div class="widget">
+    <h1>Tags</h1><a href="http://edunham.net/tags/ansible.html">ansible</a> (6), <a href="http://edunham.net/tags/arandr.html">arandr</a> (1), <a href="http://edunham.net/tags/arch.html">arch</a> (11), <a href="http://edunham.net/tags/arduino.html">arduino</a> (1), <a href="http://edunham.net/tags/audio.html">audio</a> (1), <a href="http://edunham.net/tags/aws.html">aws</a> (4), <a href="http://edunham.net/tags/bash.html">bash</a> (2), <a href="http://edunham.net/tags/blackarch.html">blackarch</a> (1), <a href="http://edunham.net/tags/buildbot.html">buildbot</a> (5), <a href="http://edunham.net/tags/cargo.html">cargo</a> (1), <a href="http://edunham.net/tags/cfengine.html">cfengine</a> (1), <a href="http://edunham.net/tags/chef.html">chef</a> (1), <a href="http://edunham.net/tags/cloudfront.html">cloudfront</a> (1), <a href="http://edunham.net/tags/conferences.html">conferences</a> (4), <a href="http://edunham.net/tags/coverage.html">coverage</a> (1), <a href="http://edunham.net/tags/crafts.html">crafts</a> (1), <a href="http://edunham.net/tags/cs480.html">cs480</a> (2), <a href="http://edunham.net/tags/cups.html">cups</a> (1), <a href="http://edunham.net/tags/design.html">design</a> (1), <a href="http://edunham.net/tags/devops.html">devops</a> (2), <a href="http://edunham.net/tags/digitalocean.html">digitalocean</a> (1), <a href="http://edunham.net/tags/dmarc.html">dmarc</a> (1), <a href="http://edunham.net/tags/dns.html">dns</a> (1), <a href="http://edunham.net/tags/docker.html">docker</a> (1), <a href="http://edunham.net/tags/ec2.html">ec2</a> (1), <a href="http://edunham.net/tags/email.html">email</a> (3), <a href="http://edunham.net/tags/example.html">EXAMPLE</a> (1), <a href="http://edunham.net/tags/example.html">example</a> (1), <a href="http://edunham.net/tags/extundelete.html">extundelete</a> (1), <a href="http://edunham.net/tags/ferris.html">ferris</a> (1), <a href="http://edunham.net/tags/forth.html">forth</a> (1), <a href="http://edunham.net/tags/foss.html">foss</a> (4), <a href="http://edunham.net/tags/games.html">games</a> (1), <a href="http://edunham.net/tags/git.html">git</a> (2), <a href="http://edunham.net/tags/github.html">github</a> (1), <a href="http://edunham.net/tags/github_pages.html">github pages</a> (1), <a href="http://edunham.net/tags/gitstat.html">gitstat</a> (1), <a href="http://edunham.net/tags/habitrpg.html">habitrpg</a> (2), <a href="http://edunham.net/tags/hardware.html">hardware</a> (1), <a href="http://edunham.net/tags/hieroglyph.html">hieroglyph</a> (2), <a href="http://edunham.net/tags/i3.html">i3</a> (2), <a href="http://edunham.net/tags/interviews.html">interviews</a> (1), <a href="http://edunham.net/tags/irc.html">irc</a> (3), <a href="http://edunham.net/tags/irssi.html">irssi</a> (3), <a href="http://edunham.net/tags/jekyll.html">jekyll</a> (1), <a href="http://edunham.net/tags/kangaroos.html">kangaroos</a> (1), <a href="http://edunham.net/tags/latex.html">LaTeX</a> (3), <a href="http://edunham.net/tags/let_s_code.html">let's code</a> (1), <a href="http://edunham.net/tags/linode.html">linode</a> (1), <a href="http://edunham.net/tags/mailman.html">mailman</a> (1), <a href="http://edunham.net/tags/monte.html">monte</a> (1), <a href="http://edunham.net/tags/mozilla.html">mozilla</a> (3), <a href="http://edunham.net/tags/mplayer.html">mplayer</a> (1), <a href="http://edunham.net/tags/multirust.html">multirust</a> (1), <a href="http://edunham.net/tags/newbie.html">newbie</a> (1), <a href="http://edunham.net/tags/notty.html">notty</a> (1), <a href="http://edunham.net/tags/orglog.html">orglog</a> (1), <a href="http://edunham.net/tags/osx.html">osx</a> (1), <a href="http://edunham.net/tags/packaging.html">packaging</a> (1), <a href="http://edunham.net/tags/pandoc.html">pandoc</a> (1), <a href="http://edunham.net/tags/playpen.html">playpen</a> (1), <a href="http://edunham.net/tags/printers.html">printers</a> (1), <a href="http://edunham.net/tags/programming.html">programming</a> (1), <a href="http://edunham.net/tags/psychology.html">psychology</a> (1), <a href="http://edunham.net/tags/puppet.html">puppet</a> (1), <a href="http://edunham.net/tags/python.html">python</a> (1), <a href="http://edunham.net/tags/recordmydesktop.html">recordmydesktop</a> (1), <a href="http://edunham.net/tags/resume.html">resume</a> (3), <a href="http://edunham.net/tags/rst.html">rst</a> (1), <a href="http://edunham.net/tags/ruby.html">ruby</a> (1), <a href="http://edunham.net/tags/rust.html">rust</a> (5), <a href="http://edunham.net/tags/rustinfra.html">rustinfra</a> (9), <a href="http://edunham.net/tags/rustlang.html">rustlang</a> (3), <a href="http://edunham.net/tags/s3.html">s3</a> (2), <a href="http://edunham.net/tags/saltstack.html">saltstack</a> (2), <a href="http://edunham.net/tags/school.html">school</a> (6), <a href="http://edunham.net/tags/screen.html">screen</a> (1), <a href="http://edunham.net/tags/security.html">security</a> (1), <a href="http://edunham.net/tags/shameless_self_promotion.html">shameless self-promotion</a> (1), <a href="http://edunham.net/tags/shell.html">shell</a> (1), <a href="http://edunham.net/tags/solved.html">solved</a> (5), <a href="http://edunham.net/tags/speaking.html">speaking</a> (2), <a href="http://edunham.net/tags/sphinx.html">sphinx</a> (2), <a href="http://edunham.net/tags/ssh.html">ssh</a> (1), <a href="http://edunham.net/tags/sshfs.html">sshfs</a> (1), <a href="http://edunham.net/tags/talks.html">talks</a> (1), <a href="http://edunham.net/tags/terminator.html">terminator</a> (1), <a href="http://edunham.net/tags/test.html">TEST</a> (1), <a href="http://edunham.net/tags/testing.html">testing</a> (1), <a href="http://edunham.net/tags/thinkpad.html">thinkpad</a> (2), <a href="http://edunham.net/tags/til.html">TIL</a> (1), <a href="http://edunham.net/tags/tinkerer.html">tinkerer</a> (5), <a href="http://edunham.net/tags/trackpoint.html">trackpoint</a> (1), <a href="http://edunham.net/tags/travisci.html">travisci</a> (5), <a href="http://edunham.net/tags/troubleshooting.html">troubleshooting</a> (5), <a href="http://edunham.net/tags/ubuntu.html">ubuntu</a> (1), <a href="http://edunham.net/tags/vagrant.html">vagrant</a> (1), <a href="http://edunham.net/tags/vidyo.html">vidyo</a> (1), <a href="http://edunham.net/tags/vim.html">vim</a> (3), <a href="http://edunham.net/tags/wifi.html">wifi</a> (1), <a href="http://edunham.net/tags/windows.html">Windows</a> (1), <a href="http://edunham.net/tags/workflow.html">workflow</a> (1), <a href="http://edunham.net/tags/x240.html">x240</a> (1), <a href="http://edunham.net/tags/xrandr.html">xrandr</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container" role="contentinfo"><footer class="wrapper">© Copyright 2015, E. Dunham. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+                   This work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://edunham.net/" property="cc:attributionName" rel="cc:attributionURL">E. Dunham</a> is licensed under a
+               <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative
+                   Commons Attribution-NonCommercial 4.0 International
+                   License</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    
+</body>
+</html>

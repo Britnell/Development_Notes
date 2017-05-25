@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html style="" class=" js no-touch csstransforms3d csstransitions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- Basic -->
+<meta charset="utf-8">
+<title>Python Lists</title>
+<meta name="description" content="Python Lists - Learning Python in simple and easy steps : A beginner's tutorial containing complete knowledge of Python Syntax Object Oriented Language, Methods, Tuples, Tools/Utilities, Exceptions Handling, Sockets, GUI, Extentions, XML Programming.">
+<meta name="Keywords" content="Python, Tutorials, Learning, Beginners, Basics, Object Oriented Language, Methods, Overriding, Networking, Multithreading,Methods, Tuples, Tools/Utilities, Exceptions Handling, Sockets, GUI, Extentions, XML, Programming.">
+
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="fb:app_id" content="471319149685276">
+<meta property="og:site_name" content="www.tutorialspoint.com">
+<meta name="robots" content="index, follow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="author" content="tutorialspoint.com">
+
+
+<!-- Head Libs -->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
+<![endif]-->
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div class="wrapLoader">
+   <div class="imgLoader">
+      <img src="loading-cg.gif" alt="" width="70" height="70">
+   </div>
+</div>
+<header>
+   <div class="container">			
+      <h1 class="logo">
+      <a href="http://www.tutorialspoint.com/index.htm" title="tutorialspoint">
+      <img alt="tutorialspoint" src="logo.png">
+      </a>
+      </h1>			
+      <nav>
+         <ul class="nav nav-pills nav-top">
+            <li><a href="http://www.tutorialspoint.com/about/about_careers.htm" style="background: rgb(255, 251, 9) none repeat scroll 0% 0%; font-weight: bold;"><i class="icon icon-suitcase"></i> Jobs</a></li>
+            <li> <a href="https://www.send18.com/"><i class="fa fa-send"></i> &nbsp;Send18</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/whiteboard.htm"><img src="image-editor.png" style="opacity: 0.6;"> &nbsp;Whiteboard</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/netmeeting.php"><i class="fa-camera"></i> &nbsp;Net Meeting</a> </li>
+            <li> <a href="http://www.tutorialspoint.com/online_dev_tools.htm"> <i class="dev-tools-menu" style="opacity: 0.5;"></i> Tools </a> </li>
+            <li> <a href="http://www.tutorialspoint.com/articles/index.php"><i class="icon icon-file-text-o"></i> &nbsp;Articles</a> </li>            
+            <li class="top-icons">
+              <ul class="social-icons">
+              <li class="facebook"><a href="https://www.facebook.com/tutorialspointindia" target="_top" data-placement="bottom" title="tutorialspoint @ Facebook">Facebook</a></li>
+              <li class="googleplus"><a href="https://plus.google.com/u/0/116678774017490391259/posts" target="_top" data-placement="bottom" title="tutorialspoint @ Google+">Google+</a></li>
+              <li class="twitter"><a href="http://www.twitter.com/tutorialspoint" target="_top" data-placement="bottom" title="tutorialspoint @ Twitter">Twitter</a></li>
+              <li class="linkedin"><a href="http://www.linkedin.com/company/tutorialspoint" target="_top" data-placement="bottom" title="tutorialspoint @ Linkedin">Linkedin</a></li>
+              <li class="youtube"><a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_top" data-placement="bottom" title="tutorialspoint YouTube">YouTube</a></li>
+              </ul>
+           </li>
+         </ul>
+      </nav>
+         <!-- search code here  --> 
+      <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 4153px ! important;"> <i class="icon icon-bars"></i> </button>
+   </div>
+   <div class="navbar nav-main">
+      <div class="container">
+         <nav class="nav-main mega-menu">
+            <ul class="nav nav-pills nav-main" id="mainMenu">
+               <li class="dropdown no-sub-menu"> <a class="dropdown" href="http://www.tutorialspoint.com/index.htm"><i class="icon icon-home"></i> Home</a> </li>   
+               <li class="dropdown" id="liTL"><a class="dropdown" href="javascript:void(0);"><span class="tut-lib"> Tutorials Library <i class="fa-caret-down"></i></span></a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="http://www.tutorialspoint.com/codingground.htm"><i class="fa-code"></i> Coding Ground </a> </li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="http://www.tutorialspoint.com/tutor_connect/index.php"><i class="fa-user"> </i> Tutor Connect</a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="http://www.tutorialspoint.com/videotutorials/index.htm"><i class="fa-toggle-right"></i> Videos </a></li>
+               <li class="dropdown no-sub-menu">
+                  <div class="searchform-popup">
+                     <input value="" style="" class="header-search-box" id="search-string" name="q" placeholder="Search your favorite tutorials..." onfocus="if (this.value == 'Search your favorite tutorials...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search your favorite tutorials...';}" autocomplete="off" type="text">
+                     <div class="magnifying-glass"><i class="icon-search"></i> Search </div>
+                 </div>
+               </li>
+            </ul>
+         </nav>
+         <div class="submenu-item sub-main-menu" id="top-sub-menu"></div>
+         
+      </div>
+   </div>	
+</header>
+<div style="clear: both;"></div>
+<div role="main" class="main">
+<div class="container">
+<div class="row">
+<div class="col-md-2">
+<aside class="sidebar">
+<div class="mini-logo">
+<img src="python-mini.jpg" alt="Python Tutorial">
+</div>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Python Basic Tutorial</li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/index.htm">Python - Home</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_overview.htm">Python - Overview</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_environment.htm">Python - Environment Setup</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_basic_syntax.htm">Python - Basic Syntax</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_variable_types.htm">Python - Variable Types</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_basic_operators.htm">Python - Basic Operators</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_decision_making.htm">Python - Decision Making</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_loops.htm">Python - Loops</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_numbers.htm">Python - Numbers</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_strings.htm">Python - Strings</a></li>
+<li><a style="background-color: rgb(214, 214, 214);" target="_top" href="http://www.tutorialspoint.com/python/python_lists.htm">Python - Lists</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_tuples.htm">Python - Tuples</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_dictionary.htm">Python - Dictionary</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_date_time.htm">Python - Date &amp; Time</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_functions.htm">Python - Functions</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_modules.htm">Python - Modules</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_files_io.htm">Python - Files I/O</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_exceptions.htm">Python - Exceptions</a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Python Advanced Tutorial</li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_classes_objects.htm">Python - Classes/Objects</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_reg_expressions.htm">Python - Reg Expressions</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_cgi_programming.htm">Python - CGI Programming</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_database_access.htm">Python - Database Access</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_networking.htm">Python - Networking</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_sending_email.htm">Python - Sending Email</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_multithreading.htm">Python - Multithreading</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_xml_processing.htm">Python - XML Processing</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_gui_programming.htm">Python - GUI Programming</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_further_extensions.htm">Python - Further Extensions</a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Python  Useful Resources</li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_questions_answers.htm">Python - Questions and Answers</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_quick_guide.htm">Python - Quick Guide</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_tools_utilities.htm">Python - Tools/Utilities</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_useful_resources.htm">Python - Useful Resources</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/python/python_discussion.htm">Python - Discussion</a></li>
+</ul>
+<ul class="nav nav-list primary push-bottom left-menu special">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="http://www.tutorialspoint.com/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/questions_and_answers.htm">Questions and Answers</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/effective_resume_writing.htm">Effective Resume Writing</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/computer_glossary.htm">Computer Glossary</a></li>
+<li><a target="_top" href="http://www.tutorialspoint.com/computer_whoiswho.htm">Who is Who</a></li>
+</ul>
+</aside>
+</div>
+<!-- PRINTING STARTS HERE -->
+<div class="row">
+<div class="content">
+<div class="col-md-7 middle-col">
+<h1>Python Lists</h1>
+<div class="topgooglead">
+<hr>
+<div style="padding-bottom: 5px; padding-left: 10px;">Advertisements</div>
+
+
+</div>
+<hr>
+<div class="pre-btn">
+<a href="http://www.tutorialspoint.com/python/python_strings.htm"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="http://www.tutorialspoint.com/python/python_tuples.htm">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<div class="clearer"></div>
+<hr>
+<p>The most basic data structure in Python is the <b>sequence</b>. Each element of a sequence is assigned a number - its position or index. The first index is zero, the second index is one, and so forth.</p>
+<p>Python has six built-in types of sequences, but the most common ones are lists and tuples, which we would see in this tutorial.</p>
+<p>There are certain things you can do with all sequence types. These operations include indexing, slicing, adding, multiplying, and checking for membership. In addition, Python has built-in functions for finding the length of a sequence and for finding its largest and smallest elements.</p>
+<h2>Python Lists</h2>
+<p>The list is a most versatile datatype available in Python which can be written as a list of comma-separated values (items) between square brackets. Important thing about a list is that items in a list need not be of the same type.</p>
+<p>Creating a list is as simple as putting different comma-separated values between square brackets. For example −</p>
+<pre style="" class="prettyprint notranslate prettyprinted"><span class="pln">list1 </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'physics'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'chemistry'</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1997</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2000</span><span class="pun">];</span><span class="pln">
+list2 </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">3</span><span class="pun">,</span><span class="pln"> </span><span class="lit">4</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pln"> </span><span class="pun">];</span><span class="pln">
+list3 </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">"a"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"b"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"c"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"d"</span><span class="pun">]</span></pre>
+<p>Similar to string indices, list indices start at 0, and lists can be sliced, concatenated and so on.</p>
+<h2>Accessing Values in Lists</h2>
+<p>To access values in lists, use the square brackets for slicing along with the index or indices to obtain value available at that index. For example −</p>
+<pre style="" class="prettyprint notranslate tryit prettyprinted"><span class="com">#!/usr/bin/python</span><span class="pln">
+
+list1 </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'physics'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'chemistry'</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1997</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2000</span><span class="pun">];</span><span class="pln">
+list2 </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">3</span><span class="pun">,</span><span class="pln"> </span><span class="lit">4</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">6</span><span class="pun">,</span><span class="pln"> </span><span class="lit">7</span><span class="pln"> </span><span class="pun">];</span><span class="pln">
+
+</span><span class="kwd">print</span><span class="pln"> </span><span class="str">"list1[0]: "</span><span class="pun">,</span><span class="pln"> list1</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]</span><span class="pln">
+</span><span class="kwd">print</span><span class="pln"> </span><span class="str">"list2[1:5]: "</span><span class="pun">,</span><span class="pln"> list2</span><span class="pun">[</span><span class="lit">1</span><span class="pun">:</span><span class="lit">5</span><span class="pun">]</span></pre>
+<p>When the above code is executed, it produces the following result −</p>
+<pre class="result notranslate">list1[0]:  physics
+list2[1:5]:  [2, 3, 4, 5]
+</pre>
+<h2>Updating Lists</h2>
+<p>You can update single or multiple elements of lists by giving the slice on the left-hand side of the assignment operator, and you can add to elements in a list with the append() method. For example −</p>
+<pre style="" class="prettyprint notranslate tryit prettyprinted"><span class="com">#!/usr/bin/python</span><span class="pln">
+
+list </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'physics'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'chemistry'</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1997</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2000</span><span class="pun">];</span><span class="pln">
+
+</span><span class="kwd">print</span><span class="pln"> </span><span class="str">"Value available at index 2 : "</span><span class="pln">
+</span><span class="kwd">print</span><span class="pln"> list</span><span class="pun">[</span><span class="lit">2</span><span class="pun">]</span><span class="pln">
+list</span><span class="pun">[</span><span class="lit">2</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="lit">2001</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">print</span><span class="pln"> </span><span class="str">"New value available at index 2 : "</span><span class="pln">
+</span><span class="kwd">print</span><span class="pln"> list</span><span class="pun">[</span><span class="lit">2</span><span class="pun">]</span></pre>
+<p><b>Note:</b> append() method is discussed in subsequent section.</p><p>
+</p><p>When the above code is executed, it produces the following result −</p>
+<pre class="result notranslate">Value available at index 2 :
+1997
+New value available at index 2 :
+2001
+</pre>
+<h2>Delete List Elements</h2>
+<p>To remove a list element, you can use either the del statement if you know exactly which element(s) you are deleting or the remove() method if you do not know. For example −</p>
+<pre style="" class="prettyprint notranslate tryit prettyprinted"><span class="com">#!/usr/bin/python</span><span class="pln">
+
+list1 </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'physics'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'chemistry'</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1997</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2000</span><span class="pun">];</span><span class="pln">
+
+</span><span class="kwd">print</span><span class="pln"> list1
+</span><span class="kwd">del</span><span class="pln"> list1</span><span class="pun">[</span><span class="lit">2</span><span class="pun">];</span><span class="pln">
+</span><span class="kwd">print</span><span class="pln"> </span><span class="str">"After deleting value at index 2 : "</span><span class="pln">
+</span><span class="kwd">print</span><span class="pln"> list1</span></pre>
+<p>When the above code is executed, it produces following result −</p>
+<pre class="result notranslate">['physics', 'chemistry', 1997, 2000]
+After deleting value at index 2 :
+['physics', 'chemistry', 2000]
+</pre>
+<p><b>Note:</b> remove() method is discussed in subsequent section.</p>
+<h2>Basic List Operations</h2>
+<p>Lists respond to the + and * operators much like strings; they mean concatenation and repetition here too, except that the result is a new list, not a string.</p>
+<p>In fact, lists respond to all of the general sequence operations we used on strings in the prior chapter.</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="width: 33%;">Python Expression</th><th style="width: 33%;">Results </th><th style="width: 33%;"> Description</th></tr>
+<tr><td>len([1, 2, 3])</td><td>3</td><td>Length</td></tr>
+<tr><td>[1, 2, 3] + [4, 5, 6]</td><td>[1, 2, 3, 4, 5, 6]</td><td>Concatenation</td></tr>
+<tr><td>['Hi!'] * 4</td><td>['Hi!', 'Hi!', 'Hi!', 'Hi!']</td><td>Repetition</td></tr>
+<tr><td>3 in [1, 2, 3]</td><td>True</td><td>Membership</td></tr>
+<tr><td>for x in [1, 2, 3]: print x,</td><td>1 2 3</td><td>Iteration</td></tr>
+</tbody></table>
+<h2>Indexing, Slicing, and Matrixes</h2>
+<p>Because lists are sequences, indexing and slicing work the same way for lists as they do for strings.</p>
+<p>Assuming following input −</p>
+<pre style="" class="prettyprint notranslate prettyprinted"><span class="pln">L </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'spam'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Spam'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'SPAM!'</span><span class="pun">]</span></pre>
+<p>&nbsp;</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="width: 33%;">Python Expression</th><th style="width: 33%;">Results </th><th style="width: 33%;"> Description</th></tr>
+<tr><td>L[2]</td><td>'SPAM!'</td><td>Offsets start at zero</td></tr>
+<tr><td>L[-2]</td><td>'Spam'</td><td>Negative: count from the right</td></tr>
+<tr><td>L[1:]</td><td>['Spam', 'SPAM!']</td><td>Slicing fetches sections</td></tr>
+</tbody></table>
+<h2>Built-in List Functions &amp; Methods:</h2>
+<p>Python includes the following list functions −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="width: 5%;">SN</th><th style="width: 95%;">Function with Description</th></tr>
+<tr><td>1</td><td><p><a href="http://www.tutorialspoint.com/python/list_cmp.htm">cmp(list1, list2)</a></p><br>Compares elements of both lists.</td></tr>
+<tr><td>2</td><td><p><a href="http://www.tutorialspoint.com/python/list_len.htm">len(list)</a></p><br>Gives the total length of the list.</td></tr>
+<tr><td>3</td><td><p><a href="http://www.tutorialspoint.com/python/list_max.htm">max(list)</a></p><br>Returns item from the list with max value.</td></tr>
+<tr><td>4</td><td><p><a href="http://www.tutorialspoint.com/python/list_min.htm">min(list)</a></p><br>Returns item from the list with min value.</td></tr>
+<tr><td>5</td><td><p><a href="http://www.tutorialspoint.com/python/list_list.htm">list(seq)</a></p><br>Converts a tuple into list.</td></tr>
+</tbody></table>
+<p>Python includes following list methods</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="width: 5%;">SN</th><th style="width: 95%;">Methods with Description</th></tr>
+<tr><td>1</td><td><p><a href="http://www.tutorialspoint.com/python/list_append.htm">list.append(obj)</a></p><br>Appends object obj to list</td></tr>
+<tr><td>2</td><td><p><a href="http://www.tutorialspoint.com/python/list_count.htm">list.count(obj)</a></p><br>Returns count of how many times obj occurs in list</td></tr>
+<tr><td>3</td><td><p><a href="http://www.tutorialspoint.com/python/list_extend.htm">list.extend(seq)</a></p><br>Appends the contents of seq to list</td></tr>
+<tr><td>4</td><td><p><a href="http://www.tutorialspoint.com/python/list_index.htm">list.index(obj)</a></p><br>Returns the lowest index in list that obj appears</td></tr>
+<tr><td>5</td><td><p><a href="http://www.tutorialspoint.com/python/list_insert.htm">list.insert(index, obj)</a></p><br>Inserts object obj into list at offset index</td></tr>
+<tr><td>6</td><td><p><a href="http://www.tutorialspoint.com/python/list_pop.htm">list.pop(obj=list[-1])</a></p><br>Removes and returns last object or obj from list</td></tr>
+<tr><td>7</td><td><p><a href="http://www.tutorialspoint.com/python/list_remove.htm">list.remove(obj)</a></p><br>Removes object obj from list</td></tr>
+<tr><td>8</td><td><p><a href="http://www.tutorialspoint.com/python/list_reverse.htm">list.reverse()</a></p><br>Reverses objects of list in place</td></tr>
+<tr><td>9</td><td><p><a href="http://www.tutorialspoint.com/python/list_sort.htm">list.sort([func])</a></p><br>Sorts objects of list, use compare func if given</td></tr>
+</tbody></table>
+<hr>
+<div class="pre-btn">
+<a href="http://www.tutorialspoint.com/python/python_strings.htm"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="print-btn center">
+<a href="http://www.tutorialspoint.com/cgi-bin/printpage.cgi" target="_top"><i class="icon icon-print big-font"></i> Print</a>
+</div>
+<div class="pdf-btn">
+<a href="http://www.tutorialspoint.com/python/pdf/python_lists.pdf" title="Python Lists" target="_top"><i class="icon icon-file-pdf-o big-font"></i> PDF</a>
+</div>
+<div class="nxt-btn">
+<a href="http://www.tutorialspoint.com/python/python_tuples.htm">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<hr>
+<!-- PRINTING ENDS HERE -->
+<div class="bottomgooglead">
+<div class="bottomadtag">Advertisements</div>
+
+
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3" id="rightbar">
+<div class="simple-ad">
+<a href="http://www.facebook.com/sharer.php?u=">
+<img src="facebookicon.jpg" alt="img">
+</a>
+<a href="http://twitter.com/share?url=">
+<img src="twittericon.jpg" alt="img">
+</a>
+<a href="https://www.linkedin.com/cws/share?url=">
+<img src="linkedinicon.jpg" alt="img">
+</a>
+<a href="https://plus.google.com/share?url=http://www.tutorialspoint.com/python/python_lists.htm">
+<img src="googleplusicon.jpg" alt="img">
+</a>
+<a href="http://www.stumbleupon.com/submit?url=http://www.tutorialspoint.com/python/python_lists.htm&amp;title=">
+<img src="stumbleuponicon.jpg" alt="img">
+</a>
+<a href="http://reddit.com/submit?url=http://www.tutorialspoint.com/python/python_lists.htm&amp;title=">
+<img src="reddit.jpg" alt="img">
+</a>
+</div>
+<div class="rightgooglead">
+
+
+</div>
+<div class="rightgooglead">
+
+
+</div>
+<div class="rightgooglead">
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col-md-1">
+<a href="http://www.tutorialspoint.com/index.htm" class="logo"> <img alt="Tutorials Point" class="img-responsive" src="logo-footer.png"> </a>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <nav id="sub-menu">
+      <ul>
+         <li><a href="http://www.tutorialspoint.com/about/tutorials_writing.htm">Write for us</a></li>
+         <li><a href="http://www.tutorialspoint.com/about/faq.htm">FAQ's</a></li>
+         <li><a href="http://www.tutorialspoint.com/about/about_helping.htm">Helping</a></li>
+         <li><a href="http://www.tutorialspoint.com/about/contact_us.htm">Contact</a></li>
+      </ul>
+   </nav>
+</div>
+<div class="col-md-3 col-sm-12 col-xs-12">
+<p>© Copyright 2016. All Rights Reserved.</p>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <div class="news-group">
+      <input value="" class="form-control-foot search" name="textemail" id="textemail" autocomplete="off" placeholder="Enter email for newsletter" onfocus="if (this.value == 'Enter email for newsletter...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter email for newsletter...';}" type="text">
+      <span class="input-group-btn"> <button class="btn btn-default btn-footer" id="btnemail" type="submit" onclick="javascript:void(0);">go</button> </span>
+      <div id="newsresponse"></div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Libs -->
+<a id="scrollToTop" href="#" class="scroll-to-top visible"><i class="icon icon-chevron-up icon-white"></i></a>
+
+
+
+<div id="source" style="display: none;"></div><div id="supportsource" style="display: none;"></div><div id="utilsource" style="display: none;"></div><div id="extrasource" style="display: none;"></div><div id="inputs" style="display: none;"></div><div id="filename" style="display: none;"></div>
+
+
+<div style="top: 4004px; left: 0px; width: 8px;" class="autocomplete-suggestions "></div><div style="display: none;" id="cboxOverlay"></div><div style="display: none;" tabindex="-1" role="dialog" class="" id="colorbox"><div id="cboxWrapper"><div><div style="float: left;" id="cboxTopLeft"></div><div style="float: left;" id="cboxTopCenter"></div><div style="float: left;" id="cboxTopRight"></div></div><div style="clear: left;"><div style="float: left;" id="cboxMiddleLeft"></div><div style="float: left;" id="cboxContent"><div style="float: left;" id="cboxTitle"></div><div style="float: left;" id="cboxCurrent"></div><button id="cboxPrevious" type="button"></button><button id="cboxNext" type="button"></button><button id="cboxSlideshow"></button><div style="float: left;" id="cboxLoadingOverlay"></div><div style="float: left;" id="cboxLoadingGraphic"></div></div><div style="float: left;" id="cboxMiddleRight"></div></div><div style="clear: left;"><div style="float: left;" id="cboxBottomLeft"></div><div style="float: left;" id="cboxBottomCenter"></div><div style="float: left;" id="cboxBottomRight"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div></body>
+</html>
