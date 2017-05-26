@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Reading and Writing JSON to a File in Python</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- fav icons -->
+	<!--<link rel="shortcut icon" href="/assets/images/favicon.ico?v=7e20fea1d1">-->
+	<link rel="apple-touch-icon" href="http://stackabuse.com/assets/images/apple-touch-icon.png?v=7e20fea1d1">
+	<link rel="apple-touch-icon" sizes="72x72" href="http://stackabuse.com/assets/images/apple-touch-icon-72x72.png?v=7e20fea1d1">
+	<link rel="apple-touch-icon" sizes="114x114" href="http://stackabuse.com/assets/images/apple-touch-icon-114x114.png?v=7e20fea1d1">
+	<!-- stylesheets -->
+	
+	
+	
+	
+	
+	
+	    <link rel="canonical" href="http://stackabuse.com/reading-and-writing-json-to-a-file-in-python/">
+    <meta name="referrer" content="origin-when-cross-origin">
+    
+    <meta property="og:site_name" content="Stack Abuse">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Reading and Writing JSON to a File in Python">
+    <meta property="og:description" content="Over the last 5-10 years, the JSON format has been one of, if not the most, popular ways to serialize data. Especially in the web development world, you'll likely encounter JSON through one of the many REST APIs, application configuration, or even simple data storage. Given its prevalence and impact">
+    <meta property="og:url" content="http://stackabuse.com/reading-and-writing-json-to-a-file-in-python/">
+    <meta property="article:published_time" content="2016-08-17T16:15:15.000Z">
+    <meta property="article:modified_time" content="2016-08-17T16:15:15.000Z">
+    <meta property="article:tag" content="json">
+    <meta property="article:tag" content="python">
+    <meta property="article:tag" content="how to">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Reading and Writing JSON to a File in Python">
+    <meta name="twitter:description" content="Over the last 5-10 years, the JSON format has been one of, if not the most, popular ways to serialize data. Especially in the web development world, you'll likely encounter JSON through one of the many REST APIs, application configuration, or even simple data storage. Given its prevalence and impact">
+    <meta name="twitter:url" content="http://stackabuse.com/reading-and-writing-json-to-a-file-in-python/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Scott Robinson">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="json, python, how to">
+    <meta name="twitter:creator" content="@ScottWRobinson">
+    
+    
+
+    <meta name="generator" content="Ghost 0.9">
+    <link rel="alternate" type="application/rss+xml" title="Stack Abuse" href="http://stackabuse.com/rss/">
+    
+<link rel="prefetch" href="https://c.disquscdn.com/next/embed/styles/lounge.20cfff8d029707c37d8244d1552722e0.css"><link rel="prefetch" href="https://c.disquscdn.com/next/embed/common.bundle.c3748fa6049fccb7c9d6b933021520c4.js"><link rel="prefetch" href="https://c.disquscdn.com/next/embed/lounge.bundle.15f27d6126965a3dc623e8352d4c1839.js"><link rel="prefetch" href="https://disqus.com/next/config.js">
+<link media="all" href="index.css" type="text/css" rel="stylesheet">
+</head>
+<body class="post-template tag-json tag-python tag-how-to">
+	<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="fa fa-bars"></i>
+      </button>
+      <a class="navbar-brand" href="http://stackabuse.com/">Stack <span style="color: rgb(241, 99, 52);">Abuse</span></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+	<li class="nav-home" role="presentation"><a href="http://stackabuse.com/">Home</a></li>
+	<li class="nav-nodejs" role="presentation"><a href="http://stackabuse.com/tag/node/">Node.js</a></li>
+	<li class="nav-python" role="presentation"><a href="http://stackabuse.com/tag/python">Python</a></li>
+	<li class="nav-tools" role="presentation"><a href="http://stackabuse.com/tools/">Tools</a></li>
+</ul>
+      <!--<ul class="nav navbar-nav pull-right">
+        <li role="presentation">
+          <a class="btn btn-success nav-btn" href="http://jobs.stackabuse.com">Find a Job</a>
+        </li>
+        <li role="presentation">
+          <a class="btn btn-danger nav-btn" href="http://jobs.stackabuse.com/post">Post a Job</a>
+        </li>
+      </ul>-->
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+	<!-- start site's main content area -->
+<section class="content-wrap">
+	<div class="container">
+		<div class="row">
+			<!-- start main post area -->
+			<div class="col-md-8 main-content">
+				<!-- start post -->
+				<article id="84" class="post tag-json tag-python tag-how-to">
+					<div class="post-head">
+						<h2 class="post-title">Reading and Writing JSON to a File in Python</h2>
+						<div class="post-meta">
+							<span class="author">
+                                By
+                                <a rel="nofollow" target="_top" href="https://twitter.com/ScottWRobinson">
+                                    <i class="fa fa-twitter" style="color: rgb(85, 172, 238);"></i>
+                                    Scott Robinson
+                                </a>
+                            </span> •
+							<span class="date">August 17, 2016</span> •
+							<span class="comment-count"><a href="http://stackabuse.com/reading-and-writing-json-to-a-file-in-python/#disqus_thread">0 Comments</a></span>
+						</div>
+					</div>
+                    <div class="content-ad">
+    
+    <!-- sa-responsive -->
+    <ins class="adsbygoogle" style="display: block; height: 60px;" data-ad-client="ca-pub-5704119028142803" data-ad-slot="6304666171" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display: inline-table; border: medium none; height: 60px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 547px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 60px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 547px; background-color: transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_0" name="aswift_0" style="left: 0px; position: absolute; top: 0px; width: 547px; height: 60px;" src="index_1.html" width="547" height="60" frameborder="0"></iframe></ins></ins></ins>
+    
+</div>					<div class="post-content">
+						<p>Over the last 5-10 years, the <a rel="nofollow" target="_top" href="https://en.wikipedia.org/wiki/JSON">JSON</a> format has been one of, if not the most, popular ways to serialize data. Especially in the web development world, you'll likely encounter JSON through one of the many <a rel="nofollow" target="_top" href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST APIs</a>, application configuration, or even simple data storage.</p>
+
+<p>Given its prevalence and impact on programming, at some point in your development you'll likely want to learn how to read JSON from a file or write JSON to a file. Both of these tasks are pretty easy to accomplish with Python, as you'll see in the next few sections.</p>
+
+<h3 id="writingjsontoafile">Writing JSON to a File</h3>
+
+<p>The easiest way to write your data in the JSON format to a file using Python is to use store your data in a <code>dict</code> object, which can contain other nested <code>dict</code>s, arrays, booleans, or other primitive types like integers and strings. You can find a more detailed list of data types supported <a rel="nofollow" target="_top" href="https://en.wikipedia.org/wiki/JSON#Data_types.2C_syntax_and_example">here</a>.</p>
+
+<p>The built-in <a rel="nofollow" target="_top" href="https://docs.python.org/3.4/library/json.html">json</a> package has the magic code that transforms your Python <code>dict</code> object in to the serialized JSON string.</p>
+
+<pre><code class="language-python hljs"><span class="hljs-keyword">import</span> json
+
+data = {}  
+data[<span class="hljs-string">'people'</span>] = []  
+data[<span class="hljs-string">'people'</span>].append({  
+    <span class="hljs-string">'name'</span>: <span class="hljs-string">'Scott'</span>,
+    <span class="hljs-string">'website'</span>: <span class="hljs-string">'stackabuse.com'</span>,
+    <span class="hljs-string">'from'</span>: <span class="hljs-string">'Nebraska'</span>
+})
+data[<span class="hljs-string">'people'</span>].append({  
+    <span class="hljs-string">'name'</span>: <span class="hljs-string">'Larry'</span>,
+    <span class="hljs-string">'website'</span>: <span class="hljs-string">'google.com'</span>,
+    <span class="hljs-string">'from'</span>: <span class="hljs-string">'Michigan'</span>
+})
+data[<span class="hljs-string">'people'</span>].append({  
+    <span class="hljs-string">'name'</span>: <span class="hljs-string">'Tim'</span>,
+    <span class="hljs-string">'website'</span>: <span class="hljs-string">'apple.com'</span>,
+    <span class="hljs-string">'from'</span>: <span class="hljs-string">'Alabama'</span>
+})
+
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">'data.txt'</span>, <span class="hljs-string">'w'</span>) <span class="hljs-keyword">as</span> outfile:  
+    json.dump(data, outfile)
+</code></pre>
+
+<p>After importing the <code>json</code> library, we construct some simple data to write to our file. The important part comes at the end when we use the <code>with</code> statement to open our destination file, then use <a rel="nofollow" target="_top" href="https://docs.python.org/3.4/library/json.html#json.dump">json.dump</a> to write the <code>data</code> object to the <code>outfile</code> file.</p>
+
+<p>Any file-like object can be passed to the second argument, even if it isn't an actual file. A good example of this would be a socket, which can be opened, closed, and written to much like a file. With JSON being popular throughout the web, this is another use-case you may encounter.</p>
+
+<p>A slight variation on the <code>json.dump</code> method that's worth mentioning is <a rel="nofollow" target="_top" href="https://docs.python.org/3.4/library/json.html#json.dumps">json.dumps</a>, which returns the actual JSON string instead of sending it directly to a writable object. This can give you some more control if you need to make some changes to the JSON string (like encrypting it, for example).</p>
+
+<h3 id="readingjsonfromafile">Reading JSON from a File</h3>
+
+<p>On the other end, reading JSON data from a file is just as easy as writing it to a file. Using the same <code>json</code> package again, we can extract and parse the JSON string directly from a file object. In the following example, we do just that and then print out the data we got:</p>
+
+<pre><code class="language-python hljs"><span class="hljs-keyword">import</span> json
+
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">'data.txt'</span>) <span class="hljs-keyword">as</span> json_file:  
+    data = json.load(json_file)
+    <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> data[<span class="hljs-string">'people'</span>]:
+        print(<span class="hljs-string">'Name: '</span> + p[<span class="hljs-string">'name'</span>])
+        print(<span class="hljs-string">'Website: '</span> + p[<span class="hljs-string">'website'</span>])
+        print(<span class="hljs-string">'From: '</span> + p[<span class="hljs-string">'from'</span>])
+        print(<span class="hljs-string">''</span>)
+</code></pre>
+
+<p><a rel="nofollow" target="_top" href="https://docs.python.org/3.4/library/json.html#json.load">json.load</a> is the important method to note here. It reads the string from the file, parses the JSON data, populates a Python <code>dict</code> with the data and returns it back to you.</p>
+
+<p>Just like <code>json.dump</code>, <code>json.load</code> has an alternative method that lets you deal with strings directly since many times you probably won't have a file-like object that contains your JSON. As you probably guessed, this method is <a rel="nofollow" target="_top" href="https://docs.python.org/3.4/library/json.html#json.loads">json.loads</a>. Consider the case where you're calling a REST GET endpoint that returns JSON. This data comes to you as a string, which you can then pass to <code>json.loads</code> directly instead.</p>
+
+<h3 id="options">Options</h3>
+
+<p>When serializing your data to JSON with Python, the result will be in the standard format and not very readable since whitespace is eliminated. While this is the ideal behavior for most cases, sometimes you may need to make small changes, like adding whitespace to make it human readable. Both <code>json.dump</code> and <code>json.load</code> provide quite a few options for more flexibility, a few of which will be described here.</p>
+
+<h5 id="prettyprinting">Pretty-Printing</h5>
+
+<p>Making JSON human readable (aka "pretty printing") is as easy as passing an integer value for the <code>indent</code> parameter:</p>
+
+<pre><code class="language-python hljs"><span class="hljs-prompt">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> json
+<span class="hljs-prompt">&gt;&gt;&gt; </span>data = {<span class="hljs-string">'people'</span>:[{<span class="hljs-string">'name'</span>: <span class="hljs-string">'Scott'</span>, <span class="hljs-string">'website'</span>: <span class="hljs-string">'stackabuse.com'</span>, <span class="hljs-string">'from'</span>: <span class="hljs-string">'Nebraska'</span>}]}
+<span class="hljs-prompt">&gt;&gt;&gt; </span>json.dumps(data, indent=<span class="hljs-number">4</span>)
+{
+    <span class="hljs-string">"people"</span>: [
+        {
+            <span class="hljs-string">"website"</span>: <span class="hljs-string">"stackabuse.com"</span>, 
+            <span class="hljs-string">"from"</span>: <span class="hljs-string">"Nebraska"</span>, 
+            <span class="hljs-string">"name"</span>: <span class="hljs-string">"Scott"</span>
+        }
+    ]
+}
+</code></pre>
+
+<p>This is actually quite useful since you'll often have to read JSON data during development. Another option is to use the command line tool, <code>json.tool</code>. So if you just want to pretty-print JSON to the command line you can do something like this:</p>
+
+<pre><code class="language-bash hljs">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">'{"people":[{"name":"Scott", "website":"stackabuse.com", "from":"Nebraska"}]}'</span> | python -m json.tool
+{
+    <span class="hljs-string">"people"</span>: [
+        {
+            <span class="hljs-string">"name"</span>: <span class="hljs-string">"Scott"</span>,
+            <span class="hljs-string">"website"</span>: <span class="hljs-string">"stackabuse.com"</span>
+            <span class="hljs-string">"from"</span>: <span class="hljs-string">"Nebraska"</span>,
+        }
+    ]
+}
+</code></pre>
+
+<h5 id="sorting">Sorting</h5>
+
+<p>In JSON, an object is defined as:</p>
+
+<blockquote>
+  <p>An object is an unordered set of name/value pairs.</p>
+</blockquote>
+
+<p>So the standard is saying that key order isn't guaranteed, but it's possible that you may need it for your own purposes internally. To achieve ordering, you can pass <code>True</code> to the <code>sort_keys</code> option when using <code>json.dump</code> or <code>json.dumps</code>.</p>
+
+<pre><code class="language-python hljs"><span class="hljs-prompt">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> json
+<span class="hljs-prompt">&gt;&gt;&gt; </span>data = {<span class="hljs-string">'people'</span>:[{<span class="hljs-string">'name'</span>: <span class="hljs-string">'Scott'</span>, <span class="hljs-string">'website'</span>: <span class="hljs-string">'stackabuse.com'</span>, <span class="hljs-string">'from'</span>: <span class="hljs-string">'Nebraska'</span>}]}
+<span class="hljs-prompt">&gt;&gt;&gt; </span>json.dumps(data, sort_keys=<span class="hljs-keyword">True</span>, indent=<span class="hljs-number">4</span>)
+{
+    <span class="hljs-string">"people"</span>: [
+        {
+            <span class="hljs-string">"from"</span>: <span class="hljs-string">"Nebraska"</span>,
+            <span class="hljs-string">"name"</span>: <span class="hljs-string">"Scott"</span>,
+            <span class="hljs-string">"website"</span>: <span class="hljs-string">"stackabuse.com"</span>
+        }
+    ]
+}
+</code></pre>
+
+<h5 id="asciitext">ASCII Text</h5>
+
+<p>By default, <code>json.dump</code> will ensure that all of your text in the given Python dictionary are ASCII-encoded. If non-ASCII characters are present, then they're automatically escaped, as shown in the following example: </p>
+
+<pre><code class="language-python hljs"><span class="hljs-prompt">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> json
+<span class="hljs-prompt">&gt;&gt;&gt; </span>data = {<span class="hljs-string">'item'</span>: <span class="hljs-string">'Beer'</span>, <span class="hljs-string">'cost'</span>:<span class="hljs-string">'£4.00'</span>}
+<span class="hljs-prompt">&gt;&gt;&gt; </span>jstr = json.dumps(data, indent=<span class="hljs-number">4</span>)
+<span class="hljs-prompt">&gt;&gt;&gt; </span>print(jstr)
+{
+    <span class="hljs-string">"item"</span>: <span class="hljs-string">"Beer"</span>,
+    <span class="hljs-string">"cost"</span>: <span class="hljs-string">"\u00a34.00"</span>
+}
+</code></pre>
+
+<p>This isn't always acceptable, and in many cases you may want to keep your Unicode characters un-touched. To do this, set the <code>ensure_ascii</code> option to <code>False</code>.</p>
+
+<pre><code class="language-python hljs"><span class="hljs-prompt">&gt;&gt;&gt; </span>jstr = json.dumps(data, ensure_ascii=<span class="hljs-keyword">False</span>, indent=<span class="hljs-number">4</span>)
+<span class="hljs-prompt">&gt;&gt;&gt; </span>print(jstr)
+{
+    <span class="hljs-string">"item"</span>: <span class="hljs-string">"Beer"</span>,
+    <span class="hljs-string">"cost"</span>: <span class="hljs-string">"£4.00"</span>
+}
+</code></pre>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>In this article we introduced you to the <code>json.dump</code>, <code>json.dumps</code>, <code>json.load</code>, and <code>json.loads</code> methods, which help in serializing and deserializing JSON strings.</p>
+
+<p>With JSON having become one of the most popular ways to serialize structured data, you'll likely have to interact with it pretty frequently, especially when working on web applications. Python's <code>json</code> module is a great way to get started, although you'll probably find that <a rel="nofollow" target="_top" href="https://github.com/simplejson/simplejson">simplejson</a> is another great alternative that is much less strict on JSON syntax (which we'll save for another article).</p>
+
+<p><em>What are some of your common use-cases for storing JSON data? Data persistence, configuration, or something else? Let us know in the comments!</em></p>
+					</div>
+					<footer class="post-footer clearfix">
+						<div class="pull-left tag-list">
+							<i class="fa fa-folder-open-o"></i>
+							<a href="http://stackabuse.com/tag/json/">json</a>,<a href="http://stackabuse.com/tag/python/">python</a>,<a href="http://stackabuse.com/tag/how-to/">how to</a>
+						</div>
+						<div class="pull-right share">
+							<div>
+	<ul class="share-icons">
+		<!-- twitter -->
+		<li>
+			<a href="https://twitter.com/share?text=Reading%20and%20Writing%20JSON%20to%20a%20File%20in%20Python&amp;url=http://stackabuse.com/reading-and-writing-json-to-a-file-in-python/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"><i class="fa fa-twitter" style="color: rgb(85, 172, 238);"></i></a>
+		</li>
+		<!-- facebook -->
+		<li>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http://stackabuse.com/reading-and-writing-json-to-a-file-in-python/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><i class="fa fa-facebook" style="color: rgb(59, 89, 152);"></i></a>
+		</li>
+		<!-- google plus -->
+		<li>
+			<a href="https://plus.google.com/share?url=http://stackabuse.com/reading-and-writing-json-to-a-file-in-python/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"><i class="fa fa-google-plus" style="color: rgb(220, 78, 65);"></i></a>
+		</li>
+		<!-- linkedin -->
+		<li>
+			<a href="https://www.linkedin.com/shareArticle?mini=true%26url=http://stackabuse.com/reading-and-writing-json-to-a-file-in-python/%26source=http://stackabuse.com" onclick="window.open(this.href, 'linkedin-share', 'width=490,height=530');return false;"><i class="fa fa-linkedin" style="color: rgb(0, 119, 181);"></i></a>
+		</li>
+	</ul>
+</div>						</div>
+					</footer>
+				</article>
+				<!-- start about the author -->
+<div class="about-author clearfix">
+		<a href="http://stackabuse.com/author/scott/"><img src="new-profile.jpg" alt="Author image" class="avatar pull-left"></a>
+	<div class="details">
+		<div class="author">
+			About <a href="http://stackabuse.com/author/scott/">Scott Robinson</a>
+		</div>
+		<div class="meta-info" style="font-style: normal;">
+			<span>
+                <i class="fa fa-twitter" style="color: rgb(85, 172, 238);"></i>
+                <a rel="nofollow" href="https://twitter.com/ScottWRobinson" target="_BLANK">Twitter</a>
+            </span>
+            <span>
+                <i class="fa fa-github" style="color: rgb(51, 51, 51);"></i>
+                <a rel="nofollow" href="https://github.com/ScottWRobinson" target="_BLANK">Github</a>
+            </span>
+		</div>
+	</div>
+</div>
+<!-- end about the author -->				<div class="comment-wrap">
+					<!-- start disqus comment -->
+<div class="disqus-container">
+	<div id="disqus_thread"><iframe id="dsq-app1" name="dsq-app1" allowtransparency="true" scrolling="no" tabindex="0" title="Disqus" style="width: 1px !important; min-width: 100% !important; border: medium none !important; overflow: hidden !important; height: 594px !important;" src="index_11.html" horizontalscrolling="no" verticalscrolling="no" width="100%" frameborder="0"></iframe></div>
+	    
+	    
+</div>
+<!-- end disqus comment -->				</div>
+				<!-- start prev next wrap -->
+<div class="prev-next-wrap clearfix">
+		<a class="btn btn-default" href="http://stackabuse.com/understanding-json-web-tokens-jwt/"><i class="fa fa-angle-left fa-fw"></i> Previous Post : Understanding JSON Web Tokens (JWT)</a>
+		&nbsp;
+        <a class="btn btn-default" href="http://stackabuse.com/copying-a-directory-with-scp/">Next Post : Copying a Directory with SCP <i class="fa fa-angle-right fa-fw"></i></a>
+</div>				<!-- end post -->
+			</div>
+			<!-- end main post area -->
+			<!-- start sidebar -->
+<div class="col-md-4 sidebar">
+	<!-- start widget -->
+<div class="widget">
+	<h4 class="title">Ad</h4>
+	<div class="content ad">
+        
+        <!-- sa-responsive -->
+        <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-5704119028142803" data-ad-slot="6304666171" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display: inline-table; border: medium none; height: 600px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 233px; background-color: transparent;"><ins id="aswift_1_anchor" style="display: block; border: medium none; height: 600px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 233px; background-color: transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_1" name="aswift_1" style="left: 0px; position: absolute; top: 0px; width: 233px; height: 600px;" src="index_19.html" width="233" height="600" frameborder="0"></iframe></ins></ins></ins>
+        
+	</div>
+</div>
+<!-- end widget -->	<!-- start widget -->
+<div class="widget">
+	<h4 class="title">Follow</h4>
+	<div class="content">
+		<ul class="social">
+			<!-- start social links -->
+			<!-- replace the # with your own profile link address -->
+			<li><a href="https://twitter.com/ScottWRobinson"><i class="fa fa-twitter"></i></a></li>
+			<li><a href="https://www.facebook.com/stackabuse"><i class="fa fa-facebook"></i></a></li>
+			<!--<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+			<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+			<li><a href="#"><i class="fa fa-skype"></i></a></li>
+			<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+			<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+			<li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
+			<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+			<li><a href="#"><i class="fa fa-flickr"></i></a></li>
+			<li><a href="#"><i class="fa fa-tumblr"></i></a></li>-->
+			<li><a href="https://github.com/scottwrobinson"><i class="fa fa-github"></i></a></li>
+			<!--<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+			<li><a href="#"><i class="fa fa-stack-overflow"></i></a></li>
+			<li><a href="#"><i class="fa fa-stack-exchange"></i></a></li>
+			<li><a href="#"><i class="fa fa-xing"></i></a></li>
+			<li><a href="#"><i class="fa fa-envelope"></i></a></li>-->
+			<li><a href="http://stackabuse.com/rss/"><i class="fa fa-rss"></i></a></li>
+			<!-- end social links -->
+		</ul>
+	</div>
+</div>
+<!-- end widget -->    <!-- start widget -->
+<div class="widget">
+	<h4 class="title">Twitter</h4>
+	<div class="content twitter"><iframe id="twitter-widget-0" scrolling="no" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 520px; padding: 0px; border: medium none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; height: 922.983px;" data-widget-id="722928793669607425" title="Twitter Timeline" src="index_20.html" frameborder="0"></iframe></div>
+</div>
+<!-- end widget -->	<!-- start widget -->
+<div class="widget">
+	<h4 class="title">Recent Post</h4>
+	<div class="content recent-post"><div class="recent-single-post"><a href="http://stackabuse.com/zsh-vs-bash/" class="post-title">Zsh vs Bash</a><div class="date">September 30, 2016</div></div><div class="recent-single-post"><a href="http://stackabuse.com/caret-vs-tilde-in-package-json/" class="post-title">Caret vs Tilde in package.json</a><div class="date">September 15, 2016</div></div><div class="recent-single-post"><a href="http://stackabuse.com/substrings-in-bash/" class="post-title">Substrings in Bash</a><div class="date">September 9, 2016</div></div></div>
+</div>
+<!-- end widget -->	<!-- start tag cloud widget -->
+<div class="widget">
+	<h4 class="title">Tags</h4>
+	<div class="content tag-cloud"><a href="http://stackabuse.com/tag/unix">unix</a><a href="http://stackabuse.com/tag/bash">bash</a><a href="http://stackabuse.com/tag/zsh">zsh</a><a href="http://stackabuse.com/tag/javascript">javascript</a><a href="http://stackabuse.com/tag/npm">npm</a><a href="http://stackabuse.com/tag/node">node</a><a href="http://stackabuse.com/tag/json">json</a><a href="http://stackabuse.com/tag/explained">explained</a><a href="http://stackabuse.com/tag/python">python</a><a href="http://stackabuse.com/tag/how-to">how to</a><a href="http://stackabuse.com/tag/es7">es7</a><a href="http://stackabuse.com/tag/smtp">smtp</a><a href="http://stackabuse.com/tag/mac">mac</a><a href="http://stackabuse.com/tag/http">http</a><a href="http://stackabuse.com/tag/rest">rest</a></div>
+</div>
+<!-- end tag cloud widget -->	<!-- start tag cloud widget -->
+<div class="widget">
+	<h4 class="title">Newsletter</h4>
+	<div class="content newsletter">
+		<p>Subscribe to our newsletter</p>
+		<div id="mc_embed_signup">
+			<form action="http://stackabuse.us10.list-manage.com/subscribe/post?u=90b216fdbe02b25619ec94fc3&amp;amp;id=bc2bb312cd" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" novalidate="" target="_blank">
+				<div class="input-group">
+					<input value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Enter your email..." type="email">
+				</div>
+				<div style="position: absolute; left: -5000px;">
+				<input name="b_90b216fdbe02b25619ec94fc3_bc2bb312cd" tabindex="-1" value="" type="text">
+				</div>
+				<div class="input-group">
+					<input value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default" type="submit">
+				</div>
+			</form>
+		</div>
+		<div id="message"></div>
+	</div>
+</div>
+<!-- end tag cloud widget -->    <!-- start widget -->
+<div class="widget">
+	<h4 class="title">Ad</h4>
+	<div class="content ad">
+        
+        <!-- sa-responsive -->
+        <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-5704119028142803" data-ad-slot="6304666171" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display: inline-table; border: medium none; height: 600px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 233px; background-color: transparent;"><ins id="aswift_2_anchor" style="display: block; border: medium none; height: 600px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 233px; background-color: transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" id="aswift_2" name="aswift_2" style="left: 0px; position: absolute; top: 0px; width: 233px; height: 600px;" src="index_24.html" width="233" height="600" frameborder="0"></iframe></ins></ins></ins>
+        
+	</div>
+</div>
+<!-- end widget --></div>
+<!-- end sidebar -->		</div>
+	</div>
+</section><iframe style="display: none;" src="index_32.html"></iframe>
+<!-- end site's main content area -->
+
+	<!-- start main-footer -->
+	<footer class="main-footer">
+		<div class="container">
+			<div class="row">
+				<!-- start first footer widget area -->
+				<div class="col-sm-4">
+					<!-- start widget -->
+<div class="widget">
+	<h4 class="title">Recent Post</h4>
+	<div class="content recent-post"><div class="recent-single-post"><a href="http://stackabuse.com/zsh-vs-bash/" class="post-title">Zsh vs Bash</a><div class="date">September 30, 2016</div></div><div class="recent-single-post"><a href="http://stackabuse.com/caret-vs-tilde-in-package-json/" class="post-title">Caret vs Tilde in package.json</a><div class="date">September 15, 2016</div></div><div class="recent-single-post"><a href="http://stackabuse.com/substrings-in-bash/" class="post-title">Substrings in Bash</a><div class="date">September 9, 2016</div></div></div>
+</div>
+<!-- end widget -->				</div>
+				<!-- end first footer widget area -->
+				<!-- start second footer widget area -->
+				<div class="col-sm-4">
+					<!-- start tag cloud widget -->
+<div class="widget">
+	<h4 class="title">Tags</h4>
+	<div class="content tag-cloud"><a href="http://stackabuse.com/tag/unix">unix</a><a href="http://stackabuse.com/tag/bash">bash</a><a href="http://stackabuse.com/tag/zsh">zsh</a><a href="http://stackabuse.com/tag/javascript">javascript</a><a href="http://stackabuse.com/tag/npm">npm</a><a href="http://stackabuse.com/tag/node">node</a><a href="http://stackabuse.com/tag/json">json</a><a href="http://stackabuse.com/tag/explained">explained</a><a href="http://stackabuse.com/tag/python">python</a><a href="http://stackabuse.com/tag/how-to">how to</a><a href="http://stackabuse.com/tag/es7">es7</a><a href="http://stackabuse.com/tag/smtp">smtp</a><a href="http://stackabuse.com/tag/mac">mac</a><a href="http://stackabuse.com/tag/http">http</a><a href="http://stackabuse.com/tag/rest">rest</a></div>
+</div>
+<!-- end tag cloud widget -->				</div>
+				<!-- end second footer widget area -->
+				<!-- start third footer widget area -->
+				<div class="col-sm-4">
+					<!-- start widget -->
+<div class="widget">
+	<h4 class="title">Follow</h4>
+	<div class="content">
+		<ul class="social">
+			<!-- start social links -->
+			<!-- replace the # with your own profile link address -->
+			<li><a href="https://twitter.com/ScottWRobinson"><i class="fa fa-twitter"></i></a></li>
+			<li><a href="https://www.facebook.com/stackabuse"><i class="fa fa-facebook"></i></a></li>
+			<!--<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+			<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+			<li><a href="#"><i class="fa fa-skype"></i></a></li>
+			<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+			<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+			<li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
+			<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+			<li><a href="#"><i class="fa fa-flickr"></i></a></li>
+			<li><a href="#"><i class="fa fa-tumblr"></i></a></li>-->
+			<li><a href="https://github.com/scottwrobinson"><i class="fa fa-github"></i></a></li>
+			<!--<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+			<li><a href="#"><i class="fa fa-stack-overflow"></i></a></li>
+			<li><a href="#"><i class="fa fa-stack-exchange"></i></a></li>
+			<li><a href="#"><i class="fa fa-xing"></i></a></li>
+			<li><a href="#"><i class="fa fa-envelope"></i></a></li>-->
+			<li><a href="http://stackabuse.com/rss/"><i class="fa fa-rss"></i></a></li>
+			<!-- end social links -->
+		</ul>
+	</div>
+</div>
+<!-- end widget -->				</div>
+				<!-- end third footer widget area -->
+			</div>
+		</div>
+	</footer>
+	<!-- end main-footer -->
+	<!-- start copyright section -->
+<div class="copyright">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				Copyright © 2017, <a href="http://stackabuse.com/">Stack Abuse</a>.  All Right Reserved
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end copyright section -->	<div class="footer-links">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<a href="http://stackabuse.com/disclosure">Disclosure</a>
+					•
+					<a href="http://stackabuse.com/privacy-policy">Privacy Policy</a>
+					•
+					<a href="http://stackabuse.com/terms-of-service">Terms of Service</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a href="#" id="back-to-top" style="display: inline;"><i class="fa fa-angle-up"></i></a>
+	<!--
+<script src="//my.hellobar.com/4dd9990be00532b0fc7961824b7d7a0930e9e2b7.js" type="text/javascript" charset="utf-8" async="async"></script>
+-->
+	<!-- scripts -->
+	
+	
+	
+	
+	
+	<!-- <script src="/assets/js/indeed.js?v=7e20fea1d1"></script> -->
+	
+	<!-- <script src="//gdc.indeed.com/ads/apiresults.js" type="text/javascript"></script> -->
+	
+    
+	<!-- Add your analytic code below -->
+
+
+<iframe id="rufous-sandbox" scrolling="no" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" title="Twitter analytics iframe" src="index_33.html" frameborder="0"></iframe></body>
+</html>
