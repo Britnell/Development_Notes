@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html class="skrollr skrollr-desktop" lang="en-US">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://www.diegoacuna.me/xmlrpc.php">
+
+<title>How to run a script as a service in Raspberry Pi – Raspbian Jessie – Food Concerns</title>
+<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Food Concerns » Feed" href="http://www.diegoacuna.me/feed/">
+<link rel="alternate" type="application/rss+xml" title="Food Concerns » Comments Feed" href="http://www.diegoacuna.me/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Food Concerns » How to run a script as a service in Raspberry Pi - Raspbian Jessie Comments Feed" href="http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/feed/">
+		
+		
+
+
+
+
+
+
+
+
+
+
+<link rel="https://api.w.org/" href="http://www.diegoacuna.me/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.diegoacuna.me/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.diegoacuna.me/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Installing mod_jk on apache httpd in CentOS 6.x/7.x" href="http://www.diegoacuna.me/installing-mod_jk-on-apache-httpd-in-centos-6-x7-x/">
+<link rel="next" title="Multi-Layer Perceptron for regression in Julia: Using the Mocha framework" href="http://www.diegoacuna.me/multi-layer-perceptron-for-regression-in-julia-using-the-mocha-framework/">
+<meta name="generator" content="WordPress 4.7.4">
+<link rel="canonical" href="http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/">
+<link rel="shortlink" href="http://www.diegoacuna.me/?p=52">
+<link rel="alternate" type="application/json+oembed" href="http://www.diegoacuna.me/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.diegoacuna.me%2Fhow-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.diegoacuna.me/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.diegoacuna.me%2Fhow-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie%2F&amp;format=xml">
+		
+		
+<!-- BEGIN GADWP v4.9.6.2 Universal Tracking - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+
+
+<!-- END GADWP Universal Tracking -->
+
+<link rel="prefetch" href="https://c.disquscdn.com/next/embed/styles/lounge.a219a5731bfdc6a1d16fa492c1ac36e9.css"><link rel="prefetch" href="https://c.disquscdn.com/next/embed/common.bundle.a4849fee956376877b26b8e6c72d72af.js"><link rel="prefetch" href="https://c.disquscdn.com/next/embed/lounge.bundle.cb747fc513806d4dc31875f848444102.js"><link rel="prefetch" href="https://disqus.com/next/config.js">
+<link media="all" href="index.css" type="text/css" rel="stylesheet">
+</head>
+<body class="post-template-default single single-post postid-52 single-format-standard with-sticky-transparent-navigation with-sticky-navigation">
+
+	<div class="mondo-loading-screen" style="opacity: 0; display: none;">
+		<div class="spinner">
+			<div class="bounce1 spinner-element"></div>
+		  <div class="bounce2 spinner-element"></div>
+		  <div class="bounce3 spinner-element"></div>
+		</div>
+	</div>
+	
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+			<div id="scroll-bar" style="width: 53.9856%;">
+			<div id="scroll-bar-inner"></div>
+		</div>
+	
+	<header id="masthead" class="site-header" role="banner">
+		<nav id="site-navigation" class="main-navigation sticky" role="navigation">
+			<div class="nav-wrapper container">
+				<a href="http://www.diegoacuna.me/" class="brand-logo normal">
+					
+						<span class="text-logo">
+							Food Concerns						</span>
+
+									</a>
+
+				
+				<ul id="menu-menu" class="nav-list float-right hidden-xs hidden-sm"><li id="menu-item-18" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-18"><span><a href="http://www.diegoacuna.me/">Home</a></span></li>
+<li id="menu-item-19" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19"><span><a href="http://www.diegoacuna.me/contact-me/">Contact me</a></span></li>
+<li class="menu-item menu-item-search">
+				<span>
+					<a class="search-btn icon-btn">
+						<i class="mdi mdi-magnify"></i>
+					</a>
+				</span></li><li class="menu-item menu-item-hamburger hidden-sm hidden-xs">
+				<span>
+					<a class="menu-btn icon-btn">
+						<span class="menu-icon-bar"></span>
+						<span class="menu-icon-bar"></span>
+						<span class="menu-icon-bar"></span>
+					</a>
+				</span></li></ul>				<div class="menu-btn mobile float-right hidden-md hidden-lg">
+					<span class="menu-icon-bar"></span>
+					<span class="menu-icon-bar"></span>
+					<span class="menu-icon-bar"></span>
+				</div>
+									<div class="search-btn icon-btn mobile float-right hidden-md hidden-lg">
+						<i class="mdi mdi-magnify"></i>
+					</div>
+							</div>
+		</nav>
+
+		
+	<div id="mondo-search-fill" style=""></div>
+	<form role="search" method="get" class="search-form large" action="http://www.diegoacuna.me/">
+		<input class="search-field" placeholder="Enter keyword..." value="" name="s" title="Search for:" autocomplete="off" type="search">
+	</form>
+	<a href="#" class="search-close"><i class="mdi mdi-close"></i></a>
+
+		</header>
+
+	
+
+	
+	<nav class="pushy pushy-right"><a href="#" class="pushy-close"><i class="mdi mdi-close"></i></a>
+	<div class="profile">
+					<img src="b7727c40433b8de3905894eadf5131c7.png" class="profile-image img-circle" alt="Diego Acuña">
+			<div class="profile-name">
+				Diego Acuña			</div>
+			</div>
+
+			<div class="about-me">
+			I'm a Software Engineering and Web Developer from Chile. My main interests are web technologies, software development methodologies and data mining (mainly on financial area). If you want to get in touch with me, use the contact page from the top menu.		</div>
+	
+	<ul class="mobile-menu hidden-md hidden-lg"><li id="mobile-menu-item-18"><span class="waves-effect waves-block waves-classic"><a href="http://www.diegoacuna.me/">Home</a></span></li><li id="mobile-menu-item-19"><span class="waves-effect waves-block waves-classic"><a href="http://www.diegoacuna.me/contact-me/">Contact me</a></span></li></ul><div class="side-menu-widget"></div></nav>
+	<div class="site-overlay"></div>
+
+	<div id="content" class="site-content container">
+		<div class="row">
+	
+	<div class="col-md-8">
+		<div id="primary" class="content-area">
+			<main id="main" class="site-main" role="main">
+
+			
+				
+<article id="post-52" class="mondo-standard post-52 post type-post status-publish format-standard has-post-thumbnail hentry category-iot category-linux tag-raspberry-pi tag-systemd">
+			<div class="entry-media waves-effect waves-light waves-block">
+			<img src="raspberry_pi_b_top.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="http://www.diegoacuna.me/wp-content/uploads/2016/04/Raspberry_Pi_B_top.jpg 1240w, http://www.diegoacuna.me/wp-content/uploads/2016/04/Raspberry_Pi_B_top-300x201.jpg 300w, http://www.diegoacuna.me/wp-content/uploads/2016/04/Raspberry_Pi_B_top-768x515.jpg 768w, http://www.diegoacuna.me/wp-content/uploads/2016/04/Raspberry_Pi_B_top-1024x686.jpg 1024w" sizes="(max-width: 1240px) 100vw, 1240px" width="1240" height="831">		</div>
+	
+	<header class="entry-header">
+		<h1 class="entry-title">How to run a script as a service in Raspberry Pi - Raspbian Jessie</h1>
+		<div class="entry-meta"><span class="posted-on"><a href="http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/" title="Thu, 07 Apr 2016 12:52:25 +0000"><time class="entry-date published updated" datetime="2016-04-07T12:52:25+00:00">1 year ago</time></a></span><span class="separator"> • </span><span class="cat-links"><a href="http://www.diegoacuna.me/category/iot/" rel="category tag">IoT</a>, <a href="http://www.diegoacuna.me/category/linux/" rel="category tag">Linux</a></span><span class="separator"> • </span>		
+				<span class="love-link">
+					<a href="#" class="mondo-love-button" title="Click to love this post." data-id="52">
+				<i class="mdi mdi-heart-outline"></i>
+				<span class="love-count">5</span>
+			</a>
+				</span>
+				</div>	</header><!-- .entry-header -->
+	
+	<div class="entry-content">
+		<p>The <a href="https://www.raspberrypi.org/">Raspberry Pi</a> is an incredible popular&nbsp;credit card size mini computer with awesome capabilities. &nbsp;Despite of is mini size it&nbsp;behaves pretty much like a regular computer (it has an OS with a graphical interface, an ethernet port so you can surf the web, an HDMI output, etc.) but also it exposes several inputs/outputs (GPIO) to interact with the real world (sensors and cool tech gadgets).</p>
+<p>A pretty common task when using this device, is to run some script (for example a python script) as a service in the operating system so it can start on boot, stop and restart using <em>systemctl</em> and more. In this post I'm going to explain how to set a little script as a service using Raspbian Jessie in a Raspberry Pi.</p>
+<p>First of all, we&nbsp;are going to write a small python script which print "Hello World" every 60 seconds. This is going to be our service script (hello_world.py):</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-592efe9f4e690610798509" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -18px; display: none; z-index: 4;"><span class="crayon-title">Hello World script</span>
+			<div class="crayon-tools" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Python</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="-moz-tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;" wrap="soft">#!/usr/bin/python
+
+from time import sleep
+
+try:
+    while True:
+        print "Hello World"
+        sleep(60)
+except KeyboardInterrupt, e:
+    logging.info("Stopping...")</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-592efe9f4e690610798509-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e690610798509-2">2</div><div class="crayon-num" data-line="crayon-592efe9f4e690610798509-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e690610798509-4">4</div><div class="crayon-num" data-line="crayon-592efe9f4e690610798509-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e690610798509-6">6</div><div class="crayon-num" data-line="crayon-592efe9f4e690610798509-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e690610798509-8">8</div><div class="crayon-num" data-line="crayon-592efe9f4e690610798509-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e690610798509-10">10</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-592efe9f4e690610798509-1"><span class="crayon-c">#!/usr/bin/python</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e690610798509-2">&nbsp;</div><div class="crayon-line" id="crayon-592efe9f4e690610798509-3"><span class="crayon-st">from</span><span class="crayon-h"> </span><span class="crayon-k ">time</span><span class="crayon-h"> </span><span class="crayon-r">import</span><span class="crayon-h"> </span><span class="crayon-e">sleep</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e690610798509-4">&nbsp;</div><div class="crayon-line" id="crayon-592efe9f4e690610798509-5"><span class="crayon-st">try</span><span class="crayon-o">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e690610798509-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">while</span><span class="crayon-h"> </span><span class="crayon-t">True</span><span class="crayon-o">:</span></div><div class="crayon-line" id="crayon-592efe9f4e690610798509-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-k ">print</span><span class="crayon-h"> </span><span class="crayon-s">"Hello World"</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e690610798509-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">sleep</span><span class="crayon-sy">(</span><span class="crayon-cn">60</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-592efe9f4e690610798509-9"><span class="crayon-st">except</span><span class="crayon-h"> </span><span class="crayon-k ">KeyboardInterrupt</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">e</span><span class="crayon-o">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e690610798509-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-k ">logging</span><span class="crayon-sy">.</span><span class="crayon-e">info</span><span class="crayon-sy">(</span><span class="crayon-s">"Stopping..."</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0028 seconds] -->
+<p>You can execute it by&nbsp;<em>python hello_world.py</em>. If you get boring reading so many hello worlds, press Ctrl+C (or Cmd+C on OSX) to stop it. Save this file as hello_world.py in your home folder (<em>home/pi/</em>). Now we're going to define the service to run this script:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-592efe9f4e6a2682083530" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -18px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="-moz-tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;" wrap="soft">cd /lib/systemd/system/
+sudo nano hello.service</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-592efe9f4e6a2682083530-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e6a2682083530-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-592efe9f4e6a2682083530-1"><span class="crayon-r">cd</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">lib</span><span class="crayon-o">/</span><span class="crayon-v">systemd</span><span class="crayon-o">/</span><span class="crayon-v">system</span><span class="crayon-o">/</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e6a2682083530-2"><span class="crayon-e">sudo </span><span class="crayon-e">nano </span><span class="crayon-v">hello</span><span class="crayon-e">.service</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0010 seconds] -->
+<p>The service definition must be on the <em>/lib/systemd/system</em> folder. Our service is going to be called "hello.service":</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-592efe9f4e6a9081724815" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: 0px; display: block; z-index: 4;"><span class="crayon-title">hello.service</span>
+			<div class="crayon-tools" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button crayon-pressed" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important; margin-top: -22px; display: none;"><div>Press CTRL+C to Copy, CTRL+V to Paste</div></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="-moz-tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 1; opacity: 1; overflow: auto; height: 165px;" wrap="soft">[Unit]
+Description=Hello World
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/pi/hello_world.py
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 0; overflow: auto; opacity: 0;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-592efe9f4e6a9081724815-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e6a9081724815-2">2</div><div class="crayon-num" data-line="crayon-592efe9f4e6a9081724815-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e6a9081724815-4">4</div><div class="crayon-num" data-line="crayon-592efe9f4e6a9081724815-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e6a9081724815-6">6</div><div class="crayon-num" data-line="crayon-592efe9f4e6a9081724815-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e6a9081724815-8">8</div><div class="crayon-num" data-line="crayon-592efe9f4e6a9081724815-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e6a9081724815-10">10</div><div class="crayon-num" data-line="crayon-592efe9f4e6a9081724815-11">11</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-592efe9f4e6a9081724815-1"><span class="crayon-sy">[</span><span class="crayon-v">Unit</span><span class="crayon-sy">]</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e6a9081724815-2"><span class="crayon-v">Description</span><span class="crayon-o">=</span><span class="crayon-e">Hello </span><span class="crayon-e">World</span></div><div class="crayon-line" id="crayon-592efe9f4e6a9081724815-3"><span class="crayon-v">After</span><span class="crayon-o">=</span><span class="crayon-v">multi</span><span class="crayon-o">-</span><span class="crayon-v">user</span><span class="crayon-sy">.</span><span class="crayon-i">target</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e6a9081724815-4">&nbsp;</div><div class="crayon-line" id="crayon-592efe9f4e6a9081724815-5"><span class="crayon-sy">[</span><span class="crayon-v">Service</span><span class="crayon-sy">]</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e6a9081724815-6"><span class="crayon-v">Type</span><span class="crayon-o">=</span><span class="crayon-e">simple</span></div><div class="crayon-line" id="crayon-592efe9f4e6a9081724815-7"><span class="crayon-v">ExecStart</span><span class="crayon-o">=</span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">bin</span><span class="crayon-o">/</span><span class="crayon-v">python</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">home</span><span class="crayon-o">/</span><span class="crayon-v">pi</span><span class="crayon-o">/</span><span class="crayon-v">hello_world</span><span class="crayon-sy">.</span><span class="crayon-e">py</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e6a9081724815-8"><span class="crayon-v">Restart</span><span class="crayon-o">=</span><span class="crayon-v">on</span><span class="crayon-o">-</span><span class="crayon-i">abort</span></div><div class="crayon-line" id="crayon-592efe9f4e6a9081724815-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e6a9081724815-10"><span class="crayon-sy">[</span><span class="crayon-v">Install</span><span class="crayon-sy">]</span></div><div class="crayon-line" id="crayon-592efe9f4e6a9081724815-11"><span class="crayon-v">WantedBy</span><span class="crayon-o">=</span><span class="crayon-v">multi</span><span class="crayon-o">-</span><span class="crayon-v">user</span><span class="crayon-sy">.</span><span class="crayon-v">target</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0033 seconds] -->
+<p>Here we are creating a very simple service that runs our hello_world script and if by any means is aborted is going to be restarted automatically. You can check more on service's options in the next wiki:&nbsp;<a href="https://wiki.archlinux.org/index.php/systemd">https://wiki.archlinux.org/index.php/systemd</a>.</p>
+<p>Now that we have our service we need to activate it:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-592efe9f4e6b1216722332" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -18px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="-moz-tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;" wrap="soft">sudo chmod 644 /lib/systemd/system/hello.service
+chmod +x /home/pi/hello_world.py
+sudo systemctl daemon-reload
+sudo systemctl enable hello.service
+sudo systemctl start hello.service</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-592efe9f4e6b1216722332-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e6b1216722332-2">2</div><div class="crayon-num" data-line="crayon-592efe9f4e6b1216722332-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e6b1216722332-4">4</div><div class="crayon-num" data-line="crayon-592efe9f4e6b1216722332-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-592efe9f4e6b1216722332-1"><span class="crayon-e">sudo </span><span class="crayon-r">chmod</span><span class="crayon-h"> </span><span class="crayon-cn">644</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">lib</span><span class="crayon-o">/</span><span class="crayon-v">systemd</span><span class="crayon-o">/</span><span class="crayon-v">system</span><span class="crayon-o">/</span><span class="crayon-v">hello</span><span class="crayon-e">.service</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e6b1216722332-2"><span class="crayon-r">chmod</span><span class="crayon-h"> </span><span class="crayon-o">+</span><span class="crayon-v">x</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">home</span><span class="crayon-o">/</span><span class="crayon-v">pi</span><span class="crayon-o">/</span><span class="crayon-v">hello_world</span><span class="crayon-e">.py</span></div><div class="crayon-line" id="crayon-592efe9f4e6b1216722332-3"><span class="crayon-e">sudo </span><span class="crayon-e">systemctl </span><span class="crayon-v">daemon</span><span class="crayon-o">-</span><span class="crayon-e">reload</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e6b1216722332-4"><span class="crayon-e">sudo </span><span class="crayon-e">systemctl </span><span class="crayon-e">enable </span><span class="crayon-v">hello</span><span class="crayon-e">.service</span></div><div class="crayon-line" id="crayon-592efe9f4e6b1216722332-5"><span class="crayon-e">sudo </span><span class="crayon-e">systemctl </span><span class="crayon-e">start </span><span class="crayon-v">hello</span><span class="crayon-e">.service</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0025 seconds] -->
+<p>For every change that we do on the <em>/lib/systemd/system</em> folder we need to execute a <em>daemon-reload</em> (third line of previous code). If we want to check the status of our service, you can execute:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-592efe9f4e6b7098001262" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -18px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="-moz-tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;" wrap="soft">sudo systemctl status hello.service</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-592efe9f4e6b7098001262-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-592efe9f4e6b7098001262-1"><span class="crayon-e">sudo </span><span class="crayon-e">systemctl </span><span class="crayon-e">status </span><span class="crayon-v">hello</span><span class="crayon-e">.service</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p>In general:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-592efe9f4e6be569238160" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -18px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="-moz-tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;" wrap="soft"># Check status
+sudo systemctl status hello.service
+
+# Start service
+sudo systemctl start hello.service
+
+#&nbsp;Stop service
+sudo systemctl stop hello.service
+
+# Check service's log
+sudo journalctl -f -u hello.service</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-592efe9f4e6be569238160-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e6be569238160-2">2</div><div class="crayon-num" data-line="crayon-592efe9f4e6be569238160-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e6be569238160-4">4</div><div class="crayon-num" data-line="crayon-592efe9f4e6be569238160-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e6be569238160-6">6</div><div class="crayon-num" data-line="crayon-592efe9f4e6be569238160-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e6be569238160-8">8</div><div class="crayon-num" data-line="crayon-592efe9f4e6be569238160-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-592efe9f4e6be569238160-10">10</div><div class="crayon-num" data-line="crayon-592efe9f4e6be569238160-11">11</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-592efe9f4e6be569238160-1"><span class="crayon-c"># Check status</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e6be569238160-2"><span class="crayon-e">sudo </span><span class="crayon-e">systemctl </span><span class="crayon-e">status </span><span class="crayon-v">hello</span><span class="crayon-e">.service</span></div><div class="crayon-line" id="crayon-592efe9f4e6be569238160-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e6be569238160-4"><span class="crayon-c"># Start service</span></div><div class="crayon-line" id="crayon-592efe9f4e6be569238160-5"><span class="crayon-e">sudo </span><span class="crayon-e">systemctl </span><span class="crayon-e">start </span><span class="crayon-v">hello</span><span class="crayon-e">.service</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e6be569238160-6">&nbsp;</div><div class="crayon-line" id="crayon-592efe9f4e6be569238160-7"><span class="crayon-c">#&nbsp;Stop service</span></div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e6be569238160-8"><span class="crayon-e">sudo </span><span class="crayon-e">systemctl </span><span class="crayon-e">stop </span><span class="crayon-v">hello</span><span class="crayon-e">.service</span></div><div class="crayon-line" id="crayon-592efe9f4e6be569238160-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-592efe9f4e6be569238160-10"><span class="crayon-c"># Check service's log</span></div><div class="crayon-line" id="crayon-592efe9f4e6be569238160-11"><span class="crayon-e">sudo </span><span class="crayon-v">journalctl</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">f</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">u</span><span class="crayon-h"> </span><span class="crayon-v">hello</span><span class="crayon-e">.service</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0018 seconds] -->
+<p></p>
+<h3>References</h3>
+<ol>
+<li><a href="https://wiki.archlinux.org/index.php/systemd">https://wiki.archlinux.org/index.php/systemd</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files">https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files</a></li>
+<li><a href="https://coreos.com/os/docs/latest/getting-started-with-systemd.html">https://coreos.com/os/docs/latest/getting-started-with-systemd.html</a></li>
+</ol>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+			
+	
+			<div class="entry-share">
+			<span class="label">Share:</span>
+			<ul class="links">
+				<li class="facebook"><a href="http://www.facebook.com/sharer.php?u=http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/"><i class="mdi mdi-facebook-box"></i></a></li><li class="twitter"><a href="https://twitter.com/share?url=http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/&amp;text=How%20to%20run%20a%20script%20as%20a%20service%20in%20Raspberry%20Pi%20-%20Raspbian%20Jessie"><i class="mdi mdi-twitter-box"></i></a></li><li class="google-plus"><a href="https://plus.google.com/share?url=http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/"><i class="mdi mdi-google-plus-box"></i></a></li><li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url=http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/&amp;description=How%20to%20run%20a%20script%20as%20a%20service%20in%20Raspberry%20Pi%20-%20Raspbian%20Jessie"><i class="mdi mdi-pinterest-box"></i></a></li>			</ul>
+		</div>
+	
+		</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+	
+	<div id="mondo-about-author" class="clearfix">
+		<div class="author-image">
+			<img alt="Diego Acuña" src="b7727c40433b8de3905894eadf5131c7" srcset="http://2.gravatar.com/avatar/b7727c40433b8de3905894eadf5131c7?s=180&amp;d=mm&amp;r=g 2x" class="avatar avatar-90 photo" width="90" height="90">		</div>
+		<div class="author-info">
+			<h4 class="author-title"><a href="http://diegoacuna.me/" title="Visit Diego Acuña’s website" rel="author external">Diego Acuña</a></h4>
+			<p class="author-description">I'm a Software Engineering and Web Developer from Chile. My main interests are web technologies, software development methodologies and data mining (mainly on financial area). If you want to get in touch with me, use the contact page from the top menu.</p>
+			<ul class="author-social-links">
+				<li class="twitter"><a href="http://twitter.com/diego_desu"><i class="mdi mdi-twitter-box"></i></a></li>			</ul>
+		</div>
+	</div>
+
+	
+<div id="disqus_thread"><iframe id="dsq-app1" name="dsq-app1" allowtransparency="true" scrolling="no" tabindex="0" title="Disqus" style="width: 1px !important; min-width: 100% !important; border: medium none !important; overflow: hidden !important; height: 1145px !important;" src="index_1.html" horizontalscrolling="no" verticalscrolling="no" width="100%" frameborder="0"></iframe></div>
+
+
+			
+			</main><!-- #main -->
+		</div><!-- #primary -->
+	</div>
+
+			<div class="col-md-4">
+			
+<div id="secondary" class="widget-area" role="complementary">
+	<aside id="mondo_about_widget-2" class="widget widget_mondo_about_widget"><h3 class="widget-title"><span>About</span></h3>
+		<div class="profile">
+							<div class="profile-content">
+					<img src="b7727c40433b8de3905894eadf5131c7.png" class="profile-image img-circle" alt="Diego Acuña">
+					<div class="profile-name">
+						Diego Acuña					</div>
+				</div>
+					</div>
+
+					<div class="about-me">
+				I'm a Software Engineering and Web Developer from Chile. My main interests are web technologies, software development methodologies and data mining (mainly on financial area). If you want to get in touch with me, use the contact page from the top menu.			</div>
+		
+		</aside><aside id="mondo_categories_widget-2" class="widget widget_mondo_categories_widget"><h3 class="widget-title"><span>Categories</span></h3>
+		<ul class="categories-list">
+
+		
+			<li class="category-item">
+				<a href="http://www.diegoacuna.me/category/cuda/" title="View all posts in cuda">
+					cuda					<span class="category-item-count">1</span>
+				</a>
+			</li>
+
+		
+			<li class="category-item">
+				<a href="http://www.diegoacuna.me/category/data-science/" title="View all posts in Data Science">
+					Data Science					<span class="category-item-count">2</span>
+				</a>
+			</li>
+
+		
+			<li class="category-item">
+				<a href="http://www.diegoacuna.me/category/iot/" title="View all posts in IoT">
+					IoT					<span class="category-item-count">1</span>
+				</a>
+			</li>
+
+		
+			<li class="category-item">
+				<a href="http://www.diegoacuna.me/category/linux/" title="View all posts in Linux">
+					Linux					<span class="category-item-count">4</span>
+				</a>
+			</li>
+
+		
+			<li class="category-item">
+				<a href="http://www.diegoacuna.me/category/machine-learning/" title="View all posts in Machine Learning">
+					Machine Learning					<span class="category-item-count">1</span>
+				</a>
+			</li>
+
+		
+		</ul>
+
+		</aside><aside id="mondo_recent_posts_widget-2" class="widget widget_mondo_recent_posts_widget"><h3 class="widget-title"><span>Recent Posts</span></h3><ul class="post-widget-list"><li class="clearfix"><a href="http://www.diegoacuna.me/installing-cuda-8-on-ubuntu-16-04/" class="thumbnail-link" rel="bookmark"><span class="thumbnail-container float-left"><img src="featureimage-cuda-150x150.png" class="opacity-element wp-post-image" alt="" width="150" height="150"></span></a><div class="entry-content"><h4 class="entry-title"><a href="http://www.diegoacuna.me/installing-cuda-8-on-ubuntu-16-04/" rel="bookmark">Installing CUDA 8 on Ubuntu 16.04</a></h4><span class="entry-meta" title="Mon, 27 Feb 2017 15:51:03 +0000"><time class="entry-date published updated" datetime="2017-02-27T15:51:03+00:00">3 months ago</time></span></div></li><li class="clearfix"><a href="http://www.diegoacuna.me/multi-layer-perceptron-for-regression-in-julia-using-the-mocha-framework/" class="thumbnail-link" rel="bookmark"><span class="thumbnail-container float-left"><img src="neural-network-2-150x150.jpg" class="opacity-element wp-post-image" alt="" width="150" height="150"></span></a><div class="entry-content"><h4 class="entry-title"><a href="http://www.diegoacuna.me/multi-layer-perceptron-for-regression-in-julia-using-the-mocha-framework/" rel="bookmark">Multi-Layer Perceptron for regression in Julia: Using the Mocha framework</a></h4><span class="entry-meta" title="Mon, 04 Jul 2016 15:25:18 +0000"><time class="entry-date published updated" datetime="2016-07-04T15:25:18+00:00">11 months ago</time></span></div></li><li class="clearfix"><a href="http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/" class="thumbnail-link" rel="bookmark"><span class="thumbnail-container float-left"><img src="raspberry_pi_b_top-150x150.jpg" class="opacity-element wp-post-image" alt="" width="150" height="150"></span></a><div class="entry-content"><h4 class="entry-title"><a href="http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/" rel="bookmark">How to run a script as a service in Raspberry Pi - Raspbian Jessie</a></h4><span class="entry-meta" title="Thu, 07 Apr 2016 12:52:25 +0000"><time class="entry-date published updated" datetime="2016-04-07T12:52:25+00:00">1 year ago</time></span></div></li><li class="clearfix"><a href="http://www.diegoacuna.me/installing-mod_jk-on-apache-httpd-in-centos-6-x7-x/" class="thumbnail-link" rel="bookmark"><span class="thumbnail-container float-left"><img src="apache-tomcat-150x150.png" class="opacity-element wp-post-image" alt="" width="150" height="150"></span></a><div class="entry-content"><h4 class="entry-title"><a href="http://www.diegoacuna.me/installing-mod_jk-on-apache-httpd-in-centos-6-x7-x/" rel="bookmark">Installing mod_jk on apache httpd in CentOS 6.x/7.x</a></h4><span class="entry-meta" title="Wed, 30 Sep 2015 23:24:44 +0000"><time class="entry-date published updated" datetime="2015-09-30T23:24:44+00:00">2 years ago</time></span></div></li><li class="clearfix"><a href="http://www.diegoacuna.me/how-to-install-latest-ffmpeg-on-centos-6/" class="thumbnail-link" rel="bookmark"><span class="thumbnail-container float-left"></span></a><div class="entry-content"><h4 class="entry-title"><a href="http://www.diegoacuna.me/how-to-install-latest-ffmpeg-on-centos-6/" rel="bookmark">How to install latest ffmpeg on centos 6</a></h4><span class="entry-meta" title="Sun, 30 Aug 2015 01:14:49 +0000"><time class="entry-date published updated" datetime="2015-08-30T01:14:49+00:00">2 years ago</time></span></div></li></ul></aside><aside id="tag_cloud-2" class="widget widget_tag_cloud"><h3 class="widget-title"><span>Tag Cloud</span></h3><div class="tagcloud"><a href="http://www.diegoacuna.me/tag/centos/" class="tag-link-4 tag-link-position-1" title="2 topics" style="font-size: 22pt;">centos</a>
+<a href="http://www.diegoacuna.me/tag/ffmpeg/" class="tag-link-5 tag-link-position-2" title="1 topic" style="font-size: 8pt;">ffmpeg</a>
+<a href="http://www.diegoacuna.me/tag/httpd/" class="tag-link-7 tag-link-position-3" title="1 topic" style="font-size: 8pt;">httpd</a>
+<a href="http://www.diegoacuna.me/tag/julia/" class="tag-link-18 tag-link-position-4" title="1 topic" style="font-size: 8pt;">julia</a>
+<a href="http://www.diegoacuna.me/tag/mocha/" class="tag-link-19 tag-link-position-5" title="1 topic" style="font-size: 8pt;">mocha</a>
+<a href="http://www.diegoacuna.me/tag/neural-networks/" class="tag-link-20 tag-link-position-6" title="1 topic" style="font-size: 8pt;">neural networks</a>
+<a href="http://www.diegoacuna.me/tag/raspberry-pi/" class="tag-link-15 tag-link-position-7" title="1 topic" style="font-size: 8pt;">raspberry pi</a>
+<a href="http://www.diegoacuna.me/tag/systemd/" class="tag-link-16 tag-link-position-8" title="1 topic" style="font-size: 8pt;">systemd</a>
+<a href="http://www.diegoacuna.me/tag/tomcat/" class="tag-link-8 tag-link-position-9" title="1 topic" style="font-size: 8pt;">tomcat</a></div>
+</aside></div><!-- #secondary -->
+		</div>
+		
+	
+	</div><!-- .row -->
+		</div><!-- #content -->
+
+	
+	<a href="#" id="go-top" disabled="disabled"><i class="mdi mdi-upload"></i></a>
+
+	<footer id="colophon" class="site-footer page-footer slim" role="contentinfo">
+
+		
+		<div class="bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="copyright">
+															Diego Acuña.													</div>
+					</div>
+					<div class="col-md-6 text-right">
+						
+<div class="social-icons">
+	
+								<a href="http://twitter.com/" class="twitter"><i class="mdi mdi-twitter-box"></i></a>
+		
+	
+								<a href="http://facebook.com/" class="facebook"><i class="mdi mdi-facebook-box"></i></a>
+		
+	
+								<a href="http://youtube.com/" class="youtube"><i class="mdi mdi-youtube-play"></i></a>
+		
+	
+								<a href="http://pinterest.com/" class="pinterest"><i class="mdi mdi-pinterest-box"></i></a>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<iframe style="display: none;" src="index_2.html"></iframe></body>
+</html>
