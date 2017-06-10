@@ -50,3 +50,26 @@
     the file \"foobar.txt\" from the local host to a remote host\n\n$ scp foobar.txt
     your_username@remotehost.edu:/some/remote/directory\nCopy the directory \"foo\"
     from the local host to a remote host's directory \"bar\"\n\n$ scp -r foo your_username@remotehost.edu:/some/remote/directory/bar\n\n\n~"}
+10: {text: "\n\n\n#python #time #sleep\n\n[ time sleep \"\"https://www.tutorialspoint.com/python/time_sleep.htm\"\"]\n\ntime.sleet(t)\n
+    t ~ time in seconds\n\n\n#done #setup\n\n\n1. copy .sh script into /etc/init.d/...\nsudo
+    cp service/test_service.sh /etc/init.d\n\n2. check permission\nsudo chmod 755
+    /etc/init.d/test_service.sh \n\n  a)  check persmission of python\n        sudo
+    chmod 755 service/test_service.py\n\nAlso\n\"\"\"\nTo make the Raspberry Pi use
+    your init script at the right time, one more step is required: running the command
+    \n     ~ sudo update-rc.d test_service.sh defaults\nThis command adds in symbolic
+    links to the    /etc/rc?.d   directories so that the init script is run at the
+    default times. you can see these links if you do \n     ~ ls -l /etc/rc?.d/*test_service.sh\n\"\"\"\n\n#start
+    using\n\nsudo /etc/init.d/test_service.sh start\n\n#status\nsudo /etc/init.d/test_service.sh
+    status\n\n#log\ndefault log:\nsudo tail -f /tmp/test_service.log\n\n#debug\n1.
+    python file is exectuable as sudo service/test_service.py\n\n2. try running daemon
+    in terminal\nstart-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile
+    --user $DAEMON_USER --chuid $DAEMON_USER --startas $DAEMON -- $DAEMON_OPTS\n\nstart-stop-daemon
+    --start --background --pidfile /var/run/test_service.pid --make-pidfile --user
+    tommy --chuid tommy --startas /home/tommy/Coding/Python/service/test_service.py
+    --\n\n\n#python #time and #date\nimport time\n\nI can now directly unformat the
+    Twitter string to a time.date struct:\n\nusing\n\t$  time.strptime(datestring,
+    \"%a %b %d %H:%M:%S +0000 %Y\")\n\nreturning struct:\ndate[0] = year\ndate[1]
+    = month\ndate[2] = day\ndate[3] = hour\ndate[4] = min\ndate[5] = sec\ndate[6]
+    = weekday\ndate[7] = day of the year\n\n#debugging\n\nfrom twitter_trump import
+    *\nhist = get_history()\nrec = most_recent(hist)\nray = most_recent_x(hist, 3)\n\n\n#
+    ~"}
