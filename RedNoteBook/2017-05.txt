@@ -41,30 +41,35 @@
     info to file, overwrite existing\n\n a\t\t= append to end of file\n\n r+ \t= special
     read and write mode \n\nfole.write(\"Hello world\")\t\t# auto new line\nfole.close()\n\nline
     = fole.readline()\n\n"}
-25: {text: '
-
-
-
-    #read and #write #json to a #file
-
-
-    works great,  [Json Ref ""http://stackabuse.com/reading-and-writing-json-to-a-file-in-python/""]
-
-
-    import json
-
-
-    json.dump()...
-
-
-    and json.load()...
-
-
-
-
-
-
-
-
-
-'}
+25: {text: "\n\n\n#read and #write #json to a #file\n\nworks great,  [Json Ref \"\"http://stackabuse.com/reading-and-writing-json-to-a-file-in-python/\"\"]\n\nimport
+    json\n\njson.dump()...\n\nand json.load()...\n\n\n#copy over #ssh\n\n[Scrapbook
+    \"\"chrome://scrapbook/content/result.xul?q=ssh\"\"]\n\n\tscp \t<filename>\t\t<destination>\n\nfrom
+    current device to Pi\n\tscp\t\t<filename>\t\tname@192.168.199.x:/home/name/etc\n\nfrom
+    Pi to current device\n\tscp\tname@192......:/home/...\t.\t\t// for current folder//\n\nfor
+    copying whole #folder\n\tscp\t-r\t\t<filename>\t\tname@192.168.199.x:/home/name/etc\n\n\n\n\n"}
+27: {text: "\n\n\n#git #conflict\n\n**How to override local changes with head revision**\n\nom
+    my experience working at 11 Online I use the following commands when I want Git
+    to overwrite local files.\n\n\t~    git fetch origin master\n\n\t~    git reset
+    —hard FETCH_head\n\n\t~    git clean -df\n\nThe reset command is used to overwrite
+    your local changes to a specific commit, while pull is used to merge local changes
+    with the changes on the repository.\n\n**Also**\nWen twitter.pyc file is changed
+    locally on pi, i can remove local change with \n\n\t~ git checkout -- *\n\nthis
+    removes all local files with changes?\n\n\n*Image*\n#problem with #import Image,
+    ImageLib\n\nhttp://www.pythonware.com/products/pil/\n\ntry Pillow, thr friendly
+    fork\nhttp://pillow.readthedocs.io/en/latest/installation.html\n\n\n#PIL \n\npi
+    install Image, show its there\npillow is there, PIL is there\n\n>> #fix\nfrom
+    PIL import Image\n\nOne last problem now with Unicode\n\nthe printer does not
+    take the unicode string\n\n>>> text.decode('unicode_escape').encode('ascii','ignore')\nTraceback
+    (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nUnicodeEncodeError:
+    'ascii' codec can't encode character u'\\u2026' in position 115: ordinal not in
+    range(128)\n\n\n"}
+31: {text: "#gmail #mail #api\n#python #email\n\nWorking with emails \n\nImportant:
+    calls to mail() will return a list of empty email messages (with unique IDs).
+    \nTo work with labels, headers, subjects, and bodies, call fetch() on an individual
+    message. \nYou can call mail with prefetch=True, which will fetch the bodies automatically.
+    \n\nunread = g.inbox().mail(unread=True) \nprint unread[0].body \n# None \n \nunread[0].fetch()
+    \nprint unread[0].body \n# Dear ..., \n\n \nemail.read() \nemail.unread() \nemail.spam()
+    \nemail.star() \nemail.unstar() \n\n\n#linux #service \n\n[Scrapbook tutorial
+    \"\"file:///home/tom/Coding/Development_Notes/Scrapbook/data/20170531194207/index.html\"\"]\n\n\n#debian
+    - **this is the service im looking for**\n\n[ Scrapbook \"\"http://blog.scphillips.com/posts/2013/07/getting-a-python-script-to-run-in-the-background-as-a-service-on-boot/\"\"]\n\n#remove
+    #deleting a #folder\n    rm  -rf    theDir\n\n"}
